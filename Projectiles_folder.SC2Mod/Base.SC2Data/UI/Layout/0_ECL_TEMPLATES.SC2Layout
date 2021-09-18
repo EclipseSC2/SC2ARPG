@@ -1,0 +1,664 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+
+
+    <Constant name="StandardFrameBackgroundColor" val="112e31"/>
+    <Constant name="StandardFrameHighlightColor" val="2aefe2"/>
+    <Constant name="StandardFrameGlowColor" val="68aaac"/>
+    <Constant name="StandardFrameDarkColor" val="075f59"/>
+
+    <Constant name="Loot_tier0_0" val="221,221,221"/>
+    <Constant name="Loot_tier0_1" val="255,255,255"/>
+
+    <Constant name="Loot_tier1_0" val="106,179,142"/>
+    <Constant name="Loot_tier1_1" val="172,238,205"/>
+
+    <Constant name="Loot_tier2_0" val="91,142,201"/>
+    <Constant name="Loot_tier2_1" val="157,198,245"/>
+
+    <Constant name="Loot_tier3_0" val="255,236,172"/>
+    <Constant name="Loot_tier3_1" val="255,247,219"/>
+
+    <Frame type="UnitStatusUnitName" name="UnitStatusUnitNameTemplate">
+        <Frame type="Label" name="Label">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+            <Style val="Void_BossUnitFrameUnitName"/>
+            <RenderType val="HDR"/>
+        </Frame>
+    </Frame>
+
+    <!-- PICK UP FRAME-->
+    <Frame type="UnitStatusFrame" name="Item_UnitStatusFrame">
+        <Height val="30"/>
+        <Width val="200"/>
+        <RenderPriority val="999999"/>
+        <OwnerRenderPriority val="812"/>
+        <AllyRenderPriority val="712"/>
+        <EnemyRenderPriority val="612"/>
+
+        <Frame type="Frame" name="AttachPointFrame">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="100"/>
+            <Height val="0"/>
+            <Width val="0"/>
+        </Frame>
+
+        <Frame type="Image" name="Background">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+            <Color val="#StandardFrameBackgroundColor"/>
+            <RenderType val="HDR"/>
+            <Animation name="Hover">
+                <Event event="OnMouseEnter" action="DirectionForward,Play" frame="$parent/CommandPanel/CommandButton00"/>
+                <Event event="OnMouseExit" action="DirectionReverse,Play" frame="$parent/CommandPanel/CommandButton00"/>
+                <Controller type="Color" end="Pause" frame="$this">
+                    <Key type="Curve" time="0.0" value="#StandardFrameBackgroundColor"/>
+                    <Key type="Curve" time="0.1" value="#StandardFrameDarkColor"/>
+                </Controller>
+            </Animation>
+        </Frame>
+
+        <Frame type="Image" name="Border">
+            <Anchor relative="$parent"/>
+            <Texture val="Assets\Textures\sc2_ui_glues_alliedcommanders_upgradeborder.dds"/>
+            <TextureType val="NineSlice"/>
+            <Color val="#StandardFrameGlowColor"/>
+            <RenderType val="HDR"/>
+        </Frame>
+
+        <Frame type="Label" name="ItemLabel">
+            <Anchor relative="$parent"/>
+            <Color val="#StandardFrameHighlightColor"/>
+            <Style val="Void_BossUnitFrameUnitName"/>
+            <RenderType val="HDR"/>
+        </Frame>
+
+        <Frame type="CommandPanel" name="CommandPanel" template="CommandPanel/CommandPanelTemplate">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+            <HideUnusedButtons val="true"/>
+            <DisplayCancelCommandCard val="false"/>
+            <UseGridHotkeys val="false"/>
+            <Alpha val="0"/>
+    
+            <Frame type="CommandButton" name="CommandButton00">
+                <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+                <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+                <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+                <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+                <HotkeyUse val="CommanderAbility0"/>
+                <UseTooltip val="false"/>
+            </Frame>   
+        </Frame>
+        <!--Frame type="UnitStatusUnitName" name="UnitNameLabel" template="0_ECL_TEMPLATES/UnitStatusUnitNameTemplate">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="4"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="4"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="-4"/>
+
+            <Frame type="Label" name="Label">
+                <Color val="#StandardFrameHighlightColor"/>
+            </Frame>
+        </Frame-->
+    </Frame>
+
+    <!-- Default Bar Template -->
+    <Frame type="UnitStatusBar" name="UnitStatusBarTemplate">
+        <Height val="12"/>
+        <!--Width val="80"/-->
+        <BackgroundShown val="true"/>
+        <BackgroundColor val="80,0,0,0"/>
+        <BarInsetRect top="0" left="0" bottom="1" right="0"/>
+        <BackgroundInsetRect top="0" left="0" bottom="1" right="0"/>
+        <RenderType val="HDR"/>
+    </Frame>
+
+    <!-- Health Bar Templates -->
+    <Frame type="UnitStatusBar" name="UnitStatusHealthBarTemplate" template="0_ECL_TEMPLATES/UnitStatusBarTemplate">
+        <Texture val="Assets/Textures/ecl_statusbar.dds"/>
+        <OwnerColor val="90, 255, 90"/>
+        <AllyColor val="0b6901"/>
+        <EnemyColor val="255,82,47"/>
+        <ReductionColor val="91,255,67,224"/>
+        <ReductionShown val="true"/>
+        <IncreaseDuration val="1000"/>
+        <DecreaseDuration val="3000"/>
+        <RenderType val="HDR"/>
+    </Frame>
+
+    <Frame type="UnitStatusHealthBar" name="UnitStatusSegmentedHealthBarTemplate" template="0_ECL_TEMPLATES/UnitStatusHealthBarTemplate">
+        <Segmented val="False"/>
+    </Frame>
+
+    <Frame type="UnitStatusHealthBar" name="UnitStatusSegmentedHealthBarLegendaryTemplate" template="0_ECL_TEMPLATES/UnitStatusHealthBarTemplate">
+        <Segmented val="False"/>
+        <EnemyColor val="255,184,102"/>
+    </Frame>
+
+    <!-- Shields Bar Templates -->
+    <Frame type="UnitStatusShieldsBar" name="UnitStatusShieldsBarTemplate" template="0_ECL_TEMPLATES/UnitStatusBarTemplate">
+        <Texture val="Assets/Textures/ecl_statusbar"/>
+        <OwnerColor val="235bfd"/>
+        <AllyColor val="235bfd"/>
+        <EnemyColor val="235bfd"/>
+        <ReductionColor val="255, 0, 0"/>
+        <ReductionShown val="true"/>
+        <IncreaseDuration val="0"/>
+        <DecreaseDuration val="500"/>
+    </Frame>
+
+    <Frame type="UnitStatusShieldsBar" name="UnitStatusSegmentedShieldsBarTemplate" template="0_ECL_TEMPLATES/UnitStatusShieldsBarTemplate">
+        <Segmented val="true"/>
+        <SegmentValue val="25"/>
+    </Frame>
+
+    <!-- Energy Bar Templates hacked in for now-->
+    <Frame type="UnitStatusEnergyBar" name="UnitStatusEnergyBarTemplate" template="HotS_UnitStatus/UnitStatusBarTemplate">
+        <BarCount val="2"/>
+        <Texture val="Assets/Textures/ecl_statusbar"/>
+        <Height val="8"/>
+        <OwnerColor val="9628dc"/>
+        <AllyColor val="9628dc"/>
+        <EnemyColor val="9628dc"/>
+    </Frame>
+    
+    <Frame type="UnitStatusEnergyBar" name="UnitStatusSegmentedEnergyTemplate" template="0_ECL_TEMPLATES/UnitStatusEnergyBarTemplate">
+        <Segmented val="true"/>
+        <SegmentValue val="25"/>
+    </Frame>
+
+    <Frame type="UnitStatusEnergyBar" name="UnitStatusSegmentedEnergyTemplateWide" template="0_ECL_TEMPLATES/UnitStatusEnergyBarTemplate">
+        <Width val="200"/>
+        <Segmented val="true"/>
+        <SegmentValue val="25"/>
+    </Frame>
+
+
+    <!-- Progress Bar Templates -->
+    <Frame type="UnitStatusProgressBar" name="UnitStatusProgressBarTemplate" template="0_ECL_TEMPLATES/UnitStatusBarTemplate">
+        <Height val="9"/>
+        <OwnerColor val="140, 140, 140"/>
+        <AllyColor val="140, 140, 140"/>
+        <EnemyColor val="140, 140, 140"/>
+        <Texture val="Assets/Textures/ecl_statusbar"/>
+    </Frame>
+
+    <!-- Duration Bar Templates -->
+    <Frame type="UnitStatusDurationBar" name="UnitStatusDurationBarTemplate" template="0_ECL_TEMPLATES/UnitStatusBarTemplate">
+        <Height val="9"/>
+        <OwnerColor val="140, 140, 140"/>
+        <AllyColor val="140, 140, 140"/>
+        <EnemyColor val="140, 140, 140"/>
+        <Texture val="Assets/Textures/ecl_statusbar"/>
+    </Frame>
+    
+    <!-- Kerrigan Unit Name Templates -->
+    <Frame type="UnitStatusUnitName" name="HeroUnitStatusUnitNameTemplate">
+        <Frame type="Label" name="Label">
+            <Style val="HotS_KerriganUnitStatusNameLabel"/>
+            <RenderType val="HDR"/>
+        </Frame>
+    </Frame>
+
+    <!-- Hero Shields/Health Bar -->
+    <Frame type="UnitStatusFrame" name="HeroUnitStatusFrameTemplate">
+        <Height val="50"/>
+        <Width val="224"/>
+        <OwnerRenderPriority val="812"/>
+        <AllyRenderPriority val="712"/>
+        <EnemyRenderPriority val="612"/>
+
+        <Frame type="Frame" name="AttachPointFrame">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="78"/>
+            <Height val="0"/>
+            <Width val="0"/>
+        </Frame>
+
+        <Frame type="UnitStatusUnitName" name="UnitNameLabel" template="0_ECL_TEMPLATES/UnitStatusUnitNameTemplate">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="40"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+        </Frame>
+
+        <Frame type="UnitStatusShieldsBar" name="ShieldsBar" template="0_ECL_TEMPLATES/UnitStatusSegmentedShieldsBarTemplate">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="18"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="39"/>
+            <CollapseLayout val="true"/>
+        </Frame>
+
+        <Frame type="UnitStatusHealthBar" name="HealthBar" template="0_ECL_TEMPLATES/UnitStatusSegmentedHealthBarTemplate">
+            <Anchor side="Top" relative="$parent/ShieldsBar" pos="Max" offset="-1"/>
+            <Anchor side="Left" relative="$parent/ShieldsBar" pos="Min" offset="0"/>
+        </Frame>
+
+        <Frame type="UnitStatusProgressBar" name="ProgressBar" template="0_ECL_TEMPLATES/UnitStatusProgressBarTemplate">
+            <Anchor side="Top" relative="$parent/HealthBar" pos="Max" offset="-1"/>
+            <Anchor side="Left" relative="$parent/HealthBar" pos="Min" offset="0"/>
+            <CollapseLayout val="true"/>
+        </Frame>
+
+        <Frame type="UnitStatusDurationBar" name="DurationBar" template="0_ECL_TEMPLATES/UnitStatusDurationBarTemplate">
+            <Anchor side="Top" relative="$parent/ProgressBar" pos="Max" offset="-1"/>
+            <Anchor side="Left" relative="$parent/ProgressBar" pos="Min" offset="0"/>
+            <CollapseLayout val="true"/>
+        </Frame>
+    </Frame>
+
+    <!-- !!!  A C T U A L    B A R  !!! -->
+    <Frame type="UnitStatusFrame" name="HeroUnitEnergyStatusFrameTemplate">
+        <Height val="32"/>
+        <Width val="110"/>
+        <OwnerRenderPriority val="812"/>
+        <AllyRenderPriority val="712"/>
+        <EnemyRenderPriority val="612"/>
+
+        <Frame type="Frame" name="AttachPointFrame">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="55"/>
+            <Height val="0"/>
+            <Width val="0"/>
+        </Frame>
+
+        <Frame type="UnitStatusValidatorAnimElement" name="MobTierLow">
+            <Anchor relative="$parent"/>
+            <Validator val="HasPTier1"/>
+    
+            <Animation name="IconLow">
+                <Event event="HasPTier1" action="Reset, Play"/>
+                <Controller type="Visibility" end="Pause" frame="$parent/TierIcon">
+                    <Key type="Bool" time="0" value="False"/>
+                </Controller>
+                <Controller type="Property" end="Pause" frame="$parent/HealthBar" property="RenderPriority">
+                    <Key type="Property" time="0.0" value="600"/>
+                </Controller>
+                <Controller type="Property" end="Pause" frame="$parent/HealthBarLegendary" property="RenderPriority">
+                    <Key type="Property" time="0.0" value="512"/>
+                </Controller>
+                <Controller type="Fade" end="Pause" frame="$parent/HealthBar">
+                    <Key type="Curve" time="0.0" value="255"/>
+                </Controller>
+                <Controller type="Fade" end="Pause" frame="$parent/HealthBarLegendary">
+                    <Key type="Curve" time="0.0" value="0"/>
+                </Controller>
+                <Controller type="Dimension" end="Pause" frame="$parent" dimension="Width" relative="False">
+                    <Key type="Curve" time="0.0" value="96"/>
+                </Controller>
+                <Controller type="Dimension" end="Pause" frame="$parent/HealthBar" dimension="Height" relative="False">
+                    <Key type="Curve" time="0.0" value="6"/>
+                </Controller>
+                <Controller type="Anchor" end="Pause" frame="$parent/AttachPointFrame" side="Left" relative="True">
+                    <Key type="Curve" time="0.0" value="0"/>
+                </Controller>
+            </Animation>
+        </Frame>
+
+        <Frame type="UnitStatusValidatorAnimElement" name="MobTierMedium">
+            <Anchor relative="$parent"/>
+            <Validator val="HasPTier2"/>
+    
+            <Animation name="IconMedium">
+                <Event event="HasPTier2" action="Reset, Play"/>
+                <Controller type="Visibility" end="Pause" frame="$parent/TierIcon">
+                    <Key type="Bool" time="0" value="True"/>
+                </Controller>
+                <Controller type="Property" end="Pause" frame="$parent/HealthBar" property="RenderPriority">
+                    <Key type="Property" time="0.0" value="600"/>
+                </Controller>
+                <Controller type="Property" end="Pause" frame="$parent/HealthBarLegendary" property="RenderPriority">
+                    <Key type="Property" time="0.0" value="512"/>
+                </Controller>
+                <Controller type="Fade" end="Pause" frame="$parent/HealthBar">
+                    <Key type="Curve" time="0.0" value="255"/>
+                </Controller>
+                <Controller type="Fade" end="Pause" frame="$parent/HealthBarLegendary">
+                    <Key type="Curve" time="0.0" value="0"/>
+                </Controller>
+                <Controller type="Texture" end="Pause" frame="$parent/TierIcon" layer="0">
+                    <Key type="Image" time="0.0" image="Assets/Textures/ecl_tier_hydraskull_simple_red.dds"/>
+                </Controller>
+                <Controller type="Dimension" end="Pause" frame="$parent" dimension="Width" relative="False">
+                    <Key type="Curve" time="0.0" value="96"/>
+                </Controller>
+                <Controller type="Dimension" end="Pause" frame="$parent/HealthBar" dimension="Height" relative="False">
+                    <Key type="Curve" time="0.0" value="6"/>
+                </Controller>
+                <Controller type="Anchor" end="Pause" frame="$parent/AttachPointFrame" side="Left" relative="True">
+                    <Key type="Curve" time="0.0" value="0"/>
+                </Controller>
+            </Animation>
+        </Frame>
+
+        <Frame type="UnitStatusValidatorAnimElement" name="MobTierHigh">
+            <Anchor relative="$parent"/>
+            <Validator val="HasPTier3"/>
+
+            <Animation name="IconHigh">
+                <Event event="HasPTier3" action="Reset, Play"/>
+                <Controller type="Visibility" end="Pause" frame="$parent/TierIcon">
+                    <Key type="Bool" time="0" value="True"/>
+                </Controller>
+                <Controller type="Property" end="Pause" frame="$parent/HealthBar" property="RenderPriority">
+                    <Key type="Property" time="0.0" value="512"/>
+                </Controller>
+                <Controller type="Property" end="Pause" frame="$parent/HealthBarLegendary" property="RenderPriority">
+                    <Key type="Property" time="0.0" value="600"/>
+                </Controller>
+                <Controller type="Fade" end="Pause" frame="$parent/HealthBar">
+                    <Key type="Curve" time="0.0" value="0"/>
+                </Controller>
+                <Controller type="Fade" end="Pause" frame="$parent/HealthBarLegendary">
+                    <Key type="Curve" time="0.0" value="255"/>
+                </Controller>
+                <Controller type="Texture" end="Pause" frame="$parent/TierIcon" layer="0">
+                    <Key type="Image" time="0.0" image="Assets/Textures/ecl_tier_2_hydraskull.dds"/>
+                </Controller>
+                <Controller type="Dimension" end="Pause" frame="$parent" dimension="Width" relative="False">
+                    <Key type="Curve" time="0.0" value="140"/>
+                </Controller>
+                <Controller type="Dimension" end="Pause" frame="$parent/HealthBar" dimension="Height" relative="False">
+                    <Key type="Curve" time="0.0" value="10"/>
+                </Controller>
+                <Controller type="Anchor" end="Pause" frame="$parent/AttachPointFrame" side="Left" relative="True">
+                    <Key type="Curve" time="0.0" value="22"/>
+                </Controller>
+            </Animation>
+        </Frame>
+
+        <Frame type="UnitStatusValidatorAnimElement" name="DamageHighlight">
+            <Anchor relative="$parent"/>
+            <Validator val="TargetInCombatShort"/>
+
+            <Animation name="DamageTaken">
+                <Event event="TargetInCombatShort" action="Reset, Play"/>
+                <Controller type="Fade" end="Pause" frame="$parent/HealthBar_Damage">
+                    <Key type="Curve" time="0.0" value="255"/>
+                    <Key type="Curve" time="0.2" value="255"/>
+                    <Key type="Curve" time="0.2" value="0" in="Slow"/>
+                </Controller>
+            </Animation>
+        </Frame>
+        
+        <Frame type="Image" name="HeroUnitBackgroundImage">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="10"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="-6"/>
+			<Anchor side="Bottom" relative="$parent/DurationBar" pos="Max" offset="1"/>
+            <Texture val="Assets/Textures/ECL_StatusBarBorder.dds"/>
+			<TextureType val="Border"/>
+            <RenderPriority val="500"/>
+            <RenderType val="HDR"/>
+            <Color val="0,0,0"/>
+        </Frame>
+
+        <Frame type="UnitStatusUnitName" name="UnitNameLabel" template="0_ECL_TEMPLATES/HeroUnitStatusUnitNameTemplate">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+        </Frame>
+
+        <Frame type="UnitStatusShieldsBar" name="ShieldsBar" template="0_ECL_TEMPLATES/UnitStatusSegmentedShieldsBarTemplate">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+            <Anchor side="Left" relative="$parent/HeroUnitBackgroundImage" pos="Min" offset="2"/>
+            <Anchor side="Right" relative="$parent/HeroUnitBackgroundImage" pos="Max" offset="-2"/>
+            <Height val="6"/>
+            <CollapseLayout val="true"/>
+        </Frame>
+
+        <Frame type="UnitStatusHealthBar" name="HealthBar" template="0_ECL_TEMPLATES/UnitStatusSegmentedHealthBarTemplate">
+            <Anchor side="Top" relative="$parent/ShieldsBar" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent/ShieldsBar" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent/ShieldsBar" pos="Max" offset="0"/>
+            <Height val="6"/>
+        </Frame>
+
+        <Frame type="UnitStatusHealthBar" name="HealthBarLegendary" template="0_ECL_TEMPLATES/UnitStatusSegmentedHealthBarLegendaryTemplate">
+            <Anchor relative="$parent/HealthBar"/>
+            <Visible val="false"/>
+        </Frame>
+
+        <Frame type="UnitStatusEnergyBar" name="EnergyBar" template="0_ECL_TEMPLATES/UnitStatusSegmentedEnergyTemplate">
+            <Anchor side="Top" relative="$parent/HealthBar" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent/HealthBar" pos="Min" offset="0"/>
+            <CollapseLayout val="true"/>
+        </Frame>
+
+        <Frame type="UnitStatusProgressBar" name="ProgressBar" template="0_ECL_TEMPLATES/UnitStatusProgressBarTemplate">
+            <Anchor side="Top" relative="$parent/EnergyBar" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent/ShieldsBar" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent/ShieldsBar" pos="Max" offset="0"/>
+            <CollapseLayout val="true"/>
+        </Frame>
+
+        <Frame type="UnitStatusDurationBar" name="DurationBar" template="0_ECL_TEMPLATES/UnitStatusDurationBarTemplate">
+            <Anchor side="Top" relative="$parent/ProgressBar" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent/ShieldsBar" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent/ShieldsBar" pos="Max" offset="0"/>
+            <CollapseLayout val="true"/>
+        </Frame>
+
+        <Frame type="UnitStatusHealthBar" name="HealthBar_Damage" template="0_ECL_TEMPLATES/UnitStatusSegmentedHealthBarTemplate">
+            <Anchor side="Top" relative="$parent/ShieldsBar" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent/ShieldsBar" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent/ShieldsBar" pos="Max" offset="0"/>
+            <Height val="6"/>
+            <OwnerColor val="145,255,145"/>
+            <AllyColor val="4dcf3e"/>
+            <EnemyColor val="255,125,186"/>
+            <ReductionShown val="False"/>
+            <BackgroundShown val="False"/>
+            <Alpha val="0"/>
+            <RenderPriority val="999"/>
+        </Frame>
+
+        
+        <Frame type="Image" name="TierIcon">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Texture val="Assets/Textures/ecl_tier_2_hydraskull.dds"/>
+            <Height val="32"/>
+            <Width val="32"/>
+            <RenderType val="HDR"/>
+            <RenderPriority val="1000"/>
+        </Frame>
+    </Frame>
+
+    <Frame type="UnitStatusFrame" name="LockStatusProgressFrameTemplate">
+        <Width val="290"/>
+        <Height val="75"/>
+
+        <Frame type="Frame" name="AttachPointFrame">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="136"/>
+            <Height val="0"/>
+            <Width val="0"/>
+        </Frame>
+
+        <!--Frame type="Label" name="NameLabel">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="10"/>
+            <Style val="SmallProgressUnitFrameName"/>
+            <Text val="NameLabel"/>
+            <RenderType val="HDR"/>
+        </Frame>
+
+        <Frame type="Label" name="ValueLabel">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="-10"/>
+            <Style val="SmallProgressUnitFrameValue"/>
+            <Text val="ValueLabel"/>
+            <RenderType val="HDR"/>
+        </Frame-->
+
+        <Frame type="Image" name="BarImage">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="30"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="14"/>
+            <Width val="265"/>
+            <Height val="12"/>
+            <Texture val="@UI/HotS_SmallProgressUnitFrameBar"/>
+            <TextureType val="NineSlice"/>
+            <RenderType val="HDR"/>
+        </Frame>
+
+        <Frame type="Image" name="BorderImage">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="15"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+            <Height val="43"/>
+            <Texture val="@UI/HotS_SmallProgressUnitFrameBorder"/>
+            <TextureType val="NineSlice"/>
+            <RenderType val="HDR"/>
+        </Frame>
+    </Frame>
+    
+    <Frame type="UnitStatusFrame" name="UnitStatusProgressFrameTemplate">
+        <Width val="276"/>
+        <Height val="75"/>
+
+        <Frame type="Frame" name="AttachPointFrame">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="136"/>
+            <Height val="0"/>
+            <Width val="0"/>
+        </Frame>
+
+        <Frame type="Label" name="NameLabel">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="10"/>
+            <Style val="SmallProgressUnitFrameName_Prot"/>
+            <Text val="NameLabel"/>
+            <RenderType val="HDR"/>
+        </Frame>
+
+        <Frame type="Label" name="ValueLabel">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="-10"/>
+            <Style val="SmallProgressUnitFrameValue_Prot"/>
+            <Text val="ValueLabel"/>
+            <RenderType val="HDR"/>
+        </Frame>
+        
+        <Frame type="Image" name="BorderImage">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="18"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+            <Height val="36"/>
+            <Texture val="@@UI/LotV_Shared_InGame_ProgressBarFrame"/>
+            <TextureType val="NineSlice"/>
+            <RenderType val="HDR"/>
+        </Frame>
+
+        <Frame type="Image" name="BarImage">
+            <Anchor side="Top" relative="$parent/BorderImage" pos="Min" offset="12"/>
+            <Anchor side="Left" relative="$parent/BorderImage" pos="Min" offset="12"/>
+            <Width val="252"/>
+            <Height val="12"/>
+            <Texture val="@@UI/LotV_Shared_InGame_ProgressBarFill"/>
+            <TextureType val="NineSlice"/>
+            <RenderType val="HDR"/>
+        </Frame>
+    </Frame>
+
+    <Frame type="UnitStatusFrame" name="UnitStatusProgressFrameTemplateHigh">
+        <Width val="276"/>
+        <Height val="75"/>
+
+        <Frame type="Frame" name="AttachPointFrame">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="30"/>
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="138"/>
+            <Height val="0"/>
+            <Width val="0"/>
+        </Frame>
+
+        <Frame type="Label" name="NameLabel">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="10"/>
+            <Style val="SmallProgressUnitFrameName_Prot"/>
+            <Text val="NameLabel"/>
+            <RenderType val="HDR"/>
+        </Frame>
+
+        <Frame type="Label" name="ValueLabel">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="-10"/>
+            <Style val="SmallProgressUnitFrameValue_Prot"/>
+            <Text val="ValueLabel"/>
+            <RenderType val="HDR"/>
+        </Frame>
+        
+        <Frame type="Image" name="BorderImage">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="18"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+            <Height val="36"/>
+            <Texture val="@@UI/LotV_Shared_InGame_ProgressBarFrame"/>
+            <TextureType val="NineSlice"/>
+            <RenderType val="HDR"/>
+        </Frame>
+
+        <Frame type="Image" name="BarImage">
+            <Anchor side="Top" relative="$parent/BorderImage" pos="Min" offset="12"/>
+            <Anchor side="Left" relative="$parent/BorderImage" pos="Min" offset="12"/>
+            <Width val="252"/>
+            <Height val="12"/>
+            <Texture val="@@UI/LotV_Shared_InGame_ProgressBarFill"/>
+            <TextureType val="NineSlice"/>
+            <RenderType val="HDR"/>
+        </Frame>
+    </Frame>
+    
+    <Frame type="UnitStatusFrame" name="UnitStatusProgressFrameTemplateWide">
+        <Width val="396"/>
+        <Height val="75"/>
+
+        <Frame type="Frame" name="AttachPointFrame">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="136"/>
+            <Height val="0"/>
+            <Width val="0"/>
+        </Frame>
+
+        <Frame type="Label" name="NameLabel">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="10"/>
+            <Style val="SmallProgressUnitFrameName_Prot"/>
+            <Text val="NameLabel"/>
+            <RenderType val="HDR"/>
+        </Frame>
+
+        <Frame type="Label" name="ValueLabel">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="-10"/>
+            <Style val="SmallProgressUnitFrameValue_Prot"/>
+            <Text val="ValueLabel"/>
+            <RenderType val="HDR"/>
+        </Frame>
+        
+        <Frame type="Image" name="BorderImage">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="18"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+            <Height val="36"/>
+            <Texture val="@@UI/LotV_Shared_InGame_ProgressBarFrame"/>
+            <TextureType val="NineSlice"/>
+            <RenderType val="HDR"/>
+        </Frame>
+
+        <Frame type="Image" name="BarImage">
+            <Anchor side="Top" relative="$parent/BorderImage" pos="Min" offset="12"/>
+            <Anchor side="Left" relative="$parent/BorderImage" pos="Min" offset="12"/>
+            <Width val="372"/>
+            <Height val="12"/>
+            <Texture val="@@UI/LotV_Shared_InGame_ProgressBarFill"/>
+            <TextureType val="NineSlice"/>
+            <RenderType val="HDR"/>
+        </Frame>
+    </Frame>
+</Desc>

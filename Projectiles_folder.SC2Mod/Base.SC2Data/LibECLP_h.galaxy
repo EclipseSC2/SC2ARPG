@@ -1,0 +1,76 @@
+include "TriggerLibs/natives"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Projectiles_Eclipse
+//--------------------------------------------------------------------------------------------------
+// Preset Declarations
+const int libECLP_ge_ECL_WEAPON_LAUNCH_TYPE_BULLET = 0;
+const int libECLP_ge_ECL_WEAPON_LAUNCH_TYPE_PLASMA = 1;
+const int libECLP_ge_ECL_WEAPON_LAUNCH_TYPE_PARASITE = 2;
+const int libECLP_ge_ECL_WEAPON_LAUNCH_TYPE_FLAMETHROWER = 3;
+const int libECLP_ge_ECL_WEAPON_LAUNCH_TYPE_MOLOTOV_GRENADE = 4;
+const int libECLP_ge_ECL_WEAPON_LAUNCH_TYPE_MOLOTOV_GRENADE2 = 5;
+
+// Constants
+const int libECLP_gv_eCL_MAX_P = 15;
+const int libECLP_gv_eCL_Projectiles_max = 20;
+
+// Structures
+struct libECLP_gs_ECL__HitScan {
+    unit[libECLP_gv_eCL_Projectiles_max + 1] lv_projectile;
+    string lv_weapon;
+};
+
+// Variable Declarations
+unit libECLP_gv_item1;
+unit libECLP_gv_item2;
+int libECLP_gv_di1;
+int libECLP_gv_di2;
+bool libECLP_gv_dEBUG;
+unit[libECLP_gv_eCL_MAX_P + 1] libECLP_gv_eCL_Source;
+bool[libECLP_gv_eCL_MAX_P + 1] libECLP_gv_eCL_Source_facedrecently;
+bool[libECLP_gv_eCL_MAX_P + 1] libECLP_gv_eCL_SaveMouse_on_off;
+fixed[libECLP_gv_eCL_MAX_P + 1] libECLP_gv_eCL_p_m_x;
+fixed[libECLP_gv_eCL_MAX_P + 1] libECLP_gv_eCL_p_m_y;
+fixed[libECLP_gv_eCL_MAX_P + 1] libECLP_gv_eCL_p_angle;
+fixed[libECLP_gv_eCL_MAX_P + 1] libECLP_gv_eCL_p_r;
+unit[libECLP_gv_eCL_MAX_P + 1] libECLP_gv_eCL_Laserpointer;
+unit[libECLP_gv_eCL_MAX_P + 1][21] libECLP_gv_eCL_Projectile;
+int[libECLP_gv_eCL_MAX_P + 1] libECLP_gv_n_projectile;
+bool[libECLP_gv_eCL_MAX_P + 1] libECLP_gv_eCL_UpDown;
+bool[libECLP_gv_eCL_MAX_P + 1] libECLP_gv_eCL_Firing;
+bool[libECLP_gv_eCL_MAX_P + 1] libECLP_gv_eCL_ADS;
+libECLP_gs_ECL__HitScan[libECLP_gv_eCL_MAX_P + 1] libECLP_gv_eCL__HitScan;
+actor libECLP_gv_tracerBeam_g;
+actor[libECLP_gv_eCL_MAX_P + 1] libECLP_gv_eCL_Beam;
+int[17] libECLP_gv_wASDState;
+unit[17] libECLP_gv_controlledUnits;
+bool[17] libECLP_gv_unitMovementEnabled;
+
+// Function Declarations
+void libECLP_gf_ECL_Laserpointer (int lp_player, unit lp_unit, bool lp_onOff);
+void libECLP_gf_ECL_Fire (int lp_player, int lp_lAUNCH_ART, int lp_n_projectiles, int lp_bursts, fixed lp_velocity, fixed lp_cooldown, fixed lp_cooldown_Burst, fixed lp_angle, string lp_iMPACT_Effect, fixed lp_range);
+void libECLP_gf_ECL_HitScan (unit lp_source, point lp_sourcePoint, fixed lp_angle_cursor, int lp_n_projectiles, fixed lp_velocity, fixed lp_spread_HalfAngle, fixed lp_range, abilcmd lp_abilityCommand, string lp_effect_Impact, string lp_effect_CP, bool lp_dEBUG);
+void libECLP_gf_TracerBeam (actor lp_launch, actor lp_impact, string lp_beammodel);
+void libECLP_gf_ShowHideActorforPlayer (int lp_player, actor lp_actor, bool lp_showHide);
+void libECLP_gf_CreateBeam (actor lp_launch, actor lp_impact, string lp_beammodel, int lp_player);
+void libECLP_gf_AttachUnitModelToUnit (unit lp_attachmentUnit, unit lp_targetUnit, string lp_attachPont, fixed lp_xOffset, fixed lp_yOffset, fixed lp_zOffset, string lp_facingAdjustment);
+fixed libECLP_gf_GetWASDAngle (int lp_player);
+void libECLP_gf_ProcessMovement (int lp_player);
+void libECLP_gf_KeyDownCheck (int lp_player, int lp_keyPressed);
+void libECLP_gf_KeyUpCheck (int lp_player, int lp_keyPressed);
+void libECLP_gf_SetControlledUnit (int lp_player, unit lp_unit);
+
+// Trigger Declarations
+trigger libECLP_gt_TEST;
+trigger libECLP_gt_ECL_Fire;
+trigger libECLP_gt_ECL_Anchor;
+trigger libECLP_gt_ECL_SaveMouseXY;
+trigger libECLP_gt_ECL_Release;
+trigger libECLP_gt_ECL_CatchProjectiles;
+trigger libECLP_gt_KeyDown;
+trigger libECLP_gt_KeyUp;
+
+// Library Initialization
+void libECLP_InitVariables ();
+

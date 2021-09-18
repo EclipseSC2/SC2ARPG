@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CAbilEffectTarget id="BlueRockets">
+        <CmdButtonArray index="Execute" DefaultButtonFace="SpaceShipBlueRockets">
+            <Flags index="Continuous" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="PAttackMolotov">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
+        <Effect index="0" value="PAttackMolotovLaunchMissile"/>
+        <Cost/>
+        <Range value="500"/>
+        <Arc value="360"/>
+        <PrepTime value="0.1"/>
+        <UninterruptibleArray index="Prep" value="1"/>
+        <UninterruptibleArray index="Cast" value="1"/>
+        <CursorEffect value="PAttackMolotovSearch"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="PAttackMolotov"/>
+        <Flags index="AbortOnAllianceChange" value="0"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="BestUnit" value="0"/>
+        <Flags index="NoDeceleration" value="1"/>
+        <Flags index="RangeUseCasterRadius" value="0"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Flags index="Transient" value="1"/>
+        <Flags index="TransientPreferred" value="1"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="PAttackBullet">
+        <Flags index="AbortOnAllianceChange" value="0"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="BestUnit" value="0"/>
+        <Flags index="NoDeceleration" value="1"/>
+        <Flags index="RangeUseCasterRadius" value="0"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Flags index="Transient" value="1"/>
+        <Flags index="TransientPreferred" value="1"/>
+        <Alignment value="Negative"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Effect index="0" value="PAttackBulletCP"/>
+        <Cost/>
+        <Range value="500"/>
+        <CastIntroTime value="0"/>
+        <FinishTime value="0"/>
+        <AINotifyEffect value="PAttackBulletLM"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Snipe"/>
+        <Arc value="360"/>
+        <PrepTime value="0"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="PAttackCapsule">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
+        <Effect index="0" value="PAttackCapsuleLM"/>
+        <Cost/>
+        <Range value="500"/>
+        <Arc value="360"/>
+        <PrepTime value="0.1"/>
+        <UninterruptibleArray index="Prep" value="1"/>
+        <UninterruptibleArray index="Cast" value="1"/>
+        <CursorEffect value="PAttackMolotovSearch"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="PAttackCapsule"/>
+        <Flags index="AbortOnAllianceChange" value="0"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="BestUnit" value="0"/>
+        <Flags index="NoDeceleration" value="1"/>
+        <Flags index="RangeUseCasterRadius" value="0"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Flags index="Transient" value="1"/>
+        <Flags index="TransientPreferred" value="1"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="PAttackPlasma">
+        <Alignment value="Negative"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Effect index="0" value="PAttackPlasmaCP"/>
+        <Cost/>
+        <Range value="500"/>
+        <CastIntroTime value="0"/>
+        <FinishTime value="0"/>
+        <UninterruptibleArray index="Prep" value="1"/>
+        <UninterruptibleArray index="Finish" value="1"/>
+        <AINotifyEffect value="PAttackBulletLM"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="PAttackPlasma"/>
+        <Flags index="AbortOnAllianceChange" value="0"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="BestUnit" value="0"/>
+        <Flags index="NoDeceleration" value="1"/>
+        <Flags index="RangeUseCasterRadius" value="0"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Flags index="Transient" value="1"/>
+        <Flags index="TransientPreferred" value="1"/>
+        <Arc value="360"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="PAttackFlame">
+        <Alignment value="Negative"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Effect index="0" value="PAttackFlameCP"/>
+        <Cost/>
+        <Range value="500"/>
+        <CastIntroTime value="0"/>
+        <FinishTime value="0"/>
+        <UninterruptibleArray index="Prep" value="1"/>
+        <UninterruptibleArray index="Finish" value="1"/>
+        <AINotifyEffect value="PAttackBulletLM"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Snipe"/>
+        <Flags index="AbortOnAllianceChange" value="0"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="BestUnit" value="0"/>
+        <Flags index="NoDeceleration" value="1"/>
+        <Flags index="RangeUseCasterRadius" value="0"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Flags index="Transient" value="1"/>
+        <Flags index="TransientPreferred" value="1"/>
+        <Arc value="360"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="PAttackParasite">
+        <Alignment value="Negative"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Effect index="0" value="PAttackParasiteCP"/>
+        <Flags index="AbortOnAllianceChange" value="0"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="BestUnit" value="0"/>
+        <Flags index="NoDeceleration" value="1"/>
+        <Flags index="RangeUseCasterRadius" value="0"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Flags index="Transient" value="1"/>
+        <Flags index="TransientPreferred" value="1"/>
+        <Cost/>
+        <Range value="500"/>
+        <CastIntroTime value="0"/>
+        <FinishTime value="0"/>
+        <UninterruptibleArray index="Prep" value="1"/>
+        <UninterruptibleArray index="Finish" value="1"/>
+        <AINotifyEffect value="PAttackBulletLM"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="PAttackParasite"/>
+        <Arc value="360"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="PLootAutoPickup">
+        <Effect index="0" value="PLootPickUpSet"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="ReExecutable" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Cooldown TimeUse="0.5"/>
+        </Cost>
+        <Range value="1"/>
+        <Arc value="360"/>
+        <AutoCastFilters value="Ground;Ally,Neutral,Enemy,Structure,Missile,Destructible,Stasis,Dead,Hidden,Invulnerable,Benign"/>
+        <AutoCastRange value="1"/>
+        <AutoCastValidatorArray value="PickupCheck"/>
+        <FinishTime value="3"/>
+        <AINotifyEffect value="PLootPickUp"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="PickupHealth25"/>
+    </CAbilEffectTarget>
+</Catalog>

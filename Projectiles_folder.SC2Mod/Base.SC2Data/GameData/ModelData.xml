@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CModel id="PAttackCursor3D" parent="Doodad">
+        <Model value="Assets\Doodads\Shapes\ShapeCylinder\ShapeCylinder.m3"/>
+        <AnimSpeed value="0.001000"/>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="UIBeaconTerranDeath"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="UI_BeaconTerranDeath"/>
+        </Events>
+        <ScaleMax value="0.010000,0.010000,0.166700"/>
+        <ScaleMin value="0.010000,0.010000,0.166700"/>
+        <SelectionLayer value="1"/>
+        <SelectionRadius value="1.999700"/>
+        <ShadowRadius value="1.428400"/>
+    </CModel>
+    <CModel id="PAttackCursorGroundSplat" parent="Doodad">
+        <Model value="Assets\UI\Feedback\AOEPreTargetAirUnitProtossSplat\AOEPreTargetAirUnitProtossSplat.m3"/>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="UIBeaconTerranDeath"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="UI_BeaconTerranDeath"/>
+        </Events>
+        <Lighting value="PAttackCursor3D"/>
+        <ScaleMax value="0.250000,0.250000,0.250000"/>
+        <ScaleMin value="0.250000,0.250000,0.250000"/>
+        <SelectionLayer value="1"/>
+        <SelectionRadius value="1.999700"/>
+        <ShadowRadius value="1.428400"/>
+    </CModel>
+    <CModel id="Separatist">
+        <Model value="Assets\Model\Caev_TurretTrooper_v1.m3"/>
+        <Radius value="0.001000"/>
+        <ScaleMax value="4.000000,4.000000,4.000000"/>
+        <ScaleMin value="4.000000,4.000000,4.000000"/>
+        <SelectionRadius value="0.001000"/>
+    </CModel>
+    <CModel id="PAttackCapsuleImpact" parent="ImpactFX">
+        <Model value="Assets\Effects\Zerg\Dakrun_Coop_Charge_Impact_Ground\Dakrun_Coop_Charge_Impact_Ground.m3"/>
+        <EditorCategories value="Race:Terran"/>
+    </CModel>
+    <CModel id="PAttackMolotovPersistent" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Other\FireSquibDeathRagdoll\FireSquibDeathRagdoll.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Lighting value="ArtanisVoidPsiStormModel"/>
+        <ScaleMax value="1.500000,1.500000,1.000000"/>
+    </CModel>
+    <!--FIREBAT-->
+    <CModel id="AttackTargetingBeam" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Terran\LaserDrillTargetingBeam\LaserDrillTargetingBeam.m3"/>
+        <EditorCategories value="Race:Terran"/>
+        <ScaleMax value="0.125000,0.125000,0.125000"/>
+        <ScaleMin value="0.125000,0.125000,0.125000"/>
+    </CModel>
+    <CModel id="ECL_HERO" parent="GhostBase">
+        <Model value="Assets\Models\Caev_TurretTrooper_v1.m3"/>
+        <RequiredAnims index="0" removed="1"/>
+        <Lighting value="Ghost"/>
+    </CModel>
+    <CModel id="PAttackMolotovStun" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Zerg\UnitStunImpact\UnitStunImpact.m3"/>
+        <EditorCategories value="Race:Terran"/>
+    </CModel>
+    <CModel id="PAttackMolotovAttackImpact" parent="ImpactFX">
+        <Model value="Assets\COOP\Tychus\Effects\Firebat_Heavens_COOP_ExplosiveFire\Firebat_Heavens_COOP_ExplosiveFire.m3"/>
+        <AnimSpeed value="2.000000"/>
+        <EditorCategories value="Race:Terran"/>
+        <ScaleMax value="1.250000,1.250000,1.250000"/>
+        <ScaleMin value="1.250000,1.250000,1.250000"/>
+    </CModel>
+    <CModel id="PAttackMolotovWeapon" parent="MissileFX">
+        <Model value="Assets\Effects\Terran\MolotovMissile\MolotovMissile.m3"/>
+        <EditorCategories value="Race:Terran"/>
+        <SelectionRadius value="0.833200"/>
+        <ShadowRadius value="0.833200"/>
+    </CModel>
+    <CModel id="PAttackCapsule" parent="MissileFX">
+        <Model value="Assets\Effects\Terran\PodMissile\PodMissile.m3"/>
+        <EditorCategories value="Race:Terran"/>
+        <ScaleMax value="0.500000,0.500000,0.500000"/>
+        <ScaleMin value="0.500000,0.500000,0.500000"/>
+    </CModel>
+    <CModel id="PLootAutoPickUpDeath" parent="Unit" Race="Terran">
+        <Model value="Assets\Model\Storm_FX_HvH_DiabloLoot_GoldPickup.m3"/>
+        <Lighting value="GeneralNovaPickup"/>
+        <ScaleMax value="0.750000,0.750000,0.750000"/>
+        <ScaleMin value="0.750000,0.750000,0.750000"/>
+    </CModel>
+    <CModel id="PAttackParasiteInfested" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Zerg\L2D_AcidDrips\L2D_AcidDrips.m3"/>
+        <EditorCategories value="Race:Zerg"/>
+        <SelectionRadius value="5.000000"/>
+        <ShadowRadius value="5.000000"/>
+    </CModel>
+    <CModel id="PAttackBurn" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Terran\FireImpact\FireImpact.m3"/>
+        <EditorCategories value="Race:Zerg"/>
+        <SelectionRadius value="5.000000"/>
+        <ShadowRadius value="5.000000"/>
+    </CModel>
+    <CModel id="PAttackParasite" parent="MissileFX">
+        <Model value="Assets\Effects\Zerg\BioPlasmaMissile\BioPlasmaMissile.m3"/>
+        <EditorCategories value="Race:Terran"/>
+        <ScaleMax value="0.750000,0.750000,0.750000"/>
+        <ScaleMin value="0.750000,0.750000,0.750000"/>
+        <AnimSpeed value="1.500000"/>
+    </CModel>
+    <CModel id="PAttackPlasmaImpact" parent="ImpactFX">
+        <Model value="Assets\Effects\Terran\PlasmaRifle_Missile_Impact\PlasmaRifle_Missile_Impact.m3"/>
+        <EditorCategories value="Race:Terran"/>
+    </CModel>
+    <CModel id="PAttackFlameImpact" parent="ImpactFX">
+        <Model value="Assets\Effects\Protoss\Colossus_FireBeam_Unit_Impact\Colossus_FireBeam_Unit_Impact.m3"/>
+        <EditorCategories value="Race:Terran"/>
+        <Lighting value="PAttackPlasmaImpact"/>
+        <ScaleMax value="1.000000,1.000000,1.250000"/>
+        <ScaleMin value="0.900000,0.900000,1.125000"/>
+    </CModel>
+    <CModel id="PAttackParasiteImpact" parent="ImpactFX">
+        <Model value="Assets\Effects\Zerg\BioPlasmaMissileImpact\BioPlasmaMissileImpact.m3"/>
+        <EditorCategories value="Race:Terran"/>
+    </CModel>
+    <CModel id="PAttackPlasmaLaunch" parent="LaunchFX">
+        <Model value="Assets\Effects\Terran\PlasmaRifle_Launch\PlasmaRifle_Launch.m3"/>
+        <EditorCategories value="Race:Terran"/>
+        <Lighting value="GhostAttackLaunch"/>
+    </CModel>
+    <CModel id="PAttackPlasma" parent="MissileFX">
+        <Model value="Assets\Effects\Terran\PlasmaRifle_Missile\PlasmaRifle_Missile.m3"/>
+        <EditorCategories value="Race:Terran"/>
+        <ScaleMax value="0.500000,0.500000,0.500000"/>
+        <ScaleMin value="0.500000,0.500000,0.500000"/>
+    </CModel>
+    <CModel id="PAttackBulletImpact" parent="ImpactFX">
+        <Model value="Assets\Effects\Terran\ReaperWeaponImpact\ReaperWeaponImpact.m3"/>
+        <EditorCategories value="Race:Terran"/>
+    </CModel>
+    <CModel id="PAttack" parent="MissileFX">
+        <Model value="Assets\Effects\Protoss\Arbiter_Purifier_Coop_Missile\Arbiter_Purifier_Coop_Missile.m3"/>
+        <EditorCategories value="Race:Terran"/>
+        <ScaleMax value="0.200000,0.100000,0.200000"/>
+        <ScaleMin value="0.200000,0.100000,0.200000"/>
+        <AnimSpeed value="0.500000"/>
+    </CModel>
+    <CModel id="PAttackImpactEffect" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Terran\EMP\EMP.m3"/>
+        <EditorCategories value="Race:Terran"/>
+        <RadiusLoose value="0.600000"/>
+        <ScaleMax value="0.600000,0.600000,0.600000"/>
+        <ScaleMin value="0.600000,0.600000,0.600000"/>
+    </CModel>
+    <CModel id="PAttackFlameLaunch" parent="LaunchFX">
+        <Model value="Assets\Effects\Terran\HellionTankAttack\HellionTankAttack.m3"/>
+        <LowQualityModel value="HellionTankAttackLaunchLow"/>
+        <EditorCategories value="Race:Terran"/>
+        <Lighting value=""/>
+        <ScaleMax value="1.650000,1.650000,1.000000"/>
+        <ScaleMin value="1.650000,1.650000,1.000000"/>
+    </CModel>
+    <CModel id="PAttackParasiteLaunch" parent="LaunchFX">
+        <Model value="Assets\Effects\Zerg\Infested_Stukov_Missile_Launch\Infested_Stukov_Missile_Launch.m3"/>
+        <EditorCategories value="Race:Terran"/>
+        <Lighting value="GhostAttackLaunch"/>
+        <ScaleMax value="0.500000,1.000000,0.500000"/>
+        <ScaleMin value="0.500000,1.000000,0.500000"/>
+    </CModel>
+    <CModel id="PLootAutoPickup">
+        <Model value="Assets\Doodads\Void_GoldPiles\Void_GoldPiles_02.m3"/>
+        <EditorCategories value="Race:Neutral"/>
+        <Flags index="AutoUnload" value="1"/>
+        <ScaleMax value="0.500000,0.500000,0.500000"/>
+        <ScaleMin value="0.500000,0.500000,0.500000"/>
+        <SelectionLayer value="100"/>
+        <SelectionOffset value="0.000000,0.000000,0.100000"/>
+    </CModel>
+    <CModel id="PLootPermanent">
+        <Model value="Assets\Doodads\DOM_Crate\DOM_Crate_00.m3"/>
+        <EditorCategories value="Race:Neutral"/>
+        <Flags index="AutoUnload" value="1"/>
+        <ScaleMax value="0.500000,0.500000,0.500000"/>
+        <ScaleMin value="0.500000,0.500000,0.500000"/>
+        <SelectionLayer value="100"/>
+        <SelectionOffset value="0.000000,0.000000,0.100000"/>
+    </CModel>
+    <CModel id="Projectile" parent="MissileFX">
+        <Model value="Assets\Effects\Protoss\Arbiter_Purifier_Coop_Missile\Arbiter_Purifier_Coop_Missile.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="0.250000,0.250000,0.250000"/>
+        <ScaleMin value="0.250000,0.250000,0.250000"/>
+        <AnimSpeed value="3.000000"/>
+    </CModel>
+    <CModel id="ECL_PROJECTILE" parent="MissileFX">
+        <Model value="Assets\Effects\Protoss\Arbiter_Purifier_Coop_Missile\Arbiter_Purifier_Coop_Missile.m3"/>
+        <EditorCategories value="Race:Neutral"/>
+        <Flags index="AutoUnload" value="1"/>
+        <Flags index="Wait" value="1"/>
+        <ScaleMax value="0.250000,0.250000,0.250000"/>
+        <ScaleMin value="0.250000,0.250000,0.250000"/>
+    </CModel>
+    <CModel id="PAttackBulletImpactNew" parent="ImpactFX">
+        <Model value="Assets\Effects\Terran\ReaperWeaponImpact\ReaperWeaponImpact.m3"/>
+        <EditorCategories value="Race:Terran"/>
+    </CModel>
+    <CModel id="Sphere">
+        <ScaleMax value="0.250000,0.250000,0.250000"/>
+        <ScaleMin value="0.250000,0.250000,0.250000"/>
+    </CModel>
+    <CModel id="PAttackBulletLaunch" parent="LaunchFX">
+        <Model value="Assets\Effects\Terran\MarineWeaponLaunch\MarineWeaponLaunch.m3"/>
+        <EditorCategories value="Race:Terran"/>
+        <Lighting value="VikingAssaultAttackLaunch"/>
+        <ScaleMax value="0.500000,0.500000,0.500000"/>
+        <ScaleMin value="0.500000,0.500000,0.500000"/>
+    </CModel>
+</Catalog>

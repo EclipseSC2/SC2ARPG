@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CBehaviorBuff id="AIIdleAttack">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <InfoIcon value="Assets\Textures\ui_aicommand_build_open_timingattack.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="NoNearbyEnemiesInWeaponRange"/>
+        <DisableValidatorArray value="TargetNoOrdersAndNoMove"/>
+        <PeriodicEffect value="IdleAttackSA"/>
+        <Modification WeaponScanBonus="4"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="HealthPercentageIncrease">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="PAttackCursor">
+        <Alignment value="Negative"/>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <InfoIcon value="Assets\Textures\btn-ability-zerg-fungalgrowth.dds"/>
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="PAttackBurnShort">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\btn-ability-zerg-fungalgrowth.dds"/>
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="BattlecruiserNotJumping"/>
+        <RemoveValidatorArray value="NoPurificationNova"/>
+        <RemoveValidatorArray value="NotOracleStasisTrapped"/>
+        <Duration value="1"/>
+        <Period value="0.25"/>
+        <PeriodicEffect value="PAttackBurnDamage"/>
+        <Modification>
+            <StateFlags index="SuppressCloak" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="PAttackMolotov">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\btn-upgrade-vorazun-shadowstun.dds"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Duration value="5"/>
+        <DurationOverride>
+            <Duration value="2.5"/>
+            <ValidatorArray value="IsHeroic"/>
+        </DurationOverride>
+        <DurationOverride>
+            <Duration value="2.5"/>
+            <ValidatorArray value="IsStone"/>
+        </DurationOverride>
+        <Modification>
+            <StateFlags index="Stun" value="1"/>
+            <StateFlags index="SuppressCloak" value="1"/>
+            <StateFlags index="SuppressDetection" value="1"/>
+            <DamageTakenFraction index="Spell" value="0.15"/>
+            <DamageTakenFraction index="Melee" value="0.15"/>
+            <DamageTakenFraction index="Ranged" value="0.15"/>
+            <DamageTakenFraction index="Splash" value="0.15"/>
+            <DamageTakenFraction index="NoProc" value="0.15"/>
+            <AbilClassDisableArray index="CAbilEffectTarget" value="1"/>
+            <BehaviorLinkDisableArray value="NovaAlarmBotAura"/>
+            <BehaviorLinkDisableArray value="NovaAlarmBotDetectionMode"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="PAttackMolotovTripWireUnnamed">
+        <Alignment value="Negative"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <InfoIcon value="Assets\Textures\btn-upgrade-vorazun-shadowstun.dds"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Duration value="5"/>
+        <Period value="3"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffect value="PAttackMolotovTripWireRestartWarningUnnamed"/>
+        <Modification>
+            <StateFlags index="Stun" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="PAttackParasiteInfested">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\btn-ability-zerg-fungalgrowth.dds"/>
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="BattlecruiserNotJumping"/>
+        <RemoveValidatorArray value="NoPurificationNova"/>
+        <RemoveValidatorArray value="NotOracleStasisTrapped"/>
+        <MaxStackCount value="5"/>
+        <MaxStackCountPerCaster value="5"/>
+        <Duration value="2.6"/>
+        <Period value="0.2"/>
+        <PeriodicEffect value="PAttackParasiteInfestedDoT"/>
+        <Modification MoveSpeedMultiplier="0.85" AttackSpeedMultiplier="0.85">
+            <StateFlags index="SuppressCloak" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="PAttackBurn">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\btn-ability-zerg-fungalgrowth.dds"/>
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="BattlecruiserNotJumping"/>
+        <RemoveValidatorArray value="NoPurificationNova"/>
+        <RemoveValidatorArray value="NotOracleStasisTrapped"/>
+        <Duration value="4"/>
+        <Period value="0.25"/>
+        <PeriodicEffect value="PAttackBurnDamage"/>
+        <Modification>
+            <StateFlags index="SuppressCloak" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="PAttackParasiteSpawnInfested">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\btn-ability-stukov- researchicon15infestedcivilians.dds"/>
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <Duration value="2.6"/>
+        <DamageResponse Fatal="1" Handled="PAttackParasiteLocustCreateSet">
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="PLoot">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <InfoIcon value="Assets\Textures\btn-ability-stukov- researchicon15infestedcivilians.dds"/>
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <MaxStackCount value="99"/>
+        <MaxStackCountPerCaster value="99"/>
+        <DamageResponse Fatal="1" Handled="PLootUserDataDummy">
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="PLaserRocker">
+        <BehaviorFlags index="Permanent" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="PMobTierHigh">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="PMobTierCasual">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="PMobTierMedium">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TranslateUnitSuppressFastSlow"/>
+</Catalog>

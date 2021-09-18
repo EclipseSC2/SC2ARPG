@@ -1,0 +1,633 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CEffectCreatePersistent id="PAttackMolotovCP">
+        <EditorCategories value=""/>
+        <InitialEffect value="PAttackMolotovSearch"/>
+        <PeriodCount value="5"/>
+        <PeriodicEffectArray value="PAttackMolotovSearch"/>
+        <PeriodicPeriodArray value="1"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="PAttackMolotovCPInit">
+        <EditorCategories value=""/>
+        <Flags index="RandomOffset" value="1"/>
+        <InitialEffect value="PAttackMolotovCP"/>
+        <PeriodCount value="7"/>
+        <PeriodicEffectArray value="PAttackMolotovCP"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0.707,0.707,0"/>
+        <PeriodicOffsetArray value="-0.707,0.707,0"/>
+        <PeriodicOffsetArray value="0.707,-0.707,0"/>
+        <PeriodicOffsetArray value="-0.707,-0.707,0"/>
+        <PeriodicOffsetArray value="1,0,0"/>
+        <PeriodicOffsetArray value="0,1,0"/>
+        <PeriodicOffsetArray value="0,-1,0"/>
+        <PeriodicOffsetArray value="-1,0,0"/>
+        <PeriodicOffsetArray value="0.3828,0.9238,0"/>
+        <PeriodicOffsetArray value="-0.3828,0.9238,0"/>
+        <PeriodicOffsetArray value="0.3828,-0.9238,0"/>
+        <PeriodicOffsetArray value="-0.3828,-0.9238,0"/>
+        <PeriodicOffsetArray value="0.9238,0.3828,0"/>
+        <PeriodicOffsetArray value="-0.9238,-0.3828,0"/>
+        <PeriodicOffsetArray value="-0.9238,0.3828,0"/>
+        <PeriodicOffsetArray value="0.9238,-0.3828,0"/>
+        <PeriodicOffsetArray value="1.414,1.414,0"/>
+        <PeriodicOffsetArray value="-1.414,1.414,0"/>
+        <PeriodicOffsetArray value="1.414,-1.414,0"/>
+        <PeriodicOffsetArray value="-1.414,-1.414,0"/>
+        <PeriodicOffsetArray value="2,0,0"/>
+        <PeriodicOffsetArray value="0,2,0"/>
+        <PeriodicOffsetArray value="0,-2,0"/>
+        <PeriodicOffsetArray value="-2,0,0"/>
+        <PeriodicPeriodArray value="0.125"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0.0625"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0.0625"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0.0625"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0.0625"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0"/>
+        <OffsetRandMode value="Shuffle"/>
+    </CEffectCreatePersistent>
+    <CEffectLaunchMissile id="PAttackCapsuleLM">
+        <ValidatorArray index="0" removed="1"/>
+        <EditorCategories value="Race:Terran"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <ImpactOffset value="0,-2,2"/>
+        <ImpactEffect value="CalldownMULECreateUnit"/>
+        <AmmoUnit value="PAttackCapsule"/>
+    </CEffectLaunchMissile>
+    <CEffectModifyUnit id="PAttackMolotovTripWireRestartWarningUnnamed">
+        <EditorCategories value="Race:Terran"/>
+    </CEffectModifyUnit>
+    <CEffectIssueOrder id="IdleAttackIO">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+        <Abil value="attack"/>
+        <Player Value="Source"/>
+        <Target Value="TargetPoint"/>
+    </CEffectIssueOrder>
+    <CEffectEnumArea id="IdleAttackSA">
+        <EditorCategories value=""/>
+        <ImpactLocation Value="SourceUnit"/>
+        <SearchFilters value="Visible;Self,Player,Ally,Neutral,Missile,Hidden,Invulnerable"/>
+        <AreaArray MaxCount="1" Radius="50" Effect="IdleAttackSet"/>
+        <MaxCount value="1"/>
+    </CEffectEnumArea>
+    <CEffectSet id="IdleAttackSet">
+        <ValidatorArray value="TargetIsPathable"/>
+        <EditorCategories value=""/>
+        <EffectArray value="IdleAttackIO"/>
+    </CEffectSet>
+    <CEffectSet id="LocustWeaponCreateLMImpactSetA">
+        <EffectArray value="PAttackParasiteLocustWeaponIssueOrder"/>
+    </CEffectSet>
+    <CEffectSet id="LocustWeaponCreateLMImpactSetB">
+        <EffectArray value="PAttackParasiteLocustWeaponIssueOrder"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="PAttackMolotovApplyBehavior">
+        <ValidatorArray index="0" value="NotFrenzied"/>
+        <ValidatorArray value="TargetIsNotUnstoppable"/>
+        <ValidatorArray value="NotStructureorIsStructureandNotDetector"/>
+        <ValidatorArray value="IsNotHerculesCombined"/>
+        <EditorCategories value="Race:Terran"/>
+        <Behavior value="PAttackBurnShort"/>
+    </CEffectApplyBehavior>
+    <CEffectLaunchMissile id="PAttackMolotovLaunchMissile">
+        <ValidatorArray index="0" removed="1"/>
+        <EditorCategories value="Race:Terran"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <ImpactOffset value="0,0.1,0.1"/>
+        <ImpactEffect value="PAttackMolotovCPInit"/>
+        <AmmoUnit value="PAttackMolotov"/>
+    </CEffectLaunchMissile>
+    <CEffectEnumArea id="PAttackMolotovSearch">
+        <EditorCategories value="Race:Terran"/>
+        <LaunchLocation Value="CasterPoint"/>
+        <ImpactLocation Effect="PAttackMolotovCP" Value="TargetPoint"/>
+        <SearchFilters value="-;Self,Player,Ally,Neutral,Missile,Destructible,Item,Stasis,Dead,Hidden,Invulnerable,Unstoppable"/>
+        <AreaArray Radius="1.25" Effect="PAttackMolotovApplyBehavior"/>
+    </CEffectEnumArea>
+    <CEffectSet id="PAttackMolotovSearchSet">
+        <EffectArray value="PAttackMolotovSearch"/>
+        <EffectArray value="PAttackMolotovTripmineSearch"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="PAttackMolotovTripmineApplyBehavior">
+        <ValidatorArray index="0" value="IsNovaTripWire"/>
+        <EditorCategories value="Race:Terran"/>
+        <Behavior value="PAttackMolotovTripWireUnnamed"/>
+    </CEffectApplyBehavior>
+    <CEffectEnumArea id="PAttackMolotovTripmineSearch">
+        <EditorCategories value="Race:Terran"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <SearchFilters value="Structure,Invulnerable;Self,Player,Ally,Neutral,Massive,Missile,Destructible,Item,Stasis,Dead,Hidden,Unstoppable"/>
+        <AreaArray Radius="3" Effect="PAttackMolotovTripmineApplyBehavior"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="PAttackParasiteImpactABInfested">
+        <ValidatorArray index="0" value="TargetIsEnemy"/>
+        <EditorCategories value="Race:Terran"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <ResponseFlags index="Flee" value="1"/>
+        <Behavior value="PAttackParasiteSpawnInfested"/>
+    </CEffectApplyBehavior>
+    <CEffectCreatePersistent id="PLootCP">
+        <EditorCategories value=""/>
+        <WhichLocation Value="TargetUnit"/>
+        <Flags index="RandomOffset" value="1"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="PLootLM"/>
+        <!--PeriodicOffsetArray value="0.4,0.2,0"/>
+        <PeriodicOffsetArray value="-0.4,0.2,0"/>
+        <PeriodicOffsetArray value="0.4,-0.2,0"/>
+        <PeriodicOffsetArray value="-0.4,-0.2,0"/>
+        <PeriodicOffsetArray value="0.5,0,0"/>
+        <PeriodicOffsetArray value="-0.5,0,0"/>
+        <PeriodicOffsetArray value="0,0.5,0"/>
+        <PeriodicOffsetArray value="0,-0.5,0"/>
+        <PeriodicOffsetArray value="0.3535,0.3535,0"/>
+        <PeriodicOffsetArray value="0.3535,-0.3535,0"/>
+        <PeriodicOffsetArray value="-0.3535,0.3535,0"/>
+        <PeriodicOffsetArray value="-0.3535,-0.3535,0"/-->
+        <PeriodicOffsetArray value="1,0,0"/>
+        <PeriodicOffsetArray value="-1,0,0"/>
+        <PeriodicOffsetArray value="0,1,0"/>
+        <PeriodicOffsetArray value="0,-1,0"/>
+        <PeriodicOffsetArray value="0.707,0.707,0"/>
+        <PeriodicOffsetArray value="0.707,-0.707,0"/>
+        <PeriodicOffsetArray value="-0.707,0.707,0"/>
+        <PeriodicOffsetArray value="-0.707,-0.707,0"/>
+        <PeriodicOffsetArray value="2,0,0"/>
+        <PeriodicOffsetArray value="-2,0,0"/>
+        <PeriodicOffsetArray value="0,2,0"/>
+        <PeriodicOffsetArray value="0,-2,0"/>
+        <PeriodicOffsetArray value="1.414,1.414,0"/>
+        <PeriodicOffsetArray value="1.414,-1.414,0"/>
+        <PeriodicOffsetArray value="-1.414,1.414,0"/>
+        <PeriodicOffsetArray value="-1.414,-1.414,0"/>
+        <PeriodicPeriodArray value="0"/>
+    </CEffectCreatePersistent>
+    <CEffectCreateUnit id="PLootCreateAutoPUT22">
+        <ValidatorArray value="CasterHasPTier2"/>
+        <EditorCategories value="Race:Zerg"/>
+        <Chance value="0.5"/>
+        <WhichLocation Value="CasterPoint"/>
+        <Origin Value="CasterPoint"/>
+        <CreateFlags index="DropOff" value="0"/>
+        <CreateFlags index="Placement" value="0"/>
+        <CreateFlags index="PlacementIgnoreBlockers" value="1"/>
+        <CreateFlags index="NormalizeSpawnOffset" value="0"/>
+        <SpawnOwner Effect="PLootCPInitial" Value="TargetOuter"/>
+        <SpawnEffect value="PLootCP"/>
+        <SpawnUnit value="PLootAutoPickUp"/>
+        <SpawnRange value="1"/>
+        <SpawnOffset value="0,0"/>
+        <TypeFallbackUnit Value="Unknown"/>
+    </CEffectCreateUnit>
+    <CEffectCreateUnit id="PLootCreateAutoPUT3">
+        <ValidatorArray value="CasterHasPTier3"/>
+        <EditorCategories value="Race:Zerg"/>
+        <Chance value="0.5"/>
+        <WhichLocation Value="CasterPoint"/>
+        <Origin Value="CasterPoint"/>
+        <CreateFlags index="DropOff" value="0"/>
+        <CreateFlags index="Placement" value="0"/>
+        <CreateFlags index="PlacementIgnoreBlockers" value="1"/>
+        <CreateFlags index="NormalizeSpawnOffset" value="0"/>
+        <SpawnOwner Effect="PLootCPInitial" Value="TargetOuter"/>
+        <SpawnEffect value="PLootCP"/>
+        <SpawnUnit value="PLootAutoPickUp"/>
+        <SpawnRange value="1"/>
+        <SpawnOffset value="0,0"/>
+        <TypeFallbackUnit Value="Unknown"/>
+    </CEffectCreateUnit>
+    <CEffectCreateUnit id="PLootCreatePermanent">
+        <EditorCategories value="Race:Zerg"/>
+        <WhichLocation Value="CasterPoint"/>
+        <Origin Value="CasterPoint"/>
+        <CreateFlags index="DropOff" value="0"/>
+        <CreateFlags index="Placement" value="0"/>
+        <CreateFlags index="PlacementIgnoreBlockers" value="1"/>
+        <CreateFlags index="NormalizeSpawnOffset" value="0"/>
+        <SpawnOwner Effect="PLootCPInitial" Value="TargetOuter"/>
+        <SpawnEffect value="PLootCP"/>
+        <SpawnUnit value="PLootPermanent"/>
+        <SpawnRange value="1"/>
+        <SpawnOffset value="0,0"/>
+        <TypeFallbackUnit Value="Unknown"/>
+    </CEffectCreateUnit>
+    <CEffectSet id="PLootSet">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="PLootCreateAutoPUT1"/>
+    </CEffectSet>
+    <CEffectIssueOrder id="PAttackParasiteLocustWeaponIssueOrder">
+        <EditorCategories value="Race:Zerg"/>
+        <Abil value="attack"/>
+        <Target Effect="PAttackParasiteLocustCreateSet" Value="TargetPoint"/>
+    </CEffectIssueOrder>
+    <CEffectIssueOrder id="PAttackParasiteIssueOrder">
+        <EditorCategories value="Race:Zerg"/>
+        <Abil value="attack"/>
+        <Target Effect="PAttackParasiteLocustCreateSet" Value="TargetPoint"/>
+    </CEffectIssueOrder>
+    <CEffectSet id="PATTACKPARASITESetA">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="MakePrecursorLocust"/>
+        <EffectArray value="SpawnerActive"/>
+        <EffectArray value="LocustWeaponCreateLMA"/>
+        <EffectArray value="PAttackParasiteIdleAttackAB"/>
+        <EffectArray value="PAttackParasiteIssueOrder"/>
+    </CEffectSet>
+    <CEffectSet id="PATTACKPARASITESetB">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="MakePrecursorLocust"/>
+        <EffectArray value="LocustWeaponCreateLMB"/>
+        <EffectArray value="PAttackParasiteIdleAttackAB"/>
+        <EffectArray value="PAttackParasiteIssueOrder"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="PAttackParasiteIdleAttackAB">
+        <ValidatorArray index="0" removed="1"/>
+        <EditorCategories value="Race:Terran"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <ResponseFlags index="Flee" value="1"/>
+        <Behavior value="AIIdleAttack"/>
+    </CEffectApplyBehavior>
+    <CEffectCreateUnit id="PLootCreateAutoPUT1">
+        <EditorCategories value="Race:Zerg"/>
+        <Chance value="0.5"/>
+        <WhichLocation Value="CasterPoint"/>
+        <Origin Value="CasterPoint"/>
+        <CreateFlags index="DropOff" value="0"/>
+        <CreateFlags index="Placement" value="0"/>
+        <CreateFlags index="PlacementIgnoreBlockers" value="1"/>
+        <CreateFlags index="NormalizeSpawnOffset" value="0"/>
+        <SpawnOwner Effect="PLootCPInitial" Value="TargetOuter"/>
+        <SpawnEffect value="PLootCP"/>
+        <SpawnUnit value="PLootAutoPickUp"/>
+        <SpawnRange value="1"/>
+        <SpawnOffset value="0,0"/>
+        <TypeFallbackUnit Value="Unknown"/>
+    </CEffectCreateUnit>
+    <CEffectCreateUnit id="PAttackParasiteSpawnB">
+        <EditorCategories value="Race:Zerg"/>
+        <WhichLocation Value="SourceUnit"/>
+        <Origin Value="SourceUnit"/>
+        <CreateFlags index="PlacementIgnoreBlockers" value="1"/>
+        <SpawnEffect value="PATTACKPARASITESetB"/>
+        <SpawnUnit value="InfestedCivilian"/>
+        <SpawnRange value="1.5"/>
+        <SpawnOffset value="-0.4,-0.2"/>
+    </CEffectCreateUnit>
+    <CEffectCreateUnit id="PAttackParasiteSpawnA">
+        <EditorCategories value="Race:Zerg"/>
+        <WhichLocation Value="SourceUnit"/>
+        <Origin Value="SourceUnit"/>
+        <CreateFlags index="PlacementIgnoreBlockers" value="1"/>
+        <SpawnEffect value="PATTACKPARASITESetA"/>
+        <SpawnUnit value="InfestedCivilian"/>
+        <SpawnRange value="1.5"/>
+        <SpawnOffset value="0.4,-0.2"/>
+    </CEffectCreateUnit>
+    <CEffectSet id="PAttackParasiteLocustCreateSet">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="PAttackParasiteSwarmHostEggAnimation"/>
+        <EffectArray value="PAttackParasiteSpawnA"/>
+        <EffectArray value="PAttackParasiteSpawnB"/>
+    </CEffectSet>
+    <CEffectDamage id="PAttackParasiteInfestedDoT">
+        <EditorCategories value="Race:Zerg"/>
+        <ImpactLocation Value="TargetUnit"/>
+        <Flags index="Notification" value="1"/>
+        <AttributeBonus index="Biological" value="1.875"/>
+        <Death value="Disintegrate"/>
+    </CEffectDamage>
+    <CEffectDamage id="PAttackBurnDamage">
+        <EditorCategories value="Race:Zerg"/>
+        <ImpactLocation Value="TargetUnit"/>
+        <Flags index="Notification" value="1"/>
+        <Amount value="1.875"/>
+        <Death value="Fire"/>
+    </CEffectDamage>
+    <CEffectApplyBehavior id="PAttackFlameAB">
+        <EditorCategories value=""/>
+        <Behavior value="PAttackBurn"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="PAttackFlameDamage">
+        <EditorCategories value="Race:Terran"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <ResponseFlags index="Flee" value="1"/>
+        <Flags index="Notification" value="1"/>
+        <Amount value="15"/>
+        <Death value="Fire"/>
+        <SearchFlags index="CallForHelp" value="1"/>
+    </CEffectDamage>
+    <CEffectSet id="PAttackFlameDamageSet">
+        <EditorCategories value=""/>
+        <EffectArray value="PAttackFlameAB"/>
+        <EffectArray value="PAttackFlameDamage"/>
+    </CEffectSet>
+    <CEffectLaunchMissile id="PAttackFlameLM">
+        <ValidatorArray index="0" value="EMP2TargetFilters"/>
+        <EditorCategories value="Race:Terran"/>
+        <LaunchLocation Value="CasterUnit"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <ImpactOffset value="0,-0.25,0"/>
+        <ImpactEffect value="PAttackFlameSA"/>
+        <AmmoUnit value="EMP2Weapon"/>
+    </CEffectLaunchMissile>
+    <CEffectEnumArea id="PAttackFlameSA">
+        <EditorCategories value="Race:Terran"/>
+        <LaunchLocation Value="CasterPoint"/>
+        <ImpactLocation Effect="PAttackFlameCP" Value="TargetPoint"/>
+        <SearchFilters value="-;Self,Hidden,Invulnerable"/>
+        <AreaArray Arc="45" Radius="4" Effect="PAttackFlameDamageSet"/>
+        <SearchFlags index="CenterAtLaunch" value="1"/>
+    </CEffectEnumArea>
+    <CEffectCreatePersistent id="PAThrowerCP">
+        <EditorCategories value="Race:Terran"/>
+        <WhichLocation Value="SourcePoint"/>
+        <OffsetVectorStartLocation Value="SourcePoint"/>
+        <Flags index="Channeled" value="1"/>
+        <PeriodCount value="4"/>
+        <PeriodicEffectArray value="PAThrowerSA"/>
+        <PeriodicOffsetArray value="0,-0.5,0"/>
+        <PeriodicOffsetArray value="0,-1,0"/>
+        <PeriodicOffsetArray value="0,-1.5,0"/>
+        <PeriodicOffsetArray value="0,-2,0"/>
+        <PeriodicPeriodArray value="0.022"/>
+        <PeriodicPeriodArray value="0.022"/>
+        <PeriodicPeriodArray value="0.022"/>
+        <PeriodicPeriodArray value="0.022"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="PAThrowerSA" parent="EA_WEAP">
+        <EditorCategories value="Race:Terran"/>
+        <SearchFilters value="Ground;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="0.6" Effect="PAThrowerDamageDamageSetDoT"/>
+    </CEffectEnumArea>
+    <CEffectSet id="PAThrowerSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="PAThrowerCP"/>
+        <EffectArray value="PAThrowerDamage"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectDamage id="PAThrowerDamage" parent="DU_WEAP_SPLASH">
+        <ValidatorArray value="noMarkers"/>
+        <EditorCategories value="Race:Terran"/>
+        <AttributeBonus index="Light" value="4"/>
+        <Amount value="8"/>
+        <Death value="Fire"/>
+    </CEffectDamage>
+    <CEffectApplyBehavior id="PAThrowerABDoT">
+        <ValidatorArray index="0" value="ViralPlasmaPurchased"/>
+        <EditorCategories value="Race:Terran"/>
+        <Behavior value="ViralPlasma2"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="PAThrowerDamageDamageSetDoT">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="PAThrowerDamage"/>
+        <EffectArray value="PAThrowerABDoT"/>
+    </CEffectSet>
+    <CEffectDamage id="PAThrowerViralPlasmaDoT">
+        <EditorCategories value="Race:Terran"/>
+        <Amount value="2"/>
+    </CEffectDamage>
+    <CEffectDamage id="PAttackBulletImpact" parent="DU_WEAP">
+        <EditorCategories value="Race:Terran"/>
+        <AttributeBonus index="Armored" value="10"/>
+        <Kind value="Ranged"/>
+        <Amount value="25"/>
+    </CEffectDamage>
+    <CEffectSet id="ECL_PROJECTILE_SET">
+        <EffectArray value="ECL_PROJECTILE_CP"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectLaunchMissile id="ECL_PROJECTILE">
+        <LaunchLocation Value="CasterUnit"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <ImpactEffect value="Dummy"/>
+        <AmmoUnit value="ECL_PROJECTILE"/>
+    </CEffectLaunchMissile>
+    <CEffectCreatePersistent id="ECL_PROJECTILE_CP">
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="ECL_PROJECTILE"/>
+        <PeriodicOffsetArray value="0,-20,0"/>
+    </CEffectCreatePersistent>
+    <CEffectDamage id="PAttackBulletImpactNEW" parent="DU_WEAP">
+        <EditorCategories value="Race:Terran"/>
+        <Kind value="Ranged"/>
+        <Amount value="1"/>
+    </CEffectDamage>
+    <CEffectCreatePersistent id="PAttackFlameCP">
+        <EditorCategories value=""/>
+        <WhichLocation Value="CasterPoint"/>
+        <OffsetVectorStartLocation Value="CasterPoint"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="PAttackFlameLM"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="PAttackParasiteCP">
+        <EditorCategories value=""/>
+        <OffsetVectorStartLocation Value="CasterPoint"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="PAttackParasiteLM"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+    </CEffectCreatePersistent>
+    <CEffectDamage id="PAttackParasiteImpactDamage" parent="DU_WEAP">
+        <EditorCategories value="Race:Terran"/>
+        <Kind value="Ranged"/>
+        <Death value="Disintegrate"/>
+        <AreaArray Arc="90" Radius="2" Fraction="1"/>
+        <ImpactUnitValidator value="NoNearbyEnemiesInWeaponRange"/>
+    </CEffectDamage>
+    <CEffectApplyBehavior id="PAttackParasiteImpactABDamage">
+        <ValidatorArray index="0" removed="1"/>
+        <EditorCategories value="Race:Terran"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <ResponseFlags index="Flee" value="1"/>
+        <Behavior value="PAttackParasiteInfested"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="PAttackParasiteImpactSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="PAttackParasiteImpactDamage"/>
+        <EffectArray value="PAttackParasiteImpactABDamage"/>
+        <EffectArray value="PAttackParasiteImpactABInfested"/>
+    </CEffectSet>
+    <CEffectDamage id="PAttackPlasmaImpact" parent="DU_WEAP">
+        <EditorCategories value="Race:Terran"/>
+        <AttributeBonus index="Armored" value="10"/>
+        <Kind value="Ranged"/>
+        <Amount value="25"/>
+        <Death value="Disintegrate"/>
+        <AreaArray Radius="1" Fraction="0.5"/>
+        <AreaArray Radius="2" Fraction="0.25"/>
+    </CEffectDamage>
+    <CEffectCreatePersistent id="PAttackBulletCP">
+        <EditorCategories value=""/>
+        <OffsetVectorStartLocation Value="CasterUnit"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="PAttackBulletLM"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="PAttackPlasmaCP">
+        <EditorCategories value=""/>
+        <OffsetVectorStartLocation Value="CasterPoint"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="PAttackPlasmaLM"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+    </CEffectCreatePersistent>
+    <CEffectLaunchMissile id="PAttackBulletLM">
+        <ValidatorArray index="0" removed="1"/>
+        <EditorCategories value="Race:Terran"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <AmmoUnit value="PAttack"/>
+        <LaunchLocation Value="CasterUnit"/>
+    </CEffectLaunchMissile>
+    <CEffectEnumArea id="PAttackParasiteImpactSearch">
+        <EditorCategories value="Race:Terran"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <ResponseFlags index="Flee" value="1"/>
+        <SearchFilters value="Biological;Self,Hidden,Invulnerable"/>
+        <AreaArray Arc="90" Radius="2" Effect="PAttackParasiteImpactSet"/>
+    </CEffectEnumArea>
+    <CEffectLaunchMissile id="PAttackPlasmaLM">
+        <ValidatorArray index="0" removed="1"/>
+        <EditorCategories value="Race:Terran"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <AmmoUnit value="PAttackPlasma"/>
+    </CEffectLaunchMissile>
+    <CEffectLaunchMissile id="PAttackFTLM">
+        <ValidatorArray index="0" removed="1"/>
+        <EditorCategories value="Race:Terran"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <AmmoUnit value="PAttack"/>
+    </CEffectLaunchMissile>
+    <CEffectSet id="PAttackBulletSet">
+        <EditorCategories value=""/>
+    </CEffectSet>
+    <CEffectLaunchMissile id="PAttackParasiteLM">
+        <ValidatorArray index="0" removed="1"/>
+        <EditorCategories value="Race:Terran"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <AmmoUnit value="PAttackParasiteMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectApplyBehavior id="PAttackParasiteSwarmHostEggAnimation">
+        <ValidatorArray index="0" value="SwarmHostEggAnimationABTargetFilters"/>
+        <WhichUnit Value="Source"/>
+        <Behavior value="SwarmHostEggAnimation"/>
+    </CEffectApplyBehavior>
+    <CEffectModifyUnit id="PLootPickUp">
+        <EditorCategories value=""/>
+        <VitalArray index="Life">
+            <Change value="25"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectSet id="PLootPickUpSet">
+        <EditorCategories value=""/>
+        <EffectArray value="PLootPickUp"/>
+        <EffectArray value="PLootRemoveDelay"/>
+    </CEffectSet>
+    <CEffectDamage id="PLootRemove">
+        <EditorCategories value=""/>
+        <ImpactLocation Value="SourceUnit"/>
+        <Flags index="Kill" value="1"/>
+        <Flags index="NoKillCredit" value="1"/>
+        <Death value="Remove"/>
+    </CEffectDamage>
+    <CEffectCreatePersistent id="PLootRemoveDelay">
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="PLootRemove"/>
+        <PeriodicPeriodArray value="0.1"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="PLootCPInitial">
+        <EditorCategories value="Race:Zerg"/>
+        <WhichLocation Value="CasterUnit"/>
+        <OffsetVectorStartLocation Value="Unknown"/>
+        <PeriodCount value="0">
+            <AccumulatorArray value="LootAccumulatorUserData"/>
+        </PeriodCount>
+        <PeriodicEffectArray value="PLootCreatePermanent"/>
+        <PeriodicPeriodArray value="0.125"/>
+    </CEffectCreatePersistent>
+    <CEffectUserData id="PLootUserDataDummy">
+        <EditorCategories value=""/>
+        <Amount value="0">
+            <AccumulatorArray value="LootAccumulatorUnitCustomValue"/>
+        </Amount>
+        <EffectFailure value="PLootCPInitial"/>
+    </CEffectUserData>
+    <CEffectLaunchMissile id="TranslateUnit">
+        <Movers Link="TranslateUnitMover"/>
+    </CEffectLaunchMissile>
+    <CEffectLaunchMissile id="PLootLM">
+        <ValidatorArray index="0" removed="1"/>
+        <LaunchLocation Effect="PLootCP" Value="TargetUnit"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <LaunchEffect value="TranslateUnitSuppressFastSlowAB"/>
+        <FinishEffect value="TranslateUnitImpact"/>
+        <Flags index="Placement" value="1"/>
+        <Flags index="PlacementIgnoreBlockers" value="1"/>
+        <Movers Link="PLootMoverUpright"/>
+        <DeathType value="Unknown"/>
+    </CEffectLaunchMissile>
+    <CEffectRemoveBehavior id="TranslateUnitImpact"/>
+    <CEffectApplyBehavior id="TranslateUnitSuppressFastSlowAB"/>
+</Catalog>

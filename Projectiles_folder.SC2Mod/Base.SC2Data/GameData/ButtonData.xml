@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CButton id="PAttackMolotov">
+        <Icon value="Assets\Textures\btn-upgrade-nova-btn-upgrade-nova-flashgrenade.dds"/>
+        <Hotkey value="Button/Hotkey/NovaGadgetPulseGrenades"/>
+        <EditorCategories value="Race:Terran"/>
+        <HotkeyAlias value="NovaGadgetPulseGrenades"/>
+    </CButton>
+    <CButton id="PAttackCapsule">
+        <Icon value="Assets\Textures\btn-upgrade-nova-btn-upgrade-nova-flashgrenade.dds"/>
+        <Hotkey value="Button/Hotkey/NovaGadgetPulseGrenades"/>
+        <EditorCategories value="Race:Terran"/>
+        <HotkeyAlias value="NovaGadgetPulseGrenades"/>
+    </CButton>
+    <CButton id="PAttackPlasma">
+        <Icon value="Assets\Textures\btn-ability-terran-snipe-color.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-terran-snipe-color.dds"/>
+        <EditorCategories value="Race:Terran"/>
+        <HotkeyAlias value="Snipe"/>
+        <HidesForSimpleText value="0"/>
+    </CButton>
+    <CButton id="PAttackParasite">
+        <Icon value="Assets\Textures\btn-ability-terran-snipe-color.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-terran-snipe-color.dds"/>
+        <EditorCategories value="Race:Terran"/>
+        <HotkeyAlias value="Snipe"/>
+        <HidesForSimpleText value="0"/>
+    </CButton>
+</Catalog>

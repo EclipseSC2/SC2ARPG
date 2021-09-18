@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CRequirementConst id="2"/>
+    <CRequirementCountUnit id="CountUnitProjectileQueuedOrBetterAtUnit">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <Count Link="Projectile" State="QueuedOrBetterAtUnit"/>
+    </CRequirementCountUnit>
+    <CRequirementLT id="LTCountUnitProjectileQueuedOrBetterAtUnit2">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray index="0" value="CountUnitProjectileQueuedOrBetterAtUnit"/>
+        <OperandArray index="1" value="2"/>
+    </CRequirementLT>
+</Catalog>

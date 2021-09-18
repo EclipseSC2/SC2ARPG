@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CValidatorUnitCompareBehaviorCount id="CasterHasPTier3">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GT"/>
+        <Behavior value="PMobTierHigh"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="HasPTier1">
+        <Compare value="GT"/>
+        <Behavior value="PMobTierCasual"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="HasPTier2">
+        <Compare value="GT"/>
+        <Behavior value="PMobTierMedium"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="CasterHasPTier2">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GT"/>
+        <Behavior value="PMobTierMedium"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="HasPTier3">
+        <Compare value="GT"/>
+        <Behavior value="PMobTierHigh"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorLocationEnumArea id="NoNearbyEnemiesInWeaponRange" parent="HostileSearchEmpty">
+        <AreaArray Compare="LE" Radius="10" Validator="WeaponInRange"/>
+        <Compare value="LE"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <SearchFilters value="Visible;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Hallucination,Invulnerable"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorUnitCompareBehaviorCount id="HasParasites">
+        <Compare value="GT"/>
+        <Behavior value="PAttackParasiteInfested"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareDamageTakenTime id="TargetInCombatShort">
+        <Compare value="LT"/>
+        <Value value="0.2"/>
+    </CValidatorUnitCompareDamageTakenTime>
+    <CValidatorCombine id="TargetNoOrdersAndNoMove">
+        <Type value="And"/>
+        <CombineArray value="TargetNotForcedToMove"/>
+        <CombineArray value="TargetHasNoOrders"/>
+    </CValidatorCombine>
+    <CValidatorUnitAI id="TargetNotForcedToMove" parent="CasterForcedToMove">
+        <WhichUnit Value="Target"/>
+        <Find value="0"/>
+    </CValidatorUnitAI>
+</Catalog>

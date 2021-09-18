@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CMoverMissile id="ECL_PROJECTILE" parent="MissileDefault">
+        <MotionPhases index="0">
+            <Driver value="Guidance"/>
+            <Acceleration value="-1"/>
+            <MaxSpeed value="20"/>
+            <ClearanceAcceleration value="75"/>
+            <ArrivalTestType value="Never"/>
+            <Outro value="-1"/>
+            <Timeout value="3"/>
+            <ThrowBandYaw value="-360,-360,-360,-360"/>
+            <ThrowBandPitch value="-360,-360,-360,-360"/>
+            <YawPitchRoll value="719.2968"/>
+        </MotionPhases>
+        <MotionPhases index="1">
+            <ArrivalTestType value="Never"/>
+            <Timeout value="3"/>
+            <ThrowBandYaw value="-360,-360,-360,-360"/>
+            <ThrowBandPitch value="-360,-360,-360,-360"/>
+            <YawPitchRoll value="5759.6484"/>
+            <FlightTime value="0.9,-1"/>
+        </MotionPhases>
+    </CMoverMissile>
+    <CMoverMissile id="PAttackTossCapsule">
+        <MotionPhases>
+            <Driver value="Ballistic"/>
+            <MinSpeed value="8.75"/>
+            <Gravity value="20"/>
+            <ThrowBandYaw value="-360,-360,-360,-360"/>
+            <ThrowBandPitch value="-360,-360,-360,-360"/>
+            <FlightTime value="0"/>
+            <OutroAltitude value="1,5"/>
+        </MotionPhases>
+    </CMoverMissile>
+    <CMoverMissile id="PLootMoverBallistic">
+        <RestoreHeightDuration value="0"/>
+        <MotionPhases>
+            <Driver value="Ballistic"/>
+            <Acceleration value="-1"/>
+            <Gravity value="10"/>
+            <TurnType value="RevertToUp"/>
+            <RotationLaunchActorType value="Supplied"/>
+            <RotationActorType value="Upright"/>
+            <ThrowBandYaw value="-360,-360,-360,-360"/>
+            <ThrowBandPitch value="-360,-360,-360,-360"/>
+            <FlightTime value="1"/>
+        </MotionPhases>
+    </CMoverMissile>
+    <CMoverMissile id="PAttackMover1">
+        <Flags index="IgnoreMovementSuppression" value="1"/>
+        <Flags index="RestoreHeight" value="1"/>
+        <PathMode value="Flying"/>
+        <MotionPhases>
+            <Driver value="Ballistic"/>
+            <Acceleration value="-1"/>
+            <Gravity value="0"/>
+            <RotationActorType value="Upright"/>
+            <ThrowBandYaw value="-360,-360,-360,-360"/>
+            <ThrowBandPitch value="-360,-360,-360,-360"/>
+            <YawPitchRoll value="5759.6484"/>
+            <FlightTime value="1.0625"/>
+        </MotionPhases>
+        <RotationIgnoredByUnit value="1"/>
+    </CMoverMissile>
+    <CMoverMissile id="PAttackMover2">
+        <Flags index="IgnoreMovementSuppression" value="1"/>
+        <Flags index="RestoreHeight" value="1"/>
+        <PathMode value="Flying"/>
+        <MotionPhases>
+            <Driver value="Ballistic"/>
+            <Acceleration value="-1"/>
+            <Gravity value="0"/>
+            <RotationActorType value="Upright"/>
+            <ThrowBandYaw value="-360,-360,-360,-360"/>
+            <ThrowBandPitch value="-360,-360,-360,-360"/>
+            <YawPitchRoll value="5759.6484"/>
+            <FlightTime value="0.9"/>
+        </MotionPhases>
+        <RotationIgnoredByUnit value="1"/>
+    </CMoverMissile>
+    <CMoverMissile id="PAttackTossGrenade">
+        <MotionPhases>
+            <Driver value="Ballistic"/>
+            <MinSpeed value="8.75"/>
+            <Gravity value="20"/>
+            <ThrowBandYaw value="-360,-360,-360,-360"/>
+            <ThrowBandPitch value="-360,-360,-360,-360"/>
+            <FlightTime value="0"/>
+        </MotionPhases>
+    </CMoverMissile>
+    <CMoverMissile id="TranslateUnitMover">
+        <!-- This has been slowed down so that the height adjustment portion of graviton will have worn off before the unit lands -->
+        <MotionPhases>
+            <Driver value="Ballistic"/>
+            <Acceleration value="-1"/>
+            <Gravity value="0.001"/>
+            <RotationActorType value="Upright"/>
+            <ThrowBandYaw value="-360,-360,-360,-360"/>
+            <ThrowBandPitch value="-360,-360,-360,-360"/>
+            <YawPitchRoll value="5759.6484"/>
+            <FlightTime value="0.9"/>
+        </MotionPhases>
+    </CMoverMissile>
+    <CMoverMissile id="PLootMoverUpright">
+        <Flags index="IgnoreMovementSuppression" value="1"/>
+        <PathMode value="Flying"/>
+        <MotionPhases>
+            <Driver value="Ballistic"/>
+            <Acceleration value="-1"/>
+            <Gravity value="20"/>
+            <RotationActorType value="Upright"/>
+            <ThrowBandYaw value="-360,-360,-360,-360"/>
+            <ThrowBandPitch value="-360,-360,-360,-360"/>
+            <YawPitchRoll value="5759.6484"/>
+            <FlightTime value="0.75"/>
+        </MotionPhases>
+        <RotationIgnoredByUnit value="1"/>
+    </CMoverMissile>
+</Catalog>
