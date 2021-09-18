@@ -19,6 +19,7 @@ Param/Expression/lib_DEAD_FC6C0840=Player ~A~ out of range
 Param/Value/lib_DEAD_027D6E75=<c val="FF8C55"> NAME:</c>
 Param/Value/lib_DEAD_3ECAEBBB=<c val="74FF60">NEW slot: </c>
 Param/Value/lib_DEAD_5A9446E6=Instance: 
+Param/Value/lib_DEAD_5C9CE69C=asdsadsad
 Param/Value/lib_DEAD_7763CBE0=Discard item?
 Param/Value/lib_DEAD_83CC1485=HELMET
 Param/Value/lib_DEAD_E03768CE=<c val="FFD955">OLD slot:</c>

@@ -1,0 +1,587 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CActorModel id="PAttackCursorSiteBottom" parent="ModelAddition">
+        <Inherits index="BaseModelScale" value="0"/>
+        <Inherits index="CastShadows" value="0"/>
+        <Inherits index="Scale" value="0"/>
+        <AcceptedHostedPropTransfers index="BaseModelScale" value="0"/>
+        <AcceptedHostedPropTransfers index="CastShadows" value="0"/>
+        <AcceptedHostedPropTransfers index="Scale" value="0"/>
+        <FogVisibility value="Visible"/>
+        <On Terms="Behavior.PAttackCursor.On" Send="Create"/>
+        <On Terms="Behavior.PAttackCursor.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="UnitDeath" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="SetTintColor 85,255,255"/>
+        <On Terms="ActorCreation" Send="HaloStart"/>
+        <On Terms="ActorCreation" Send="HaloSetColor 0,0,0"/>
+        <On Terms="ActorCreation" Target="::Scene" Send="SceneHaloSetWidth 2.000000"/>
+        <On Terms="ActorCreation" Target="::Scene" Send="SceneHaloSetRastermode AlphaBlend"/>
+        <On Terms="ActorCreation" Target="::Scene" Send="SceneHaloSetMode Sharp"/>
+        <On Terms="ActorCreation" Send="SetCastShadows"/>
+        <HostSiteOps Ops="SOpCursor SOpMoveUpByDot15"/>
+        <Model value="PAttackCursor3D"/>
+        <Scale value="1.000000,1.000000,0.500000"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+    </CActorModel>
+    <CActorModel id="PAttackCursorSiteRight" parent="ModelAddition">
+        <Inherits index="BaseModelScale" value="0"/>
+        <Inherits index="CastShadows" value="0"/>
+        <Inherits index="Scale" value="0"/>
+        <AcceptedHostedPropTransfers index="BaseModelScale" value="0"/>
+        <AcceptedHostedPropTransfers index="CastShadows" value="0"/>
+        <AcceptedHostedPropTransfers index="Scale" value="0"/>
+        <On Terms="Behavior.PAttackCursor.On" Send="Create"/>
+        <On Terms="Behavior.PAttackCursor.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="UnitDeath" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="SetTintColor 85,255,255"/>
+        <On Terms="ActorCreation" Send="HaloStart"/>
+        <On Terms="ActorCreation" Send="HaloSetColor 0,0,0"/>
+        <On Terms="ActorCreation" Target="::Scene" Send="SceneHaloSetWidth 2.000000"/>
+        <On Terms="ActorCreation" Target="::Scene" Send="SceneHaloSetRastermode AlphaBlend"/>
+        <On Terms="ActorCreation" Target="::Scene" Send="SceneHaloSetMode Sharp"/>
+        <On Terms="ActorCreation" Send="SetCastShadows"/>
+        <HostSiteOps Ops="SOpCursor SOpMoveUpByDot5 SOpRollCounterClockwise90 SOpMoveUpByDot15"/>
+        <Model value="PAttackCursor3D"/>
+        <Scale value="1.000000,1.000000,0.500000"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+        <FogVisibility value="Visible"/>
+    </CActorModel>
+    <CActorUnit id="PAttackCursorGroundBeacon" parent="GenericUnitStandardNoAutoSoundLinks" unitName="PAttackCursor3D">
+        <AcceptedHostedPropTransfers index="CastShadows" value="0"/>
+        <FogVisibility value="Visible"/>
+        <On index="7" Terms="StatusOn.*.PreTargetingModel" Send="Create ModelPretargetGround"/>
+        <On index="8" Terms="StatusOff.*.PreTargetingModel" Target="ModelPretargetGround" Send="Destroy"/>
+        <On index="9" Terms="StatusOn.*.PreTargetingModel; ValidateUnit IsFlying" Send="Create GroundPreSelection"/>
+        <On index="10" Target="GroundPreSelection"/>
+        <On index="11" Terms="StatusIncrement.*.PreTargetingModel; IsStatus PreTargetingModel 2" Send="StatusSet PreTargetingModel 1"/>
+        <On index="12" Terms="PreTargetingUpdate.*.Start" Target="" Send="SetTintColorBlendPair 255,192,192 255,128,128 0.150000 Bounce Pretarget"/>
+        <On index="13" Terms="PreTargetingUpdate.*.Stop" Send="ClearTintColor 0.100000 Pretarget"/>
+        <On index="14" Terms="StatusOn.*.PreTargetingTint" Send="PreTargetingUpdate Start"/>
+        <On index="15" Terms="StatusOff.*.PreTargetingTint" Send="PreTargetingUpdate Stop"/>
+        <On index="16" Terms="StatusIncrement.*.PreTargetingTint; IsStatus PreTargetingTint 2" Send="StatusSet PreTargetingTint 1"/>
+        <On index="17" Terms="CursorUpdate.*.Start; ValidateUnit IsFlying" Send="StatusIncrement FlyerHelper"/>
+        <On index="18" Terms="CursorUpdate.*.Stop; ValidateUnit IsFlying; HasStatus FlyerHelper" Send="StatusDecrement FlyerHelper"/>
+        <On index="19" Terms="ActorCreation; ScopeContains GroundLocalSelection" Send="StatusSet Selected 1"/>
+        <On index="20" Terms="SelectionLocalUpdate.*.Start" Send="StatusSet Selected 1"/>
+        <On index="21" Terms="SelectionLocalUpdate.*.Stop" Send="StatusSet Selected 0"/>
+        <On index="22" Terms="StatusOn.*.Selected; ValidateUnit IsFlying" Send="StatusIncrement FlyerHelper"/>
+        <On index="23" Terms="StatusOff.*.Selected; ValidateUnit IsFlying; HasStatus FlyerHelper" Send="StatusDecrement FlyerHelper"/>
+        <On index="24" Terms="StatusOn.*.FlyerHelper; FlyerHelper All" Send="Create FlyerHelperSplat"/>
+        <On index="25" Terms="StatusOn.*.FlyerHelper; FlyerHelper Selected" Send="Create FlyerHelperSplat"/>
+        <On index="26" Terms="StatusOff.*.FlyerHelper; FlyerHelper Selected" Target="FlyerHelperSplat" Send="Destroy"/>
+        <On index="27" Terms="ActorCreation; FlyerHelper All; ValidateUnit IsFlying"/>
+        <On index="28" Terms="ActorDestruction; FlyerHelper All; !HasStatus FlyerHelper"/>
+        <On index="29" Terms="FlyerHelperChange; FlyerHelper None" Target="FlyerHelperSplat" Send="Destroy"/>
+        <On index="30" Terms="FlyerHelperChange; FlyerHelper Selected; HasStatus FlyerHelper; !ScopeContains FlyerHelperSplat" Target="" Send="Create FlyerHelperSplat"/>
+        <On index="31" Terms="FlyerHelperChange; FlyerHelper Selected; !HasStatus FlyerHelper"/>
+        <On index="32" Terms="FlyerHelperChange; FlyerHelper All; ValidateUnit IsFlying; !ScopeContains FlyerHelperSplat"/>
+        <On index="33" Terms="UnitBirth.*.Normal" Target="" Send="$Birth 0 0.000000"/>
+        <On index="34" Terms="UnitFidget" Send="AnimPlay Fidget Fidget"/>
+        <On index="35" Terms="UnitMovementUpdate.*.Walk" Send="AnimClear Fidget"/>
+        <On index="36" Terms="UnitDetectedByViewer.*.On; ValidateUnit IsHallucination" Target="_HallucinationTinter" Send="Signal HallucinationTintOn"/>
+        <On index="37" Terms="UnitDetectedByViewer.*.Off; ValidateUnit IsHallucination" Target="_HallucinationTinter" Send="Signal HallucinationTintOff"/>
+        <On index="38" Terms="UnitDeathCustomize; ValidateUnit NotStructure; IsStatus InAir 1" Target="" Send="DeathCustomize AntiGravGeneric"/>
+        <On index="39" Terms="UnitDeathCustomize; ValidateUnit IsProtossUnit; IsStatus InAir 1" Target="" Send="DeathCustomize AntiGravProtoss"/>
+        <On index="40" Terms="UnitDeathCustomize; ValidateUnit IsTerranUnit; IsStatus InAir 1" Send="DeathCustomize AntiGravTerran"/>
+        <On index="41" Terms="UnitDeathCustomize; ValidateUnit IsZergUnit; IsStatus InAir 1" Send="DeathCustomize AntiGravZerg"/>
+        <On index="42" Terms="UnitDeathCustomize; ValidateUnit IsVortexed" Send="DeathCustomize Vortex"/>
+        <On index="43" Terms="UnitDeathCustomize; ValidateUnit HasForceLowDeathProtoss" Send="DeathCustomize AntiGravProtoss"/>
+        <On index="44" Terms="UnitDeathCustomize; ValidateUnit HasForceLowDeathZerg" Send="DeathCustomize AntiGravZerg"/>
+        <On index="45" Terms="UnitDeathCustomize; ValidateUnit HasForceLowDeathTerran" Send="DeathCustomize AntiGravTerran"/>
+        <On index="46" Terms="Behavior.PhoenixAntiGrav.On" Send="ModelSuddenMotionStart"/>
+        <On index="47" Terms="Behavior.PhoenixAntiGrav.Off" Send="ModelSuddenMotionStop"/>
+        <On index="48" Terms="Behavior.ForceLowDeath.On" Send="DeathCustomsEnablePhysics 0"/>
+        <On index="49" Terms="UnitTaunt.*.Start; Taunt" Send="AnimPlay Cheer Stand,Victory"/>
+        <On index="50" Terms="UnitTaunt.*.Stop; Taunt" Send="AnimClear Cheer"/>
+        <On index="51" Terms="UnitTaunt.*.Start; Taunt Dance" Send="AnimPlay Dance Stand,Dance"/>
+        <On index="52" Terms="UnitTaunt.*.Stop; Taunt Dance" Send="AnimClear Dance"/>
+        <On index="53" Terms="UnitTaunt.*.Start; Taunt Tease" Send="AnimPlay Taunt Taunt"/>
+        <On index="54" Terms="UnitTaunt.*.Stop; Taunt Tease" Send="AnimClear Taunt"/>
+        <On index="55" Terms="ActorCreation" Send="StatusSet InAir 0"/>
+        <On index="56" Terms="UnitHeightUpdate.*.Lift" Send="StatusSet InAir 1"/>
+        <On index="57" Terms="UnitHeightUpdate.*.Land"/>
+        <On index="58" Terms="BuildCoachHover.*.On" Send="TimerKill DelayUnhighlight"/>
+        <On index="59" Terms="BuildCoachHover.*.On" Send="SetTintColor 0,255,0 0.100000"/>
+        <On index="60" Terms="BuildCoachHover.*.Off" Send="TimerSet 0.300000 DelayUnhighlight"/>
+        <On index="61" Terms="TimerExpired; TimerName DelayUnhighlight" Send="SetTintColor 255,255,255 0.500000"/>
+        <On index="62" Terms="Abil.attack.ReadyStart" Send="AnimGroupApply Ready"/>
+        <On index="63" Terms="WeaponStart.*.AttackStart" Send="AnimBracketStart Attack Attack"/>
+        <On index="64" Terms="WeaponStart.*.AttackStart; AnimPlaying Birth" Send="AnimClear Birth"/>
+        <On index="65" Terms="WeaponStop.*.AttackStop" Send="AnimBracketStop Attack"/>
+        <On index="66" Terms="Abil.attack.ReadyStop" Send="AnimGroupRemove Ready"/>
+        <On index="67" Terms="ActorCreation" Send="SetTintColor 255,85,85"/>
+        <On index="68" Terms="ActorCreation" Send="HaloStart"/>
+        <On Terms="ActorCreation" Send="HaloSetColor 0,0,0"/>
+        <On Terms="ActorCreation" Target="::Scene" Send="SceneHaloSetWidth 2.000000"/>
+        <On Terms="ActorCreation" Target="::Scene" Send="SceneHaloSetRastermode AlphaBlend"/>
+        <On Terms="ActorCreation" Target="::Scene" Send="SceneHaloSetMode Sharp"/>
+        <On Terms="ActorCreation" Send="SetCastShadows"/>
+        <HostSiteOps Ops="SOpCursor SOpMoveUpByDot15"/>
+        <Model value="PAttackCursorGroundSplat"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+        <WalkAnimMoveSpeed value="0"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\wireframe-general-circleofpower-terran.dds"/>
+        </GroupIcon>
+        <HighlightTooltip value="Unit/Name/PAttackCursorGroundBeacon"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <StatusBarFlags index="Custom" value="0"/>
+        <UnitFlags index="ShowBlobShadow" value="0"/>
+        <Wireframe>
+            <Image value="Assets\Textures\wireframe-general-circleofpower-terran.dds"/>
+        </Wireframe>
+        <MinimapIconScale value="0.000000"/>
+        <MinimapIconBackgroundScale value="0.000000"/>
+    </CActorUnit>
+    <CActorUnit id="Marine">
+        <CustomUnitStatusFrame value="0_ECL_TEMPLATES/HeroUnitEnergyStatusFrameTemplate"/>
+        <UnitFlags index="SuppressDefaultStatusBar" value="1"/>
+        <StatusBarOn index="Custom" value="1"/>
+    </CActorUnit>
+    <CActorModel id="PAttackCursorSiteLeft" parent="ModelAddition">
+        <Inherits index="BaseModelScale" value="0"/>
+        <Inherits index="CastShadows" value="0"/>
+        <Inherits index="Scale" value="0"/>
+        <AcceptedHostedPropTransfers index="BaseModelScale" value="0"/>
+        <AcceptedHostedPropTransfers index="CastShadows" value="0"/>
+        <AcceptedHostedPropTransfers index="Scale" value="0"/>
+        <On Terms="Behavior.PAttackCursor.On" Send="Create"/>
+        <On Terms="Behavior.PAttackCursor.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="UnitDeath" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="SetTintColor 85,255,255"/>
+        <On Terms="ActorCreation" Send="HaloStart"/>
+        <On Terms="ActorCreation" Send="HaloSetColor 0,0,0"/>
+        <On Terms="ActorCreation" Target="::Scene" Send="SceneHaloSetWidth 2.000000"/>
+        <On Terms="ActorCreation" Target="::Scene" Send="SceneHaloSetRastermode AlphaBlend"/>
+        <On Terms="ActorCreation" Target="::Scene" Send="SceneHaloSetMode Sharp"/>
+        <On Terms="ActorCreation" Send="SetCastShadows"/>
+        <HostSiteOps Ops="SOpCursor SOpMoveUpByDot5 SOpRollClockwise90 SOpMoveUpByDot15"/>
+        <Model value="PAttackCursor3D"/>
+        <Scale value="1.000000,1.000000,0.500000"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+        <FogVisibility value="Visible"/>
+    </CActorModel>
+    <CActorSiteOpForward id="SOpForwardTrooper">
+        <HostForward Subject="Separatist"/>
+    </CActorSiteOpForward>
+    <CActorSiteOpRotationExplicit id="SOpPointLeft">
+        <Forward value="-1.000000,0.000000,0.000000"/>
+        <IsLocal value="1"/>
+    </CActorSiteOpRotationExplicit>
+    <CActorSiteOpUp id="SOpRollClockwise89dot999">
+        <Up value="-0.999990,0.000010,0.000000"/>
+    </CActorSiteOpUp>
+    <CActorUnit id="Separatist">
+        <Scale value="0.500000"/>
+        <On Terms="ActorCreation; IsActorLocalPlayer" Send="HostSiteOpsSet ::Host {ECLSOpFollowCursor ECLSOpLookAtCursor SOp2DRotation}"/>
+    </CActorUnit>
+    <CActorSiteOpForward id="ECLSOpLookAtCursor">
+        <HostForwardSiteOps Ops="ECLSOpCursor"/>
+        <Filter index="All" value="1"/>
+        <VisibleTo index="Self" value="1"/>
+    </CActorSiteOpForward>
+    <CActorSiteOpBasic id="ECLSOpFollowCursor">
+        <BasicType value="ScopeBearings"/>
+    </CActorSiteOpBasic>
+    <CActorSiteOpCursor id="ECLSOpCursor">
+        <Filter index="All" value="1"/>
+        <VisibleTo index="Self" value="1"/>
+    </CActorSiteOpCursor>
+    <CActorAction id="PAttackBulletLaunch" parent="GenericAttack" effectImpact="EMPSearch" effectLaunch="PAttackBulletLM">
+        <Sharing value="PerEffectTree"/>
+        <On index="1" Terms="Effect.PAttackBulletImpactNEW.Start; FromEffectTreeDescendant" Send="ActionImpact"/>
+        <On index="2" Terms="Effect.PAttackBulletImpactNEW.Stop; FromEffectTreeDescendant" Send="ActionImpactPhysics"/>
+        <On Terms="ActorCreation" Send="SetTintColor 89,223,0"/>
+        <LaunchSiteOps Ops="SOpAttachHarness SOpRotVariancerUp35"/>
+        <LaunchAssets Model="PAttackBulletLaunch" Sound="Nova_SniperRifle_AttackLaunch_Boomy"/>
+        <Missile value="PAttackBulletMissile"/>
+        <Lifetime value="0.000000"/>
+        <ImpactPointSiteOps Ops="SOpTargetPointStationary SOpShadow GhostEMPOffset"/>
+    </CActorAction>
+    <CActorAction id="PAttackCapsuleAttack" parent="GenericAttack" effectImpact="PAttackMolotovSearch" effectLaunch="PAttackCapsuleLM">
+        <LaunchAttachQuery Methods="Weapon 0" Fallback="Weapon"/>
+        <LaunchAssets Model="PAttackCapsule" Sound="PAttackCapsule_Toss"/>
+        <ImpactPointSiteOps Ops="SOpTargetPoint SOpShadow SOpMoveUpByDot25"/>
+        <ImpactMap index="None" Model="PAttackCapsuleImpact" Sound="PAttackCapsule_Impact"/>
+    </CActorAction>
+    <CActorMissile id="PAttackCapsuleAttackMissile" parent="GenericAttackMissile" unitName="PAttackCapsule"/>
+    <CActorModel id="PAttackMolotovPersistentModelCenter" parent="ModelAnimationStyleContinuous">
+        <On Terms="Effect.PAttackMolotovCP.Start" Send="Create"/>
+        <On Terms="Effect.PAttackMolotovCP.Stop" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOpShadow"/>
+        <Model value="PAttackMolotovPersistent"/>
+    </CActorModel>
+    <!--FB-->
+    <!--CActorUnit id="Ghost" parent="GenericUnitBase" unitName="Ghost">-->
+    <!--        <On Terms="Abil.PAttack.SourceCastStart" Send="AnimPlay Attack Attack"/>-->
+    <!--    </CActorUnit-->
+    <CActorSiteMover id="FallDownMover">
+        <On Terms="ActorCreation" Target="_Unit" Send="RefSetFromMsg ::Host ::Sender"/>
+        <On Terms="ActorCreation" Send="MoverMove"/>
+        <On Terms="ActorCreation" Send="TimerSet 0.125000 Forward"/>
+        <On Terms="TimerExpired; TimerName kill" Send="MoverSetDestinationH -5.000000"/>
+        <On Terms="ActorCreation; ValidateUnit IsNotFlying" Send="MoverSetDestinationH 5.000000"/>
+        <On Terms="TimerExpired; TimerName Forward" Send="TimerSet 0.125000 Backward"/>
+        <On Terms="TimerExpired; TimerName Forward" Send="MoverMove"/>
+        <On Terms="TimerExpired; TimerName Backward" Send="Destroy"/>
+        <Host Subject="::Creator"/>
+        <Acceleration value="50.000000"/>
+        <SpeedMax value="200.000000"/>
+        <Deceleration value="50.000000"/>
+        <Speed value="10.000000"/>
+    </CActorSiteMover>
+    <CActorBeamSimple id="AttackIndicatorBeam" parent="BeamSimpleAnimationStyleContinuous">
+        <Model value=""/>
+        <HostLaunchSiteOps Ops="SOpAttachWeapon00"/>
+        <HostImpactSiteOps Ops="SOpCursor SOpMoveUpByDot5 SOpMoveUpByDot5 SOpMoveUpByDot25 SOpMoveUpByDot1 SOpLaserFlicker SOpLaserFlicker SOpMoveDownByDot25 SOpLaserFlickeroverlay SOpLaserFlickeroverlay SOpMoveDownByDot1"/>
+    </CActorBeamSimple>
+    <CActorMissile id="ArbiterMPWeaponMissile">
+        <HostSiteOps Ops="SOpMoveUpByDot25"/>
+    </CActorMissile>
+    <CActorModel id="PAttackMolotovImpact" parent="ModelAnimationStyleContinuous">
+        <On Terms="Behavior.PAttackMolotov.On" Send="Create"/>
+        <On Terms="Behavior.PAttackMolotov.Off" Send="Destroy"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachOverhead"/>
+        <Model value="PAttackMolotovStun"/>
+        <AutoScaleFactor value="1.000000"/>
+    </CActorModel>
+    <CActorAction id="PAttackMolotovAttack" parent="GenericAttack" effectImpact="PAttackMolotovSearch" effectLaunch="PAttackMolotovLaunchMissile">
+        <LaunchAttachQuery Methods="Weapon 0" Fallback="Weapon"/>
+        <LaunchAssets Model="PAttackMolotovWeapon" Sound="PAttackMolotov_Toss"/>
+        <ImpactPointSiteOps Ops="SOpTargetPoint SOpShadow SOpMoveUpByDot25"/>
+        <ImpactMap index="None" Sound="PAttackMolotov_Impact"/>
+    </CActorAction>
+    <CActorMissile id="PAttackMolotovAttackMissile" parent="GenericAttackMissile" unitName="PAttackMolotov">
+        <Model value="PAttackMolotovWeapon"/>
+    </CActorMissile>
+    <CActorSplat id="PAttackMolotovCursorSplat" parent="TerranCursorSplat" abil="PAttackMolotov"/>
+    <CActorModel id="PAttackMolotovPersistentModelRandom01" parent="ModelAnimationStyleContinuous">
+        <On Terms="Effect.PAttackMolotovCP.Start" Send="Create"/>
+        <On Terms="Effect.PAttackMolotovCP.Stop" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOpRandomPointInCircle1Dot5 SOpShadow"/>
+        <Model value="PAttackMolotovPersistent"/>
+    </CActorModel>
+    <CActorModel id="PAttackMolotovPersistentModelRandom02" parent="ModelAnimationStyleContinuous">
+        <On Terms="Effect.PAttackMolotovCP.Start" Send="Create"/>
+        <On Terms="Effect.PAttackMolotovCP.Stop" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOpRandomPointInCircle1Dot5 SOpShadow"/>
+        <Model value="PAttackMolotovPersistent"/>
+    </CActorModel>
+    <CActorModel id="PAttackMolotovPersistentModelRandom03" parent="ModelAnimationStyleContinuous">
+        <On Terms="Effect.PAttackMolotovCP.Start" Send="Create"/>
+        <On Terms="Effect.PAttackMolotovCP.Stop" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOpRandomPointInCircle1Dot5 SOpShadow"/>
+        <Model value="PAttackMolotovPersistent"/>
+    </CActorModel>
+    <CActorModel id="PAttackMolotovPersistentModelRandom04" parent="ModelAnimationStyleContinuous">
+        <On Terms="Effect.PAttackMolotovCP.Start" Send="Create"/>
+        <On Terms="Effect.PAttackMolotovCP.Stop" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOpRandomPointInCircle1Dot5 SOpShadow"/>
+        <Model value="PAttackMolotovPersistent"/>
+    </CActorModel>
+    <CActorModel id="PAttackMolotovPersistentModelRandom05" parent="ModelAnimationStyleContinuous">
+        <On Terms="Effect.PAttackMolotovCP.Start" Send="Create"/>
+        <On Terms="Effect.PAttackMolotovCP.Stop" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOpRandomPointInCircle1Dot5 SOpShadow"/>
+        <Model value="PAttackMolotovPersistent"/>
+    </CActorModel>
+    <CActorModel id="PAttackMolotovPersistentModelRandom06" parent="ModelAnimationStyleContinuous">
+        <On Terms="Effect.PAttackMolotovCP.Start" Send="Create"/>
+        <On Terms="Effect.PAttackMolotovCP.Stop" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOpRandomPointInCircle1Dot5 SOpShadow"/>
+        <Model value="PAttackMolotovPersistent"/>
+    </CActorModel>
+    <CActorModel id="PAttackMolotovPersistentModelRandom07" parent="ModelAnimationStyleContinuous">
+        <On Terms="Effect.PAttackMolotovCP.Start" Send="Create"/>
+        <On Terms="Effect.PAttackMolotovCP.Stop" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOpRandomPointInCircle1Dot5 SOpShadow"/>
+        <Model value="PAttackMolotovPersistent"/>
+    </CActorModel>
+    <CActorModel id="PAttackMolotovPersistentModelRandom08" parent="ModelAnimationStyleContinuous">
+        <On Terms="Effect.PAttackMolotovCP.Start" Send="Create"/>
+        <On Terms="Effect.PAttackMolotovCP.Stop" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOpRandomPointInCircle1Dot5 SOpShadow"/>
+        <Model value="PAttackMolotovPersistent"/>
+    </CActorModel>
+    <CActorModel id="PAttackMolotovPersistentModelRandom09" parent="ModelAnimationStyleContinuous">
+        <On Terms="Effect.PAttackMolotovCP.Start" Send="Create"/>
+        <On Terms="Effect.PAttackMolotovCP.Stop" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOpRandomPointInCircle1Dot5 SOpShadow"/>
+        <Model value="PAttackMolotovPersistent"/>
+    </CActorModel>
+    <CActorRange id="PAttackMolotovRange" parent="RangeAbil" abil="PAttackMolotov"/>
+    <CActorUnit id="PLootPermanent" parent="GenericUnitStandardNoAutoSoundLinks" unitName="PLootPermanent">
+        <Macros value="AntiGravDeathRemoveMacro"/>
+        <On Terms="ActorCreation" Send="Create GoldGlow"/>
+        <On Terms="ActorCreation" Send="Create PLootPickUpCreationSound"/>
+        <On Terms="UnitHighlightLocal.*.Start" Send="HaloStart"/>
+        <On Terms="UnitHighlightLocal.*.Stop" Send="HaloStop"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-general-pickupmedicrecharge.dds"/>
+        </GroupIcon>
+        <UnitIcon value="Assets\Textures\Wireframe-general-pickupmedicrecharge.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-general-pickupmedicrecharge.dds"/>
+        </Wireframe>
+        <CustomUnitStatusFrame value="0_ECL_TEMPLATES/Item_UnitStatusFrame"/>
+        <UnitFlags index="SuppressDefaultStatusBar" value="1"/>
+    </CActorUnit>
+    <CActorSound id="PLootPickUpDeathSound" parent="SoundOneShot">
+        <Sound value="UI_Pickup_PLoot"/>
+    </CActorSound>
+    <CActorModel id="PLootAutoPickUpDeathModel" parent="ModelAnimationStyleOneShotNoOrphan">
+        <Terms value="Cap 1"/>
+        <EditorCategories value=""/>
+        <On Terms="ActorCreation" Send="Create PLootPickUpDeathSound"/>
+        <On Terms="Effect.PLootRemoveDelay.Start" Send="Create"/>
+        <Host Subject="_Selectable"/>
+        <Model value="PLootAutoPickUpDeath"/>
+    </CActorModel>
+    <CActorModel id="GoldGlow" parent="ModelAddition">
+        <On Terms="ActorCreation" Send="SetTintColor {210,53,0 2.000000}"/>
+        <Model value="MineralCrystalGlow"/>
+    </CActorModel>
+    <CActorModel id="PLootAutoFloatingText" parent="FloatingTextActorDefault" effectPickup="PLootPickUp" actorCreate="PickupHealth25Text">
+        <On index="1" Terms="ActorCreation" Send="Create PLootText"/>
+    </CActorModel>
+    <CActorModelMaterial id="GlazeInfested" parent="GlazeParent">
+        <On Terms="Behavior.GlazeFire.On" Send="Create"/>
+        <On Terms="ActorCreation" Send="ModelMaterialApplyTo ::Main"/>
+        <On Terms="Behavior.GlazeFire.Off" Send="ModelMaterialRemoveFrom ::Main"/>
+        <On Terms="Behavior.GlazeFire.Off" Send="Destroy"/>
+        <On Terms="Behavior.PAttackParasiteInfested.On" Send="Create"/>
+        <On Terms="Behavior.PAttackParasiteInfested.Off" Send="Destroy"/>
+        <On Terms="Behavior.LocustStun.On" Send="Create"/>
+        <On Terms="Behavior.LocustStun.Off" Send="Destroy"/>
+        <Model value="GlazeParasiticBomb"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+    </CActorModelMaterial>
+    <CActorSound id="PLootPickUpCreationSound" parent="SoundOneShot">
+        <Sound value="PLootSpawn"/>
+    </CActorSound>
+    <!--FB-->
+    <!--CActorUnit id="Ghost" parent="GenericUnitBase" unitName="Ghost">-->
+    <!--        <On Terms="Abil.PAttack.SourceCastStart" Send="AnimPlay Attack Attack"/>-->
+    <!--    </CActorUnit-->
+    <CActorUnit id="Ultralisk">
+        <CustomUnitStatusFrame value="0_ECL_TEMPLATES/HeroUnitEnergyStatusFrameTemplate"/>
+        <UnitFlags index="SuppressDefaultStatusBar" value="1"/>
+        <StatusBarOn index="Custom" value="1"/>
+    </CActorUnit>
+    <CActorUnit id="Hydralisk">
+        <CustomUnitStatusFrame value="0_ECL_TEMPLATES/HeroUnitEnergyStatusFrameTemplate"/>
+        <UnitFlags index="SuppressDefaultStatusBar" value="1"/>
+        <StatusBarOn index="Custom" value="1"/>
+    </CActorUnit>
+    <CActorUnit id="Zergling">
+        <CustomUnitStatusFrame value="0_ECL_TEMPLATES/HeroUnitEnergyStatusFrameTemplate"/>
+        <UnitFlags index="SuppressDefaultStatusBar" value="1"/>
+        <StatusBarOn index="Custom" value="1"/>
+    </CActorUnit>
+    <CActorUnit id="InfestedCivilian">
+        <On Terms="Behavior.LocustStun.On" Send="Create SwarmHostEggCampaign"/>
+        <On Terms="Behavior.LocustStun.On" Send="ModelSwap Invisible"/>
+        <On Terms="Behavior.LocustStun.On" Send="AnimClear Birth"/>
+        <On Terms="Behavior.LocustStun.Off" Target="SwarmHostEggCampaign" Send="$Death"/>
+        <On Terms="Behavior.LocustStun.Off" Send="ModelSwap InfestedCivilian"/>
+        <On Terms="Behavior.LocustStun.Off" Send="$Birth 0 0.000000"/>
+    </CActorUnit>
+    <CActorModel id="PAttackParasiteInfested" parent="ModelAddition">
+        <On Terms="Behavior.PAttackParasiteInfested.On" Send="Create"/>
+        <On Terms="Behavior.PAttackParasiteInfested.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="UnitDeath" Send="Destroy"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <AutoScaleFactor value="1.000000"/>
+    </CActorModel>
+    <CActorModelMaterial id="GlazeFireWorldSpace">
+        <On Terms="Behavior.PAttackBurn.On" Send="Create"/>
+        <On Terms="Behavior.PAttackBurn.Off" Send="Destroy"/>
+        <On Terms="Behavior.PAttackBurnShort.On" Send="Create"/>
+        <On Terms="Behavior.PAttackBurnShort.Off" Send="Destroy"/>
+    </CActorModelMaterial>
+    <CActorModel id="PAttackBurn" parent="ModelAddition">
+        <On Terms="Behavior.PAttackBurn.On" Send="Create"/>
+        <On Terms="Behavior.PAttackBurn.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="ActorCreation" Send="SetScale 1.400000 0.400000"/>
+        <On Terms="UnitDeath" Send="Destroy"/>
+        <On Terms="Behavior.PAttackBurnShort.On" Send="Create"/>
+        <On Terms="Behavior.PAttackBurnShort.Off" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOpAttachHead SOpMoveDownByDot25"/>
+        <AutoScaleFactor value="1.000000"/>
+    </CActorModel>
+    <CActorModel id="PAttackFlameAttackLaunch" parent="ModelAnimationStyleOneShot">
+        <Flags index="SuppressCreationErrors" value="1"/>
+        <On Terms="ActorCreation" Send="AnimBracketStart GL_BSD GLbirth GLstand GLdeath"/>
+        <On Terms="ActorCreation" Send="TimerSet 0.750000 Kill"/>
+        <On Terms="TimerExpired; TimerName Kill" Send="AnimBracketStop BSD"/>
+        <Model value="HellionTankAttackLaunch"/>
+    </CActorModel>
+    <CActorAction id="PAttackFlame" parent="GenericAttack" effectImpact="PAttackFlameDamage" effectLaunch="PAttackFlameCP">
+        <On Terms="Effect.PAttackFlameSA.Start; At Caster" Send="ActionDamage"/>
+        <LaunchModel value="PAttackFlameAttackLaunch"/>
+        <Missile value="PAttackParasiteM"/>
+        <ImpactPointSiteOps Ops="SOpTargetPointStationary SOpShadow GhostEMPOffset"/>
+    </CActorAction>
+    <CActorAction id="PAttackBulletImpact" parent="GenericAttack" effectAttack="PAttackBulletImpact">
+        <LaunchAssets Model="GhostAttackLaunch" Sound="Ghost_AttackLaunch"/>
+        <ContainerAssets Model="GhostBunkerAttackLaunch" Sound="Ghost_BunkerAttackLaunch"/>
+        <ImpactMap index="None" Model="PAttackBulletImpact" Sound="PAttackBulletImpact"/>
+        <ImpactMap index="Flesh" ModelReaction="BloodTargetImpact"/>
+        <ImpactPhysics Name="CannisterRifleImpact" MatchKeys="Basic" Physics="GhostAttackDeathForce"/>
+        <AcquisitionYawHalfArc value="10.000000"/>
+        <AcquisitionPitchHalfArc value="15.000000"/>
+        <AccuracyHalfArc value="5.000000"/>
+    </CActorAction>
+    <CActorAction id="PAttackPlasmaImpact" parent="GenericAttack" effectAttack="PAttackPlasmaImpact">
+        <LaunchAssets Model="" Sound=""/>
+        <ContainerAssets Model="GhostBunkerAttackLaunch" Sound="Ghost_BunkerAttackLaunch"/>
+        <ImpactMap index="None" Model="PAttackPlasmaImpact" Sound="InfestedTerran_AirAttackImpact"/>
+        <ImpactPhysics Name="CannisterRifleImpact" MatchKeys="Basic" Physics="GhostAttackDeathForce"/>
+        <AcquisitionYawHalfArc value="10.000000"/>
+        <AcquisitionPitchHalfArc value="15.000000"/>
+        <AccuracyHalfArc value="5.000000"/>
+    </CActorAction>
+    <CActorAction id="PAttackFlameImpact" parent="GenericAttack" effectAttack="PAttackPlasmaImpact">
+        <On index="0" Terms="Effect.PAttackFlameDamage.Stop; FromEffectTreeDescendant" Send="ActionImpactPhysics"/>
+        <On index="5" Terms="Effect.PAttackFlameDamage.Start; At Caster" Send="Create"/>
+        <LaunchAssets Model="" Sound=""/>
+        <ContainerAssets Model="GhostBunkerAttackLaunch" Sound="Ghost_BunkerAttackLaunch"/>
+        <Beam value="PAttackPlasmaImpactBeam"/>
+        <Missile value="PAttackPlasmaImpactMissile"/>
+        <ImpactMap index="None" Model="PAttackFlameImpact" Sound="Hellion_AttackImpact" ModelReaction="PAttackPlasmaImpactImpactReaction"/>
+        <ImpactMap index="Shield" Sound="PAttackPlasmaImpactImpactShield" ModelReaction="PAttackPlasmaImpactImpactReactionShield"/>
+        <ImpactPhysics Name="CannisterRifleImpact" MatchKeys="Basic" Physics="GhostAttackDeathForce"/>
+        <DamageMap index="None" Model="PAttackPlasmaImpactDamage" Sound="PAttackPlasmaImpactDamage" ModelReaction="PAttackPlasmaImpactDamageReaction"/>
+        <DamageMap index="Shield" Sound="PAttackPlasmaImpactDamageShield" ModelReaction="PAttackPlasmaImpactDamageReactionShield"/>
+        <AcquisitionYawHalfArc value="10.000000"/>
+        <AcquisitionPitchHalfArc value="15.000000"/>
+        <AccuracyHalfArc value="5.000000"/>
+    </CActorAction>
+    <CActorAction id="PAttackParasiteImpact" parent="GenericAttack" effectAttack="PAttackPlasmaImpact">
+        <On index="0" Terms="Effect.PAttackParasiteImpactSearch.Stop; FromEffectTreeDescendant" Send="ActionImpactPhysics"/>
+        <On index="5" Terms="Effect.PAttackParasiteImpactSearch.Start; At Caster" Send="Create"/>
+        <LaunchAssets Model="" Sound=""/>
+        <ContainerAssets Model="GhostBunkerAttackLaunch" Sound="Ghost_BunkerAttackLaunch"/>
+        <ImpactSiteOps Ops="SOpAttachHarness SOpAttachVolumeStandard SOpPointBack SOpMoveBackByDot5"/>
+        <ImpactMap index="None" Model="PAttackParasiteImpact" Sound="InfestedTerran_AirAttackImpact"/>
+        <ImpactPhysics Name="CannisterRifleImpact" MatchKeys="Basic" Physics="GhostAttackDeathForce"/>
+        <AcquisitionYawHalfArc value="10.000000"/>
+        <AcquisitionPitchHalfArc value="15.000000"/>
+        <AccuracyHalfArc value="5.000000"/>
+    </CActorAction>
+    <CActorAction id="PAttackPlasmaL" parent="GenericAttack" effectImpact="EMPSearch" effectLaunch="PAttackPlasmaLM">
+        <On index="1" Terms="Effect.PAttackBulletImpactNEW.Start; FromEffectTreeDescendant" Send="ActionImpact"/>
+        <On index="2" Terms="Effect.PAttackBulletImpactNEW.Stop; FromEffectTreeDescendant" Send="ActionImpactPhysics"/>
+        <LaunchAssets Model="PAttackPlasmaLaunch" Sound="Cyclone_Missile_Launch"/>
+        <Missile value="PAttackPlasmaM"/>
+        <ImpactPointSiteOps Ops="SOpTargetPointStationary SOpShadow GhostEMPOffset"/>
+        <ImpactMap index="None" Sound="Ghost_EMPAttackImpact"/>
+    </CActorAction>
+    <CActorAction id="PAttackParasiteL" parent="GenericAttack" effectImpact="EMPSearch" effectLaunch="PAttackParasiteLM">
+        <On index="1" Terms="Effect.PAttackBulletImpactNEW.Start; FromEffectTreeDescendant" Send="ActionImpact"/>
+        <On index="2" Terms="Effect.PAttackBulletImpactNEW.Stop; FromEffectTreeDescendant" Send="ActionImpactPhysics"/>
+        <LaunchSiteOps Ops="SOpAttachHarness SOpPointBack SOpMoveBackByDot5"/>
+        <LaunchAssets Model="PAttackParasiteLaunch" Sound="Brutalisk_AirAttackLaunch"/>
+        <Missile value="PAttackParasiteM"/>
+        <ImpactPointSiteOps Ops="SOpTargetPointStationary SOpShadow GhostEMPOffset"/>
+        <ImpactMap index="None" Sound="Ghost_EMPAttackImpact"/>
+    </CActorAction>
+    <CActorMissile id="PAttackPlasmaM" parent="GenericAttackMissile" unitName="PAttackPlasma"/>
+    <CActorModel id="PAttackImpactEffect" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.EMPSearch.Start" Send="Create"/>
+        <On Terms="Effect.EMPSearch.Stop" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOpShadow"/>
+    </CActorModel>
+    <CActorMissile id="PAttackBulletMissile" parent="GenericAttackMissile" unitName="PAttack">
+        <On Terms="ActorCreation" Send="SetOpacity"/>
+        <On Terms="ActorCreation" Send="TimerSet 0.100000 blend"/>
+        <On Terms="TimerExpired; TimerName blend" Send="SetOpacity 1.000000 0.100000"/>
+    </CActorMissile>
+    <CActorMissile id="PAttackParasiteM" parent="GenericAttackMissile" unitName="PAttackParasiteMissile">
+        <Model value="PAttackParasite"/>
+    </CActorMissile>
+    <CActorUnit id="PLootAutoPickUp" parent="GenericUnitStandardNoAutoSoundLinks" unitName="PLootAutoPickUp">
+        <Macros value="AntiGravDeathRemoveMacro"/>
+        <On Terms="ActorCreation" Send="Create GoldGlow"/>
+        <On Terms="ActorCreation" Send="Create PLootPickUpCreationSound"/>
+        <Model value="PLootAutoPickup"/>
+        <BuildModel value="PLootAutoPickup"/>
+        <DeathArray index="Normal" ModelLink="PLootAutoPickup"/>
+        <PlacementModel value="PLootAutoPickup"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-general-pickupmedicrecharge.dds"/>
+        </GroupIcon>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <UnitIcon value="Assets\Textures\Wireframe-general-pickupmedicrecharge.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-general-pickupmedicrecharge.dds"/>
+        </Wireframe>
+    </CActorUnit>
+    <CActorText id="PLootText" parent="PickupTextDefault">
+        <TextScale value="1.000000"/>
+    </CActorText>
+    <CActorAction id="ProjectileAttack" parent="GenericAttack" effectImpact="PAttackBulletImpactNEW">
+        <On index="6" removed="1"/>
+        <LaunchAttachQuery Methods="AMFilterWeapon01"/>
+        <LaunchAssets Model="CycloneMissilesAttackLaunch" Sound="WarHound_Missile_Launch"/>
+        <Beam value="CycloneMissilesAttackBeam"/>
+        <Missile value="CycloneMissilesAttackMissile"/>
+        <ImpactMap index="None" Model="CycloneMissilesAttackImpact" Sound="WarHound_Missile_Impact" ModelReaction="CycloneMissilesAttackImpactReaction"/>
+        <ImpactMap index="Shield" Sound="CycloneMissilesAttackImpactShield" ModelReaction="CycloneMissilesAttackImpactReactionShield"/>
+        <ImpactPhysics Name="CycloneMissileImpact" MatchKeys="Basic" Physics="WarhoundMissileAttackForce"/>
+        <DamageMap index="None" Model="CycloneMissilesAttackDamage" Sound="CycloneMissilesAttackDamage" ModelReaction="CycloneMissilesAttackDamageReaction"/>
+        <DamageMap index="Shield" Sound="CycloneMissilesAttackDamageShield" ModelReaction="CycloneMissilesAttackDamageReactionShield"/>
+    </CActorAction>
+    <CActorMissile id="Projectile" parent="GenericAttackMissile" unitName="Projectile"/>
+    <CActorSiteOpRotator id="SOpLaserFlicker">
+        <LocalAxis value="-1.000000,-0.010000,0.000000"/>
+        <Rate value="36.000000"/>
+    </CActorSiteOpRotator>
+    <CActorSiteOpRotator id="SOpLaserFlickeroverlay">
+        <LocalAxis value="-1.000000,0.001000,0.000000"/>
+        <Rate value="36.000000"/>
+    </CActorSiteOpRotator>
+    <CActorSiteOpRotationExplicit id="SOpPointBack">
+        <Forward value="0.000000,1.000000,0.000000"/>
+        <IsLocal value="1"/>
+    </CActorSiteOpRotationExplicit>
+    <CActorBeamSimple id="TracerAttackBeam" parent="GenericAttackBeam">
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <Model value="GhostSnipeAttackBeam"/>
+        <HostLaunchSiteOps Ops="SOpAttachCenter"/>
+    </CActorBeamSimple>
+    <CActorBeamSimple id="TracerBeam" parent="BeamSimpleAnimationStyleContinuous">
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <Model value=""/>
+        <HostLaunchSiteOps Ops="SOpAttachCenter"/>
+    </CActorBeamSimple>
+    <CActorAction id="ECL_PROJECTILE_ATTACK_2" parent="GenericAttack" effectImpact="Dummy" effectLaunch="ECL_PROJECTILE">
+        <ImpactMap index="None" Sound="Marine_AttackImpact"/>
+        <ImpactMap index="Flesh" ModelReaction="BloodTargetImpact"/>
+        <LaunchAssets Sound="Marine_AttackLaunch"/>
+        <ContainerAssets Model="MarineBunkerAttackLaunch" Sound="Marine_BunkerAttackLaunch"/>
+        <DamageMap index="None" Sound=""/>
+        <AcquisitionYawHalfArc value="10.000000"/>
+        <AcquisitionPitchHalfArc value="15.000000"/>
+        <AccuracyHalfArc value="5.000000"/>
+    </CActorAction>
+    <CActorMissile id="ECL_PROJECTILE" parent="GenericAttackMissile" unitName="ECL_PROJECTILE"/>
+    <CActorAction id="PAttackBulletImpactNew" parent="GenericAttack" effectAttack="PAttackBulletImpactNEW">
+        <ImpactMap index="None" Model="PAttackBulletImpactNew" Sound="PAttackBulletImpactNew"/>
+        <ImpactMap index="Flesh" ModelReaction="BloodTargetImpact"/>
+        <ImpactPhysics Name="BulletImpact" MatchKeys="Basic" Physics="GhostSnipeAttackDeathForce"/>
+    </CActorAction>
+</Catalog>

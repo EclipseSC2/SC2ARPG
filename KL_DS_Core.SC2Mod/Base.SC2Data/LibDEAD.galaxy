@@ -1196,7 +1196,7 @@ void libDEAD_gf_DS_FireWeaponItem (int lp_player, string lp_weaponItem) {
     lv_damage_max = UserDataGetInt("WeaponTypes", lp_weaponItem, "DamageMax", 1);
     libNtve_gf_CatalogFieldValueSetAsReal(c_gameCatalogEffect, lv_impact, "Amount", lp_player, lv_damage_min);
     libNtve_gf_CatalogFieldValueSetAsReal(c_gameCatalogEffect, lv_impact, "Random", lp_player, (lv_damage_max - lv_damage_min));
-    libECLP_gf_ECL_Fire(lp_player, lv_launchArt, lv_projectileN, lv_velocity, lv_cooldown, lv_angle, lv_impact, lv_range);
+    libECLP_gf_ECL_Fire(lp_player, lv_launchArt, lv_projectileN, lv_bursts, lv_velocity, lv_cooldown, lv_cooldown_burst, lv_angle, lv_impact, lv_range);
 }
 
 void libDEAD_gf_ECL__Hookup_Context (int lp_player, int lp_index) {
@@ -5294,16 +5294,23 @@ void libDEAD_gt_ECL__HOOKUPINVENTORYFRAMES_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: Untitled Trigger 002
+// Trigger: TestGitHub
 //--------------------------------------------------------------------------------------------------
-bool libDEAD_gt_UntitledTrigger002_Func (bool testConds, bool runActions) {
+bool libDEAD_gt_TestGitHub_Func (bool testConds, bool runActions) {
     // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/lib_DEAD_5C9CE69C"));
     return true;
 }
 
 //--------------------------------------------------------------------------------------------------
-void libDEAD_gt_UntitledTrigger002_Init () {
-    libDEAD_gt_UntitledTrigger002 = TriggerCreate("libDEAD_gt_UntitledTrigger002_Func");
+void libDEAD_gt_TestGitHub_Init () {
+    libDEAD_gt_TestGitHub = TriggerCreate("libDEAD_gt_TestGitHub_Func");
+    TriggerAddEventMapInit(libDEAD_gt_TestGitHub);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7470,7 +7477,7 @@ void libDEAD_InitTriggers () {
     libDEAD_gt_DS_ExamineCloseEscP2_Init();
     libDEAD_gt_KL_SwapWeaponTest_Init();
     libDEAD_gt_ECL__HOOKUPINVENTORYFRAMES_Init();
-    libDEAD_gt_UntitledTrigger002_Init();
+    libDEAD_gt_TestGitHub_Init();
     libDEAD_gt_ECL__DRAG_ON_OFF_Init();
     libDEAD_gt_ECL__SETNEWOLDSLOT_Init();
     libDEAD_gt_ECL__DROPZONE_Init();

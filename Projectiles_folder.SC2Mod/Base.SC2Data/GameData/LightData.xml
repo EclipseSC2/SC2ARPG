@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CLight id="CutsceneTerran05Exterior">
+        <ToDInfoArray index="0" Id="CutsceneTerran05Exterior" AmbientColor="0.686275,0.635294,0.505882">
+            <Param index="HDRSpecMultiplier" value="0.410000"/>
+            <Param index="HDREmisMultiplier" value="0.280000"/>
+            <DirectionalLight index="Key">
+                <Color value="0.976471,0.713726,0.454902"/>
+                <ColorMultiplier value="4.315000"/>
+                <SpecularColor value="0.772549,0.737255,0.513726"/>
+                <SpecColorMultiplier value="2.213000"/>
+                <Direction value="0.252992,0.965723,-0.058086"/>
+            </DirectionalLight>
+            <DirectionalLight index="Fill" Color="1.000000,0.756863,0.529412" ColorMultiplier="0.019000" Direction="-0.761163,0.646885,0.046583"/>
+            <DirectionalLight index="Back" Direction="0.756144,0.221828,0.615662"/>
+        </ToDInfoArray>
+    </CLight>
+</Catalog>

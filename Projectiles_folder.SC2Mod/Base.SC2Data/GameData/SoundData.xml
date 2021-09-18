@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CSound id="PAttackCapsule_Impact" parent="Combat">
+        <AssetArray File="Assets\Sounds\Harness_Release_Steam_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Harness_Release_Steam_03.wav" FacialGroup=""/>
+        <Pitch value="3.000000,3.500000"/>
+    </CSound>
+    <CSound id="PAttackMolotov_Toss" parent="Combat">
+        <EditorCategories value="Race:Neutral"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Civilian\Civilian_AttackLaunch0.wav"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Civilian\Civilian_AttackLaunch1.wav"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Civilian\Civilian_AttackLaunch2.wav"/>
+        <Flags index="VariationFallback" value="0"/>
+        <DupeDestroyCount value="6"/>
+        <DupeMuteCount value="2"/>
+        <Pitch value="-1.000000,3.000000"/>
+    </CSound>
+    <CSound id="PAttackMolotov_Impact" parent="Combat">
+        <AssetArray File="Assets\Sounds\Uni\Units\Civilian\Civilian_AttackImpact0.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Civilian\Civilian_AttackImpact1.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Civilian\Civilian_AttackImpact2.wav" FacialGroup=""/>
+    </CSound>
+    <CSound id="PAttackBulletImpactNew" parent="Combat">
+        <EditorCategories value="Race:Terran"/>
+        <AssetArray File="Assets\Sounds\Terran\SharedEffects\BulletImpacts\Terran_SingleBulletAttackImpact0.wav"/>
+        <AssetArray File="Assets\Sounds\Terran\SharedEffects\BulletImpacts\Terran_SingleBulletAttackImpact1.wav"/>
+        <AssetArray File="Assets\Sounds\Terran\SharedEffects\BulletImpacts\Terran_SingleBulletAttackImpact2.wav"/>
+        <AssetArray File="Assets\Sounds\Terran\SharedEffects\BulletImpacts\Terran_SingleBulletAttackImpact3.wav"/>
+        <AssetArray File="Assets\Sounds\Terran\SharedEffects\BulletImpacts\Terran_SingleBulletAttackImpact4.wav"/>
+        <AssetArray File="Assets\Sounds\Terran\SharedEffects\BulletImpacts\Terran_SingleBulletAttackImpact5.wav"/>
+        <Pitch value="-1.500000,1.500000"/>
+        <Volume value="-6.000000,-6.000000"/>
+    </CSound>
+    <CSound id="PAttackFlameImpact" parent="Spell">
+        <EditorCategories value="Race:Terran"/>
+        <AssetArray File="Assets\Sounds\Terran\Hellion\Hellion_AttackImpact0.wav"/>
+        <AssetArray File="Assets\Sounds\Terran\Hellion\Hellion_AttackImpact2.wav"/>
+        <AssetArray File="Assets\Sounds\Terran\Hellion\Hellion_AttackImpact4.wav"/>
+        <Volume value="-5.490000,-5.490000"/>
+    </CSound>
+    <CSound id="PAttackFlameLaunch" parent="Spell">
+        <EditorCategories value="Race:Terran"/>
+        <AssetArray File="Assets\Sounds\Terran\Hellion\Hellion_AttackLaunch2.wav"/>
+        <DupeMaximumMethod value="Replace"/>
+        <Volume value="-6.860000,-6.860000"/>
+    </CSound>
+    <CSound id="PAttackBulletImpact" parent="Combat">
+        <EditorCategories value="Race:Terran"/>
+        <AssetArray File="Assets\Sounds\Terran\SharedEffects\BulletImpacts\Terran_SingleBulletAttackImpact0.wav"/>
+        <AssetArray File="Assets\Sounds\Terran\SharedEffects\BulletImpacts\Terran_SingleBulletAttackImpact1.wav"/>
+        <AssetArray File="Assets\Sounds\Terran\SharedEffects\BulletImpacts\Terran_SingleBulletAttackImpact2.wav"/>
+        <AssetArray File="Assets\Sounds\Terran\SharedEffects\BulletImpacts\Terran_SingleBulletAttackImpact3.wav"/>
+        <AssetArray File="Assets\Sounds\Terran\SharedEffects\BulletImpacts\Terran_SingleBulletAttackImpact4.wav"/>
+        <AssetArray File="Assets\Sounds\Terran\SharedEffects\BulletImpacts\Terran_SingleBulletAttackImpact5.wav"/>
+        <Pitch value="-1.500000,1.500000"/>
+        <Volume value="-6.000000,-6.000000"/>
+    </CSound>
+    <CSound id="PAttackCapsule_Toss" parent="Combat">
+        <EditorCategories value="Race:Neutral"/>
+        <AssetArray File="Assets\Sounds\FlashBang_Toss_03.wav"/>
+        <AssetArray File="Assets\Sounds\FlashBang_Toss_02.wav"/>
+        <Flags index="VariationFallback" value="0"/>
+        <DupeDestroyCount value="6"/>
+        <DupeMuteCount value="2"/>
+        <Pitch value="-1.000000,3.000000"/>
+    </CSound>
+    <CSound id="PAttackPlasmaImpact" parent="Combat">
+        <EditorCategories value="Race:Terran"/>
+        <AssetArray File="Assets\Sounds\Terran\SharedEffects\BulletImpacts\Terran_SingleBulletAttackImpact0.wav"/>
+        <AssetArray File="Assets\Sounds\Terran\SharedEffects\BulletImpacts\Terran_SingleBulletAttackImpact1.wav"/>
+        <AssetArray File="Assets\Sounds\Terran\SharedEffects\BulletImpacts\Terran_SingleBulletAttackImpact2.wav"/>
+        <AssetArray File="Assets\Sounds\Terran\SharedEffects\BulletImpacts\Terran_SingleBulletAttackImpact3.wav"/>
+        <AssetArray File="Assets\Sounds\Terran\SharedEffects\BulletImpacts\Terran_SingleBulletAttackImpact4.wav"/>
+        <AssetArray File="Assets\Sounds\Terran\SharedEffects\BulletImpacts\Terran_SingleBulletAttackImpact5.wav"/>
+        <Pitch value="-1.500000,1.500000"/>
+        <Volume value="-6.000000,-6.000000"/>
+    </CSound>
+    <CSound id="UI_Pickup_PLoot" parent="Ambience_Object">
+        <EditorCategories value="Race:Neutral"/>
+        <AssetArray File="Assets\Sounds\StoreFrontCityProps_plants01.wav" FacialGroup=""/>
+        <DupeMuteCount value="8"/>
+        <Pitch value="13.710000,13.710000"/>
+        <Volume value="3.090000,3.090000"/>
+    </CSound>
+    <CSound id="PLootSpawn" parent="Spell">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Zerg\BroodLord\Broodlord_AttackLaunch0.wav"/>
+        <AssetArray File="Assets\Sounds\Zerg\BroodLord\Broodlord_AttackLaunch1.wav"/>
+        <AssetArray File="Assets\Sounds\Zerg\BroodLord\Broodlord_AttackLaunch2.wav"/>
+        <AssetArray File="Assets\Sounds\Zerg\BroodLord\Broodlord_AttackLaunch3.wav"/>
+        <AssetArray File="Assets\Sounds\Zerg\BroodLord\Broodlord_AttackLaunch4.wav"/>
+        <Category value="Combat"/>
+        <Pitch value="12.770000,15.770000"/>
+        <Volume value="-7.110000,-7.110000"/>
+    </CSound>
+</Catalog>

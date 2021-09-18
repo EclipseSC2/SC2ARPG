@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CUnit id="PAttackCursor3D" parent="DESTRUCTIBLE">
+        <FlagArray index="Untargetable" value="1"/>
+        <FlagArray index="Undetectable" value="1"/>
+        <FlagArray index="Unradarable" value="1"/>
+        <FlagArray index="Invulnerable" value="1"/>
+        <FlagArray index="NoScore" value="1"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+        <BehaviorArray Link="PLaserRocker"/>
+        <Radius value="0.875"/>
+        <SeparationRadius value="0.875"/>
+        <MinimapRadius value="0.875"/>
+        <EditorCategories value="ObjectType:Other,ObjectFamily:Campaign"/>
+        <LeaderAlias value=""/>
+        <HotkeyAlias value=""/>
+    </CUnit>
+    <CUnit id="Separatist">
+        <DefaultAcquireLevel value="Passive"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="2" removed="1"/>
+            <LayoutButtons index="3" removed="1"/>
+            <LayoutButtons index="4" removed="1"/>
+            <LayoutButtons index="5" removed="1"/>
+        </CardLayouts>
+        <Sight value="8"/>
+        <Speed value="1.8007"/>
+        <Radius value="0.1875"/>
+        <InnerRadius value="0.1875"/>
+        <SpeedMinimum value="1.8007"/>
+        <Fidget>
+            <ChanceArray index="Turn" value="0"/>
+        </Fidget>
+        <DeathRevealRadius value="4"/>
+        <Response value="Nothing"/>
+        <LifeStart value="9999"/>
+        <LifeMax value="9999"/>
+        <Food value="0"/>
+    </CUnit>
+    <CUnit id="Beacon_TerranSmall">
+        <BehaviorArray Link="PLaserRocker"/>
+    </CUnit>
+    <CUnit id="Ghost">
+        <Fidget>
+            <ChanceArray index="Anim" value="0"/>
+            <ChanceArray index="Idle" value="100"/>
+            <ChanceArray index="Turn" value="0"/>
+        </Fidget>
+        <AbilArray Link="PAttackFlame"/>
+        <Response value="Nothing"/>
+        <WeaponArray index="0" removed="1"/>
+    </CUnit>
+    <CUnit id="GhostNova" parent="Ghost">
+        <Name value="Unit/Name/GhostNova"/>
+        <Description value="Button/Tooltip/GhostNova"/>
+    </CUnit>
+    <CUnit id="Hydralisk">
+        <BehaviorArray Link="PLoot"/>
+        <BehaviorArray Link="PMobTierMedium"/>
+        <Radius value="0.5"/>
+    </CUnit>
+    <CUnit id="PAttackMolotov" parent="MISSILE">
+        <Race value="Terr"/>
+        <Mover value="PAttackTossGrenade"/>
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Campaign"/>
+    </CUnit>
+    <CUnit id="PAttackCapsule" parent="MISSILE">
+        <Race value="Terr"/>
+        <Mover value="PAttackTossCapsule"/>
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Campaign"/>
+    </CUnit>
+    <CUnit id="PLootPermanent" parent="ITEM">
+        <Facing value="19.995"/>
+        <FlagArray index="Turnable" value="1"/>
+        <FlagArray index="CreateVisible" value="1"/>
+        <FlagArray index="Unclickable" value="0"/>
+        <FlagArray index="Uncommandable" value="0"/>
+        <FlagArray index="Unhighlightable" value="0"/>
+        <FlagArray index="Unselectable" value="1"/>
+        <FlagArray index="Uncloakable" value="1"/>
+        <FlagArray index="Unstoppable" value="1"/>
+        <FogVisibility value="Snapshot"/>
+        <AbilArray Link="Sacrifice"/>
+        <CardLayouts>
+            <LayoutButtons Face="Sacrifice" Type="AbilCmd" AbilCmd="Sacrifice,Execute" Row="0" Column="0"/>
+        </CardLayouts>
+        <Radius value="0"/>
+        <MinimapRadius value="0.375"/>
+        <EditorCategories value="ObjectType:Item,ObjectFamily:Campaign"/>
+    </CUnit>
+    <CUnit id="Zergling">
+        <BehaviorArray Link="PLoot"/>
+        <BehaviorArray Link="PMobTierCasual"/>
+    </CUnit>
+    <CUnit id="Ultralisk">
+        <BehaviorArray Link="PLoot"/>
+        <BehaviorArray Link="PMobTierHigh"/>
+    </CUnit>
+    <CUnit id="PAttack" parent="MISSILE_INVULNERABLE">
+        <Race value="Terr"/>
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Melee"/>
+        <Mover value="PAttackMover1"/>
+    </CUnit>
+    <CUnit id="PAttackPlasma" parent="MISSILE_INVULNERABLE">
+        <Race value="Terr"/>
+        <Mover value="PAttackMover1"/>
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Melee"/>
+    </CUnit>
+    <CUnit id="PAttackParasiteMissile" parent="MISSILE_INVULNERABLE">
+        <Race value="Terr"/>
+        <Mover value="PAttackMover1"/>
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Melee"/>
+    </CUnit>
+    <CUnit id="PLootAutoPickUp" parent="ITEM">
+        <Facing value="19.995"/>
+        <FlagArray index="Turnable" value="1"/>
+        <FlagArray index="Untargetable" value="1"/>
+        <FogVisibility value="Snapshot"/>
+        <AbilArray Link="PLootAutoPickup"/>
+        <Radius value="0"/>
+        <MinimapRadius value="0.375"/>
+        <EditorCategories value="ObjectType:Item,ObjectFamily:Campaign"/>
+    </CUnit>
+    <CUnit id="Projectile" parent="MISSILE">
+        <Race value="Prot"/>
+        <Mover value="ArbiterMPWeaponMissile"/>
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Campaign"/>
+    </CUnit>
+    <CUnit id="ECL_PROJECTILE" parent="MISSILE">
+        <Race value="Terr"/>
+        <FlagArray index="Invulnerable" value="1"/>
+        <LifeStart value="1"/>
+        <LifeMax value="1"/>
+        <Radius value="0.25"/>
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Campaign"/>
+    </CUnit>
+    <CUnit id="ShapeTreasureChestClosed">
+        <FlagArray index="Invulnerable" value="1"/>
+    </CUnit>
+</Catalog>

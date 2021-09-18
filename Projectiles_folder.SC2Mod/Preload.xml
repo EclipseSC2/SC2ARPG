@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Preload>
+<Actor id="SYSTEM_ActorConfig"/>
+<Actor id="AttackIndicatorBeam"/>
+<Actor id="TracerBeam"/>
+<Behavior id="HealthPercentageIncrease"/>
+<Behavior id="PAttackCursor"/>
+<Effect id="PAttackBulletImpactNEW"/>
+<Unit id="Hydralisk"/>
+<Unit id="Separatist"/>
+<Unit id="PAttackCursor3D"/>
+</Preload>
