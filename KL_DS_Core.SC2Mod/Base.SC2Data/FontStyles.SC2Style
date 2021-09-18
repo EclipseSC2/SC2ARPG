@@ -5,7 +5,7 @@
                 font="UI\Fonts\EurostileExt-Med.otf" 
                 height="36" 
                 vjustify="Middle" 
-                hjustify="Left" 
+                hjustify="Left"
                 styleflags="Shadow | Outline" 
                 textcolor="255,255,255,255" 
                 highlightcolor="255,255,255,255" 
