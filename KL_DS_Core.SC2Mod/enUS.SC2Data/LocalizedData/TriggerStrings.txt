@@ -693,6 +693,7 @@ Trigger/Name/lib_DEAD_CBE5CAF3=DS_HideLootOnGround
 Trigger/Name/lib_DEAD_D278CDEB=DS_UpdateTimers
 Trigger/Name/lib_DEAD_D2D93E99=DS_RightClickRelease
 Trigger/Name/lib_DEAD_D72892A7=DS_Fire
+Trigger/Name/lib_DEAD_D9C6CB2F=DS_HealthIncrease
 Trigger/Name/lib_DEAD_DA400B9F=DS_ExamineCloseEscP1
 Trigger/Name/lib_DEAD_DAC8857A=DS_ConfirmNoP2
 Trigger/Name/lib_DEAD_DD0E2AE2=DS_ContextEquipP1

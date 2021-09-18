@@ -3317,10 +3317,8 @@ void libDEAD_gf_DS_InitHPSystem (int lp_player) {
     UnitSetPropertyFixed(libDEAD_gv_playerUnit[lp_player], c_unitPropLifePercent, 100.0);
     autoBF7FA21B_val = lp_player;
     if (autoBF7FA21B_val == 1) {
-        TriggerEnable(libDEAD_gt_DS_HealthDummyP1, true);
     }
     else if (autoBF7FA21B_val == 2) {
-        TriggerEnable(libDEAD_gt_DS_HealthDummyP2, true);
     }
     else if (autoBF7FA21B_val == 3) {
     }
@@ -4786,6 +4784,26 @@ bool libDEAD_gt_DS_Unlock_Func (bool testConds, bool runActions) {
 void libDEAD_gt_DS_Unlock_Init () {
     libDEAD_gt_DS_Unlock = TriggerCreate("libDEAD_gt_DS_Unlock_Func");
     TriggerAddEventChatMessage(libDEAD_gt_DS_Unlock, c_playerAny, "equip", true);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: DS_HealthIncrease
+//--------------------------------------------------------------------------------------------------
+bool libDEAD_gt_DS_HealthIncrease_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libDEAD_gf_DivideHealthToLimbs(EventPlayer(), 150);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libDEAD_gt_DS_HealthIncrease_Init () {
+    libDEAD_gt_DS_HealthIncrease = TriggerCreate("libDEAD_gt_DS_HealthIncrease_Func");
+    TriggerAddEventChatMessage(libDEAD_gt_DS_HealthIncrease, c_playerAny, "incr", true);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6896,64 +6914,6 @@ void libDEAD_gt_DS_LootAllButtonP2_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: DS_HealthDummyP1
-//--------------------------------------------------------------------------------------------------
-bool libDEAD_gt_DS_HealthDummyP1_Func (bool testConds, bool runActions) {
-    // Automatic Variable Declarations
-    // Conditions
-    if (testConds) {
-        if (!((TriggerIsEnabled(TriggerGetCurrent()) == true))) {
-            return false;
-        }
-    }
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    UnitSetPropertyFixed(libDEAD_gv_playerUnit[1], c_unitPropLifeMax, 50000.0);
-    UnitSetPropertyFixed(libDEAD_gv_playerUnit[1], c_unitPropLifePercent, 100.0);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void libDEAD_gt_DS_HealthDummyP1_Init () {
-    libDEAD_gt_DS_HealthDummyP1 = TriggerCreate("libDEAD_gt_DS_HealthDummyP1_Func");
-    TriggerEnable(libDEAD_gt_DS_HealthDummyP1, false);
-    TriggerAddEventTimePeriodic(libDEAD_gt_DS_HealthDummyP1, 15.0, c_timeGame);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: DS_HealthDummyP2
-//--------------------------------------------------------------------------------------------------
-bool libDEAD_gt_DS_HealthDummyP2_Func (bool testConds, bool runActions) {
-    // Automatic Variable Declarations
-    // Conditions
-    if (testConds) {
-        if (!((TriggerIsEnabled(TriggerGetCurrent()) == true))) {
-            return false;
-        }
-    }
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    UnitSetPropertyFixed(libDEAD_gv_playerUnit[2], c_unitPropLifeMax, 50000.0);
-    UnitSetPropertyFixed(libDEAD_gv_playerUnit[2], c_unitPropLifePercent, 100.0);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void libDEAD_gt_DS_HealthDummyP2_Init () {
-    libDEAD_gt_DS_HealthDummyP2 = TriggerCreate("libDEAD_gt_DS_HealthDummyP2_Func");
-    TriggerEnable(libDEAD_gt_DS_HealthDummyP2, false);
-    TriggerAddEventTimePeriodic(libDEAD_gt_DS_HealthDummyP2, 15.0, c_timeGame);
-}
-
-//--------------------------------------------------------------------------------------------------
 // Trigger: DS_FoodLossP1
 //--------------------------------------------------------------------------------------------------
 bool libDEAD_gt_DS_FoodLossP1_Func (bool testConds, bool runActions) {
@@ -7467,6 +7427,7 @@ void libDEAD_InitTriggers () {
     libDEAD_gt_DS_DiscoverRecipe_Init();
     libDEAD_gt_DS_CheckItems_Init();
     libDEAD_gt_DS_Unlock_Init();
+    libDEAD_gt_DS_HealthIncrease_Init();
     libDEAD_gt_DS_ConfirmYesP1_Init();
     libDEAD_gt_DS_ConfirmNoP1_Init();
     libDEAD_gt_DS_ConfirmYesP2_Init();
@@ -7516,8 +7477,6 @@ void libDEAD_InitTriggers () {
     libDEAD_gt_DS_CrateItemFocusedP2_Init();
     libDEAD_gt_DS_TakeButtonPressedP2_Init();
     libDEAD_gt_DS_LootAllButtonP2_Init();
-    libDEAD_gt_DS_HealthDummyP1_Init();
-    libDEAD_gt_DS_HealthDummyP2_Init();
     libDEAD_gt_DS_FoodLossP1_Init();
     libDEAD_gt_DS_WaterLossP1_Init();
     libDEAD_gt_DS_FoodLossP2_Init();

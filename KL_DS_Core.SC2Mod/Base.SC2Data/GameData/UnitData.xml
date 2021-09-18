@@ -27,4 +27,8 @@
         <LeaderAlias value="RTT_Display_1"/>
         <HotkeyAlias value="RTT_Display_1"/>
     </CUnit>
+    <CUnit id="Separatist">
+        <LifeStart value="440"/>
+        <LifeMax value="440"/>
+    </CUnit>
 </Catalog>

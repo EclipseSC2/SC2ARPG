@@ -877,17 +877,6 @@
         <Fields Id="QuickSlots" Type="Int" EditorColumn="8"/>
         <Fields Id="Oxygen Reserve" Type="Int" EditorColumn="9"/>
         <Instances Id="[Default]"/>
-        <Instances>
-            <Fixed Fixed="25">
-                <Field Id="Move Speed"/>
-            </Fixed>
-            <Int Int="2">
-                <Field Id="Armor"/>
-            </Int>
-            <Int Int="2">
-                <Field Id="InventorySize"/>
-            </Int>
-        </Instances>
         <Instances Id="Vision Helmet">
             <Int Int="2">
                 <Field Id="Vision Range"/>
@@ -921,7 +910,7 @@
             <Int Int="10">
                 <Field Id="Health"/>
             </Int>
-            <Int Fixed="2">
+            <Int>
                 <Field Id="Move Speed"/>
             </Int>
         </Instances>
@@ -945,6 +934,8 @@
             <EditorColumn value="12"/>
         </Fields>
         <Fields Id="Launch" Type="String" EditorColumn="13"/>
+        <Fields Id="Bursts" Type="Int" EditorColumn="14"/>
+        <Fields Id="CooldownBurst" Type="Int" EditorColumn="15"/>
         <Instances Id="[Default]">
             <Fixed Fixed="0.75">
                 <Field Id="Cooldown"/>

@@ -4,8 +4,8 @@
         <Value>bnet:Void (Campaign)/0.0/999,file:Campaigns/Void.SC2Campaign</Value>
         <Value>bnet:Void Story (Campaign)/0.0/999,file:Campaigns/VoidStory.SC2Campaign</Value>
         <Value>bnet:Nova Covert Ops (Art Mod)/0.0/999,file:Mods/NovaStoryAssets.SC2Mod</Value>
-        <Value>file:Mods\Kat_CleanUIAssets.SC2Mod</Value>
-        <Value>file:Mods\Utility_Library.SC2Mod</Value>
-        <Value>file:Mods\Projectiles_folder.SC2Mod</Value>
+        <Value>file:Mods\SC2ARPG\Kat_CleanUIAssets.SC2Mod</Value>
+        <Value>file:Mods\SC2ARPG\Utility_Library.SC2Mod</Value>
+        <Value>file:Mods\SC2ARPG\Projectiles_folder.SC2Mod</Value>
     </Dependencies>
 </DocInfo>
