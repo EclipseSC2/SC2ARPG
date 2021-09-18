@@ -81,7 +81,7 @@ void libDEAD_InitVariables () {
         for (init_i1 = 0; init_i1 <= libDEAD_gv_eCL__maxslots; init_i1 += 1) {
             libDEAD_gv_eCL__Inventory[init_i].lv_iTEM_state_box[init_i1] = c_invalidDialogControlId;
         }
-        libDEAD_gv_eCL__Inventory[init_i].lv_n_slots = libDEAD_gv_eCL__maxslots;
+        libDEAD_gv_eCL__Inventory[init_i].lv_iNV_slots = (libDEAD_gv_eCL__equipmentslots + libDEAD_gv_baseInventory);
     }
     for (init_i = 0; init_i <= libDEAD_gv_dS_MaxPlayers; init_i += 1) {
         libDEAD_gv_dS_Crafting[init_i].lv_craftingPanel = c_invalidDialogControlId;
@@ -780,7 +780,7 @@ void libDEAD_gf_ECL_ITEM_add (int lp_player, string lp_item, int lp_amount, bool
     lv_noOtherStackFound = true;
 
     // Implementation
-    autoFA7D2691_ae = libDEAD_gv_eCL__Inventory[lp_player].lv_n_slots;
+    autoFA7D2691_ae = libDEAD_gv_eCL__Inventory[lp_player].lv_iNV_slots;
     autoFA7D2691_var = 1;
     for ( ; autoFA7D2691_var <= autoFA7D2691_ae; autoFA7D2691_var += 1 ) {
         if ((libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[autoFA7D2691_var] > 0) && (lv_quantity > 0) && (libDEAD_gv_dS_InventoryItem[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[autoFA7D2691_var]][lp_player] == lp_item) && (libDEAD_gf_ReturnItemPropertyMaxAmount(libDEAD_gv_dS_InventoryItem[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[autoFA7D2691_var]][lp_player]) > 1)) {
@@ -805,7 +805,7 @@ void libDEAD_gf_ECL_ITEM_add (int lp_player, string lp_item, int lp_amount, bool
 
     }
     if ((lv_quantity > 0)) {
-        auto55CCDCEF_ae = libDEAD_gv_eCL__Inventory[lp_player].lv_n_slots;
+        auto55CCDCEF_ae = libDEAD_gv_eCL__Inventory[lp_player].lv_iNV_slots;
         auto55CCDCEF_var = 1;
         for ( ; auto55CCDCEF_var <= auto55CCDCEF_ae; auto55CCDCEF_var += 1 ) {
             if ((libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[auto55CCDCEF_var] == 0) && (libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_locked[auto55CCDCEF_var] == false) && ((libDEAD_gf_ReturnItemPropertyCategory(lp_item) == libDEAD_gv_dS_InventorySlot_Category[auto55CCDCEF_var][lp_player]) || (libDEAD_gv_dS_InventorySlot_Category[auto55CCDCEF_var][lp_player] == "All"))) {
@@ -966,46 +966,119 @@ void libDEAD_gf_ECL_SLOT_lock_unlock (int lp_player, int lp_slot_ID, bool lp_loc
 }
 
 void libDEAD_gf_ECL__EQUIP (int lp_player, int lp_sLOT, int lp_eQUIPUNEQUIP) {
+    // Variable Declarations
+    string lv_item;
+    string lv_itemStats;
+    int lv_index;
+    fixed lv_moveSpeed;
+    int lv_armor;
+    int lv_hP;
+    fixed lv_oxygen;
+    int lv_inventory;
+    int lv_vision;
+    string lv_bEHAVIOR_EQUIPMENT;
+
     // Automatic Variable Declarations
     string auto7F1DCA8C_val;
     string auto30B42D06_val;
+    const int auto52B48827_ae = libDEAD_gv_eCL__maxslots;
+    const int auto52B48827_ai = 1;
+    const int autoF9C6E11C_ae = 4;
+    const int autoF9C6E11C_ai = 1;
+    const int auto999CB00D_ae = 4;
+    const int auto999CB00D_ai = 1;
+
+    // Variable Initialization
 
     // Implementation
+    lv_item = libDEAD_gv_dS_InventoryItem[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[lp_sLOT]][lp_player];
+    lv_itemStats = UserDataGetUserInstance("Items", lv_item, "Item Stats", 1);
     if ((lp_eQUIPUNEQUIP == libDEAD_ge_EQUIPUNEQUIP_EQUIP)) {
         auto7F1DCA8C_val = libDEAD_gv_dS_InventorySlot_Category[lp_sLOT][lp_player];
         if (auto7F1DCA8C_val == "Head") {
+            lv_bEHAVIOR_EQUIPMENT = "HEAD";
         }
         else if (auto7F1DCA8C_val == "Suit") {
+            lv_bEHAVIOR_EQUIPMENT = "SUIT";
         }
         else if (auto7F1DCA8C_val == "Pack") {
+            lv_bEHAVIOR_EQUIPMENT = "PACK";
         }
         else if (auto7F1DCA8C_val == "Boots") {
+            lv_bEHAVIOR_EQUIPMENT = "BOOTS";
         }
         else if (auto7F1DCA8C_val == "Augment") {
+            lv_bEHAVIOR_EQUIPMENT = "AUGMENT";
         }
         else if (auto7F1DCA8C_val == "Weapon") {
         }
         else {
         }
+        if ((UnitHasBehavior2(libDEAD_gv_playerUnit[lp_player], lv_bEHAVIOR_EQUIPMENT) == false)) {
+            UnitBehaviorAdd(libDEAD_gv_playerUnit[lp_player], lv_bEHAVIOR_EQUIPMENT, libDEAD_gv_playerUnit[lp_player], 1);
+        }
+
+        libNtve_gf_CatalogFieldValueSetAsReal(c_gameCatalogBehavior, lv_bEHAVIOR_EQUIPMENT, "Modification.LifeArmorBonus", lp_player, UserDataGetFixed("ModifierStats", lv_itemStats, "Armor", 1));
+        libNtve_gf_CatalogFieldValueSetAsReal(c_gameCatalogBehavior, lv_bEHAVIOR_EQUIPMENT, "Modification.VitalMaxArray[" + IntToString(0) + "]", lp_player, UserDataGetInt("ModifierStats", lv_itemStats, "Health", 1));
+        libNtve_gf_CatalogFieldValueSetAsReal(c_gameCatalogBehavior, lv_bEHAVIOR_EQUIPMENT, "Modification.MoveSpeedBonus", lp_player, UserDataGetFixed("ModifierStats", lv_itemStats, "Move Speed", 1));
+        libNtve_gf_CatalogFieldValueSetAsReal(c_gameCatalogBehavior, lv_bEHAVIOR_EQUIPMENT, "Modification.MoveSpeedMultiplier", lp_player, UserDataGetFixed("ModifierStats", lv_itemStats, "Move Speed", 1));
+        lv_inventory += libDEAD_gf_ReturnEquipmentPropertyInventory(lv_item);
     }
     else if ((lp_eQUIPUNEQUIP == libDEAD_ge_EQUIPUNEQUIP_UNEQUIP)) {
+        lv_inventory -= libDEAD_gf_ReturnEquipmentPropertyInventory(lv_item);
         auto30B42D06_val = libDEAD_gv_dS_InventorySlot_Category[lp_sLOT][lp_player];
         if (auto30B42D06_val == "Head") {
+            UnitBehaviorRemove(libDEAD_gv_playerUnit[lp_player], "HEAD", 1);
         }
         else if (auto30B42D06_val == "Suit") {
+            UnitBehaviorRemove(libDEAD_gv_playerUnit[lp_player], "SUIT", 1);
         }
         else if (auto30B42D06_val == "Pack") {
+            UnitBehaviorRemove(libDEAD_gv_playerUnit[lp_player], "PACK", 1);
         }
         else if (auto30B42D06_val == "Boots") {
+            UnitBehaviorRemove(libDEAD_gv_playerUnit[lp_player], "BOOTS", 1);
         }
         else if (auto30B42D06_val == "Augment") {
+            UnitBehaviorRemove(libDEAD_gv_playerUnit[lp_player], "AUGMENT", 1);
         }
         else if (auto30B42D06_val == "Weapon") {
         }
         else {
         }
     }
-    libDEAD_gf_UpdateStatModifiers(lp_player);
+    libDEAD_gv_eCL__Inventory[lp_player].lv_iNV_slots += lv_inventory;
+    lv_index = (libDEAD_gv_eCL__equipmentslots + 1);
+    for ( ; ( (auto52B48827_ai >= 0 && lv_index <= auto52B48827_ae) || (auto52B48827_ai < 0 && lv_index >= auto52B48827_ae) ) ; lv_index += auto52B48827_ai ) {
+        if ((libDEAD_gv_eCL__Inventory[lp_player].lv_iNV_slots < lv_index)) {
+            libDEAD_gf_ECL_SLOT_lock_unlock(lp_player, lv_index, true);
+            if ((libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[lv_index] > 0)) {
+                libDEAD_gf_ECL_ITEM_drop_to_ground(EventPlayer(), libDEAD_gv_dS_InventoryItem[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[lv_index]][lp_player], libDEAD_gv_dS_InventoryAmount[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[lv_index]][lp_player], UnitGetPosition(libDEAD_gv_playerUnit[lp_player]));
+                libDEAD_gf_ECL_ITEM_remove(lp_player, libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[lv_index]);
+            }
+
+        }
+        else {
+            libDEAD_gf_ECL_SLOT_lock_unlock(lp_player, lv_index, false);
+        }
+    }
+    lv_index = 1;
+    for ( ; ( (autoF9C6E11C_ai >= 0 && lv_index <= autoF9C6E11C_ae) || (autoF9C6E11C_ai < 0 && lv_index >= autoF9C6E11C_ae) ) ; lv_index += autoF9C6E11C_ai ) {
+        if ((libDEAD_gf_ECL_ReturnWeaponItem(lp_player, lv_index) != null)) {
+            libDEAD_gv_activeWeaponInstance[lp_player][lv_index] = libDEAD_gf_ECL_ReturnWeaponItem(lp_player, lv_index);
+        }
+        else {
+            libDEAD_gv_activeWeaponInstance[lp_player][lv_index] = null;
+        }
+    }
+    lv_index = 1;
+    for ( ; ( (auto999CB00D_ai >= 0 && lv_index <= auto999CB00D_ae) || (auto999CB00D_ai < 0 && lv_index >= auto999CB00D_ae) ) ; lv_index += auto999CB00D_ai ) {
+        if ((libDEAD_gf_ECL_ReturnWeaponItem(lp_player, lv_index) != null)) {
+            libDEAD_gf_KL_SwapToWeapon(EventPlayer(), lv_index);
+            break;
+        }
+
+    }
 }
 
 string libDEAD_gf_ECL_ReturnEquippedItem (int lp_player, string lp_type) {
@@ -1093,8 +1166,10 @@ void libDEAD_gf_DS_FireWeaponItem (int lp_player, string lp_weaponItem) {
     string lv_weaponData;
     int lv_launchArt;
     int lv_projectileN;
+    int lv_bursts;
     fixed lv_velocity;
     fixed lv_cooldown;
+    fixed lv_cooldown_burst;
     fixed lv_angle;
     fixed lv_range;
     string lv_impact;
@@ -1121,7 +1196,7 @@ void libDEAD_gf_DS_FireWeaponItem (int lp_player, string lp_weaponItem) {
     lv_damage_max = UserDataGetInt("WeaponTypes", lp_weaponItem, "DamageMax", 1);
     libNtve_gf_CatalogFieldValueSetAsReal(c_gameCatalogEffect, lv_impact, "Amount", lp_player, lv_damage_min);
     libNtve_gf_CatalogFieldValueSetAsReal(c_gameCatalogEffect, lv_impact, "Random", lp_player, (lv_damage_max - lv_damage_min));
-    libECLP_gf_ECL_Fire(lp_player, lv_launchArt, lv_projectileN, lv_velocity, lv_cooldown, lv_angle, lv_impact, lv_range);
+    libECLP_gf_ECL_Fire(lp_player, lv_launchArt, lv_projectileN, lv_bursts, lv_velocity, lv_cooldown, lv_cooldown_burst, lv_angle, lv_impact, lv_range);
 }
 
 void libDEAD_gf_ECL__Hookup_Context (int lp_player, int lp_index) {
@@ -3355,90 +3430,6 @@ void libDEAD_gf_AddRemoveWater (int lp_player, bool lp_addRemove, int lp_amount)
     libDEAD_gf_DS_UpdateVitalsUI(lp_player);
 }
 
-void libDEAD_gf_ModifyLimbHealthMax (int lp_player, int lp_value, int lp_limb) {
-    // Automatic Variable Declarations
-    int auto8D6F8269_val;
-
-    // Implementation
-    auto8D6F8269_val = lp_limb;
-    if (auto8D6F8269_val == libDEAD_ge_DS_LimbType_Head) {
-        libDEAD_gv_dS_Character[lp_player].lv_headMaxHP += lp_value;
-    }
-    else if (auto8D6F8269_val == libDEAD_ge_DS_LimbType_Torso) {
-        libDEAD_gv_dS_Character[lp_player].lv_torsoMaxHP += lp_value;
-    }
-    else if (auto8D6F8269_val == libDEAD_ge_DS_LimbType_Legs) {
-        libDEAD_gv_dS_Character[lp_player].lv_legsMaxHP += lp_value;
-    }
-    else {
-
-    }
-    libDEAD_gf_DS_UpdateVitalsUI(lp_player);
-}
-
-void libDEAD_gf_ModifyLimbHealth (int lp_player, int lp_value, int lp_limb) {
-    // Automatic Variable Declarations
-    int auto4A48BE63_val;
-
-    // Implementation
-    auto4A48BE63_val = lp_limb;
-    if (auto4A48BE63_val == libDEAD_ge_DS_LimbType_Head) {
-        libDEAD_gv_dS_Character[lp_player].lv_headHP += lp_value;
-    }
-    else if (auto4A48BE63_val == libDEAD_ge_DS_LimbType_Torso) {
-        libDEAD_gv_dS_Character[lp_player].lv_torsoHP += lp_value;
-    }
-    else if (auto4A48BE63_val == libDEAD_ge_DS_LimbType_Legs) {
-        libDEAD_gv_dS_Character[lp_player].lv_legsHP += lp_value;
-    }
-    else {
-
-    }
-    libDEAD_gf_DS_UpdateVitalsUI(lp_player);
-}
-
-void libDEAD_gf_DivideHealthToLimbs (int lp_player, int lp_hPAddition) {
-    // Variable Declarations
-    const fixed lv_percentageHead = 0.18;
-    const fixed lv_percentageTorso = 0.45;
-    const fixed lv_percentageLegs = 0.37;
-    fixed lv_headHp;
-    fixed lv_torsoHP;
-    fixed lv_legHP;
-    int lv_totalHP;
-    int lv_tempHP;
-
-    // Automatic Variable Declarations
-    // Variable Initialization
-
-    // Implementation
-    lv_headHp = (IntToFixed(lp_hPAddition) * lv_percentageHead);
-    lv_torsoHP = (IntToFixed(lp_hPAddition) * lv_percentageTorso);
-    lv_legHP = (IntToFixed(lp_hPAddition) * lv_percentageLegs);
-    lv_headHp = Trunc(lv_headHp);
-    lv_torsoHP = Trunc(lv_torsoHP);
-    lv_legHP = Trunc(lv_legHP);
-    lv_totalHP = (FixedToInt(lv_headHp) + FixedToInt(lv_torsoHP) + FixedToInt(lv_legHP));
-    if ((lv_totalHP < lp_hPAddition) && (lp_hPAddition >= 1)) {
-        libDEAD_gf_SendDebugMessage(("Adding HP by " + IntToString(lp_hPAddition)));
-        lv_tempHP = (lp_hPAddition - lv_totalHP);
-        lv_headHp += lv_tempHP;
-        lv_totalHP = (FixedToInt(lv_headHp) + FixedToInt(lv_torsoHP) + FixedToInt(lv_legHP));
-    }
-    if ((lv_totalHP > lp_hPAddition) && (lp_hPAddition <= -1)) {
-        libDEAD_gf_SendDebugMessage(("Removing HP by " + IntToString(lp_hPAddition)));
-        lv_tempHP = (lp_hPAddition - lv_totalHP);
-        lv_headHp += lv_tempHP;
-        lv_totalHP = (FixedToInt(lv_headHp) + FixedToInt(lv_torsoHP) + FixedToInt(lv_legHP));
-    }
-    libDEAD_gf_ModifyLimbHealthMax(lp_player, FixedToInt(lv_headHp), libDEAD_ge_DS_LimbType_Head);
-    libDEAD_gf_ModifyLimbHealthMax(lp_player, FixedToInt(lv_legHP), libDEAD_ge_DS_LimbType_Legs);
-    libDEAD_gf_ModifyLimbHealthMax(lp_player, FixedToInt(lv_torsoHP), libDEAD_ge_DS_LimbType_Torso);
-    libDEAD_gf_ModifyLimbHealth(lp_player, FixedToInt(lv_torsoHP), libDEAD_ge_DS_LimbType_Head);
-    libDEAD_gf_ModifyLimbHealth(lp_player, FixedToInt(lv_torsoHP), libDEAD_ge_DS_LimbType_Torso);
-    libDEAD_gf_ModifyLimbHealth(lp_player, FixedToInt(lv_legHP), libDEAD_ge_DS_LimbType_Legs);
-}
-
 void libDEAD_gf_AddFood (int lp_player, int lp_amount) {
     // Variable Declarations
     int lv_localFood;
@@ -4714,33 +4705,6 @@ void libDEAD_gt_DS_Unlock_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: DS_HPTest
-//--------------------------------------------------------------------------------------------------
-bool libDEAD_gt_DS_HPTest_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    fixed lv_hPBase;
-    fixed lv_percentCalc;
-
-    // Automatic Variable Declarations
-    // Variable Initialization
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    lv_hPBase = libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogUnit, UnitGetType(libDEAD_gv_playerUnit[EventPlayer()]), "UserFlagArray", c_playerAny);
-    libDEAD_gf_DivideHealthToLimbs(EventPlayer(), 150);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void libDEAD_gt_DS_HPTest_Init () {
-    libDEAD_gt_DS_HPTest = TriggerCreate("libDEAD_gt_DS_HPTest_Func");
-    TriggerAddEventChatMessage(libDEAD_gt_DS_HPTest, c_playerAny, "hpnew", true);
-}
-
-//--------------------------------------------------------------------------------------------------
 // Trigger: DS_ConfirmYesP1
 //--------------------------------------------------------------------------------------------------
 bool libDEAD_gt_DS_ConfirmYesP1_Func (bool testConds, bool runActions) {
@@ -5135,6 +5099,7 @@ bool libDEAD_gt_ECL__HOOKUPINVENTORYFRAMES_Func (bool testConds, bool runActions
         libDEAD_gv_dS_Character[auto922C8A78_var].lv_torsoBar = DialogControlLastCreated();
         DialogControlHookup(libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv__INV, c_triggerControlTypeProgressBar, libNtve_gf_ConvertStringToUILayoutFrameName("LegsStatus/StatusBar/ProgressBar"));
         libDEAD_gv_dS_Character[auto922C8A78_var].lv_legsBar = DialogControlLastCreated();
+        libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv_iNV_slots = (libDEAD_gv_eCL__equipmentslots + libDEAD_gv_baseInventory);
         autoBB74557B_var = 1;
         for ( ; autoBB74557B_var <= autoBB74557B_ae; autoBB74557B_var += 1 ) {
             if ((autoBB74557B_var > libDEAD_gv_eCL__equipmentslots)) {
@@ -5383,7 +5348,7 @@ bool libDEAD_gt_ECL__SETNEWOLDSLOT_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    auto90A4862D_ae = libDEAD_gv_eCL__Inventory[EventPlayer()].lv_n_slots;
+    auto90A4862D_ae = libDEAD_gv_eCL__Inventory[EventPlayer()].lv_iNV_slots;
     auto90A4862D_var = 1;
     for ( ; auto90A4862D_var <= auto90A4862D_ae; auto90A4862D_var += 1 ) {
         if ((EventDialogControl() == libDEAD_gv_eCL__Inventory[EventPlayer()].lv_sLOT[auto90A4862D_var])) {
@@ -5477,12 +5442,18 @@ void libDEAD_gt_ECL__PICKUPLOOT_Init () {
 //--------------------------------------------------------------------------------------------------
 bool libDEAD_gt_ECL__PICKUPLOOT_directly_Func (bool testConds, bool runActions) {
     // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnit()) == "PLootPermanent"))) {
+            return false;
+        }
+    }
+
     // Actions
     if (!runActions) {
         return true;
     }
 
-    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/lib_DEAD_3B47F115"));
     UnitIssueOrder(EventUnit(), Order(AbilityCommand("Sacrifice", 0)), c_orderQueueReplace);
     return true;
 }
@@ -7392,7 +7363,6 @@ void libDEAD_InitTriggers () {
     libDEAD_gt_DS_DiscoverRecipe_Init();
     libDEAD_gt_DS_CheckItems_Init();
     libDEAD_gt_DS_Unlock_Init();
-    libDEAD_gt_DS_HPTest_Init();
     libDEAD_gt_DS_ConfirmYesP1_Init();
     libDEAD_gt_DS_ConfirmNoP1_Init();
     libDEAD_gt_DS_ConfirmYesP2_Init();

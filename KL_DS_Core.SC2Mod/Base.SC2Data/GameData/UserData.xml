@@ -711,6 +711,29 @@
                 <Field Id="Item Stats"/>
             </User>
         </Instances>
+        <Instances Id="TEST Suit">
+            <Image Image="Assets\Textures\Items\ui_itemicons_pills.dds">
+                <Field Id="Icon"/>
+            </Image>
+            <Int Int="1">
+                <Field Id="Max Quantity"/>
+            </Int>
+            <String String="Suit">
+                <Field Id="Category"/>
+            </String>
+            <String String="Wear">
+                <Field Id="Use Type"/>
+            </String>
+            <String String="TEST Suit">
+                <Field Id="Name"/>
+            </String>
+            <Text Text="UserData/Items/TEST Suit_Description">
+                <Field Id="Description"/>
+            </Text>
+            <User Type="ModifierStats" Instance="TEST Suit">
+                <Field Id="Item Stats"/>
+            </User>
+        </Instances>
     </CUser>
     <CUser id="LootTables">
         <Fields>
@@ -860,6 +883,17 @@
         <Instances Id="Security Suit">
             <Int Int="2">
                 <Field Id="Armor"/>
+            </Int>
+        </Instances>
+        <Instances Id="TEST SUIT">
+            <Int Int="1">
+                <Field Id="Armor"/>
+            </Int>
+            <Int Int="10">
+                <Field Id="Health"/>
+            </Int>
+            <Int Fixed="2">
+                <Field Id="Move Speed"/>
             </Int>
         </Instances>
     </CUser>
