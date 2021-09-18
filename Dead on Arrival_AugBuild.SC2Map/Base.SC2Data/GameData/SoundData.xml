@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CSound id="ECL_ACCESS_DENIED" parent="NovaMP3_Mission" Portrait="AdjutantPortrait_L" Subtitle="Mission_Nova07" Speaker="DefendersAdjutant" Line="00058">
+        <AssetArray index="0">
+            <File value="LocalizedData\Sounds\VO\Mission_Nova07_DefendersAdjutant_058.ogg"/>
+            <FacialAnim value="Mission_Nova07_DefendersAdjutant_058"/>
+            <FacialGroup value="Mission_Nova07_DefendersAdjutant_058"/>
+            <FacialFile value="LocalizedData\Sounds\VO\Mission_Nova07_DefendersAdjutant_058.fxe"/>
+        </AssetArray>
+        <ReverbBalance Room="-500"/>
+    </CSound>
+</Catalog>

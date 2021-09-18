@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CBehaviorBuff id="Run">
+        <Modification MoveSpeedMultiplier="1.5"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Wounded">
+        <Modification MoveSpeedMultiplier="1"/>
+    </CBehaviorBuff>
+</Catalog>

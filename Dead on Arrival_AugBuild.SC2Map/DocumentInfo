@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DocInfo>
+    <ModType>
+        <Value>Interface</Value>
+    </ModType>
+    <Dependencies>
+        <Value>file:Mods\SC2ARPG\KL_DS_Core.SC2Mod</Value>
+        <Value>file:Mods\SC2ARPG\Utility_Library.SC2Mod</Value>
+    </Dependencies>
+    <Preload>
+        <Value>Bank;DS_PD</Value>
+        <Value>Bank;DS_MA</Value>
+    </Preload>
+</DocInfo>

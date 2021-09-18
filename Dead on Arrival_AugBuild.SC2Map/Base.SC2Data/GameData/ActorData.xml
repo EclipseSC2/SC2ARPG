@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CActorDoodad id="ECLPORTALACTIVATE2">
+        <On index="0" Terms="ActorCreation" Send="$Birth"/>
+        <On index="1" removed="1"/>
+        <Model value="ECLPORTAL_DEACTIVATE"/>
+        <EditorFlags index="NoAutoRotate" value="1"/>
+        <RandomScaleRange value="1.000000,1.000000"/>
+    </CActorDoodad>
+    <CActorModel id="ECLPORTALNOVAIMPACT" parent="ModelAddition">
+        <On Terms="Effect.ECLPORTALNOVADUMMY.Start" Send="Create"/>
+        <On Terms="Effect.ECLPORTALNOVADUMMY.Stop" Send="AnimBracketStop BSD"/>
+        <On Terms="ActorCreation" Send="SetRotationYPR -45.000000 0.000000 90.000000"/>
+        <Model value="ECLPORTAL_ACTIVATE_NOVA"/>
+    </CActorModel>
+    <CActorSiteOpLocalOffset id="DraftModeCameraOffset">
+        <LocalOffset value="0.000000,0.000000,7.500000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpRotationExplicit id="DraftModePointToCamera">
+        <Forward value="0.000000,0.829038,0.559193"/>
+    </CActorSiteOpRotationExplicit>
+    <CActorDoodad id="ECLLABSKYBOXPORTAL">
+        <EditorCategories value="DoodadType:Environment"/>
+        <On index="0" Terms="ActorCreation" Send="AnimPlay StandA Stand PlayForever"/>
+        <Model value="ECLPORTALSKYBOX"/>
+        <EditorFlags index="NoAutoRotate" value="1"/>
+        <RandomScaleRange value="1.000000,1.000000"/>
+    </CActorDoodad>
+    <CActorDoodad id="ECLPORTALACTIVATE_NOVA">
+        <On index="0" Terms="ActorCreation" Send="$Birth"/>
+        <On index="1" removed="1"/>
+        <Model value="ECLPORTAL_ACTIVATE_NOVA"/>
+        <EditorFlags index="NoAutoRotate" value="1"/>
+        <RandomScaleRange value="1.000000,1.000000"/>
+    </CActorDoodad>
+    <CActorDoodad id="ECLPORTALACTIVATE_VORTEX">
+        <On index="0" Terms="ActorCreation" Send="$Stand PlayForever,RandomStartOffset"/>
+        <On index="1" removed="1"/>
+        <HostSiteOps Ops="SOpPitch90"/>
+        <EditorFlags index="NoAutoRotate" value="1"/>
+        <RandomScaleRange value="1.000000,1.000000"/>
+    </CActorDoodad>
+    <CActorDoodad id="ECLPORTALBORDER">
+        <On index="0" Terms="ActorCreation" Send="$Stand,B PlayForever,RandomStartOffset"/>
+        <On index="1" removed="1"/>
+        <Model value="ECLPORTAL_BORDER"/>
+        <EditorFlags index="NoAutoRotate" value="1"/>
+        <RandomScaleRange value="1.000000,1.000000"/>
+    </CActorDoodad>
+    <CActorDoodad id="ECLPORTALBORDER2">
+        <On index="0" Terms="ActorCreation" Send="$Stand PlayForever,RandomStartOffset"/>
+        <On index="1" removed="1"/>
+        <Model value="ECLPORTAL_BORDER_2"/>
+        <EditorFlags index="NoAutoRotate" value="1"/>
+        <RandomScaleRange value="1.000000,1.000000"/>
+    </CActorDoodad>
+    <CActorModel id="ECLPORTALDEACTIVATE" parent="ModelAddition">
+        <On Terms="Effect.ECLPORTALDEACTIVATE.Start" Send="Create"/>
+        <On Terms="Effect.ECLPORTALDEACTIVATE.Stop" Send="AnimBracketStop BSD"/>
+        <On Terms="ActorCreation" Send="SetRotationYPR 135.000000 0.000000 90.000000"/>
+        <Model value="ECLPORTAL_DEACTIVATE"/>
+    </CActorModel>
+    <!-- Flashlight for regular Raynor                                                           -->
+    <CActorModel id="FlashlightModel">
+        <Scale value="2.000000"/>
+    </CActorModel>
+    <CActorUnit id="InvisibleTargetDummy">
+        <EditorModel value="Invisible"/>
+    </CActorUnit>
+    <CActorUnit id="RTT_Display_1">
+        <FogVisibility value="Visible"/>
+        <HostSiteOps Ops="SOpMoveDownBy4 SOpMoveDownBy4 SOpMoveDownBy2 SOpMoveDownBy2"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+    </CActorUnit>
+    <CActorSiteOpRotationExplicit id="SOpPitch90">
+        <Forward value="0.000000,0.000000,1.000000"/>
+        <IsLocal value="1"/>
+    </CActorSiteOpRotationExplicit>
+    <CActorDoodad id="ECLLABSKYBOX">
+        <EditorCategories value="DoodadType:Environment"/>
+        <On index="0" Terms="ActorCreation" Send="AnimPlay StandA Stand PlayForever"/>
+        <Model value="Glue_Background_Starfield_Generic"/>
+        <EditorFlags index="NoAutoRotate" value="1"/>
+        <RandomScaleRange value="1.000000,1.000000"/>
+    </CActorDoodad>
+    <CActorUnit id="InfestedCivilian">
+        <On Terms="Behavior.LocustStun.On" Send="Create SwarmHostEggCampaign"/>
+        <On Terms="Behavior.LocustStun.On" Send="ModelSwap Invisible"/>
+        <On Terms="Behavior.LocustStun.On" Send="AnimClear Birth"/>
+        <On Terms="Behavior.LocustStun.Off" Target="SwarmHostEggCampaign" Send="$Death"/>
+        <On Terms="Behavior.LocustStun.Off" Send="ModelSwap InfestedCivilian"/>
+        <On Terms="Behavior.LocustStun.Off" Send="$Birth 0 0.000000"/>
+        <CustomUnitStatusFrame value="0_ECL_TEMPLATES/HeroUnitEnergyStatusFrameTemplate"/>
+        <UnitFlags index="SuppressDefaultStatusBar" value="1"/>
+        <StatusBarOn index="Custom" value="1"/>
+    </CActorUnit>
+    <CActorUnit id="DSLabDoor" parent="XelNagaTempleDoorLarge" unitName="DSLabDoorClosed">
+        <On index="69" Terms="UnitBirth.DSLabDoorOpen" Send="Create"/>
+        <On index="70" Terms="UnitBirth.DSLabDoorOpen" Send="AnimGroupApply Work Stand,Work,Start Stand,Work,End Instant"/>
+        <On index="71" Terms="AbilMorph.*.Start; MorphTo DSLabDoorOpen" Send="AnimGroupApply Work Stand,Work,Start Stand,Work,End"/>
+        <On index="72" Terms="AbilMorph.*.Finish; MorphTo DSLabDoorOpen" Send="AnimGroupApply Work Stand,Work,Start Stand,Work,End Instant"/>
+        <Model value="DSLabDoor"/>
+        <HighlightTooltip value="Unit/Name/DSLabDoor"/>
+    </CActorUnit>
+    <CActorDoodad id="ECLPORTALACTIVATE">
+        <On index="0" Terms="ActorCreation" Send="$Stand PlayForever,RandomStartOffset"/>
+        <On index="1" removed="1"/>
+        <Model value="ECLPORTAL_ACTIVATE"/>
+        <EditorFlags index="NoAutoRotate" value="1"/>
+        <RandomScaleRange value="1.000000,1.000000"/>
+        <HostSiteOps Ops="SOpPitch90"/>
+    </CActorDoodad>
+</Catalog>

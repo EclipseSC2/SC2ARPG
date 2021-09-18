@@ -1,0 +1,2772 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PlacedObjects Version="27">
+    <ObjectDoodad Id="358087370" Variation="4" Position="222.6335,130.3833,10.0036" Rotation="1.5705" Scale="1,1,1" Type="Tarsonis_Guardrail">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="728524005" Variation="10" Position="113.4685,43.8623,7.9956" Rotation="0.785" Scale="1.2238,1.2238,1" Type="BattleStation_Line_Decals">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="33259163" Variation="2" Position="24,185.5,7.9924" Scale="1,1,1" Type="Elsecaro_Tree">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1529204689" Variation="1" Position="182,103,9.997" Rotation="5.1325" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="2114538070" Variation="7" Position="189,135.5,9.9975" Rotation="2.3557" Scale="1,1,1" Type="JarbanMinor_Fence">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1156549068" Variation="1" Position="16,195,7.9924" Rotation="2.4006" Scale="0.9941,0.9941,0.9941" Type="Aiur_Trees_Giant">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1181393183" Variation="4" Position="71.4436,39.1203,0.8745" Rotation="3.9267" Scale="1,1,1" Type="BattleStation_Floor_Interrior">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1343922955" Variation="7" Position="217,157,10.2434" Rotation="5.4975" Scale="1,1,1" Type="CompoundSewers_FuelingPipes">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="2052815037" Variation="2" Position="93.379,37.992,7.9963" Rotation="4.7121" Scale="1.25,1.25,1.25" Type="UmojanLabCatwalkSectionPlatform">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="504407857" Variation="2" Position="113.991,41.7988,7.9956" Rotation="5.5146" Scale="1.1811,1.1811,1.212" Type="BattleStation_Text_Decals">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1197185293" Variation="2" Position="19.6481,5.8437,11.9936" Rotation="0.4072" Scale="1.1992,1.1992,1.1992" Type="AiurTree_Ex2">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1492359455" Variation="1" Position="54,205,7.9924" Rotation="5.767" Scale="0.9592,0.9592,0.9592" Type="Aiur_Trees_Giant">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1190930333" Variation="3" Position="216.0263,93.3388,8.074" Rotation="3.9267" Scale="1,1,1" Type="DOM_LabGlassWalls">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="532003418" Variation="4" Position="23.5,189,7.9968" Rotation="4.4267" Scale="0.9616,0.9616,0.9616" Type="Slayn_Brambles" TintColor="157,182,61 2.000000">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="995795770" Position="69.204,178.1965,9.402" Rotation="0.7851" Scale="0.8183,1.1848,1.6225" Type="ECLPORTALACTIVATE_VORTEX" TintColor="0,75,215 2.000000">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1091185995" Position="149.5,103.5,8.4802" Rotation="5.0053" Scale="1,1,1" Type="AmbientLightSpot_White">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="728985290" Variation="5" Position="37.037,10.6701,11.9936" Rotation="4.17" Scale="0.8598,0.8598,0.8598" Type="AiurTree_Grouped">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1619505822" Position="30,195,-3.9775" Scale="1,1,1" Type="Aiur_MossClumps">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="232628556" Variation="2" Position="28,199.5,7.9968" Rotation="3.4736" Scale="1,1,1" Type="Elsecaro_Small_Rock_Group">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="899283378" Variation="1" Position="150.0004,48.3818,7.9956" Rotation="2.356" Scale="0.3925,0.3925,1" Type="DecalSpace" TintColor="170,170,170">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="702391561" Variation="4" Position="41,200,7.9968" Scale="1.0224,1.0224,1.0224" Type="Aiur_Overgrowth">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="803759034" Variation="1" Position="109.669,149.5817,7.9924" Rotation="4.1806" Scale="0.8454,0.8454,0.8454" Type="Aiur_Trees_Giant">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1461544486" Variation="4" Position="160,59.5,7.9265" Rotation="5.497" Scale="0.5998,0.24,1" Type="Korhal_PerimeterWall">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="2127746839" Variation="1" Position="98.4228,38.6887,0.8894" Rotation="2.356" Scale="1.1618,1,1" Type="BattleStation_Floor_Interrior">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="99435081" Variation="2" Position="89.8095,41.1276,7.9963" Rotation="1.5705" Scale="1.25,1.25,1.25" Type="UmojanLabCatwalkSection45RightShort">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="357889410" Position="71.6791,50.4521,7.9963" Rotation="2.204" Scale="2.0175,2.0175,2.0175" Type="LightOmniBlueLarge">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="438497698" Position="18.892,16.8205,3.832" Rotation="0.7854" Scale="1.0595,1.0595,0.8315" Type="ECLPORTALBORDER2" Pitch="4.9392">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="332178912" Variation="3" Position="91.1418,23.514,0.8762" Rotation="3.9267" Scale="1,1,1" Type="BattleStation_Floor_Interrior">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1510445845" Variation="3" Position="104.4145,37.9724,4.0561" Rotation="4.7121" Scale="1,1,1" Type="BattleStation_Floor_Interior_Short">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="901659706" Variation="2" Position="193,136,9.997" Rotation="6.212" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1928910122" Variation="3" Position="138,104.5,7.9973" Rotation="1.1491" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="565326594" Variation="2" Position="10.8708,12.3322,11.9936" Rotation="2.1503" Scale="0.8945,0.8945,0.8945" Type="AiurTree_Grouped">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1587263931" Variation="10" Position="105.9746,40.7524,7.9968" Rotation="5.4975" Scale="0.7104,1.224,1" Type="BattleStation_Line_Decals">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="260010093" Variation="1" Position="32.9843,203.436,7.5507" Rotation="2.943" Scale="1.4,1.4,1.4" Type="Void_Crystals" TintColor="63,243,243 2.500000" Pitch="6.0363" Roll="0.0905">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1434099015" Variation="6" Position="123.5043,70.6723,8.0795" Rotation="3.9262" Scale="1.224,1.224,1" Type="BattleStation_Line_Decals">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="402822317" Variation="2" Position="207.2724,91.115,7.9973" Scale="1,1,1" Type="BattleStation_BridgeSeats">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="683982054" Variation="1" Position="187.5,142.5,10.0092" Rotation="2.2585" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1551546780" Variation="4" Position="35.7526,199.7434,1.7087" Rotation="3.4692" Scale="1,1,1" Type="Void_Crystals" TintColor="63,243,243 2.500000" Pitch="5.7675" Roll="0.0654">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1862233044" Variation="6" Position="122.6408,64.4353,8.0046" Rotation="3.9262" Scale="1.224,1.224,1" Type="BattleStation_Line_Decals">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1699972128" Position="150.5,73,2.1186" Rotation="5.0053" Scale="1,1,1" Type="AmbientLightSpot_White">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1663611410" Variation="1" Position="150.0156,48.6027,7.9956" Rotation="2.356" Scale="0.3925,0.3925,1" Type="DecalSpace" TintColor="170,170,170">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1169537944" Variation="7" Position="186.9738,107.4846,9.997" Scale="1,1,1" Type="Tarsonis_Debris_Splat">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1551275911" Variation="6" Position="190.2321,132.9831,9.9975" Rotation="0.76" Scale="1,1,1" Type="CastanarCabinet">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="58309087" Variation="6" Position="26.178,17.583,11.9936" Rotation="0.5798" Scale="0.8981,0.8981,0.8981" Type="AiurTree_Ex2">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1828020175" Variation="6" Position="28.4023,17.154,11.9936" Rotation="1.1743" Scale="1.0292,1.0292,1.0292" Type="AiurTree_Ex2">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="2051403541" Variation="3" Position="7.3635,28.3525,10.8945" Rotation="0.7851" Scale="1.6774,2.5356,4.1523" Type="ProtossBaseArch" Pitch="0.2006">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1300201116" Variation="7" Position="211,163,10.186" Rotation="5.4975" Scale="1,1,1" Type="CompoundSewers_FuelingPipes">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="2073530151" Variation="2" Position="29.7717,3.9052,11.9936" Rotation="1.6203" Scale="0.8598,0.8598,0.8598" Type="AiurTree_Ex2">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="410782764" Variation="1" Position="80.4064,26.5852,0.8764" Rotation="5.4973" Scale="1,1,1" Type="BattleStation_Floor_Interrior">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1538635332" Variation="3" Position="87.3767,21.8583,0.8764" Rotation="3.141" Scale="1,1,1" Type="BattleStation_Floor_Interrior">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1510027379" Variation="5" Position="32,189,7.9968" Rotation="4.427" Scale="0.9616,0.9616,0.9616" Type="Slayn_Brambles" TintColor="157,182,61 2.000000">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1940726788" Variation="4" Position="15,199,7.9924" Scale="0.9543,0.9543,0.9543" Type="Aiur_Overgrowth">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="357780183" Position="31.5065,195.5864,2.8564" Rotation="1.5705" Scale="1,1,1" Type="Void_Crystals" TintColor="63,243,243 2.500000" Pitch="3.1413" Roll="3.1413">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="867814855" Variation="1" Position="111.6455,42.6171,7.9956" Rotation="0.7846" Scale="0.3925,0.3925,1" Type="DecalSpace" TintColor="170,170,170">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="2075548432" Variation="4" Position="212.4836,103.702,9.8796" Rotation="0.7851" Scale="1,1,1" Type="DOM_LabGlassWalls">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1424851399" Variation="4" Position="72.5683,165.8037,7.9943" Rotation="2.356" Scale="0.9748,0.9748,0.9748" Type="AiurProtossBuildingsSmall">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="214966366" Variation="6" Position="111.3867,53.2453,7.9978" Rotation="3.9265" Scale="1.224,1.224,1" Type="BattleStation_Line_Decals">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1899118251" Variation="4" Position="18.603,193.977,7.9921" Scale="1,1,1" Type="WaterPuddle">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1397340168" Variation="4" Position="171,73,7.9975" Rotation="5.4968" Scale="0.5998,0.24,1" Type="Korhal_PerimeterWall">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1866565306" Position="159.429,68.0832,6.648" Rotation="3.9265" Scale="1,1,1" Type="DefendersCity_Wall_Municipal">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1934481774" Variation="4" Position="168,76,7.9975" Rotation="5.4968" Scale="0.5998,0.24,1" Type="Korhal_PerimeterWall">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="948022095" Variation="1" Position="45.0065,236.5532,-4.003" Rotation="5.211" Scale="0.9484,0.9484,0.9484" Type="Aiur_Trees_Giant">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="2022266361" Variation="1" Position="68.126,241.6723,-4.003" Rotation="5.1604" Scale="0.9484,0.9484,0.9484" Type="Aiur_Trees_Giant">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1241501148" Variation="2" Position="26.5,202,7.9924" Rotation="0.4333" Scale="0.978,0.978,0.978" Type="Aiur_Trees_Tall">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="725924982" Variation="1" Position="99.9833,137.6396,7.9924" Rotation="4.1806" Scale="0.8454,0.8454,0.8454" Type="Aiur_Trees_Giant">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="504838037" Variation="3" Position="99.133,55.2033,7.9956" Rotation="5.4975" Scale="1,1,1" Type="DecalSpace_Baked">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1164699961" Variation="1" Position="111.859,42.6218,7.9956" Rotation="0.7846" Scale="0.3925,0.3925,1" Type="DecalSpace" TintColor="170,170,170">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="131634371" Variation="2" Position="195,129.5,9.997" Rotation="1.1645" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="28718034" Variation="1" Position="37,186,7.9924" Rotation="2.378" Scale="0.939,0.939,0.939" Type="Aiur_Trees_Giant">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="529461676" Variation="3" Position="113.9582,44.7312,7.9956" Rotation="0.785" Scale="1,1,1" Type="DecalSpace_Baked">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="106339997" Variation="4" Position="184.5,140,10.0183" Rotation="2.3557" Scale="1,1,1" Type="JarbanMinor_Fence">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1968868143" Variation="2" Position="73.1047,166.4667,7.9943" Rotation="2.356" Scale="1.9184,1.9184,1.8671" Type="Aiur_City_Archway_Large">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1814187102" Position="73.163,48.9914,7.9963" Rotation="2.3327" Scale="1.2531,1.2531,1.2531" Type="LightOmniCyanLarge">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="2098083475" Variation="5" Position="207.5,150.5,10.2133" Rotation="3.7517" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="162926490" Variation="7" Position="209.5,164.5,10.1447" Rotation="5.4975" Scale="1,1,1" Type="CompoundSewers_FuelingPipes">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="909472275" Variation="2" Position="196.5,159.5,9.997" Rotation="4.035" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1732307651" Variation="7" Position="208,166,10.1452" Rotation="5.4975" Scale="1,1,1" Type="CompoundSewers_FuelingPipes">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1388147315" Variation="5" Position="87.3937,18.672,2.0788" Rotation="2.3574" Scale="1.5507,1.5507,1.5507" Type="GenericSpacePipesDiagonal">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="2015689498" Position="71.1267,175.3056,7.9936" Scale="1,1,1" Type="MoebiusLabDecals">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="58027154" Variation="14" Position="129.852,51.8044,7.9958" Rotation="0.7851" Scale="1.2238,1.2238,1" Type="BattleStation_Line_Decals">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1106383574" Position="74.0095,167.2966,14.0844" Rotation="2.356" Scale="0.438,0.438,1.3786" Type="StarshipProtossWallpost">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="832244353" Variation="4" Position="84.7805,50.0212,0.958" Rotation="3.1413" Scale="1,1,1" Type="BattleStation_Floor_Interrior">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1501521871" Variation="1" Position="17.5,192,7.9924" Rotation="4.3188" Scale="1,1,1" Type="Elsecaro_Small_Rock_Group">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="2142892010" Variation="4" Position="100.07,34.6655,0.8762" Rotation="1.5705" Scale="1,1,1" Type="BattleStation_Floor_Interrior">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1112365249" Variation="4" Position="156,61.5,7.9975" Rotation="3.9265" Scale="0.5998,0.24,1" Type="Korhal_PerimeterWall">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1575147310" Variation="1" Position="38.447,201.0727,7.9968" Rotation="3.7365" Scale="1,1,1" Type="Elsecaro_Small_Rock_Group">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="985714329" Variation="4" Position="165,79,7.9975" Rotation="5.4968" Scale="0.5998,0.24,1" Type="Korhal_PerimeterWall">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1356467547" Variation="3" Position="31.5908,2.288,11.9936" Rotation="4.968" Scale="0.9711,0.9711,0.9711" Type="AiurTree_Grouped">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="520178190" Position="157,70.5,6.648" Rotation="3.9265" Scale="1,1,1" Type="DefendersCity_Wall_Municipal">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="2013288702" Variation="1" Position="98.3217,55.9702,7.9956" Rotation="0.785" Scale="0.3925,0.3925,1" Type="DecalSpace" TintColor="170,170,170">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1170624596" Variation="1" Position="77.9072,53.469,14.2431" Rotation="0.7851" Scale="1,1,1" Type="HybridLab_ChamberLarge">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="402131959" Variation="4" Position="43,202,7.9968" Scale="0.9997,0.9997,0.9997" Type="Aiur_Overgrowth">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="270762379" Position="182.5,105.5,9.997" Rotation="2.288" Scale="0.9865,0.9865,0.9865" Type="UmojanLabDebrisDoodad">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="682617527" Variation="10" Position="93.2341,53.4875,8.082" Rotation="5.4975" Scale="1.224,1.224,1" Type="BattleStation_Line_Decals">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="288831919" Variation="4" Position="170,76,8.0104" Rotation="3.9265" Scale="0.5998,0.24,1" Type="Korhal_PerimeterWall">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="777802490" Position="74.9814,172.1381,7.972" Rotation="3.9267" Scale="0.626,0.5546,0.516" Type="Aiur_City_Ramps">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1067091961" Variation="6" Position="108.6555,55.8742,8.0578" Rotation="3.9265" Scale="1.224,1.224,1" Type="BattleStation_Line_Decals">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="746336125" Variation="7" Position="212.5183,161.5375,9.114" Rotation="5.4975" Scale="1,1,1" Type="CompoundSewers_FuelingPipes">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="958548294" Position="196,130,9.997" Rotation="4.3027" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="458754153" Variation="3" Position="106.3164,54.5844,7.4421" Rotation="5.9975" Scale="1,1,1" Type="BattleStation_Floor_Interior_Gadget" Pitch="6.2768" Roll="0.7851">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1635185094" Variation="27" Position="91.7746,55.1774,8.0495" Rotation="3.9267" Scale="1.224,1.224,1" Type="BattleStation_Line_Decals">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1637399248" Variation="3" Position="150.5,91,7.9973" Rotation="2.3806" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="687253822" Position="32.6,13.9645,11.9936" Rotation="0.1835" Scale="1.1604,1.1604,1.1604" Type="AiurTree_Ex2">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="977294767" Position="27.9511,8.1743,13.5961" Rotation="3.9267" Scale="0.9963,1.4406,1.8005" Type="ECLPORTALACTIVATE_VORTEX" TintColor="0,79,225 2.000000">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="758400377" Variation="1" Position="39,191.5,7.9968" Scale="0.969,0.969,0.969" Type="Aiur_Overgrowth">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="2044430965" Variation="7" Position="218.5,155.5,11.3041" Rotation="5.4975" Scale="1,1,1" Type="CompoundSewers_FuelingPipes">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="359497995" Variation="2" Position="213.9997,94.5312,7.9973" Rotation="3.9746" Scale="1,1,1" Type="BattleStation_BridgeSeats">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="340284446" Variation="12" Position="114.4204,58.1706,7.9956" Rotation="2.356" Scale="1.7016,1.7016,1" Type="DOM_Decals">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1531549136" Variation="3" Position="16.5,197.5,7.9924" Scale="1.0065,1.0065,1.0065" Type="Aiur_Overgrowth">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1373434251" Variation="6" Position="20.9902,3.607,11.9936" Rotation="0.7497" Scale="0.9506,0.9506,0.9506" Type="AiurTree_Ex2">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1836242317" Variation="6" Position="191.5,132.5,9.9975" Rotation="5.2272" Scale="1,1,1" Type="CastanarCabinet">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="528830978" Variation="4" Position="160.5,83.5,7.9975" Rotation="5.497" Scale="0.5998,0.24,1" Type="Korhal_PerimeterWall">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1591530997" Variation="1" Position="165,99,9.997" Rotation="4.6445" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="830319666" Variation="3" Position="152.078,50.629,7.992" Rotation="3.9267" Scale="1,1,1" Type="DecalSpace_Baked">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1922317192" Position="136.5,97,7.9973" Rotation="5.554" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1861737869" Variation="3" Position="15.4016,6.402,11.9936" Rotation="1.4348" Scale="0.9294,0.9294,0.9294" Type="AiurTree_Grouped">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="2110197009" Variation="4" Position="189,129.5,9.9865" Scale="1,1,1" Type="DOM_Crate">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="851271466" Variation="2" Position="140,100.5,7.9965" Rotation="2.23" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1503281959" Variation="6" Position="187.5,134.5,9.9975" Rotation="0.5058" Scale="1,1,1" Type="CastanarCabinet">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="500796000" Variation="2" Position="55.8632,238.3691,-4.003" Rotation="1.3364" Scale="0.9484,0.9484,0.9484" Type="Aiur_Trees_Giant">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1347143385" Position="47.361,197.558,7.9968" Scale="1,1,1" Type="RainEmitterLarge">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1115052249" Variation="1" Position="212.4692,89.7753,8.074" Rotation="3.9265" Scale="1,1,1" Type="DOM_LabGlassWalls">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="839542515" Variation="2" Position="65.0498,31.5495,3.5983" Rotation="1.5705" Scale="1,1,1" Type="BattleStation_Floor_Interior_Short">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="291310916" Variation="4" Position="197,118,10.0026" Rotation="1.2043" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="845514837" Variation="2" Position="49,183,7.9924" Rotation="4.181" Scale="0.8454,0.8454,0.8454" Type="Aiur_Trees_Giant">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="84877984" Variation="4" Position="21.9777,190.3286,7.9963" Scale="1,1,1" Type="WaterPuddle">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1248565760" Variation="5" Position="139,113,9.5544" Rotation="1.7158" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="253870800" Variation="3" Position="145,94.5,7.9973" Rotation="3.8752" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="335832892" Variation="2" Position="138,111,10.1005" Rotation="6.2812" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1203697557" Variation="2" Position="143.5,88.5,7.9973" Rotation="0.295" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="167709684" Variation="5" Position="144,111,10.0036" Rotation="2.0932" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1861693725" Position="43.5,199.5,7.9963" Rotation="3.734" Scale="1.0068,1.0068,1.0068" Type="AiurUnderbrush">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1264910334" Variation="6" Position="127.5944,69.3593,7.9978" Rotation="3.9262" Scale="1.224,1.224,1" Type="BattleStation_Line_Decals">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1960069965" Variation="14" Position="120.7292,64.439,7.9963" Rotation="2.3557" Scale="1.224,1.224,1" Type="BattleStation_Line_Decals">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="99912953" Variation="6" Position="107.3747,49.2846,7.996" Rotation="3.9265" Scale="1.224,1.224,1" Type="BattleStation_Line_Decals">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1078128683" Variation="3" Position="204.4814,122.488,10.074" Rotation="3.9265" Scale="1,1,1" Type="DOM_LabGlassWalls">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1713945942" Variation="10" Position="85.749,54.937,8.0747" Scale="3.444,1.224,1" Type="BattleStation_Line_Decals">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1827759912" Variation="1" Position="171.5,119.5,9.997" Rotation="5.9846" Scale="0.8024,0.8024,0.8024" Type="UmojanLabDebrisDoodad">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1023564004" Variation="1" Position="41.5,189.5,7.9946" Scale="0.9565,0.9565,0.9565" Type="Aiur_Overgrowth">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="178877748" Variation="3" Position="115.7304,42.1413,7.9958" Rotation="3.8222" Scale="1,1,1" Type="Tarsonis_WireConduits">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="123899148" Position="39.5,206,7.9968" Rotation="1.0468" Scale="1.0361,1.0361,1.0361" Type="AiurTree_Grouped">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1786237118" Variation="4" Position="20.5,191.5,7.9968" Rotation="4.4267" Scale="0.9616,0.9616,0.9616" Type="Slayn_Brambles" TintColor="157,182,61 2.000000">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1125096667" Variation="14" Position="113.0578,57.2385,7.9956" Rotation="5.4975" Scale="1.2238,1.2238,1" Type="BattleStation_Line_Decals">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1043302226" Variation="1" Position="74.5097,42.1711,0.8745" Rotation="3.9267" Scale="1,1,1" Type="BattleStation_Floor_Interrior">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="675295912" Variation="2" Position="21.9638,21.8317,11.9941" Rotation="5.497" Scale="1.9187,1.9187,1.8674" Type="Aiur_City_Archway_Large">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1173364036" Variation="4" Position="152.5,67,7.9975" Rotation="5.497" Scale="0.5998,0.24,1" Type="Korhal_PerimeterWall">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1212793909" Position="26.978,17.4387,11.9936" Rotation="5.758" Scale="1.011,1.011,1.011" Type="AiurTree_Ex2">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="710465001" Variation="4" Position="17.4096,9.158,11.9936" Rotation="3.7897" Scale="1.1694,1.1694,1.1694" Type="AiurTree_Grouped">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1833393750" Variation="2" Position="199,114.5,9.9841" Rotation="1.7873" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="786522517" Variation="4" Position="78.1787,169.372,9.2175" Rotation="0.7851" Scale="0.3728,0.4367,0.3164" Type="Protoss_Base_Terminals">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1678612513" Position="22.6994,196.9028,7.9963" Scale="1,1,1" Type="WaterPuddle">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1321155968" Variation="1" Position="161,106,5.1672" Rotation="0.456" Scale="0.2,0.2,0.5998" Type="AmbientLightSpot_White" Pitch="0.2656" Roll="0.4982">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="490117105" Variation="10" Position="103.852,42.887,8.0727" Rotation="5.4975" Scale="1.224,1.224,1" Type="BattleStation_Line_Decals">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="187292254" Variation="6" Position="26.3334,2.6325,11.9936" Rotation="3.8344" Scale="0.8715,0.8715,0.8715" Type="AiurTree_Ex2">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1587659524" Variation="4" Position="30.6005,202.0117,7.9968" Rotation="4.4267" Scale="0.9616,0.9616,0.9616" Type="Slayn_Brambles" TintColor="157,182,61 2.000000">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="360587684" Variation="4" Position="10.8747,9.5607,11.9936" Rotation="4.835" Scale="0.883,0.883,0.883" Type="AiurTree_Grouped">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1154980612" Variation="6" Position="188,133.5,9.9975" Rotation="0.9267" Scale="1,1,1" Type="CastanarCabinet" Pitch="5.8505" Roll="5.9782">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="194765222" Variation="10" Position="148.7541,50.1791,7.9963" Rotation="2.3552" Scale="1.224,1.224,1" Type="BattleStation_Line_Decals">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="591868911" Variation="1" Position="100.8591,143.884,7.9775" Rotation="1.8352" Scale="1,1,1" Type="Elsecaro_Small_Rock_Group">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1963076958" Variation="3" Position="100.4897,58.0847,8.0007" Rotation="0.7851" Scale="1,1,1" Type="DecalSpace_Baked">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="839977624" Variation="4" Position="152,65.5,7.9975" Rotation="3.9265" Scale="0.5998,0.24,1" Type="Korhal_PerimeterWall">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1273244593" Position="15.8122,19.5607,11.9716" Rotation="3.9265" Scale="0.626,0.5546,0.516" Type="Aiur_City_Ramps">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="368730736" Variation="15" Position="101.4592,45.255,7.996" Rotation="5.4975" Scale="1.224,1.224,1" Type="BattleStation_Line_Decals">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1741106298" Variation="2" Position="43.5,200.5,7.9963" Rotation="6.094" Scale="1.0378,1.0378,1.0378" Type="AiurUnderbrush">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1040345640" Variation="3" Position="91.396,52.0646,4.0363" Rotation="5.4975" Scale="1,1,1" Type="BattleStation_Floor_Interior_Short">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="69857185" Variation="3" Position="23.5,198.5,7.9963" Rotation="0.3872" Scale="0.945,0.945,0.945" Type="AiurUnderbrush">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1524498410" Variation="7" Position="190.9648,134.575,9.997" Rotation="3.1413" Scale="1,1,1" Type="JarbanMinor_Fence">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="760935515" Variation="7" Position="27.741,17.2956,11.994" Rotation="3.5114" Scale="0.9992,0.9992,0.9992" Type="AiurTree_Ex2">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="296314078" Variation="3" Position="149.2717,49.2465,7.9958" Rotation="5.497" Scale="1,1,1" Type="DecalSpace_Baked">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="284732074" Variation="18" Position="125.7138,46.738,7.9958" Rotation="2.374" Scale="1.7504,1.2238,1" Type="BattleStation_Line_Decals">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="45148162" Variation="2" Position="87.5622,15.7253,8.3276" Rotation="3.9631" Scale="1.5507,1.5507,1.5507" Type="GenericSpacePipesDiagonal">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="84928554" Variation="4" Position="169.5,74.5,7.9975" Rotation="5.4968" Scale="0.5998,0.24,1" Type="Korhal_PerimeterWall">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1555120451" Position="189.3056,109.127,9.997" Scale="1,1,1" Type="Tarsonis_Debris_Splat">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="626395452" Variation="6" Position="126.6528,68.396,8.0043" Rotation="3.9262" Scale="1.224,1.224,1" Type="BattleStation_Line_Decals">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="288832361" Variation="10" Position="106.9091,38.12,8.0732" Rotation="4.7121" Scale="0.7104,1.224,1" Type="BattleStation_Line_Decals">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="2102784307" Variation="5" Position="200.5,148,9.997" Rotation="2.9877" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="847024423" Variation="4" Position="37,205,7.9924" Scale="1,1,1" Type="Elsecaro_Tree">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="837636893" Position="63.6652,134.698,16.6726" Scale="1,1,1" Type="ECLPORTALACTIVATE2" Pitch="0.9074" Roll="1.5705">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1084879909" Variation="3" Position="68.3251,177.548,7.9936" Scale="1,1,1" Type="MoebiusLabDecals">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="650380038" Variation="6" Position="30.5437,16.0881,11.9936" Rotation="0.6523" Scale="0.8171,0.8171,0.8171" Type="AiurTree_Ex2">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="574407666" Variation="1" Position="188,129,10.0065" Scale="1,1,1" Type="DOM_Crate">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="2137121172" Variation="14" Position="130.2106,44.227,7.9958" Rotation="3.9267" Scale="1.2238,1.2238,1" Type="BattleStation_Line_Decals">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1424539470" Variation="4" Position="19.4943,7.0107,11.9936" Rotation="4.2768" Scale="0.8186,0.8186,0.8186" Type="AiurTree_Ex2">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1533767690" Variation="5" Position="27.9587,24.5422,11.9948" Rotation="4.146" Scale="1.1472,1.1472,1.1472" Type="AiurTree_Grouped">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="813682924" Position="77.205,170.3134,12.6752" Rotation="0.7851" Scale="0.6157,0.6157,2.5085" Type="ECLPORTALACTIVATE" TintColor="21,126,255 2.000000" Pitch="1.5705">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="2314335" Position="201.4536,100.991,11.9804" Rotation="0.7851" Scale="1,1,1" Type="HybridMonitorWall">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="477199343" Position="77.2,35.0197,7.9956" Rotation="1.5705" Scale="1.25,1.25,1.25" Type="UmojanLabCatwalkSectionPlatform">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1156361718" Position="31.263,15.4387,11.9936" Rotation="3.0571" Scale="1.1267,1.1267,1.1267" Type="AiurTree_Ex2">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1772028046" Variation="4" Position="211.7124,103.138,9.9807" Scale="1,1,1" Type="DOM_LabGlassWalls">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="256716847" Variation="3" Position="222.5,151.5,11.421" Rotation="5.4975" Scale="1,1,1" Type="CompoundSewers_FuelingPipes">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+        <Flag Index="NoDoodadFootprint" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="270963572" Variation="14" Position="128.5166,50.4658,7.9958" Rotation="0.7851" Scale="1.2238,1.2238,1" Type="BattleStation_Line_Decals">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1280161750" Position="80.298,173.5578,14.086" Rotation="5.4975" Scale="0.438,0.438,1.3786" Type="StarshipProtossWallpost">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1277349740" Variation="1" Position="54.6408,148.944,33.5727" Scale="1,1,1" Type="DOM_Crate">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="477715377" Variation="2" Position="189.2285,107.3256,9.997" Scale="1,1,1" Type="SpacePlatformWallDebris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1888386110" Variation="3" Position="76.621,28.043,0.8764" Rotation="3.1413" Scale="1,1,1" Type="BattleStation_Floor_Interrior">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1441726894" Variation="3" Position="151.5,94,10.0104" Rotation="0.142" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1121372553" Variation="2" Position="202.5,111,9.9826" Rotation="3.5168" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1646779990" Variation="2" Position="42,203,7.9968" Rotation="4.9091" Scale="0.9211,0.9211,0.9211" Type="Aiur_Trees_Giant">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1595947853" Variation="3" Position="230.5,141,13.249" Rotation="5.4973" Scale="0.7,0.5,0.5" Type="Korhal_Platform_Pipes">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1858412589" Position="157,85,2.1186" Rotation="5.0053" Scale="1,1,1" Type="AmbientLightSpot_White">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1230103052" Variation="3" Position="162.5,100.5,9.997" Rotation="5.546" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1997353718" Variation="5" Position="182.5,107,9.997" Rotation="3.2067" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="910777224" Variation="6" Position="119.9096,67.0642,8.0866" Rotation="3.9262" Scale="1.224,1.224,1" Type="BattleStation_Line_Decals">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1195971724" Position="162,65.5,6.648" Rotation="3.9265" Scale="1,1,1" Type="DefendersCity_Wall_Municipal">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="926350773" Position="74.02,51.4372,7.9963" Rotation="3.751" Scale="1.1533,1.1533,1.1533" Type="LightOmniCyanLarge">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="680099750" Variation="14" Position="132.6181,46.6516,7.9958" Rotation="3.9267" Scale="1.2238,1.2238,1" Type="BattleStation_Line_Decals">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1892902241" Variation="2" Position="94.939,42.1391,0.9907" Rotation="2.356" Scale="1,1,1" Type="BattleStation_Floor_Interrior">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1817134342" Variation="1" Position="201.5,146,10.7563" Rotation="3.564" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="582451300" Variation="14" Position="126.109,48.0412,7.9958" Rotation="0.7851" Scale="1.2238,1.2238,1" Type="BattleStation_Line_Decals">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="970459558" Position="188.5,145,12.025" Rotation="2.801" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="535892395" Variation="2" Position="22.4072,204.6081,7.5463" Rotation="0.2126" Scale="1.4,1.4,1.4" Type="Void_Crystals" TintColor="63,243,243 2.500000" Pitch="6.0583" Roll="6.0375">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="871875264" Variation="3" Position="29.6755,16.617,11.9936" Rotation="4.5771" Scale="0.938,0.938,0.938" Type="AiurTree_Ex2">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1861927044" Variation="5" Position="31.5,184,7.9968" Rotation="3.5178" Scale="1.1208,1.1208,1.1208" Type="AiurTree_Grouped">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1118200525" Position="190,87,9.1882" Rotation="2.356" Scale="1,1,1" Type="AlarmLight">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1542807004" Variation="5" Position="27.5,187.5,7.9968" Rotation="4.4267" Scale="0.9616,0.9616,0.9616" Type="Slayn_Brambles" TintColor="157,182,61 2.000000">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="23714959" Variation="4" Position="15.3234,10.4353,11.9936" Rotation="1.6044" Scale="0.8803,0.8803,0.8803" Type="AiurTree_Grouped">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="654859128" Variation="6" Position="189.2114,103.7634,9.997" Scale="1,1,1" Type="Tarsonis_Debris_Splat">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1924143410" Variation="4" Position="22.5895,22.4548,11.9941" Rotation="5.497" Scale="0.9748,0.9748,0.9748" Type="AiurProtossBuildingsSmall">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="875143190" Variation="1" Position="147.177,51.4274,7.9958" Rotation="0.7846" Scale="0.3925,0.3925,1" Type="DecalSpace" TintColor="170,170,170">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="270370859" Position="27,201,7.9968" Rotation="3.35" Scale="0.962,0.962,0.962" Type="Aiur_Trees_Giant">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1268227129" Variation="6" Position="31,186.5,7.9924" Scale="1,1,1" Type="Elsecaro_Tree">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="2105109984" Variation="2" Position="19.044,9.0583,11.9936" Rotation="1.2924" Scale="0.8283,0.8283,0.8283" Type="AiurTree_Ex2">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="587204583" Variation="3" Position="23.333,2.7775,11.9936" Rotation="4.6691" Scale="1.18,1.18,1.18" Type="AiurTree_Ex2">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="2047496228" Variation="4" Position="164,82,8.0327" Rotation="3.9265" Scale="0.5998,0.24,1" Type="Korhal_PerimeterWall">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1560881559" Position="36.5,190.5,7.9963" Rotation="2.5361" Scale="1.0388,1.0388,1.0388" Type="AiurUnderbrush">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1980021785" Variation="1" Position="26.5,185,7.9968" Rotation="0.8576" Scale="1,1,1" Type="Elsecaro_Small_Rock_Group">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1746436109" Variation="4" Position="203.984,101.9416,10.1516" Rotation="0.7851" Scale="1,1,1" Type="CastanarMonitorLarge">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1983805300" Variation="2" Position="32.4621,14.2937,11.9936" Rotation="4.9873" Scale="0.9323,0.9323,0.9323" Type="AiurTree_Ex2">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1734765585" Position="26.4497,0.8957,11.9936" Rotation="5.512" Scale="0.8725,0.8725,0.8725" Type="AiurTree_Grouped">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="460345904" Variation="1" Position="93.33,15.3293,8.204" Rotation="0.7946" Scale="1.7473,1.7473,1.7473" Type="GenericSpacePipesDiagonal">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1418228094" Variation="1" Position="42.5,199.5,7.9963" Rotation="4.152" Scale="0.9965,0.9965,0.9965" Type="AiurUnderbrush">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1189458876" Position="80.3281,41.4538,-2.3334" Rotation="5.4975" Scale="1,1,1" Type="BattleStation_Floor_Interior_Gadget">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1011214761" Variation="4" Position="196.5,146.5,9.9965" Rotation="1.157" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="2040840207" Position="191,105.5,9.9865" Rotation="2.0788" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="2143787156" Variation="7" Position="212.5,161.5,10.174" Rotation="5.4975" Scale="1,1,1" Type="CompoundSewers_FuelingPipes">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1142278353" Variation="7" Position="33.5,188.5,7.9924" Scale="1,1,1" Type="Elsecaro_Tree">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1794495315" Position="19.0881,18.4916,14.3435" Rotation="3.9267" Scale="0.7377,0.7377,0.7377" Type="ECLPORTALBORDER" Roll="3.6911">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="991319562" Variation="1" Position="197.5,138,10.7563" Rotation="4.159" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1556679833" Variation="4" Position="154,63.5,7.9975" Rotation="3.9265" Scale="0.5998,0.24,1" Type="Korhal_PerimeterWall">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1601136345" Position="132.5,89.5,7.9973" Rotation="3.4274" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1599919428" Position="18.5,189,7.9924" Scale="1,1,1" Type="Elsecaro_Tree">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="490713427" Variation="1" Position="31.0332,190.5827,7.9987" Scale="1,1,1" Type="WaterPuddle">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="295467811" Position="80.4577,31.5961,7.9963" Rotation="1.5705" Scale="1.25,1.25,1.25" Type="UmojanLabCatwalkSection45RightShort">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1648266287" Position="98.4133,141.0432,7.9775" Rotation="1.8352" Scale="1,1,1" Type="Elsecaro_Small_Rock_Group">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="323273106" Variation="2" Position="104.5102,139.793,7.9924" Rotation="4.1806" Scale="0.8454,0.8454,0.8454" Type="Aiur_Trees_Giant">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="482618789" Variation="3" Position="179,83,7.997" Scale="1,1,1" Type="CastanarLightboard">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1962865655" Variation="6" Position="183,129.5,9.997" Rotation="1.0825" Scale="1,1,1" Type="CastanarCabinet">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1774050792" Position="36.5,198,7.1437" Rotation="1.4733" Scale="1,1,1" Type="Void_Crystals" TintColor="63,243,243 2.500000" Pitch="5.9001" Roll="6.1516">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1984640206" Variation="3" Position="112.6015,41.8498,7.9956" Rotation="5.4973" Scale="1,1,1" Type="DecalSpace_Baked">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1368490543" Variation="1" Position="33.7534,200.3386,7.9963" Scale="1,1,1" Type="WaterPuddle">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="658924574" Variation="4" Position="88.783,48.319,0.9582" Rotation="2.356" Scale="1,1,1" Type="BattleStation_Floor_Interrior">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="442660901" Position="96.8208,19.2363,7.9956" Rotation="2.321" Scale="1.4345,1.4345,1.4345" Type="MoebiusLabArmoredGenerator">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1728971728" Variation="1" Position="204.8256,104.4025,11.9931" Rotation="0.7851" Scale="1,1,1" Type="HybridMonitorWall">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1595174843" Variation="6" Position="184.5,133,9.9975" Rotation="2.4187" Scale="1,1,1" Type="CastanarCabinet">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="225796037" Variation="2" Position="138,98,7.9973" Rotation="3.2844" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1680016340" Variation="10" Position="113.489,41.3718,7.996" Rotation="2.3552" Scale="1.224,1.224,1" Type="BattleStation_Line_Decals">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1573845579" Variation="7" Position="215.5,158.5,10.1872" Rotation="5.4975" Scale="1,1,1" Type="CompoundSewers_FuelingPipes">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1151295293" Variation="5" Position="197.5,113.5,9.9973" Rotation="2.1657" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1961378235" Variation="5" Position="39,207,7.9968" Scale="1,1,1" Type="Elsecaro_Tree">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1483897621" Variation="3" Position="36.5,191.5,7.9963" Rotation="2.926" Scale="0.965,0.965,0.965" Type="AiurUnderbrush">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1625976102" Variation="4" Position="166,101,10.0183" Rotation="5.5847" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1260395049" Variation="7" Position="208,166.5,10.7541" Rotation="5.4975" Scale="1,1,1" Type="CompoundSewers_FuelingPipes">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1523563269" Variation="3" Position="105.7695,148.745,7.9775" Rotation="5.4995" Scale="1,1,1" Type="Elsecaro_Small_Rock_Group">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1300879118" Variation="4" Position="206,137,10.0024" Rotation="5.6381" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="627638014" Variation="3" Position="143.5,106.5,9.9973" Rotation="3.7802" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1265864363" Variation="2" Position="190,108,2.2138" Rotation="3.8964" Scale="1,1,1" Type="AmbientLightSpot_Yellow">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1670910816" Variation="1" Position="83.6013,54.4624,4.0561" Scale="1,1,1" Type="BattleStation_Floor_Interior_Short">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="961922244" Variation="2" Position="27.5,185,7.9924" Scale="1,1,1" Type="Elsecaro_Tree">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="188921308" Variation="10" Position="151.2165,50.157,7.9958" Rotation="3.9267" Scale="1.2238,1.2238,1" Type="BattleStation_Line_Decals">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1474276939" Position="31.9323,11.1367,11.9936" Rotation="5.585" Scale="0.9887,0.9887,0.9887" Type="Aiur_Rock_Cliff_Jungle_Chunks">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="444195526" Position="166.5,70,6.6474" Rotation="0.7851" Scale="1,1,1" Type="DefendersCity_Wall_Municipal">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1350713048" Variation="4" Position="172.5,71.5,6.0766" Rotation="5.4968" Scale="0.5998,0.24,1" Type="Korhal_PerimeterWall">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1580370314" Position="84.0014,46.8952,8.4675" Rotation="0.7497" Scale="0.6801,0.6801,0.6801" Type="UmojanLabMonitorFloor">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1972740718" Variation="6" Position="187,128.5,9.9975" Rotation="4.7253" Scale="1,1,1" Type="CastanarCabinet" Pitch="5.8505" Roll="5.9782">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="369786532" Variation="3" Position="150.7236,49.2731,7.9958" Rotation="3.9267" Scale="1,1,1" Type="DecalSpace_Baked">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1895643186" Variation="6" Position="31.4396,5.6584,11.9936" Rotation="1.6313" Scale="1.1855,1.1855,1.1855" Type="AiurTree_Ex2">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="2066422987" Variation="2" Position="27,205,7.9924" Rotation="3.7" Scale="1.1862,1.1862,1.1862" Type="AiurTree_Grouped">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1886002997" Variation="2" Position="139.5,102,7.9973" Rotation="4.263" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="446968850" Variation="4" Position="20.5,200,7.9924" Rotation="4.4267" Scale="0.9616,0.9616,0.9616" Type="Slayn_Brambles" TintColor="157,182,61 2.000000">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="178330703" Variation="1" Position="214.8593,93.8125,7.9973" Rotation="3.9267" Scale="0.6496,0.6496,0.6496" Type="HybridWallConsoles">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1534919428" Variation="4" Position="151,68.5,7.9975" Rotation="5.497" Scale="0.5998,0.24,1" Type="Korhal_PerimeterWall">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1108365531" Position="10,184,7.9924" Rotation="1.6772" Scale="1.199,1.199,1.199" Type="Aiur_Trees_Giant">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1596634713" Position="208.6853,88.448,7.9973" Rotation="3.1413" Scale="1,1,1" Type="DOM_LabGlassWalls">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1459115459" Variation="1" Position="214.97,96.49,7.9973" Scale="1,1,1" Type="CompoundMansion_Ramp_Stairs" TintColor="112,112,112">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="711219372" Variation="1" Position="98.2495,55.9721,7.9956" Rotation="0.785" Scale="0.3925,0.3925,1" Type="DecalSpace" TintColor="170,170,170">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1245002821" Variation="1" Position="68.4831,43.5808,14.3166" Rotation="0.7851" Scale="1,1,1" Type="HybridLab_ChamberLarge">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="449722607" Variation="10" Position="116.2233,38.649,11.9914" Rotation="2.3552" Scale="1.224,1.224,1" Type="BattleStation_Line_Decals">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1906844097" Variation="4" Position="210.7158,103.123,9.9946" Scale="1,1,1" Type="DOM_LabGlassWalls">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="816905902" Variation="3" Position="26.768,2.7895,11.9936" Rotation="1.1823" Scale="1.0957,1.0957,1.0957" Type="AiurTree_Ex2">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1018269221" Position="189,88,9.1672" Rotation="2.356" Scale="1,1,1" Type="AlarmLight">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="297718856" Variation="3" Position="110.3996,57.7016,9.0495" Rotation="5.1162" Scale="1,1,1" Type="BattleStation_Floor_Interior_Gadget" Pitch="6.2768" Roll="0.7851">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="567590718" Variation="1" Position="25.7832,188.1494,7.9963" Scale="1,1,1" Type="WaterPuddle">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="211796344" Position="174.5,119.5,10.206" Rotation="3.1984" Scale="1.15,1.15,1.15" Type="UmojanLabDebrisDoodad">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="659933075" Position="146.5,91,7.9973" Rotation="4.4924" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1285335715" Variation="4" Position="143.5,108,9.9973" Rotation="3.3693" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1808540621" Position="147,83.5,7.994" Rotation="2.206" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1696545567" Variation="1" Position="98.3903,55.9753,7.9956" Rotation="0.785" Scale="0.3925,0.3925,1" Type="DecalSpace" TintColor="170,170,170">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="2013792339" Position="161.5,75,6.6474" Rotation="0.7851" Scale="1,1,1" Type="DefendersCity_Wall_Municipal">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1885307011" Variation="1" Position="202,141.5,10.018" Rotation="6.2316" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="800719230" Variation="1" Position="18.9357,10.916,11.9936" Rotation="5.4934" Scale="0.9387,0.9387,0.9387" Type="AiurTree_Ex2">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1201689999" Variation="1" Position="98.4433,55.9736,7.9956" Rotation="0.785" Scale="0.3925,0.3925,1" Type="DecalSpace" TintColor="170,170,170">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="267394985" Variation="2" Position="83.9638,28.6264,7.996" Rotation="4.7121" Scale="1.25,1.25,1.25" Type="UmojanLabCatwalkSectionPlatform">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1324026530" Variation="3" Position="68.2885,42.6662,3.8581" Rotation="0.7851" Scale="1.8532,1,1" Type="BattleStation_Floor_Interior_Short">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1959313812" Position="81.99,32.17,2.756" Rotation="5.4975" Scale="2.4943,1,2.0798" Type="CompoundMansion_Windows" TintColor="69,105,101" Pitch="4.7121">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="355734881" Variation="6" Position="181.5,112,9.997" Scale="1,1,1" Type="Tarsonis_Debris_Splat">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="91875984" Variation="3" Position="39.5,199.5,7.9963" Rotation="0.261" Scale="0.999,0.999,0.999" Type="AiurUnderbrush">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1285063794" Variation="7" Position="206.5,168,10.7563" Rotation="5.4975" Scale="1,1,1" Type="CompoundSewers_FuelingPipes">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1336274343" Variation="2" Position="148,75,7.9975" Rotation="3.9265" Scale="1,1,1" Type="CompoundMansion_Light">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1045508369" Variation="1" Position="197,120,9.9973" Rotation="5.83" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="501804355" Variation="7" Position="20.0354,4.6665,11.9936" Rotation="1.6313" Scale="1.0993,1.0993,1.0993" Type="AiurTree_Ex2">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="141347703" Variation="4" Position="143,102.5,10.0192" Rotation="0.6228" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="871369195" Variation="2" Position="96.4555,139.0737,7.9924" Rotation="4.1806" Scale="0.8454,0.8454,0.8454" Type="Aiur_Trees_Giant">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1820556132" Variation="1" Position="34.4128,198.9343,-0.032" Rotation="5.009" Scale="1,1,1" Type="Void_Crystals" TintColor="63,243,243 2.500000" Roll="0.4711">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1678596409" Variation="4" Position="150,67.5,7.9755" Rotation="3.9265" Scale="0.5998,0.24,1" Type="Korhal_PerimeterWall">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1102746242" Variation="2" Position="89.5,52.5,-0.0031" Rotation="0.8034" Scale="1,1,1" Type="HybridLabFakeShadows">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="679739509" Variation="2" Position="207.037,98.1503,7.9973" Rotation="2.356" Scale="1.2995,1.2995,1.2995" Type="DOM_Table_WarRoom">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="536073624" Variation="3" Position="143.5,109.5,9.9973" Rotation="6.0407" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="590744468" Variation="3" Position="148.9885,50.4582,7.9958" Rotation="5.4973" Scale="1.1701,1.1701,1.212" Type="BattleStation_Text_Decals">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1873743326" Variation="1" Position="111.7902,42.6166,7.9956" Rotation="0.7846" Scale="0.3925,0.3925,1" Type="DecalSpace" TintColor="170,170,170">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="335760704" Variation="2" Position="36.5744,15.1057,11.9936" Rotation="5.32" Scale="1.1616,1.1616,1.1616" Type="AiurTree_Grouped">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1915920430" Variation="3" Position="200.5,112,9.9973" Rotation="2.408" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1431341592" Variation="6" Position="106.6357,53.9,8.048" Rotation="3.9265" Scale="1.224,1.224,1" Type="BattleStation_Line_Decals">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="291716896" Variation="1" Position="182.5,106.5,9.997" Scale="1,1,1" Type="Tarsonis_Debris_Splat">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1196433543" Variation="2" Position="181,135,10" Scale="1,1,1" Type="DOM_Crate">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1843745980" Variation="4" Position="166,80,8.0053" Rotation="3.9265" Scale="0.5998,0.24,1" Type="Korhal_PerimeterWall">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1318540412" Position="34,206,7.9924" Rotation="2.8645" Scale="0.9038,0.9038,0.9038" Type="Aiur_Trees_Giant">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1803215971" Variation="5" Position="187.5,137,9.9975" Rotation="2.3557" Scale="1,1,1" Type="JarbanMinor_Fence">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1478217628" Variation="5" Position="142,101,10.103" Rotation="0.234" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="108307290" Variation="1" Position="19.9672,199.2973,7.5463" Rotation="4.915" Scale="1.4,1.4,1.4" Type="Void_Crystals" TintColor="63,243,243 2.500000" Pitch="6.0363" Roll="0.0905">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1227666564" Variation="1" Position="19.3847,24.3801,11.9948" Rotation="3.0563" Scale="1.0952,1.0952,1.0952" Type="AiurTree_Grouped">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="205661493" Position="144,78,7.9577" Rotation="0.7851" Scale="1,1,1" Type="UmojanLabLabGate" TintColor="83,83,83 0.500000">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1340841672" Variation="2" Position="13.3886,7.7915,11.9936" Rotation="3.1413" Scale="0.922,0.922,0.922" Type="AiurTree_Grouped">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1078136078" Variation="2" Position="87.8012,44.3251,-0.7937" Rotation="5.4975" Scale="1,1,1" Type="BattleStation_Floor_Interior_Gadget">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1516781794" Variation="4" Position="155.5,64,7.9975" Rotation="5.497" Scale="0.5998,0.24,1" Type="Korhal_PerimeterWall">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1062811150" Variation="10" Position="100.0205,54.7253,7.996" Rotation="2.3554" Scale="1.224,1.224,1" Type="BattleStation_Line_Decals">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="796432305" Variation="4" Position="157,62.5,7.9975" Rotation="5.497" Scale="0.5998,0.24,1" Type="Korhal_PerimeterWall">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1501835678" Variation="2" Position="33.1342,12.1003,11.9936" Rotation="0.6164" Scale="1.1184,1.1184,1.1184" Type="AiurTree_Ex2">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1575596168" Position="183,109.5,9.997" Rotation="5.9697" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1490229787" Variation="2" Position="86.2,44.033,7.9963" Rotation="1.5705" Scale="1.25,1.25,1.25" Type="UmojanLabCatwalkSectionPlatform">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1056021241" Variation="3" Position="147.8298,52.142,7.9958" Rotation="0.785" Scale="1,1,1" Type="DecalSpace_Baked">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1762109324" Variation="6" Position="124.87,72.0683,8.0625" Rotation="3.9262" Scale="1.224,1.224,1" Type="BattleStation_Line_Decals">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1238142330" Variation="6" Position="103.6625,39.7797,4.056" Rotation="5.4975" Scale="1,1,1" Type="BattleStation_Floor_Interior_Short">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1695899913" Variation="2" Position="175,103,10" Scale="1,1,1" Type="DOM_Crate">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1101379279" Variation="2" Position="185,102.5,4.3303" Rotation="2.9697" Scale="1,1,1" Type="AmbientLightSpot_White" Pitch="0.2656" Roll="0.4985">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="526477384" Variation="2" Position="35.5,229.5,-4.003" Rotation="5.2111" Scale="0.9484,0.9484,0.9484" Type="Aiur_Trees_Giant">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="2060573407" Variation="6" Position="187.748,105.9487,9.997" Scale="1,1,1" Type="Tarsonis_Debris_Splat">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="873318122" Variation="4" Position="148,71.5,7.9975" Rotation="5.4973" Scale="0.5998,0.24,1" Type="Korhal_PerimeterWall">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1911089152" Position="101.3098,45.48,8.0063" Scale="1.25,1.25,1.25" Type="UmojanLabCatwalkSectionRampNW">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="664129170" Variation="4" Position="189.5,144.5,10.0092" Rotation="0.3417" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1959363088" Variation="1" Position="176.5,116.5,10.0144" Rotation="5.4975" Scale="1,1,1" Type="DOM_Groundlights">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1854771810" Position="98.72,31.0798,0.8771" Rotation="3.9267" Scale="1,1,1" Type="BattleStation_Floor_Interrior">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="536555031" Variation="3" Position="100.0866,34.7246,0.8762" Rotation="4.7121" Scale="1,1,1" Type="BattleStation_Floor_Interrior">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="376588121" Variation="2" Position="193,147.5,9.997" Rotation="2.37" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="2106846786" Variation="4" Position="160,100.5,9.997" Rotation="6.242" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="2090970" Variation="4" Position="222.6713,133.2333,9.985" Rotation="1.5705" Scale="1,1,1" Type="Tarsonis_Guardrail">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1002835600" Variation="1" Position="150.0046,48.3244,7.9956" Rotation="2.356" Scale="0.3925,0.3925,1" Type="DecalSpace" TintColor="170,170,170">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="2137765628" Variation="3" Position="125.6657,72.8522,8.9807" Rotation="5.116" Scale="1,1,1" Type="BattleStation_Floor_Interior_Gadget" Pitch="6.2768" Roll="0.7851">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="488468648" Position="211.9802,90.9262,7.9973" Rotation="3.9267" Scale="0.6496,0.6496,0.6496" Type="HybridWallConsoles">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1380751110" Position="79.5478,23.7812,10.2192" Rotation="3.9267" Scale="1,1,1" Type="MoebiusLabHybridCapsule">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1990285352" Position="186,138.5,9.9975" Rotation="2.3557" Scale="1,1,1" Type="JarbanMinor_Fence">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1568389722" Variation="4" Position="26.3796,17.58,11.9936" Rotation="5.495" Scale="0.8728,0.8728,0.8728" Type="AiurTree_Ex2">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1810861952" Position="32.1108,6.7048,11.9936" Rotation="6.0087" Scale="0.917,0.917,0.917" Type="AiurTree_Ex2">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="734613114" Variation="2" Position="28,202.5,7.9924" Scale="1,1,1" Type="Elsecaro_Tree">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="610177859" Position="215.5,125,9.997" Rotation="5.5834" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1063008626" Variation="7" Position="212.5,161.5,11.3508" Rotation="5.4975" Scale="1,1,1" Type="CompoundSewers_FuelingPipes">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1340679578" Position="164,72.5,6.6474" Rotation="0.7851" Scale="1,1,1" Type="DefendersCity_Wall_Municipal">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="27823952" Position="73.8403,38.2336,7.9963" Rotation="0.3654" Scale="0.8735,0.8735,0.8735" Type="LightOmniCyanLarge">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1917081245" Variation="1" Position="150.0163,48.5522,7.9956" Rotation="2.356" Scale="0.3925,0.3925,1" Type="DecalSpace" TintColor="170,170,170">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1934209576" Variation="6" Position="179.5463,134.6008,10.0031" Rotation="2.4187" Scale="1,1,1" Type="CastanarCabinet">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="244210516" Variation="4" Position="216.844,104.0788,9.9973" Scale="1,1,1" Type="DOM_LabGlassWalls">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1697816203" Variation="1" Position="147.0554,51.424,7.9958" Rotation="0.7846" Scale="0.3925,0.3925,1" Type="DecalSpace" TintColor="170,170,170">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1907381657" Position="26.2111,17.583,11.9936" Rotation="0.5124" Scale="0.8942,0.8942,0.8942" Type="AiurTree_Ex2">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1397108779" Position="214.7143,104.2043,9.9973" Rotation="3.122" Scale="1,1,1" Type="UmojanLabLabGate" TintColor="83,83,83 0.500000">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="546198316" Position="70.6745,48.321,7.9963" Rotation="1.11" Scale="1.0827,1.0827,1.0827" Type="LightOmniCyanLarge">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="3932152" Variation="3" Position="181,83,7.997" Scale="1,1,1" Type="CastanarLightboard">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1854030686" Variation="3" Position="114.0065,40.4392,7.9958" Rotation="5.4973" Scale="1,1,1" Type="DecalSpace_Baked">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1516833241" Variation="2" Position="160.5,107,9.997" Rotation="4.3842" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1528922151" Variation="3" Position="44,188,7.9924" Scale="0.9511,0.9511,0.9511" Type="Aiur_Overgrowth">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1205745177" Variation="2" Position="109.5476,142.9953,7.9924" Rotation="4.1806" Scale="0.8454,0.8454,0.8454" Type="Aiur_Trees_Giant">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1297858916" Variation="7" Position="211,163.5,10.7751" Rotation="5.4975" Scale="1,1,1" Type="CompoundSewers_FuelingPipes">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="802718656" Variation="7" Position="221.5,152.5,11.411" Rotation="5.4975" Scale="1,1,1" Type="CompoundSewers_FuelingPipes">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1513441314" Variation="1" Position="35.4821,204.096,7.9968" Scale="1.022,1.022,1.022" Type="Aiur_Overgrowth">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="107353170" Variation="3" Position="115.336,39.127,10.93" Rotation="5.497" Scale="1,1,1" Type="DecalSpace_Baked">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="723904761" Position="87.3867,21.759,2.0788" Rotation="2.3571" Scale="1.5507,1.5507,1.5507" Type="GenericSpacePipesDiagonal">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="50012861" Position="196.3962,110.2917,14.5988" Rotation="3.5007" Scale="5,5,5" Type="ActorLightOmni" TintColor="NULL 2.000000">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="158489381" Variation="2" Position="206,135.5,10.018" Rotation="2.3347" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="978173583" Variation="7" Position="220,154,10.1967" Rotation="5.4975" Scale="1,1,1" Type="CompoundSewers_FuelingPipes">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1057728432" Variation="3" Position="35.6713,5.6271,11.9936" Rotation="4.5642" Scale="1.116,1.116,1.116" Type="AiurTree_Grouped">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1403979850" Position="20.1206,16.1225,11.994" Rotation="0.785" Scale="0.626,0.5546,0.516" Type="Aiur_City_Ramps">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1852320285" Variation="4" Position="134,87,7.9973" Rotation="3.4772" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1016935479" Variation="1" Position="22,200.5,7.9968" Scale="0.954,0.954,0.954" Type="Aiur_Overgrowth">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1444265433" Variation="18" Position="131.916,53.027,7.9958" Rotation="2.374" Scale="1.7504,1.2238,1" Type="BattleStation_Line_Decals">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="20649640" Variation="6" Position="32.3603,7.24,11.9936" Rotation="0.2741" Scale="1.0546,1.0546,1.0546" Type="AiurTree_Ex2">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1685045991" Position="25,179,7.9924" Rotation="3.6052" Scale="1.119,1.119,1.119" Type="Aiur_Trees_Giant">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1151590915" Variation="18" Position="128.7753,43.6081,7.9958" Rotation="2.374" Scale="1.7504,1.2238,1" Type="BattleStation_Line_Decals">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="54732026" Variation="3" Position="76.6142,28.0593,0.8762" Scale="1,1,1" Type="BattleStation_Floor_Interrior">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="818947809" Variation="1" Position="200.204,118.2421,10.074" Rotation="3.9265" Scale="1,1,1" Type="DOM_LabGlassWalls">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1221844272" Variation="2" Position="80.74,48.401,0.8745" Rotation="3.9267" Scale="1,1,1" Type="BattleStation_Floor_Interrior">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1700787870" Variation="3" Position="222.5,151.5,10.183" Rotation="5.4975" Scale="1,1,1" Type="CompoundSewers_FuelingPipes">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+        <Flag Index="NoDoodadFootprint" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="257714732" Variation="12" Position="100.7922,55.6237,7.9956" Rotation="5.524" Scale="0.9135,0.9135,1" Type="DOM_Decals">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1110362605" Variation="6" Position="24.5454,2.5944,11.9936" Rotation="5.696" Scale="0.8374,0.8374,0.8374" Type="AiurTree_Ex2">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1330923797" Variation="4" Position="148.5,93,7.9973" Rotation="0.2" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="265736615" Position="96.7392,40.871,7.9963" Rotation="3.1413" Scale="1.25,1.25,1.25" Type="UmojanLabCatwalkSection45RightShort">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="2002771550" Variation="7" Position="214,160,10.149" Rotation="5.4975" Scale="1,1,1" Type="CompoundSewers_FuelingPipes">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="683501966" Variation="2" Position="130.5,90.5,8.175" Rotation="1.9172" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1530605326" Position="90.4243,15.5102,8.289" Rotation="3.8933" Scale="1.5507,1.5507,1.5507" Type="GenericSpacePipesDiagonal">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="500270839" Variation="3" Position="25.3581,21.9658,11.9948" Rotation="0.481" Scale="0.9531,0.9531,0.9531" Type="AiurTree_Grouped">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="797933620" Variation="3" Position="156.5,82,8.7851" Rotation="3.9265" Scale="1,1,1" Type="CompoundMansion_Light">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1063439579" Position="21.129,20.9804,18.0856" Rotation="5.497" Scale="0.438,0.438,1.3786" Type="StarshipProtossWallpost">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1563884048" Variation="1" Position="204.9235,90.1596,8.0773" Rotation="2.356" Scale="1,1,1" Type="DOM_LabGlassWalls">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="534887783" Variation="10" Position="109.8457,46.7377,7.9863" Rotation="3.9265" Scale="1.224,1.224,1" Type="BattleStation_Line_Decals">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="496711591" Variation="5" Position="224,150.5,10.1044" Rotation="3.1413" Scale="1,1,1" Type="CompoundSewers_FuelingPipes" Pitch="4.9392" Roll="0.8854">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="575195463" Variation="6" Position="109.3671,51.271,7.9978" Rotation="3.9265" Scale="1.224,1.224,1" Type="BattleStation_Line_Decals">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="2003775945" Variation="1" Position="218.3825,102.729,10.0874" Rotation="2.356" Scale="1,1,1" Type="DOM_LabGlassWalls">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1206844066" Variation="4" Position="19,192,7.9924" Scale="1.0085,1.0085,1.0085" Type="Aiur_Overgrowth">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="580523818" Variation="1" Position="27.993,3.1315,11.9936" Rotation="6.0231" Scale="1.0563,1.0563,1.0563" Type="AiurTree_Ex2">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="460856068" Position="83.178,47.3388,7.9963" Rotation="2.0842" Scale="0.972,0.972,0.972" Type="LightOmniCyanLarge">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1031171231" Variation="2" Position="31.0478,5.111,11.9936" Rotation="2.3063" Scale="0.834,0.834,0.834" Type="AiurTree_Ex2">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="77689828" Position="31,211,8.005" Rotation="3.7124" Scale="0.819,0.819,0.819" Type="Aiur_Trees_Giant">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="338714710" Variation="1" Position="199.5,148.5,10.1872" Rotation="2.132" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="2103227450" Position="77.1198,170.4682,9.194" Rotation="3.9267" Scale="1.5444,1.1684,2.1442" Type="ProtossBaseArch">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1586369137" Variation="1" Position="208.9155,104.5034,9.9807" Rotation="2.356" Scale="1,1,1" Type="DOM_LabGlassWalls">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1639632203" Variation="3" Position="119.437,63.69,7.9958" Rotation="5.4975" Scale="2.0812,2.0812,1.212" Type="BattleStation_Text_Decals">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="564703599" Position="26.178,17.583,11.9936" Rotation="0.9191" Scale="0.8784,0.8784,0.8784" Type="AiurTree_Ex2">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="196790473" Variation="7" Position="214,160,11.2902" Rotation="5.4975" Scale="1,1,1" Type="CompoundSewers_FuelingPipes">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="920189271" Variation="1" Position="218.9045,98.224,8.0197" Rotation="4.7121" Scale="1,1,1" Type="DOM_LabGlassWalls">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1085858423" Variation="1" Position="195.5,119,9.9973" Rotation="0.0615" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="945347850" Variation="7" Position="209.5,165,10.7138" Rotation="5.4975" Scale="1,1,1" Type="CompoundSewers_FuelingPipes">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="306281462" Variation="7" Position="217,157,11.3486" Rotation="5.4975" Scale="1,1,1" Type="CompoundSewers_FuelingPipes">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="585840029" Variation="2" Position="23.735,200.2177,7.5507" Rotation="0.9455" Scale="1.4,1.4,1.4" Type="Void_Crystals" TintColor="63,243,243 2.500000" Pitch="6.0583" Roll="6.0375">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1101646302" Position="21,210,7.9968" Rotation="2.8645" Scale="0.9038,0.9038,0.9038" Type="Aiur_Trees_Giant">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="80271225" Variation="4" Position="25.0927,186.6716,7.9968" Rotation="3.5175" Scale="1.1208,1.1208,1.1208" Type="AiurTree_Grouped">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="506488062" Variation="18" Position="134.9775,49.8972,7.9958" Rotation="2.3737" Scale="1.7504,1.2238,1" Type="BattleStation_Line_Decals">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="501096369" Variation="14" Position="127.322,71.3735,7.9958" Rotation="5.4975" Scale="1.2238,1.2238,1" Type="BattleStation_Line_Decals">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="2117901630" Variation="7" Position="31.7314,15.0554,11.9936" Rotation="0.873" Scale="0.9523,0.9523,0.9523" Type="AiurTree_Ex2">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1044668760" Variation="6" Position="30.7973,15.9133,11.9936" Rotation="4.2402" Scale="0.9853,0.9853,0.9853" Type="AiurTree_Ex2">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="506868316" Position="81.5795,39.8566,7.9963" Rotation="1.5705" Scale="1.25,1.25,1.25" Type="UmojanLabCatwalkSection45Left">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="607334690" Variation="3" Position="182,130.5,10.021" Scale="1,1,1" Type="DOM_Crate">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1123146392" Position="171.5,119.5,9.997" Rotation="5.2565" Scale="0.9956,0.9956,0.9956" Type="UmojanLabDebrisDoodad">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1048860100" Variation="3" Position="215,124,9.997" Rotation="5.3063" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1096572271" Variation="4" Position="32.9001,9.1013,11.9936" Rotation="5.6896" Scale="1.0322,1.0322,1.0322" Type="AiurTree_Ex2">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1522305218" Position="18.5,195.5,7.9921" Rotation="4.5578" Scale="1.0341,1.0341,1.0341" Type="AiurUnderbrush">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1948298660" Variation="4" Position="24.5927,194.0083,7.9963" Scale="1,1,1" Type="WaterPuddle">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1103966328" Variation="3" Position="135,98,7.9973" Rotation="5.7763" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="54214139" Position="206.21,90.5998,7.9973" Rotation="2.356" Scale="0.6496,0.6496,0.6496" Type="HybridWallConsoles">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="715471239" Position="71.3945,30.999,0.8764" Rotation="5.4975" Scale="1,1,1" Type="BattleStation_Floor_Interrior">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1779928679" Position="149,91,7.9973" Rotation="5.533" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1027283397" Variation="3" Position="28.786,3.3513,11.9936" Rotation="2.213" Scale="0.838,0.838,0.838" Type="AiurTree_Ex2">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1040239324" Variation="2" Position="39.5466,196.0976,7.9963" Scale="1,1,1" Type="WaterPuddle">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="205067484" Variation="2" Position="160,86.5,8.7106" Rotation="3.9265" Scale="1,1,1" Type="CompoundMansion_Light">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1725715525" Position="100.102,141.8308,7.9924" Rotation="4.1806" Scale="0.8454,0.8454,0.8454" Type="Aiur_Trees_Giant">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="337090540" Variation="7" Position="218.5,155.5,10.1872" Rotation="5.4975" Scale="1,1,1" Type="CompoundSewers_FuelingPipes">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1004787156" Variation="1" Position="111.9118,42.62,7.9956" Rotation="0.7846" Scale="0.3925,0.3925,1" Type="DecalSpace" TintColor="170,170,170">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="409241261" Variation="1" Position="30.5,201.5,7.9963" Rotation="1.882" Scale="1.0083,1.0083,1.0083" Type="AiurUnderbrush">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1517574624" Variation="4" Position="81.7587,175.0322,7.9943" Rotation="5.4975" Scale="0.9748,0.9748,0.9748" Type="AiurProtossBuildingsSmall">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="358224207" Position="193,134.5,9.997" Rotation="3.1413" Scale="1,1,1" Type="JarbanMinor_Fence">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1990588749" Variation="4" Position="35,206.5,7.9924" Scale="1,1,1" Type="Elsecaro_Tree">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="67743133" Variation="7" Position="118.7226,41.757,11.6943" Rotation="5.7797" Scale="1.481,1.481,1.481" Type="Tarsonis_WireConduitsWall" Pitch="1.4943" Roll="4.3842">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1690524359" Variation="1" Position="32.7541,8.3996,11.9936" Rotation="5.1225" Scale="0.9685,0.9685,0.9685" Type="AiurTree_Ex2">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="49078518" Variation="24" Position="103.3117,47.34,7.9956" Rotation="2.3532" Scale="2.521,2.521,2.521" Type="Decal">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="530337185" Variation="3" Position="21.5,198.5,7.9963" Rotation="2.959" Scale="1.0327,1.0327,1.0327" Type="AiurUnderbrush">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="222186074" Position="79.2897,168.7,7.9941" Rotation="0.7851" Scale="0.626,0.5546,0.516" Type="Aiur_City_Ramps">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1457604576" Position="24.5,206,7.9924" Scale="1,1,1" Type="Elsecaro_Tree">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1875983872" Variation="4" Position="65.0244,35.8781,3.577" Rotation="1.5705" Scale="1,1,1" Type="BattleStation_Floor_Interior_Short">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="458305271" Position="24.2702,195.0695,7.9965" Scale="1,1,1" Type="RainEmitterLarge">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1936946432" Position="194,93,9.188" Rotation="5.4975" Scale="1,1,1" Type="AlarmLight">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="910950782" Position="143,91.5,7.9973" Rotation="6.128" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="275505876" Variation="4" Position="158.5,61,7.9975" Rotation="5.497" Scale="0.5998,0.24,1" Type="Korhal_PerimeterWall">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="743845218" Variation="10" Position="95.9328,50.768,7.9975" Rotation="5.4975" Scale="1.224,1.224,1" Type="BattleStation_Line_Decals">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1027275745" Position="167.5,100.5,10.1872" Rotation="3.8972" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="749735873" Variation="3" Position="197.5,129,9.997" Rotation="0.0961" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1347168980" Variation="7" Position="215.5,158.5,11.3383" Rotation="5.4975" Scale="1,1,1" Type="CompoundSewers_FuelingPipes">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="850963273" Variation="10" Position="100,57.2158,7.9956" Rotation="0.7851" Scale="1.2238,1.2238,1" Type="BattleStation_Line_Decals">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="283381287" Variation="7" Position="87.3757,24.861,2.0952" Rotation="5.4975" Scale="1.5507,1.5507,1.5507" Type="GenericSpacePipesDiagonal">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="484738773" Variation="1" Position="74.7275,167.9855,15.438" Rotation="2.3562" Scale="3.0136,3.0136,3.0136" Type="ProtossBaseLights" Pitch="5.6987">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="716400106" Position="135.5,88.5,6.5336" Rotation="5.0053" Scale="1,1,1" Type="AmbientLightSpot_White">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1062824226" Variation="11" Position="205,165,9.997" Rotation="2.8466" Scale="1,1,1" Type="GenericSpacePipes">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1582402284" Variation="6" Position="124.6333,66.4216,8.0043" Rotation="3.9262" Scale="1.224,1.224,1" Type="BattleStation_Line_Decals">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="646572962" Variation="4" Position="163.5,80.5,7.9975" Rotation="5.4968" Scale="0.5998,0.24,1" Type="Korhal_PerimeterWall">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="206991733" Variation="3" Position="147.8666,50.6572,7.9958" Rotation="5.497" Scale="1,1,1" Type="DecalSpace_Baked">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1362213107" Position="30.235,4.3352,11.9936" Rotation="5.604" Scale="1.1325,1.1325,1.1325" Type="AiurTree_Ex2">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1663153749" Variation="2" Position="126.5495,51.2687,7.9958" Rotation="0.7851" Scale="2.0812,2.0812,1.212" Type="BattleStation_Text_Decals">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="645125944" Variation="3" Position="100.538,53.7927,7.9956" Rotation="5.4975" Scale="1,1,1" Type="DecalSpace_Baked">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1660274264" Variation="10" Position="107.9956,46.7734,7.996" Rotation="2.3557" Scale="1.224,1.224,1" Type="BattleStation_Line_Decals">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1404761322" Variation="3" Position="99.0961,56.6882,7.9956" Rotation="0.7851" Scale="1,1,1" Type="DecalSpace_Baked">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="298042641" Variation="2" Position="29.5,200.5,7.9963" Rotation="2.624" Scale="0.9606,0.9606,0.9606" Type="AiurUnderbrush">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="333661726" Position="144,104,9.9973" Rotation="3.5881" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="791756811" Variation="1" Position="87.2055,31.5573,8.7941" Rotation="5.4975" Scale="1,1,1" Type="MoebiusLabHybridChamberLarge">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="976338223" Variation="4" Position="168,78,8.0327" Rotation="3.9265" Scale="0.5998,0.24,1" Type="Korhal_PerimeterWall">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1605722842" Variation="1" Position="39,202,7.9968" Scale="1.0407,1.0407,1.0407" Type="Aiur_Overgrowth">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1633683551" Position="188.0117,102.8535,14.5988" Rotation="3.5007" Scale="5,5,5" Type="ActorLightOmni" TintColor="NULL 2.000000">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1539197372" Variation="4" Position="172.5,103.5,9.9973" Rotation="3.4506" Scale="0.8774,0.8774,0.8774" Type="UmojanLabDebrisDoodad">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1228855956" Variation="2" Position="32.636,193.391,7.532" Rotation="3.727" Scale="1,1,1" Type="Void_Crystals" TintColor="63,243,243 2.500000" Pitch="6.0585" Roll="6.0375">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="2107863280" Variation="4" Position="69.7263,35.0808,0.8764" Rotation="4.7121" Scale="1,1,1" Type="BattleStation_Floor_Interrior">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="487746844" Variation="4" Position="13.3991,13.2263,11.9941" Rotation="2.3557" Scale="0.9748,0.9748,0.9748" Type="AiurProtossBuildingsSmall">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="750036226" Variation="4" Position="162,84,7.9997" Rotation="3.9265" Scale="0.5998,0.24,1" Type="Korhal_PerimeterWall">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1224557586" Position="33.1357,10.9257,11.9936" Rotation="3.5551" Scale="1.1203,1.1203,1.1203" Type="AiurTree_Ex2">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="321365258" Variation="4" Position="85.5617,54.481,4.0368" Scale="1,1,1" Type="BattleStation_Floor_Interior_Short">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="2029912736" Position="43.1318,200.3188,7.9968" Rotation="2.878" Scale="1,1,1" Type="Elsecaro_Small_Rock_Group">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1494887941" Variation="2" Position="30.5146,20.9,11.9948" Rotation="1.6716" Scale="0.9035,0.9035,0.9035" Type="AiurTree_Grouped">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1462254438" Variation="3" Position="22.5,202,7.9924" Scale="1,1,1" Type="Elsecaro_Tree">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="862201557" Variation="11" Position="102.75,53.9038,8.0053" Rotation="0.7851" Scale="1.224,1.224,1" Type="BattleStation_Line_Decals">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1521389010" Variation="4" Position="20,188.5,7.9968" Rotation="4.4355" Scale="1.1684,1.1684,1.1684" Type="AiurTree_Grouped">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="846673517" Variation="1" Position="98.177,55.9707,7.9956" Rotation="0.785" Scale="0.3925,0.3925,1" Type="DecalSpace" TintColor="170,170,170">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="302308769" Variation="2" Position="83,240.5,-4.003" Rotation="4.427" Scale="0.9484,0.9484,0.9484" Type="Aiur_Trees_Giant">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="2057231921" Position="185.5,132,11.4914" Rotation="1.0017" Scale="1,1,1" Type="DOM_Crate">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="27967697" Variation="6" Position="183,136,9.9975" Rotation="2.4187" Scale="1,1,1" Type="CastanarCabinet">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1659722966" Position="145.5,82,8.0117" Rotation="2.8801" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="644347810" Position="185.5,132,10" Scale="1,1,1" Type="DOM_Crate">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="297694688" Position="18.0007,17.8525,20.9624" Rotation="1.5703" Scale="0.476,0.476,0.3537" Type="Aiur_PowerCrystal">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="2054993313" Variation="4" Position="149.5,70,7.9975" Rotation="5.497" Scale="0.5998,0.24,1" Type="Korhal_PerimeterWall">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="964977336" Variation="2" Position="13.9855,13.851,11.9941" Rotation="2.3557" Scale="1.9184,1.9184,1.8671" Type="Aiur_City_Archway_Large">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="442436339" Position="178,115.5,9.997" Scale="1,1,1" Type="Tarsonis_Debris_Splat">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1027383835" Position="34.997,206.8815,7.5463" Rotation="3.6333" Scale="1.4,1.4,1.4" Type="Void_Crystals" TintColor="63,243,243 2.500000" Pitch="6.0583" Roll="6.0375">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="294404964" Variation="6" Position="182.0305,137.1726,9.9975" Rotation="1.5634" Scale="1,1,1" Type="CastanarCabinet">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1420375002" Variation="4" Position="161.5,99,9.997" Rotation="4.3747" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="768557938" Variation="4" Position="166.5,77.5,7.9975" Rotation="5.4968" Scale="0.5998,0.24,1" Type="Korhal_PerimeterWall">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1052438955" Position="160,108,17.169" Rotation="5.0053" Scale="1,1,1" Type="AmbientLightSpot_White">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1162059338" Variation="3" Position="112.5646,43.3347,7.9956" Rotation="0.785" Scale="1,1,1" Type="DecalSpace_Baked">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1210236515" Variation="5" Position="224,150.5,11.4616" Rotation="3.1413" Scale="1,1,1" Type="CompoundSewers_FuelingPipes" Pitch="4.9392" Roll="0.8854">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1949505717" Variation="1" Position="146.9831,51.426,7.9958" Rotation="0.7846" Scale="0.3925,0.3925,1" Type="DecalSpace" TintColor="170,170,170">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1834298252" Variation="3" Position="16.5053,191.6228,7.9924" Rotation="2.1481" Scale="1.1208,1.1208,1.1208" Type="AiurTree_Grouped">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="979356765" Variation="3" Position="211.259,91.7387,7.9973" Rotation="0.2687" Scale="1,1,1" Type="BattleStation_BridgeSeats">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1699994057" Variation="2" Position="93.9562,38.1787,-0.7937" Rotation="5.4975" Scale="1,1,1" Type="BattleStation_Floor_Interior_Gadget">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1075740119" Variation="14" Position="105.4631,49.2883,7.996" Rotation="2.356" Scale="1.224,1.224,1" Type="BattleStation_Line_Decals">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1957413565" Variation="4" Position="78.5698,52.0698,4.026" Rotation="0.7851" Scale="1,1,1" Type="BattleStation_Floor_Interior_Short">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1396911653" Variation="1" Position="181,105,9.997" Rotation="0.536" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1729764385" Position="77.0324,170.3041,14.374" Rotation="0.7851" Scale="1.1252,1.1252,1.1252" Type="ECLPORTALBORDER">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="2002306213" Variation="10" Position="102.7204,52.0305,8.0185" Rotation="2.3557" Scale="1.224,1.224,1" Type="BattleStation_Line_Decals">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1333367544" Variation="3" Position="174.5,118.5,9.9794" Rotation="3.9624" Scale="0.8518,0.8518,0.8518" Type="UmojanLabDebrisDoodad">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="521217003" Variation="7" Position="20.3518,4.1882,11.9936" Rotation="6.1223" Scale="1.1362,1.1362,1.1362" Type="AiurTree_Ex2">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1892136183" Variation="2" Position="35,179,7.9924" Rotation="4.2082" Scale="1.112,1.112,1.112" Type="Aiur_Trees_Giant">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="267167152" Variation="4" Position="162,82,7.9975" Rotation="5.4968" Scale="0.5998,0.24,1" Type="Korhal_PerimeterWall">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1802857457" Variation="3" Position="149.2233,53.5385,7.9958" Rotation="0.785" Scale="1,1,1" Type="DecalSpace_Baked">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1003570724" Variation="6" Position="104.6435,51.9135,7.996" Rotation="3.9265" Scale="1.224,1.224,1" Type="BattleStation_Line_Decals">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="2142281192" Variation="5" Position="187,117,9.997" Rotation="4.3698" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="634409420" Variation="4" Position="74.9648,47.1286,8.026" Rotation="0.7851" Scale="1.3608,1.3608,1.3608" Type="HybridLab_ChamberLarge">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1780271015" Variation="5" Position="153,91.5,7.9973" Rotation="6.1687" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="714062043" Variation="2" Position="145.5,72.5,7.9975" Rotation="3.9265" Scale="1,1,1" Type="CompoundMansion_Light">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1124613437" Position="77.2766,170.1223,12.4367" Rotation="3.9267" Scale="0.5,0.5,0.5" Type="ECLPORTALACTIVATE_NOVA" Pitch="1.5705">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="73592228" Variation="4" Position="21.614,3.2646,11.9936" Rotation="4.169" Scale="1.1872,1.1872,1.1872" Type="AiurTree_Ex2">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1995036679" Variation="10" Position="98.6938,48.0112,8.045" Rotation="5.4975" Scale="1.224,1.224,1" Type="BattleStation_Line_Decals">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="2139261872" Variation="1" Position="41,191,7.9968" Rotation="5.328" Scale="0.994,0.994,0.994" Type="AiurTree_Grouped">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="813640494" Variation="2" Position="118.0644,41.8186,10.2048" Rotation="2.2426" Scale="1,1,1" Type="Tarsonis_WireConduitsWall" Roll="1.5705">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1896989184" Variation="5" Position="33.0976,10.424,11.9936" Rotation="5.1232" Scale="0.9814,0.9814,0.9814" Type="AiurTree_Ex2">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="840479648" Variation="5" Position="17.4926,3.3627,11.9936" Rotation="2.9011" Scale="0.896,0.896,0.896" Type="AiurTree_Grouped">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1595777225" Position="19,197.5,7.9924" Rotation="3.294" Scale="1,1,1" Type="Elsecaro_Small_Rock_Group">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="2077469526" Variation="2" Position="29.5,205.5,7.9924" Scale="1,1,1" Type="Elsecaro_Tree">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="299181953" Variation="4" Position="159,107.5,9.997" Rotation="5.0017" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1210356844" Variation="10" Position="148.7336,52.6696,7.9958" Rotation="0.785" Scale="1.2238,1.2238,1" Type="BattleStation_Line_Decals">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="225358920" Variation="2" Position="74.818,37.1435,8.4677" Rotation="0.75" Scale="0.6801,0.6801,0.6801" Type="UmojanLabMonitorFloor">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="348767521" Variation="1" Position="149.994,48.449,7.9956" Rotation="2.356" Scale="0.3925,0.3925,1" Type="DecalSpace" TintColor="170,170,170">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="406537886" Variation="2" Position="81.083,174.4475,7.9943" Rotation="5.4975" Scale="1.9187,1.9187,1.8674" Type="Aiur_City_Archway_Large">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="549914397" Position="28.699,193.0327,7.9873" Rotation="6.1203" Scale="1,1,1" Type="Elsecaro_Small_Rock_Group">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1665005068" Variation="1" Position="146.9106,51.4245,7.9958" Rotation="0.7846" Scale="0.3925,0.3925,1" Type="DecalSpace" TintColor="170,170,170">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="25264414" Variation="6" Position="113.3786,55.253,7.9978" Rotation="3.9265" Scale="1.224,1.224,1" Type="BattleStation_Line_Decals">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="481694945" Variation="5" Position="35.5,188.5,7.9968" Scale="1.0441,1.0441,1.0441" Type="Aiur_Overgrowth">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1714244917" Variation="3" Position="35,189.5,7.9968" Rotation="0.0456" Scale="1,1,1" Type="Elsecaro_Small_Rock_Group">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1653961520" Variation="4" Position="19.0095,16.7946,13.2172" Rotation="0.785" Scale="0.3728,0.4367,0.3164" Type="Protoss_Base_Terminals">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="794707926" Position="103.6455,145.7258,7.9924" Rotation="4.1806" Scale="0.8454,0.8454,0.8454" Type="Aiur_Trees_Giant">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1489792499" Variation="2" Position="18.5,196.5,7.9921" Rotation="0.9304" Scale="1.0942,1.0942,1.0942" Type="AiurUnderbrush">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="140549965" Position="18,201,7.9924" Rotation="2.353" Scale="1.1223,1.1223,1.1223" Type="Aiur_Trees_Giant">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1121396807" Variation="9" Position="116.3452,42.5854,8.0183" Rotation="3.8222" Scale="1,1,1" Type="Tarsonis_WireConduits">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="390435066" Variation="2" Position="157.5,84,7.9975" Rotation="3.9265" Scale="1,1,1" Type="CompoundMansion_Light">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1858828803" Position="191,92,9.9968" Rotation="2.9523" Scale="0.5,0.5,0.5" Type="CharWorm">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1449251802" Variation="27" Position="107.086,39.9536,8.0771" Rotation="3.1413" Scale="1.224,1.224,1" Type="BattleStation_Line_Decals">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="2137748234" Variation="7" Position="221.5,152.5,10.1857" Rotation="5.4975" Scale="1,1,1" Type="CompoundSewers_FuelingPipes">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1431331761" Variation="1" Position="168.5,107.5,11.9802" Rotation="2.4267" Scale="1,1,1" Type="AmbientLightSpot_White" Pitch="1.4133" Roll="6.2075">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1782105928" Variation="1" Position="228.1948,127.91,7.9821" Rotation="1.5705" Scale="0.75,0.75,1" Type="Tarsonis_Ramp_Stairs">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="516156936" Position="182.5,105.5,9.997" Rotation="3.9465" Scale="1.0493,1.0493,1.0493" Type="UmojanLabDebrisDoodad">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1080235217" Variation="2" Position="196.5,132.5,10.174" Rotation="6.0686" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="536774497" Variation="14" Position="133.9536,47.9902,7.9958" Rotation="3.9267" Scale="1.2238,1.2238,1" Type="BattleStation_Line_Decals">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="812594487" Variation="4" Position="30.1574,16.3078,11.9936" Rotation="6.1328" Scale="1.0988,1.0988,1.0988" Type="AiurTree_Ex2">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1109837141" Variation="2" Position="215,122.5,9.997" Rotation="2.4177" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1486307140" Position="18.0007,17.8525,13.1938" Rotation="3.9265" Scale="1.5444,1.1684,2.1442" Type="ProtossBaseArch">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="545413251" Variation="4" Position="33.3437,197.1445,7.8308" Rotation="3.7612" Scale="1,1,1" Type="Void_Crystals" TintColor="63,243,243 2.500000" Pitch="5.9001" Roll="6.1516">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="698644172" Position="195,92,9.1735" Rotation="5.4975" Scale="1,1,1" Type="AlarmLight">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1169647639" Variation="2" Position="32.9987,12.8188,11.9936" Rotation="4.8881" Scale="0.8381,0.8381,0.8381" Type="AiurTree_Ex2">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="3427214" Position="17.9072,17.9562,15.7736" Rotation="0.785" Scale="0.6833,0.6833,5" Type="ECLPORTALACTIVATE" TintColor="21,126,255 2.000000" Pitch="1.5705">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1582389349" Variation="7" Position="220,154,11.3417" Rotation="5.4975" Scale="1,1,1" Type="CompoundSewers_FuelingPipes">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="2039009477" Variation="1" Position="147.124,51.4291,7.9958" Rotation="0.7846" Scale="0.3925,0.3925,1" Type="DecalSpace" TintColor="170,170,170">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="629982429" Variation="1" Position="31,203,7.9924" Rotation="1.0173" Scale="0.8867,0.8867,0.8867" Type="Aiur_Trees_Tall">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1861058869" Variation="1" Position="79.5927,172.8637,15.345" Rotation="5.4975" Scale="3.0136,3.0136,3.0136" Type="ProtossBaseLights" Pitch="5.6987">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="2047281575" Variation="6" Position="186.5,133,9.9975" Rotation="1.5637" Scale="1,1,1" Type="CastanarCabinet">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1337092374" Variation="1" Position="150.0236,48.491,7.9956" Rotation="2.356" Scale="0.3925,0.3925,1" Type="DecalSpace" TintColor="170,170,170">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="354394612" Variation="3" Position="187.5,115,9.997" Rotation="5.3442" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="332417103" Position="22,186,7.9924" Rotation="5.4753" Scale="0.8645,0.8645,0.8645" Type="Aiur_Trees_Giant">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1387301903" Position="29.3801,195.898,7.9858" Rotation="4.7175" Scale="1,1,1" Type="Elsecaro_Small_Rock_Group">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="731029583" Variation="2" Position="97.3581,29.7307,0.8762" Rotation="3.9267" Scale="1,1,1" Type="BattleStation_Floor_Interrior">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1651865350" Position="77.1198,170.4682,16.9626" Rotation="1.5705" Scale="0.476,0.476,0.3537" Type="Aiur_PowerCrystal">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="2099417534" Variation="1" Position="208.5,149,9.9833" Rotation="3.4257" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1465223241" Variation="5" Position="157.5,110,9.9931" Rotation="0.03" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="2075957768" Variation="3" Position="150,76,8.7851" Rotation="3.9265" Scale="1,1,1" Type="CompoundMansion_Light">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="577832307" Variation="1" Position="174.5,111,4.3303" Rotation="2.9697" Scale="1,1,1" Type="AmbientLightSpot_White" Pitch="0.2656" Roll="0.4985">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1105606249" Variation="3" Position="97.5112,45.948,4.0415" Rotation="5.4973" Scale="1,1,1" Type="BattleStation_Floor_Interior_Short">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="353747030" Variation="3" Position="26.4462,17.579,11.9936" Rotation="4.984" Scale="1.0261,1.0261,1.0261" Type="AiurTree_Ex2">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="230930927" Variation="6" Position="191.629,107.1076,9.997" Scale="1,1,1" Type="Tarsonis_Debris_Splat">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="913824620" Variation="3" Position="108.1645,47.75,8.1696" Rotation="3.9816" Scale="1,1,1" Type="BattleStation_Floor_Interior_Gadget" Pitch="6.2768" Roll="0.7851">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1669824474" Variation="3" Position="28,209.5,7.9946" Scale="1,1,1" Type="Elsecaro_Tree">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="926509350" Variation="9" Position="192.5,89.5,1.3344" Rotation="2.9177" Scale="1,1,1" Type="AmbientLightSpot_DarkRed">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1796250016" Variation="1" Position="23.8093,20.9128,11.9948" Rotation="1.5131" Scale="0.939,0.939,0.939" Type="AiurTree_Grouped">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1595624507" Variation="1" Position="21.5,189,7.9968" Scale="1.0197,1.0197,1.0197" Type="Aiur_Overgrowth">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1851468384" Variation="4" Position="154,65.5,7.9975" Rotation="5.497" Scale="0.5998,0.24,1" Type="Korhal_PerimeterWall">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="184373841" Variation="1" Position="111.718,42.6186,7.9956" Rotation="0.7846" Scale="0.3925,0.3925,1" Type="DecalSpace" TintColor="170,170,170">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="694510190" Position="104.4187,144.0734,7.9924" Rotation="4.1806" Scale="0.8454,0.8454,0.8454" Type="Aiur_Trees_Giant">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="346463510" Variation="2" Position="173.5,104.5,9.997" Rotation="4.1582" Scale="1.1413,1.1413,1.1413" Type="UmojanLabDebrisDoodad">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="297378899" Position="128.5,101.5,7.9973" Rotation="5.4645" Scale="1,1,1" Type="Korhal_Platform_Debris">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1064000906" Variation="7" Position="206.5,167.5,10.174" Rotation="5.4975" Scale="1,1,1" Type="CompoundSewers_FuelingPipes">
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="2103721898" Variation="6" Position="110.6472,57.882,8.0578" Rotation="3.9265" Scale="1.224,1.224,1" Type="BattleStation_Line_Decals">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="2087119835" Position="171.5,105.5,9.997" Rotation="5.6103" Scale="1.135,1.135,1.135" Type="UmojanLabDebrisDoodad">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="625589786" Position="14.8403,14.7192,18.0842" Rotation="2.3557" Scale="0.438,0.438,1.3786" Type="StarshipProtossWallpost">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1615504966" Variation="4" Position="148,69.5,7.9975" Rotation="3.9265" Scale="0.5998,0.24,1" Type="Korhal_PerimeterWall">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1681082829" Variation="6" Position="121.9018,69.0505,8.0686" Rotation="3.9262" Scale="1.224,1.224,1" Type="BattleStation_Line_Decals">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="HeightAbsolute" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectDoodad>
+    <ObjectDoodad Id="1067252989" Variation="2" Position="15,198,7.9924" Rotation="4.428" Scale="1.1582,1.1582,1.1582" Type="AiurTree_Grouped">
+        <Flag Index="HeightAbsolute" Value="1"/>
+    </ObjectDoodad>
+    <ObjectPoint Id="1764562000" Position="186,97.5,0" Rotation="4.6838" Scale="1,1,1" Type="Normal" Name="Generic04" Color="0,0,0,0"/>
+    <ObjectPoint Id="888181899" Position="189,89,0" Scale="1,1,1" Type="Normal" Name="CrateFlash" Color="0,0,0,0"/>
+    <ObjectPoint Id="1661855843" Position="141.5,112,0" Scale="1,1,1" Type="Normal" Name="Point 003" Color="0,0,0,0"/>
+    <ObjectPoint Id="2017791939" Position="11.9721,23.8344,0" Rotation="0.7851" Scale="1,1,1" Type="Normal" Name="Point 001" Color="0,0,0,0"/>
+    <ObjectPoint Id="2095153423" Position="157,107,0" Scale="1,1,1" Type="Normal" Name="P_InfestedTease1Spawn" Color="0,0,0,0"/>
+    <ObjectPoint Id="720874921" Position="195,90,0" Scale="1,1,1" Type="Normal" Name="Generic02" Color="0,0,0,0"/>
+    <ObjectPoint Id="1616925821" Position="148,85.5,0" Scale="1,1,1" Type="Normal" Name="Point 007" Color="0,0,0,0"/>
+    <ObjectPoint Id="67394449" Position="32,194,0" Scale="1,1,1" Type="Normal" Name="PlayerSpawn3" Color="0,0,0,0"/>
+    <ObjectPoint Id="2031045836" Position="77.0703,170.4492,0" Rotation="0.7851" Scale="1,1,1" Type="Normal" Name="PORTAL_RTT" Color="0,0,0,0"/>
+    <ObjectPoint Id="581973914" Position="179.5,101,0" Rotation="4.6835" Scale="1,1,1" Type="Normal" Name="Generic05" Color="0,0,0,0"/>
+    <ObjectPoint Id="462629996" Position="144,78,0" Scale="1,1,1" Type="Normal" Name="P_BahtroomMGate " Color="0,0,0,0"/>
+    <ObjectPoint Id="1988168847" Position="76.3427,35.478,0" Scale="1,1,1" Type="Normal" Name="PlayerSpawn1" Color="0,0,0,0"/>
+    <ObjectPoint Id="194370065" Position="141,105,0" Scale="1,1,1" Type="Normal" Name="Point 004" Color="0,0,0,0"/>
+    <ObjectPoint Id="1313766017" Position="185.5,103.5,0" Scale="1,1,1" Type="Normal" Name="P_IntroExplosionFX2" Color="0,0,0,0"/>
+    <ObjectPoint Id="463570456" Position="129,97,0" Scale="1,1,1" Type="Normal" Name="Point 005" Color="0,0,0,0"/>
+    <ObjectPoint Id="727531362" Position="159,63,0" Scale="1,1,1" Type="Normal" Name="Point 010" Color="0,0,0,0"/>
+    <ObjectPoint Id="1387692829" Position="150.5,101,0" Scale="1,1,1" Type="Normal" Name="P_InfestedTeaste1Move" Color="0,0,0,0"/>
+    <ObjectPoint Id="234123965" Position="18.1135,17.6972,0" Rotation="0.7851" Scale="1,1,1" Type="Normal" Name="PORTAL_CAMERA_HORIZON" Color="255,51,189,255"/>
+    <ObjectPoint Id="502225319" Position="189,101.5,0" Scale="1,1,1" Type="Normal" Name="P_IntroExplosionFX1" Color="0,0,0,0"/>
+    <ObjectPoint Id="1326481677" Position="169,70.5,0" Scale="1,1,1" Type="Normal" Name="Point 008" Color="0,0,0,0"/>
+    <ObjectPoint Id="163963298" Position="180,94,0" Scale="1,1,1" Type="Normal" Name="P_IntroExplosionFX3" Color="0,0,0,0"/>
+    <ObjectPoint Id="1055272917" Position="155,71,0" Scale="1,1,1" Type="Normal" Name="Point 009" Color="0,0,0,0"/>
+    <ObjectPoint Id="1221184250" Position="77.0498,170.43,4.1577" Rotation="3.9265" Scale="1,1,1" Type="ThreeD" Name="PORTAL DEACTIVATE EFFECTS" Color="0,0,0,0">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectPoint>
+    <ObjectPoint Id="371429814" Position="165,106,0" Scale="1,1,1" Type="Normal" Name="P_LootFlash" Color="0,0,0,0"/>
+    <ObjectPoint Id="475474330" Position="181.5,95,0" Scale="1,1,1" Type="Normal" Name="Generic03" Color="0,0,0,0"/>
+    <ObjectPoint Id="963244890" Position="77.9504,169.5434,4.4562" Rotation="3.9267" Scale="1,1,1" Type="ThreeD" Name="PORTAL NOVA" Color="0,0,0,0">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectPoint>
+    <ObjectPoint Id="1481200238" Position="154,88,0" Scale="1,1,1" Type="Normal" Name="P_BahtroomFGate" Color="0,0,0,0"/>
+    <ObjectPoint Id="1614102530" Position="130,84,0" Scale="1,1,1" Type="Normal" Name="Point 006" Color="0,0,0,0"/>
+    <ObjectPoint Id="1465784994" Position="192.5,92.5,0" Scale="1,1,1" Type="Normal" Name="Generic01" Color="0,0,0,0"/>
+    <ObjectPoint Id="53312226" Position="76.5847,35.1342,0" Scale="1,1,1" Type="Normal" Name="PlayerSpawn2" Color="0,0,0,0"/>
+    <ObjectPoint Id="655209407" Position="12.0861,23.722,0" Rotation="0.7851" Scale="1,1,1" Type="Normal" Name="PORTAL_CAMERA" Color="255,255,228,166"/>
+    <ObjectCamera Id="145850172" Position="55.698,166.1701,0" Rotation="3.1403" Scale="1,1,1" Name="Camera 005" Color="0,0,0,0" CameraTarget="55.698,166.1701">
+        <CameraValue Index="FieldOfView" Value="6.7998"/>
+        <CameraValue Index="NearClip" Value="0.0998"/>
+        <CameraValue Index="FarClip" Value="600"/>
+        <CameraValue Index="ShadowClip" Value="75"/>
+        <CameraValue Index="Distance" Value="34"/>
+        <CameraValue Index="Pitch" Value="56"/>
+        <CameraValue Index="Yaw" Value="179.9443"/>
+        <CameraValue Index="FocalDepth" Value="8"/>
+        <CameraValue Index="FalloffStart" Value="0.0002"/>
+        <CameraValue Index="FalloffEnd" Value="8"/>
+        <CameraValue Index="FalloffStartNear" Value="0.0002"/>
+        <CameraValue Index="FalloffEndNear" Value="0.0002"/>
+        <CameraValue Index="BokehFStop" Value="0.0097"/>
+        <CameraValue Index="BokehMaxCoC" Value="1"/>
+    </ObjectCamera>
+    <ObjectCamera Id="1103766760" Position="104.263,187.4235,0" Rotation="3.1403" Scale="1,1,1" Name="Camera 006" Color="0,0,0,0" CameraTarget="104.263,187.4235">
+        <CameraValue Index="FieldOfView" Value="25"/>
+        <CameraValue Index="NearClip" Value="0.0998"/>
+        <CameraValue Index="FarClip" Value="600"/>
+        <CameraValue Index="ShadowClip" Value="75"/>
+        <CameraValue Index="Distance" Value="24"/>
+        <CameraValue Index="Pitch" Value="56"/>
+        <CameraValue Index="Yaw" Value="179.9443"/>
+        <CameraValue Index="FocalDepth" Value="8"/>
+        <CameraValue Index="FalloffStart" Value="0.0002"/>
+        <CameraValue Index="FalloffEnd" Value="8"/>
+        <CameraValue Index="FalloffStartNear" Value="0.0002"/>
+        <CameraValue Index="FalloffEndNear" Value="0.0002"/>
+        <CameraValue Index="BokehFStop" Value="0.0097"/>
+        <CameraValue Index="BokehMaxCoC" Value="1"/>
+    </ObjectCamera>
+    <ObjectCamera Id="1979423027" Position="78.8754,35.3322,0" Rotation="3.14" Scale="1,1,1" Name="Camera 002" Color="0,0,0,0" CameraTarget="78.8754,35.3322">
+        <CameraValue Index="FieldOfView" Value="27.7995"/>
+        <CameraValue Index="NearClip" Value="0.0998"/>
+        <CameraValue Index="FarClip" Value="9999"/>
+        <CameraValue Index="ShadowClip" Value="75"/>
+        <CameraValue Index="Distance" Value="25.5446"/>
+        <CameraValue Index="Pitch" Value="56"/>
+        <CameraValue Index="Yaw" Value="179.9025"/>
+        <CameraValue Index="FocalDepth" Value="8"/>
+        <CameraValue Index="FalloffStart" Value="0.0002"/>
+        <CameraValue Index="FalloffEnd" Value="8"/>
+        <CameraValue Index="FalloffStartNear" Value="0.0002"/>
+        <CameraValue Index="FalloffEndNear" Value="0.0002"/>
+        <CameraValue Index="BokehFStop" Value="0.0097"/>
+        <CameraValue Index="BokehMaxCoC" Value="1"/>
+    </ObjectCamera>
+    <ObjectCamera Id="1216043337" Position="32.7875,162.7875,0" Rotation="1.5695" Scale="1,1,1" Name="game" Color="0,0,0,0" CameraTarget="32.7875,162.7875">
+        <CameraValue Index="FieldOfView" Value="27.7995"/>
+        <CameraValue Index="NearClip" Value="0.0998"/>
+        <CameraValue Index="FarClip" Value="600"/>
+        <CameraValue Index="ShadowClip" Value="75"/>
+        <CameraValue Index="Distance" Value="34"/>
+        <CameraValue Index="Pitch" Value="56"/>
+        <CameraValue Index="Yaw" Value="89.944"/>
+        <CameraValue Index="FocalDepth" Value="8"/>
+        <CameraValue Index="FalloffStart" Value="0.0002"/>
+        <CameraValue Index="FalloffEnd" Value="8"/>
+        <CameraValue Index="FalloffStartNear" Value="0.0002"/>
+        <CameraValue Index="FalloffEndNear" Value="0.0002"/>
+        <CameraValue Index="BokehFStop" Value="0.0097"/>
+        <CameraValue Index="BokehMaxCoC" Value="1"/>
+    </ObjectCamera>
+    <ObjectCamera Id="1973881236" Position="82.0854,172.629,0" Rotation="3.7453" Scale="1,1,1" Name="Camera 003" Color="0,0,0,0" CameraTarget="82.0854,172.629">
+        <CameraValue Index="FieldOfView" Value="27.7998"/>
+        <CameraValue Index="NearClip" Value="0.0998"/>
+        <CameraValue Index="FarClip" Value="600"/>
+        <CameraValue Index="ShadowClip" Value="75"/>
+        <CameraValue Index="Distance" Value="25.5446"/>
+        <CameraValue Index="Pitch" Value="10.2465"/>
+        <CameraValue Index="Yaw" Value="214.6071"/>
+        <CameraValue Index="FocalDepth" Value="8"/>
+        <CameraValue Index="FalloffEnd" Value="8"/>
+    </ObjectCamera>
+    <ObjectCamera Id="619917463" Position="72.0112,89.8176,0" Rotation="3.1362" Scale="1,1,1" Name="Camera 001" Color="0,0,0,0" CameraTarget="72.0112,89.8176">
+        <CameraValue Index="FieldOfView" Value="24"/>
+        <CameraValue Index="NearClip" Value="0.0998"/>
+        <CameraValue Index="FarClip" Value="40000"/>
+        <CameraValue Index="ShadowClip" Value="300"/>
+        <CameraValue Index="Distance" Value="18"/>
+        <CameraValue Index="Pitch" Value="56"/>
+        <CameraValue Index="Yaw" Value="179.7065"/>
+        <CameraValue Index="FocalDepth" Value="8"/>
+        <CameraValue Index="FalloffStart" Value="0.0002"/>
+        <CameraValue Index="FalloffEnd" Value="8"/>
+        <CameraValue Index="FalloffStartNear" Value="0.0002"/>
+        <CameraValue Index="FalloffEndNear" Value="0.0002"/>
+        <CameraValue Index="BokehFStop" Value="0.0097"/>
+        <CameraValue Index="BokehMaxCoC" Value="1"/>
+    </ObjectCamera>
+    <ObjectCamera Id="1689536372" Position="54.726,166.2216,0" Rotation="3.1403" Scale="1,1,1" Name="Camera 004" Color="0,0,0,0" CameraTarget="54.726,166.2216">
+        <CameraValue Index="FieldOfView" Value="25"/>
+        <CameraValue Index="NearClip" Value="0.0998"/>
+        <CameraValue Index="FarClip" Value="600"/>
+        <CameraValue Index="ShadowClip" Value="75"/>
+        <CameraValue Index="Distance" Value="34"/>
+        <CameraValue Index="Pitch" Value="56"/>
+        <CameraValue Index="Yaw" Value="179.9443"/>
+        <CameraValue Index="FocalDepth" Value="8"/>
+        <CameraValue Index="FalloffStart" Value="0.0002"/>
+        <CameraValue Index="FalloffEnd" Value="8"/>
+        <CameraValue Index="FalloffStartNear" Value="0.0002"/>
+        <CameraValue Index="FalloffEndNear" Value="0.0002"/>
+        <CameraValue Index="BokehFStop" Value="0.0097"/>
+        <CameraValue Index="BokehMaxCoC" Value="1"/>
+    </ObjectCamera>
+    <ObjectUnit Id="1218169590" Position="193,159,0" Rotation="3.9267" Scale="1,1,1" UnitType="DOMLabDoorThinNW">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectUnit>
+    <ObjectUnit Id="2022479705" Position="177,107.5,0" Rotation="4.2756" Scale="1,1,1" UnitType="InfestedCivilian" Player="2">
+        <Texture TexSlot="main" TexProps="06" TexLink=""/>
+    </ObjectUnit>
+    <ObjectUnit Id="1815647369" Position="144,78,0" Rotation="5.5056" Scale="1,1,1" UnitType="PathingBlocker1x1Diagonal">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectUnit>
+    <ObjectUnit Id="1648302037" Variation="1" Position="85.4804,45.9624,0" Rotation="0.2937" Scale="1,1,1" UnitType="InfestedCivilian" Player="15">
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectUnit>
+    <ObjectUnit Id="128777030" Variation="1" Position="167.5,114,0" Rotation="0.3876" Scale="1,1,1" UnitType="InfestedCivilian" Player="2"/>
+    <ObjectUnit Id="167011709" Variation="2" Position="167,113,0" Rotation="1.9011" Scale="1,1,1" UnitType="InfestedCivilian" Player="2"/>
+    <ObjectUnit Id="1849471035" Position="124,68,0" Rotation="5.4975" Scale="1,1,1" Name="Hangar Bay Door" UnitType="DSLabDoorOpen"/>
+    <ObjectUnit Id="1488509156" Position="165,111,0" Rotation="2.356" Scale="1,1,1" UnitType="DOMLabDoorThinNEOpened" Player="1">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectUnit>
+    <ObjectUnit Id="253856329" Position="101.96,47.536,0" Rotation="6.1252" Scale="1,1,1" UnitType="Marine" Player="15">
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectUnit>
+    <ObjectUnit Id="1778099111" Variation="1" Position="92.9045,38.3852,0" Rotation="0.2937" Scale="1,1,1" UnitType="InfestedCivilian" Player="15">
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectUnit>
+    <ObjectUnit Id="725898713" Position="157,96,0" Rotation="1.5705" Scale="1,1,1" UnitType="DOMLabDoorThinEOpened" Player="1">
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectUnit>
+    <ObjectUnit Id="382064292" Position="209,115,0" Rotation="3.9267" Scale="1,1,1" UnitType="DOMLabDoorThinNW">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectUnit>
+    <ObjectUnit Id="1555328048" Variation="1" Position="86.5158,45.2988,0" Rotation="0.294" Scale="1,1,1" UnitType="InfestedCivilian" Player="15">
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectUnit>
+    <ObjectUnit Id="532452614" Position="176.5,105.5,0" Rotation="0.7265" Scale="1,1,1" UnitType="InfestedCivilian" Player="2">
+        <Texture TexSlot="main" TexProps="06" TexLink=""/>
+    </ObjectUnit>
+    <ObjectUnit Id="1043109656" Position="201.5,157.5,0" Rotation="5.5031" Scale="1,1,1" UnitType="CompoundSewers_Vent_Destructible">
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectUnit>
+    <ObjectUnit Id="1391057616" Position="167,119,0" Rotation="3.9267" Scale="1,1,1" UnitType="DOMLabDoorThinNW">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectUnit>
+    <ObjectUnit Id="1141993260" Variation="1" Position="176,107,0" Rotation="4.4841" Scale="1,1,1" UnitType="InfestedCivilian" Player="2"/>
+    <ObjectUnit Id="1820547316" Position="22.9167,12.5256,0" Rotation="0.6662" Scale="1,1,1" UnitType="Artosilope">
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectUnit>
+    <ObjectUnit Id="1923820907" Variation="2" Position="87.4782,42.6181,0" Rotation="1.0212" Scale="1,1,1" UnitType="InfestedCivilian" Player="15">
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectUnit>
+    <ObjectUnit Id="1782433032" Variation="2" Position="92.2861,37.571,0" Rotation="1.0212" Scale="1,1,1" UnitType="InfestedCivilian" Player="15">
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectUnit>
+    <ObjectUnit Id="1195023238" Position="102,57,0" Rotation="5.5085" Scale="1,1,1" Name="Lab Terminal" UnitType="UmojanLabMonitorFloorDestructible1" Player="15">
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectUnit>
+    <ObjectUnit Id="560777664" Position="83.5776,27.4125,0" Rotation="4.858" Scale="1,1,1" UnitType="Zergling" Player="15">
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectUnit>
+    <ObjectUnit Id="10899317" Variation="2" Position="85.8974,44.4846,0" Rotation="1.0214" Scale="1,1,1" UnitType="InfestedCivilian" Player="15">
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectUnit>
+    <ObjectUnit Id="1969330457" Variation="1" Position="88.0966,43.4323,0" Rotation="0.2937" Scale="1,1,1" UnitType="InfestedCivilian" Player="15">
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectUnit>
+    <ObjectUnit Id="886021136" Variation="1" Position="175,107,0" Rotation="5.2233" Scale="1,1,1" UnitType="InfestedCivilian" Player="2"/>
+    <ObjectUnit Id="483599481" Position="208,132,0" Rotation="1.5705" Scale="1,1,1" UnitType="DOMLabDoorThinE">
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectUnit>
+    <ObjectUnit Id="964441419" Position="143.5,77.5,0" Rotation="3.5895" Scale="1,1,1" UnitType="PathingBlocker1x1">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectUnit>
+    <ObjectUnit Id="1058268390" Position="153.5,87.5,0" Rotation="3.5895" Scale="1,1,1" UnitType="PathingBlocker1x1">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectUnit>
+    <ObjectUnit Id="1249846347" Variation="1" Position="175,109,0" Rotation="1.8635" Scale="1,1,1" UnitType="InfestedCivilian" Player="2"/>
+    <ObjectUnit Id="430697650" Variation="1" Position="187,103,0" Rotation="5.8518" Scale="1,1,1" UnitType="InfestedCivilian" Player="2"/>
+    <ObjectUnit Id="1090537181" Variation="1" Position="94.7687,39.3488,0" Rotation="0.2937" Scale="1,1,1" UnitType="InfestedCivilian" Player="15">
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectUnit>
+    <ObjectUnit Id="1667301728" Position="97.4211,24.5153,0" Rotation="3.9523" Scale="1,1,1" UnitType="ShapeTreasureChestClosed">
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectUnit>
+    <ObjectUnit Id="1705573997" Variation="2" Position="175.5,108,0" Rotation="5.7148" Scale="1,1,1" UnitType="InfestedCivilian" Player="2"/>
+    <ObjectUnit Id="1113900863" Variation="1" Position="93.596,37.6875,0" Rotation="0.294" Scale="1,1,1" UnitType="InfestedCivilian" Player="15">
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectUnit>
+    <ObjectUnit Id="1633008910" Variation="1" Position="177,106.5,0" Rotation="5.6186" Scale="1,1,1" UnitType="InfestedCivilian" Player="2"/>
+    <ObjectUnit Id="304693212" Position="174,109,0" Rotation="6.1044" Scale="1,1,1" UnitType="InfestedCivilian" Player="2">
+        <Texture TexSlot="main" TexProps="06" TexLink=""/>
+    </ObjectUnit>
+    <ObjectUnit Id="1994944722" Position="186,103.5,0" Rotation="5.6628" Scale="1,1,1" UnitType="InfestedCivilian" Player="2">
+        <Texture TexSlot="main" TexProps="06" TexLink=""/>
+    </ObjectUnit>
+    <ObjectUnit Id="879207357" Position="103.1013,46.1423,0" Rotation="5.4736" Scale="1,1,1" UnitType="Marine" Player="15">
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectUnit>
+    <ObjectUnit Id="448832027" Position="151,52,0" Rotation="5.5173" Scale="1,1,1" Name="Hangar Bay Terminal" UnitType="UmojanLabMonitorFloorDestructible1" Player="15">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectUnit>
+    <ObjectUnit Id="1511735643" Position="130,48,0" Rotation="3.9267" Scale="1,1,1" Name="Mech Construction Door" UnitType="CompoundSewers_Door_Wide_NW" Player="15"/>
+    <ObjectUnit Id="728852287" Variation="2" Position="166.5,114,0" Rotation="2.9511" Scale="1,1,1" UnitType="InfestedCivilian" Player="2"/>
+    <ObjectUnit Id="1388683481" Position="167.5,115,0" Rotation="2.7187" Scale="1,1,1" UnitType="InfestedCivilian" Player="2">
+        <Texture TexSlot="main" TexProps="06" TexLink=""/>
+    </ObjectUnit>
+    <ObjectUnit Id="722554670" Variation="1" Position="167.5,111,0" Rotation="1.3193" Scale="1,1,1" UnitType="InfestedCivilian" Player="2"/>
+    <ObjectUnit Id="856477160" Variation="2" Position="80.404,31.415,0" Rotation="1.0212" Scale="1,1,1" UnitType="InfestedCivilian" Player="15">
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectUnit>
+    <ObjectUnit Id="714561770" Variation="1" Position="81.4328,39.8896,0" Rotation="0.2937" Scale="1,1,1" UnitType="InfestedCivilian" Player="15">
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectUnit>
+    <ObjectUnit Id="1417321827" Position="144.5,78.5,0" Rotation="3.5895" Scale="1,1,1" UnitType="PathingBlocker1x1">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectUnit>
+    <ObjectUnit Id="1012973922" Position="153,105,0" Rotation="2.356" Scale="1,1,1" UnitType="DOMLabDoorThinNEOpened" Player="1">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectUnit>
+    <ObjectUnit Id="1286949385" Variation="1" Position="177.5,109,0" Rotation="5.4533" Scale="1,1,1" UnitType="InfestedCivilian" Player="2"/>
+    <ObjectUnit Id="1112485054" Variation="2" Position="173.5,106.5,0" Rotation="2.0432" Scale="1,1,1" UnitType="InfestedCivilian" Player="2"/>
+    <ObjectUnit Id="1192308189" Position="196,86,0" Rotation="3.9267" Scale="1,1,1" UnitType="DOMLabDoorThinNW">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectUnit>
+    <ObjectUnit Id="184725344" Position="178,106.5,0" Rotation="1.3164" Scale="1,1,1" UnitType="InfestedCivilian" Player="2">
+        <Texture TexSlot="main" TexProps="06" TexLink=""/>
+    </ObjectUnit>
+    <ObjectUnit Id="2045290291" Variation="1" Position="173.5,108,0" Rotation="4.0654" Scale="1,1,1" UnitType="InfestedCivilian" Player="2"/>
+    <ObjectUnit Id="1650867128" Variation="1" Position="87.2854,44.2827,0" Rotation="0.2937" Scale="1,1,1" UnitType="InfestedCivilian" Player="15">
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectUnit>
+    <ObjectUnit Id="128903527" Variation="1" Position="178,104,0" Rotation="3.9733" Scale="1,1,1" UnitType="InfestedCivilian" Player="2"/>
+    <ObjectUnit Id="822340836" Position="154,88,0" Rotation="5.5056" Scale="1,1,1" UnitType="PathingBlocker1x1Diagonal">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectUnit>
+    <ObjectUnit Id="265832791" Variation="1" Position="173,101,0" Rotation="3.9858" Scale="1,1,1" UnitType="InfestedCivilian" Player="2"/>
+    <ObjectUnit Id="836809127" Variation="2" Position="84.862,45.1481,0" Rotation="1.0212" Scale="1,1,1" UnitType="InfestedCivilian" Player="15">
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectUnit>
+    <ObjectUnit Id="1994830403" Position="218,130,0" Rotation="1.5705" Scale="1,1,1" UnitType="DOMLabDoorThinE">
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectUnit>
+    <ObjectUnit Id="507752856" Position="154.5,88.5,0" Rotation="3.5895" Scale="1,1,1" UnitType="PathingBlocker1x1">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectUnit>
+    <ObjectUnit Id="241912448" Position="98.7851,42.9135,0" Rotation="3.1772" Scale="1,1,1" UnitType="Hydralisk" Player="15">
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectUnit>
+    <ObjectUnit Id="1365836761" Variation="2" Position="92.9775,36.8732,0" Rotation="1.0214" Scale="1,1,1" UnitType="InfestedCivilian" Player="15">
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectUnit>
+    <ObjectUnit Id="2086401114" Variation="1" Position="174.5,110.5,0" Rotation="2.9875" Scale="1,1,1" UnitType="InfestedCivilian" Player="2"/>
+    <ObjectUnit Id="832242998" Variation="2" Position="185.5,104.5,0" Rotation="2.1577" Scale="1,1,1" UnitType="InfestedCivilian" Player="2"/>
+    <ObjectUnit Id="1677362387" Variation="3" Position="102.8554,47.0905,0" Rotation="5.2722" Scale="1,1,1" UnitType="Scientist" Player="15"/>
+    <ObjectUnit Id="2005059946" Position="199,141,0" Rotation="3.9267" Scale="1,1,1" UnitType="DOMLabDoorThinNW">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectUnit>
+    <ObjectUnit Id="77998470" Position="181,115,0" Rotation="2.356" Scale="1,1,1" UnitType="DOMLabDoorThinNE">
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectUnit>
+    <ObjectUnit Id="854126772" Variation="2" Position="94.1503,38.5346,0" Rotation="1.0212" Scale="1,1,1" UnitType="InfestedCivilian" Player="15">
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectUnit>
+    <ObjectUnit Id="2073308577" Position="85.2294,43.5424,0" Rotation="4.273" Scale="1,1,1" UnitType="Zergling" Player="15">
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectUnit>
+    <ObjectUnit Id="663769926" Position="84.197,28.1054,0" Rotation="6.1955" Scale="1,1,1" UnitType="Zergling" Player="15">
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectUnit>
+    <ObjectUnit Id="1681792324" Variation="1" Position="174.5,100,0" Rotation="3.5058" Scale="1,1,1" UnitType="InfestedCivilian" Player="2"/>
+    <ObjectUnit Id="1647284008" Variation="2" Position="176.5,98,0" Rotation="5.6738" Scale="1,1,1" UnitType="InfestedCivilian" Player="2"/>
+    <ObjectUnit Id="639955867" Variation="2" Position="177,104,0" Rotation="1.0585" Scale="1,1,1" UnitType="InfestedCivilian" Player="2"/>
+    <ObjectUnit Id="1032149098" Position="173.5,110.5,0" Rotation="4.3146" Scale="1,1,1" UnitType="InfestedCivilian" Player="2">
+        <Texture TexSlot="main" TexProps="06" TexLink=""/>
+    </ObjectUnit>
+    <ObjectUnit Id="186103138" Variation="1" Position="168.5,113,0" Rotation="1.819" Scale="1,1,1" UnitType="InfestedCivilian" Player="2"/>
+    <ObjectUnit Id="801048369" Position="115,43,0" Rotation="5.5085" Scale="1,1,1" Name="Construction Terminal" UnitType="UmojanLabMonitorFloorDestructible1" Player="15">
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectUnit>
+    <ObjectUnit Id="1992611385" Position="176,110,0" Rotation="0.2385" Scale="1,1,1" UnitType="InfestedCivilian" Player="2">
+        <Texture TexSlot="main" TexProps="06" TexLink=""/>
+    </ObjectUnit>
+    <ObjectUnit Id="699893148" Position="188,94,0" Rotation="3.9267" Scale="1,1,1" UnitType="DOMLabDoorThinNW">
+        <Flag Index="HeightOffset" Value="1"/>
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectUnit>
+    <ObjectUnit Id="1528133061" Variation="2" Position="86.667,43.4685,0" Rotation="1.0212" Scale="1,1,1" UnitType="InfestedCivilian" Player="15">
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectUnit>
+    <ObjectUnit Id="1129544707" Variation="2" Position="178.5,108,0" Rotation="0.6577" Scale="1,1,1" UnitType="InfestedCivilian" Player="2"/>
+    <ObjectUnit Id="844046020" Variation="1" Position="176.5,108.5,0" Rotation="4.756" Scale="1,1,1" UnitType="InfestedCivilian" Player="2"/>
+    <ObjectUnit Id="1294028385" Position="110,54,0" Rotation="5.4975" Scale="1,1,1" Name="Lab Door" UnitType="DSLabDoorOpen"/>
+    <ObjectUnit Id="1049373191" Variation="2" Position="167.5,112,0" Rotation="3.6303" Scale="1,1,1" UnitType="InfestedCivilian" Player="2"/>
+</PlacedObjects>

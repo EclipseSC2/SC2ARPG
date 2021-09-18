@@ -1,0 +1,726 @@
+//==================================================================================================
+// 
+// Generated Map Script
+// 
+// Name:   Just Another StarCraft II Map
+// 
+//==================================================================================================
+include "TriggerLibs/NativeLib"
+include "TriggerLibs/VoidCampaignMissionLib"
+include "LibECLP"
+include "LibDEAD"
+
+//--------------------------------------------------------------------------------------------------
+// Library Initialization
+//--------------------------------------------------------------------------------------------------
+void InitLibs () {
+    libNtve_InitLib();
+    libVCMI_InitLib();
+    libECLP_InitLib();
+    libDEAD_InitLib();
+}
+
+//--------------------------------------------------------------------------------------------------
+// Constants
+//--------------------------------------------------------------------------------------------------
+const int gv_pLAYER_01_MAP_OJBECTS = 0;
+const int gv_pLAYER_01_P1 = 1;
+const int gv_pLAYER_02_P2 = 2;
+const int gv_pLAYER_02_P3 = 3;
+const int gv_pLAYER_03_ZERG = 4;
+const int gv_pLAYER_03_TOSS = 5;
+const int gv_pLAYER_03_TERRAN = 6;
+
+//--------------------------------------------------------------------------------------------------
+// Global Variables
+//--------------------------------------------------------------------------------------------------
+int gv_iNNNT;
+unit[libECLP_gv_eCL_MAX_P + 1] gv_eCL_PORTAL_CAMERA;
+unit[libECLP_gv_eCL_MAX_P + 1] gv_eCL_PORTAL_RTT;
+unit[11] gv_genericCrate;
+int gv_terminal_Dialog_lab;
+unit gv_terminal_Dialog_dummy_lab;
+int gv_terminal_Dialog_hangar;
+unit gv_terminal_Dialog_dummy_hangar;
+int gv_terminal_Dialog_Construction;
+unit gv_terminal_Dialog_dummy_Construction;
+
+void InitGlobals () {
+    gv_terminal_Dialog_lab = c_invalidDialogId;
+    gv_terminal_Dialog_hangar = c_invalidDialogId;
+    gv_terminal_Dialog_Construction = c_invalidDialogId;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Global Function Declarations
+//--------------------------------------------------------------------------------------------------
+void gf_ECL_PORTAL (int lp_player, point lp_camera_Point, point lp_camera_Point_H, point lp_rTT_Point, point lp_rTT_NOVA, bool lp_activateDeactivate);
+
+//--------------------------------------------------------------------------------------------------
+// Trigger Variables
+//--------------------------------------------------------------------------------------------------
+trigger gt_Init;
+trigger gt_DEBUG_TESTADDITEMS;
+trigger gt_DEBUG_PORTALON;
+trigger gt_DEBUG_PORTALOFF;
+trigger gt_ProtoInit;
+trigger gt__1Environment;
+trigger gt__2Soundtrack;
+trigger gt__3Units;
+trigger gt__4Loot;
+trigger gt_P_InfestedTease1;
+trigger gt_P_LootedFlashlight;
+trigger gt_DoorLab;
+trigger gt_TerminalDiesLab;
+trigger gt_DoorHangarBay;
+trigger gt_TerminalDiesHangarBay;
+trigger gt_DoorConstruction;
+trigger gt_TerminalDiesConstruction;
+
+//--------------------------------------------------------------------------------------------------
+// Global Functions
+//--------------------------------------------------------------------------------------------------
+void gf_ECL_PORTAL (int lp_player, point lp_camera_Point, point lp_camera_Point_H, point lp_rTT_Point, point lp_rTT_NOVA, bool lp_activateDeactivate) {
+    // Variable Declarations
+    fixed lv_angle_Portal_Hero;
+    fixed lv_angle_p;
+    revealer lv_revealer;
+    int lv_time;
+    bool lv_opac;
+    fixed lv_dX;
+    fixed lv_dX_p;
+    fixed lv_dY;
+    fixed lv_dY_p;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_angle_p = PointGetFacing(lp_rTT_Point);
+
+    // Implementation
+    if ((lp_activateDeactivate == true)) {
+        libNtve_gf_ShowHideDoodadsInRegion(true, RegionCircle(lp_rTT_Point, 5.0), "ECLPORTALACTIVATE");
+        libNtve_gf_ShowHideDoodadsInRegion(true, RegionCircle(lp_rTT_Point, 5.0), "ECLPORTALBORDER");
+        libNtve_gf_ShowHideDoodadsInRegion(true, RegionCircle(lp_rTT_Point, 33.0), "ECLPORTALACTIVATE_VORTEX");
+        libNtve_gf_ShowHideDoodadsInRegion(true, RegionCircle(lp_camera_Point_H, 33.0), "ECLPORTALACTIVATE_VORTEX");
+        libNtve_gf_CreateUnitsAtPoint2(1, "HeroSelectionCamera", c_unitCreateIgnorePlacement, lp_player, lp_camera_Point);
+        gv_eCL_PORTAL_CAMERA[lp_player] = UnitLastCreated();
+        CameraSetChannel(lp_player, gv_eCL_PORTAL_CAMERA[lp_player], "Camera_Basic", 2, 1.6667);
+        libNtve_gf_CreateUnitsAtPoint2(1, "RTT_Display_1", c_unitCreateIgnorePlacement, lp_player, lp_rTT_Point);
+        gv_eCL_PORTAL_RTT[lp_player] = UnitLastCreated();
+        libNtve_gf_SendActorMessageToUnit(gv_eCL_PORTAL_RTT[lp_player], "SetOpacity");
+        libNtve_gf_ShareVisionofUnit(gv_eCL_PORTAL_RTT[lp_player], true, lp_player);
+        VisRevealerCreate(lp_player, RegionCircle(lp_camera_Point, 30.0));
+        lv_revealer = VisRevealerLastCreated();
+        libVCMI_gf_SendActorMessageToDoodadsInRegion("SetOpacity 1.000000 0.200000", "ECLPORTALACTIVATE_VORTEX", RegionCircle(lp_rTT_Point, 33.0));
+        libVCMI_gf_SendActorMessageToDoodadsInRegion("SetOpacity 1.000000 0.200000", "ECLPORTALACTIVATE_VORTEX", RegionCircle(lp_camera_Point_H, 33.0));
+        libVCMI_gf_SendActorMessageToDoodadsInRegion("SetOpacity 1.000000 1.000000", "ECLPORTALBORDER", RegionCircle(lp_rTT_Point, 5.0));
+        libVCMI_gf_SendActorMessageToDoodadsInRegion("SetOpacity 1.000000 1.000000", "ECLPORTALACTIVATE", RegionCircle(lp_rTT_Point, 5.0));
+        SoundPlayAtPointForPlayer(SoundLink("Mothership_TimeWarpLaunch", 0), c_maxPlayers, PlayerGroupSingle(lp_player), lp_rTT_Point, 4.0, 100.0, 0.0);
+        Wait(0.0625, c_timeGame);
+        while ((UnitIsAlive(gv_eCL_PORTAL_RTT[lp_player]) == true)) {
+            Wait(0.0625, c_timeGame);
+            lv_dX = (PointGetX(lp_rTT_Point) - PointGetX(UnitGetPosition(libECLP_gv_eCL_Source[lp_player])));
+            lv_dY = (PointGetY(lp_rTT_Point) - PointGetY(UnitGetPosition(libECLP_gv_eCL_Source[lp_player])));
+            lv_dX_p = ((lv_dX * Cos(lv_angle_p)) - (lv_dY * Sin(lv_angle_p)));
+            lv_dY_p = ((lv_dX * Sin(lv_angle_p)) + (lv_dY * Cos(lv_angle_p)));
+            lv_angle_Portal_Hero = ATan((lv_dX_p / lv_dY_p));
+            UnitSetPosition(gv_eCL_PORTAL_CAMERA[lp_player], PointWithOffsetPolar(lp_camera_Point, (Sin(lv_angle_Portal_Hero) * (0.05 * DistanceBetweenPoints(UnitGetPosition(gv_eCL_PORTAL_RTT[lp_player]), UnitGetPosition(libECLP_gv_eCL_Source[lp_player])))), (PointGetFacing(lp_camera_Point) + -90.0)), true);
+            UnitSetFacing(gv_eCL_PORTAL_CAMERA[lp_player], (PointGetFacing(lp_camera_Point) - ((AngleBetweenPoints(UnitGetPosition(gv_eCL_PORTAL_CAMERA[lp_player]), lp_camera_Point_H) + 45.0) * 2.0)), 0.0625);
+            if ((lv_time < 36)) {
+                lv_time += 1;
+                if (((lv_time == 1) || (lv_time == 11) || (lv_time == 19) || (lv_time == 25) || (lv_time == 29) || (lv_time == 33) || (lv_time == 35))) {
+                    SoundPlayAtPointForPlayer(SoundLink("Mothership_TimeWarpLaunch3", 0), c_maxPlayers, PlayerGroupSingle(lp_player), lp_rTT_Point, 4.0, 100.0, 0.0);
+                }
+
+            }
+            else {
+                if ((lv_opac == false)) {
+                    lv_opac = true;
+                    libVCMI_gf_SendActorMessageToDoodadsInRegion("SetOpacity 0.000000 2.500000", "ECLPORTALACTIVATE_VORTEX", RegionCircle(lp_rTT_Point, 33.0));
+                    libNtve_gf_SendActorMessageToUnit(gv_eCL_PORTAL_RTT[lp_player], "SetOpacity 1.000000 2.000000");
+                    SoundPlayAtPointForPlayer(SoundLink("Event_Epilogue02_VictoryCine_Shockwave", 0), c_maxPlayers, PlayerGroupSingle(lp_player), lp_rTT_Point, 4.0, 100.0, 0.0);
+                    PlayerCreateEffectPoint(lp_player, "ECLPORTALNOVADUMMY", PointFromId(963244890));
+                    Wait(0.2, c_timeGame);
+                    libVCMI_gf_SendActorMessageToDoodadsInRegion("SetOpacity 0.000000 3.500000", "ECLPORTALACTIVATE_VORTEX", RegionCircle(lp_camera_Point_H, 33.0));
+                }
+
+            }
+        }
+    }
+    else {
+        libNtve_gf_SendActorMessageToUnit(gv_eCL_PORTAL_RTT[lp_player], "SetOpacity 0.000000 1.000000");
+        libVCMI_gf_SendActorMessageToDoodadsInRegion("SetOpacity 0.000000 2.000000", "ECLPORTALACTIVATE", RegionCircle(lp_rTT_Point, 5.0));
+        libVCMI_gf_SendActorMessageToDoodadsInRegion("SetOpacity 0.000000 2.000000", "ECLPORTALBORDER", RegionCircle(lp_rTT_Point, 5.0));
+        SoundPlayAtPointForPlayer(SoundLink("VoidSMPylonDeactivate", 0), c_maxPlayers, PlayerGroupSingle(lp_player), lp_rTT_Point, 4.0, 100.0, 0.0);
+        PlayerCreateEffectPoint(lp_player, "ECLPORTALDEACTIVATE", PointFromId(1221184250));
+        Wait(2.0, c_timeGame);
+        UnitRemove(gv_eCL_PORTAL_CAMERA[lp_player]);
+        UnitRemove(gv_eCL_PORTAL_RTT[lp_player]);
+        libNtve_gf_ShowHideDoodadsInRegion(false, RegionCircle(lp_rTT_Point, 5.0), "ECLPORTALACTIVATE");
+        libNtve_gf_ShowHideDoodadsInRegion(false, RegionCircle(lp_rTT_Point, 33.0), "ECLPORTALACTIVATE_VORTEX");
+        libNtve_gf_ShowHideDoodadsInRegion(false, RegionCircle(lp_camera_Point_H, 33.0), "ECLPORTALACTIVATE_VORTEX");
+        libNtve_gf_ShowHideDoodadsInRegion(false, RegionCircle(lp_rTT_Point, 5.0), "ECLPORTALBORDER");
+        libNtve_gf_ShowHideDoodadsInRegion(false, RegionCircle(lp_rTT_Point, 5.0), "ECLPORTALACTIVATE_NOVA");
+        VisRevealerDestroy(lv_revealer);
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Init
+//--------------------------------------------------------------------------------------------------
+bool gt_Init_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_i;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    GameSetLighting("SMStarmapPlanetTest", 0.0);
+    VisFillArea(1, RegionEntireMap(), c_fillTypeHidden, false);
+    VisFillArea(2, RegionEntireMap(), c_fillTypeHidden, false);
+    VisFillArea(1, RegionEntireMap(), c_fillTypeMasked, true);
+    VisFillArea(2, RegionEntireMap(), c_fillTypeMasked, true);
+    UISetFrameVisible(PlayerGroupAll(), c_syncFrameTypeCommandPanel, false);
+    UISetFrameVisible(PlayerGroupAll(), c_syncFrameTypeMinimapPanel, false);
+    UISetFrameVisible(PlayerGroupAll(), c_syncFrameTypeStatusUI, true);
+    UISetFrameVisible(PlayerGroupAll(), c_syncFrameTypeConsolePanel, false);
+    UISetFrameVisible(PlayerGroupAll(), c_syncFrameTypeIdleWorkerButton, false);
+    UISetFrameVisible(PlayerGroupAll(), c_syncFrameTypeArmyButton, false);
+    UISetFrameVisible(PlayerGroupAll(), c_syncFrameTypeControlGroupPanel, false);
+    UISetFrameVisible(PlayerGroupAll(), c_syncFrameTypeMissionTimePanel, false);
+    UISetFrameVisible(PlayerGroupAll(), c_syncFrameTypeResourcePanel, false);
+    UISetFrameVisible(PlayerGroupAll(), c_syncFrameTypeSupply, false);
+    UISetDragSelectEnabled(PlayerGroupAll(), false);
+    TriggerExecute(gt_ProtoInit, true, false);
+    libDEAD_gf_ShowHideLootPanel(2, false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_Init_Init () {
+    gt_Init = TriggerCreate("gt_Init_Func");
+    TriggerAddEventMapInit(gt_Init);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: DEBUG_TEST ADD ITEMS
+//--------------------------------------------------------------------------------------------------
+bool gt_DEBUG_TESTADDITEMS_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libDEAD_gf_ECL_ITEM_add(EventPlayer(), "CPG11", 1, true);
+    libDEAD_gf_ECL_ITEM_add(EventPlayer(), "Crappy Pack", 1, true);
+    libDEAD_gf_ECL_ITEM_add(EventPlayer(), "TEST Suit", 1, true);
+    libDEAD_gf_ECL_ITEM_add(EventPlayer(), "Slugger", 1, true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_DEBUG_TESTADDITEMS_Init () {
+    gt_DEBUG_TESTADDITEMS = TriggerCreate("gt_DEBUG_TESTADDITEMS_Func");
+    TriggerAddEventKeyPressed(gt_DEBUG_TESTADDITEMS, c_playerAny, c_keyK, true, c_keyModifierStateIgnore, c_keyModifierStateIgnore, c_keyModifierStateIgnore);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: DEBUG_PORTAL ON
+//--------------------------------------------------------------------------------------------------
+bool gt_DEBUG_PORTALON_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    gf_ECL_PORTAL(EventPlayer(), PointFromId(655209407), PointFromId(234123965), PointFromId(2031045836), null, true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_DEBUG_PORTALON_Init () {
+    gt_DEBUG_PORTALON = TriggerCreate("gt_DEBUG_PORTALON_Func");
+    TriggerAddEventKeyPressed(gt_DEBUG_PORTALON, c_playerAny, c_keyG, true, c_keyModifierStateIgnore, c_keyModifierStateIgnore, c_keyModifierStateIgnore);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: DEBUG_PORTAL OFF
+//--------------------------------------------------------------------------------------------------
+bool gt_DEBUG_PORTALOFF_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    gf_ECL_PORTAL(EventPlayer(), PointFromId(655209407), PointFromId(234123965), PointFromId(2031045836), PointFromId(963244890), false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_DEBUG_PORTALOFF_Init () {
+    gt_DEBUG_PORTALOFF = TriggerCreate("gt_DEBUG_PORTALOFF_Func");
+    TriggerAddEventKeyPressed(gt_DEBUG_PORTALOFF, c_playerAny, c_keyF, true, c_keyModifierStateIgnore, c_keyModifierStateIgnore, c_keyModifierStateIgnore);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: ProtoInit
+//--------------------------------------------------------------------------------------------------
+bool gt_ProtoInit_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerExecute(gt__1Environment, true, false);
+    TriggerExecute(gt__2Soundtrack, true, false);
+    TriggerExecute(gt__3Units, true, false);
+    TriggerExecute(gt__4Loot, true, false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_ProtoInit_Init () {
+    gt_ProtoInit = TriggerCreate("gt_ProtoInit_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: 1-Environment
+//--------------------------------------------------------------------------------------------------
+bool gt__1Environment_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    GameSetLighting("AiurMorning", 0.0);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt__1Environment_Init () {
+    gt__1Environment = TriggerCreate("gt__1Environment_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: 2-Soundtrack
+//--------------------------------------------------------------------------------------------------
+bool gt__2Soundtrack_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    SoundtrackStop(PlayerGroupAll(), c_soundtrackCategoryAmbience, false);
+    SoundtrackStop(PlayerGroupAll(), c_soundtrackCategoryMusic, false);
+    SoundtrackPlay(PlayerGroupAll(), c_soundtrackCategoryAmbience, "Ambience_Lab02Level02", c_soundtrackCueAny, c_soundtrackIndexAny, true);
+    SoundtrackPlay(PlayerGroupAll(), c_soundtrackCategoryMusic, "Music_Silence", c_soundtrackCueAny, c_soundtrackIndexAny, true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt__2Soundtrack_Init () {
+    gt__2Soundtrack = TriggerCreate("gt__2Soundtrack_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: 3-Units
+//--------------------------------------------------------------------------------------------------
+bool gt__3Units_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    unitgroup auto18F75CBC_g;
+    int auto18F75CBC_u;
+    unit auto18F75CBC_var;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libECLP_gf_SetControlledUnit(2, libDEAD_gv_playerUnit[2]);
+    libECLP_gf_ECL_Laserpointer(2, libECLP_gv_eCL_Source[2], true);
+    auto18F75CBC_g = UnitGroup(null, 15, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    auto18F75CBC_u = UnitGroupCount(auto18F75CBC_g, c_unitCountAll);
+    for (;; auto18F75CBC_u -= 1) {
+        auto18F75CBC_var = UnitGroupUnitFromEnd(auto18F75CBC_g, auto18F75CBC_u);
+        if (auto18F75CBC_var == null) { break; }
+        UnitIssueOrder(auto18F75CBC_var, OrderTargetingPoint(AbilityCommand("move", 1), PointWithOffsetPolar(UnitGetPosition(auto18F75CBC_var), RandomFixed(1.0, 2.0), RandomFixed(0.0, 360.0))), c_orderQueueReplace);
+        UnitSetCustomValue(auto18F75CBC_var, 0, RandomInt(0, 5));
+    }
+    UnitIssueOrder(UnitFromId(1294028385), Order(AbilityCommand("DSLabDoorClose", 0)), c_orderQueueReplace);
+    libNtve_gf_CreateUnitsWithDefaultFacing(1, "InvisibleTargetDummy", c_unitCreateConstruct | c_unitCreateIgnorePlacement, 0, PointWithOffsetPolar(UnitGetPosition(UnitFromId(1195023238)), 0.5, UnitGetFacing(UnitFromId(1195023238))));
+    libNtve_gf_ShowHideUnit(UnitLastCreated(), false);
+    gv_terminal_Dialog_dummy_lab = UnitLastCreated();
+    DialogCreate(120, 60, c_anchorCenter, 0, 0, true);
+    gv_terminal_Dialog_lab = DialogLastCreated();
+    DialogSetImageVisible(DialogLastCreated(), false);
+    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 120, 60, c_anchorCenter, 0, 0, StringExternal("Param/Value/9C824867"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    DialogSetVisible(DialogLastCreated(), PlayerGroupAll(), true);
+    DialogSetPositionRelativeToUnit(DialogLastCreated(), gv_terminal_Dialog_dummy_lab, "Ref_Origin", 0, -200);
+    UnitIssueOrder(UnitFromId(1849471035), Order(AbilityCommand("DSLabDoorClose", 0)), c_orderQueueReplace);
+    libNtve_gf_CreateUnitsWithDefaultFacing(1, "InvisibleTargetDummy", c_unitCreateConstruct | c_unitCreateIgnorePlacement, 0, PointWithOffsetPolar(UnitGetPosition(UnitFromId(448832027)), 0.5, UnitGetFacing(UnitFromId(448832027))));
+    libNtve_gf_ShowHideUnit(UnitLastCreated(), false);
+    gv_terminal_Dialog_dummy_hangar = UnitLastCreated();
+    DialogCreate(120, 60, c_anchorCenter, 0, 0, true);
+    gv_terminal_Dialog_hangar = DialogLastCreated();
+    DialogSetImageVisible(DialogLastCreated(), false);
+    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 120, 60, c_anchorCenter, 0, 0, StringExternal("Param/Value/2B50F06F"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    DialogSetVisible(DialogLastCreated(), PlayerGroupAll(), true);
+    DialogSetPositionRelativeToUnit(DialogLastCreated(), gv_terminal_Dialog_dummy_hangar, "Ref_Origin", 0, -200);
+    UnitIssueOrder(UnitFromId(1511735643), Order(AbilityCommand("DSLabDoorClose", 0)), c_orderQueueReplace);
+    libNtve_gf_CreateUnitsWithDefaultFacing(1, "InvisibleTargetDummy", c_unitCreateConstruct | c_unitCreateIgnorePlacement, 0, PointWithOffsetPolar(UnitGetPosition(UnitFromId(801048369)), 0.5, UnitGetFacing(UnitFromId(801048369))));
+    libNtve_gf_ShowHideUnit(UnitLastCreated(), false);
+    gv_terminal_Dialog_dummy_Construction = UnitLastCreated();
+    DialogCreate(120, 60, c_anchorCenter, 0, 0, true);
+    gv_terminal_Dialog_Construction = DialogLastCreated();
+    DialogSetImageVisible(DialogLastCreated(), false);
+    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 120, 60, c_anchorCenter, 0, 0, StringExternal("Param/Value/8538F122"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    DialogSetVisible(DialogLastCreated(), PlayerGroupAll(), true);
+    DialogSetPositionRelativeToUnit(DialogLastCreated(), gv_terminal_Dialog_dummy_Construction, "Ref_Origin", 0, -200);
+    libNtve_gf_ShowHideDoodadsInRegion(false, RegionCircle(PointFromId(2031045836), 5.0), "ECLPORTALACTIVATE");
+    libNtve_gf_ShowHideDoodadsInRegion(false, RegionCircle(PointFromId(2031045836), 5.0), "ECLPORTALACTIVATE_NOVA");
+    libNtve_gf_ShowHideDoodadsInRegion(false, RegionCircle(PointFromId(2031045836), 33.0), "ECLPORTALACTIVATE_VORTEX");
+    libNtve_gf_ShowHideDoodadsInRegion(false, RegionCircle(PointFromId(2031045836), 5.0), "ECLPORTALBORDER");
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt__3Units_Init () {
+    gt__3Units = TriggerCreate("gt__3Units_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: 4-Loot
+//--------------------------------------------------------------------------------------------------
+bool gt__4Loot_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libDEAD_gf_CreateLootGenericObject("Test", PointFromId(888181899), 90.0, true, "DOM_LabCrates", 1, 50.0, 2.5, 6, false, null, true);
+    libDEAD_gf_AddLootItemtoCrate("Trooper Suit", UnitLastCreated(), 1);
+    libDEAD_gf_AddLootItemtoCrate("Flashlight", UnitLastCreated(), 1);
+    libDEAD_gf_AddLootItemtoCrate("Slugger", UnitLastCreated(), 1);
+    libDEAD_gf_AddLootItemtoCrate("Wrench", UnitLastCreated(), 1);
+    libDEAD_gf_AddLootItemtoCrate("Oxygen Augment", UnitLastCreated(), 1);
+    libDEAD_gf_AddLootItemtoCrate("Barricade Pack", UnitLastCreated(), 1);
+    libDEAD_gf_CreateLootGenericObject("Test", PointFromId(1465784994), 90.0, true, "DOM_LabCrates", 1, 50.0, 2.5, 6, false, null, false);
+    libDEAD_gf_AddRandomLoottoCrate(UnitLastCreated(), libDEAD_ge_CrateType_Generic);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt__4Loot_Init () {
+    gt__4Loot = TriggerCreate("gt__4Loot_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: P_InfestedTease1
+//--------------------------------------------------------------------------------------------------
+bool gt_P_InfestedTease1_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_infestedTease;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!(((EventUnit() == libDEAD_gv_playerUnit[1]) || (EventUnit() == libDEAD_gv_playerUnit[2])))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerEnable(TriggerGetCurrent(), false);
+    TriggerEnable(gt_P_LootedFlashlight, true);
+    UnitCreate(1, "InfestedCivilian", 0, gv_pLAYER_03_ZERG, PointFromId(2095153423), 220.0);
+    VisRevealArea(EventPlayer(), RegionFromId(12), 4.0, false);
+    lv_infestedTease = UnitLastCreated();
+    Wait(1.5, c_timeGame);
+    UnitIssueOrder(lv_infestedTease, OrderTargetingPoint(AbilityCommand("move", 0), PointFromId(1387692829)), c_orderQueueReplace);
+    SoundPlayForPlayer(SoundLink("InfestedCivilian_Moan", 4), c_maxPlayers, PlayerGroupAll(), 100.0, 0.0);
+    Wait(3.0, c_timeGame);
+    UnitRemove(lv_infestedTease);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_P_InfestedTease1_Init () {
+    gt_P_InfestedTease1 = TriggerCreate("gt_P_InfestedTease1_Func");
+    TriggerAddEventUnitRegion(gt_P_InfestedTease1, null, RegionFromId(11), true);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: P_LootedFlashlight
+//--------------------------------------------------------------------------------------------------
+bool gt_P_LootedFlashlight_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_infestedTease;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((libDEAD_gf_ObjectisEnabled(null) == false))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerEnable(TriggerGetCurrent(), false);
+    libNtve_gf_KillDoodadsInRegion(RegionFromId(10), "AmbientLightSpot_White");
+    SoundPlayForPlayer(SoundLink("InfestedCivilian_Moan", 0), c_maxPlayers, PlayerGroupAll(), 100.0, 0.0);
+    SoundPlayForPlayer(SoundLink("InfestedCivilian_Moan", 0), c_maxPlayers, PlayerGroupAll(), 100.0, 0.0);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_P_LootedFlashlight_Init () {
+    gt_P_LootedFlashlight = TriggerCreate("gt_P_LootedFlashlight_Func");
+    TriggerEnable(gt_P_LootedFlashlight, false);
+    TriggerAddEventTimePeriodic(gt_P_LootedFlashlight, 0.5, c_timeGame);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Door Lab 
+//--------------------------------------------------------------------------------------------------
+bool gt_DoorLab_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((UnitFilterMatch(EventUnit(), UnitGetOwner(EventUnit()), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32)))) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((UnitGroupCount(UnitGroup(null, c_playerAny, EventUnitRegion(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 1), c_unitCountAlive) > 0) && (UnitIsAlive(UnitFromId(1195023238)) == false)) {
+        UnitIssueOrder(UnitFromId(1294028385), Order(AbilityCommand("DSLabDoorOpen", 0)), c_orderQueueReplace);
+    }
+    else if ((UnitGroupCount(UnitGroup(null, c_playerAny, EventUnitRegion(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 1), c_unitCountAlive) == 0) && (UnitIsAlive(UnitFromId(1195023238)) == false)) {
+        UnitIssueOrder(UnitFromId(1294028385), Order(AbilityCommand("DSLabDoorClose", 0)), c_orderQueueReplace);
+    }
+    else if ((UnitGroupCount(UnitGroup(null, c_playerAny, EventUnitRegion(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 1), c_unitCountAlive) > 0) && (UnitIsAlive(UnitFromId(1195023238)) == true)) {
+        SoundPlayAtPointForPlayer(SoundLink("Mission_Nova07_DefendersAdjutant_058", 0), c_maxPlayers, PlayerGroupSingle(UnitGetOwner(EventUnit())), UnitGetPosition(UnitFromId(1294028385)), 8.0, 100.0, 0.0);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_DoorLab_Init () {
+    gt_DoorLab = TriggerCreate("gt_DoorLab_Func");
+    TriggerAddEventUnitRegion(gt_DoorLab, null, RegionFromId(1), true);
+    TriggerAddEventUnitRegion(gt_DoorLab, null, RegionFromId(1), false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Terminal Dies Lab
+//--------------------------------------------------------------------------------------------------
+bool gt_TerminalDiesLab_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    SoundPlayAtPointForPlayer(SoundLink("Doodad_Purifier01_ForceField_Off", 0), c_maxPlayers, PlayerGroupAll(), UnitGetPosition(UnitFromId(1294028385)), 8.0, 100.0, 0.0);
+    DialogDestroy(gv_terminal_Dialog_lab);
+    UnitRemove(gv_terminal_Dialog_dummy_lab);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_TerminalDiesLab_Init () {
+    gt_TerminalDiesLab = TriggerCreate("gt_TerminalDiesLab_Func");
+    TriggerAddEventUnitDied(gt_TerminalDiesLab, UnitRefFromUnit(UnitFromId(1195023238)));
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Door Hangar Bay
+//--------------------------------------------------------------------------------------------------
+bool gt_DoorHangarBay_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    sound lv_aCCESSDENIED_sound;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitFilterMatch(EventUnit(), UnitGetOwner(EventUnit()), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32)))) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((UnitGroupCount(UnitGroup(null, c_playerAny, EventUnitRegion(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 1), c_unitCountAlive) > 0) && (UnitIsAlive(UnitFromId(448832027)) == false)) {
+        UnitIssueOrder(UnitFromId(1849471035), Order(AbilityCommand("DSLabDoorOpen", 0)), c_orderQueueReplace);
+    }
+    else if ((UnitGroupCount(UnitGroup(null, c_playerAny, EventUnitRegion(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 1), c_unitCountAlive) == 0) && (UnitIsAlive(UnitFromId(448832027)) == false)) {
+        UnitIssueOrder(UnitFromId(1849471035), Order(AbilityCommand("DSLabDoorClose", 0)), c_orderQueueReplace);
+    }
+    else if ((UnitGroupCount(UnitGroup(null, c_playerAny, EventUnitRegion(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 1), c_unitCountAlive) > 0) && (UnitIsAlive(UnitFromId(448832027)) == true)) {
+        SoundPlayAtPointForPlayer(SoundLink("Mission_Nova07_DefendersAdjutant_058", 0), c_maxPlayers, PlayerGroupSingle(UnitGetOwner(EventUnit())), UnitGetPosition(UnitFromId(1849471035)), 8.0, 100.0, 0.0);
+        lv_aCCESSDENIED_sound = SoundLastPlayed();
+        SoundWait(lv_aCCESSDENIED_sound, 1.5, c_soundOffsetStart);
+        SoundStop(lv_aCCESSDENIED_sound, true);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_DoorHangarBay_Init () {
+    gt_DoorHangarBay = TriggerCreate("gt_DoorHangarBay_Func");
+    TriggerAddEventUnitRegion(gt_DoorHangarBay, null, RegionFromId(3), true);
+    TriggerAddEventUnitRegion(gt_DoorHangarBay, null, RegionFromId(3), false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Terminal Dies Hangar Bay
+//--------------------------------------------------------------------------------------------------
+bool gt_TerminalDiesHangarBay_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    SoundPlayAtPointForPlayer(SoundLink("Doodad_Purifier01_ForceField_Off", 0), c_maxPlayers, PlayerGroupAll(), UnitGetPosition(UnitFromId(1849471035)), 8.0, 100.0, 0.0);
+    DialogDestroy(gv_terminal_Dialog_hangar);
+    UnitRemove(gv_terminal_Dialog_dummy_hangar);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_TerminalDiesHangarBay_Init () {
+    gt_TerminalDiesHangarBay = TriggerCreate("gt_TerminalDiesHangarBay_Func");
+    TriggerAddEventUnitDied(gt_TerminalDiesHangarBay, UnitRefFromUnit(UnitFromId(448832027)));
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Door Construction
+//--------------------------------------------------------------------------------------------------
+bool gt_DoorConstruction_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    sound lv_aCCESSDENIED_sound;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitFilterMatch(EventUnit(), UnitGetOwner(EventUnit()), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32)))) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((UnitGroupCount(UnitGroup(null, c_playerAny, EventUnitRegion(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 1), c_unitCountAlive) > 0) && (UnitIsAlive(UnitFromId(801048369)) == false)) {
+        UnitIssueOrder(UnitFromId(1511735643), Order(AbilityCommand("CompoundSewers_Door_Wide_NWLowered", 0)), c_orderQueueReplace);
+    }
+    else if ((UnitGroupCount(UnitGroup(null, c_playerAny, EventUnitRegion(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 1), c_unitCountAlive) == 0) && (UnitIsAlive(UnitFromId(801048369)) == false)) {
+        UnitIssueOrder(UnitFromId(1511735643), Order(AbilityCommand("CompoundSewers_Door_Wide_NW", 0)), c_orderQueueReplace);
+    }
+    else if ((UnitGroupCount(UnitGroup(null, c_playerAny, EventUnitRegion(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 1), c_unitCountAlive) > 0) && (UnitIsAlive(UnitFromId(801048369)) == true)) {
+        SoundPlayAtPointForPlayer(SoundLink("Mission_Nova07_DefendersAdjutant_058", 0), c_maxPlayers, PlayerGroupSingle(UnitGetOwner(EventUnit())), UnitGetPosition(UnitFromId(1511735643)), 8.0, 100.0, 0.0);
+        lv_aCCESSDENIED_sound = SoundLastPlayed();
+        SoundWait(lv_aCCESSDENIED_sound, 1.5, c_soundOffsetStart);
+        SoundStop(lv_aCCESSDENIED_sound, true);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_DoorConstruction_Init () {
+    gt_DoorConstruction = TriggerCreate("gt_DoorConstruction_Func");
+    TriggerAddEventUnitRegion(gt_DoorConstruction, null, RegionFromId(2), true);
+    TriggerAddEventUnitRegion(gt_DoorConstruction, null, RegionFromId(2), false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Terminal Dies Construction
+//--------------------------------------------------------------------------------------------------
+bool gt_TerminalDiesConstruction_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    SoundPlayAtPointForPlayer(SoundLink("Doodad_Purifier01_ForceField_Off", 0), c_maxPlayers, PlayerGroupAll(), UnitGetPosition(EventUnit()), 8.0, 100.0, 0.0);
+    DialogDestroy(gv_terminal_Dialog_Construction);
+    UnitRemove(gv_terminal_Dialog_dummy_Construction);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_TerminalDiesConstruction_Init () {
+    gt_TerminalDiesConstruction = TriggerCreate("gt_TerminalDiesConstruction_Func");
+    TriggerAddEventUnitDied(gt_TerminalDiesConstruction, UnitRefFromUnit(UnitFromId(801048369)));
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger Initialization
+//--------------------------------------------------------------------------------------------------
+void InitTriggers () {
+    gt_Init_Init();
+    gt_DEBUG_TESTADDITEMS_Init();
+    gt_DEBUG_PORTALON_Init();
+    gt_DEBUG_PORTALOFF_Init();
+    gt_ProtoInit_Init();
+    gt__1Environment_Init();
+    gt__2Soundtrack_Init();
+    gt__3Units_Init();
+    gt__4Loot_Init();
+    gt_P_InfestedTease1_Init();
+    gt_P_LootedFlashlight_Init();
+    gt_DoorLab_Init();
+    gt_TerminalDiesLab_Init();
+    gt_DoorHangarBay_Init();
+    gt_TerminalDiesHangarBay_Init();
+    gt_DoorConstruction_Init();
+    gt_TerminalDiesConstruction_Init();
+}
+
+//--------------------------------------------------------------------------------------------------
+// Map Initialization
+//--------------------------------------------------------------------------------------------------
+void InitMap () {
+    InitLibs();
+    InitGlobals();
+    InitTriggers();
+}

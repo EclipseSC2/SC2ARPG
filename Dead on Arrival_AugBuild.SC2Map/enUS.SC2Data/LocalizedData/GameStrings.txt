@@ -1,0 +1,41 @@
+﻿Abil/Name/DSLabDoorClose=DS Lab Door Close
+Abil/Name/DSLabDoorOpen=DS Lab Door Open
+Abil/Name/UnknownAbility=Unknown Ability
+Behavior/Name/UnknownBehavior=Unknown Behavior
+Button/Name/UnknownButton=Unknown Button
+Button/Tooltip/TrooperCaev=General-purpose infantry.<n/><n/><c val="#ColorAttackInfo">Can attack ground and air units.</c>
+DocInfo/DescLong=Completely devoid of any description whatsoever.
+DocInfo/DescShort=Any
+DocInfo/Name=Just Another StarCraft II Map
+Effect/Name/ECLPORTALDEACTIVATE=ECL PORTAL DEACTIVATE
+Effect/Name/ECLPORTALNOVADUMMY=ECL PORTAL NOVA DUMMY
+MapInfo/Player00/Name=Neutral
+MapInfo/Player01/Name=Player 1
+MapInfo/Player02/Name=Player 2
+MapInfo/Player03/Name=Player 4
+MapInfo/Player04/Name=Hostile
+Param/Value/1466439C=D: 
+Param/Value/198B4FCC=INNT: 
+Param/Value/278F4EA9=D: 
+Param/Value/2B50F06F=<s val="ABChoiceButtonText">Kill me!</s><n/><img path="Assets\Textures\sc2_ui_collection_warchest_comicpreviewarrow_disabled.dds" width="40" height="32"/>
+Param/Value/8538F122=<s val="ABChoiceButtonText">Kill me!</s><n/><img path="Assets\Textures\sc2_ui_collection_warchest_comicpreviewarrow_disabled.dds" width="40" height="32"/>
+Param/Value/9C824867=<s val="ABChoiceButtonText">Kill me!</s><n/><img path="Assets\Textures\sc2_ui_collection_warchest_comicpreviewarrow_disabled.dds" width="40" height="32"/>
+Param/Value/B1DF1511=INNT: 
+Unit/Name/DSLabDoorClosed=DS Lab Door Closed
+Unit/Name/DSLabDoorOpen=DS Lab Door Open
+Unit/Name/TrooperCaev=TrooperCaev
+UserData/Items/Bandage_Use Type=Apply
+UserData/Items/Engineering Suit_Description=This suit can hold onto more items. Allows space walks. Provides minor protection.
+UserData/Items/Engineering Suit_Lore="Rather wear this than be naked..."
+UserData/Items/Engineering Suit_Use Type=Wear
+UserData/Items/Feralloy Scraps_Use Type=Crafting
+UserData/Items/Flashlight_Use Type=Turn on/off
+UserData/Items/Medigel_Use Type=Heal
+UserData/Items/Oxygen Augment_Lore="Lore Here"
+UserData/Items/Pistol Ammo_Use Type=Ammo
+UserData/Items/Plasteel Scraps_Use Type=Crafting
+UserData/Items/Slugger_Use Type=Equip
+UserData/Items/Small Ration_Use Type=Eat
+UserData/Items/Splint_Use Type=Apply
+UserData/Items/Water Bottle_Use Type=Drink
+UserData/Items/Wrench_Use Type=Equip

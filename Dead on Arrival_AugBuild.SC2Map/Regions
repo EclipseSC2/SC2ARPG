@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Regions>
+    <region id="9">
+        <name value="Playable_Proto1"/>
+        <invisible/>
+        <shape type="rect">
+            <quad value="105.5,50,249,179"/>
+        </shape>
+    </region>
+    <region id="6">
+        <name value="Playable_Proto"/>
+        <invisible/>
+        <shape type="rect">
+            <quad value="93.692,0.893,174.635,80.2387"/>
+        </shape>
+    </region>
+    <region id="10">
+        <name value="P_FlashHide"/>
+        <shape type="circle">
+            <center value="161.5,105"/>
+            <radius value="3"/>
+        </shape>
+    </region>
+    <region id="11">
+        <name value="P_InfestedTeaseTripwire1"/>
+        <shape type="diamond">
+            <center value="164.0021,110.0021"/>
+            <width value="1.414"/>
+            <height value="5.6562"/>
+        </shape>
+    </region>
+    <region id="12">
+        <name value="P_RevealInfested"/>
+        <shape type="circle">
+            <center value="155.75,106.75"/>
+            <radius value="3.182"/>
+        </shape>
+    </region>
+    <region id="13">
+        <name value="P_BahtroomFBlocker"/>
+        <shape type="diamond">
+            <center value="154,88.25"/>
+            <width value="3.8886"/>
+            <height value="3.1816"/>
+        </shape>
+    </region>
+    <region id="14">
+        <name value="P_BahtroomMBlocker"/>
+        <shape type="diamond">
+            <center value="144,78.0012"/>
+            <width value="3.8886"/>
+            <height value="3.1816"/>
+        </shape>
+    </region>
+    <region id="1">
+        <name value="Door Lab"/>
+        <shape type="diamond">
+            <center value="110,54"/>
+            <width value="6"/>
+            <height value="4"/>
+        </shape>
+    </region>
+    <region id="2">
+        <name value="Door Construction"/>
+        <shape type="diamond">
+            <center value="130,48"/>
+            <width value="9"/>
+            <height value="6"/>
+        </shape>
+    </region>
+    <region id="3">
+        <name value="Door Hangar Bay"/>
+        <shape type="diamond">
+            <center value="124,68"/>
+            <width value="6"/>
+            <height value="4"/>
+        </shape>
+    </region>
+</Regions>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CFootprint id="LabDoorFootprint">
+        <Layers index="Check" Area="-3,-3,3,3">
+            <Rows value="......"/>
+            <Rows value="......"/>
+            <Rows value="......"/>
+            <Rows value="......"/>
+            <Rows value="......"/>
+            <Rows value="......"/>
+        </Layers>
+        <Layers index="Place" Area="-3,-3,3,3">
+            <Sets index="0">
+                <Positive index="BlockVision" value="1"/>
+            </Sets>
+            <Rows value="xx...."/>
+            <Rows value="xxx..."/>
+            <Rows value=".xxx.."/>
+            <Rows value="..xxx."/>
+            <Rows value="...xxx"/>
+            <Rows value="....xx"/>
+        </Layers>
+        <Shape>
+            <Radius value="4.2426"/>
+            <Offsets value="2,-3;3,-3;-3,3;-2,3;-3,2;3,-2"/>
+            <Borders value="0,4,2;1,0,2;2,3,2;3,5,2;4,2,2;5,1,2"/>
+        </Shape>
+    </CFootprint>
+</Catalog>

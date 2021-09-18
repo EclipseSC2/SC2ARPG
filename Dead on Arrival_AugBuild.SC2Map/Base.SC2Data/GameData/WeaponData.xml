@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CWeaponLegacy id="InfestedClaws">
+        <Period value="2"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Separatist">
+        <MinScanRange value="1"/>
+        <Range value="3"/>
+    </CWeaponLegacy>
+</Catalog>

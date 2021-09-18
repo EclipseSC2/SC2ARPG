@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CTerrain id="ShadowCorpsPlatform">
+        <BlendTextures index="0" value="CompoundSewer_7"/>
+        <BlendTextures index="1" value="KorhalPlatformEx2_7"/>
+        <BlendTextures index="2" value="KorhalPlatformEx2_4"/>
+        <BlendTextures index="3" value="KorhalPlatformEx2_5"/>
+        <BlendTextures index="4" value="KorhalPlatformEx2_6"/>
+        <BlendTextures index="5" value="BraxisAlphaMetalDetailEx2"/>
+        <BlendTextures index="6" value="KorhalPlatform1"/>
+        <BlendTextures index="7" value="KorhalPlatform5"/>
+    </CTerrain>
+    <CTerrain id="ThillesForest">
+        <FogDensity value="0.000100"/>
+        <CliffSets value="ShadowCorpsPlatformCliff0"/>
+        <CliffSets value="ShadowCorpsPlatformCliff1"/>
+        <FogFalloff value="0.010000"/>
+        <FogStartingHeight value="-10.000000"/>
+    </CTerrain>
+</Catalog>

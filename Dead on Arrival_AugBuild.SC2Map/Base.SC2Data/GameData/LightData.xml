@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CLight id="DevourerEx3Portrait">
+        <ToDInfoArray index="0" Id="DevourerEx3Portrait" AmbientColor="0.635294,0.627451,0.529412">
+            <Param index="HDRSpecMultiplier" value="3.520000"/>
+            <DirectionalLight index="Key" Color="1.000000,1.000000,1.000000" ColorMultiplier="1.758000" SpecularColor="0.984314,0.980392,0.807843"/>
+            <DirectionalLight index="Fill" Color="0.388235,0.356863,0.196078" ColorMultiplier="1.161000"/>
+            <DirectionalLight index="Back" Color="0.643137,0.556863,0.356863" ColorMultiplier="0.093000"/>
+        </ToDInfoArray>
+    </CLight>
+    <CLight id="SMStarmapPlanetTest">
+        <ToDInfoArray index="0" Id="SMStarmapPlanetTest" AmbientEnvironmentMultiplier="0.767000">
+            <Param index="HDRSpecMultiplier" value="4.480000"/>
+            <Param index="HDREmisMultiplier" value="1.900000"/>
+            <Param index="ShadowPenumbraSize" value="0.329000"/>
+            <DirectionalLight index="Key" SpecColorMultiplier="0.068000" Direction="-0.315331,0.681502,-0.660395"/>
+            <DirectionalLight index="Fill" ColorMultiplier="0.106000" Direction="-0.445768,0.304425,-0.841794"/>
+            <DirectionalLight index="Back" Color="0.615686,0.615686,0.615686" ColorMultiplier="0.403000" Direction="-0.486307,0.655052,-0.578285"/>
+        </ToDInfoArray>
+    </CLight>
+    <CLight id="ShipEscape" parent="ShadowCorpsPlatform">
+        <ToDInfoArray index="0">
+            <Id value="ShipEscape"/>
+            <AmbientColor value="0.000000,0.000000,0.000000"/>
+            <AmbientEnvironmentMultiplier value="1.000000"/>
+            <OperatorHDR value="4"/>
+            <Colorize value="0"/>
+            <UseSeparateDetailSSAO value="1"/>
+            <Param index="HDRExposure" value="1.000000"/>
+            <Param index="HDRWhitePoint" value="2.000000"/>
+            <Param index="HDREmisMultiplier" value="1.000000"/>
+            <Param index="HDRGain" value="0.000000"/>
+            <Param index="HDRScale" value="0.000000"/>
+            <Param index="TerrainSpecularExp" value="100.000000"/>
+            <Param index="TerrainHDRDiffuse" value="1.000000"/>
+            <Param index="TerrainHDRSpecular" value="1.000000"/>
+            <Param index="CreepSpecularExp" value="32.000000"/>
+            <Param index="CreepHDRSpecMultiplier" value="2.000000"/>
+            <Param index="ColorizationContrast" value="1.000000"/>
+            <Param index="ColorizationHue" value="0.000000"/>
+            <Param index="ColorizationSaturation" value="0.000000"/>
+            <Param index="ColorizationLightness" value="0.000000"/>
+            <Param index="ColorizationBlend" value="0.500000"/>
+            <Param index="AOOcclusionRadius" value="1.000000"/>
+            <Param index="AONoOcclusion" value="0.900000"/>
+            <Param index="AOFullOcclusion" value="0.000000"/>
+            <Param index="AOOcclusionPower" value="2.000000"/>
+            <Param index="AODetailOcclusionRadius" value="0.010000"/>
+            <Param index="AODetailNoOcclusion" value="0.060000"/>
+            <Param index="AODetailOcclusionPower" value="4.000000"/>
+            <DirectionalLight index="Key">
+                <Color value="1.000000,1.000000,1.000000"/>
+                <ColorMultiplier value="0.000000"/>
+                <SpecColorMultiplier value="0.000000"/>
+                <Direction value="-0.245962,0.842217,-0.479764"/>
+            </DirectionalLight>
+            <DirectionalLight index="Fill" Color="0.000000,0.000000,0.000000" Direction="0.000000,0.000000,-1.000000"/>
+            <DirectionalLight index="Back" Color="0.000000,0.000000,0.000000" ColorMultiplier="1.000000" Direction="0.000000,0.000000,-1.000000"/>
+            <LightRegions index="0">
+                <UseDefault value="0"/>
+                <AmbientColor value="0.003922,0.003922,0.003922"/>
+                <AmbientEnvironmentMultiplier value="0.000000"/>
+                <SpecularColor value="0.003922,0.003922,0.003922"/>
+                <SpecularMultiplier value="0.000000"/>
+                <FogColor value="0.003922,0.003922,0.003922"/>
+                <DiffuseColor index="Key" value="0.003922,0.003922,0.003922"/>
+                <DiffuseColor index="Fill" value="0.003922,0.003922,0.003922"/>
+                <DiffuseColor index="Back" value="0.003922,0.003922,0.003922"/>
+                <DiffuseMultiplier index="Key" value="0.000000"/>
+                <DiffuseMultiplier index="Fill" value="0.000000"/>
+                <DiffuseMultiplier index="Back" value="0.000000"/>
+            </LightRegions>
+            <LightRegions index="1">
+                <UseDefault value="0"/>
+                <AmbientColor value="0.784314,0.443137,0.192157"/>
+                <AmbientEnvironmentMultiplier value="0.033000"/>
+                <SpecularColor value="0.003922,0.003922,0.003922"/>
+                <SpecularMultiplier value="0.000000"/>
+                <FogColor value="0.003922,0.003922,0.003922"/>
+                <DiffuseColor index="Key" value="0.003922,0.003922,0.003922"/>
+                <DiffuseColor index="Fill" value="0.003922,0.003922,0.003922"/>
+                <DiffuseColor index="Back" value="0.003922,0.003922,0.003922"/>
+                <DiffuseMultiplier index="Key" value="0.000000"/>
+                <DiffuseMultiplier index="Fill" value="0.000000"/>
+                <DiffuseMultiplier index="Back" value="0.000000"/>
+            </LightRegions>
+        </ToDInfoArray>
+        <EditorCategories value=""/>
+    </CLight>
+</Catalog>

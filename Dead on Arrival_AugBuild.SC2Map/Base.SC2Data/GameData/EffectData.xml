@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CEffectCreatePersistent id="ECLPORTALNOVADUMMY">
+        <EditorCategories value=""/>
+        <ExpireDelay value="1"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="ECLPORTALDEACTIVATE">
+        <EditorCategories value=""/>
+        <ExpireDelay value="1"/>
+    </CEffectCreatePersistent>
+    <CEffectDamage id="InfestedClawsDamage">
+        <Amount value="55"/>
+    </CEffectDamage>
+</Catalog>

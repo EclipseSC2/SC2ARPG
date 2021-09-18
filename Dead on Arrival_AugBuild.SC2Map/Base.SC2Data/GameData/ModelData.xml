@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CModel id="Aiur_Trees_Giant">
+        <Occlusion value="Hide"/>
+    </CModel>
+    <CModel id="ECLPORTALSKYBOX" parent="Skybox">
+        <Model value="Assets\StoryModeSkyboxes\SM_Char_Cinematic_Skyparallax\SM_Char_Cinematic_Skyparallax.m3"/>
+        <EditorCategories value="Race:Neutral"/>
+        <Lighting value="CastanarSkybox"/>
+        <ScaleMax value="0.100000,0.100000,0.100000"/>
+        <ScaleMin value="0.100000,0.100000,0.100000"/>
+    </CModel>
+    <CModel id="CompoundSewers_Door_Wide">
+        <ScaleMax value="1.000000,1.000000,1.500000"/>
+        <ScaleMin value="1.000000,1.000000,1.500000"/>
+    </CModel>
+    <CModel id="ECLPORTALACTIVATE_VORTEX" parent="Doodad">
+        <Model value="Assets\Effects\Zerg\BossEnergySuckCone\BossEnergySuckCone.m3"/>
+        <ScaleMax value="1.000000,1.000000,2.000000"/>
+        <ScaleMin value="1.000000,1.000000,2.000000"/>
+    </CModel>
+    <CModel id="ECLPORTAL_ACTIVATE_NOVA" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Terran\EMP_ShadowScrambler_Shockwave\EMP_ShadowScrambler_Shockwave.m3"/>
+        <!--Model value="Assets\Units\Terran\VikingFighter\VikingFighter.m3"/-->
+        <Flags index="VariationPreload" value="0"/>
+        <Flags index="Wait" value="1"/>
+        <Lighting value="ECLPORTAL_ACTIVATE"/>
+        <Priority value="32"/>
+        <ScaleMax value="0.240000,0.240000,0.240000"/>
+        <ScaleMin value="0.240000,0.240000,0.240000"/>
+    </CModel>
+    <CModel id="ECLPORTAL_DEACTIVATE" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Zerg\PsionicShadowImpact\PsionicShadowImpact.m3"/>
+        <Flags index="VariationPreload" value="0"/>
+        <Flags index="Wait" value="1"/>
+        <Lighting value="ECLPORTAL_ACTIVATE"/>
+        <Priority value="32"/>
+        <ScaleMax value="1.667000,1.667000,1.000000"/>
+        <ScaleMin value="1.667000,1.667000,1.000000"/>
+    </CModel>
+    <CModel id="ECLPORTAL_BORDER" parent="Doodad">
+        <Model value="Assets\Skyboxes\Zerg_Vision_Border\Zerg_Vision_Border.m3"/>
+        <Lighting value="ECLPORTAL_ACTIVATE"/>
+        <ScaleMax value="115.000000,16.000000,115.000000"/>
+        <ScaleMin value="115.000000,16.000000,115.000000"/>
+    </CModel>
+    <CModel id="ECLPORTAL_BORDER_2" parent="Doodad">
+        <Model value="Assets\UI\Console\Protoss\SMX2_StarMap_UI_Mission\SMX2_StarMap_UI_Mission.m3"/>
+        <Lighting value="ECLPORTAL_ACTIVATE"/>
+        <ScaleMax value="11.000000,11.000000,11.000000"/>
+        <ScaleMin value="11.000000,11.000000,11.000000"/>
+    </CModel>
+    <CModel id="RTT_Display_1">
+        <ScaleMax value="13.500000,1.000000,12.500000"/>
+        <ScaleMin value="13.500000,1.000000,12.500000"/>
+    </CModel>
+    <CModel id="Separatist">
+        <Model value="Assets\Models\Caev_TurretTrooper_v1.m3"/>
+        <ScaleMax value="2.000000,2.000000,2.000000"/>
+        <ScaleMin value="2.000000,2.000000,2.000000"/>
+    </CModel>
+    <CModel id="Separatist2" parent="Unit" Race="Terran">
+        <Model value="Assets\Models\Caev_TurretTrooper_v1.m3"/>
+        <Events>
+            <Anim value="Death,Silentkill,00"/>
+            <Name value="Body_Fall_Weapon"/>
+            <Type value="Sound"/>
+            <Time value="1.219000"/>
+            <Payload value="Body_Fall_Weapon"/>
+        </Events>
+        <Occlusion value="Show"/>
+        <PlanetPanelCamera value="Star2CameraMid03"/>
+        <Radius value="0.375000"/>
+        <SelectionRadius value="0.375000"/>
+        <ShadowRadius value="0.375000"/>
+        <SquibTypeDefault value="Flesh"/>
+        <TechPurchaseCamera value="TechPurchaseInfantry"/>
+        <UnitGlossaryCamera value="Star2CameraMid03"/>
+    </CModel>
+    <CModel id="DSLabDoor" parent="Doodad">
+        <Model value="Assets\Doodads\SpaceArmoredDoor\SpaceArmoredDoor.m3"/>
+        <Events>
+            <Anim value="Stand,Work,End,00"/>
+            <Name value="Xelnaga_Door_StandWorkEnd_A"/>
+            <Type value="Sound"/>
+            <Payload value="Xelnaga_Door_StandWorkEnd_A"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,Work,End,00"/>
+            <Name value="Xelnaga_Door_StandWorkEnd_B"/>
+            <Type value="Sound"/>
+            <Time value="0.250000"/>
+            <Payload value="Xelnaga_Door_StandWorkEnd_B"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,Work,End,00"/>
+            <Name value="Xelnaga_Door_StandWorkEnd_C"/>
+            <Type value="Sound"/>
+            <Time value="0.500000"/>
+            <Payload value="Xelnaga_Door_StandWorkEnd_C"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,Work,End,00"/>
+            <Name value="Xelnaga_Door_StandWorkEnd_D"/>
+            <Type value="Sound"/>
+            <Time value="0.750000"/>
+            <Payload value="Xelnaga_Door_StandWorkEnd_D"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,Work,End,00"/>
+            <Name value="Xelnaga_Door_StandWorkEnd_E"/>
+            <Type value="Sound"/>
+            <Time value="1.000000"/>
+            <Payload value="Xelnaga_Door_StandWorkEnd_E"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,Work,End,00"/>
+            <Name value="Xelnaga_Door_StandWorkEnd_F"/>
+            <Type value="Sound"/>
+            <Time value="1.250000"/>
+            <Payload value="Xelnaga_Door_StandWorkEnd_F"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,Work,Start,00"/>
+            <Name value="Xelnaga_Door_StandWorkStart_A"/>
+            <Type value="Sound"/>
+            <Payload value="Xelnaga_Door_StandWorkStart_A"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,Work,Start,00"/>
+            <Name value="Xelnaga_Door_StandWorkStart_B"/>
+            <Type value="Sound"/>
+            <Time value="0.250000"/>
+            <Payload value="Xelnaga_Door_StandWorkStart_B"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,Work,Start,00"/>
+            <Name value="Xelnaga_Door_StandWorkStart_C"/>
+            <Type value="Sound"/>
+            <Time value="0.500000"/>
+            <Payload value="Xelnaga_Door_StandWorkStart_C"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,Work,Start,00"/>
+            <Name value="Xelnaga_Door_StandWorkStart_D"/>
+            <Type value="Sound"/>
+            <Time value="0.750000"/>
+            <Payload value="Xelnaga_Door_StandWorkStart_D"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,Work,Start,00"/>
+            <Name value="Xelnaga_Door_StandWorkStart_E"/>
+            <Type value="Sound"/>
+            <Time value="1.000000"/>
+            <Payload value="Xelnaga_Door_StandWorkStart_E"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,Work,Start,00"/>
+            <Name value="Xelnaga_Door_StandWorkStart_F"/>
+            <Type value="Sound"/>
+            <Time value="1.250000"/>
+            <Payload value="Xelnaga_Door_StandWorkStart_F"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,Work,Start,00"/>
+            <Name value="Xelnaga_Door_StandWorkStart_G"/>
+            <Type value="Sound"/>
+            <Time value="1.500000"/>
+            <Payload value="Xelnaga_Door_StandWorkStart_G"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,Work,Start,00"/>
+            <Name value="Xelnaga_Door_StandWorkStart_H"/>
+            <Type value="Sound"/>
+            <Time value="1.750000"/>
+            <Payload value="Xelnaga_Door_StandWorkStart_H"/>
+        </Events>
+        <Radius value="6.000000"/>
+        <ScaleMax value="1.500000,1.500000,1.500000"/>
+        <ScaleMin value="1.500000,1.500000,1.500000"/>
+        <SelectionRadius value="6.000000"/>
+        <ShadowRadius value="6.000000"/>
+    </CModel>
+    <CModel id="ECLPORTAL_ACTIVATE" parent="Doodad">
+        <Model value="Assets\COOP\Zeratul\Effects\WarpPrism_Zeratul_COOP_ShieldRange\WarpPrism_Zeratul_COOP_ShieldRange.m3"/>
+    </CModel>
+</Catalog>
