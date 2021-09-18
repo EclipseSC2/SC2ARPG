@@ -1,0 +1,1 @@
+UI/Clean_StandardFrame=Assets/Textures/ui_clean_standardframe.dds
