@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CTerrainTex id="Thilles1">
+        <Texture value="Assets\Textures\Thilles_1.dds"/>
+        <Normalmap value="Assets\Textures\Thilles_1normal.dds"/>
+    </CTerrainTex>
+    <CTerrainTex id="Thilles12">
+        <Texture value="Assets\Textures\thilles_2.dds"/>
+        <Normalmap value="Assets\Textures\thilles_2normal.dds"/>
+        <EditorIcon value="TerrainTexDef/Icon/Thilles1"/>
+    </CTerrainTex>
+    <CTerrainTex id="Thilles122">
+        <Texture value="Assets\Textures\thilles_3.dds"/>
+        <Normalmap value="Assets\Textures\thilles_3normal.dds"/>
+        <EditorIcon value="TerrainTexDef/Icon/Thilles1"/>
+    </CTerrainTex>
+    <CTerrainTex id="Thilles1222">
+        <Texture value="Assets\Textures\thilles_4.dds"/>
+        <Normalmap value="Assets\Textures\thilles_4normal.dds"/>
+        <EditorIcon value="TerrainTexDef/Icon/Thilles1"/>
+    </CTerrainTex>
+    <CTerrainTex id="Thilles12222">
+        <Texture value="Assets\Textures\thilles_5.dds"/>
+        <Normalmap value="Assets\Textures\thilles_5normal.dds"/>
+        <EditorIcon value="TerrainTexDef/Icon/Thilles1"/>
+    </CTerrainTex>
+    <CTerrainTex id="Thilles122222">
+        <Texture value="Assets\Textures\thilles_6.dds"/>
+        <Normalmap value="Assets\Textures\thilles_6normal.dds"/>
+        <EditorIcon value="TerrainTexDef/Icon/Thilles1"/>
+    </CTerrainTex>
+    <CTerrainTex id="Thilles1222222">
+        <Texture value="Assets\Textures\thilles_7.dds"/>
+        <Normalmap value="Assets\Textures\thilles_7normal.dds"/>
+        <EditorIcon value="TerrainTexDef/Icon/Thilles1"/>
+    </CTerrainTex>
+    <CTerrainTex id="Thilles12222222">
+        <Texture value="Assets\Textures\thilles_8.dds"/>
+        <Normalmap value="Assets\Textures\thilles_8normal.dds"/>
+        <EditorIcon value="TerrainTexDef/Icon/Thilles1"/>
+    </CTerrainTex>
+</Catalog>

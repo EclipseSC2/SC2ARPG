@@ -1,0 +1,969 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CUser id="Ailments">
+        <Fields Id="Type" Type="String" EditorColumn="1"/>
+        <Fields Id="Name" Type="String" EditorColumn="2"/>
+        <Fields Id="StackSize" Type="Int" EditorColumn="3"/>
+        <Fields Id="Effects" Type="Text" EditorColumn="4"/>
+        <Fields Id="Icon" Type="Image" EditorColumn="5"/>
+        <Fields>
+            <Id value="Modifier"/>
+            <Type value="User"/>
+            <UserType value="ModifierStats"/>
+            <EditorColumn value="6"/>
+        </Fields>
+        <Instances Id="[Default]"/>
+        <Instances/>
+    </CUser>
+    <CUser id="Blueprints">
+        <Fields>
+            <Id value="Material"/>
+            <Type value="User"/>
+            <UserType value="Items"/>
+            <Count value="6"/>
+            <EditorColumn value="1"/>
+        </Fields>
+        <Fields Id="Discovered" Type="Int" EditorColumn="2">
+            <Flags index="Modifiable" value="1"/>
+        </Fields>
+        <Instances Id="[Default]"/>
+        <Instances Id="Gunpowder">
+            <User Type="Items" Instance="Zerg Carapace">
+                <Field Id="Material"/>
+            </User>
+            <User Type="Items" Instance="Zerg Carapace">
+                <Field Id="Material" Index="1"/>
+            </User>
+        </Instances>
+        <Instances Id="Pistol Ammo">
+            <User Type="Items" Instance="Feralloy Scraps">
+                <Field Id="Material"/>
+            </User>
+            <User Type="Items" Instance="Gunpowder">
+                <Field Id="Material" Index="1"/>
+            </User>
+        </Instances>
+    </CUser>
+    <CUser id="Items">
+        <Fields Id="Name" Type="String" EditorColumn="1"/>
+        <Fields Id="Max Durability" Type="Int" EditorColumn="2"/>
+        <Fields Id="Max Quantity" Type="Int" EditorColumn="3"/>
+        <Fields Id="Icon" Type="Image" EditorColumn="4"/>
+        <Fields Id="Category" Type="String" EditorColumn="5"/>
+        <Fields Id="Description" Type="Text" EditorColumn="7"/>
+        <Fields Id="Lore" Type="Text" EditorColumn="6"/>
+        <Fields Id="Use Type" Type="String" EditorColumn="8"/>
+        <Fields>
+            <Id value="Weapon Data"/>
+            <Type value="User"/>
+            <UserType value="WeaponTypes"/>
+            <EditorColumn value="9"/>
+        </Fields>
+        <Fields>
+            <Id value="Item Stats"/>
+            <Type value="User"/>
+            <UserType value="ModifierStats"/>
+            <EditorColumn value="10"/>
+        </Fields>
+        <Fields>
+            <Id value="GroundModel"/>
+            <Type value="GameLink"/>
+            <GameLinkType value="Model"/>
+            <EditorColumn value="11"/>
+        </Fields>
+        <Fields Id="ModelSize%" Type="Fixed" EditorColumn="12"/>
+        <Fields>
+            <Id value="Blueprint"/>
+            <Type value="User"/>
+            <UserType value="Blueprints"/>
+            <EditorColumn value="13"/>
+        </Fields>
+        <Fields Id="Discovered" Type="Int" EditorColumn="14">
+            <Flags index="Modifiable" value="1"/>
+        </Fields>
+        <Fields Id="MaterialType" Type="String" EditorColumn="15"/>
+        <Instances Id="[Default]">
+            <Fixed Fixed="0.5">
+                <Field Id="ModelSize%"/>
+            </Fixed>
+            <GameLink GameLink="DOM_Crate">
+                <Field Id="GroundModel"/>
+            </GameLink>
+            <Image Image="Assets\Textures\Items\ui_itemicons_waterbottle.dds">
+                <Field Id="Icon"/>
+            </Image>
+            <String String="None">
+                <Field Id="Use Type"/>
+            </String>
+            <Text Text="UserData/Items/[Default]_Lore">
+                <Field Id="Lore"/>
+            </Text>
+            <User Type="WeaponTypes" Instance="[Default]">
+                <Field Id="Weapon Data"/>
+            </User>
+        </Instances>
+        <Instances Id="Feralloy Scraps">
+            <GameLink GameLink="DOM_HybridCapsule">
+                <Field Id="GroundModel"/>
+            </GameLink>
+            <Image Image="Assets\Textures\Items\ui_itemicons_scrap.dds">
+                <Field Id="Icon"/>
+            </Image>
+            <Int Int="30">
+                <Field Id="Max Quantity"/>
+            </Int>
+            <String String="Feralloy Scraps">
+                <Field Id="Name"/>
+            </String>
+            <String String="Material">
+                <Field Id="Category"/>
+            </String>
+            <String String="Crafting">
+                <Field Id="Use Type"/>
+            </String>
+            <Text Text="UserData/Items/Feralloy Scraps_Description">
+                <Field Id="Description"/>
+            </Text>
+            <Text Text="UserData/Items/Feralloy Scraps_Lore">
+                <Field Id="Lore"/>
+            </Text>
+            <User Type="WeaponTypes" Instance="[Default]">
+                <Field Id="Weapon Data"/>
+            </User>
+        </Instances>
+        <Instances Id="Plasteel Scraps">
+            <Image Image="Assets\Textures\btn-ability-slaynelemental-solaritecocoon.dds">
+                <Field Id="Icon"/>
+            </Image>
+            <Int Int="30">
+                <Field Id="Max Quantity"/>
+            </Int>
+            <String String="Material">
+                <Field Id="Category"/>
+            </String>
+            <String String="Plasteel Scraps">
+                <Field Id="Name"/>
+            </String>
+            <String String="Crafting">
+                <Field Id="Use Type"/>
+            </String>
+            <Text Text="UserData/Items/Plasteel Scraps_Description">
+                <Field Id="Description"/>
+            </Text>
+            <Text Text="UserData/Items/Plasteel Scraps_Lore">
+                <Field Id="Lore"/>
+            </Text>
+        </Instances>
+        <Instances Id="Flashlight">
+            <Image Image="Assets\Textures\Items\ui_itemicons_flashlight.dds">
+                <Field Id="Icon"/>
+            </Image>
+            <Int Int="1">
+                <Field Id="Max Quantity"/>
+            </Int>
+            <String String="Flashlight">
+                <Field Id="Name"/>
+            </String>
+            <String String="Key">
+                <Field Id="Category"/>
+            </String>
+            <String String="Turn On/Off">
+                <Field Id="Use Type"/>
+            </String>
+            <Text Text="UserData/Items/Flashlight_Description">
+                <Field Id="Description"/>
+            </Text>
+            <Text Text="UserData/Items/Flashlight_Lore">
+                <Field Id="Lore"/>
+            </Text>
+        </Instances>
+        <Instances Id="Water Bottle">
+            <Int Int="5">
+                <Field Id="Max Quantity"/>
+            </Int>
+            <Int Int="60">
+                <Field Id="Max Durability"/>
+            </Int>
+            <String String="Water Bottle">
+                <Field Id="Name"/>
+            </String>
+            <String String="Consummable">
+                <Field Id="Category"/>
+            </String>
+            <String String="Drink">
+                <Field Id="Use Type"/>
+            </String>
+            <Text Text="UserData/Items/Water Bottle_Description">
+                <Field Id="Description"/>
+            </Text>
+            <Text Text="UserData/Items/Water Bottle_Lore">
+                <Field Id="Lore"/>
+            </Text>
+        </Instances>
+        <Instances Id="Small Ration">
+            <Image Image="Assets\Textures\Items\ui_itemicons_rationsmall.dds">
+                <Field Id="Icon"/>
+            </Image>
+            <Int Int="8">
+                <Field Id="Max Quantity"/>
+            </Int>
+            <Int Int="30">
+                <Field Id="Max Durability"/>
+            </Int>
+            <String String="Consummable">
+                <Field Id="Category"/>
+            </String>
+            <String String="Small Ration">
+                <Field Id="Name"/>
+            </String>
+            <String String="Eat">
+                <Field Id="Use Type"/>
+            </String>
+            <Text Text="UserData/Items/Small Ration_Description">
+                <Field Id="Description"/>
+            </Text>
+            <Text Text="UserData/Items/Small Ration_Lore">
+                <Field Id="Lore"/>
+            </Text>
+        </Instances>
+        <Instances Id="Trooper Suit">
+            <Image Image="Assets\Textures\btn-upgrade-nova-equipment-apolloinfantrysuit.dds">
+                <Field Id="Icon"/>
+            </Image>
+            <Int Int="100">
+                <Field Id="Max Durability"/>
+            </Int>
+            <Int Int="1">
+                <Field Id="Max Quantity"/>
+            </Int>
+            <String String="Trooper Suit">
+                <Field Id="Name"/>
+            </String>
+            <String String="Suit">
+                <Field Id="Category"/>
+            </String>
+            <String String="Wear">
+                <Field Id="Use Type"/>
+            </String>
+            <Text Text="UserData/Items/Trooper Suit_Description">
+                <Field Id="Description"/>
+            </Text>
+            <Text Text="UserData/Items/Trooper Suit_Lore">
+                <Field Id="Lore"/>
+            </Text>
+            <User Type="WeaponTypes" Instance="[Default]">
+                <Field Id="Weapon Data"/>
+            </User>
+        </Instances>
+        <Instances Id="Wrench">
+            <Image Image="Assets\Textures\ui_nova_storymode_briefing_icon_wrench.dds">
+                <Field Id="Icon"/>
+            </Image>
+            <Int Int="100">
+                <Field Id="Max Durability"/>
+            </Int>
+            <Int Int="1">
+                <Field Id="Max Quantity"/>
+            </Int>
+            <String String="Weapon">
+                <Field Id="Category"/>
+            </String>
+            <String String="Wrench">
+                <Field Id="Name"/>
+            </String>
+            <String String="Equip">
+                <Field Id="Use Type"/>
+            </String>
+            <Text Text="UserData/Items/Wrench_Description">
+                <Field Id="Description"/>
+            </Text>
+            <Text Text="UserData/Items/Wrench_Lore">
+                <Field Id="Lore"/>
+            </Text>
+        </Instances>
+        <Instances Id="Slugger">
+            <Image Image="Assets\Textures\Items\ui_itemicons_pistol.dds">
+                <Field Id="Icon"/>
+            </Image>
+            <Int Int="1">
+                <Field Id="Max Quantity"/>
+            </Int>
+            <Int Int="100">
+                <Field Id="Max Durability"/>
+            </Int>
+            <String String="Slugger">
+                <Field Id="Name"/>
+            </String>
+            <String String="Weapon">
+                <Field Id="Category"/>
+            </String>
+            <String String="Equip">
+                <Field Id="Use Type"/>
+            </String>
+            <Text Text="UserData/Items/Slugger_Lore">
+                <Field Id="Lore"/>
+            </Text>
+            <User Type="ModifierStats" Instance="Vision Helmet">
+                <Field Id="Item Stats"/>
+            </User>
+            <User Type="WeaponTypes" Instance="[Default]">
+                <Field Id="Weapon Data"/>
+            </User>
+        </Instances>
+        <Instances Id="CPG11">
+            <Image Image="Assets\Textures\Items\WPN_SMG01.dds">
+                <Field Id="Icon"/>
+            </Image>
+            <Int Int="1">
+                <Field Id="Max Quantity"/>
+            </Int>
+            <Int Int="100">
+                <Field Id="Max Durability"/>
+            </Int>
+            <String String="CPG-11">
+                <Field Id="Name"/>
+            </String>
+            <String String="Weapon">
+                <Field Id="Category"/>
+            </String>
+            <String String="Equip">
+                <Field Id="Use Type"/>
+            </String>
+            <Text Text="UserData/Items/CPG11_Lore">
+                <Field Id="Lore"/>
+            </Text>
+            <User Type="ModifierStats" Instance="Vision Helmet">
+                <Field Id="Item Stats"/>
+            </User>
+            <User Type="WeaponTypes" Instance="[Default]">
+                <Field Id="Weapon Data"/>
+            </User>
+        </Instances>
+        <Instances Id="Pistol Ammo">
+            <Image Image="Assets\Textures\Items\ui_itemicons_ammopistol.dds">
+                <Field Id="Icon"/>
+            </Image>
+            <Int Int="40">
+                <Field Id="Max Quantity"/>
+            </Int>
+            <String String="Ammo">
+                <Field Id="Category"/>
+            </String>
+            <String String="Pistol Ammo">
+                <Field Id="Name"/>
+            </String>
+            <String String="Ammo">
+                <Field Id="Use Type"/>
+            </String>
+            <Text Text="UserData/Items/Pistol Ammo_Description">
+                <Field Id="Description"/>
+            </Text>
+            <Text Text="UserData/Items/Pistol Ammo_Lore">
+                <Field Id="Lore"/>
+            </Text>
+            <User Type="Blueprints" Instance="Pistol Ammo">
+                <Field Id="Blueprint"/>
+            </User>
+        </Instances>
+        <Instances Id="Bandage">
+            <Image Image="Assets\Textures\Items\ui_itemicons_bandage.dds">
+                <Field Id="Icon"/>
+            </Image>
+            <Int Int="3">
+                <Field Id="Max Quantity"/>
+            </Int>
+            <String String="Consummable">
+                <Field Id="Category"/>
+            </String>
+            <String String="Bandage">
+                <Field Id="Name"/>
+            </String>
+            <String String="Apply">
+                <Field Id="Use Type"/>
+            </String>
+            <Text Text="UserData/Items/Bandage_Description">
+                <Field Id="Description"/>
+            </Text>
+            <Text Text="UserData/Items/Bandage_Lore">
+                <Field Id="Lore"/>
+            </Text>
+        </Instances>
+        <Instances Id="Medigel">
+            <Image Image="Assets\Textures\Items\ui_itemicons_pills.dds">
+                <Field Id="Icon"/>
+            </Image>
+            <Int Int="100">
+                <Field Id="Max Durability"/>
+            </Int>
+            <Int Int="1">
+                <Field Id="Max Quantity"/>
+            </Int>
+            <String String="Consummable">
+                <Field Id="Category"/>
+            </String>
+            <String String="Medigel">
+                <Field Id="Name"/>
+            </String>
+            <String String="Heal">
+                <Field Id="Use Type"/>
+            </String>
+            <Text Text="UserData/Items/Medigel_Description">
+                <Field Id="Description"/>
+            </Text>
+            <Text Text="UserData/Items/Medigel_Lore">
+                <Field Id="Lore"/>
+            </Text>
+        </Instances>
+        <Instances Id="Splint">
+            <Image Image="Assets\Textures\Items\ui_itemicons_bandage.dds">
+                <Field Id="Icon"/>
+            </Image>
+            <Int Int="3">
+                <Field Id="Max Quantity"/>
+            </Int>
+            <String String="Consummable">
+                <Field Id="Category"/>
+            </String>
+            <String String="Splint">
+                <Field Id="Name"/>
+            </String>
+            <String String="Apply">
+                <Field Id="Use Type"/>
+            </String>
+            <Text Text="UserData/Items/Splint_Description">
+                <Field Id="Description"/>
+            </Text>
+            <Text Text="UserData/Items/Splint_Lore">
+                <Field Id="Lore"/>
+            </Text>
+        </Instances>
+        <Instances Id="Keycard">
+            <Image Image="Assets\Textures\wireframe-critter-cardboardboxrunner.dds">
+                <Field Id="Icon"/>
+            </Image>
+            <Int Int="50">
+                <Field Id="Max Quantity"/>
+            </Int>
+            <String String="Key">
+                <Field Id="Category"/>
+            </String>
+            <String String="Keycard">
+                <Field Id="Name"/>
+            </String>
+            <String String="Use">
+                <Field Id="Use Type"/>
+            </String>
+            <Text Text="UserData/Items/Keycard_Description">
+                <Field Id="Description"/>
+            </Text>
+            <Text Text="UserData/Items/Keycard_Lore">
+                <Field Id="Lore"/>
+            </Text>
+            <User Type="ModifierStats" Instance="[Default]">
+                <Field Id="Item Stats"/>
+            </User>
+        </Instances>
+        <Instances Id="Barricade Pack">
+            <Int Int="1">
+                <Field Id="Max Quantity"/>
+            </Int>
+            <String String="Pack">
+                <Field Id="Category"/>
+            </String>
+            <String String="Barricade Pack">
+                <Field Id="Name"/>
+            </String>
+            <String String="Pack">
+                <Field Id="Use Type"/>
+            </String>
+            <Text Text="UserData/Items/Barricade Pack_Description">
+                <Field Id="Description"/>
+            </Text>
+            <Text Text="UserData/Items/Barricade Pack_Lore">
+                <Field Id="Lore"/>
+            </Text>
+            <User Type="WeaponTypes" Instance="[Default]">
+                <Field Id="Weapon Data"/>
+            </User>
+        </Instances>
+        <Instances Id="Oxygen Augment">
+            <Int Int="1">
+                <Field Id="Max Quantity"/>
+            </Int>
+            <String String="Augment">
+                <Field Id="Category"/>
+            </String>
+            <String String="Augment">
+                <Field Id="Use Type"/>
+            </String>
+            <String String="Oxgen Augment">
+                <Field Id="Name"/>
+            </String>
+            <Text Text="UserData/Items/Oxygen Augment_Description">
+                <Field Id="Description"/>
+            </Text>
+            <User Type="ModifierStats" Instance="[Default]">
+                <Field Id="Item Stats"/>
+            </User>
+        </Instances>
+        <Instances Id="Zerg Bones">
+            <Int Int="25">
+                <Field Id="Max Quantity"/>
+            </Int>
+            <String String="Material">
+                <Field Id="Category"/>
+            </String>
+            <String String="Zerg Bones">
+                <Field Id="Name"/>
+            </String>
+            <String String="Crafting">
+                <Field Id="Use Type"/>
+            </String>
+            <String String="Biological">
+                <Field Id="MaterialType"/>
+            </String>
+            <Text Text="UserData/Items/Zerg Bones_Description">
+                <Field Id="Description"/>
+            </Text>
+            <Text Text="UserData/Items/Zerg Bones_Lore">
+                <Field Id="Lore"/>
+            </Text>
+            <User Type="WeaponTypes" Instance="[Default]">
+                <Field Id="Weapon Data"/>
+            </User>
+            <User Type="ModifierStats" Instance="Vision Helmet">
+                <Field Id="Item Stats"/>
+            </User>
+        </Instances>
+        <Instances Id="Zerg Carapace">
+            <Int Int="20">
+                <Field Id="Max Quantity"/>
+            </Int>
+            <String String="Material">
+                <Field Id="Category"/>
+            </String>
+            <String String="Zerg Carapace">
+                <Field Id="Name"/>
+            </String>
+            <String String="Crafting">
+                <Field Id="Use Type"/>
+            </String>
+            <Text Text="UserData/Items/Zerg Carapace_Description">
+                <Field Id="Description"/>
+            </Text>
+            <Text Text="UserData/Items/Zerg Carapace_Lore">
+                <Field Id="Lore"/>
+            </Text>
+            <User Type="ModifierStats" Instance="Vision Helmet">
+                <Field Id="Item Stats"/>
+            </User>
+        </Instances>
+        <Instances Id="Zerg Claws">
+            <Int Int="10">
+                <Field Id="Max Quantity"/>
+            </Int>
+            <String String="Material">
+                <Field Id="Category"/>
+            </String>
+            <String String="Zerg Claws">
+                <Field Id="Name"/>
+            </String>
+            <String String="Crafting">
+                <Field Id="Use Type"/>
+            </String>
+            <Text Text="UserData/Items/Zerg Claws_Description">
+                <Field Id="Description"/>
+            </Text>
+            <Text Text="UserData/Items/Zerg Claws_Lore">
+                <Field Id="Lore"/>
+            </Text>
+            <User Type="ModifierStats" Instance="Vision Helmet">
+                <Field Id="Item Stats"/>
+            </User>
+            <User Type="WeaponTypes" Instance="[Default]">
+                <Field Id="Weapon Data"/>
+            </User>
+        </Instances>
+        <Instances Id="Gunpowder">
+            <Image Image="Assets\Textures\Items\ui_itemicons_cannedfood.dds">
+                <Field Id="Icon"/>
+            </Image>
+            <Int Int="10">
+                <Field Id="Max Quantity"/>
+            </Int>
+            <String String="Material">
+                <Field Id="Category"/>
+            </String>
+            <String String="Gunpowder">
+                <Field Id="Name"/>
+            </String>
+            <String String="Crafting">
+                <Field Id="Use Type"/>
+            </String>
+            <Text Text="UserData/Items/Gunpowder_Description">
+                <Field Id="Description"/>
+            </Text>
+            <Text Text="UserData/Items/Gunpowder_Lore">
+                <Field Id="Lore"/>
+            </Text>
+            <User Type="ModifierStats" Instance="Vision Helmet">
+                <Field Id="Item Stats"/>
+            </User>
+            <User Type="Blueprints" Instance="Gunpowder">
+                <Field Id="Blueprint"/>
+            </User>
+        </Instances>
+        <Instances Id="Speed Augment">
+            <Image Image="Assets\Textures\Items\ui_itemicons_rationsmall.dds">
+                <Field Id="Icon"/>
+            </Image>
+            <Int Int="1">
+                <Field Id="Max Quantity"/>
+            </Int>
+            <String String="Augment">
+                <Field Id="Category"/>
+            </String>
+            <String String="Speed Augment +1">
+                <Field Id="Name"/>
+            </String>
+            <String String="Augment">
+                <Field Id="Use Type"/>
+            </String>
+            <Text Text="UserData/Items/Speed Augment_Description">
+                <Field Id="Description"/>
+            </Text>
+            <Text Text="UserData/Items/Speed Augment_Lore">
+                <Field Id="Lore"/>
+            </Text>
+            <User Type="Blueprints" Instance="[Default]">
+                <Field Id="Blueprint"/>
+            </User>
+            <User Type="ModifierStats" Instance="Speed Augment">
+                <Field Id="Item Stats"/>
+            </User>
+        </Instances>
+        <Instances Id="Vision Helmet">
+            <Image Image="Assets\Textures\Items\ui_itemicons_flashlight.dds">
+                <Field Id="Icon"/>
+            </Image>
+            <Int Int="1">
+                <Field Id="Max Quantity"/>
+            </Int>
+            <String String="Head">
+                <Field Id="Use Type"/>
+            </String>
+            <String String="Head">
+                <Field Id="Category"/>
+            </String>
+            <String String="Vision Helmet +1">
+                <Field Id="Name"/>
+            </String>
+            <Text Text="UserData/Items/Vision Helmet_Description">
+                <Field Id="Description"/>
+            </Text>
+            <User Type="ModifierStats" Instance="Vision Helmet">
+                <Field Id="Item Stats"/>
+            </User>
+        </Instances>
+        <Instances Id="Crappy Pack">
+            <Image Image="Assets\Textures\Items\ui_itemicons_pills.dds">
+                <Field Id="Icon"/>
+            </Image>
+            <Int Int="1">
+                <Field Id="Max Quantity"/>
+            </Int>
+            <String String="Pack">
+                <Field Id="Category"/>
+            </String>
+            <String String="Pack">
+                <Field Id="Use Type"/>
+            </String>
+            <String String="Crappy Pack">
+                <Field Id="Name"/>
+            </String>
+            <Text Text="UserData/Items/Crappy Pack_Description">
+                <Field Id="Description"/>
+            </Text>
+            <User Type="ModifierStats" Instance="Crappy Pack">
+                <Field Id="Item Stats"/>
+            </User>
+        </Instances>
+        <Instances Id="Security Suit">
+            <Image Image="Assets\Textures\Items\ui_itemicons_pills.dds">
+                <Field Id="Icon"/>
+            </Image>
+            <Int Int="1">
+                <Field Id="Max Quantity"/>
+            </Int>
+            <String String="Suit">
+                <Field Id="Category"/>
+            </String>
+            <String String="Wear">
+                <Field Id="Use Type"/>
+            </String>
+            <String String="Security Suit">
+                <Field Id="Name"/>
+            </String>
+            <Text Text="UserData/Items/Security Suit_Description">
+                <Field Id="Description"/>
+            </Text>
+            <User Type="ModifierStats" Instance="Vision Helmet">
+                <Field Id="Item Stats"/>
+            </User>
+        </Instances>
+    </CUser>
+    <CUser id="LootTables">
+        <Fields>
+            <Id value="Items"/>
+            <Type value="User"/>
+            <UserType value="Items"/>
+            <Count value="50"/>
+            <EditorColumn value="2"/>
+        </Fields>
+        <Fields>
+            <Id value="MaxAmount"/>
+            <Type value="Int"/>
+            <Count value="50"/>
+            <EditorColumn value="1"/>
+        </Fields>
+        <Fields Id="TableSize" Type="Int" EditorColumn="3">
+            <Flags index="Modifiable" value="1"/>
+        </Fields>
+        <Instances Id="[Default]"/>
+        <Instances Id="Random">
+            <Int Int="3">
+                <Field Id="MaxAmount"/>
+            </Int>
+            <Int Int="2">
+                <Field Id="MaxAmount" Index="1"/>
+            </Int>
+            <Int Int="1">
+                <Field Id="MaxAmount" Index="2"/>
+            </Int>
+            <Int Int="1">
+                <Field Id="MaxAmount" Index="8"/>
+            </Int>
+            <Int Int="1">
+                <Field Id="MaxAmount" Index="7"/>
+            </Int>
+            <Int Int="1">
+                <Field Id="MaxAmount" Index="6"/>
+            </Int>
+            <Int Int="1">
+                <Field Id="MaxAmount" Index="5"/>
+            </Int>
+            <Int Int="1">
+                <Field Id="MaxAmount" Index="4"/>
+            </Int>
+            <Int Int="1">
+                <Field Id="MaxAmount" Index="3"/>
+            </Int>
+            <Int Int="10">
+                <Field Id="MaxAmount" Index="9"/>
+            </Int>
+            <User Type="Items" Instance="Zerg Bones">
+                <Field Id="Items"/>
+            </User>
+            <User Type="Items" Instance="Zerg Claws">
+                <Field Id="Items" Index="2"/>
+            </User>
+            <User Type="Items" Instance="Zerg Carapace">
+                <Field Id="Items" Index="1"/>
+            </User>
+            <User Type="Items" Instance="Trooper Suit">
+                <Field Id="Items" Index="3"/>
+            </User>
+            <User Type="Items" Instance="Small Ration">
+                <Field Id="Items" Index="4"/>
+            </User>
+            <User Type="Items" Instance="Bandage">
+                <Field Id="Items" Index="5"/>
+            </User>
+            <User Type="Items" Instance="Barricade Pack">
+                <Field Id="Items" Index="6"/>
+            </User>
+            <User Type="Items" Instance="Plasteel Scraps">
+                <Field Id="Items" Index="8"/>
+            </User>
+            <User Type="Items" Instance="Medigel">
+                <Field Id="Items" Index="7"/>
+            </User>
+            <User Type="Items" Instance="Pistol Ammo">
+                <Field Id="Items" Index="9"/>
+            </User>
+        </Instances>
+        <Instances Id="Test">
+            <Int Int="1">
+                <Field Id="MaxAmount"/>
+            </Int>
+            <Int Int="1">
+                <Field Id="MaxAmount" Index="1"/>
+            </Int>
+            <Int Int="1">
+                <Field Id="MaxAmount" Index="2"/>
+            </Int>
+            <User Type="Items" Instance="Bandage">
+                <Field Id="Items"/>
+            </User>
+            <User Type="Items" Instance="Barricade Pack">
+                <Field Id="Items" Index="1"/>
+            </User>
+            <User Type="Items" Instance="Barricade Pack">
+                <Field Id="Items" Index="2"/>
+            </User>
+        </Instances>
+    </CUser>
+    <CUser id="ModifierStats">
+        <Fields Id="Move Speed" Type="Fixed" EditorColumn="1"/>
+        <Fields Id="Attack Speed" Type="Fixed" EditorColumn="2"/>
+        <Fields Id="Search Speed" Type="Fixed" EditorColumn="3"/>
+        <Fields Id="Vision Range" Type="Int" EditorColumn="4"/>
+        <Fields Id="Duration" Type="Fixed" EditorColumn="10"/>
+        <Fields Id="Armor" Type="Int" EditorColumn="5"/>
+        <Fields Id="Health" Type="Int" EditorColumn="6"/>
+        <Fields Id="InventorySize" Type="Int" EditorColumn="7"/>
+        <Fields Id="QuickSlots" Type="Int" EditorColumn="8"/>
+        <Fields Id="Oxygen Reserve" Type="Int" EditorColumn="9"/>
+        <Instances Id="[Default]"/>
+        <Instances>
+            <Fixed Fixed="25">
+                <Field Id="Move Speed"/>
+            </Fixed>
+            <Int Int="2">
+                <Field Id="Armor"/>
+            </Int>
+            <Int Int="2">
+                <Field Id="InventorySize"/>
+            </Int>
+        </Instances>
+        <Instances Id="Vision Helmet">
+            <Int Int="2">
+                <Field Id="Vision Range"/>
+            </Int>
+        </Instances>
+        <Instances Id="Speed Augment">
+            <Fixed Fixed="4">
+                <Field Id="Move Speed"/>
+            </Fixed>
+        </Instances>
+        <Instances Id="Crappy Pack">
+            <Fixed Fixed="-4">
+                <Field Id="Move Speed"/>
+            </Fixed>
+            <Int Int="-1">
+                <Field Id="Vision Range"/>
+            </Int>
+            <Int Int="4">
+                <Field Id="InventorySize"/>
+            </Int>
+        </Instances>
+        <Instances Id="Security Suit">
+            <Int Int="2">
+                <Field Id="Armor"/>
+            </Int>
+        </Instances>
+    </CUser>
+    <CUser id="WeaponTypes">
+        <Fields Id="Icon" Type="Image" EditorColumn="1"/>
+        <Fields Id="AmmoType" Type="String" EditorColumn="2"/>
+        <Fields Id="BaseAmmoMax" Type="Int" EditorColumn="3"/>
+        <Fields Id="DamageMin" Type="Int" EditorColumn="4"/>
+        <Fields Id="DamageMax" Type="Int" EditorColumn="5"/>
+        <Fields Id="Cooldown" Type="Fixed" EditorColumn="6"/>
+        <Fields Id="Range" Type="Fixed" EditorColumn="7"/>
+        <Fields Id="StartingAmmo" Type="Int" EditorColumn="8"/>
+        <Fields Id="ProjectileCount" Type="Int" EditorColumn="9"/>
+        <Fields Id="Velocity" Type="Fixed" EditorColumn="10"/>
+        <Fields Id="Angle" Type="Fixed" EditorColumn="11"/>
+        <Fields>
+            <Id value="ImpactEffect"/>
+            <Type value="GameLink"/>
+            <GameLinkType value="Effect"/>
+            <EditorColumn value="12"/>
+        </Fields>
+        <Fields Id="Launch" Type="String" EditorColumn="13"/>
+        <Instances Id="[Default]">
+            <Fixed Fixed="0.75">
+                <Field Id="Cooldown"/>
+            </Fixed>
+            <Fixed Fixed="12">
+                <Field Id="Range"/>
+            </Fixed>
+            <Fixed Fixed="26">
+                <Field Id="Velocity"/>
+            </Fixed>
+            <Fixed Fixed="4">
+                <Field Id="Angle"/>
+            </Fixed>
+            <GameLink GameLink="PAttackBulletImpactNEW">
+                <Field Id="ImpactEffect"/>
+            </GameLink>
+            <Image Image="Assets\Textures\ui_clean_weapontestmain.dds">
+                <Field Id="Icon"/>
+            </Image>
+            <Int Int="6">
+                <Field Id="BaseAmmoMax"/>
+            </Int>
+            <Int Int="13">
+                <Field Id="DamageMax"/>
+            </Int>
+            <Int Int="10">
+                <Field Id="DamageMin"/>
+            </Int>
+            <Int Int="1">
+                <Field Id="ProjectileCount"/>
+            </Int>
+            <Int Int="6">
+                <Field Id="StartingAmmo"/>
+            </Int>
+            <String String="Pistol">
+                <Field Id="AmmoType"/>
+            </String>
+            <String String="String">
+                <Field Id="Launch"/>
+            </String>
+        </Instances>
+        <Instances Id="Slugger"/>
+        <Instances Id="CPG11">
+            <Fixed Fixed="0.0625">
+                <Field Id="Cooldown"/>
+            </Fixed>
+            <Fixed Fixed="9">
+                <Field Id="Range"/>
+            </Fixed>
+            <Fixed Fixed="20">
+                <Field Id="Velocity"/>
+            </Fixed>
+            <Fixed Fixed="10">
+                <Field Id="Angle"/>
+            </Fixed>
+            <GameLink GameLink="PAttackBulletImpactNEW">
+                <Field Id="ImpactEffect"/>
+            </GameLink>
+            <Image Image="Assets\Textures\ui_clean_weapontestmain.dds">
+                <Field Id="Icon"/>
+            </Image>
+            <Int Int="30">
+                <Field Id="BaseAmmoMax"/>
+            </Int>
+            <Int Int="2">
+                <Field Id="DamageMax"/>
+            </Int>
+            <Int Int="1">
+                <Field Id="DamageMin"/>
+            </Int>
+            <Int Int="2">
+                <Field Id="ProjectileCount"/>
+            </Int>
+            <Int Int="30">
+                <Field Id="StartingAmmo"/>
+            </Int>
+            <String String="Pistol">
+                <Field Id="AmmoType"/>
+            </String>
+            <String String="String">
+                <Field Id="Launch"/>
+            </String>
+        </Instances>
+    </CUser>
+</Catalog>

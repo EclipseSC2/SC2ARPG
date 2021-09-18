@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+    <!-- Constants -->
+    <Constant name="InspectWindowWidth" val="394"/>
+    <Constant name="InspectWindowHeight" val="800"/>
+    <Constant name="InspectIconFrameSize" val=""/>
+    <Constant name="InspectUseHeaderHeight" val="75"/>
+
+    <!-- Templates -->
+
+    <Frame type="Frame" name="InspectIconFrameTemplate">
+        <Width val="260"/>
+        <Height val="260"/>
+
+        <Frame type="Image" name="Background">
+            <Anchor relative="$parent" offset="-15"/>
+
+            <Color val="000000"/>
+            <AlphaMaskTexture val="Assets/Textures/ui_clean_portrait_mask.dds"/>
+        </Frame>
+        
+        <Frame type="Image" name="Boder">
+            <Anchor relative="$parent"/>
+
+            <Texture val="Assets/Textures/ui_clean_commandbutton_normal.dds"/>
+        </Frame>
+
+        <Frame type="Image" name="Icon">
+            <Anchor relative="$parent" offset="-35"/>
+
+            <AlphaMaskTexture val="Assets/Textures/ui_clean_diamondbuttonmask.dds"/>
+        </Frame>
+
+        <Frame type="Image" name="DurabilityIcon">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+
+            <Texture val="Assets/Textures/ui_clean_tooltip_crateicon.dds"/>
+            <Width val="30"/>
+            <Height val="30"/>
+            <Visible val="{$parent/Durability/@Visible}"/>
+        </Frame>
+
+        <Frame type="Label" name="Durability">
+            <Anchor side="Top" relative="$parent/DurabilityIcon" pos="Mid" offset="0"/>
+            <Anchor side="Bottom" relative="$parent/DurabilityIcon" pos="Mid" offset="0"/>
+            <Anchor side="Left" relative="$parent/DurabilityIcon" pos="Max" offset="4"/>
+
+            <Style val="DS_InspectQuantityLabel"/>
+            <Visible val="False"/>
+        </Frame>
+
+        <Frame type="Image" name="QuantityIcon">
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+
+            <Texture val="Assets/Textures/ui_clean_tooltip_crateicon.dds"/>
+            <Width val="30"/>
+            <Height val="30"/>
+            <Visible val="{$parent/Quantity/@Visible}"/>
+        </Frame>
+
+        <Frame type="Label" name="Quantity">
+            <Anchor side="Top" relative="$parent/QuantityIcon" pos="Mid" offset="0"/>
+            <Anchor side="Bottom" relative="$parent/QuantityIcon" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent/QuantityIcon" pos="Min" offset="-5"/>
+
+            <Style val="DS_InspectQuantityLabel"/>
+            <Visible val="False"/>
+        </Frame>
+    </Frame>
+
+    <Frame type="Frame" name="Frame"></Frame>
+
+    <!-- InspectWindow -->
+
+    <Frame type="Frame" name="InspectPanelTemplate">
+        <Anchor relative="$parent"/>
+        <Visible val="False"/>
+
+        <Frame type="Image" name="BlackoutFrame">
+            <Anchor relative="$parent"/>
+
+            <Color val="000000"/>
+            <Alpha val="150"/>
+        </Frame>
+
+        <Frame type="Button" name="FullScreenButton">
+            <Anchor relative="$parent"/>
+            <Unclipped val="True"/>
+    
+            <HitTestFrame val="HitTestFrame"/>
+            
+            <Alpha val="0"/>
+    
+            <Frame type="Frame" name="HitTestFrame">
+                <Anchor relative="$parent"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Frame" name="InfoFrame" template="Cleane_StandardTemplates/DummyInfoFrame"></Frame>
+
+        <Frame type="Frame" name="InspectWindow" template="Cleane_StandardTemplates/StandardFrameTemplate">
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Top" relative="$parent" pos="Min" offset="200"/>
+            <Anchor side="Bottom" relative="$this/LoreModule" pos="Max" offset="22"/>
+    
+            <Width val="#InspectWindowWidth"/>
+            <Height val="#InspectWindowHeight"/>
+            <AcceptsMouse val="True"/>
+            <Handle val="InspectWindow"/>
+    
+            <Frame type="Frame" name="Header">
+                <Anchor side="Top" relative="$parent/AnchorFrame" pos="Min" offset="0"/>
+                <Anchor side="Left" relative="$parent/AnchorFrame" pos="Min" offset="0"/>
+                <Anchor side="Right" relative="$parent/AnchorFrame" pos="Max" offset="0"/>
+    
+                <Height val="#InspectUseHeaderHeight"/>
+    
+                <Frame type="Image" name="Glow">
+                    <Anchor relative="$parent"/>
+                    <BlendMode val="Add"/>
+    
+                    <LayerCount val="2"/>
+    
+                    <Texture val="Assets\Textures\ui_clean_headerglow.dds" layer="0"/>
+                    <AlphaLayer val="True" layer="0"/>
+                    <TextureCoords top="0" left="0" bottom="1" right="1" layer="1"/>
+                    <TextureType val="Normal" layer="0"/>
+    
+                    <Texture val="Assets\Textures\sc2_ui_newplayerxp_hexagon_shimmermask.dds" layer="1"/>
+                    <TextureCoords top="0" left="0" bottom="1" right="1" layer="1"/>
+                    <Alpha val="180" layer="1"/>
+                    
+    
+                    <Animation name="Shimmer">
+                        <Event event="OnShown" action="DirectionForward" frame="$parent"/>
+                        <Event event="OnShown" action="Play" frame="$parent"/>
+    
+                        <Controller type="LayerUV" end="Loop" frame="$this" relative="True" layer="1" side="Right" sidelock="True">
+                            <Key type="Curve" time="0.0" value="2"/>
+                            <Key type="Curve" time="8" value="-2"/>
+                        </Controller>                    
+                    </Animation>
+                </Frame>
+    
+                <Frame type="Image" name="Background">
+                    <Anchor relative="$parent"/>
+    
+                    <Texture val="Assets\Textures\ui_clean_headerglow.dds"/>
+                    <Alpha val="255"/>
+                    <Height val="200"/>
+                    <AdjustmentColor val="001d84"/>
+                    <ColorAdjustMode val="Fill"/>
+
+                    <StateGroup name="UseType">
+                        <DefaultState val="Material"/>
+                
+                        <State name="Invalid">
+                            <When type="AnimationState" frame="$InspectWindow" ItemType="Invalid"/>
+                
+                            <Action type="SetProperty" frame="$this" AdjustmentColor="934bff"/>
+                        </State>
+                    
+                        <State name="Consummable">
+                            <When type="AnimationState" frame="$InspectWindow" ItemType="Consummable"/>
+                
+                            <Action type="SetProperty" frame="$this" AdjustmentColor="838383"/>
+                        </State>
+                
+                        <State name="Armor">
+                            <When type="AnimationState" frame="$InspectWindow" ItemType="Armor"/>
+                
+                            <Action type="SetProperty" frame="$this" AdjustmentColor="363a7a"/>
+                        </State>
+                
+                        <State name="Weapon">
+                            <When type="AnimationState" frame="$InspectWindow" ItemType="Weapon"/>
+                
+                            <Action type="SetProperty" frame="$this" AdjustmentColor="7d3535"/>
+                        </State>
+        
+                        <State name="Ammo">
+                            <When type="AnimationState" frame="$InspectWindow" ItemType="Ammo"/>
+                
+                            <Action type="SetProperty" frame="$this" AdjustmentColor="7d7235"/>
+                        </State>
+                
+                
+                        <State name="Material">
+                            <When type="AnimationState" frame="$InspectWindow" ItemType="Material"/>
+                
+                            <Action type="SetProperty" frame="$this" AdjustmentColor="368936"/>
+                        </State>
+                
+                        <State name="Key">
+                            <When type="AnimationState" frame="$InspectWindow" ItemType="Key"/>
+                
+                            <Action type="SetProperty" frame="$this" AdjustmentColor="7a5836"/>
+                        </State>
+                    </StateGroup>
+    
+                    <Animation name="Pulse">
+                        <Event event="OnShown" action="DirectionForward" frame="$parent"/>
+                        <Event event="OnShown" action="Play" frame="$parent"/>
+    
+                        <Controller type="Fade" end="Pause" frame="$this">
+                            <Key type="Curve" time="0.0" value="190"/>
+                            <Key type="Curve" time="2" value="230"/>
+                            <Key type="Curve" time="3" value="190"/>
+                            <Key type="Curve" time="5" value="255"/>
+                            <Key type="Curve" time="7" value="160"/>
+                        </Controller>
+                    </Animation>
+                </Frame>
+            </Frame>
+    
+            <Frame type="Label" name="Title">
+                <Anchor side="Bottom" relative="$parent/Header" pos="Mid" offset="0"/>
+                <Anchor side="Left" relative="$parent/Header" pos="Mid" offset="0"/>
+                <Anchor side="Right" relative="$parent/Header" pos="Mid" offset="0"/>
+    
+                <Text val="{$parent/$parent/InfoFrame/Name/@Text}"/>
+                <Style val="DS_ItemInspectName"/>
+            </Frame>
+
+            <Frame type="Label" name="ItemType">
+                <Anchor side="Top" relative="$parent/Header" pos="Mid" offset="0"/>
+                <Anchor side="Left" relative="$parent/Header" pos="Mid" offset="0"/>
+                <Anchor side="Right" relative="$parent/Header" pos="Mid" offset="0"/>
+    
+                <Text val="{$parent/$parent/InfoFrame/Quality/@Text}"/>
+                <Style val="DS_ItemInspectType"/>
+            </Frame>
+    
+            <Frame type="Image" name="Divider">
+                <Anchor side="Left" relative="$parent/AnchorFrame" pos="Min" offset="0"/>
+                <Anchor side="Right" relative="$parent/AnchorFrame" pos="Max" offset="0"/>
+                <Anchor side="Top" relative="$parent/Header" pos="Max" offset="-5"/>
+                
+                <Texture val="Assets\Textures\ui_battlenet_glue_campaign_floatingraceicon_divider_highlight.dds"/>
+            </Frame>
+
+            <Frame type="Frame" name="IconFrame" template="DS_InspectionPanelTemplates/InspectIconFrameTemplate">
+                <Anchor side="Top" relative="$parent/Divider" pos="Max" offset="20"/>
+                <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+                <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+    
+                <Frame type="Image" name="Icon">
+                    <Texture val="{$parent/$parent/$parent/InfoFrame/Icon/@Texture}"/>
+                </Frame>
+
+                <Frame type="Label" name="Durability">
+                    <Text val="{$parent/$parent/$parent/InfoFrame/Durability/@Text}"/>
+                </Frame>
+
+                <Frame type="Label" name="Quantity">
+                    <Text val="{$parent/$parent/$parent/InfoFrame/Quantity/@Text}"/>
+                </Frame>
+            </Frame>
+
+            <Frame type="Image" name="Divider2">
+                <Anchor side="Left" relative="$parent/AnchorFrame" pos="Min" offset="0"/>
+                <Anchor side="Right" relative="$parent/AnchorFrame" pos="Max" offset="0"/>
+                <Anchor side="Top" relative="$parent/IconFrame" pos="Max" offset="20"/>
+                
+                <Texture val="Assets\Textures\ui_battlenet_glue_campaign_floatingraceicon_divider_highlight.dds"/>
+            </Frame>
+
+            <Frame type="Frame" name="UseModule">
+                <Anchor side="Top" relative="$parent/Divider2" pos="Max" offset="10"/>
+                <Anchor side="Left" relative="$parent/AnchorFrame" pos="Min" offset="12"/>
+                <Anchor side="Right" relative="$parent/AnchorFrame" pos="Max" offset="-12"/>
+                <Anchor side="Bottom" relative="$this/Desc" pos="Max" offset="15"/>
+    
+                <StateGroup name="UseType">
+                    <DefaultState val="Material"/>
+            
+                    <State name="Invalid">
+                        <When type="AnimationState" frame="$InspectWindow" ItemType="Invalid"/>
+            
+                        <Action type="SetProperty" frame="$this/Header" AdjustmentColor="934bff"/>
+                        <Action type="SetProperty" frame="$this/Background" Color="934bff"/>
+                    </State>
+                
+                    <State name="Consummable">
+                        <When type="AnimationState" frame="$InspectWindow" ItemType="Consummable"/>
+            
+                        <Action type="SetProperty" frame="$this/Header" AdjustmentColor="838383"/>
+                        <Action type="SetProperty" frame="$this/Background" Color="333333"/>
+                    </State>
+            
+                    <State name="Armor">
+                        <When type="AnimationState" frame="$InspectWindow" ItemType="Armor"/>
+            
+                        <Action type="SetProperty" frame="$this/Header" AdjustmentColor="363a7a"/>
+                        <Action type="SetProperty" frame="$this/Background" Color="192134"/>
+                    </State>
+            
+                    <State name="Weapon">
+                        <When type="AnimationState" frame="$InspectWindow" ItemType="Weapon"/>
+            
+                        <Action type="SetProperty" frame="$this/Header" AdjustmentColor="7d3535"/>
+                        <Action type="SetProperty" frame="$this/Background" Color="341919"/>
+                    </State>
+    
+                    <State name="Ammo">
+                        <When type="AnimationState" frame="$InspectWindow" ItemType="Ammo"/>
+            
+                        <Action type="SetProperty" frame="$this/Header" AdjustmentColor="7d7235"/>
+                        <Action type="SetProperty" frame="$this/Background" Color="323419"/>
+                    </State>
+            
+            
+                    <State name="Material">
+                        <When type="AnimationState" frame="$InspectWindow" ItemType="Material"/>
+            
+                        <Action type="SetProperty" frame="$this/Header" AdjustmentColor="368936"/>
+                        <Action type="SetProperty" frame="$this/Background" Color="1e341a"/>
+                    </State>
+            
+                    <State name="Key">
+                        <When type="AnimationState" frame="$InspectWindow" ItemType="Key"/>
+            
+                        <Action type="SetProperty" frame="$this/Header" AdjustmentColor="7a5836"/>
+                        <Action type="SetProperty" frame="$this/Background" Color="342a19"/>
+                    </State>
+                </StateGroup>
+
+                <StateGroup name="ItemUse">
+                    <DefaultState val="Any"/>
+        
+                    <State name="Any">
+                        <When type="AnimationState" frame="$InspectWindow" ItemUse="Any"/>
+                    </State>
+        
+                    <State name="Food">
+                        <When type="AnimationState" frame="$InspectWindow" ItemUse="Food"/>
+                        
+                        <Action type="SetProperty" frame="$parent/IconFrame/DurabilityIcon" Texture="Assets\Textures\ui_clean_useicon_food.dds"/>
+                        <Action type="SetProperty" frame="$parent/IconFrame/DurabilityIcon" Visible="True"/>
+                        <Action type="SetProperty" frame="$parent/IconFrame/Durability" Visible="True"/>
+                    </State>
+        
+                    <State name="Water">
+                        <When type="AnimationState" frame="$InspectWindow" ItemUse="Water"/>
+        
+                        <Action type="SetProperty" frame="$parent/IconFrame/DurabilityIcon" Texture="Assets\Textures\ui_clean_useicon_water.dds"/>
+                        <Action type="SetProperty" frame="$parent/IconFrame/DurabilityIcon" Visible="True"/>
+                        <Action type="SetProperty" frame="$parent/IconFrame/Durability" Visible="True"/>
+                    </State>
+        
+                    <State name="Medicine">
+                        <When type="AnimationState" frame="$InspectWindow" ItemUse="Medicine"/>
+        
+                        <Action type="SetProperty" frame="$parent/IconFrame/DurabilityIcon" Texture="Assets\Textures\ui_clean_useicon_medicine.dds"/>
+                        <Action type="SetProperty" frame="$parent/IconFrame/DurabilityIcon" Visible="True"/>
+                        <Action type="SetProperty" frame="$parent/IconFrame/Durability" Visible="True"/>
+                    </State>
+                </StateGroup>
+    
+                <Frame type="Image" name="Background">
+                    <Anchor relative="$parent"/>
+    
+                    <Alpha val="80"/>
+                    <Color val="ffffff"/>
+                </Frame>
+    
+                <Frame type="Image" name="Header">
+                    <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+                    <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+                    <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+    
+                    <Height val="50"/>
+                    <Texture val="Assets\Textures\ui_clean_tooltip_usemoduleheader.dds"/>
+                    <ColorAdjustMode val="Fill"/>
+                    <AdjustmentColor val="ffffff"/>
+                    <Alpha val="150"/>
+                </Frame>
+    
+                <Frame type="Label" name="Title">
+                    <Anchor side="Top" relative="$parent/Header" pos="Mid" offset="0"/>
+                    <Anchor side="Bottom" relative="$parent/Header" pos="Mid" offset="0"/>
+                    <Anchor side="Left" relative="$parent" pos="Min" offset="15"/>
+                    <Anchor side="Right" relative="$parent" pos="Max" offset="-15"/>
+    
+                    <Text val="{$parent/$parent/$parent/InfoFrame/UseType/@Text}"/>
+                    <Style val="DS_ItemInspectName"/>
+                </Frame>
+    
+                <Frame type="Label" name="Desc">
+                    <Anchor side="Top" relative="$parent/Header" pos="Max" offset="15"/>
+                    <Anchor side="Left" relative="$parent" pos="Min" offset="15"/>
+                    <Anchor side="Right" relative="$parent" pos="Max" offset="-15"/>
+    
+                    <Style val="DS_ItemInspectDesc"/>
+                    <Text val="{$parent/$parent/$parent/InfoFrame/UseDesc/@Text}"/>
+                </Frame>
+            </Frame>
+    
+            <!-- Lore Panel -->
+    
+            <Frame type="Frame" name="LoreModule">
+                <Anchor side="Top" relative="$parent/UseModule" pos="Max" offset="0"/>
+                <Anchor side="Left" relative="$parent/AnchorFrame" pos="Min" offset="12"/>
+                <Anchor side="Right" relative="$parent/AnchorFrame" pos="Max" offset="-12"/>
+                <Anchor side="Bottom" relative="$this/Desc" pos="Max" offset="15"/>
+    
+                <Frame type="Image" name="Background">
+                    <Anchor relative="$parent"/>
+    
+                    <Color val="091314"/>
+                    <Alpha val="180"/>
+                </Frame>
+    
+                <Frame type="Label" name="Desc">
+                    <Anchor side="Top" relative="$parent" pos="Min" offset="15"/>
+                    <Anchor side="Left" relative="$parent" pos="Min" offset="15"/>
+                    <Anchor side="Right" relative="$parent" pos="Max" offset="-15"/>
+    
+                    <Text val="{$parent/$parent/$parent/InfoFrame/Lore/@Text}"/>
+                    <Style val="DS_ItemInspectLore"/>
+                </Frame>
+            </Frame>
+        </Frame>
+
+
+    </Frame>
+</Desc>

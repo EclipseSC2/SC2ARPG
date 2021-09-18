@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<StyleFile>
+    <Style  name="DS_TooltipUseTitle"
+            template="DS_StandardText"
+            height="22"
+            vjustify="Middle"
+            hjustify="Left"
+            styleflags="Shadow"
+            textcolor="255,88,167,134"
+            disabledcolor="255,112,112,112"
+            highlightcolor="255,0,0,0"
+            hotkeycolor="255,0,0,0"
+            hyperlinkcolor="255,0,0,0"
+            glowcolor="255,0,0,0"
+            glowMode="Normal"
+            highlightglowcolor="255,0,0,0"
+            disabledglowcolor="255,0,0,0"
+            shadowoffset="2"
+            outlinewidth="0"
+            outlinecolor="255,0,0,0"
+            />
+
+    <Style  name="DS_TooltipUseDescription"
+            template="DS_StandardText"
+            height="19"
+            vjustify="Middle"
+            hjustify="Left"
+            styleflags="Shadow"
+            textcolor="225,46,87,70"
+            disabledcolor="255,112,112,112"
+            highlightcolor="255,0,0,0"
+            hotkeycolor="255,0,0,0"
+            hyperlinkcolor="255,0,0,0"
+            glowcolor="255,0,0,0"
+            glowMode="Normal"
+            highlightglowcolor="255,0,0,0"
+            disabledglowcolor="255,0,0,0"
+            shadowoffset="2"
+            outlinewidth="0"
+            outlinecolor="255,0,0,0"
+            />
+
+    <Style  name="DS_TooltipLore"
+            template="DS_StandardText"
+            height="16"
+            vjustify="Middle"
+            hjustify="Left"
+            styleflags="Shadow | Italic"
+            textcolor="255,128,128,128"
+            disabledcolor="255,112,112,112"
+            highlightcolor="255,0,0,0"
+            hotkeycolor="255,0,0,0"
+            hyperlinkcolor="255,0,0,0"
+            glowcolor="255,0,0,0"
+            glowMode="Normal"
+            highlightglowcolor="255,0,0,0"
+            disabledglowcolor="255,0,0,0"
+            shadowoffset="1"
+            outlinewidth="0"
+            outlinecolor="255,0,0,0"
+            />
+
+    <Style  name="DS_TooltipDescription"
+            template="DS_StandardText"
+            height="20"
+            vjustify="Middle"
+            hjustify="Left"
+            styleflags="Shadow"
+            textcolor="255,210,210,210"
+            disabledcolor="255,112,112,112"
+            highlightcolor="255,0,0,0"
+            hotkeycolor="255,0,0,0"
+            hyperlinkcolor="255,0,0,0"
+            glowcolor="255,0,0,0"
+            glowMode="Normal"
+            highlightglowcolor="255,0,0,0"
+            disabledglowcolor="255,0,0,0"
+            shadowoffset="2"
+            outlinewidth="0"
+            outlinecolor="255,0,0,0"
+            />
+
+    <Style  name="DS_TooltipTitle"
+            template="DS_StandardText"
+            height="28"
+            vjustify="Middle"
+            hjustify="Left"
+            styleflags="Shadow"
+            textcolor="255,242,242,242"
+            disabledcolor="255,112,112,112"
+            highlightcolor="255,0,0,0"
+            hotkeycolor="255,0,0,0"
+            hyperlinkcolor="255,0,0,0"
+            glowcolor="255,0,0,0"
+            glowMode="Normal"
+            highlightglowcolor="255,0,0,0"
+            disabledglowcolor="255,0,0,0"
+            shadowoffset="2"
+            outlinewidth="0"
+            outlinecolor="255,0,0,0"
+            />
+
+    <Style  name="DS_TextButtonNormal"
+            template="DS_StandardText"
+            height="30"
+            vjustify="Middle"
+            hjustify="Center"
+            textcolor="252,153,153,153"
+            disabledcolor="252,191,191,191"
+            highlightcolor="252,191,191,191"
+            hotkeycolor="252,191,191,191"
+            hyperlinkcolor="252,191,191,191"
+            glowcolor="255,204,204,204"
+            glowMode="Normal"
+            highlightglowcolor="255,0,0,0"
+            disabledglowcolor="255,0,0,0"
+            shadowoffset="0"
+            outlinewidth="0"
+            outlinecolor="255,0,0,0"
+            />
+
+    <Style  name="DS_TextButtonOver"
+            template="DS_TextButtonNormal"
+            textcolor="252,230,230,230"
+            glowcolor="255,255,255,255"
+            />
+
+    <Style  name="DS_TextButtonToggled"
+            template="DS_TextButtonNormal"
+            styleflags="Glow"
+            textcolor="252,230,230,230"
+            glowcolor="255,255,255,255"
+            />
+
+    <Style  name="DS_StandardText"
+            template="AB_Description"
+            font="UI\Fonts\Eurostile-Bol.otf"
+            />
+</StyleFile>
+
+<!--
+    <Style  name=""                 - string identifier
+            font=""                 - file name (preferably a constant)
+            height=""               - integer [1, 200]
+            vjustify=""             - "Top","Middle","Bottom"
+            hjustify=""             - "Left","Center","Right"
+            styleflags=""           - Shadow|Glow|InlineJustification|Uppercase|TightGradient
+                                        |Outline|Bold|Italic
+                                        |HintingOff|HintingNative|HintingAuto
+                                        |HintStyleNormal|HintStyleLight|HintStyleLCD|HintStyleLCDVertical
+            textcolor=""            - Gradient Color
+            disabledcolor=""        - Gradient Color
+            highlightcolor=""       - Gradient Color
+            hotkeycolor=""          - Gradient Color
+            hyperlinkcolor=""       - Gradient Color
+            glowcolor=""            - Color
+            glowMode=""             - "Add","Normal"
+            highlightglowcolor=""   - Color
+            disabledglowcolor=""    - Color
+            shadowoffset=""         - integer value [-128, 127]
+            outlinewidth=""         - integer value [0,height]
+            outlinecolor=""         - Color
+            lineSpacing=""          - decimal multiplier [1.0, 4.0]
+            characterSpacing=""     - integer addition [0, 255]
+            />
+-->

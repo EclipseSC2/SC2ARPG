@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+    <Frame type="Button" name="FloatingUseKey">
+        <Anchor relative="$parent"/>
+
+        <NormalImage val="NormalImage"/>
+        <HoverImage val="HoverImage"/>
+
+        <Frame type="Image" name="Background">
+            <Anchor relative="$parent" offset="-15"/>
+
+            <Color val="000000"/>
+            <AlphaMaskTexture val="Assets/Textures/ui_clean_portrait_mask.dds"/>
+        </Frame>
+        
+        <Frame type="Image" name="NormalImage">
+            <Anchor relative="$parent"/>
+
+            <Texture val="Assets/Textures/ui_clean_commandbutton_normal.dds"/>
+        </Frame>
+        
+        <Frame type="Image" name="HoverImage">
+            <Anchor relative="$parent"/>
+
+            <Texture val="Assets/Textures/ui_clean_commandbutton_over.dds"/>
+        </Frame>
+
+        <Frame type="Image" name="Icon">
+            <Anchor relative="$parent" offset="-20"/>
+
+            <Texture val="Assets\Textures\Items\ui_itemicons_waterbottle.dds"/>
+            <AlphaMaskTexture val="Assets/Textures/ui_clean_diamondbuttonmask.dds"/>
+            <Visible val="True"/>
+        </Frame>
+
+        <Frame type="Label" name="HotkeyFrame">
+            <Anchor side="Right" relative="$parent" pos="Max" offset="-20"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="-20"/>
+
+            <Style val="Clean_StarmapLevelLabel"/>
+            <Text val="[E]"/>
+            <Visible val="True"/>
+        </Frame>
+    </Frame>
+
+    <Frame type="Frame" name="CommandPanelTemplate">
+        <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+        <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+        <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+
+        <Height val="150"/>
+        <Width val="600"/>
+
+        <Frame type="Button" name="CommandButton1" template="Cleane_StandardTemplates/CommandButtonTemplate">
+            <Anchor side="Right" relative="$parent/CommandButton2" pos="Min" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+
+            <Width val="120"/>
+            <Height val="120"/>
+        </Frame>
+
+        <Frame type="Button" name="CommandButton2" template="Cleane_StandardTemplates/CommandButtonTemplate">
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+
+            <Width val="120"/>
+            <Height val="120"/>
+        </Frame>
+
+        <Frame type="Button" name="CommandButton3" template="Cleane_StandardTemplates/CommandButtonTemplate">
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+
+            <Width val="120"/>
+            <Height val="120"/>
+        </Frame>
+
+        <Frame type="Button" name="CommandButton4" template="Cleane_StandardTemplates/CommandButtonTemplate">
+            <Anchor side="Left" relative="$parent/CommandButton3" pos="Max" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+
+            <Width val="120"/>
+            <Height val="120"/>
+        </Frame>
+    </Frame>
+
+    <!-- Event Log Panels -->
+
+    <Frame type="Frame" name="EventFrameTemplate">
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+
+            <Width val="340"/>
+            <Height val="90"/>
+            <CollapseLayout val="True"/>
+            <PreserveAnchorOffset val="True"/>
+            <Visible val="False"/>
+
+            <!-- Display Animations -->
+            <Animation name="Show">
+                <Event event="Display" action="Reset,Play" frame="$this"/>
+
+                <Controller type="Visibility" end="Pause" frame="$this">
+                    <Key type="Bool" time="0.0" value="False"/>
+                    <Key type="Bool" time="0.0001" value="True"/>
+                </Controller>
+
+                <Controller type="Anchor" end="Pause" frame="$this" side="Left" relative="True">
+                    <Key type="Curve" time="0.0" value="240" inout="Smooth"/>
+                    <Key type="Curve" time="0.4" value="0" inout="Smooth"/>
+                </Controller>
+
+                <Controller type="Fade" end="Pause" frame="$this">
+                    <Key type="Curve" time="0.0" value="0"/>
+                    <Key type="Curve" time="0.25" value="0"/>
+                    <Key type="Curve" time="0.4" value="255"/>
+                </Controller>
+
+                <Controller type="Dimension" end="Pause" frame="$this" dimension="Height" relative="False">
+                    <Key type="Curve" time="0.0" value="0" inout="Smooth"/>
+                    <Key type="Curve" time="0.05" value="90" inout="Smooth"/>
+                </Controller>
+            </Animation>
+
+            <Animation name="Hide">
+                <Event event="Hide" action="Reset,Play" frame="$this"/>
+
+                <Controller type="Anchor" end="Reset" frame="$this" side="Left" relative="True">
+                    <Key type="Curve" time="0.0" value="0" inout="Smooth"/>
+                    <Key type="Curve" time="0.4" value="-240" inout="Smooth"/>
+                </Controller>
+
+                <Controller type="Fade" end="Reset" frame="$this">
+                    <Key type="Curve" time="0.0" value="255"/>
+                    <Key type="Curve" time="0.15" value="255"/>
+                    <Key type="Curve" time="0.4" value="0"/>
+                </Controller>
+
+                <Controller type="Dimension" end="Reset" frame="$this" dimension="Height" relative="False">
+                    <Key type="Curve" time="0.0" value="90"/>
+                    <Key type="Curve" time="0.35" value="90" out="Smooth"/>
+                    <Key type="Curve" time="0.4" value="0" inout="Smooth"/>
+                </Controller>
+
+                <Controller type="Visibility" end="Reset" frame="$this">
+                    <Key type="Bool" time="0.0" value="True"/>
+                    <Key type="Bool" time="0.4" value="False"/>
+                </Controller>
+            </Animation>
+
+            <Frame type="Image" name="Background">
+                <Anchor side="Left" relative="$parent/IconBorder" pos="Mid" offset="0"/>
+                <Anchor side="Top" relative="$parent" pos="Min" offset="7"/>
+                <Anchor side="Bottom" relative="$parent" pos="Max" offset="-7"/>
+                <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+
+                <Texture val="Assets/Textures/ui_clean_menus_listboxitem_over.dds"/>
+                <TextureType val="NineSlice"/>
+                <ImageMaskTexture val="Assets/Textures/ui_clean_menus_listboxitem_mask.dds"/>
+            </Frame>
+
+            <Frame type="Image" name="IconBackground">
+                <Anchor relative="$parent/IconBorder" offset="-2"/>
+    
+                <Color val="000000"/>
+                <AlphaMaskTexture val="Assets/Textures/ui_clean_portrait_mask.dds"/>
+            </Frame>
+
+            <Frame type="Image" name="IconBorder">
+                <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+                <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+
+                <Width val="90"/>
+                <Height val="90"/>
+
+                <Texture val="Assets/Textures/ui_clean_loadout_statbutton.dds"/>
+            </Frame>
+
+            <Frame type="Image" name="Icon">
+                <Anchor relative="$parent/IconBorder" offset="-16"/>
+
+                <Texture val="Assets\Textures\ui_clean_useicon_water.dds"/>
+                <AlphaMaskTexture val="Assets/Textures/ui_clean_diamondbuttonmask.dds"/>
+            </Frame>
+
+            <Frame type="Label" name="Title">
+                <Anchor side="Top" relative="$parent" pos="Min" offset="22"/>
+                <Anchor side="Left" relative="$parent/IconBorder" pos="Max" offset="0"/>
+                <Anchor side="Right" relative="$parent" pos="Max" offset="-20"/>
+                
+                <Text val="Water"/>
+                <Style val="Clean_ListboxTitleNormal"/>
+            </Frame>
+
+            <Frame type="Image" name="AmountIcon">
+                <Anchor side="Left" relative="$parent/Title" pos="Min" offset="0"/>
+                <Anchor side="Top" relative="$parent/Title" pos="Max" offset="0"/>
+
+                <Width val="24"/>
+                <Height val="24"/>
+
+                <Texture val="Assets/Textures/ui_clean_tooltip_crateicon.dds"/>
+            </Frame>
+    
+            <Frame type="Label" name="Amount">
+                <Anchor side="Top" relative="$parent/AmountIcon" pos="Mid" offset="0"/>
+                <Anchor side="Bottom" relative="$parent/AmountIcon" pos="Mid" offset="0"/>
+                <Anchor side="Left" relative="$parent/AmountIcon" pos="Max" offset="4"/>
+                
+                <Text val="[1]"/>
+                <Style val="Clean_ListboxDescNormal"/>
+            </Frame>
+    </Frame>
+
+    <Frame type="Frame" name="EventLogPanelTemplate">
+            <Anchor side="Left" relative="$parent" pos="Min" offset="50"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="-200"/>
+
+            <Width val="340"/>
+            <Height val="600"/>
+
+            <Frame type="Frame" name="EventFrame1" template="DS_HUDTemplates/EventFrameTemplate">
+                <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            </Frame>
+
+            <Frame type="Frame" name="EventFrame2" template="DS_HUDTemplates/EventFrameTemplate">
+                <Anchor side="Bottom" relative="$sibling-1" pos="Min" offset="0"/>
+            </Frame>
+
+            <Frame type="Frame" name="EventFrame3" template="DS_HUDTemplates/EventFrameTemplate">
+                <Anchor side="Bottom" relative="$sibling-1" pos="Min" offset="0"/>
+            </Frame>
+
+            <Frame type="Frame" name="EventFrame4" template="DS_HUDTemplates/EventFrameTemplate">
+                <Anchor side="Bottom" relative="$sibling-1" pos="Min" offset="0"/>
+            </Frame>
+
+            <Frame type="Frame" name="EventFrame5" template="DS_HUDTemplates/EventFrameTemplate">
+                <Anchor side="Bottom" relative="$sibling-1" pos="Min" offset="0"/>
+            </Frame>
+
+            <Frame type="Frame" name="EventFrame6" template="DS_HUDTemplates/EventFrameTemplate">
+                <Anchor side="Bottom" relative="$sibling-1" pos="Min" offset="0"/>
+            </Frame>
+
+            <Frame type="Frame" name="EventFrame7" template="DS_HUDTemplates/EventFrameTemplate">
+                <Anchor side="Bottom" relative="$sibling-1" pos="Min" offset="0"/>
+            </Frame>
+
+            <Frame type="Frame" name="EventFrame8" template="DS_HUDTemplates/EventFrameTemplate">
+                <Anchor side="Bottom" relative="$sibling-1" pos="Min" offset="0"/>
+            </Frame>
+
+            <Frame type="Frame" name="EventFrame9" template="DS_HUDTemplates/EventFrameTemplate">
+                <Anchor side="Bottom" relative="$sibling-1" pos="Min" offset="0"/>
+            </Frame>
+
+            <Frame type="Frame" name="EventFrame10" template="DS_HUDTemplates/EventFrameTemplate">
+                <Anchor side="Bottom" relative="$sibling-1" pos="Min" offset="0"/>
+            </Frame>
+    </Frame>
+
+    <!-- Game HUD -->
+
+    <Frame type="Frame" name="GameHUDTemplate">
+        <Anchor relative="$parent"/>
+
+        <Frame type="Frame" name="CommandPanel" template="DS_HUDTemplates/CommandPanelTemplate">
+            <Anchor side="Bottom" relative="$parent/StatusPanel" pos="Min" offset="0"/>
+        </Frame>
+
+        <Frame type="Frame" name="StatusPanel">
+            <Anchor side="Top" relative="$this/SuitBar" pos="Min" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="-40"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+
+            <Width val="600"/>
+            <PreserveAnchorOffset val="True"/>
+
+            <Frame type="Frame" name="HealthBar" template="Cleane_StandardTemplates/SmallProgressBarTemplate">
+                <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+                <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+                <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+
+                <Frame type="ProgressBar" name="ProgressBar">
+                    <Frame type="Frame" name="FillImageContainer">
+                        <Frame type="Image" name="FillImage">
+                            <ColorAdjustMode val="Colorize"/>
+                            <AdjustmentColor val="00af00"/>
+                        </Frame>
+                    </Frame>
+                </Frame>
+            </Frame>
+
+            <Frame type="Frame" name="SuitBar" template="Cleane_StandardTemplates/SmallProgressBarTemplate">
+                <Anchor side="Bottom" relative="$parent/HealthBar" pos="Min" offset="0"/>
+                <Anchor side="Left" relative="$parent" pos="Min" offset="24"/>
+                <Anchor side="Right" relative="$parent" pos="Max" offset="-24"/>
+
+                <!-- Internally Handled as Shields -->
+
+                <CollapseLayout val="True"/>
+                <Visible val="False"/>
+                <PreserveAnchorOffset val="True"/>
+
+                <Frame type="ProgressBar" name="ProgressBar">
+                    <Frame type="Frame" name="FillImageContainer">
+                        <Frame type="Image" name="FillImage">
+                            <ColorAdjustMode val="Colorize"/>
+                            <AdjustmentColor val="0095af"/>
+                        </Frame>
+                    </Frame>
+                </Frame>
+            </Frame>
+        </Frame>
+
+        <Frame type="Button" name="WeaponFrame" template="DS_StandardTemplates/SquareAbiltyButtonTemplate">
+            <Anchor side="Right" relative="$parent/StatusPanel" pos="Min" offset="60"/>
+            <Anchor side="Bottom" relative="$parent/StatusPanel" pos="Max" offset="0"/>
+
+            <Width val="200"/>
+            <Height val="200"/>
+
+            <Frame type="Label" name="CostFrame">
+                <Anchor side="Left" relative="$parent" pos="Min" offset="35"/>
+                <Anchor side="Top" relative="$parent" pos="Min" offset="35"/>
+            </Frame>
+    
+            <Frame type="Label" name="HotkeyFrame">
+                <Anchor side="Right" relative="$parent" pos="Max" offset="-35"/>
+                <Anchor side="Bottom" relative="$parent" pos="Max" offset="-35"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Button" name="AbilityFrame" template="DS_StandardTemplates/SquareAbiltyButtonTemplate">
+            <Anchor side="Left" relative="$parent/StatusPanel" pos="Max" offset="-60"/>
+            <Anchor side="Bottom" relative="$parent/StatusPanel" pos="Max" offset="0"/>
+
+            <Width val="200"/>
+            <Height val="200"/>
+
+            <Frame type="Label" name="CostFrame">
+                <Anchor side="Left" relative="$parent" pos="Min" offset="35"/>
+                <Anchor side="Top" relative="$parent" pos="Min" offset="35"/>
+            </Frame>
+    
+            <Frame type="Label" name="HotkeyFrame">
+                <Anchor side="Right" relative="$parent" pos="Max" offset="-35"/>
+                <Anchor side="Bottom" relative="$parent" pos="Max" offset="-35"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Frame" name="EventLogPanel" template="DS_HUDTemplates/EventLogPanelTemplate"></Frame>
+
+        <!-- Weapon Display Frame -->
+
+        <Frame type="Frame" name="WeaponFrameN">
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="-60"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="-60"/>
+
+            <Width val="410"/>
+            <Height val="220"/>
+
+            <Frame type="Frame" name="MainWeaponInfoFrame">
+                <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+                <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+                <Width val="1"/>
+                <Height val="1"/>
+
+                <Frame type="Label" name="Name">
+                    <Anchor relative="$parent"/>
+
+                    <Text val="Kattinator"/>
+                </Frame>
+
+                <Frame type="Label" name="MagAmmo">
+                    <Anchor relative="$parent"/>
+
+                    <Text val="16"/>
+                </Frame>
+
+                <Frame type="Label" name="ReserveAmmo">
+                    <Anchor relative="$parent"/>
+
+                    <Text val="420"/>
+                </Frame>
+
+                <Frame type="Image" name="Icon">
+                    <Anchor relative="$parent"/>
+
+                    <Texture val="Assets/Textures/ui_clean_weapontestmain.dds"/>
+                    <Visible val="False"/>
+                </Frame>
+
+                <Frame type="Image" name="AmmoIcon">
+                    <Anchor relative="$parent"/>
+
+                    <Texture val="Assets\Textures\btn-techupgrade-terran-fullborecanisterammo.dds"/>
+                </Frame>
+            </Frame>
+
+            <Frame type="Label" name="WeaponName">
+                <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+                <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+                <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+
+                <Text val="{$parent/MainWeaponInfoFrame/Name/@Text}"/>
+                <Style val="Clean_NavButtonNormal"/>
+                <Visible val="{$parent/MainWeaponIcon/@Visible}"/>
+            </Frame>
+
+            <Frame type="Image" name="BGGlow">
+                <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+                <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+                <Anchor side="Bottom" relative="$parent/Divider" pos="Mid" offset="0"/>
+                <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+
+                <Texture val="Assets\Textures\ui_clean_headerglow.dds"/>
+                <AdjustmentColor val="001d84"/>
+                <ColorAdjustMode val="Fill"/>
+                <Alpha val="200"/>
+                <Visible val="{$parent/MainWeaponIcon/@Visible}"/>
+            </Frame>
+
+            <Frame type="Image" name="Divider">
+                <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+                <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+                <Anchor side="Bottom" relative="$parent/WeaponName" pos="Min" offset="-10"/>
+
+                <Texture val="Assets\Textures\ui_battlenet_glue_campaign_floatingraceicon_divider_highlight.dds"/>
+                <Visible val="{$parent/MainWeaponIcon/@Visible}"/>
+            </Frame>
+
+            <Frame type="Image" name="SecondaryWeaponIcon">
+                <Anchor side="Left" relative="$parent" pos="Min" offset="20"/>
+                <Anchor side="Top" relative="$parent" pos="Min" offset="20"/>
+
+                <Width val="121"/>
+                <Height val="40"/>
+                <Texture val="Assets/Textures/ui_clean_weapontestsecondary.dds"/>
+                <ColorAdjustMode val="Colorize"/>
+                <AdjustmentColor val="2e385c"/>
+                <Alpha val="200"/>
+                <Visible val="False"/>
+            </Frame>
+
+            <Frame type="Label" name="SwapHotkey">
+                <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+                <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+
+                <Style val="Clean_StarmapLevelLabel"/>
+                <Text val="[X]"/>
+                <Visible val="{$parent/SecondaryWeaponIcon/@Visible}"/>
+            </Frame>
+
+            <!-- Main Weapon Data -->
+
+            <Frame type="Image" name="MainWeaponIcon">
+                <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+                <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+                <Anchor side="Bottom" relative="$parent/Divider" pos="Min" offset="-10"/>
+
+                <Width val="302"/>
+                <Height val="100"/>
+                <Texture val="{$parent/MainWeaponInfoFrame/Icon/@Texture}"/>
+                <ColorAdjustMode val="Colorize"/>
+                <AdjustmentColor val="8397c5"/>
+                <Visible val="{$parent/MainWeaponInfoFrame/Icon/@Visible}"/>
+            </Frame>
+
+            <Frame type="Image" name="AmmoIcon">
+                <Anchor side="Bottom" relative="$parent/MainWeaponIcon" pos="Max" offset="5"/>
+                <Anchor side="Right" relative="$parent" pos="Max" offset="-130"/>
+
+                <Texture val="{$parent/MainWeaponInfoFrame/AmmoIcon/@Texture}"/>
+                <Width val="50"/>
+                <Height val="50"/>
+                <Visible val="{$parent/MainWeaponIcon/@Visible}"/>
+            </Frame>
+
+            <Frame type="Label" name="MagAmmo">
+                <Anchor side="Top" relative="$parent/AmmoIcon" pos="Mid" offset="0"/>
+                <Anchor side="Bottom" relative="$parent/AmmoIcon" pos="Mid" offset="0"/>
+                <Anchor side="Left" relative="$parent/AmmoIcon" pos="Max" offset="5"/>
+
+                <Style val="Clean_HeaderTitle"/>
+                <Text val="{$parent/MainWeaponInfoFrame/MagAmmo/@Text}"/>
+                <Visible val="{$parent/AmmoIcon/@Visible}"/>
+            </Frame>
+
+            <Frame type="Image" name="ReserveBackground">
+                <Anchor side="Right" relative="$parent" pos="Max" offset="-20"/>
+                <Anchor side="Bottom" relative="$parent/MainWeaponIcon" pos="Max" offset="-50"/>
+
+                <Texture val="Assets/Textures/ui_clean_standardframe.dds"/>
+                <Width val="75"/>
+                <Height val="40"/>
+                <Visible val="{$parent/MainWeaponIcon/@Visible}"/>
+            </Frame>
+
+            <Frame type="Label" name="ReserveAmmo">
+                <Anchor relative="$parent/ReserveBackground"/>
+
+                <Text val="{$parent/MainWeaponInfoFrame/ReserveAmmo/@Text}"/>
+                <Style val="Clean_StarmapLevelLabel"/>
+                <Visible val="{$parent/ReserveBackground/@Visible}"/>
+            </Frame>
+        </Frame>
+
+        <!-- Objective Panel -->
+
+        <Frame type="Frame" name="ObjectivePanel" template="DS_ObjectiveTemplates/ObjectivePanelTemplate"></Frame>
+
+        <!-- Timer Frames -->
+
+        <Frame type="Frame" name="TimerPanel" template="DS_StandardTemplates/TimerPanelTemplate"></Frame>
+    </Frame>
+</Desc>

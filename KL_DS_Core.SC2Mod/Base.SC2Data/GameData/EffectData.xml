@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CEffectLaunchMissile id="ECLDROPLOOT">
+        <ValidatorArray index="0" value="TranslateUnitTargetFilters"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <LaunchEffect value="TranslateUnitSuppressFastSlowAB"/>
+        <FinishEffect value="TranslateUnitImpact"/>
+        <Flags index="2D" value="1"/>
+        <AmmoUnit value="TranslateUnitWeapon"/>
+        <PlacementRange value="5"/>
+        <Movers Link="TossBottle"/>
+        <DeathType value="Unknown"/>
+    </CEffectLaunchMissile>
+</Catalog>

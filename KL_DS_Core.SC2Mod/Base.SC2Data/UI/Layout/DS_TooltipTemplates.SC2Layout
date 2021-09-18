@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+    <Constant name="TooltipUseColorLight" val="2e5746"/>
+    <Constant name="TooltipUseColorDark" val="1f3b30"/>
+    <Constant name="TooltipPassiveColorLight" val="b1b1b1"/>
+    <Constant name="TooltipPassiveColorDark" val="8a8a8a"/>
+    <Constant name="TooltipActiveColorLight" val="2e3857"/>
+    <Constant name="TooltipActiveColorDark" val="1f263b"/>
+    <Constant name="TooltipNegativeColorLight" val="572f2e"/>
+    <Constant name="TooltipNegativeColorDark" val="3b251f"/>
+
+    <Frame type="Frame" name="ItemModuleTemplate">
+        <Anchor side="Left" relative="$parent" pos="Min" offset="7"/>
+        <Anchor side="Right" relative="$parent" pos="Max" offset="-7"/>
+        <Anchor side="Bottom" relative="$this/Description" pos="Max" offset="8"/>
+
+        <Frame type="Image" name="Background">
+            <Anchor relative="$parent"/>
+
+            <Color val="#TooltipUseColorDark"/>
+            <Alpha val="50"/>
+        </Frame>
+
+        <Frame type="Image" name="TitleBackground">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+
+            <Height val="28"/>
+            <Color val="#TooltipUseColorLight"/>
+            <Alpha val="50"/>
+            <Texture val="Assets/Textures/TitleModuleMask.dds"/>
+        </Frame>
+
+        <Frame type="Label" name="Title">
+            <Anchor side="Top" relative="$parent/TitleBackground" pos="Mid" offset="0"/>
+            <Anchor side="Bottom" relative="$parent/TitleBackground" pos="Mid" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="8"/>
+
+            <Text val="Item Title"/>
+        </Frame>
+
+        <Frame type="Label" name="Description">
+            <Anchor side="Top" relative="$parent/TitleBackground" pos="Max" offset="8"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="8"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="-8"/>
+
+            <Text val="Item Description"/>
+        </Frame>
+    </Frame>
+
+    <Frame type="Frame" name="LoreModuleTemplate">
+        <Anchor side="Top" relative="$this/LoreText" pos="Min" offset="-4"/>
+        <Anchor side="Bottom" relative="$parent" pos="Max" offset="-7"/>
+        <Anchor side="Left" relative="$parent" pos="Min" offset="7"/>
+        <Anchor side="Right" relative="$parent" pos="Max" offset="-7"/>
+
+        <Frame type="Image" name="Background">
+            <Anchor relative="$parent"/>
+    
+            <Color val="000000"/>
+            <Alpha val="100"/>
+        </Frame>
+
+        <Frame type="Label" name="LoreText">
+            <Anchor side="Left" relative="$parent" pos="Min" offset="4"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="-4"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="-4"/>
+
+            <Style val="DS_TooltipLore"/>
+            <!-- Remove Text -->
+            <Text val="Just some lore text that i will be testing for the time being. This is just a mere test."/>
+        </Frame>
+    </Frame>
+</Desc>

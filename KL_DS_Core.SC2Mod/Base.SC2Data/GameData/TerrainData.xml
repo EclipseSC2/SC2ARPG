@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CTerrain id="ThillesForest">
+        <EditorCategories value="Climate:Jungle"/>
+        <Ambience value="Ambience_Aiur_Jungle_Quad"/>
+        <ReverbAmbient value="Forest"/>
+        <CliffSets value="LabCliff0"/>
+        <FogEnabled value="1"/>
+        <FogColor value="255,3,65,114"/>
+        <FogDensity value="0.500000"/>
+        <FogFalloff value="0.150000"/>
+        <FogStartingHeight value="-0.900000"/>
+        <HeightMapEnabled value="1"/>
+        <BlendTextures value="Thilles1"/>
+        <BlendTextures value="Thilles12"/>
+        <BlendTextures value="Thilles122"/>
+        <BlendTextures value="Thilles1222"/>
+        <BlendTextures value="Thilles12222"/>
+        <BlendTextures value="Thilles122222"/>
+        <BlendTextures value="Thilles1222222"/>
+        <BlendTextures value="Thilles12222222"/>
+    </CTerrain>
+</Catalog>

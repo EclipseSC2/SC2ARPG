@@ -1,0 +1,987 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc> 
+    <!-- Constants -->
+
+    <!-- Templates -->
+
+    <Frame type="Frame" name="Frame"></Frame>
+
+    <Frame type="Button" name="CharacterNavButtonTemplate">
+
+        <Height val="45"/>
+        <Width val="200"/>
+
+        <Frame type="Image" name="NormalImage">
+            <Anchor relative="$parent"/>
+
+            <Texture val="Assets/Textures/ui_clean_menus_listboxitem_normal.dds"/>
+            <TextureType val="NineSlice"/>
+            <Alpha val="255"/>
+        </Frame>
+
+        <Frame type="Image" name="HoverImage">
+            <Anchor relative="$parent"/>
+
+            <Texture val="Assets/Textures/ui_clean_menus_listboxitem_over.dds"/>
+            <TextureType val="NineSlice"/>
+            <Alpha val="255"/>
+        </Frame>
+
+        <Frame type="Image" name="ToggledImage">
+            <Anchor relative="$parent"/>
+            <Visible val="False"/>
+
+            <Texture val="Assets/Textures/ui_clean_menus_listboxitem_toggled.dds"/>
+            <TextureType val="NineSlice"/>
+        </Frame>
+
+        <Frame type="Label" name="TextLabel">
+            <Anchor side="Top" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+
+            <Style val="DS_CharacterNavNormal"/>
+        </Frame>
+
+        <StateGroup name="ButtonState">
+            <State name="Normal"></State>
+
+            <State name="Hover">
+                <When type="Property" frame="$this" Hovering="True"/>
+                <When type="Property" frame="$this" Toggled="False" />
+
+                <Action type="SetProperty" frame="$this/TextLabel" Style="DS_CharacterNavOver"/>
+            </State>
+
+            <State name="Toggled">
+                <When type="Property" frame="$this" Toggled="True"/>
+
+                <Action type="SetProperty" frame="$this/NormalImage" Alpha="0"/>
+                <Action type="SetProperty" frame="$this/HoverImage" Alpha="0"/>
+                <Action type="SetProperty" frame="$this/ToggledImage" Visible="True"/>
+
+                <Action type="SetProperty" frame="$this/TextLabel" Style="DS_CharacterNavToggled"/> 
+            </State>
+        </StateGroup>
+    </Frame>
+
+    <Frame type="Button" name="SquareAbiltyButtonTemplate" template="Cleane_StandardTemplates/SimpleButtonTemplate">
+
+        <Frame type="Frame" name="InfoFrame" template="Cleane_StandardTemplates/DummyInfoFrame"/>
+
+        <Frame type="Image" name="Icon">
+            <Texture val="{$parent/InfoFrame/Icon/@Texture}"/>
+        </Frame>
+
+        <Frame type="Label" name="CostFrame">
+            <Anchor side="Left" relative="$parent" pos="Min" offset="15"/>
+            <Anchor side="Top" relative="$parent" pos="Min" offset="15"/>
+
+            <Style val="Clean_StarmapLevelLabel"/>
+            <Text val="{$parent/InfoFrame/Cost/@Text}"/>
+        </Frame>
+
+        <Frame type="Label" name="HotkeyFrame">
+            <Anchor side="Right" relative="$parent" pos="Max" offset="-15"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="-15"/>
+
+            <Style val="Clean_StarmapLevelLabel"/>
+            <Text val="{$parent/InfoFrame/Hotkey/@Text}"/>
+        </Frame>
+
+        <StateGroup name="ButtonState">
+            <DefaultState val="Normal"/>
+
+            <State name="Empty">
+                <When type="AnimationState" frame="$this" ButtonState="Empty"/>
+
+                <Action type="SetProperty" frame="$this/Icon" Visible="False"/>
+                <Action type="SetProperty" frame="$this/HotkeyFrame" Visible="False"/>
+                <Action type="SetProperty" frame="$this/CostFrame" Visible="False"/>
+            </State>
+
+            <State name="Normal">
+                <When type="AnimationState" frame="$this" ButtonState="Normal"/>
+            </State>
+        </StateGroup>
+    </Frame>
+
+    <StateGroup name="ItemTypeTemplate">
+        <DefaultState val="Invalid"/>
+
+        <State name="Invalid">
+            <When type="AnimationState" frame="$parent/$parent" ItemType="Invalid"/>
+
+            <Action type="SetProperty" frame="$this" AdjustmentColor="934bff"/>
+        </State>
+    
+        <State name="Consummable">
+            <When type="AnimationState" frame="$parent/$parent" ItemType="Consummable"/>
+
+            <Action type="SetProperty" frame="$this" AdjustmentColor="a6a6a6"/>
+        </State>
+
+        <State name="Armor">
+            <When type="AnimationState" frame="$parent/$parent" ItemType="Armor"/>
+
+            <Action type="SetProperty" frame="$this" AdjustmentColor="4ba4ff"/>
+        </State>
+
+        <State name="Weapon">
+            <When type="AnimationState" frame="$parent/$parent" ItemType="Weapon"/>
+
+            <Action type="SetProperty" frame="$this" AdjustmentColor="ff4848"/>
+        </State>
+
+        <State name="Ammo">
+            <When type="AnimationState" frame="$parent/$parent" ItemType="Ammo"/>
+
+            <Action type="SetProperty" frame="$this" AdjustmentColor="ffe448"/>
+        </State>
+
+        <State name="Material">
+            <When type="AnimationState" frame="$parent/$parent" ItemType="Material"/>
+
+            <Action type="SetProperty" frame="$this" AdjustmentColor="368936"/>
+        </State>
+
+        <State name="Key">
+            <When type="AnimationState" frame="$parent/$parent" ItemType="Key"/>
+
+            <Action type="SetProperty" frame="$this" AdjustmentColor="ffb94b"/>
+        </State>
+    </StateGroup>
+
+    <StateGroup name="DamageStateTemplate">
+        <DefaultState val="Blacked"/>
+        
+        <State name="None">
+            <When type="AnimationState" frame="$this" Damage="None"/>
+
+            <Action type="SetProperty" frame="$this" AdjustmentColor="6ede00"/>
+        </State>
+
+        <State name="Low">
+            <When type="AnimationState" frame="$this" Damage="Low"/>
+
+            <Action type="SetProperty" frame="$this" AdjustmentColor="c8c825"/>
+        </State>
+
+        <State name="Medium">
+            <When type="AnimationState" frame="$this" Damage="Medium"/>
+
+            <Action type="SetProperty" frame="$this" AdjustmentColor="e68228"/>
+        </State>
+
+        <State name="High">
+            <When type="AnimationState" frame="$this" Damage="High"/>
+
+            <Action type="SetProperty" frame="$this" AdjustmentColor="fc3535"/>
+        </State>
+
+        <State name="Blacked">
+            <When type="AnimationState" frame="$this" Damage="Blacked"/>
+
+            <Action type="SetProperty" frame="$this" AdjustmentColor="000000"/>
+        </State>
+    </StateGroup>
+
+    <Frame type="Frame" name="ItemTooltipTemplate" template="Cleane_StandardTemplates/StandardTooltipTemplate">
+        <Width val="380"/>
+        <Anchor side="Bottom" relative="$this/LoreModule" pos="Max" offset="12"/>
+
+        <Frame type="Image" name="Header">
+            <Anchor side="Left" relative="$parent/AnchorFrame" pos="Min" offset="0"/>
+            <Anchor side="Top" relative="$parent/AnchorFrame" pos="Min" offset="0"/>
+
+            <Texture val="Assets/Textures/ui_clean_tooltip_header.dds"/>
+            <ColorAdjustMode val="Fill"/>
+            <AdjustmentColor val="934bff"/>
+            <Alpha val="120"/>
+
+            <StateGroup name="ItemType" template="DS_StandardTemplates/ItemTypeTemplate">
+                <DefaultState val="Material"/>
+            </StateGroup>
+        </Frame>
+        
+        <Frame type="Image" name="ItemBorder">
+            <Anchor side="Left" relative="$parent/AnchorFrame" pos="Min" offset="5"/>
+            <Anchor side="Top" relative="$parent/AnchorFrame" pos="Min" offset="5"/>
+
+            <Texture val="Assets/Textures/ui_clean_loadout_statbutton.dds"/>
+            <Width val="100"/>
+            <Height val="100"/>
+        </Frame>
+
+        <Frame type="Image" name="Icon">
+            <Anchor relative="$parent/ItemBorder" offset="-15"/>
+
+            <Texture val="{$parent/$parent/DummyInfoFrame/Icon/@Texture}"/>
+            <AlphaMaskTexture val="Assets\Textures\ui_clean_command_iconmask.dds"/>
+        </Frame>
+
+        <Frame type="Label" name="Name">
+            <Anchor side="Top" relative="$parent/ItemBorder" pos="Min" offset="15"/>
+            <Anchor side="Left" relative="$parent/ItemBorder" pos="Max" offset="5"/>
+
+            <Style val="Clean_ItemTooltipName_Material"/>
+            <Text val="{$parent/$parent/DummyInfoFrame/Name/@Text}"/>
+            <Width val="160"/>
+
+            <Options val="NewLineIfTruncated"/>
+        </Frame>
+
+        <Frame type="Label" name="Type">
+            <Anchor side="Top" relative="$parent/Name" pos="Max" offset="-5"/>
+            <Anchor side="Left" relative="$parent/Name" pos="Min" offset="0"/>
+
+            <Style val="Clean_ItemTooltipType_Material"/>
+            <Text val="{$parent/$parent/DummyInfoFrame/Quality/@Text}"/>
+        </Frame>
+
+        <Frame type="Image" name="AmountIcon">
+            <Anchor side="Top" relative="$parent/Amount" pos="Mid" offset="0"/>
+            <Anchor side="Bottom" relative="$parent/Amount" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent/Amount" pos="Min" offset="-5"/>
+
+            <Texture val="Assets/Textures/ui_clean_tooltip_crateicon.dds"/>
+            <Width val="25"/>
+            <Height val="25"/>
+        </Frame>
+        
+        <Frame type="Label" name="Amount">
+            <Anchor side="Top" relative="$parent/AnchorFrame" pos="Min" offset="10"/>
+            <Anchor side="Right" relative="$parent/AnchorFrame" pos="Max" offset="-10"/>
+            
+            <Style val="Clean_ItemTooltipAmount"/>
+            <Text val="{$parent/$parent/DummyInfoFrame/Quantity/@Text}"/>
+        </Frame>
+
+        <Frame type="Image" name="Divider">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="120"/>
+            <Anchor side="Left" relative="$parent/AnchorFrame" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent/AnchorFrame" pos="Max" offset="0"/>
+
+            <Texture val="Assets\Textures\ui_battlenet_glue_campaign_floatingraceicon_divider_highlight.dds"/>
+        </Frame>
+
+        <!-- Use Module Panel -->
+
+        <Frame type="Frame" name="UseModule">
+            <Anchor side="Top" relative="$parent/Divider" pos="Max" offset="10"/>
+            <Anchor side="Left" relative="$parent/AnchorFrame" pos="Min" offset="12"/>
+            <Anchor side="Right" relative="$parent/AnchorFrame" pos="Max" offset="-12"/>
+            <Anchor side="Bottom" relative="$this/Desc" pos="Max" offset="15"/>
+
+            <StateGroup name="UseType">
+                <DefaultState val="Material"/>
+        
+                <State name="Invalid">
+                    <When type="AnimationState" frame="$parent/$parent" ItemType="Invalid"/>
+        
+                    <Action type="SetProperty" frame="$this/Header" AdjustmentColor="934bff"/>
+                    <Action type="SetProperty" frame="$this/Background" Color="934bff"/>
+                </State>
+            
+                <State name="Consummable">
+                    <When type="AnimationState" frame="$parent/$parent" ItemType="Consummable"/>
+        
+                    <Action type="SetProperty" frame="$this/Header" AdjustmentColor="838383"/>
+                    <Action type="SetProperty" frame="$this/Background" Color="333333"/>
+                </State>
+        
+                <State name="Armor">
+                    <When type="AnimationState" frame="$parent/$parent" ItemType="Armor"/>
+        
+                    <Action type="SetProperty" frame="$this/Header" AdjustmentColor="363a7a"/>
+                    <Action type="SetProperty" frame="$this/Background" Color="192134"/>
+                </State>
+        
+                <State name="Weapon">
+                    <When type="AnimationState" frame="$parent/$parent" ItemType="Weapon"/>
+        
+                    <Action type="SetProperty" frame="$this/Header" AdjustmentColor="7d3535"/>
+                    <Action type="SetProperty" frame="$this/Background" Color="341919"/>
+                </State>
+
+                <State name="Ammo">
+                    <When type="AnimationState" frame="$parent/$parent" ItemType="Ammo"/>
+        
+                    <Action type="SetProperty" frame="$this/Header" AdjustmentColor="7d7235"/>
+                    <Action type="SetProperty" frame="$this/Background" Color="323419"/>
+                </State>
+        
+        
+                <State name="Material">
+                    <When type="AnimationState" frame="$parent/$parent" ItemType="Material"/>
+        
+                    <Action type="SetProperty" frame="$this/Header" AdjustmentColor="368936"/>
+                    <Action type="SetProperty" frame="$this/Background" Color="1e341a"/>
+                </State>
+        
+                <State name="Key">
+                    <When type="AnimationState" frame="$parent/$parent" ItemType="Key"/>
+        
+                    <Action type="SetProperty" frame="$this/Header" AdjustmentColor="7a5836"/>
+                    <Action type="SetProperty" frame="$this/Background" Color="342a19"/>
+                </State>
+            </StateGroup>
+
+            <Frame type="Image" name="Background">
+                <Anchor relative="$parent"/>
+
+                <Alpha val="80"/>
+                <Color val="ffffff"/>
+            </Frame>
+
+            <Frame type="Image" name="Header">
+                <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+                <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+                <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+
+                <Height val="40"/>
+                <Texture val="Assets\Textures\ui_clean_tooltip_usemoduleheader.dds"/>
+                <ColorAdjustMode val="Fill"/>
+                <AdjustmentColor val="ffffff"/>
+                <Alpha val="150"/>
+            </Frame>
+
+            <Frame type="Label" name="Title">
+                <Anchor side="Top" relative="$parent/Header" pos="Mid" offset="0"/>
+                <Anchor side="Bottom" relative="$parent/Header" pos="Mid" offset="0"/>
+                <Anchor side="Left" relative="$parent" pos="Min" offset="15"/>
+                <Anchor side="Right" relative="$parent" pos="Max" offset="-15"/>
+
+                <Text val="{$parent/$parent/$parent/DummyInfoFrame/UseType/@Text}"/>
+                <Style val="Clean_ItemTooltipName_Material"/>
+            </Frame>
+
+            <Frame type="Label" name="Desc">
+                <Anchor side="Top" relative="$parent/Header" pos="Max" offset="15"/>
+                <Anchor side="Left" relative="$parent" pos="Min" offset="15"/>
+                <Anchor side="Right" relative="$parent" pos="Max" offset="-15"/>
+
+                <Style val="Clean_ItemTooltipDesc_Material"/>
+                <Text val="{$parent/$parent/$parent/DummyInfoFrame/UseDesc/@Text}"/>
+            </Frame>
+        </Frame>
+
+        <!-- Lore Panel -->
+
+        <Frame type="Frame" name="LoreModule">
+            <Anchor side="Top" relative="$parent/UseModule" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent/AnchorFrame" pos="Min" offset="12"/>
+            <Anchor side="Right" relative="$parent/AnchorFrame" pos="Max" offset="-12"/>
+            <Anchor side="Bottom" relative="$this/Desc" pos="Max" offset="15"/>
+
+            <Frame type="Image" name="Background">
+                <Anchor relative="$parent"/>
+
+                <Color val="091314"/>
+                <Alpha val="180"/>
+            </Frame>
+
+            <Frame type="Label" name="Desc">
+                <Anchor side="Top" relative="$parent" pos="Min" offset="15"/>
+                <Anchor side="Left" relative="$parent" pos="Min" offset="15"/>
+                <Anchor side="Right" relative="$parent" pos="Max" offset="-15"/>
+
+                <Text val="{$parent/$parent/$parent/DummyInfoFrame/Lore/@Text}"/>
+                <Style val="Clean_ItemTooltipLore"/>
+            </Frame>
+        </Frame>
+    </Frame>
+
+    <Frame type="Button" name="ContextButtonTemplate">
+        <Anchor side="Left" relative="$parent/AnchorFrame" pos="Min" offset="5"/>
+        <Anchor side="Right" relative="$parent/AnchorFrame" pos="Max" offset="-5"/>
+
+        <Height val="34"/>
+        <Visible val="False"/>
+        <CollapseLayout val="True"/>
+        <PreserveAnchorOffset val="True"/>
+        <Unclipped val="True"/>
+
+        <Animation name="HideContext">
+            <Event event="OnClick" action="Reset,Play" frame="$this"/>
+
+            <Controller type="Event" end="Pause" frame="$parent/$parent">
+                <Key type="Event" time="0.0" event="ContextClose"/>
+            </Controller>
+        </Animation>
+
+        <Frame type="Image" name="Background">
+            <Anchor relative="$parent"/>
+
+            <Alpha val="180"/>
+            <Texture val="Assets\Textures\ui_clean_tooltip_usemoduleheader.dds"/>
+            <ColorAdjustMode val="Fill"/>
+            <AdjustmentColor val="2a3455"/>
+        </Frame>
+
+        <StateGroup name="ButtonStates">
+            <DefaultState val="Normal"/>
+
+            <State name="Normal">
+                <When type="Property" frame="$this" Hovering="False"/>
+                <When type="Property" frame="$this" Enabled="True"/>
+
+                <Action type="SetProperty" frame="$this/Background" AdjustmentColor="2a3455"/>
+            </State>
+
+            <State name="Hovering">
+                <When type="Property" frame="$this" Hovering="True"/>
+                <When type="Property" frame="$this" Enabled="True"/>
+
+                <Action type="SetProperty" frame="$this/Background" AdjustmentColor="8397c5"/>
+            </State>
+
+            <State name="Disabled">
+                <When type="Property" frame="$this" Enabled="False"/>
+
+                <Action type="SetProperty" frame="$this/Background" AdjustmentColor="2a3455"/>
+                <Action type="SetProperty" frame="$this" Alpha="150"/>
+            </State>
+        </StateGroup>
+
+        <Frame type="Label" name="Label">
+            <Anchor side="Left" relative="$parent" pos="Min" offset="10"/>
+            <Anchor side="Top" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Mid" offset="0"/>
+
+            <Style val="Clean_ItemTooltipName_Material"/>
+            <Text val="Context"/>
+        </Frame>
+    </Frame>
+
+    <Frame type="Frame" name="ContextMenuTemplate">
+        <Anchor side="Bottom" relative="$this/ContextButton7" pos="Max" offset="15"/>
+
+        <Unclipped val="True"/>
+        <Alpha val="0"/>
+        <RenderPriority val="1000"/>
+        <AcceptsMouse val="True"/>
+        <Visible val="False"/>
+        <PreserveAnchorOffset val="False"/>
+
+        <Width val="190"/>
+
+        <Animation name="Show/Hide">
+            <Event event="ContextOpen" action="DirectionForward,Play" frame="$parent"/>
+            <Event event="ContextClose" action="DirectionReverse,Play" frame="$parent"/>
+
+            <Controller type="Visibility" end="Pause" frame="$this">
+                <Key type="Bool" time="0.0" value="False"/>
+                <Key type="Bool" time="0.0001" value="True"/>
+                <Key type="Bool" time="0.2" value="True"/>
+            </Controller>
+
+            <Controller type="Fade" end="Pause" frame="$this">
+                <Key type="Curve" time="0.0" value="0"/>
+                <Key type="Curve" time="0.2" value="255"/>
+            </Controller>
+
+            <Controller type="Property" end="Pause" frame="$parent" property="RenderPriority">
+                <Key type="Property" time="0.0" value="600"/>
+                <Key type="Property" time="0.2" value="999"/>
+            </Controller>
+
+            <Controller type="Property" end="Pause" frame="$parent" property="Draggable">
+                <Key type="Property" time="0.0" value="true"/>
+                <Key type="Property" time="0.0" value="false"/>
+            </Controller>
+
+            <Controller type="Visibility" end="Pause" frame="$this/FakeButtonInner">
+                <Key type="Bool" time="0.0" value="False"/>
+                <Key type="Bool" time="0.2" value="True"/>
+            </Controller>
+        </Animation>
+
+        <Animation name="HoverClose">
+            <Event event="ContextClose" action="Reset,Stop" frame="$parent"/>
+            <Event event="OnMouseEnter" action="Reset,Play" frame="$this/FakeButtonInner"/>
+
+            <Controller type="Visibility" end="Pause" frame="$this/FakeButtonInner">
+                <Key type="Bool" time="0.0" value="True"/>
+                <Key type="Bool" time="0.0001" value="False"/>
+            </Controller>
+
+            <Controller type="Visibility" end="Pause" frame="$this/FakeButtonOuter">
+                <Key type="Bool" time="0.0" value="False"/>
+                <Key type="Bool" time="0.0001" value="True"/>
+            </Controller>
+        </Animation>
+
+        <Animation name="HoverOuter">
+            <Event event="OnMouseEnter" action="DirectionForward,Play" frame="$this/FakeButtonOuter"/>
+            <Event event="ContextClose" action="Reset,Stop" frame="$parent"/>
+
+
+            <Controller type="State" end="Pause" frame="$this" stateGroup="FakeButtonState">
+                <Key type="Identifier" time="0.0" value="Default"/>
+            </Controller>
+
+            <Controller type="Event" end="Pause" frame="$parent">
+                <Key type="Event" time="0.0" event="ContextClose"/>
+            </Controller>
+        </Animation>
+
+        <Frame type="Frame" name="AnchorFrame">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="-10"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="10"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="-10"/>
+        </Frame>
+
+        <Frame type="Button" name="FakeButtonOuter">
+            <Anchor relative="$parent" offset="100"/>
+            <Unclipped val="True"/>
+
+            <Visible val="False"/>
+            <HitTestFrame val="HitTestFrame"/>
+            
+            <Alpha val="150"/>
+
+            <Frame type="Frame" name="HitTestFrame">
+                <Anchor relative="$parent"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Image" name="Background">
+            <Anchor relative="$parent"/>
+
+            <Texture val="Assets/Textures/ui_clean_standardframe.dds"/>
+            <TextureType val="NineSlice"/>
+            <AcceptsMouse val="True"/>
+        </Frame>
+
+        <!-- Context Button Slots -->
+
+        <Frame type="Button" name="ContextButton1" template="DS_StandardTemplates/ContextButtonTemplate">
+            <Anchor side="Top" relative="$parent/AnchorFrame" pos="Min" offset="5"/>
+
+            <Frame type="Label" name="Label">
+                <Text val="Examine"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Button" name="ContextButton2" template="DS_StandardTemplates/ContextButtonTemplate">
+            <Anchor side="Top" relative="$sibling-1" pos="Max" offset="5"/>
+
+            <Frame type="Label" name="Label">
+                <Text val="Use"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Button" name="ContextButton3" template="DS_StandardTemplates/ContextButtonTemplate">
+            <Anchor side="Top" relative="$sibling-1" pos="Max" offset="5"/>
+
+            <Frame type="Label" name="Label">
+                <Text val="Equip"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Button" name="ContextButton4" template="DS_StandardTemplates/ContextButtonTemplate">
+            <Anchor side="Top" relative="$sibling-1" pos="Max" offset="5"/>
+
+            <Frame type="Label" name="Label">
+                <Text val="Transfer"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Button" name="ContextButton5" template="DS_StandardTemplates/ContextButtonTemplate">
+            <Anchor side="Top" relative="$sibling-1" pos="Max" offset="5"/>
+
+            <Frame type="Label" name="Label">
+                <Text val="Placeholder"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Button" name="ContextButton6" template="DS_StandardTemplates/ContextButtonTemplate">
+            <Anchor side="Top" relative="$sibling-1" pos="Max" offset="5"/>
+
+            <Enabled val="False"/>
+
+            <Frame type="Label" name="Label">
+                <Text val="Placeholder"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Button" name="ContextButton7" template="DS_StandardTemplates/ContextButtonTemplate">
+            <Anchor side="Top" relative="$sibling-1" pos="Max" offset="5"/>
+
+            <Frame type="Label" name="Label">
+                <Text val="Discard"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Button" name="FakeButtonInner">
+            <Anchor relative="$parent"/>
+
+            <Visible val="False"/>
+            <HitTestFrame val="HitTestFrame"/>
+
+            <Frame type="Frame" name="HitTestFrame">
+                <Anchor relative="$parent"/>
+            </Frame>
+        </Frame>
+    </Frame>
+
+    <Frame type="Button" name="EquipmentButtonTemplate" template="Cleane_StandardTemplates/CircleButtonTemplate">
+        <Width val="110"/>
+        <Height val="110"/>
+        <Visible val="False"/>
+        <Enabled val="True"/>
+
+        <Animation name="Show/Hide">
+            <Event event="OnMouseEnter" action="DirectionForward,Play" frame="$this"/>
+            <Event event="OnMouseExit" action="DirectionReverse,Play" frame="$this"/>
+
+            <Controller type="Property" end="Pause" frame="$this" property="RenderPriority">
+                <Key type="Property" time="0.0" value="600"/>
+                <Key type="Property" time="0.0001" value="1000"/>
+            </Controller>
+        </Animation>
+
+        <StateGroup name="ItemState">
+            <DefaultState val="Empty"/>
+
+            <State name="Empty">
+                <When type="AnimationState" frame="$this" ItemState="Empty"/>
+
+                <Action type="SetProperty" frame="$this/Icon" Visible="False"/>
+                <Action type="SetProperty" frame="$this" Enabled="False"/>
+            </State>
+
+            <State name="HasItem">
+                <When type="AnimationState" frame="$this" ItemState="HasItem"/>
+            </State>
+        </StateGroup>
+
+        <Frame type="Frame" name="DummyInfoFrame" template="Cleane_StandardTemplates/DummyInfoFrame"></Frame>
+
+        <Frame type="Frame" name="Tooltip" template="DS_StandardTemplates/ItemTooltipTemplate">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="-50"/>
+            <Anchor side="Right" relative="$parent" pos="Min" offset="-15"/>
+        </Frame>
+
+        <Frame type="Frame" name="Context" template="DS_StandardTemplates/ContextMenuTemplate">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="-40"/>
+            <Anchor side="Left" relative="$parent" pos="Max" offset="-5"/>
+        </Frame>
+
+        <Frame type="Image" name="Icon">
+            <Texture val="{$parent/DummyInfoFrame/Icon/@Texture}"/>
+            <AlphaMaskTexture val="Assets/Textures/ui_clean_circlebuttonsmall_itemmask.dds"/>
+            <Visible val="True"/>
+        </Frame>
+    </Frame>
+
+    <Frame type="Frame" name="StandardHeaderModuleTemplate">
+        <Anchor side="Left" relative="$parent/AnchorFrame" pos="Min" offset="0"/>
+        <Anchor side="Right" relative="$parent/AnchorFrame" pos="Max" offset="0"/>
+
+        <!-- Override on templated frame -->
+        <Anchor side="Bottom" relative="$this/HeaderDividerBottom" pos="Max" offset="0"/>
+
+        <!-- Header -->
+
+        <Frame type="Image" name="HeaderBackground">
+            <Anchor side="Top" relative="$parent/HeaderDividerTop" pos="Mid" offset="0"/>
+            <Anchor side="Bottom" relative="$parent/HeaderDividerBottom" pos="Mid" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+
+            <Texture val="Assets\Textures\ui_clean_fadedheader.dds"/>
+            <ColorAdjustMode val="Fill"/>
+            <AdjustmentColor val="0a1835"/>
+            <Alpha val="230"/>
+        </Frame>
+
+        <Frame type="Image" name="HeaderDividerTop">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+
+            <Texture val="Assets\Textures\ui_battlenet_glue_campaign_floatingraceicon_divider_highlight.dds"/>
+        </Frame>
+
+        <Frame type="Image" name="HeaderDividerBottom">
+            <Anchor side="Top" relative="$parent/HeaderDividerTop" pos="Max" offset="45"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+
+            <Texture val="Assets\Textures\ui_battlenet_glue_campaign_floatingraceicon_divider_highlight.dds"/>
+        </Frame>
+
+        <Frame type="Label" name="HeaderTitle">
+            <Anchor side="Top" relative="$parent/HeaderDividerTop" pos="Mid" offset="0"/>
+            <Anchor side="Bottom" relative="$parent/HeaderDividerBottom" pos="Mid" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+
+            <Style val="Clean_HeaderTitle"/>
+        </Frame>
+    </Frame>
+
+    <Frame type="Frame" name="ConfirmationWindowTemplate" template="Cleane_StandardTemplates/StandardFrameTemplate">
+        <Anchor relative="$parent"/>`
+        <Visible val="False"/>
+
+        <Frame type="Image" name="BlackoutFrame">
+            <Anchor relative="$parent"/>
+
+            <Color val="000000"/>
+            <Alpha val="150"/>
+        </Frame>
+
+        <Frame type="Button" name="FullScreenButton">
+            <Anchor relative="$parent"/>
+            <Unclipped val="True"/>
+    
+            <HitTestFrame val="HitTestFrame"/>
+            
+            <Alpha val="0"/>
+    
+            <Frame type="Frame" name="HitTestFrame">
+                <Anchor relative="$parent"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Frame" name="ConfirmWindow" template="Cleane_StandardTemplates/StandardFrameTemplate">
+            <Anchor side="Top" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+    
+            <Width val="800"/>
+            <Height val="280"/>
+    
+            <Frame type="Frame" name="Header" template="DS_StandardTemplates/StandardHeaderModuleTemplate">
+                <Anchor side="Top" relative="$parent/AnchorFrame" pos="Min" offset="10"/>
+    
+                <Frame type="Label" name="HeaderTitle">
+                    <Text val="Test Text?"/>
+                </Frame>
+            </Frame>
+    
+            <Frame type="Label" name="Desc">
+                <Anchor side="Left" relative="$parent/AnchorFrame" pos="Min" offset="40"/>
+                <Anchor side="Right" relative="$parent/AnchorFrame" pos="Max" offset="40"/>
+                <Anchor side="Top" relative="$parent/Header" pos="Max" offset="30"/>
+    
+                <Style val="DS_ItemInspectDesc"/>
+                <Text val="Confirmation Dialogue"/>
+            </Frame>
+    
+            <Frame type="Button" name="Confirm" template="Cleane_StandardTemplates/StandardButtonTemplate">
+                <Anchor side="Right" relative="$parent" pos="Mid" offset="-10"/>
+                <Anchor side="Bottom" relative="$parent" pos="Max" offset="-30"/>
+
+                <Height val="60"/>
+                <Width val="200"/>
+
+                <Frame type="Label" name="TextLabel">
+                    <Text val="[Y]ES"/>
+                </Frame>
+            </Frame>
+
+            <Frame type="Button" name="Deny" template="Cleane_StandardTemplates/StandardButtonTemplate">
+                <Anchor side="Left" relative="$parent" pos="Mid" offset="10"/>
+                <Anchor side="Bottom" relative="$parent" pos="Max" offset="-30"/>
+
+                <Height val="60"/>
+                <Width val="200"/>
+
+                <Frame type="Label" name="TextLabel">
+                    <Text val="[N]O"/>
+                </Frame>
+            </Frame>
+        </Frame>
+    </Frame>
+
+    <Frame type="Frame" name="StandardTimerFrameTemplate">
+        <Width val="100"/>
+        <Height val="100"/>
+        <Visible val="False"/>
+        <CollapseLayout val="True"/>
+        <PreserveAnchorOffset val="True"/>
+
+        <Animation name="Show">
+            <Event event="Display" action="Reset,Play" frame="$this"/>
+
+            <Controller type="Visibility" end="Pause" frame="$this">
+                <Key type="Bool" time="0.0" value="False"/>
+                <Key type="Bool" time="0.0001" value="True"/>
+            </Controller>
+
+            <!--Controller type="Anchor" end="Pause" frame="$this" side="Left" relative="True">
+                <Key type="Curve" time="0.0" value="240" inout="Smooth"/>
+                <Key type="Curve" time="0.4" value="0" inout="Smooth"/>
+            </Controller-->
+
+            <Controller type="Fade" end="Pause" frame="$this">
+                <Key type="Curve" time="0.0" value="0"/>
+                <Key type="Curve" time="0.25" value="0"/>
+                <Key type="Curve" time="0.4" value="255"/>
+            </Controller>
+
+            <Controller type="Dimension" end="Pause" frame="$this" dimension="Width" relative="False">
+                <Key type="Curve" time="0.0" value="0" inout="Smooth"/>
+                <Key type="Curve" time="0.05" value="100" inout="Smooth"/>
+            </Controller>
+        </Animation>
+
+        <Animation name="Hide">
+            <Event event="Hide" action="Reset,Play" frame="$this"/>
+
+            <!--Controller type="Anchor" end="Reset" frame="$this" side="Left" relative="True">
+                <Key type="Curve" time="0.0" value="0" inout="Smooth"/>
+                <Key type="Curve" time="0.4" value="-240" inout="Smooth"/>
+            </Controller-->
+
+            <Controller type="Fade" end="Reset" frame="$this">
+                <Key type="Curve" time="0.0" value="255"/>
+                <Key type="Curve" time="0.15" value="255"/>
+                <Key type="Curve" time="0.4" value="0"/>
+            </Controller>
+
+            <Controller type="Dimension" end="Reset" frame="$this" dimension="Width" relative="False">
+                <Key type="Curve" time="0.0" value="100"/>
+                <Key type="Curve" time="0.35" value="100" out="Smooth"/>
+                <Key type="Curve" time="0.4" value="0" inout="Smooth"/>
+            </Controller>
+
+            <Controller type="Visibility" end="Reset" frame="$this">
+                <Key type="Bool" time="0.0" value="True"/>
+                <Key type="Bool" time="0.4" value="False"/>
+            </Controller>
+        </Animation>
+
+        <Frame type="ProgressBar" name="TimerBar">
+            <Anchor relative="$parent"/>
+            <Circular val="True" />
+            <CircularStart val="360" />
+            <CircularEndOffset val="-360" />
+            <AcceptsMouse val="False" />
+            <Value val="65"/>
+            <MinValue val="0"/>
+            <MaxValue val="100"/>
+
+            <Frame type="Image" name="Background">
+                <Anchor relative="$parent" offset="-15"/>
+
+                <Color val="0a1835"/>
+                <AlphaMaskTexture val="Assets/Textures/ui_clean_portrait_mask.dds"/>
+            </Frame>
+
+            <Frame type="Frame" name="FillImageContainer">
+                <Anchor relative="$parent"/>
+
+                <Frame type="Image" name="FillImage">
+                    <Anchor relative="$parent"/>
+
+                    <TextureType val="Circular" />
+                    <Texture val="Assets/Textures/ui_clean_portrait_experiencebar_normal.dds"/>
+                    <SubpixelRendering val="True"/>
+                </Frame>
+            </Frame>
+        </Frame>
+
+        <Frame type="Image" name="Border">
+            <Anchor relative="$parent"/>
+
+            <Texture val="Assets/Textures/ui_clean_portrait_normal.dds"/>
+        </Frame>
+
+        <Frame type="Image" name="Icon">
+            <Anchor relative="$parent" offset="-20"/>
+
+            <Texture val="Assets\Textures\ui_glues_helpmenu_moreinfoicon.dds"/>
+            <AlphaMaskTexture val="Assets/Textures/ui_clean_diamondbuttonmask.dds"/>
+        </Frame>
+
+        <Frame type="Image" name="TextBorder">
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+
+            <Width val="50"/>
+            <Height val="28"/>
+            <TextureType val="NineSlice"/>
+            <Texture val="Assets/Textures/ui_clean_standardframe.dds"/>
+        </Frame>
+        
+        <Frame type="Label" name="TimerLabel">
+            <Anchor side="Top" relative="$parent/TextBorder" pos="Mid" offset="0"/>
+            <Anchor side="Bottom" relative="$parent/TextBorder" pos="Mid" offset="0"/>
+            <Anchor side="Left" relative="$parent/TextBorder" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent/TextBorder" pos="Mid" offset="0"/>
+
+            <Text val="1"/>
+            <Style val="Clean_StarmapLevelLabel"/>
+        </Frame>
+    </Frame>
+
+    <Frame type="Frame" name="TimerPanelTemplate">
+        <Anchor side="Bottom" relative="$parent" pos="Max" offset="-250"/>
+        <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+        <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+
+        <Width val="1200"/>
+        <Height val="130"/>
+        <Visible val="True"/>
+
+        <Frame type="Frame" name="Timer1" template="DS_StandardTemplates/StandardTimerFrameTemplate">
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+        </Frame>
+
+        <Frame type="Frame" name="Timer2" template="DS_StandardTemplates/StandardTimerFrameTemplate">
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Right" relative="$parent/Timer1" pos="Min" offset="0"/>
+        </Frame>
+
+        <Frame type="Frame" name="Timer3" template="DS_StandardTemplates/StandardTimerFrameTemplate">
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent/Timer1" pos="Max" offset="0"/>
+        </Frame>
+
+        <Frame type="Frame" name="Timer4" template="DS_StandardTemplates/StandardTimerFrameTemplate">
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Right" relative="$parent/Timer2" pos="Min" offset="0"/>
+        </Frame>
+
+        <Frame type="Frame" name="Timer5" template="DS_StandardTemplates/StandardTimerFrameTemplate">
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent/Timer3" pos="Max" offset="0"/>
+        </Frame>
+
+        <Frame type="Frame" name="Timer6" template="DS_StandardTemplates/StandardTimerFrameTemplate">
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Right" relative="$parent/Timer4" pos="Min" offset="0"/>
+        </Frame>
+
+        <Frame type="Frame" name="Timer7" template="DS_StandardTemplates/StandardTimerFrameTemplate">
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent/Timer5" pos="Max" offset="0"/>
+        </Frame>
+
+        <Frame type="Frame" name="Timer8" template="DS_StandardTemplates/StandardTimerFrameTemplate">
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Right" relative="$parent/Timer6" pos="Min" offset="0"/>
+        </Frame>
+
+        <Frame type="Frame" name="Timer9" template="DS_StandardTemplates/StandardTimerFrameTemplate">
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent/Timer7" pos="Max" offset="0"/>
+        </Frame>
+
+        <Frame type="Frame" name="Timer10" template="DS_StandardTemplates/StandardTimerFrameTemplate">
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Right" relative="$parent/Timer8" pos="Min" offset="0"/>
+        </Frame>
+    </Frame>
+</Desc>

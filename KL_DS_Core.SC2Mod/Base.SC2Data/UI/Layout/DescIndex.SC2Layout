@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+    <Include path="UI/Layout/Cleane_StandardTemplates.SC2Layout"/>
+    <Include path="UI/Layout/DS_StandardTemplates.SC2Layout"/>
+    <Include path="UI/Layout/DS_TooltipTemplates.SC2Layout"/>
+    <Include path="UI/Layout/0_ECL_TEMPLATES.SC2Layout"/>
+    <Include path="UI/Layout/ECL_DRAGGABLE.SC2Layout"/>
+    <Include path="UI/Layout/DS_InventoryTemplates.SC2Layout"/>
+    <Include path="UI/Layout/DS_InspectionPanelTemplates.SC2Layout"/>
+    <Include path="UI/Layout/DS_ObjectiveTemplates.SC2Layout"/>
+    <Include path="UI/Layout/DS_HUDTemplates.SC2Layout"/>
+    <Include path="UI/Layout/DS_CraftingPanelTemplates.SC2Layout"/>
+    <Include path="UI/Layout/DS_GameUI.SC2Layout"/>
+</Desc>

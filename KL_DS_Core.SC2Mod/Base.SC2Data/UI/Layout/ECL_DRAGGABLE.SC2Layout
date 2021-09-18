@@ -1,0 +1,675 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+<Constant name="BorderEffect" val="0,174,255"/>
+<Constant name="BorderEffectGlow" val="0,38,255"/>
+<Constant name="BorderEffectHL" val="188,255,133"/>
+<Constant name="BorderEffectHLGlow" val="34,202,56"/>
+<Constant name="BorderEffectD" val="255,143,123"/>
+<Constant name="BorderEffectDGlow" val="221,0,0"/>
+<Constant name="BorderEffectL" val="255,210,113"/>
+<Constant name="BorderEffectLGlow" val="241,115,42"/>
+<Constant name="Item_Width" val="80"/>
+<Constant name="Item_Height" val="80"/>
+<Constant name="Slot_Width" val="90"/>
+<Constant name="Slot_Height" val="90"/>
+
+<Constant name="StandardFrameBackgroundColor" val="112e31"/>
+<Constant name="StandardFrameHighlightColor" val="2aefe2"/>
+<Constant name="StandardFrameGlowColor" val="68aaac"/>
+<Constant name="StandardFrameDarkColor" val="075f59"/>
+
+<Frame type="Frame" name="BG_Template">
+    <Frame type="Image" name="BGBG">
+        <Anchor side="Bottom" relative="$parent" pos="Max" offset="-2"/>
+        <Anchor side="Left" relative="$parent" pos="Min" offset="2"/>
+        <Anchor side="Right" relative="$parent" pos="Max" offset="-2"/>
+        <Anchor side="Top" relative="$parent" pos="Min" offset="2"/>
+        <Color val="12,16,20"/>
+        <Alpha val="175"/>
+        <RenderPriority val="500"/>
+    </Frame>
+
+    <Frame type="Image" name="Border">
+        <Anchor relative="$parent"/>
+        <Texture val="Assets/Textures/ui_clean_inventoryslot.dds"/>
+
+        <Desaturated val="False"/>
+        <RenderPriority val="600"/>
+    </Frame>
+
+    <Frame type="Frame" name="LockedImage">
+        <Anchor relative="$parent" offset="-5"/>
+        <RenderPriority val="620"/>
+        <AcceptsMouse val="False"/>
+
+        <Visible val="False"/>
+
+        <Frame type="Image" name="LockBackground">
+            <Anchor relative="$parent"/>
+            
+            <Texture val="Assets\Textures\sc2_ui_global_genericeffect_diagonallinespattern_size6.dds"/>
+            <Tiled val="True"/>
+            <Alpha val="50"/>
+        </Frame>
+
+        <Frame type="Image" name="LockIcon">
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Top" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Mid" offset="0"/>
+
+            <Texture val="Assets\Textures\sc2_ui_glues_alliedcommanders_lock.dds"/>
+
+            <Width val="30"/>
+            <Height val="30"/>
+        </Frame>
+    </Frame>
+
+    <StateGroup name="LockedUnlocked">
+        <DefaultState val="Unlocked"/>
+
+        <State name="Unlocked">
+            <When type="AnimationState" frame="$this" SlotState="UNLOCKED"/>
+        </State>
+
+        <State name="Locked">
+            <When type="AnimationState" frame="$this" SlotState="LOCKED"/>
+
+            <Action type="SetProperty" frame="$this/LockedImage" Visible="True"/>
+            <Action type="SetProperty" frame="$this/Border" Desaturated="True"/>
+        </State>
+    </StateGroup>
+</Frame>
+
+<Frame type="Control" name="Slot_Template">
+    <Alpha val="0"/>
+    <Width val="#Slot_Width"/>
+    <Height val="#Slot_Height"/>
+    <RenderPriority val="99999"/>
+    <AcceptsMouse val="true"/>
+    <Animation name="ShowHide">
+        <Event event="ECL_ShowSlot" action="DirectionForward, Play" frame="$parent"/>
+        <Event event="ECL_HideSlot" action="DirectionReverse, Play" frame="$parent"/>
+        <!--Controller type="Visibility" end="Pause" frame="$this">
+            <Key type="Bool" time="0.0" value="false"/>
+            <Key type="Bool" time="0.0" value="true"/>
+        </Controller>
+        <Controller type="Color" end="Pause" frame="$this/BG">
+            <Key type="Curve" time="0.0" value="#StandardFrameDarkColor"/>
+            <Key type="Curve" time="0.0" value="#StandardFrameGlowColor"/>
+        </Controller-->
+        <Controller type="Property" end="Pause" frame="$this" property="AcceptsMouse">
+            <Key type="Property" time="0.0" value="false"/>
+            <Key type="Property" time="0.0" value="true"/>
+        </Controller>
+    </Animation>
+    <Animation name="LockUnlock">
+        <Event event="UnlockSlot" action="DirectionForward, Play" frame="$parent"/>
+        <Event event="LockSlot" action="DirectionReverse, Play" frame="$parent"/>
+        <Controller type="Visibility" end="Pause" frame="$this">
+            <Key type="Bool" time="0.0" value="false"/>
+            <Key type="Bool" time="0.0" value="true"/>
+        </Controller>
+    </Animation>
+    <!--Animation name="Highlight">
+        <Event event="OnMouseEnter" action="Reset, DirectionForward,Play" frame="$this"/>
+        <Event event="OnMouseExit" action="Reset, DirectionReverse,Play" frame="$this"/>
+        <Controller type="Color" end="Pause" frame="$parent/BorderEffect">
+            <Key type="Curve" time="0.0" value="#StandardFrameGlowColor"/>
+            <Key type="Curve" time="0.125" value="#StandardFrameHighlightColor"/>
+        </Controller>
+        <Controller type="Color" end="Pause" frame="$parent/BorderEffect2">
+            <Key type="Curve" time="0.0" value="#StandardFrameGlowColor"/>
+            <Key type="Curve" time="0.125" value="#StandardFrameHighlightColor"/>
+        </Controller>
+        <Controller type="Color" end="Pause" frame="$parent/BorderEffectGlow">
+            <Key type="Curve" time="0.0" value="#StandardFrameDarkColor"/>
+            <Key type="Curve" time="0.125" value="#StandardFrameGlowColor"/>
+        </Controller>
+        <Controller type="Color" end="Pause" frame="$this">
+            <Key type="Curve" time="0.0" value="#StandardFrameGlowColor"/>
+            <Key type="Curve" time="0.125" value="#StandardFrameHighlightColor"/>
+        </Controller>
+        <Controller type="Event" end="Pause" frame="$parent/BorderEffect2">
+            <Key type="Event" time="0.0" event="Glow"/>
+        </Controller>
+    </Animation-->
+</Frame>
+
+<Frame type="Button" name="Item_Template">
+    <Anchor side="Top" relative="$this/CardAnchorImage" pos="Mid" offset="0"/>
+    <Anchor side="Left" relative="$this/CardAnchorImage" pos="Mid" offset="0"/>
+    <Anchor side="Bottom" relative="$this/CardAnchorImage" pos="Mid" offset="0"/>
+    <Anchor side="Right" relative="$this/CardAnchorImage" pos="Mid" offset="0"/>
+    <Alpha val="255"/>
+    <Unclipped val="False"/>
+    <Width val="#Item_Width"/>
+    <Height val="#Item_Height"/>
+    <AcceptsMouse val="True"/>
+    <Draggable val="true"/>
+    <DragConstraintFrame val="$parent/$parent/$parent/$parent"/> 
+    <DragCursor val="GripClosed"/>
+    <DragHoverCursor val="GripOpen"/>
+    <ClickOnDown val="True"/>
+
+    <NormalImage val="NormalImage"/>
+    <HoverImage val="HoverImage"/>
+    <ClickSound val="@UI_ActionButtonSelect"/>
+    <AllowedButtons val="Right|Left"/>
+
+    <Frame type="Frame" name="BorderShadow">
+        <Anchor side="Top" relative="$parent" pos="Min" offset="-1"/>
+        <Anchor side="Left" relative="$parent" pos="Min" offset="-1"/>
+        <Anchor side="Bottom" relative="$parent" pos="Max" offset="1"/>
+        <Anchor side="Right" relative="$parent" pos="Max" offset="1"/>
+        <RenderPriority val="500"/>
+        <Unclipped val="True"/>
+        <Visible val="False"/>
+        <Color val="0,0,0"/>
+        <Animation name="FadeIn">
+            <Event event="OnShown" action="Reset,Play" frame="$this"/>
+            <Controller type="Fade" end="Pause" frame="$this">
+                <Key type="Curve" time="0.0" value="0"/>
+                <Key type="Curve" time="0.1" value="255"/>
+            </Controller>
+        </Animation>
+
+        <Frame type="Image" name="HighlightImage">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="2"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="2"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+            <Color val="{$parent/@Color}"/>
+            <Alpha val="255"/>
+            <Texture val="{$parent/$parent/Icon/@Texture}"/>
+            <!--Texture val="Assets/Textures/ECL_GlowBorder.dds"/>
+            <TextureType val="NineSlice"/-->
+            <Blur val="True"/>
+            <BlurAmount val="0.3"/>
+        </Frame>
+    </Frame>
+    <Frame type="Frame" name="BorderEffectGlow">
+        <Anchor side="Top" relative="$parent" pos="Min" offset="-2"/>
+        <Anchor side="Left" relative="$parent" pos="Min" offset="-2"/>
+        <Anchor side="Bottom" relative="$parent" pos="Max" offset="2"/>
+        <Anchor side="Right" relative="$parent" pos="Max" offset="2"/>
+        <Unclipped val="True"/>
+        <Visible val="False"/>
+        <Color val="#BorderEffectGlow"/>
+        <Animation name="FadeIn">
+            <Event event="OnShown" action="Reset,Play" frame="$this"/>
+            <Controller type="Fade" end="Pause" frame="$this">
+                <Key type="Curve" time="0.0" value="0"/>
+                <Key type="Curve" time="0.2" value="255"/>
+            </Controller>
+        </Animation>
+
+        <Frame type="Image" name="HighlightImage">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+            <Color val="{$parent/@Color}"/>
+            <Alpha val="255"/>
+            <Texture val="{$parent/$parent/Icon/@Texture}"/>
+            <!--TextureType val="NineSlice"/-->
+            <Blur val="True"/>
+            <BlurAmount val="0.5"/>
+            <Animation name="Glow">
+                <Event event="OnShown" action="Reset,Play" frame="$this"/>
+                <Controller type="Fade" end="PingPong" frame="$this">
+                    <Key type="Curve" time="0.0" value="100"/>
+                    <Key type="Curve" time="1" value="255" inout="Slow"/>
+                </Controller>
+            </Animation>
+        </Frame>
+    </Frame>
+    <Frame type="Frame" name="BorderEffect2">
+        <Anchor side="Top" relative="$parent" pos="Min" offset="-1"/>
+        <Anchor side="Left" relative="$parent" pos="Min" offset="-1"/>
+        <Anchor side="Bottom" relative="$parent" pos="Max" offset="-1"/>
+        <Anchor side="Right" relative="$parent" pos="Max" offset="-1"/>
+        <Unclipped val="True"/>
+        <Visible val="False"/>
+        <Color val="#BorderEffect"/>
+        <Alpha val="0"/>
+        <Blur val="True"/>
+        <BlurAmount val="0.25"/>
+
+        <Frame type="Image" name="HighlightImage">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+            <Color val="{$parent/@Color}"/>
+            <Alpha val="255"/>
+            <Texture val="{$parent/$parent/Icon/@Texture}"/>
+            <!--TextureType val="NineSlice"/-->
+            <Animation name="Glow">
+                <Event event="Glow" action="Reset,Play" frame="$parent"/>
+                <Controller type="Fade" end="Pause" frame="$parent">
+                    <Key type="Curve" time="0.0" value="255"/>
+                    <Key type="Curve" time="0.5" value="0" in="Slow"/>
+                </Controller>
+            </Animation>
+        </Frame>
+    </Frame>
+    <Frame type="Frame" name="BorderEffect">
+        <Anchor side="Top" relative="$parent" pos="Min" offset="-1"/>
+        <Anchor side="Left" relative="$parent" pos="Min" offset="1"/>
+        <Anchor side="Bottom" relative="$parent" pos="Max" offset="-1"/>
+        <Anchor side="Right" relative="$parent" pos="Max" offset="1"/>
+        <Unclipped val="True"/>
+        <Visible val="False"/>
+        <Color val="#BorderEffect"/>
+        <Blur val="True"/>
+        <BlurAmount val="0.25"/>
+        <Animation name="FadeIn">
+            <Event event="OnShown" action="Reset,Play" frame="$this"/>
+            <Controller type="Fade" end="Pause" frame="$this">
+                <Key type="Curve" time="0.0" value="0"/>
+                <Key type="Curve" time="0.2" value="255"/>
+            </Controller>
+        </Animation>
+
+        <Frame type="Image" name="HighlightImage">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+            <Color val="{$parent/@Color}"/>
+            <Alpha val="255"/>
+            <Texture val="{$parent/$parent/Icon/@Texture}"/>
+            <!--TextureType val="NineSlice"/-->
+        </Frame>
+    </Frame>
+
+    <Frame type="Frame" name="BorderEffectB2">
+        <Anchor side="Top" relative="$parent" pos="Min" offset="1"/>
+        <Anchor side="Left" relative="$parent" pos="Min" offset="1"/>
+        <Anchor side="Bottom" relative="$parent" pos="Max" offset="1"/>
+        <Anchor side="Right" relative="$parent" pos="Max" offset="1"/>
+        <Unclipped val="True"/>
+        <Visible val="{$parent/BorderEffect2/@Visible}"/>
+        <Color val="#BorderEffect"/>
+        <Alpha val="0"/>
+        <Blur val="True"/>
+        <BlurAmount val="0.25"/>
+
+        <Frame type="Image" name="HighlightImage">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+            <Color val="{$parent/@Color}"/>
+            <Alpha val="255"/>
+            <Texture val="{$parent/$parent/Icon/@Texture}"/>
+            <!--TextureType val="NineSlice"/-->
+            <Animation name="Glow">
+                <Event event="Glow" action="Reset,Play" frame="$parent"/>
+                <Controller type="Fade" end="Pause" frame="$parent">
+                    <Key type="Curve" time="0.0" value="255"/>
+                    <Key type="Curve" time="0.5" value="0" in="Slow"/>
+                </Controller>
+            </Animation>
+        </Frame>
+    </Frame>
+    <Frame type="Frame" name="BorderEffectB">
+        <Anchor side="Top" relative="$parent" pos="Min" offset="1"/>
+        <Anchor side="Left" relative="$parent" pos="Min" offset="-1"/>
+        <Anchor side="Bottom" relative="$parent" pos="Max" offset="1"/>
+        <Anchor side="Right" relative="$parent" pos="Max" offset="-1"/>
+        <Unclipped val="True"/>
+        <Visible val="{$parent/BorderEffect2/@Visible}"/>
+        <Color val="#BorderEffect"/>
+        <Blur val="True"/>
+        <BlurAmount val="0.25"/>
+        <Animation name="FadeIn">
+            <Event event="OnShown" action="Reset,Play" frame="$this"/>
+            <Controller type="Fade" end="Pause" frame="$this">
+                <Key type="Curve" time="0.0" value="0"/>
+                <Key type="Curve" time="0.2" value="255"/>
+            </Controller>
+        </Animation>
+
+        <Frame type="Image" name="HighlightImage">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+            <Color val="{$parent/@Color}"/>
+            <Alpha val="255"/>
+            <Texture val="{$parent/$parent/Icon/@Texture}"/>
+            <!--TextureType val="NineSlice"/-->
+        </Frame>
+    </Frame>
+
+    <Frame type="Frame" name="DummyInfoFrame" template="Cleane_StandardTemplates/DummyInfoFrame"></Frame>
+
+    <Frame type="Frame" name="Tooltip" template="DS_StandardTemplates/ItemTooltipTemplate">
+        <Anchor side="Top" relative="$parent" pos="Min" offset="-50"/>
+        <Anchor side="Right" relative="$parent" pos="Min" offset="-15"/>
+    </Frame>
+
+    <Frame type="Frame" name="Context" template="DS_StandardTemplates/ContextMenuTemplate">
+        <Anchor side="Top" relative="$parent" pos="Min" offset="-40"/>
+        <Anchor side="Left" relative="$parent" pos="Max" offset="0"/>
+    </Frame>
+
+    <Animation name="Draggable_OnOff_OnAnimationEvents">
+        <Event event="ContextOpen" action="DirectionForward, Play" frame="$this"/>
+        <Event event="ContextClose" action="DirectionReverse, Play" frame="$this"/>
+        <Controller type="Property" end="Pause" frame="$this" property="Draggable">
+            <Key type="Property" time="0.0" value="true"/>
+            <Key type="Property" time="0.0" value="false"/>
+        </Controller>
+    </Animation>
+
+    <StateGroup name="Draggable_OnOff_OnContextMenuVisibility">
+        <State name="On">
+            <When type="Property" frame="$this/Context" operator="Equal" Visible="False"/>
+            <Action type="SetProperty" frame="$this" Draggable="True"/>
+        </State>
+        <State name="Off">
+            <When type="Property" frame="$this/Context" operator="Equal" Visible="True"/>
+            <Action type="SetProperty" frame="$this" Draggable="False"/>
+            <Action type="SetProperty" frame="$this" Dragging="False"/>
+        </State>
+    </StateGroup>
+
+    <StateGroup name="Tooltip_OnOff_OnDragging">
+        <DefaultState val="On"/>
+        <State name="On">
+        </State>
+        <State name="Off">
+            <When type="Property" frame="$this" operator="Equal" Dragging="True"/>
+            <Action type="SetProperty" frame="$this/Tooltip" Visible="False"/>
+        </State>
+    </StateGroup>
+
+    <Frame type="Image" name="Icon">
+        <Anchor relative="$parent" offset="-2"/>
+
+        <Texture val="{$parent/DummyInfoFrame/Icon/@Texture}"/>
+    </Frame>
+
+    <Frame type="Image" name="IconBackground" template="Cleane_StandardTemplates/IconBackgroundTemplate">
+        <Anchor relative="$parent/Icon" offset="0"/>
+
+        <AlphaMaskTexture val="{$parent/Icon/@Texture}"/>
+        <Alpha val="255"/>
+    </Frame>
+
+    <Frame type="Image" name="DurabilityIcon">
+        <Anchor side="Top" relative="$parent" pos="Min" offset="2"/>
+        <Anchor side="Left" relative="$parent" pos="Min" offset="2"/>
+
+        <Texture val="Assets/Textures/ui_clean_tooltip_crateicon.dds"/>
+        <Width val="17"/>
+        <Height val="17"/>
+        <CollapseLayout val="True"/>
+        <Visible val="False"/>
+    </Frame>
+
+    <Frame type="Label" name="DurabilityLabel">
+        <Anchor side="Top" relative="$parent/DurabilityIcon" pos="Mid" offset="0"/>
+        <Anchor side="Bottom" relative="$parent/DurabilityIcon" pos="Mid" offset="0"/>
+        <Anchor side="Left" relative="$parent/DurabilityIcon" pos="Max" offset="5"/>
+
+        <Style val="DS_InventoryQuantityLabel"/>
+        <Visible val="True"/>
+        <DisabledAlpha val="255"/>
+        <Visible val="False"/>
+
+        <Text val="{$parent/DummyInfoFrame/Durability/@Text}"/>
+    </Frame>
+
+    <Frame type="Label" name="QuantityLabel">
+        <Anchor side="Bottom" relative="$parent" pos="Max" offset="-2"/>
+        <Anchor side="Right" relative="$parent" pos="Max" offset="-2"/>
+
+        <Text val="{$parent/DummyInfoFrame/Quantity/@Text}"/>
+        <Style val="DS_ItemInventoryQuantity"/>
+    </Frame>
+
+    <Frame type="Image" name="CardAnchorImage">
+        <!--Anchor side="Top" relative="$parent/$parent" pos="Min" offset="0"/>
+        <Anchor side="Left" relative="$parent/$parent" pos="Min" offset="0"/-->
+        <Width val="#Item_Width"/>
+        <Height val="#Item_Height"/>
+        <Color val="0,0,0"/>
+        <Alpha val="0"/>
+    </Frame>
+
+    <Frame type="Image" name="NormalImage">
+        <Anchor relative="$parent"/>
+        <Color val="3,3,3"/>
+        <Alpha val="0"/>
+    </Frame>
+
+    <Frame type="Image" name="HoverImage">
+        <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+        <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+        <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+        <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+        <RenderPriority val="600"/>
+        <Color val="0,255,136"/>
+        <Texture val="{$parent/Icon/@Texture}"/>
+        <Alpha val="100"/>
+    </Frame>
+
+    <!-- KL States -->
+
+    <StateGroup name="State">
+        <DefaultState val="SingleItem"/>
+
+        <State name="SingleItem">
+            <When type="AnimationState" frame="$this" State="SingleItem"/>
+
+            <Action type="SetProperty" frame="$this/QuantityLabel" Visible="False"/>
+        </State>
+
+        <State name="Stack">
+            <When type="AnimationState" frame="$this" State="Stack"/>
+
+            <Action type="SetProperty" frame="$this/QuantityLabel" Visible="True"/>
+        </State>
+    </StateGroup>
+
+    <StateGroup name="ItemUse">
+        <DefaultState val="Any"/>
+
+        <State name="Any">
+            <When type="AnimationState" frame="$this" ItemUse="Any"/>
+        </State>
+
+        <State name="Food">
+            <When type="AnimationState" frame="$this" ItemUse="Food"/>
+            
+            <Action type="SetProperty" frame="$this/DurabilityIcon" Texture="Assets\Textures\ui_clean_useicon_food.dds"/>
+            <Action type="SetProperty" frame="$this/DurabilityIcon" Visible="True"/>
+            <Action type="SetProperty" frame="$this/DurabilityLabel" Visible="True"/>
+        </State>
+
+        <State name="Water">
+            <When type="AnimationState" frame="$this" ItemUse="Water"/>
+
+            <Action type="SetProperty" frame="$this/DurabilityIcon" Texture="Assets\Textures\ui_clean_useicon_water.dds"/>
+            <Action type="SetProperty" frame="$this/DurabilityIcon" Visible="True"/>
+            <Action type="SetProperty" frame="$this/DurabilityLabel" Visible="True"/>
+        </State>
+
+        <State name="Medicine">
+            <When type="AnimationState" frame="$this" ItemUse="Medicine"/>
+
+            <Action type="SetProperty" frame="$this/DurabilityIcon" Texture="Assets\Textures\ui_clean_useicon_medicine.dds"/>
+            <Action type="SetProperty" frame="$this/DurabilityIcon" Visible="True"/>
+            <Action type="SetProperty" frame="$this/DurabilityLabel" Visible="True"/>
+        </State>
+    </StateGroup>
+
+    <!-- ECL States -->
+
+    <StateGroup name="Collapse">
+        <DefaultState val="Visible"/>
+        <State name="Collapse">
+            <When type="Property" frame="$this" operator="Equal" Visible="False"/>
+            <Action type="SetProperty" frame="$this" Width="0"/>
+            <Action type="SetProperty" frame="$this/CardAnchorImage" Width="0"/>
+        </State>
+        <State name="Visible">
+        </State>
+    </StateGroup>
+
+    <StateGroup name="Dragging">
+        <DefaultState val="Static"/>
+        <State name="Dragged">
+            <When type="Property" frame="$this" operator="Equal" Dragging="True"/>
+            <Action type="SetAnimationProperty" frame="$this" animation="HoverSound" enabled="False"/>
+            <Action type="SendEvent" frame="$this" event="Dragging"/>
+            <Action type="SendEvent" frame="$this" event="ShowBorder"/>
+            <Action type="SetProperty" frame="$this/BorderShadow" Visible="True"/>
+            <Action type="SetProperty" frame="$this/BorderEffect" Visible="True"/>
+            <Action type="SetProperty" frame="$this/BorderEffectGlow" Visible="True"/>
+            <Action type="SetProperty" frame="$this/BorderEffect2" Visible="True"/>
+            <Action type="SetProperty" frame="$this/DragState_Box" Text="On"/>
+            <Action type="SetProperty" frame="$this" RenderPriority="999"/>
+            <Action type="SetProperty" frame="$this" Unclipped="True"/>
+        </State>
+        <State name="Static">
+            <When type="Property" frame="$this" operator="Equal" Dragging="False"/>
+            <Action type="SetAnimationProperty" frame="$this" animation="HoverSound" enabled="True"/>
+            <Action type="SendEvent" frame="$this" event="DragReset"/>
+            <Action type="SetProperty" frame="$this/BorderShadow" Visible="False"/>
+            <Action type="SetProperty" frame="$this/BorderEffect" Visible="False"/>
+            <Action type="SetProperty" frame="$this/BorderEffectGlow" Visible="False"/>
+            <Action type="SetProperty" frame="$this/BorderEffect2" Visible="False"/>
+            <Action type="SetProperty" frame="$this/DragState_Box" Text="Off"/>
+            <Action type="SetProperty" frame="$this" RenderPriority="{$this/@RenderPriority}"/>
+            <Action type="SetProperty" frame="$this" Unclipped="false"/>
+        </State>
+    </StateGroup>
+    
+    <Animation name="DragReset">
+        <Event event="DragReset" action="Reset,Play" frame="$this"/>
+        <Controller type="Anchor" end="Pause" frame="$this" side="Left" relative="True" pos="Mid">
+            <Key type="Curve" time="0" value="0"/>
+        </Controller>
+        <Controller type="Anchor" end="Pause" frame="$this" side="Right" relative="True" pos="Mid">
+            <Key type="Curve" time="0" value="0"/>
+        </Controller>
+        <Controller type="Anchor" end="Pause" frame="$this" side="Top" relative="True" pos="Mid">
+            <Key type="Curve" time="0" value="0"/>
+        </Controller>
+        <Controller type="Anchor" end="Pause" frame="$this" side="Bottom" relative="True" pos="Mid">
+            <Key type="Curve" time="0" value="0"/>
+        </Controller>
+        <Controller type="Fade" end="Pause" frame="$this">
+            <Key type="Curve" time="0.0" value="0"/>
+            <Key type="Curve" time="0.0625" value="0"/>
+            <Key type="Curve" time="0.1" value="255"/>
+        </Controller>
+    </Animation>
+
+    <StateGroup name="EnableDisable">
+        <DefaultState val="Disabled"/>
+        <State name="Enabled">
+            <When type="Property" frame="$this" operator="Equal" Dragging="True"/>
+            <Action type="SendEvent" frame="$parent" event="ECL_ShowSlot"/>
+        </State>
+        <State name="Disabled">
+            <When type="Property" frame="$this" operator="Equal" Dragging="False"/>
+            <Action type="SendEvent" frame="$parent" event="ECL_HideSlot"/>
+        </State>
+    </StateGroup>
+
+    <Animation name="BorderEffectAnimation">
+        <Event event="ShowBorder" action="Reset, Play" frame="$this"/>
+        <Controller type="Sound" end="Pause" frame="$this">
+            <Key type="Sound" time="0.0" sound="AC_UI_Drag"/>
+        </Controller>
+        <!--Controller type="Anchor" end="Pause" frame="$parent/BorderEffect" side="Top" relative="True" pos="Min" relativeFrame="$this">
+            <Key type="Curve" time="0.0" value="-10"/>
+        </Controller>
+        <Controller type="Anchor" end="Pause" frame="$parent/BorderEffect" side="Bottom" relative="True" pos="Max" relativeFrame="$this">
+            <Key type="Curve" time="0.0" value="10"/>
+        </Controller>
+        <Controller type="Anchor" end="Pause" frame="$parent/BorderEffect" side="Right" relative="True" pos="Max" relativeFrame="$this">
+            <Key type="Curve" time="0.0" value="10"/>
+        </Controller>
+        <Controller type="Anchor" end="Pause" frame="$parent/BorderEffect" side="Left" relative="True" pos="Min" relativeFrame="$this">
+            <Key type="Curve" time="0.0" value="-10"/>
+        </Controller>
+        <Controller type="Anchor" end="Pause" frame="$parent/BorderEffect2" side="Top" relative="True" pos="Min" relativeFrame="$this">
+            <Key type="Curve" time="0.0" value="-10"/>
+        </Controller>
+        <Controller type="Anchor" end="Pause" frame="$parent/BorderEffect2" side="Bottom" relative="True" pos="Max" relativeFrame="$this">
+            <Key type="Curve" time="0.0" value="10"/>
+        </Controller>
+        <Controller type="Anchor" end="Pause" frame="$parent/BorderEffect2" side="Right" relative="True" pos="Max" relativeFrame="$this">
+            <Key type="Curve" time="0.0" value="10"/>
+        </Controller>
+        <Controller type="Anchor" end="Pause" frame="$parent/BorderEffect2" side="Left" relative="True" pos="Min" relativeFrame="$this">
+            <Key type="Curve" time="0.0" value="-10"/>
+        </Controller>
+        <Controller type="Anchor" end="Pause" frame="$parent/BorderEffectGlow" side="Top" relative="True" pos="Min" relativeFrame="$this">
+            <Key type="Curve" time="0.0" value="-10"/>
+        </Controller>
+        <Controller type="Anchor" end="Pause" frame="$parent/BorderEffectGlow" side="Bottom" relative="True" pos="Max" relativeFrame="$this">
+            <Key type="Curve" time="0.0" value="10"/>
+        </Controller>
+        <Controller type="Anchor" end="Pause" frame="$parent/BorderEffectGlow" side="Right" relative="True" pos="Max" relativeFrame="$this">
+            <Key type="Curve" time="0.0" value="10"/>
+        </Controller>
+        <Controller type="Anchor" end="Pause" frame="$parent/BorderEffectGlow" side="Left" relative="True" pos="Min" relativeFrame="$this">
+            <Key type="Curve" time="0.0" value="-10"/>
+        </Controller>
+        <Controller type="Anchor" end="Pause" frame="$parent/BorderShadow" side="Top" relative="True" pos="Min" relativeFrame="$this">
+            <Key type="Curve" time="0.0" value="-8"/>
+        </Controller>
+        <Controller type="Anchor" end="Pause" frame="$parent/BorderShadow" side="Bottom" relative="True" pos="Max" relativeFrame="$this">
+            <Key type="Curve" time="0.0" value="12"/>
+        </Controller>
+        <Controller type="Anchor" end="Pause" frame="$parent/BorderShadow" side="Right" relative="True" pos="Max" relativeFrame="$this">
+            <Key type="Curve" time="0.0" value="10"/>
+        </Controller>
+        <Controller type="Anchor" end="Pause" frame="$parent/BorderShadow" side="Left" relative="True" pos="Min" relativeFrame="$this">
+            <Key type="Curve" time="0.0" value="-10"/>
+        </Controller-->
+    </Animation>
+
+    <Animation name="HoverRP">
+        <Event event="OnMouseEnter" action="DirectionForward,Play"/>
+        <Event event="OnMouseExit" action="DirectionReverse,Play"/>
+        <Controller type="State" stateGroup="HoveringState" end="Pause">
+            <Key type="Identifier" time="0" value="NotHovered"/>
+            <Key type="Identifier" time="0" value="Hovered"/>
+        </Controller>
+    </Animation>
+
+    <StateGroup name="HoveringState">
+        <DefaultState val="NotHovered"/>
+        <State name="Hovered">
+            <Action type="SetProperty" frame="$this" RenderPriority="999"/>
+        </State>
+        <State name="NotHovered">
+            <Action type="SetProperty" frame="$this" RenderPriority="{$this/@RenderPriority}"/>
+        </State>
+    </StateGroup>
+
+    <Animation name="HoverSound">
+        <Event event="OnMouseEnter" action="Reset,Play" frame="DragImage"/>
+        <Controller type="Sound" end="Stop">
+            <Key type="Sound" time="0" sound="AC_UI_CARDHOVER"/>
+        </Controller>
+    </Animation>
+
+    <Frame type="EditBox" name="DragState_Box">
+        <Anchor relative="$parent"/>
+        <Style val="DS_TextButtonOver"/>
+        <Alpha val="0"/>
+        <Text val="0"/>
+        <AcceptsMouse val="False"/>
+    </Frame>
+</Frame>
+</Desc>

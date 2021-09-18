@@ -1,0 +1,705 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+    <!-- Constants -->
+    <Constant name="CraftingPanelWidth" val="860"/>
+    <Constant name="CraftingPanelHeight" val="840"/>
+    <Constant name="CraftingPanelOffset" val="150"/>
+    <Constant name="CraftedItemSize" val="240"/>
+    <Constant name="CraftingItemSize" val="130"/>
+    <Constant name="CraftingMaterialSize" val=""/>
+    <Constant name="CraftingStashMaterialSlotSize" val="75"/>
+    <Constant name="CraftingStashHeight" val="380"/>
+
+    <Constant name="ListItemWidth" val="380"/>
+    <Constant name="ListItemHeight" val="120"/>
+
+    <!-- Templates -->
+
+    <Frame type="Frame" name="ListItemButtonTemplate">
+        <Width val="#ListItemWidth"/>
+        <Height val="#ListItemHeight"/>
+
+        <Frame type="Frame" name="InfoFrame" template="Cleane_StandardTemplates/DummyInfoFrame"></Frame>
+
+        <Frame type="Image" name="Frame"></Frame>
+
+        <Frame type="Image" name="IconBorder">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+
+            <Width val="#ListItemHeight"/>
+            <Height val="#ListItemHeight"/>
+        </Frame>
+
+        <Frame type="Image" name="Icon">
+            <Anchor relative="$parent/IconBorder" offset="-15"/>
+
+            <Texture val="{$parent/InfoFrame/Icon/@Texture}"/>
+        </Frame>
+    </Frame>
+
+    <Frame type="Frame" name="CraftingHeaderTemplate">
+        <Anchor side="Left" relative="$parent/AnchorFrame" pos="Min" offset="0"/>
+        <Anchor side="Right" relative="$parent/AnchorFrame" pos="Max" offset="0"/>
+
+        <Height val="55"/>
+
+        <Frame type="Image" name="Background">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Bottom" relative="$parent/Divider" pos="Mid" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+
+            <Texture val="Assets\Textures\ui_clean_fadedheader.dds"/>
+            <Alpha val="200"/>
+            <AdjustmentColor val="001d84"/>
+            <ColorAdjustMode val="Fill"/>
+        </Frame>
+
+        <Frame type="Label" name="Title">
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Bottom" relative="$parent/Divider" pos="Min" offset="0"/>
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+
+            <Style val="Clean_HeaderTitle"/>
+        </Frame>
+
+        <Frame type="Image" name="Divider">
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+
+            <Texture val="Assets\Textures\ui_battlenet_glue_campaign_floatingraceicon_divider_highlight.dds"/>
+        </Frame>
+    </Frame>
+
+    <Frame type="Button" name="ArrowButtonTemplate">
+        <Width val="40"/>
+        <Height val="30"/>
+
+        <NormalImage val="NormalImage"/>
+        <HoverImage val="HoverImage"/>
+        <HitTestFrame val="HitTestFrame"/>
+
+        <Frame type="Image" name="NormalImage">
+            <Anchor relative="$parent"/>
+
+            <Texture val="Assets\Textures\ui_battlenet_glues_standardbuttons_small_icon_pulldownarrow_normal.dds"/>
+        </Frame>
+
+        <Frame type="Image" name="HoverImage">
+            <Anchor relative="$parent"/>
+
+            <Texture val="Assets\Textures\ui_battlenet_glues_standardbuttons_small_icon_pulldownarrow_pressed.dds"/>
+        </Frame>
+
+        <Frame type="Frame" name="HitTestFrame">
+            <Anchor relative="$parent"/>
+        </Frame>
+    </Frame>
+
+    <Frame type="Button" name="CraftingMaterialItemTemplate">
+        <NormalImage val="NormalImage"/>
+        <HoverImage val="HoverImage"/>
+        <AllowedButtons val="Right|Left"/>
+
+        <Frame type="Frame" name="DummyInfoFrame" template="Cleane_StandardTemplates/DummyInfoFrame"></Frame>
+
+        <Frame type="Frame" name="Tooltip" template="DS_StandardTemplates/ItemTooltipTemplate">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="-50"/>
+            <Anchor side="Left" relative="$parent" pos="Max" offset="15"/>
+        </Frame>
+
+        <StateGroup name="Tooltip_OnOff_OnDragging">
+            <DefaultState val="On"/>
+            <State name="On">
+            </State>
+            <State name="Off">
+                <When type="Property" frame="$this" operator="Equal" Dragging="True"/>
+                <Action type="SetProperty" frame="$this/Tooltip" Visible="False"/>
+            </State>
+        </StateGroup>
+
+        <Frame type="Image" name="IconBackground" template="Cleane_StandardTemplates/IconBackgroundTemplate">
+            <Anchor relative="$parent/Icon" offset="0"/>
+    
+            <AlphaMaskTexture val="{$parent/Icon/@Texture}"/>
+            <Alpha val="255"/>
+        </Frame>
+    
+        <Frame type="Image" name="DurabilityIcon">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="2"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="2"/>
+    
+            <Texture val="Assets/Textures/ui_clean_tooltip_crateicon.dds"/>
+            <Width val="17"/>
+            <Height val="17"/>
+            <CollapseLayout val="True"/>
+            <Visible val="False"/>
+        </Frame>
+    
+        <Frame type="Label" name="DurabilityLabel">
+            <Anchor side="Top" relative="$parent/DurabilityIcon" pos="Mid" offset="0"/>
+            <Anchor side="Bottom" relative="$parent/DurabilityIcon" pos="Mid" offset="0"/>
+            <Anchor side="Left" relative="$parent/DurabilityIcon" pos="Max" offset="5"/>
+    
+            <Style val="DS_InventoryQuantityLabel"/>
+            <Visible val="True"/>
+            <DisabledAlpha val="255"/>
+            <Visible val="False"/>
+    
+            <Text val="{$parent/DummyInfoFrame/Durability/@Text}"/>
+        </Frame>
+
+        <Frame type="Label" name="QuantityLabel">
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="-2"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="-2"/>
+    
+            <Text val="{$parent/DummyInfoFrame/Quantity/@Text}"/>
+            <Style val="DS_ItemInventoryQuantity"/>
+        </Frame>
+    
+        <Frame type="Image" name="CardAnchorImage">
+            <!--Anchor side="Top" relative="$parent/$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent/$parent" pos="Min" offset="0"/-->
+            <Width val="#Item_Width"/>
+            <Height val="#Item_Height"/>
+            <Color val="0,0,0"/>
+            <Alpha val="0"/>
+        </Frame>
+
+        <Frame type="Image" name="NormalImage">
+            <Anchor relative="$parent"/>
+            <Color val="3,3,3"/>
+            <Alpha val="0"/>
+        </Frame>
+    
+        <Frame type="Image" name="HoverImage">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+            <RenderPriority val="600"/>
+            <Color val="0,255,136"/>
+            <Texture val="{$parent/Icon/@Texture}"/>
+            <Alpha val="100"/>
+        </Frame>
+
+        <StateGroup name="State">
+            <DefaultState val="SingleItem"/>
+    
+            <State name="SingleItem">
+                <When type="AnimationState" frame="$this" State="SingleItem"/>
+    
+                <Action type="SetProperty" frame="$this/QuantityLabel" Visible="False"/>
+            </State>
+    
+            <State name="Stack">
+                <When type="AnimationState" frame="$this" State="Stack"/>
+    
+                <Action type="SetProperty" frame="$this/QuantityLabel" Visible="True"/>
+            </State>
+        </StateGroup>
+    
+        <StateGroup name="ItemUse">
+            <DefaultState val="Any"/>
+    
+            <State name="Any">
+                <When type="AnimationState" frame="$this" ItemUse="Any"/>
+            </State>
+    
+            <State name="Food">
+                <When type="AnimationState" frame="$this" ItemUse="Food"/>
+                
+                <Action type="SetProperty" frame="$this/DurabilityIcon" Texture="Assets\Textures\ui_clean_useicon_food.dds"/>
+                <Action type="SetProperty" frame="$this/DurabilityIcon" Visible="True"/>
+                <Action type="SetProperty" frame="$this/DurabilityLabel" Visible="True"/>
+            </State>
+    
+            <State name="Water">
+                <When type="AnimationState" frame="$this" ItemUse="Water"/>
+    
+                <Action type="SetProperty" frame="$this/DurabilityIcon" Texture="Assets\Textures\ui_clean_useicon_water.dds"/>
+                <Action type="SetProperty" frame="$this/DurabilityIcon" Visible="True"/>
+                <Action type="SetProperty" frame="$this/DurabilityLabel" Visible="True"/>
+            </State>
+    
+            <State name="Medicine">
+                <When type="AnimationState" frame="$this" ItemUse="Medicine"/>
+    
+                <Action type="SetProperty" frame="$this/DurabilityIcon" Texture="Assets\Textures\ui_clean_useicon_medicine.dds"/>
+                <Action type="SetProperty" frame="$this/DurabilityIcon" Visible="True"/>
+                <Action type="SetProperty" frame="$this/DurabilityLabel" Visible="True"/>
+            </State>
+        </StateGroup>
+    </Frame>
+
+    <Frame type="Frame" name="CraftingSlotTemplate">
+        <Width val="#CraftingItemSize"/>
+        <Height val="#CraftingItemSize"/>
+
+        <Frame type="Image" name="Background">
+            <Anchor relative="$parent" offset="-15"/>
+
+            <Color val="12,16,20"/>
+            <Alpha val="175"/>
+            <AlphaMaskTexture val="Assets\Textures\ui_clean_circlebuttonsmall_mask1.dds"/>
+        </Frame>
+        
+        <Frame type="Image" name="Border">
+            <Anchor relative="$parent"/>
+
+            <Texture val="Assets/Textures/ui_clean_circlebuttonsmall_normal1.dds"/>
+        </Frame>
+    </Frame>
+
+    <Frame type="Button" name="CraftingListboxItemTemplate" template="Cleane_StandardTemplates/ListBoxItemTemplate">
+        <Anchor side="Top" relative="$sibling-1" pos="Max" offset="-12"/>
+        <Anchor side="Left" relative="$parent/AnchorFrame" pos="Min" offset="0"/>
+        <Anchor side="Right" relative="$parent/AnchorFrame" pos="Max" offset="0"/>
+
+        <CollapseLayout val="True"/>
+
+        <Frame type="Frame" name="DummyInfoFrame" template="Cleane_StandardTemplates/DummyInfoFrame"></Frame>
+
+        <Frame type="Image" name="IconBorder">
+            <Width val="95"/>
+            <Height val="95"/>
+        </Frame>
+
+        <Frame type="Image" name="Icon">
+            <Width val="68"/>
+            <Height val="68"/>
+            <Texture val="{$parent/DummyInfoFrame/Icon/@Texture}"/>
+        </Frame>
+
+        <Frame type="Image" name="IconBackground" template="Cleane_StandardTemplates/IconBackgroundTemplate">
+            <Anchor relative="$parent/Icon" offset="0"/>
+    
+            <AlphaMaskTexture val="{$parent/Icon/@Texture}"/>
+            <Alpha val="255"/>
+        </Frame>
+
+        <Frame type="Image" name="NormalImage">
+            <Height val="70"/>
+        </Frame>
+
+        <Frame type="Label" name="TitleLabel">
+            <Anchor side="Top" relative="$parent/NormalImage" pos="Min" offset="13"/>
+
+            <Text val="{$parent/DummyInfoFrame/Name/@Text}"/>
+        </Frame>
+
+        <Frame type="Label" name="SubtitleLabel">
+            <Anchor side="Top" relative="$parent/TitleLabel" pos="Max" offset="0"/>
+
+            <Text val="{$parent/DummyInfoFrame/Quality/@Text}"/>
+        </Frame>
+    </Frame>
+
+    <Frame type="Control" name="CraftingStashMaterialSlotTemplate">
+        <Anchor side="Top" relative="$parent/$parent/Materialheader" pos="Max" offset="10"/>
+        <Anchor side="Left" relative="$parent/$parent/AnchorFrame" pos="Min" offset="40"/>
+
+        <Width val="#CraftingStashMaterialSlotSize"/>
+        <Height val="#CraftingStashMaterialSlotSize"/>
+
+        <Frame type="Image" name="BGBG">
+            <Anchor relative="$parent" offset="-2"/>
+
+            <Color val="12,16,20"/>
+            <Alpha val="175"/>
+        </Frame>
+        
+        <Frame type="Image" name="Border">
+            <Anchor relative="$parent"/>
+            <Texture val="Assets/Textures/ui_clean_inventoryslot.dds"/>
+        
+            <Desaturated val="False"/>
+        </Frame>
+    </Frame>
+
+    <!-- Crafting Panel -->
+
+    <Frame type="Frame" name="CraftingPanelTemplate" template="Cleane_StandardTemplates/EclipseFrameStandardTemplate">
+        <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+        <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+        <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+
+        <Width val="#CraftingPanelWidth"/>
+        <Visible val="True"/>
+
+        <Frame type="Frame" name="ItemListbox" template="Cleane_StandardTemplates/EclipseFrameStandardTemplate">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Bottom" relative="$parent/MaterialAnchorFrame" pos="Min" offset="0"/>
+            
+            <Frame type="Image" name="Background">
+                <Visible val="False"/>
+            </Frame>
+
+            <Width val="360"/>
+
+            <Frame type="Frame" name="Header" template="DS_CraftingPanelTemplates/CraftingHeaderTemplate">
+                <Anchor side="Top" relative="$parent/AnchorFrame" pos="Min" offset="0"/>
+
+                <Frame type="Label" name="Title">
+                    <Text val="Base"/>
+                </Frame>
+            </Frame>
+
+            <Frame type="Button" name="ArrowButton" template="DS_CraftingPanelTemplates/ArrowButtonTemplate">
+                <Anchor side="Bottom" relative="$parent/Header" pos="Mid" offset="0"/>
+                <Anchor side="Top" relative="$parent/Header" pos="Mid" offset="0"/>
+                <Anchor side="Right" relative="$parent/Header" pos="Max" offset="-20"/>
+            </Frame>
+
+            <Frame type="TabControl" name="TabControl">
+                <SelectedIndex val="100"/>
+
+                <TabListItem val="$parent/ListItem1"/>
+                <TabListItem val="$parent/ListItem2"/>
+                <TabListItem val="$parent/ListItem3"/>
+                <TabListItem val="$parent/ListItem4"/>
+                <TabListItem val="$parent/ListItem5"/>
+                <TabListItem val="$parent/ListItem6"/>
+            </Frame>
+
+            <Frame type="Button" name="ListItem1" template="DS_CraftingPanelTemplates/CraftingListboxItemTemplate">
+                <Anchor side="Top" relative="$parent/Header" pos="Max" offset="0"/>
+            </Frame>
+            <Frame type="Button" name="ListItem2" template="DS_CraftingPanelTemplates/CraftingListboxItemTemplate"/>
+            <Frame type="Button" name="ListItem3" template="DS_CraftingPanelTemplates/CraftingListboxItemTemplate"/>
+            <Frame type="Button" name="ListItem4" template="DS_CraftingPanelTemplates/CraftingListboxItemTemplate"/>
+            <Frame type="Button" name="ListItem5" template="DS_CraftingPanelTemplates/CraftingListboxItemTemplate"/>
+            <Frame type="Button" name="ListItem6" template="DS_CraftingPanelTemplates/CraftingListboxItemTemplate"/>
+        </Frame>
+
+        <Frame type="Image" name="ListboxDivider">
+            <Anchor side="Top" relative="$parent/AnchorFrame" pos="Min" offset="-25"/>
+            <Anchor side="Bottom" relative="$parent/Materialheader" pos="Min" offset="25"/>
+            <Anchor side="Left" relative="$parent/CraftingInfoFrame/AnchorFrame" pos="Min" offset="-5"/>
+
+            <Texture val="Assets/Textures/ui_battlenet_glue_campaign_floatingraceicon_divider_highlight_verticals.dds"/>
+        </Frame>
+
+        <Frame type="Frame" name="CraftingInfoFrame" template="Cleane_StandardTemplates/EclipseFrameStandardTemplate">
+            <Anchor relative="$parent"/>
+
+            <Frame type="Frame" name="AnchorFrame">
+                <Anchor side="Left" relative="$parent/$parent/ItemListbox" pos="Max" offset="30"/>
+                <Anchor side="Bottom" relative="$parent/$parent/MaterialAnchorFrame" pos="Min" offset="-15"/>
+            </Frame>
+
+            <Frame type="Image" name="Background">
+                <Visible val="False"/>
+            </Frame>
+
+            <!-- RequiredFrames -->
+
+            <Frame type="Frame" name="DummyInfoFrame" template="Cleane_StandardTemplates/DummyInfoFrame"></Frame>
+
+            <!-- Item Data -->
+
+            <Frame type="Image" name="Header">
+                <Anchor side="Top" relative="$parent/AnchorFrame" pos="Min" offset="0"/>
+                <Anchor side="Right" relative="$parent/AnchorFrame" pos="Max" offset="0"/>
+                <Anchor side="Left" relative="$parent/AnchorFrame" pos="Min" offset="0"/>
+                
+                <Height val="180"/>
+
+                <Texture val="Assets/Textures/ui_clean_tooltip_header.dds"/>
+                <ColorAdjustMode val="Fill"/>
+                <AdjustmentColor val="934bff"/>
+                <Alpha val="130"/>
+                <TextureCoords top="0" left=".5" bottom="1" right="-1"/>
+    
+                <StateGroup name="ItemType" template="DS_StandardTemplates/ItemTypeTemplate">
+                    <DefaultState val="Weapon"/>
+                </StateGroup>
+            </Frame>
+
+            <Frame type="Label" name="Title">
+                <Anchor side="Left" relative="$parent/Header" pos="Mid" offset="0"/>
+                <Anchor side="Right" relative="$parent/Header" pos="Mid" offset="0"/>
+                <Anchor side="Top" relative="$parent/AnchorFrame" pos="Min" offset="20"/>
+    
+                <Text val="{$parent/DummyInfoFrame/Name/@Text}"/>
+                <Style val="DS_CraftingItemTitle"/>
+            </Frame>
+
+            <Frame type="Label" name="Type">
+                <Anchor side="Left" relative="$parent/Header" pos="Mid" offset="0"/>
+                <Anchor side="Right" relative="$parent/Header" pos="Mid" offset="0"/>
+                <Anchor side="Top" relative="$parent/Title" pos="Max" offset="-5"/>
+    
+                <Text val="{$parent/DummyInfoFrame/Quality/@Text}"/>
+                <Style val="DS_CraftingItemType"/>
+            </Frame>
+
+            <Frame type="Label" name="Desc">
+                <Anchor side="Left" relative="$parent/Header" pos="Min" offset="15"/>
+                <Anchor side="Right" relative="$parent/Header" pos="Max" offset="-15"/>
+                <Anchor side="Top" relative="$parent/Type" pos="Max" offset="25"/>
+
+                <Text val="{$parent/DummyInfoFrame/UseDesc/@Text}"/>
+                <Style val="DS_CraftingItemDesc"/>
+            </Frame>
+
+            <Frame type="Frame" name="CraftedItem" template="DS_StandardTemplates/EquipmentButtonTemplate">
+                <Anchor side="Left" relative="$parent/Header" pos="Mid" offset="0"/>
+                <Anchor side="Right" relative="$parent/Header" pos="Mid" offset="0"/>
+                <Anchor side="Bottom" relative="$parent/AnchorFrame" pos="Max" offset="-180"/>
+
+                <Width val="#CraftedItemSize"/>
+                <Height val="#CraftedItemSize"/>
+                <Visible val="True"/>
+
+                <Frame type="Image" name="Icon">
+                    <Anchor relative="$parent" offset="-36"/>
+                    <Texture val="{$parent/$parent/DummyInfoFrame/Icon/@Texture}"/>
+                </Frame>
+
+                <Frame type="Image" name="IconBackground" template="Cleane_StandardTemplates/IconBackgroundTemplate">
+                    <Anchor relative="$parent/Icon" offset="0"/>
+            
+                    <AlphaMaskTexture val="{$parent/Icon/@Texture}"/>
+                    <Alpha val="255"/>
+                </Frame>
+
+                <StateGroup name="ItemState">
+                    <DefaultState val="HasItem"/>
+                </StateGroup>
+            </Frame>
+
+            <!-- Material Top Row -->
+
+            <Frame type="Button" name="CraftingSlot2" template="DS_CraftingPanelTemplates/CraftingSlotTemplate">
+                <Anchor side="Left" relative="$parent/Header" pos="Mid" offset="0"/>
+                <Anchor side="Right" relative="$parent/Header" pos="Mid" offset="0"/>
+                <Anchor side="Bottom" relative="$parent/CraftedItem" pos="Min" offset="-45"/>
+
+            </Frame>
+
+            <Frame type="Button" name="CraftingSlot3" template="DS_CraftingPanelTemplates/CraftingSlotTemplate">
+                <Anchor side="Left" relative="$parent/CraftingSlot2" pos="Max" offset="20"/>
+                <Anchor side="Bottom" relative="$parent/CraftedItem" pos="Min" offset="-45"/>
+            </Frame>
+
+            <Frame type="Button" name="CraftingSlot1" template="DS_CraftingPanelTemplates/CraftingSlotTemplate">
+                <Anchor side="Right" relative="$parent/CraftingSlot2" pos="Min" offset="-20"/>
+                <Anchor side="Bottom" relative="$parent/CraftedItem" pos="Min" offset="-45"/>
+            </Frame>
+
+            <!-- Material Bottom Row -->
+
+            <Frame type="Button" name="CraftingSlot5" template="DS_CraftingPanelTemplates/CraftingSlotTemplate">
+                <Anchor side="Left" relative="$parent/Header" pos="Mid" offset="0"/>
+                <Anchor side="Right" relative="$parent/Header" pos="Mid" offset="0"/>
+                <Anchor side="Top" relative="$parent/CraftedItem" pos="Max" offset="45"/>
+            </Frame>
+
+            <Frame type="Button" name="CraftingSlot6" template="DS_CraftingPanelTemplates/CraftingSlotTemplate">
+                <Anchor side="Left" relative="$parent/CraftingSlot5" pos="Max" offset="20"/>
+                <Anchor side="Top" relative="$parent/CraftedItem" pos="Max" offset="45"/>
+            </Frame>
+
+            <Frame type="Button" name="CraftingSlot4" template="DS_CraftingPanelTemplates/CraftingSlotTemplate">
+                <Anchor side="Right" relative="$parent/CraftingSlot5" pos="Min" offset="-20"/>
+                <Anchor side="Top" relative="$parent/CraftedItem" pos="Max" offset="45"/>
+            </Frame>
+
+            <!-- Material Lists -->
+            <!-- Material List 1 -->
+
+            <Frame type="Control" name="List1MaterialSlot1" template="DS_CraftingPanelTemplates/CraftingStashMaterialSlotTemplate">
+            </Frame>
+
+            <Frame type="Control" name="List1MaterialSlot2" template="DS_CraftingPanelTemplates/CraftingStashMaterialSlotTemplate">
+                <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+            </Frame>
+
+            <Frame type="Control" name="List1MaterialSlot3" template="DS_CraftingPanelTemplates/CraftingStashMaterialSlotTemplate">
+                <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+            </Frame>
+
+            <Frame type="Control" name="List1MaterialSlot4" template="DS_CraftingPanelTemplates/CraftingStashMaterialSlotTemplate">
+                <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+            </Frame>
+
+            <Frame type="Control" name="List1MaterialSlot5" template="DS_CraftingPanelTemplates/CraftingStashMaterialSlotTemplate">
+                <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+            </Frame>
+
+            <Frame type="Control" name="List1MaterialSlot6" template="DS_CraftingPanelTemplates/CraftingStashMaterialSlotTemplate">
+                <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+            </Frame>
+
+            <Frame type="Control" name="List1MaterialSlot7" template="DS_CraftingPanelTemplates/CraftingStashMaterialSlotTemplate">
+                <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+            </Frame>
+
+            <Frame type="Control" name="List1MaterialSlot8" template="DS_CraftingPanelTemplates/CraftingStashMaterialSlotTemplate">
+                <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+            </Frame>
+
+            <Frame type="Control" name="List1MaterialSlot9" template="DS_CraftingPanelTemplates/CraftingStashMaterialSlotTemplate">
+                <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+            </Frame>
+
+            <Frame type="Control" name="List1MaterialSlot10" template="DS_CraftingPanelTemplates/CraftingStashMaterialSlotTemplate">
+                <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+            </Frame>
+
+
+            <Frame type="Control" name="List1MaterialSlot11" template="DS_CraftingPanelTemplates/CraftingStashMaterialSlotTemplate">
+                <Anchor side="Left" relative="$parent/List1MaterialSlot1" pos="Min" offset="0"/>
+                <Anchor side="Top" relative="$parent/List1MaterialSlot1" pos="Max" offset="0"/>
+            </Frame>
+
+            <Frame type="Control" name="List1MaterialSlot12" template="DS_CraftingPanelTemplates/CraftingStashMaterialSlotTemplate">
+                <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+                <Anchor side="Top" relative="$parent/List1MaterialSlot1" pos="Max" offset="0"/>
+            </Frame>
+
+            <Frame type="Control" name="List1MaterialSlot13" template="DS_CraftingPanelTemplates/CraftingStashMaterialSlotTemplate">
+                <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+                <Anchor side="Top" relative="$parent/List1MaterialSlot1" pos="Max" offset="0"/>
+            </Frame>
+
+            <Frame type="Control" name="List1MaterialSlot14" template="DS_CraftingPanelTemplates/CraftingStashMaterialSlotTemplate">
+                <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+                <Anchor side="Top" relative="$parent/List1MaterialSlot1" pos="Max" offset="0"/>
+            </Frame>
+
+            <Frame type="Control" name="List1MaterialSlot15" template="DS_CraftingPanelTemplates/CraftingStashMaterialSlotTemplate">
+                <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+                <Anchor side="Top" relative="$parent/List1MaterialSlot1" pos="Max" offset="0"/>
+            </Frame>
+
+            <Frame type="Control" name="List1MaterialSlot16" template="DS_CraftingPanelTemplates/CraftingStashMaterialSlotTemplate">
+                <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+                <Anchor side="Top" relative="$parent/List1MaterialSlot1" pos="Max" offset="0"/>
+            </Frame>
+
+            <Frame type="Control" name="List1MaterialSlot17" template="DS_CraftingPanelTemplates/CraftingStashMaterialSlotTemplate">
+                <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+                <Anchor side="Top" relative="$parent/List1MaterialSlot1" pos="Max" offset="0"/>
+            </Frame>
+
+            <Frame type="Control" name="List1MaterialSlot18" template="DS_CraftingPanelTemplates/CraftingStashMaterialSlotTemplate">
+                <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+                <Anchor side="Top" relative="$parent/List1MaterialSlot1" pos="Max" offset="0"/>
+            </Frame>
+
+            <Frame type="Control" name="List1MaterialSlot19" template="DS_CraftingPanelTemplates/CraftingStashMaterialSlotTemplate">
+                <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+                <Anchor side="Top" relative="$parent/List1MaterialSlot1" pos="Max" offset="0"/>
+            </Frame>
+
+            <Frame type="Control" name="List1MaterialSlot20" template="DS_CraftingPanelTemplates/CraftingStashMaterialSlotTemplate">
+                <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+                <Anchor side="Top" relative="$parent/List1MaterialSlot1" pos="Max" offset="0"/>
+            </Frame>
+
+
+            <Frame type="Control" name="List1MaterialSlot21" template="DS_CraftingPanelTemplates/CraftingStashMaterialSlotTemplate">
+                <Anchor side="Left" relative="$parent/List1MaterialSlot1" pos="Min" offset="0"/>
+                <Anchor side="Top" relative="$parent/List1MaterialSlot11" pos="Max" offset="0"/>
+            </Frame>
+
+            <Frame type="Control" name="List1MaterialSlot22" template="DS_CraftingPanelTemplates/CraftingStashMaterialSlotTemplate">
+                <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+                <Anchor side="Top" relative="$parent/List1MaterialSlot11" pos="Max" offset="0"/>
+            </Frame>
+
+            <Frame type="Control" name="List1MaterialSlot23" template="DS_CraftingPanelTemplates/CraftingStashMaterialSlotTemplate">
+                <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+                <Anchor side="Top" relative="$parent/List1MaterialSlot11" pos="Max" offset="0"/>
+            </Frame>
+
+            <Frame type="Control" name="List1MaterialSlot24" template="DS_CraftingPanelTemplates/CraftingStashMaterialSlotTemplate">
+                <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+                <Anchor side="Top" relative="$parent/List1MaterialSlot11" pos="Max" offset="0"/>
+            </Frame>
+
+            <Frame type="Control" name="List1MaterialSlot25" template="DS_CraftingPanelTemplates/CraftingStashMaterialSlotTemplate">
+                <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+                <Anchor side="Top" relative="$parent/List1MaterialSlot11" pos="Max" offset="0"/>
+            </Frame>
+
+            <Frame type="Control" name="List1MaterialSlot26" template="DS_CraftingPanelTemplates/CraftingStashMaterialSlotTemplate">
+                <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+                <Anchor side="Top" relative="$parent/List1MaterialSlot11" pos="Max" offset="0"/>
+            </Frame>
+
+            <Frame type="Control" name="List1MaterialSlot27" template="DS_CraftingPanelTemplates/CraftingStashMaterialSlotTemplate">
+                <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+                <Anchor side="Top" relative="$parent/List1MaterialSlot11" pos="Max" offset="0"/>
+            </Frame>
+
+            <Frame type="Control" name="List1MaterialSlot28" template="DS_CraftingPanelTemplates/CraftingStashMaterialSlotTemplate">
+                <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+                <Anchor side="Top" relative="$parent/List1MaterialSlot11" pos="Max" offset="0"/>
+            </Frame>
+
+            <Frame type="Control" name="List1MaterialSlot29" template="DS_CraftingPanelTemplates/CraftingStashMaterialSlotTemplate">
+                <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+                <Anchor side="Top" relative="$parent/List1MaterialSlot11" pos="Max" offset="0"/>
+            </Frame>
+
+            <Frame type="Control" name="List1MaterialSlot30" template="DS_CraftingPanelTemplates/CraftingStashMaterialSlotTemplate">
+                <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+                <Anchor side="Top" relative="$parent/List1MaterialSlot11" pos="Max" offset="0"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Frame" name="Materialheader" template="DS_StandardTemplates/StandardHeaderModuleTemplate">
+            <Anchor side="Top" relative="$parent/MaterialAnchorFrame" pos="Min" offset="0"/>
+
+            <Frame type="Label" name="HeaderTitle">
+                <Visible val="False"/>
+            </Frame>
+        </Frame>
+
+        <!-- Material Category Toggles -->
+
+        <Frame type="Button" name="MaterialCategory1" template="DS_StandardTemplates/CharacterNavButtonTemplate">
+            <Anchor side="Top" relative="$parent/Materialheader" pos="Mid" offset="0"/>
+            <Anchor side="Bottom" relative="$parent/Materialheader" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent/AnchorFrame" pos="Mid" offset="-15"/>
+
+            <Toggleable val="True"/>
+            <Height val="45"/>
+
+            <Frame type="Label" name="TextLabel">
+                <Text val="Zerg"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Button" name="MaterialCategory2" template="DS_StandardTemplates/CharacterNavButtonTemplate">
+            <Anchor side="Top" relative="$parent/Materialheader" pos="Mid" offset="0"/>
+            <Anchor side="Bottom" relative="$parent/Materialheader" pos="Mid" offset="0"/>
+            <Anchor side="Left" relative="$parent/AnchorFrame" pos="Mid" offset="15"/>
+
+            <Toggleable val="True"/>
+
+            <Frame type="Label" name="TextLabel">
+                <Text val="Terran"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Frame" name="MaterialAnchorFrame" template="Cleane_StandardTemplates/EclipseFrameStandardTemplate">
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+
+            <Height val="#CraftingStashHeight"/>
+
+            <Frame type="Image" name="Background">
+                <Visible val="False"/>
+            </Frame>
+        </Frame>
+    </Frame>
+</Desc>
