@@ -711,6 +711,35 @@
                 <Field Id="Item Stats"/>
             </User>
         </Instances>
+        <Instances Id="Cloth Scraps">
+            <Int Int="25">
+                <Field Id="Max Quantity"/>
+            </Int>
+            <String String="Material">
+                <Field Id="Category"/>
+            </String>
+            <String String="Cloth Scraps">
+                <Field Id="Name"/>
+            </String>
+            <String String="Crafting">
+                <Field Id="Use Type"/>
+            </String>
+            <String String="Biological">
+                <Field Id="MaterialType"/>
+            </String>
+            <Text Text="UserData/Items/Cloth Scraps_Description">
+                <Field Id="Description"/>
+            </Text>
+            <Text Text="UserData/Items/Cloth Scraps_Lore">
+                <Field Id="Lore"/>
+            </Text>
+            <User Type="WeaponTypes" Instance="[Default]">
+                <Field Id="Weapon Data"/>
+            </User>
+            <User Type="ModifierStats" Instance="[Default]">
+                <Field Id="Item Stats"/>
+            </User>
+        </Instances>
         <Instances Id="TEST Suit">
             <Image Image="Assets\Textures\Items\ui_itemicons_pills.dds">
                 <Field Id="Icon"/>
