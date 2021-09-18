@@ -1196,7 +1196,7 @@ void libDEAD_gf_DS_FireWeaponItem (int lp_player, string lp_weaponItem) {
     lv_damage_max = UserDataGetInt("WeaponTypes", lp_weaponItem, "DamageMax", 1);
     libNtve_gf_CatalogFieldValueSetAsReal(c_gameCatalogEffect, lv_impact, "Amount", lp_player, lv_damage_min);
     libNtve_gf_CatalogFieldValueSetAsReal(c_gameCatalogEffect, lv_impact, "Random", lp_player, (lv_damage_max - lv_damage_min));
-    libECLP_gf_ECL_Fire(lp_player, lv_launchArt, lv_projectileN, lv_bursts, lv_velocity, lv_cooldown, lv_cooldown_burst, lv_angle, lv_impact, lv_range);
+    libECLP_gf_ECL_Fire(lp_player, lv_launchArt, lv_projectileN, lv_velocity, lv_cooldown, lv_angle, lv_impact, lv_range);
 }
 
 void libDEAD_gf_ECL__Hookup_Context (int lp_player, int lp_index) {
@@ -3430,6 +3430,90 @@ void libDEAD_gf_AddRemoveWater (int lp_player, bool lp_addRemove, int lp_amount)
     libDEAD_gf_DS_UpdateVitalsUI(lp_player);
 }
 
+void libDEAD_gf_ModifyLimbHealthMax (int lp_player, int lp_value, int lp_limb) {
+    // Automatic Variable Declarations
+    int auto802D6273_val;
+
+    // Implementation
+    auto802D6273_val = lp_limb;
+    if (auto802D6273_val == libDEAD_ge_DS_LimbType_Head) {
+        libDEAD_gv_dS_Character[lp_player].lv_headMaxHP += lp_value;
+    }
+    else if (auto802D6273_val == libDEAD_ge_DS_LimbType_Torso) {
+        libDEAD_gv_dS_Character[lp_player].lv_torsoMaxHP += lp_value;
+    }
+    else if (auto802D6273_val == libDEAD_ge_DS_LimbType_Legs) {
+        libDEAD_gv_dS_Character[lp_player].lv_legsMaxHP += lp_value;
+    }
+    else {
+
+    }
+    libDEAD_gf_DS_UpdateVitalsUI(lp_player);
+}
+
+void libDEAD_gf_ModifyLimbHealth (int lp_player, int lp_value, int lp_limb) {
+    // Automatic Variable Declarations
+    int auto4864EDCE_val;
+
+    // Implementation
+    auto4864EDCE_val = lp_limb;
+    if (auto4864EDCE_val == libDEAD_ge_DS_LimbType_Head) {
+        libDEAD_gv_dS_Character[lp_player].lv_headHP += lp_value;
+    }
+    else if (auto4864EDCE_val == libDEAD_ge_DS_LimbType_Torso) {
+        libDEAD_gv_dS_Character[lp_player].lv_torsoHP += lp_value;
+    }
+    else if (auto4864EDCE_val == libDEAD_ge_DS_LimbType_Legs) {
+        libDEAD_gv_dS_Character[lp_player].lv_legsHP += lp_value;
+    }
+    else {
+
+    }
+    libDEAD_gf_DS_UpdateVitalsUI(lp_player);
+}
+
+void libDEAD_gf_DivideHealthToLimbs (int lp_player, int lp_hPAddition) {
+    // Variable Declarations
+    const fixed lv_percentageHead = 0.18;
+    const fixed lv_percentageTorso = 0.45;
+    const fixed lv_percentageLegs = 0.37;
+    fixed lv_headHp;
+    fixed lv_torsoHP;
+    fixed lv_legHP;
+    int lv_totalHP;
+    int lv_tempHP;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Implementation
+    lv_headHp = (IntToFixed(lp_hPAddition) * lv_percentageHead);
+    lv_torsoHP = (IntToFixed(lp_hPAddition) * lv_percentageTorso);
+    lv_legHP = (IntToFixed(lp_hPAddition) * lv_percentageLegs);
+    lv_headHp = Trunc(lv_headHp);
+    lv_torsoHP = Trunc(lv_torsoHP);
+    lv_legHP = Trunc(lv_legHP);
+    lv_totalHP = (FixedToInt(lv_headHp) + FixedToInt(lv_torsoHP) + FixedToInt(lv_legHP));
+    if ((lv_totalHP < lp_hPAddition) && (lp_hPAddition >= 1)) {
+        libDEAD_gf_SendDebugMessage(("Adding HP by " + IntToString(lp_hPAddition)));
+        lv_tempHP = (lp_hPAddition - lv_totalHP);
+        lv_headHp += lv_tempHP;
+        lv_totalHP = (FixedToInt(lv_headHp) + FixedToInt(lv_torsoHP) + FixedToInt(lv_legHP));
+    }
+    if ((lv_totalHP > lp_hPAddition) && (lp_hPAddition <= -1)) {
+        libDEAD_gf_SendDebugMessage(("Removing HP by " + IntToString(lp_hPAddition)));
+        lv_tempHP = (lp_hPAddition - lv_totalHP);
+        lv_headHp += lv_tempHP;
+        lv_totalHP = (FixedToInt(lv_headHp) + FixedToInt(lv_torsoHP) + FixedToInt(lv_legHP));
+    }
+    libDEAD_gf_ModifyLimbHealthMax(lp_player, FixedToInt(lv_headHp), libDEAD_ge_DS_LimbType_Head);
+    libDEAD_gf_ModifyLimbHealthMax(lp_player, FixedToInt(lv_legHP), libDEAD_ge_DS_LimbType_Legs);
+    libDEAD_gf_ModifyLimbHealthMax(lp_player, FixedToInt(lv_torsoHP), libDEAD_ge_DS_LimbType_Torso);
+    libDEAD_gf_ModifyLimbHealth(lp_player, FixedToInt(lv_torsoHP), libDEAD_ge_DS_LimbType_Head);
+    libDEAD_gf_ModifyLimbHealth(lp_player, FixedToInt(lv_torsoHP), libDEAD_ge_DS_LimbType_Torso);
+    libDEAD_gf_ModifyLimbHealth(lp_player, FixedToInt(lv_legHP), libDEAD_ge_DS_LimbType_Legs);
+}
+
 void libDEAD_gf_AddFood (int lp_player, int lp_amount) {
     // Variable Declarations
     int lv_localFood;
@@ -5207,6 +5291,19 @@ bool libDEAD_gt_ECL__HOOKUPINVENTORYFRAMES_Func (bool testConds, bool runActions
 //--------------------------------------------------------------------------------------------------
 void libDEAD_gt_ECL__HOOKUPINVENTORYFRAMES_Init () {
     libDEAD_gt_ECL__HOOKUPINVENTORYFRAMES = TriggerCreate("libDEAD_gt_ECL__HOOKUPINVENTORYFRAMES_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Untitled Trigger 002
+//--------------------------------------------------------------------------------------------------
+bool libDEAD_gt_UntitledTrigger002_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libDEAD_gt_UntitledTrigger002_Init () {
+    libDEAD_gt_UntitledTrigger002 = TriggerCreate("libDEAD_gt_UntitledTrigger002_Func");
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7373,6 +7470,7 @@ void libDEAD_InitTriggers () {
     libDEAD_gt_DS_ExamineCloseEscP2_Init();
     libDEAD_gt_KL_SwapWeaponTest_Init();
     libDEAD_gt_ECL__HOOKUPINVENTORYFRAMES_Init();
+    libDEAD_gt_UntitledTrigger002_Init();
     libDEAD_gt_ECL__DRAG_ON_OFF_Init();
     libDEAD_gt_ECL__SETNEWOLDSLOT_Init();
     libDEAD_gt_ECL__DROPZONE_Init();
