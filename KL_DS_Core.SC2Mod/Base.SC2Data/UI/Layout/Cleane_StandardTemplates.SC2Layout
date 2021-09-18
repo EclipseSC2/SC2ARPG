@@ -1,0 +1,1015 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+
+    <Constant name="StandardFrameAlpha" val="166"/>
+
+    <!-- Normal Frame Constants -->
+    <Constant name="StandardFrameBackgroundColor" val="112e31"/>
+    <Constant name="StandardFrameHighlightColor" val="2aefe2"/>
+    <Constant name="StandardFrameGlowColor" val="68aaac"/>
+    <Constant name="StandardFrameDarkColor" val="075f59"/>
+
+    <!-- Warning Frame Constants -->
+    <Constant name="StandardWarningFrameBackgroundColor" val="2f0404"/>
+    <Constant name="StandardWarningFrameHighlightColor" val="ee3736"/>
+    <Constant name="StandardWarningFrameGlowColor" val="a8171a"/>
+    <Constant name="StandardWarningFrameDarkColor" val="5e0808"/>
+
+    <Constant name="ListboxItemSize" val="110"/>
+    <Constant name="ListboxBackgroundHeight" val="75"/>
+    <Constant name="ListboxBackgroundOffset" val="-22"/>
+    <Constant name="LoadoutStatItemSize" val="90"/>
+
+
+    <Frame type="Frame" name="StandardFrameTemplate">
+
+        <Frame type="Image" name="Background">
+            <Anchor relative="$parent"/>
+    
+            <Texture val="Assets/Textures/ui_clean_standardframe.dds"/>
+            <TextureType val="NineSlice"/>
+        </Frame>
+    
+        <Frame type="Frame" name="AnchorFrame">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="-10"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="10"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="-10"/>
+        </Frame>
+    </Frame>
+    
+    <Frame type="Frame" name="EclipseFrameStandardTemplate">
+    
+        <Frame type="Image" name="Background">
+            <Anchor relative="$parent"/>
+    
+            <Texture val="Assets/Textures/ECL_BORDER_INV.dds"/>
+            <TextureType val="NineSlice"/>
+        </Frame>
+    
+        <Frame type="Frame" name="AnchorFrame">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="15"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="-15"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="15"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="-15"/>
+        </Frame>
+    </Frame>
+    <!--
+        Assets\Textures\hud_effect_phase_glow_texture.dds
+        Assets\Textures\hud_effect_stealth_glow_hex_bluepattern.dds
+        Assets\Textures\hud_effect_stealth_glow_mesh.dds
+
+        Assets\Textures\sc2_ui_collection_warchest_esports_mainevent_glow_small.dds
+        Assets\Textures\sc2_ui_collection_warchest_esports_mainevent_glow_large.dds
+
+        Assets\Textures\ui_battlenet_glue_tournament_ghosttrophyglow.dds
+
+        Assets\Textures\ui_battlenet_glues_achievement_fanfare_bgglow_prot.dds
+
+        Assets\Textures\ui_glues_pageassets_smallhorizontalbluelensflare.dds
+
+        Hex Glow Top
+        Assets\Textures\sc2_ui_collection_warchest_esports_mainevent_hexagonline.dds
+
+        Hex Pattern Large
+        Assets\Textures\sc2_ui_newplayerxp_hexagon.dds
+
+        Divider Styles
+        Assets\Textures\ui_battlenet_glue_campaign_floatingraceicon_divider.dds
+        Assets\Textures\ui_battlenet_glue_campaign_floatingraceicon_divider_highlight.dds
+    -->
+    
+    <Frame type="Frame" name="DummyInfoFrame">
+        <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+        <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+
+        <Width val="1"/>
+        <Height val="1"/>
+        <Visible val="False"/>
+
+        <Frame type="Image" name="Icon">
+            <Anchor relative="$parent"/>
+
+            <Texture val="Assets\Textures\Items\ui_itemicons_ammopistol.dds"/>
+        </Frame>
+
+        <Frame type="Label" name="Quantity">
+            <Anchor relative="$parent"/>
+
+            <Text val="[69]"/>
+        </Frame>
+
+        <Frame type="Label" name="Quality">
+            <Anchor relative="$parent"/>
+
+            <Text val="Kat Item"/>
+        </Frame>
+
+        <Frame type="Label" name="Durability">
+            <Anchor relative="$parent"/>
+
+            <Text val="420"/>
+        </Frame>
+
+        <Frame type="Label" name="Name">
+            <Anchor relative="$parent"/>
+
+            <Text val="Kattinator"/>
+        </Frame>
+
+        <Frame type="Label" name="UseType">
+            <Anchor relative="$parent"/>
+
+            <Text val="Dekattify"/>
+        </Frame>
+
+        <Frame type="Label" name="UseDesc">
+            <Anchor relative="$parent"/>
+
+            <Text val="Can make new kats"/>
+        </Frame>
+
+        <Frame type="Label" name="Lore">
+            <Anchor relative="$parent"/>
+
+            <Text val="Forged in mount kettle in the deep fires of kattification"/>
+        </Frame>
+
+        <Frame type="Label" name="Hotkey">
+            <Anchor relative="$parent"/>
+
+            <Text val="[K]"/>
+        </Frame>
+
+        <Frame type="Label" name="Cost">
+            <Anchor relative="$parent"/>
+
+            <Text val="420"/>
+        </Frame>
+    </Frame>
+
+    <Frame type="Frame" name="StandardTooltipTemplate" template="Cleane_StandardTemplates/StandardFrameTemplate">
+        <Unclipped val="True"/>
+        <Alpha val="0"/>
+        <RenderPriority val="1000"/>
+
+        <Animation name="Show/Hide">
+            <Event event="OnMouseEnter" action="DirectionForward,Play" frame="$parent"/>
+            <Event event="OnMouseExit" action="DirectionReverse,Play" frame="$parent"/>
+
+            <Controller type="Fade" end="Pause" frame="$this">
+                <Key type="Curve" time="0.0" value="0"/>
+                <Key type="Curve" time="0.2" value="255"/>
+            </Controller>
+        </Animation>
+    </Frame>
+
+    <Frame type="Image" name="IconBackgroundTemplate">
+        <Texture val="Assets/Textures/ui_clean_buttongradient.dds"/>
+        <ColorAdjustMode val="Fill"/>
+        <AdjustmentColor val="934bff"/>
+        <Visible val="{$parent/Icon/@Visible}"/>
+
+        <StateGroup name="ItemType">
+            <DefaultState val="Invalid"/>
+
+            <State name="Invalid">
+                <When type="AnimationState" frame="$parent" ItemType="Invalid"/>
+
+                <Action type="SetProperty" frame="$this" AdjustmentColor="934bff"/>
+            </State>
+        
+            <State name="Consummable">
+                <When type="AnimationState" frame="$parent" ItemType="Consummable"/>
+
+                <Action type="SetProperty" frame="$this" AdjustmentColor="838383"/>
+            </State>
+
+            <State name="Armor">
+                <When type="AnimationState" frame="$parent" ItemType="Armor"/>
+
+                <Action type="SetProperty" frame="$this" AdjustmentColor="363a7a"/>
+            </State>
+
+            <State name="Weapon">
+                <When type="AnimationState" frame="$parent" ItemType="Weapon"/>
+
+                <Action type="SetProperty" frame="$this" AdjustmentColor="7d3535"/>
+            </State>
+
+            <State name="Ammo">
+                <When type="AnimationState" frame="$parent" ItemType="Ammo"/>
+
+                <Action type="SetProperty" frame="$this" AdjustmentColor="7d7235"/>
+            </State>
+
+            <State name="Material">
+                <When type="AnimationState" frame="$parent" ItemType="Material"/>
+
+                <Action type="SetProperty" frame="$this" AdjustmentColor="368936"/>
+            </State>
+
+            <State name="Key">
+                <When type="AnimationState" frame="$parent" ItemType="Key"/>
+
+                <Action type="SetProperty" frame="$this" AdjustmentColor="7a5836"/>
+            </State>
+        </StateGroup>
+    </Frame>
+
+    <Frame type="Frame" name="HeaderFrameTemplate" template="Cleane_StandardTemplates/StandardFrameTemplate">
+        
+        <Frame type="Frame" name="Header">
+            <Anchor side="Top" relative="$parent/AnchorFrame" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent/AnchorFrame" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent/AnchorFrame" pos="Max" offset="0"/>
+
+            <Height val="60"/>
+
+            <Frame type="Image" name="Glow">
+                <Anchor relative="$parent"/>
+                <BlendMode val="Add"/>
+
+                <LayerCount val="2"/>
+
+                <Texture val="Assets\Textures\ui_battlenet_glues__fanfare_bgglow_prot.dds" layer="0"/>
+                <AlphaLayer val="True" layer="0"/>
+                <TextureCoords top="0" left="0" bottom="1" right="1" layer="1"/>
+                <TextureType val="Normal" layer="0"/>
+
+                <Texture val="Assets\Textures\sc2_ui_newplayerxp_hexagon_shimmermask.dds" layer="1"/>
+                <TextureCoords top="0" left="0" bottom="1" right="1" layer="1"/>
+                <Alpha val="180" layer="1"/>
+                
+
+                <Animation name="Shimmer">
+                    <Event event="OnShown" action="DirectionForward" frame="$parent"/>
+                    <Event event="OnShown" action="Play" frame="$parent"/>
+
+                    <Controller type="LayerUV" end="Loop" frame="$this" relative="True" layer="1" side="Right" sidelock="True">
+                        <Key type="Curve" time="0.0" value="2"/>
+                        <Key type="Curve" time="8" value="-2"/>
+                    </Controller>                    
+                </Animation>
+            </Frame>
+
+            <Frame type="Image" name="Background">
+                <Anchor relative="$parent"/>
+
+                <Texture val="Assets\Textures\ui_clean_headerglow.dds"/>
+                <Alpha val="120"/>
+                <Height val="200"/>
+                <AdjustmentColor val="001d84"/>
+                <ColorAdjustMode val="Fill"/>
+
+                <Animation name="Pulse">
+                    <Event event="OnShown" action="DirectionForward" frame="$parent"/>
+                    <Event event="OnShown" action="Play" frame="$parent"/>
+
+                    <Controller type="Fade" end="Pause" frame="$this">
+                        <Key type="Curve" time="0.0" value="120"/>
+                        <Key type="Curve" time="2" value="200"/>
+                        <Key type="Curve" time="3" value="180"/>
+                        <Key type="Curve" time="5" value="220"/>
+                        <Key type="Curve" time="7" value="120"/>
+                    </Controller>
+                </Animation>
+            </Frame>
+        </Frame>
+
+        <Frame type="Label" name="Title">
+            <Anchor side="Top" relative="$parent/Header" pos="Mid" offset="0"/>
+            <Anchor side="Bottom" relative="$parent/Header" pos="Mid" offset="0"/>
+            <Anchor side="Left" relative="$parent/Header" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent/Header" pos="Mid" offset="0"/>
+
+            <Text val="Title"/>
+            <Style val="Clean_HeaderTitleMed"/>
+        </Frame>
+
+        <Frame type="Image" name="Divider">
+            <Anchor side="Left" relative="$parent/AnchorFrame" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent/AnchorFrame" pos="Max" offset="0"/>
+            <Anchor side="Top" relative="$parent/Header" pos="Max" offset="-5"/>
+            
+            <Texture val="Assets\Textures\ui_battlenet_glue_campaign_floatingraceicon_divider_highlight.dds"/>
+        </Frame>
+    </Frame>
+
+    <Frame type="Frame" name="NotesModuleTemplate">
+        <Anchor side="Top" relative="$parent/Header" pos="Max" offset="15"/>
+        <Anchor side="Bottom" relative="$this/BufferFrame" pos="Max" offset="0"/>
+        <Anchor side="Left" relative="$parent/AnchorFrame" pos="Min" offset="12"/>
+        <Anchor side="Right" relative="$parent/AnchorFrame" pos="Max" offset="-12"/>
+
+        <Frame type="Image" name="Bullet">
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+
+            <Texture val="Assets/Textures/ui_clean_pageassets_bullet.dds"/>
+            <Width val="20"/>
+            <Height val="20"/>
+        </Frame>
+        
+        <Frame type="Label" name="Desc">
+            <Anchor side="Top" relative="$parent/Bullet" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent/Bullet" pos="Max" offset="5"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+
+            <Text val="Just some Test Text"/>
+            <Style val="Clean_NotesDesc"/>
+        </Frame>
+
+        <Frame type="Frame" name="BufferFrame">
+            <Anchor side="Top" relative="$parent/Desc" pos="Max" offset="5"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+            <Height val="5"/>
+        </Frame>
+    </Frame>
+
+    <Frame type="Frame" name="StandardPortraitTemplate">
+        <Width val="400"/>
+        <Height val="400"/>
+
+        <Frame type="ProgressBar" name="XPBar">
+            <Anchor relative="$parent"/>
+            <Circular val="True" />
+            <CircularStart val="360" />
+            <CircularEndOffset val="-360" />
+            <AcceptsMouse val="False" />
+            <Value val="65"/>
+            <MinValue val="0" />
+            <MaxValue val="100" />
+            <Handle val="XPBar"/>
+
+            <Frame type="MathFrame" name="AngleDivide">
+
+                <A val="{$parent/@Value}"/>
+                <B val="{$parent/@MaxValue}"/>
+                <Operator val="Divide"/>
+            </Frame>
+
+            <Frame type="MathFrame" name="AngleMultiply">
+                <A val="{$parent/AngleDivide/@Result}"/>
+                <B val="360"/>
+                <Operator val="Multiply"/>
+            </Frame>
+
+            <Frame type="Image" name="Background">
+                <Anchor relative="$parent" offset="-15"/>
+
+                <Color val="0a1835"/>
+                <AlphaMaskTexture val="Assets/Textures/ui_clean_portrait_mask.dds"/>
+            </Frame>
+
+            <Frame type="Frame" name="FillImageContainer">
+                <Anchor relative="$parent"/>
+
+                <Frame type="Image" name="FillImage">
+                    <Anchor relative="$parent"/>
+
+                    <TextureType val="Circular" />
+                    <Texture val="Assets/Textures/ui_clean_portrait_experiencebar_normal.dds"/>
+                    <SubpixelRendering val="True"/>
+                </Frame>
+
+                <Frame type="Image" name="ProgressShimmer">
+                    <Anchor relative="$parent"/>
+        
+                    <LayerCount val="2"/>
+        
+                    <Texture val="Assets/Textures/ui_clean_portrait_experiencebar_shimmer.dds" layer="0"/>
+                    <AlphaLayer val="True" layer="0"/>
+                    <TextureCoordRotation val="{$parent/$parent/AngleMultiply/@Result}" layer="0"/>
+        
+        
+                    <Texture val="Assets/Textures/ui_clean_portrait_experiencebar_normal.dds" layer="1"/>
+                    <ColorAdjustMode val="Colorize" layer="1"/>
+                    <AdjustmentColor val="ffffff" layer="1"/>
+                </Frame>
+            </Frame>
+        </Frame>
+
+        <Frame type="Image" name="Border">
+            <Anchor relative="$parent"/>
+
+            <Texture val="Assets/Textures/ui_clean_portrait_normal.dds"/>
+        </Frame>
+
+        <Frame type="Portrait" name="Portrait">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="60"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="-60"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="60"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="-60"/>
+
+            <AlphaMaskTexture val="Assets/Textures/ui_clean_portrait_mask.dds"/>
+
+            <RenderType val="LDR"/>
+            <AcceptsMouse val="false"/>
+            <BorderImage val="BorderImage"/>
+            <BackgroundImage val="BackgroundImage"/>
+            <UseTransition val="false"/>
+            <ModelLink val="BansheePortrait"/>
+
+            <Frame type="Image" name="BorderImage">
+                <Visible val="false"/>
+                <DescFlags val="Internal"/>
+            </Frame>
+
+            <Frame type="Image" name="BackgroundImage">
+                <Visible val="false"/>
+                <DescFlags val="Internal"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Image" name="LevelBorder">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="28"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+
+            <Width val="110"/>
+            <Height val="65"/>
+            <TextureType val="NineSlice"/>
+            <Texture val="Assets/Textures/ui_clean_standardframe.dds"/>
+        </Frame>
+
+        <Frame type="Label" name="LVLLabel">
+            <Anchor side="Top" relative="$parent/LevelBorder" pos="Min" offset="-15"/>
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+
+            <Text val="LVL"/>
+            <Style val="Clean_NavButtonNormal"/>
+        </Frame>
+        
+        <Frame type="Label" name="LevelLabel">
+            <Anchor side="Top" relative="$parent/LevelBorder" pos="Mid" offset="0"/>
+            <Anchor side="Bottom" relative="$parent/LevelBorder" pos="Mid" offset="0"/>
+            <Anchor side="Left" relative="$parent/LevelBorder" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent/LevelBorder" pos="Mid" offset="0"/>
+
+            <Text val="1"/>
+            <Style val="Clean_StarmapLevelLabel"/>
+        </Frame>
+
+        <StateGroup name="States">
+            <DefaultState val="Normal"/>
+        
+            <State name="Normal">
+            </State>
+        
+            <State name="MaxLevel">
+            </State>
+        </StateGroup>
+    </Frame>
+
+    <Frame type="Frame" name="MenuPanelTemplate">
+        <Anchor side="Top" relative="$parent" pos="Mid" offset="0"/>
+        <Anchor side="Bottom" relative="$parent" pos="Mid" offset="0"/>
+        <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+        <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+
+        <Width val="1300"/>
+        <Height val="750"/>
+
+        <Frame type="Image" name="Background">
+            <Anchor relative="$parent"/>
+
+            <Texture val="Assets/Textures/ui_clean_standardframe.dds"/>
+            <TextureType val="NineSlice"/>
+        </Frame>
+
+        <Frame type="Frame" name="AnchorFrame">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="-10"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="10"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="-10"/>
+        </Frame>
+    </Frame>
+
+    <Frame type="Frame" name="ListboxTemplate">
+        <Anchor side="Top" relative="$parent/AnchorFrame" pos="Min" offset="0"/>
+        <Anchor side="Bottom" relative="$parent/AnchorFrame" pos="Max" offset="0"/>
+        <Anchor side="Left" relative="$parent/AnchorFrame" pos="Min" offset="0"/>
+        
+        <Width val="420"/>
+
+        <Frame type="Image" name="Background">
+            <Anchor relative="$parent"/>
+
+            <Texture val="Assets/Textures/ui_clean_standardframe.dds"/>
+            <TextureType val="NineSlice"/>
+        </Frame>
+
+        <Frame type="Frame" name="AnchorFrame">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="-10"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="10"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="-10"/>
+        </Frame>
+
+        <Frame type="Label" name="TitleLabel">
+            <Anchor side="Left" relative="$parent/AnchorFrame" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent/AnchorFrame" pos="Max" offset="0"/>
+            <Anchor side="Top" relative="$parent/AnchorFrame" pos="Min" offset="10"/>
+
+            <Style val="Clean_MenuHeaderTitle"/>
+            <Text val="Missions"/>
+        </Frame>
+
+        <Frame type="Image" name="DividerLine">
+            <Anchor side="Top" relative="$parent/TitleLabel" pos="Max" offset="10"/>
+            <Anchor side="Left" relative="$parent/AnchorFrame" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent/AnchorFrame" pos="Max" offset="0"/>
+
+            <Texture val="Assets\Textures\ui_battlenet_glues_topnav_buttonselectedline2.dds"/>
+        </Frame>
+    </Frame>
+
+    <Frame type="Frame" name="MenuModuleTemplate">
+
+        <Frame type="Image" name="Background">
+            <Anchor relative="$parent"/>
+
+            <Texture val="Assets/Textures/ui_clean_standardframe.dds"/>
+            <TextureType val="NineSlice"/>
+        </Frame>
+
+        <Frame type="Frame" name="AnchorFrame">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="-10"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="10"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="-10"/>
+        </Frame>
+    </Frame>
+
+    <Frame type="Button" name="ListBoxItemTemplate">
+        <Toggleable val="True"/>
+        <Height val="#ListboxItemSize"/>
+
+        <Frame type="Image" name="NormalImage">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent/IconBorder" pos="Max" offset="#ListboxBackgroundOffset"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+
+            <Height val="#ListboxBackgroundHeight"/>
+
+            <Texture val="Assets/Textures/ui_clean_menus_listboxitem_normal.dds"/>
+            <TextureType val="NineSlice"/>
+            <ImageMaskTexture val="Assets/Textures/ui_clean_menus_listboxitem_mask.dds"/>
+        </Frame>
+
+        <Frame type="Image" name="HoverImage">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent/IconBorder" pos="Max" offset="#ListboxBackgroundOffset"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+
+            <Height val="#ListboxBackgroundHeight"/>
+
+            <Texture val="Assets/Textures/ui_clean_menus_listboxitem_over.dds"/>
+            <TextureType val="NineSlice"/>
+            <ImageMaskTexture val="Assets/Textures/ui_clean_menus_listboxitem_mask.dds"/>
+        </Frame>
+
+        <Frame type="Image" name="ToggledImage">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent/IconBorder" pos="Max" offset="#ListboxBackgroundOffset"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+
+            <Height val="#ListboxBackgroundHeight"/>
+            <Visible val="False"/>
+
+            <Texture val="Assets/Textures/ui_clean_menus_listboxitem_toggled.dds"/>
+            <TextureType val="NineSlice"/>
+        </Frame>
+
+        <Frame type="Label" name="TitleLabel">
+            <Anchor side="Top" relative="$parent/NormalImage" pos="Min" offset="16"/>
+            <Anchor side="Left" relative="$parent/NormalImage" pos="Min" offset="20"/>
+            <Anchor side="Right" relative="$parent/NormalImage" pos="Max" offset="-20"/>
+            
+            <Text val="Mission 1 - Wasteland"/>
+            <Style val="Clean_ListboxTitleNormal"/>
+        </Frame>
+
+        <Frame type="Label" name="SubtitleLabel">
+            <Anchor side="Top" relative="$parent/TitleLabel" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent/NormalImage" pos="Min" offset="20"/>
+            <Anchor side="Right" relative="$parent/NormalImage" pos="Max" offset="-20"/>
+            
+            <Text val="Mar Sara Wastes"/>
+            <Style val="Clean_ListboxDescNormal"/>
+        </Frame>
+
+        <Frame type="Image" name="Background">
+            <Anchor relative="$parent/IconBorder" offset="-2"/>
+
+            <Color val="000000"/>
+            <AlphaMaskTexture val="Assets/Textures/ui_clean_portrait_mask.dds"/>
+        </Frame>
+
+        <Frame type="Image" name="IconBorder">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+
+            <Width val="#ListboxItemSize"/>
+            <Height val="#ListboxItemSize"/>
+            <Texture val="Assets/Textures/ui_clean_commandbutton_normal.dds"/>
+        </Frame>
+
+        <Frame type="Image" name="Icon">
+            <Anchor side="Top" relative="$parent/IconBorder" pos="Mid" offset="0"/>
+            <Anchor side="Bottom" relative="$parent/IconBorder" pos="Mid" offset="0"/>
+            <Anchor side="Left" relative="$parent/IconBorder" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent/IconBorder" pos="Mid" offset="0"/>
+
+            <Width val="80"/>
+            <Height val="80"/>
+
+            <Texture val="Assets\Textures\talent-raynor-level06-unlockbattlecruiser.dds"/>
+            <AlphaMaskTexture val="Assets\Textures\ui_clean_command_iconmask.dds"/>
+        </Frame>
+
+        <StateGroup name="ButtonState">
+            <State name="Normal"></State>
+
+            <State name="Hover">
+                <When type="Property" frame="$this" Hovering="True"/>
+                <When type="Property" frame="$this" Toggled="False" />
+
+                <Action type="SetProperty" frame="$this/IconBorder" Texture="Assets/Textures/ui_clean_commandbutton_over.dds"/>
+                
+                <Action type="SetProperty" frame="$this/TitleLabel" Style="Clean_ListboxTitleOver"/>
+            </State>
+
+            <State name="Toggled">
+                <When type="Property" frame="$this" Toggled="True"/>
+
+                <Action type="SetProperty" frame="$this/IconBorder" Texture="Assets/Textures/ui_clean_commandbutton_toggled.dds"/>
+                <Action type="SetProperty" frame="$this/NormalImage" Alpha="0"/>
+                <Action type="SetProperty" frame="$this/HoverImage" Alpha="0"/>
+                <Action type="SetProperty" frame="$this/ToggledImage" Visible="True"/>
+
+                <Action type="SetProperty" frame="$this/TitleLabel" Style="Clean_ListboxTitleSelected"/>
+            </State>
+        </StateGroup>
+
+        <Frame type="Frame" name="HitTestFrame">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+        </Frame>
+    </Frame>
+
+    <Frame type="Button" name="StandardButtonTemplate">
+
+        <Height val="65"/>
+
+        <Frame type="Image" name="NormalImage">
+            <Anchor relative="$parent"/>
+
+            <Height val="#ListboxBackgroundHeight"/>
+
+            <Texture val="Assets/Textures/ui_clean_menus_listboxitem_normal.dds"/>
+            <TextureType val="NineSlice"/>
+        </Frame>
+
+        <Frame type="Image" name="HoverImage">
+            <Anchor relative="$parent"/>
+
+            <Height val="#ListboxBackgroundHeight"/>
+
+            <Texture val="Assets/Textures/ui_clean_menus_listboxitem_over.dds"/>
+            <TextureType val="NineSlice"/>
+        </Frame>
+
+        <Frame type="Image" name="ToggledImage">
+            <Anchor relative="$parent"/>
+
+            <Height val="#ListboxBackgroundHeight"/>
+            <Visible val="False"/>
+
+            <Texture val="Assets/Textures/ui_clean_menus_listboxitem_toggled.dds"/>
+            <TextureType val="NineSlice"/>
+        </Frame>
+
+        <Frame type="Label" name="TextLabel">
+            <Anchor side="Top" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+
+            <Style val="Clean_NavButtonNormal"/>
+        </Frame>
+
+        <StateGroup name="ButtonState">
+            <State name="Normal"></State>
+
+            <State name="Hover">
+                <When type="Property" frame="$this" Hovering="True"/>
+                <When type="Property" frame="$this" Toggled="False" />
+
+                <Action type="SetProperty" frame="$this/TextLabel" Style="Clean_NavButtonOver"/>
+            </State>
+
+            <State name="Toggled">
+                <When type="Property" frame="$this" Toggled="True"/>
+
+                <Action type="SetProperty" frame="$this/NormalImage" Alpha="0"/>
+                <Action type="SetProperty" frame="$this/HoverImage" Alpha="0"/>
+                <Action type="SetProperty" frame="$this/ToggledImage" Visible="True"/>
+
+                <Action type="SetProperty" frame="$this/TextLabel" Style="Clean_NavButtonOver"/> 
+            </State>
+        </StateGroup>
+    </Frame>
+
+    <Frame type="Button" name="CommandButtonTemplate">
+        <NormalImage val="NormalImage"/>
+        <HoverImage val="HoverImage"/>
+
+        <Frame type="Image" name="Background">
+            <Anchor relative="$parent" offset="-15"/>
+
+            <Color val="000000"/>
+            <AlphaMaskTexture val="Assets/Textures/ui_clean_portrait_mask.dds"/>
+        </Frame>
+        
+        <Frame type="Image" name="NormalImage">
+            <Anchor relative="$parent"/>
+
+            <Texture val="Assets/Textures/ui_clean_commandbutton_normal.dds"/>
+        </Frame>
+        
+        <Frame type="Image" name="HoverImage">
+            <Anchor relative="$parent"/>
+
+            <Texture val="Assets/Textures/ui_clean_commandbutton_over.dds"/>
+        </Frame>
+
+        <Frame type="Image" name="Icon">
+            <Anchor relative="$parent" offset="-16"/>
+
+            <Texture val="Assets\Textures\talent-raynor-level06-unlockbattlecruiser.dds"/>
+            <AlphaMaskTexture val="Assets/Textures/ui_clean_portrait_mask.dds"/>
+        </Frame>
+
+        <Frame type="Label" name="HotkeyFrame">
+            <Anchor side="Right" relative="$parent" pos="Max" offset="-10"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="-10"/>
+
+            <Style val="Clean_StarmapLevelLabel"/>
+            <Text val="[A]"/>
+        </Frame>
+
+        <StateGroup name="ButtonState">
+            <DefaultState val="Empty"/>
+
+            <State name="Empty">
+                <Action type="SetProperty" frame="$this/Icon" Visible="False"/>
+                <Action type="SetProperty" frame="$this/HotkeyFrame" Visible="False"/>
+            </State>
+
+            <State name="Normal">
+
+            </State>
+        </StateGroup>
+    </Frame>
+
+    <Frame type="Frame" name="SmallProgressBarTemplate">
+        <Height val="30"/>
+
+        <Frame type="Image" name="Background">
+            <Anchor relative="$parent"/>
+
+            <Texture val="Assets/Textures/ui_clean_progressbarsmallest_normal.dds"/>
+            <TextureType val="EndCap"/>
+        </Frame>
+
+        <Frame type="ProgressBar" name="ProgressBar">
+            <Anchor relative="$parent"/>
+            
+            <AcceptsMouse val="False"/>
+            <UseFillContainer val="True"/>
+
+            <Frame type="TextFormatFrame" name="FormatFrame">
+                <FormatText val="%0% / %1%"/>
+
+                <Replacement val="{$parent/@Value}" index="0"/>
+                <Replacement val="{$parent/@MaxValue}" index="1"/>
+            </Frame>
+
+            <Frame type="Frame" name="FillImageContainer">
+                <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+                <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+                <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+
+                <Frame type="Image" name="FillImage">
+                    <Anchor relative="$parent"/>
+
+                    <Texture val="Assets\Textures\ui_clean_progressbarsmallest_fill.dds"/>
+                    <TextureType val="EndCap"/>
+                    <SubpixelRendering val="True"/>
+                </Frame>
+
+                <!--Frame type="Image" name="Highlight">
+                    <Anchor side="Top" relative="$parent" pos="Min" offset="5"/>
+                    <Anchor side="Bottom" relative="$parent" pos="Max" offset="-5"/>
+                    <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+
+                    <Texture val="Assets\Textures\sc2_ui_userprofile_summary_progressbar_highlight.dds"/>
+                </Frame-->
+            </Frame>
+
+            <Frame type="Label" name="Label">
+                <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+                <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+                <Anchor side="Bottom" relative="$parent" pos="Mid" offset="0"/>
+                <Anchor side="Top" relative="$parent" pos="Mid" offset="0"/>
+
+                <Style val="Clean_ItemTooltipType_Material"/>
+                <Text val="{$parent/FormatFrame/@Text}"/>
+            </Frame>
+        </Frame>
+    </Frame>
+
+    <Frame type="Frame" name="StatListboxItemTemplate">
+        <Height val="#LoadoutStatItemSize"/>
+
+        <Frame type="Image" name="ProgressBackground">
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="-12"/>
+            <Anchor side="Left" relative="$parent/IconBorder" pos="Max" offset="-10"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+
+            <Height val="30"/>
+
+            <Texture val="Assets/Textures/ui_clean_progressbarsmallest_normal.dds"/>
+            <TextureType val="EndCap"/>
+        </Frame>
+
+        <Frame type="Label" name="StatName">
+            <Anchor side="Left" relative="$parent/IconBorder" pos="Max" offset="5"/>
+            <Anchor side="Top" relative="$parent" pos="Min" offset="18"/>
+
+            <Style val="Clean_StarmapLevelLabel"/>
+            <Text val="Health"/>
+        </Frame>
+
+        <Frame type="ProgressBar" name="StatBar">
+            <Anchor relative="$parent/ProgressBackground"/>
+            
+            <AcceptsMouse val="False"/>
+            <Value val="60"/>
+            <MinValue val="0" />
+            <MaxValue val="100" />
+            <UseFillContainer val="True"/>
+
+            <Frame type="Frame" name="FillImageContainer">
+                <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+                <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+                <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+
+                <Frame type="Image" name="FillImage">
+                    <Anchor relative="$parent"/>
+
+                    <Texture val="Assets\Textures\ui_clean_progressbarsmallest_fill.dds"/>
+                    <TextureType val="EndCap"/>
+                    <SubpixelRendering val="True"/>
+                </Frame>
+
+                <!--Frame type="Image" name="Highlight">
+                    <Anchor side="Top" relative="$parent" pos="Min" offset="5"/>
+                    <Anchor side="Bottom" relative="$parent" pos="Max" offset="-5"/>
+                    <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+
+                    <Texture val="Assets\Textures\sc2_ui_userprofile_summary_progressbar_highlight.dds"/>
+                </Frame-->
+            </Frame>
+        </Frame>
+
+        <Frame type="Image" name="Background">
+            <Anchor relative="$parent/IconBorder" offset="-2"/>
+
+            <Color val="000000"/>
+            <AlphaMaskTexture val="Assets/Textures/ui_clean_portrait_mask.dds"/>
+        </Frame>
+
+        <Frame type="Image" name="IconBorder">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+
+            <Width val="#LoadoutStatItemSize"/>
+            <Height val="#LoadoutStatItemSize"/>
+            <Texture val="Assets/Textures/ui_clean_loadout_statbutton.dds"/>
+        </Frame>
+
+        <Frame type="Image" name="Icon">
+            <Anchor side="Top" relative="$parent/IconBorder" pos="Mid" offset="0"/>
+            <Anchor side="Bottom" relative="$parent/IconBorder" pos="Mid" offset="0"/>
+            <Anchor side="Left" relative="$parent/IconBorder" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent/IconBorder" pos="Mid" offset="0"/>
+
+            <Width val="65"/>
+            <Height val="65"/>
+
+            <Texture val="Assets\Textures\talent-raynor-level06-unlockbattlecruiser.dds"/>
+            <AlphaMaskTexture val="Assets/Textures/ui_clean_diamondbuttonmask.dds"/>
+        </Frame>
+    </Frame>
+
+    <Frame type="Button" name="CircleButtonTemplate">
+        <NormalImage val="NormalImage"/>
+        <HoverImage val="HoverImage"/>
+
+        <Width val="100"/>
+        <Height val="100"/>
+
+        <Frame type="Image" name="Background">
+            <Anchor relative="$parent" offset="-15"/>
+
+            <Color val="000000"/>
+            <AlphaMaskTexture val="Assets\Textures\ui_clean_circlebuttonsmall_mask1.dds"/>
+        </Frame>
+        
+        <Frame type="Image" name="NormalImage">
+            <Anchor relative="$parent"/>
+
+            <Texture val="Assets/Textures/ui_clean_circlebuttonsmall_normal1.dds"/>
+        </Frame>
+        
+        <Frame type="Image" name="HoverImage">
+            <Anchor relative="$parent"/>
+
+            <Texture val="Assets/Textures/ui_clean_circlebuttonsmall_over1.dds"/>
+        </Frame>
+
+        <Frame type="Image" name="Icon">
+            <Anchor relative="$parent" offset="-17"/>
+
+            <Texture val="Assets\Textures\talent-raynor-level06-unlockbattlecruiser.dds"/>
+            <AlphaMaskTexture val="Assets/Textures/Assets/Textures/ui_clean_circlebuttonsmall_mask1.dds"/>
+        </Frame>
+    </Frame>
+
+    <Frame type="Button" name="SquareButtonTemplate">
+        <NormalImage val="NormalImage"/>
+        <HoverImage val="HoverImage"/>
+
+
+        <Width val="100"/>
+        <Height val="100"/>
+
+        <Frame type="Image" name="NormalImage">
+            <Anchor relative="$parent"/>
+
+            <Texture val="Assets/Textures/ui_clean_squarebuttons_normal.dds"/>
+        </Frame>
+
+        <Frame type="Image" name="HoverImage">
+            <Anchor relative="$parent"/>
+
+            <Texture val="Assets/Textures/ui_clean_squarebuttons_over.dds"/>
+        </Frame>
+
+        <Frame type="Image" name="IconBackground" template="Cleane_StandardTemplates/IconBackgroundTemplate">
+            <Anchor relative="$parent" offset="-15"/>
+        </Frame>
+
+        <Frame type="Image" name="Icon">
+            <Anchor relative="$parent" offset="-15"/>
+
+            <Texture val="Assets\Textures\talent-raynor-level06-unlockbattlecruiser.dds"/>
+        </Frame>
+    </Frame>
+
+    <Frame type="Button" name="SimpleButtonTemplate">
+        <NormalImage val="NormalImage"/>
+        <HoverImage val="HoverImage"/>
+
+        <Frame type="Image" name="NormalImage">
+            <Anchor relative="$parent"/>
+
+            <Texture val="Assets/Textures/ui_clean_simplebutton_normal.dds"/>
+        </Frame>
+
+        <Frame type="Image" name="HoverImage">
+            <Anchor relative="$parent"/>
+
+            <Texture val="Assets/Textures/ui_clean_simplebutton_over.dds"/>
+        </Frame>
+
+        <Frame type="Image" name="Icon">
+            <Anchor relative="$parent" offset="-28"/>
+
+            <Texture val="Assets\Textures\talent-raynor-level06-unlockbattlecruiser.dds"/>
+            <AlphaMaskTexture val="Assets/Textures/ui_clean_portrait_mask.dds"/>
+        </Frame>
+    </Frame>
+</Desc>

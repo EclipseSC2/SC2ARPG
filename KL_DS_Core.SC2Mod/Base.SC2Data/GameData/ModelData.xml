@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CModel id="AmbientLightSpot_OrangeRed" parent="Doodad">
+        <Model value="Assets/AmbientSpots/BDF_AmbientSpot_OrangeRed.m3"/>
+        <Flags index="VariationFallback" value="0"/>
+        <VariationCount value="16"/>
+    </CModel>
+    <CModel id="AmbientLightSpot_Blue" parent="Doodad">
+        <Model value="Assets/AmbientSpots/BDF_AmbientSpot_Blue.m3"/>
+        <Flags index="VariationFallback" value="0"/>
+        <VariationCount value="16"/>
+    </CModel>
+    <CModel id="AmbientLightSpot_Green" parent="Doodad">
+        <Model value="Assets/AmbientSpots/BDF_AmbientSpot_Green.m3"/>
+        <Flags index="VariationFallback" value="0"/>
+        <VariationCount value="16"/>
+    </CModel>
+    <CModel id="AmbientLightSpot_DarkRed" parent="Doodad">
+        <Model value="Assets/AmbientSpots/BDF_AmbientSpot_DarkRed.m3"/>
+        <Flags index="VariationFallback" value="0"/>
+        <VariationCount value="16"/>
+    </CModel>
+    <CModel id="AmbientLightSpot_White" parent="Doodad">
+        <Model value="Assets/AmbientSpots/BDF_AmbientSpot_White.m3"/>
+        <Flags index="VariationFallback" value="0"/>
+        <VariationCount value="16"/>
+    </CModel>
+    <CModel id="AmbientLightSpot_Yellow" parent="Doodad">
+        <Model value="Assets/AmbientSpots/BDF_AmbientSpot_Yellow.m3"/>
+        <Flags index="VariationFallback" value="0"/>
+        <VariationCount value="16"/>
+    </CModel>
+    <CModel id="ECL_HERO">
+        <ScaleMax value="1.250000,1.250000,1.250000"/>
+        <ScaleMin value="1.250000,1.250000,1.250000"/>
+    </CModel>
+        <CModel id="HeroSelectionCamera">
+        <Model value="Assets\Models\Prophecy_Zeratul_COOP_Camera.m3"/>
+    </CModel>
+        <CModel id="RTT_Display_1" parent="Unit">
+        <Model value="Assets\Portraits\Other\RTTChannel2Portrait\RTTChannel2Portrait.m3"/>
+        <EditorCategories value=""/>
+    </CModel>
+</Catalog>

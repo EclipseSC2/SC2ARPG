@@ -1,0 +1,2702 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+    <!-- Constants -->
+    <Constant name="Inventory_Width" val="740"/>
+    <Constant name="StandardFrameBackgroundColor" val="112e31"/>
+    <Constant name="StandardFrameHighlightColor" val="2aefe2"/>
+    <Constant name="StandardFrameGlowColor" val="68aaac"/>
+    <Constant name="StandardFrameDarkColor" val="075f59"/>
+    <Constant name="StandardFrameDROPZONEColor" val="ef832a"/>
+
+    <Frame type="Button" name="InventorySlotTemplate">
+        <Width val="115"/>
+        <Height val="143"/>
+        <HitTestFrame val="HitTestFrame"/>
+        <DisabledAlpha val="255"/>
+
+        <Frame type="Image" name="Icon">
+            <Anchor side="Top" relative="$parent/NormalImage" pos="Mid" offset="0"/>
+            <Anchor side="Bottom" relative="$parent/NormalImage" pos="Mid" offset="0"/>
+            <Anchor side="Left" relative="$parent/NormalImage" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent/NormalImage" pos="Mid" offset="0"/>
+
+            <Width val="90"/>
+            <Height val="90"/>
+            <ColorAdjustMode val="Colorize"/>
+            <AdjustmentColor val="d4d4d4"/>
+            <ImageMaskTexture val="Assets/Textures/ui_nova_armyupgrades_upgradeiconmask.dds"/>
+            <Texture val="Assets\Textures\icon-mineral-nobg.dds"/>
+        </Frame>
+        
+        <Frame type="Image" name="NormalImage">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+
+            <Texture val="Assets\Textures\ui_nova_equipmentupgrades_carditemiconframe_green_normal.dds"/>
+            <Alpha val="255"/>
+            <DesaturateOnDisable val="False"/>
+            <ColorAdjustMode val="Colorize"/>
+            <Color val="d4d4d4"/>
+        </Frame>
+        
+        <Frame type="Image" name="HoverImage">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+
+            <Texture val="Assets\Textures\ui_nova_equipmentupgrades_carditemiconframe_green_over.dds"/>
+            <Alpha val="255"/>
+            <DesaturateOnDisable val="False"/>
+            <ColorAdjustMode val="Colorize"/>
+            <Color val="d4d4d4"/>
+        </Frame>
+
+        <Frame type="Frame" name="HitTestFrame">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="22"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="-38"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="14"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="-14"/>
+        </Frame>
+
+        <Frame type="Image" name="QuantityFrame">
+            <Anchor side="Bottom" relative="$parent/NormalImage" pos="Max" offset="-12"/>
+            <Anchor side="Right" relative="$parent/NormalImage" pos="Max" offset="-7"/>
+
+            <Width val="40"/>
+            <Height val="25"/>
+            <Visible val="False"/>
+            <Color val="000000"/>
+            <Alpha val="100"/>
+            <DesaturateOnDisable val="False"/>
+        </Frame>
+
+        <Frame type="Label" name="QuantityLabel">
+            <Anchor side="Top" relative="$parent/QuantityFrame" pos="Mid" offset="0"/>
+            <Anchor side="Bottom" relative="$parent/QuantityFrame" pos="Mid" offset="0"/>
+            <Anchor side="Left" relative="$parent/QuantityFrame" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent/QuantityFrame" pos="Mid" offset="0"/>
+
+            <Text val="0"/>
+            <Style val="DS_InventoryQuantityLabel"/>
+            <Visible val="{$parent/QuantityFrame/@Visible}"/>
+            <DisabledAlpha val="255"/>
+        </Frame>
+
+        <!-- States -->
+
+        <StateGroup name="State">
+            <DefaultState val="Empty"/>
+        
+            <State name="InUse">
+                <When type="AnimationState" frame="$this" State="InUse"/>
+            </State>
+
+            <State name="Stack">
+                <When type="AnimationState" frame="$this" State="Stack"/>
+
+                <Action type="SetProperty" frame="$this/Icon" Visible="True"/>
+                <Action type="SetProperty" frame="$this" Enabled="True"/>
+                <Action type="SetProperty" frame="$this/QuantityFrame" Visible="True"/>
+                <Action type="SetProperty" frame="$this/QuantityLabel" Visible="True"/>
+            </State>
+        
+            <State name="Empty">
+                <When type="AnimationState" frame="$this" State="Empty"/>
+
+                <Action type="SetProperty" frame="$this/Icon" Visible="False"/>
+                <Action type="SetProperty" frame="$this" Enabled="False"/>
+            </State>
+        </StateGroup>
+    </Frame>
+
+    <Frame type="Frame" name="PaperdollTemplate">
+        <Frame type="Image" name="Base">
+            <Anchor relative="$parent"/>
+
+            <Texture val="Assets\Textures\ui_clean_characterpapedroll_male_base.dds"/>
+        </Frame>
+
+        <!-- Damage Regions -->
+
+        <Frame type="Image" name="DamageHead">
+            <Anchor relative="$parent"/>
+            <Visible val="True"/>
+
+            <Texture val="Assets\Textures\ui_clean_characterpapedroll_male_head.dds"/>
+            <AdjustmentColor val="fc3535"/>
+            <ColorAdjustMode val="Fill"/>
+
+            <StateGroup name="Damage" template="DS_StandardTemplates/DamageStateTemplate">
+                <DefaultState val="None"/>
+            </StateGroup>
+        </Frame>
+
+
+        <Frame type="Image" name="DamageTorso">
+            <Anchor relative="$parent"/>
+            <Visible val="True"/>
+
+            <Texture val="Assets\Textures\ui_clean_characterpapedroll_male_damagetorso.dds"/>
+            <AdjustmentColor val="fc3535"/>
+            <ColorAdjustMode val="Fill"/>
+
+            <StateGroup name="Damage" template="DS_StandardTemplates/DamageStateTemplate">
+                <DefaultState val="None"/>
+            </StateGroup>
+        </Frame>
+
+        <Frame type="Image" name="DamageLegs">
+            <Anchor relative="$parent"/>
+            <Visible val="True"/>
+
+            <Texture val="Assets\Textures\ui_clean_characterpapedroll_male_damagestomach.dds"/>
+            <AdjustmentColor val="fc3535"/>
+            <ColorAdjustMode val="Fill"/>
+
+            <StateGroup name="Damage" template="DS_StandardTemplates/DamageStateTemplate">
+                <DefaultState val="None"/>
+            </StateGroup>
+        </Frame>
+
+
+        <Frame type="Image" name="Outline">
+            <Anchor relative="$parent"/>
+
+            <Texture val="Assets\Textures\ui_clean_characterpapedroll_male_outline.dds"/>
+        </Frame>
+
+        <Frame type="Image" name="Highlight">
+            <Anchor relative="$parent"/>
+
+            <BlendMode val="Add"/>
+
+            <LayerCount val="2"/>
+
+            <Texture val="Assets\Textures\ui_clean_characterpapedroll_male_highlightmask.dds" layer="0"/>
+            <AlphaLayer val="True" layer="0"/>
+            <TextureType val="Normal" layer="0"/>
+
+            <Texture val="Assets/Textures/ui_clean_characterpaperdoll_shimmer.dds" layer="1"/>
+            <Alpha val="255" layer="1"/>
+            
+            <Animation name="Shimmer">
+                <Event event="OnShown" action="DirectionForward" frame="$parent"/>
+                <Event event="OnShown" action="Play" frame="$parent"/>
+
+                <Controller type="LayerUV" end="Loop" frame="$this" relative="False" layer="1" side="Bottom" sidelock="True">
+                    <Key type="Curve" time="0" value="2"/>
+                    <Key type="Curve" time="18" value="-2"/>
+                </Controller>                    
+            </Animation>
+        </Frame>
+    </Frame>
+
+    <Frame type="Button" name="InventorySpaceTemplate" template="Cleane_StandardTemplates/SquareButtonTemplate">
+        <Width val="100"/>
+        <Height val="100"/>
+        <!-- Lock Icon Assets\Textures\sc2_ui_glues_alliedcommanders_lock.dds -->
+
+        <StateGroup name="State">
+            <DefaultState val="Empty"/>
+        
+            <State name="InUse">
+            </State>
+
+            <State name="SingleItem">
+                <When type="AnimationState" frame="$this" State="SingleItem"/>
+
+                <Action type="SetProperty" frame="$this/Icon" Visible="True"/>
+                <Action type="SetProperty" frame="$this" Enabled="True"/>
+            </State>
+
+            <State name="Stack">
+                <When type="AnimationState" frame="$this" State="Stack"/>
+
+                <Action type="SetProperty" frame="$this/Icon" Visible="True"/>
+                <Action type="SetProperty" frame="$this" Enabled="True"/>
+                <Action type="SetProperty" frame="$this/QuantityLabel" Visible="True"/>
+            </State>
+            
+            <State name="Locked">
+                <When type="AnimationState" frame="$this" State="Locked"/>
+
+                <Action type="SetProperty" frame="$this" Enabled="False"/>
+                <Action type="SetProperty" frame="$this/Icon" Visible="False"/>
+                <Action type="SetProperty" frame="$this/IconBackground" Visible="False"/>
+                <Action type="SetProperty" frame="$this/LockBackground" Visible="True"/>
+                <Action type="SetProperty" frame="$this/LockIcon" Visible="True"/>
+            </State>
+        
+            <State name="Empty">
+                <When type="AnimationState" frame="$this" State="Empty"/>
+
+                <Action type="SetProperty" frame="$this/Icon" Visible="False"/>
+                <Action type="SetProperty" frame="$this" Enabled="False"/>
+            </State>
+        </StateGroup>
+
+        <StateGroup name="ItemUse">
+            <DefaultState val="Any"/>
+
+            <State name="Any">
+                <When type="AnimationState" frame="$this" ItemUse="Any"/>
+            </State>
+
+            <State name="Food">
+                <When type="AnimationState" frame="$this" ItemUse="Food"/>
+                
+                <Action type="SetProperty" frame="$this/DurabilityIcon" Texture="Assets\Textures\ui_clean_useicon_food.dds"/>
+                <Action type="SetProperty" frame="$this/DurabilityIcon" Visible="True"/>
+                <Action type="SetProperty" frame="$this/DurabilityLabel" Visible="True"/>
+            </State>
+
+            <State name="Water">
+                <When type="AnimationState" frame="$this" ItemUse="Water"/>
+
+                <Action type="SetProperty" frame="$this/DurabilityIcon" Texture="Assets\Textures\ui_clean_useicon_water.dds"/>
+                <Action type="SetProperty" frame="$this/DurabilityIcon" Visible="True"/>
+                <Action type="SetProperty" frame="$this/DurabilityLabel" Visible="True"/>
+            </State>
+
+            <State name="Medicine">
+                <When type="AnimationState" frame="$this" ItemUse="Medicine"/>
+
+                <Action type="SetProperty" frame="$this/DurabilityIcon" Texture="Assets\Textures\ui_clean_useicon_medicine.dds"/>
+                <Action type="SetProperty" frame="$this/DurabilityIcon" Visible="True"/>
+                <Action type="SetProperty" frame="$this/DurabilityLabel" Visible="True"/>
+            </State>
+        </StateGroup>
+
+        <StateGroup name="FocusState">
+            <DefaultState val="Normal"/>
+
+            <State name="Normal">
+                <When type="AnimationState" frame="$this" FocusState="Normal"/>
+            </State>
+
+            <State name="Focused">
+                <When type="AnimationState" frame="$this" FocusState="Focused"/>
+
+                <Action type="SetProperty" frame="$this/NormalImage" Texture="Assets/Textures/ui_clean_squarebuttons_over.dds"/>
+            </State>
+        </StateGroup>
+
+        <Frame type="Image" name="LockBackground">
+            <Anchor relative="$parent/IconBackground"/>
+            
+            <Texture val="Assets\Textures\sc2_ui_global_genericeffect_diagonallinespattern_size6.dds"/>
+            <Tiled val="True"/>
+            <Alpha val="120"/>
+            <Visible val="False"/>
+        </Frame>
+
+        <Frame type="Image" name="LockIcon">
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Top" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Mid" offset="0"/>
+
+            <Texture val="Assets\Textures\sc2_ui_glues_alliedcommanders_lock.dds"/>
+            <Alpha val="255"/>
+            <Visible val="False"/>
+
+            <Width val="30"/>
+            <Height val="30"/>
+        </Frame>
+
+        <Frame type="Label" name="QuantityLabel">
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="-15"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="-15"/>
+
+            <Text val="0"/>
+            <Style val="DS_InventoryQuantityLabel"/>
+            <Visible val="True"/>
+            <DisabledAlpha val="255"/>
+            <Visible val="False"/>
+        </Frame>
+
+        <Frame type="Image" name="Icon">
+            <Visible val="False"/>
+        </Frame>
+
+        <Frame type="Image" name="DurabilityIcon">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="17"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="17"/>
+
+            <Texture val="Assets/Textures/ui_clean_tooltip_crateicon.dds"/>
+            <Width val="17"/>
+            <Height val="17"/>
+            <CollapseLayout val="True"/>
+            <Visible val="False"/>
+        </Frame>
+
+        <Frame type="Label" name="DurabilityLabel">
+            <Anchor side="Top" relative="$parent/DurabilityIcon" pos="Mid" offset="0"/>
+            <Anchor side="Bottom" relative="$parent/DurabilityIcon" pos="Mid" offset="0"/>
+            <Anchor side="Left" relative="$parent/DurabilityIcon" pos="Max" offset="5"/>
+
+            <Style val="DS_ItemQuantityLabel"/>
+            <Visible val="True"/>
+            <DisabledAlpha val="255"/>
+            <Visible val="False"/>
+        </Frame>
+    </Frame>
+
+    <Frame type="Button" name="CrateInventoryButtonTemplate" template="DS_InventoryTemplates/InventorySpaceTemplate">
+        <Frame type="Frame" name="DummyInfoFrame" template="Cleane_StandardTemplates/DummyInfoFrame"></Frame>
+
+        <Frame type="Frame" name="Tooltip" template="DS_StandardTemplates/ItemTooltipTemplate">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="-50"/>
+            <Anchor side="Left" relative="$parent" pos="Max" offset="15"/>
+        </Frame>
+
+        <Frame type="Image" name="Icon">
+            <Texture val="{$parent/DummyInfoFrame/Icon/@Texture}"/>
+        </Frame>
+
+        <Frame type="Label" name="QuantityLabel">
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="-15"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="-15"/>
+
+            <Text val="{$parent/DummyInfoFrame/Quantity/@Text}"/>
+        </Frame>
+
+        <Frame type="Label" name="DurabilityLabel">
+            <Text val="{$parent/DummyInfoFrame/Durability/@Text}"/>
+        </Frame>
+    </Frame>
+
+    <Frame type="Button" name="InventorySlotButtonTemplate" template="DS_InventoryTemplates/InventorySpaceTemplate">
+
+
+        <Frame type="Frame" name="DummyInfoFrame" template="Cleane_StandardTemplates/DummyInfoFrame"></Frame>
+
+        <Frame type="Frame" name="Tooltip" template="DS_StandardTemplates/ItemTooltipTemplate">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="-50"/>
+            <Anchor side="Right" relative="$parent" pos="Min" offset="-15"/>
+        </Frame>
+
+        <Frame type="Frame" name="Context" template="DS_StandardTemplates/ContextMenuTemplate">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="-40"/>
+            <Anchor side="Left" relative="$parent" pos="Max" offset="-5"/>
+        </Frame>
+
+        <Frame type="Image" name="Icon">
+            <Texture val="{$parent/DummyInfoFrame/Icon/@Texture}"/>
+        </Frame>
+
+        <Frame type="Label" name="QuantityLabel">
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="-15"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="-15"/>
+
+            <Text val="{$parent/DummyInfoFrame/Quantity/@Text}"/>
+        </Frame>
+
+        <Frame type="Image" name="DurabilityIcon">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="17"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="17"/>
+
+            <Texture val="Assets/Textures/ui_clean_tooltip_crateicon.dds"/>
+            <Width val="17"/>
+            <Height val="17"/>
+            <CollapseLayout val="True"/>
+            <Visible val="False"/>
+        </Frame>
+
+        <Frame type="Label" name="DurabilityLabel">
+            <Anchor side="Top" relative="$parent/DurabilityIcon" pos="Mid" offset="0"/>
+            <Anchor side="Bottom" relative="$parent/DurabilityIcon" pos="Mid" offset="0"/>
+            <Anchor side="Left" relative="$parent/DurabilityIcon" pos="Max" offset="5"/>
+
+            <Style val="DS_InventoryQuantityLabel"/>
+            <Visible val="True"/>
+            <DisabledAlpha val="255"/>
+            <Visible val="False"/>
+
+            <Text val="{$parent/DummyInfoFrame/Durability/@Text}"/>
+        </Frame>
+
+        <StateGroup name="ButtonState">
+
+        </StateGroup>
+    </Frame>
+
+    <Frame type="Frame" name="CharacterContainerTemplate">
+        <Anchor side="Top" relative="$parent/CharacterCategory1" pos="max" offset="20"/>
+        <Anchor side="Left" relative="$parent" pos="Min" offset="20"/>
+        <Anchor side="Right" relative="$parent" pos="Max" offset="-20"/>
+
+        <Height val="400"/>
+
+        <Frame type="Button" name="Button5" template="DS_StandardTemplates/EquipmentButtonTemplate">
+            <Anchor side="Top" relative="$parent" pos="Mid" offset="110"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="-70"/>
+        </Frame>
+
+        <Frame type="Button" name="Button4" template="DS_StandardTemplates/EquipmentButtonTemplate">
+            <Anchor side="Top" relative="$parent" pos="Mid" offset="50"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="-145"/>
+        </Frame>
+
+        <Frame type="Button" name="Button3" template="DS_StandardTemplates/EquipmentButtonTemplate">
+            <Anchor side="Top" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="-160"/>
+        </Frame>
+
+        <Frame type="Button" name="Button2" template="DS_StandardTemplates/EquipmentButtonTemplate">
+            <Anchor side="Bottom" relative="$parent" pos="Mid" offset="-50"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="-145"/>
+        </Frame>
+        
+        <Frame type="Button" name="Button1" template="DS_StandardTemplates/EquipmentButtonTemplate">
+            <Anchor side="Bottom" relative="$parent" pos="Mid" offset="-110"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="-70"/>
+        </Frame>
+
+        <Frame type="Button" name="Button6" template="DS_StandardTemplates/EquipmentButtonTemplate">
+            <Anchor side="Bottom" relative="$parent" pos="Mid" offset="-110"/>
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="70"/>
+        </Frame>
+
+        <Frame type="Button" name="Button7" template="DS_StandardTemplates/EquipmentButtonTemplate">
+            <Anchor side="Bottom" relative="$parent" pos="Mid" offset="-50"/>
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="145"/>
+        </Frame>
+
+        <Frame type="Button" name="Button8" template="DS_StandardTemplates/EquipmentButtonTemplate">
+            <Anchor side="Top" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="160"/>
+        </Frame>
+
+        <Frame type="Button" name="Button9" template="DS_StandardTemplates/EquipmentButtonTemplate">
+            <Anchor side="Top" relative="$parent" pos="Mid" offset="50"/>
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="145"/>
+        </Frame>
+
+        <Frame type="Button" name="Button10" template="DS_StandardTemplates/EquipmentButtonTemplate">
+            <Anchor side="Top" relative="$parent" pos="Mid" offset="110"/>
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="70"/>
+        </Frame>
+
+        <Frame type="Frame" name="PaperdollTemplate">
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Top" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Mid" offset="0"/>
+            
+            <Width val="204"/>
+            <Height val="380"/>
+
+            <Frame type="Image" name="Base">
+                <Anchor relative="$parent"/>
+
+                <Texture val="Assets\Textures\ui_clean_characterpapedroll_male_base.dds"/>
+            </Frame>
+
+            <!-- Damage Regions -->
+
+            <Frame type="Image" name="DamageHead">
+                <Anchor relative="$parent"/>
+
+                <Texture val="Assets\Textures\ui_clean_characterpapedroll_male_head.dds"/>
+                <AdjustmentColor val="fc3535"/>
+                <ColorAdjustMode val="Fill"/>
+
+                <StateGroup name="Damage" template="DS_StandardTemplates/DamageStateTemplate">
+                    <DefaultState val="None"/>
+                </StateGroup>
+            </Frame>
+
+            <Frame type="Image" name="DamageLeftArm">
+                <Anchor relative="$parent"/>
+
+                <Texture val="Assets\Textures\ui_clean_characterpapedroll_male_damageleftarm.dds"/>
+                <AdjustmentColor val="fc3535"/>
+                <ColorAdjustMode val="Fill"/>
+
+                <StateGroup name="Damage" template="DS_StandardTemplates/DamageStateTemplate">
+                    <DefaultState val="None"/>
+                </StateGroup>
+            </Frame>
+
+            <Frame type="Image" name="DamageRightArm">
+                <Anchor relative="$parent"/>
+
+                <Texture val="Assets\Textures\ui_clean_characterpapedroll_male_damagerightarm.dds"/>
+                <AdjustmentColor val="fc3535"/>
+                <ColorAdjustMode val="Fill"/>
+
+                <StateGroup name="Damage" template="DS_StandardTemplates/DamageStateTemplate">
+                    <DefaultState val="None"/>
+                </StateGroup>
+            </Frame>
+
+            <Frame type="Image" name="DamageTorso">
+                <Anchor relative="$parent"/>
+
+                <Texture val="Assets\Textures\ui_clean_characterpapedroll_male_damagetorso.dds"/>
+                <AdjustmentColor val="fc3535"/>
+                <ColorAdjustMode val="Fill"/>
+
+                <StateGroup name="Damage" template="DS_StandardTemplates/DamageStateTemplate">
+                    <DefaultState val="None"/>
+                </StateGroup>
+            </Frame>
+
+            <Frame type="Image" name="DamageStomach">
+                <Anchor relative="$parent"/>
+
+                <Texture val="Assets\Textures\ui_clean_characterpapedroll_male_damagestomach.dds"/>
+                <AdjustmentColor val="fc3535"/>
+                <ColorAdjustMode val="Fill"/>
+
+                <StateGroup name="Damage" template="DS_StandardTemplates/DamageStateTemplate">
+                    <DefaultState val="None"/>
+                </StateGroup>
+            </Frame>
+
+            <Frame type="Image" name="DamageLeftLeg">
+                <Anchor relative="$parent"/>
+
+                <Texture val="Assets\Textures\ui_clean_characterpapedroll_male_damageleftleg.dds"/>
+                <AdjustmentColor val="fc3535"/>
+                <ColorAdjustMode val="Fill"/>
+
+                <StateGroup name="Damage" template="DS_StandardTemplates/DamageStateTemplate">
+                    <DefaultState val="None"/>
+                </StateGroup>
+            </Frame>
+
+            <Frame type="Image" name="DamageRightLeg">
+                <Anchor relative="$parent"/>
+
+                <Texture val="Assets\Textures\ui_clean_characterpapedroll_male_damagerightleg.dds"/>
+                <AdjustmentColor val="fc3535"/>
+                <ColorAdjustMode val="Fill"/>
+
+                <StateGroup name="Damage" template="DS_StandardTemplates/DamageStateTemplate">
+                    <DefaultState val="None"/>
+                </StateGroup>
+            </Frame>
+
+
+
+            <Frame type="Image" name="Outline">
+                <Anchor relative="$parent"/>
+
+                <Texture val="Assets\Textures\ui_clean_characterpapedroll_male_outline.dds"/>
+            </Frame>
+
+
+
+            <Frame type="Image" name="Highlight">
+                <Anchor relative="$parent"/>
+
+                <BlendMode val="Add"/>
+    
+                <LayerCount val="2"/>
+    
+                <Texture val="Assets\Textures\ui_clean_characterpapedroll_male_highlightmask.dds" layer="0"/>
+                <AlphaLayer val="True" layer="0"/>
+                <TextureType val="Normal" layer="0"/>
+    
+                <Texture val="Assets/Textures/ui_clean_characterpaperdoll_shimmer.dds" layer="1"/>
+                <Alpha val="255" layer="1"/>
+                
+    
+                <Animation name="Shimmer">
+                    <Event event="OnShown" action="DirectionForward" frame="$parent"/>
+                    <Event event="OnShown" action="Play" frame="$parent"/>
+    
+                    <Controller type="LayerUV" end="Loop" frame="$this" relative="False" layer="1" side="Bottom" sidelock="True">
+                        <Key type="Curve" time="0" value="2"/>
+                        <Key type="Curve" time="18" value="-2"/>
+                    </Controller>                    
+                </Animation>
+            </Frame>
+
+
+        </Frame>
+    </Frame>
+
+    <Frame type="Frame" name="InventoryContainerTemplate" template="Cleane_StandardTemplates/StandardFrameTemplate">
+        <Anchor side="Left" relative="$parent" pos="Min" offset="20"/>
+        <Anchor side="Right" relative="$parent" pos="Max" offset="-20"/>
+        <Anchor side="Bottom" relative="$parent" pos="Max" offset="-20"/>
+
+        <Frame type="Button" name="InventorySlot1" template="DS_InventoryTemplates/InventorySlotButtonTemplate">
+            <Anchor side="Top" relative="$parent/AnchorFrame" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent/AnchorFrame" pos="Min" offset="0"/>
+
+            <StateGroup name="Empty">
+                <DefaultState val="Stack"/>
+            </StateGroup>
+
+            <Frame type="Label" name="QuantityLabel">
+                <Text val="10"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Button" name="InventorySlot2" template="DS_InventoryTemplates/InventorySlotButtonTemplate">
+            <Anchor side="Top" relative="$parent/InventorySlot1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="-5"/>
+        </Frame>
+
+        <Frame type="Button" name="InventorySlot3" template="DS_InventoryTemplates/InventorySlotButtonTemplate">
+            <Anchor side="Top" relative="$parent/InventorySlot1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="-5"/>
+        </Frame>
+    
+        <Frame type="Button" name="InventorySlot4" template="DS_InventoryTemplates/InventorySlotButtonTemplate">
+            <Anchor side="Top" relative="$parent/InventorySlot1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="-5"/>
+        </Frame>
+
+        <Frame type="Button" name="InventorySlot5" template="DS_InventoryTemplates/InventorySlotButtonTemplate">
+            <Anchor side="Top" relative="$parent/InventorySlot1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="-5"/>
+        </Frame>
+
+        <Frame type="Button" name="InventorySlot6" template="DS_InventoryTemplates/InventorySlotButtonTemplate">
+            <Anchor side="Top" relative="$parent/InventorySlot1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="-5"/>
+        </Frame>
+
+        <Frame type="Button" name="InventorySlot7" template="DS_InventoryTemplates/InventorySlotButtonTemplate">
+            <Anchor side="Top" relative="$parent/InventorySlot1" pos="Max" offset="-5"/>
+            <Anchor side="Left" relative="$parent/AnchorFrame" pos="Min" offset="0"/>
+        </Frame>
+
+        <Frame type="Button" name="InventorySlot8" template="DS_InventoryTemplates/InventorySlotButtonTemplate">
+            <Anchor side="Top" relative="$parent/InventorySlot7" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="-5"/>
+        </Frame>
+
+        <Frame type="Button" name="InventorySlot9" template="DS_InventoryTemplates/InventorySlotButtonTemplate">
+            <Anchor side="Top" relative="$parent/InventorySlot7" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="-5"/>
+        </Frame>
+
+        <Frame type="Button" name="InventorySlot10" template="DS_InventoryTemplates/InventorySlotButtonTemplate">
+            <Anchor side="Top" relative="$parent/InventorySlot7" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="-5"/>
+        </Frame>
+
+        <Frame type="Button" name="InventorySlot11" template="DS_InventoryTemplates/InventorySlotButtonTemplate">
+            <Anchor side="Top" relative="$parent/InventorySlot7" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="-5"/>
+        </Frame>
+
+        <Frame type="Button" name="InventorySlot12" template="DS_InventoryTemplates/InventorySlotButtonTemplate">
+            <Anchor side="Top" relative="$parent/InventorySlot7" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="-5"/>
+        </Frame>
+
+        <Frame type="Button" name="InventorySlot13" template="DS_InventoryTemplates/InventorySlotButtonTemplate">
+            <Anchor side="Top" relative="$parent/InventorySlot7" pos="Max" offset="-5"/>
+            <Anchor side="Left" relative="$parent/AnchorFrame" pos="Min" offset="0"/>
+        </Frame>
+
+        <Frame type="Button" name="InventorySlot14" template="DS_InventoryTemplates/InventorySlotButtonTemplate">
+            <Anchor side="Top" relative="$parent/InventorySlot13" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="-5"/>
+        </Frame>
+
+        <Frame type="Button" name="InventorySlot15" template="DS_InventoryTemplates/InventorySlotButtonTemplate">
+            <Anchor side="Top" relative="$parent/InventorySlot13" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="-5"/>
+        </Frame>
+
+        <Frame type="Button" name="InventorySlot16" template="DS_InventoryTemplates/InventorySlotButtonTemplate">
+            <Anchor side="Top" relative="$parent/InventorySlot13" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="-5"/>
+        </Frame>
+
+        <Frame type="Button" name="InventorySlot17" template="DS_InventoryTemplates/InventorySlotButtonTemplate">
+            <Anchor side="Top" relative="$parent/InventorySlot13" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="-5"/>
+        </Frame>
+
+        <Frame type="Button" name="InventorySlot18" template="DS_InventoryTemplates/InventorySlotButtonTemplate">
+            <Anchor side="Top" relative="$parent/InventorySlot13" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="-5"/>
+        </Frame>
+    </Frame>
+
+    <Frame type="Frame" name="PlayerFrameTemplate" template="Cleane_StandardTemplates/StandardFrameTemplate">
+        <Anchor side="Top" relative="$parent" pos="Min" offset="155"/>
+        <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+        <Anchor side="Right" relative="$parent" pos="Max" offset="-50"/>
+
+        <Width val="635"/>
+        <Height val="840"/>
+        <AcceptsMouse val="True"/>
+
+        <Frame type="TabControl" name="TabControl">
+            <Anchor relative="$parent"/>
+
+            <TabListItem val="$parent/CharacterCategory1"/>
+            <TabListItem val="$parent/CharacterCategory2"/>
+            <PanelListItem val="$parent/CharacterContainer"/>
+            <PanelListItem val="$parent/HealthContainer"/>
+            <SelectedIndex val="0"/>
+        </Frame>
+
+        <Frame type="Button" name="CharacterCategory1" template="Cleane_StandardTemplates/StandardButtonTemplate">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="20"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="-30"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="60"/>
+
+            <Toggleable val="True"/>
+            <Height val="50"/>
+
+            <Frame type="Label" name="TextLabel">
+                <Text val="Inventory"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Button" name="CharacterCategory2" template="Cleane_StandardTemplates/StandardButtonTemplate">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="20"/>
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="30"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="-60"/>
+
+            <Toggleable val="True"/>
+            <Height val="50"/>
+
+            <Frame type="Label" name="TextLabel">
+                <Text val="Status"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Frame" name="CharacterContainer" template="DS_InventoryTemplates/CharacterContainerTemplate">
+
+        </Frame>
+
+        <Frame type="Frame" name="HealthContainer">
+            <Anchor side="Top" relative="$parent/CharacterCategory1" pos="max" offset="20"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="20"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="-20"/>
+            <Anchor side="Bottom" relative="$parent/InventoryContainer" pos="Max" offset="20"/>
+        </Frame>
+
+        <Frame type="Frame" name="InventoryContainer" template="DS_InventoryTemplates/InventoryContainerTemplate">
+            <Anchor side="Top" relative="$parent/CharacterContainer" pos="Max" offset="18"/>
+        </Frame>
+    </Frame>
+
+    <StateGroup name="DamageState">
+        <DefaultState val="None"/>
+
+        <State name="None">
+            <Action type="SetProperty" frame="$this/StatusBar/ProgressBar/FillImageContainer/FillImage" AdjustmentColor="6ede00"/>
+        </State>
+
+        <State name="Low">
+            <Action type="SetProperty" frame="$this/StatusBar/ProgressBar/FillImageContainer/FillImage" AdjustmentColor="c8c825"/>
+        </State>
+
+        <State name="Medium">
+            <Action type="SetProperty" frame="$this/StatusBar/ProgressBar/FillImageContainer/FillImage" AdjustmentColor="e68228"/>
+        </State>
+
+        <State name="High">
+            <Action type="SetProperty" frame="$this/StatusBar/ProgressBar/FillImageContainer/FillImage" AdjustmentColor="fc3535"/>
+        </State>
+
+        <State name="Blacked">
+            <Action type="SetProperty" frame="$this/StatusBar/ProgressBar/FillImageContainer/FillImage" AdjustmentColor="000000"/>
+        </State>
+    </StateGroup>
+
+    <Frame type="Frame" name="LimbStatusPanelTemplate">
+        <Width val="160"/>
+        <Height val="55"/>
+        <Visible val="False"/>
+
+        <StateGroup name="DamageState" template="DS_InventoryTemplates/DamageState">
+        </StateGroup>
+
+        <Frame type="Label" name="Label">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+
+            <Style val="Clean_ItemTooltipName_Material"/>
+            <Text val="Limb Name"/>
+        </Frame>
+
+        <Frame type="Frame" name="StatusBar" template="Cleane_StandardTemplates/SmallProgressBarTemplate">
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+
+            <Frame type="ProgressBar" name="ProgressBar">
+                <Frame type="Frame" name="FillImageContainer">
+                    <Frame type="Image" name="FillImage">
+                        <ColorAdjustMode val="Colorize"/>
+                        <AdjustmentColor val=""/>
+                    </Frame>
+                </Frame>
+            </Frame>
+        </Frame>
+    </Frame>
+
+    <Frame type="Frame" name="LootPanelTemplate" template="Cleane_StandardTemplates/HeaderFrameTemplate">
+        <Anchor side="Top" relative="$parent" pos="Mid" offset="0"/>
+        <Anchor side="Bottom" relative="$parent" pos="Mid" offset="0"/>
+        <Anchor side="Left" relative="$parent" pos="Min" offset="150"/>
+
+        <Width val="400"/>
+        <Height val="300"/>
+
+        <Frame type="Button" name="TakeButton" template="Cleane_StandardTemplates/StandardButtonTemplate">
+            <Anchor side="Left" relative="$parent/AnchorFrame" pos="Min" offset="10"/>
+            <Anchor side="Bottom" relative="$parent/AnchorFrame" pos="Max" offset="-10"/>
+
+            <Height val="50"/>
+            <Width val="180"/>
+            
+            <Frame type="Label" name="TextLabel">
+                <Text val="Take"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Button" name="LootAllButton" template="Cleane_StandardTemplates/StandardButtonTemplate">
+            <Anchor side="Right" relative="$parent/AnchorFrame" pos="Max" offset="-10"/>
+            <Anchor side="Bottom" relative="$parent/AnchorFrame" pos="Max" offset="-10"/>
+
+            <Height val="50"/>
+            <Width val="180"/>
+            
+            <Frame type="Label" name="TextLabel">
+                <Text val="Loot All"/>
+            </Frame>
+        </Frame>
+
+        
+        <StateGroup name="ContainerSize">
+            <State name="1Size">
+                <When type="AnimationState" frame="$this" ContainerSize="1Size"/>
+
+                <Action type="SetProperty" frame="$this/LootButton1" Visible="True"/>
+
+                <Action type="SetAnchor" frame="$this/LootButton1" side="Left" relative="$parent" pos="Mid" offset="-50"/>
+
+                <Action type="SetProperty" frame="$this" Height="270"/>
+            </State>
+
+            <State name="2Size">
+                <When type="AnimationState" frame="$this" ContainerSize="2Size"/>
+
+                <Action type="SetProperty" frame="$this/LootButton1" Visible="True"/>
+                <Action type="SetProperty" frame="$this/LootButton2" Visible="True"/>
+
+                <Action type="SetAnchor" frame="$this/LootButton1" side="Left" relative="$parent" pos="Mid" offset="-100"/>
+                <Action type="SetAnchor" frame="$this/LootButton2" side="Left" relative="$parent" pos="Mid" offset="0"/>
+
+                <Action type="SetProperty" frame="$this" Height="270"/>
+            </State>
+
+            <State name="3Size">
+                <When type="AnimationState" frame="$this" ContainerSize="3Size"/>
+
+                <Action type="SetProperty" frame="$this/LootButton1" Visible="True"/>
+                <Action type="SetProperty" frame="$this/LootButton2" Visible="True"/>
+                <Action type="SetProperty" frame="$this/LootButton3" Visible="True"/>
+
+                <Action type="SetProperty" frame="$this" Height="270"/>
+            </State>
+
+            <State name="4Size">
+                <When type="AnimationState" frame="$this" ContainerSize="4Size"/>
+
+                <Action type="SetProperty" frame="$this/LootButton1" Visible="True"/>
+                <Action type="SetProperty" frame="$this/LootButton2" Visible="True"/>
+                <Action type="SetProperty" frame="$this/LootButton3" Visible="True"/>
+                <Action type="SetProperty" frame="$this/LootButton4" Visible="True"/>
+
+                <Action type="SetAnchor" frame="$this/LootButton1" side="Left" relative="$parent" pos="Mid" offset="-100"/>
+                <Action type="SetAnchor" frame="$this/LootButton2" side="Left" relative="$parent" pos="Mid" offset="0"/>
+
+                <Action type="SetAnchor" frame="$this/LootButton3" side="Top" relative="$parent/LootButton2" pos="Max" offset="0"/>
+                <Action type="SetAnchor" frame="$this/LootButton3" side="Left" relative="$parent" pos="Mid" offset="-100"/>
+
+                <Action type="SetAnchor" frame="$this/LootButton4" side="Top" relative="$parent/LootButton2" pos="Max" offset="0"/>
+                <Action type="SetAnchor" frame="$this/LootButton4" side="Left" relative="$parent" pos="Mid" offset="0"/>
+
+                <Action type="SetProperty" frame="$this" Height="360"/>
+            </State>
+
+            <State name="5Size">
+                <When type="AnimationState" frame="$this" ContainerSize="5Size"/>
+
+                <Action type="SetProperty" frame="$this/LootButton1" Visible="True"/>
+                <Action type="SetProperty" frame="$this/LootButton2" Visible="True"/>
+                <Action type="SetProperty" frame="$this/LootButton3" Visible="True"/>
+                <Action type="SetProperty" frame="$this/LootButton4" Visible="True"/>
+                <Action type="SetProperty" frame="$this/LootButton5" Visible="True"/>
+
+                <Action type="SetAnchor" frame="$this/LootButton4" side="Top" relative="$parent/LootButton2" pos="Max" offset="0"/>
+                <Action type="SetAnchor" frame="$this/LootButton4" side="Left" relative="$parent" pos="Mid" offset="-100"/>
+
+                <Action type="SetAnchor" frame="$this/LootButton5" side="Top" relative="$parent/LootButton2" pos="Max" offset="0"/>
+                <Action type="SetAnchor" frame="$this/LootButton5" side="Left" relative="$parent" pos="Mid" offset="0"/>
+
+                <Action type="SetProperty" frame="$this" Height="360"/>
+            </State>
+
+            <State name="6Size">
+                <When type="AnimationState" frame="$this" ContainerSize="6Size"/>
+
+                <Action type="SetProperty" frame="$this/LootButton1" Visible="True"/>
+                <Action type="SetProperty" frame="$this/LootButton2" Visible="True"/>
+                <Action type="SetProperty" frame="$this/LootButton3" Visible="True"/>
+                <Action type="SetProperty" frame="$this/LootButton4" Visible="True"/>
+                <Action type="SetProperty" frame="$this/LootButton5" Visible="True"/>
+                <Action type="SetProperty" frame="$this/LootButton6" Visible="True"/>
+
+                <Action type="SetAnchor" frame="$this/LootButton4" side="Top" relative="$parent/LootButton2" pos="Max" offset="0"/>
+                <Action type="SetAnchor" frame="$this/LootButton4" side="Left" relative="$parent/LootButton1" pos="Min" offset="0"/>
+
+                <Action type="SetAnchor" frame="$this/LootButton5" side="Top" relative="$parent/LootButton2" pos="Max" offset="0"/>
+                <Action type="SetAnchor" frame="$this/LootButton5" side="Left" relative="$parent/LootButton2" pos="Min" offset="0"/>
+
+                <Action type="SetAnchor" frame="$this/LootButton6" side="Top" relative="$parent/LootButton2" pos="Max" offset="0"/>
+                <Action type="SetAnchor" frame="$this/LootButton6" side="Left" relative="$parent/LootButton3" pos="Min" offset="0"/>
+
+                <Action type="SetProperty" frame="$this" Height="360"/>
+            </State>
+        </StateGroup>
+
+        <Frame type="Button" name="LootButton6" template="DS_InventoryTemplates/CrateInventoryButtonTemplate">
+            <Anchor side="Left" relative="$parent/LootButton2" pos="Max" offset="0"/>
+            <Anchor side="Top" relative="$parent/Header" pos="Max" offset="15"/>
+
+            <Visible val="False"/>
+        </Frame>
+
+        <Frame type="Button" name="LootButton5" template="DS_InventoryTemplates/CrateInventoryButtonTemplate">
+            <Anchor side="Left" relative="$parent/LootButton2" pos="Max" offset="0"/>
+            <Anchor side="Top" relative="$parent/Header" pos="Max" offset="15"/>
+
+            <Visible val="False"/>
+        </Frame>
+
+        <Frame type="Button" name="LootButton4" template="DS_InventoryTemplates/CrateInventoryButtonTemplate">
+            <Anchor side="Left" relative="$parent/LootButton2" pos="Max" offset="0"/>
+            <Anchor side="Top" relative="$parent/Header" pos="Max" offset="15"/>
+
+            <Visible val="False"/>
+        </Frame>
+
+        <Frame type="Button" name="LootButton3" template="DS_InventoryTemplates/CrateInventoryButtonTemplate">
+            <Anchor side="Left" relative="$parent/LootButton2" pos="Max" offset="0"/>
+            <Anchor side="Top" relative="$parent/Header" pos="Max" offset="15"/>
+
+            <Visible val="False"/>
+        </Frame>
+
+        <Frame type="Button" name="LootButton2" template="DS_InventoryTemplates/CrateInventoryButtonTemplate">
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="-50"/>
+            <Anchor side="Top" relative="$parent/Header" pos="Max" offset="15"/>
+
+            <Visible val="False"/>
+        </Frame>
+
+        <Frame type="Button" name="LootButton1" template="DS_InventoryTemplates/CrateInventoryButtonTemplate">
+            <Anchor side="Top" relative="$parent/Header" pos="Max" offset="15"/>
+            <Anchor side="Left" relative="$parent/LootButton2" pos="Min" offset="-100"/>
+
+            <Visible val="False"/>
+        </Frame>
+    </Frame>
+
+    <!-- Redesigned Frames -->
+
+    <Frame type="Frame" name="CharacterStatusPanelTemplate" template="Cleane_StandardTemplates/StandardFrameTemplate">
+
+        <AcceptsMouse val="True"/>
+
+        <Frame type="TabControl" name="TabControl">
+            <Anchor relative="$parent"/>
+
+            <TabListItem val="$parent/CharacterCategory1"/>
+            <TabListItem val="$parent/CharacterCategory2"/>
+            <SelectedIndex val="0"/>
+        </Frame>
+
+        <Frame type="Frame" name="Header" template="DS_StandardTemplates/StandardHeaderModuleTemplate">
+            <Anchor side="Top" relative="$parent/AnchorFrame" pos="Min" offset="10"/>
+
+            <Frame type="Label" name="HeaderTitle">
+                <Visible val="False"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Button" name="CharacterCategory1" template="DS_StandardTemplates/CharacterNavButtonTemplate">
+            <Anchor side="Top" relative="$parent/Header" pos="Mid" offset="0"/>
+            <Anchor side="Bottom" relative="$parent/Header" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="-15"/>
+
+            <Toggleable val="True"/>
+            <Height val="45"/>
+
+            <Frame type="Label" name="TextLabel">
+                <Text val="Equipment"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Button" name="CharacterCategory2" template="DS_StandardTemplates/CharacterNavButtonTemplate">
+            <Anchor side="Top" relative="$parent/Header" pos="Mid" offset="0"/>
+            <Anchor side="Bottom" relative="$parent/Header" pos="Mid" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="15"/>
+
+            <Toggleable val="True"/>
+
+            <Frame type="Label" name="TextLabel">
+                <Text val="Health"/>
+            </Frame>
+        </Frame>
+
+        <StateGroup name="CharacterToggle">
+            <State name="Status">
+                <When type="Property" frame="$this/CharacterCategory2" Toggled="True"/>
+
+                <Action type="SetProperty" frame="$HeadHP" Visible="True"/>
+                <Action type="SetProperty" frame="$LeftArmHP" Visible="True"/>
+                <Action type="SetProperty" frame="$RightArmHP" Visible="True"/>
+                <Action type="SetProperty" frame="$TorsoHP" Visible="True"/>
+                <Action type="SetProperty" frame="$StomachHP" Visible="True"/>
+                <Action type="SetProperty" frame="$LeftLegHP" Visible="True"/>
+                <Action type="SetProperty" frame="$RightLegHP" Visible="True"/>
+            </State>
+
+            <State name="Equipment">
+                <When type="Property" frame="$this/CharacterCategory1" Toggled="True"/>
+
+                <Action type="SetProperty" frame="$HeadEquipment" Visible="True"/>
+                <Action type="SetProperty" frame="$BodyEquipment" Visible="True"/>
+                <Action type="SetProperty" frame="$WeaponEquipment" Visible="True"/>
+                <Action type="SetProperty" frame="$BackEquipment" Visible="True"/>
+            </State>
+        </StateGroup>
+
+        <!-- Paperdoll -->
+
+        <Frame type="Frame" name="CharacterPaperdoll" template="DS_InventoryTemplates/PaperdollTemplate">
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Top" relative="$parent/AnchorFrame" pos="Min" offset="90"/>
+
+            <Width val="333"/>
+            <Height val="620"/>
+        </Frame>
+
+        <!-- Equipment Button Template DS_StandardTemplates/EquipmentButtonTemplate -->
+
+        <Frame type="Button" name="HeadEquipment" template="DS_StandardTemplates/EquipmentButtonTemplate">
+            <Anchor side="Top" relative="$parent/CharacterPaperdoll" pos="Min" offset="-15"/>
+            <Anchor side="Left" relative="$parent/CharacterPaperdoll" pos="Mid" offset="100"/>
+
+            <Handle val="HeadEquipment"/>
+        </Frame>
+
+        <Frame type="Button" name="BodyEquipment" template="DS_StandardTemplates/EquipmentButtonTemplate">
+            <Anchor side="Top" relative="$parent/CharacterPaperdoll" pos="Min" offset="90"/>
+            <Anchor side="Right" relative="$parent/CharacterPaperdoll" pos="Mid" offset="-130"/>
+
+            <Handle val="BodyEquipment"/>
+        </Frame>
+
+        <Frame type="Button" name="WeaponEquipment" template="DS_StandardTemplates/EquipmentButtonTemplate">
+            <Anchor side="Bottom" relative="$parent/CharacterPaperdoll" pos="Max" offset="-140"/>
+            <Anchor side="Right" relative="$parent/CharacterPaperdoll" pos="Mid" offset="-160"/>
+
+            <Handle val="WeaponEquipment"/>
+        </Frame>
+
+        <Frame type="Button" name="BackEquipment" template="DS_StandardTemplates/EquipmentButtonTemplate">
+            <Anchor side="Bottom" relative="$parent/CharacterPaperdoll" pos="Max" offset="-170"/>
+            <Anchor side="Left" relative="$parent/CharacterPaperdoll" pos="Mid" offset="150"/>
+
+            <Handle val="BackEquipment"/>
+        </Frame>
+
+        <Frame type="Image" name="HeadCallout">
+            <Anchor side="Right" relative="$HeadEquipment" pos="Min" offset="0"/>
+            <Anchor side="Top" relative="$HeadEquipment" pos="Min" offset="10"/>
+
+            <Texture val="Assets\Textures\ui_callout_armory_swann.dds"/>
+            <ColorAdjustMode val="Colorize"/>
+            <AdjustmentColor val="00145c"/>
+            <Visible val="{$HeadEquipment/@Visible}"/>
+        </Frame>
+
+        <Frame type="Image" name="BackCallout">
+            <Anchor side="Right" relative="$BackEquipment" pos="Min" offset="0"/>
+            <Anchor side="Bottom" relative="$BackEquipment" pos="Max" offset="-5"/>
+
+            <Texture val="Assets\Textures\ui_callout_bridge_battlereport.dds"/>
+            <ColorAdjustMode val="Colorize"/>
+            <AdjustmentColor val="00145c"/>
+            <Visible val="{$BackEquipment/@Visible}"/>
+        </Frame>
+
+        <Frame type="Image" name="WeaponCallout">
+            <Anchor side="Left" relative="$WeaponEquipment" pos="Min" offset="10"/>
+            <Anchor side="Bottom" relative="$WeaponEquipment" pos="Min" offset="0"/>
+
+            <Texture val="Assets\Textures\ui_callout_bridge_starmap.dds"/>
+            <ColorAdjustMode val="Colorize"/>
+            <AdjustmentColor val="00145c"/>
+            <Visible val="{$WeaponEquipment/@Visible}"/>
+        </Frame>
+
+        <Frame type="Image" name="BodyCallout">
+            <Anchor side="Left" relative="$BodyEquipment" pos="Max" offset="0"/>
+            <Anchor side="Top" relative="$BodyEquipment" pos="Min" offset="20"/>
+
+            <Texture val="Assets\Textures\ui_callout_marsarabar_corkboard.dds"/>
+            <ColorAdjustMode val="Colorize"/>
+            <AdjustmentColor val="00145c"/>
+            <Visible val="{$BodyEquipment/@Visible}"/>
+        </Frame>
+
+        <!-- Status Bars -->
+
+        <Frame type="Frame" name="HeadStatus" template="DS_InventoryTemplates/LimbStatusPanelTemplate">
+            <Anchor side="Top" relative="$parent/CharacterPaperdoll" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent/CharacterPaperdoll" pos="Mid" offset="60"/>
+
+            <Handle val="HeadHP"/>
+
+            <Frame type="Label" name="Label">
+                <Text val="Head"/>
+            </Frame>
+
+            <StateGroup name="DamageState" template="DS_InventoryTemplates/DamageState">
+                <DefaultState val="Medium"/>
+
+                <State name="None">
+                    <When type="StateGroup" frame="$parent/CharacterPaperdoll/DamageHead" Damage="None"/>
+                </State>
+
+                <State name="Low">
+                    <When type="StateGroup" frame="$parent/CharacterPaperdoll/DamageHead" Damage="Low"/>
+                </State>
+
+                <State name="Medium">
+                    <When type="StateGroup" frame="$parent/CharacterPaperdoll/DamageHead" Damage="Medium"/>
+                </State>
+
+                <State name="High">
+                    <When type="StateGroup" frame="$parent/CharacterPaperdoll/DamageHead" Damage="High"/>
+                </State>
+
+                <State name="Blacked">
+                    <When type="StateGroup" frame="$parent/CharacterPaperdoll/DamageHead" Damage="Blacked"/>
+                </State>
+            </StateGroup>
+        </Frame>
+
+        <Frame type="Frame" name="RightArmStatus" template="DS_InventoryTemplates/LimbStatusPanelTemplate">
+            <Anchor side="Top" relative="$parent/CharacterPaperdoll" pos="Min" offset="160"/>
+            <Anchor side="Right" relative="$parent/CharacterPaperdoll" pos="Mid" offset="-100"/>
+
+            <Handle val="RightArmHP"/>
+
+            <Frame type="Label" name="Label">
+                <Text val="Right Arm"/>
+            </Frame>
+
+            <StateGroup name="DamageState" template="DS_InventoryTemplates/DamageState">
+                <DefaultState val="Medium"/>
+
+                <State name="None">
+                    <When type="StateGroup" frame="$parent/CharacterPaperdoll/DamageRightArm" Damage="None"/>
+                </State>
+
+                <State name="Low">
+                    <When type="StateGroup" frame="$parent/CharacterPaperdoll/DamageRightArm" Damage="Low"/>
+                </State>
+
+                <State name="Medium">
+                    <When type="StateGroup" frame="$parent/CharacterPaperdoll/DamageRightArm" Damage="Medium"/>
+                </State>
+
+                <State name="High">
+                    <When type="StateGroup" frame="$parent/CharacterPaperdoll/DamageRightArm" Damage="High"/>
+                </State>
+
+                <State name="Blacked">
+                    <When type="StateGroup" frame="$parent/CharacterPaperdoll/DamageRightArm" Damage="Blacked"/>
+                </State>
+            </StateGroup>
+        </Frame>
+
+        <Frame type="Frame" name="LeftArmStatus" template="DS_InventoryTemplates/LimbStatusPanelTemplate">
+            <Anchor side="Top" relative="$parent/CharacterPaperdoll" pos="Min" offset="160"/>
+            <Anchor side="Left" relative="$parent/CharacterPaperdoll" pos="Mid" offset="100"/>
+
+            <Handle val="LeftArmHP"/>
+
+            <Frame type="Label" name="Label">
+                <Text val="Left Arm"/>
+            </Frame>
+
+            <StateGroup name="DamageState" template="DS_InventoryTemplates/DamageState">
+                <DefaultState val="Medium"/>
+
+                <State name="None">
+                    <When type="StateGroup" frame="$parent/CharacterPaperdoll/DamageLeftArm" Damage="None"/>
+                </State>
+
+                <State name="Low">
+                    <When type="StateGroup" frame="$parent/CharacterPaperdoll/DamageLeftArm" Damage="Low"/>
+                </State>
+
+                <State name="Medium">
+                    <When type="StateGroup" frame="$parent/CharacterPaperdoll/DamageLeftArm" Damage="Medium"/>
+                </State>
+
+                <State name="High">
+                    <When type="StateGroup" frame="$parent/CharacterPaperdoll/DamageLeftArm" Damage="High"/>
+                </State>
+
+                <State name="Blacked">
+                    <When type="StateGroup" frame="$parent/CharacterPaperdoll/DamageLeftArm" Damage="Blacked"/>
+                </State>
+            </StateGroup>
+        </Frame>
+
+        <Frame type="Frame" name="TorsoStatus" template="DS_InventoryTemplates/LimbStatusPanelTemplate">
+            <Anchor side="Top" relative="$parent/CharacterPaperdoll" pos="Min" offset="100"/>
+            <Anchor side="Left" relative="$parent/CharacterPaperdoll" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent/CharacterPaperdoll" pos="Mid" offset="0"/>
+
+            <Handle val="TorsoHP"/>
+
+            <Frame type="Label" name="Label">
+                <Text val="Torso"/>
+            </Frame>
+
+            <StateGroup name="DamageState" template="DS_InventoryTemplates/DamageState">
+                <DefaultState val="Medium"/>
+
+                <State name="None">
+                    <When type="StateGroup" frame="$parent/CharacterPaperdoll/DamageTorso" Damage="None"/>
+                </State>
+
+                <State name="Low">
+                    <When type="StateGroup" frame="$parent/CharacterPaperdoll/DamageTorso" Damage="Low"/>
+                </State>
+
+                <State name="Medium">
+                    <When type="StateGroup" frame="$parent/CharacterPaperdoll/DamageTorso" Damage="Medium"/>
+                </State>
+
+                <State name="High">
+                    <When type="StateGroup" frame="$parent/CharacterPaperdoll/DamageTorso" Damage="High"/>
+                </State>
+
+                <State name="Blacked">
+                    <When type="StateGroup" frame="$parent/CharacterPaperdoll/DamageTorso" Damage="Blacked"/>
+                </State>
+            </StateGroup>
+        </Frame>
+
+        <Frame type="Frame" name="StomachStatus" template="DS_InventoryTemplates/LimbStatusPanelTemplate">
+            <Anchor side="Top" relative="$parent/CharacterPaperdoll" pos="Min" offset="230"/>
+            <Anchor side="Left" relative="$parent/CharacterPaperdoll" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent/CharacterPaperdoll" pos="Mid" offset="0"/>
+
+            <Handle val="StomachHP"/>
+
+            <Frame type="Label" name="Label">
+                <Text val="Stomach"/>
+            </Frame>
+
+            <StateGroup name="DamageState" template="DS_InventoryTemplates/DamageState">
+                <DefaultState val="Medium"/>
+
+                <State name="None">
+                    <When type="StateGroup" frame="$parent/CharacterPaperdoll/DamageStomach" Damage="None"/>
+                </State>
+
+                <State name="Low">
+                    <When type="StateGroup" frame="$parent/CharacterPaperdoll/DamageStomach" Damage="Low"/>
+                </State>
+
+                <State name="Medium">
+                    <When type="StateGroup" frame="$parent/CharacterPaperdoll/DamageStomach" Damage="Medium"/>
+                </State>
+
+                <State name="High">
+                    <When type="StateGroup" frame="$parent/CharacterPaperdoll/DamageStomach" Damage="High"/>
+                </State>
+
+                <State name="Blacked">
+                    <When type="StateGroup" frame="$parent/CharacterPaperdoll/DamageStomach" Damage="Blacked"/>
+                </State>
+            </StateGroup>
+        </Frame>
+
+        <Frame type="Frame" name="RightLegStatus" template="DS_InventoryTemplates/LimbStatusPanelTemplate">
+            <Anchor side="Top" relative="$parent/CharacterPaperdoll" pos="Min" offset="450"/>
+            <Anchor side="Right" relative="$parent/CharacterPaperdoll" pos="Mid" offset="-86"/>
+
+            <Handle val="RightLegHP"/>
+
+            <Frame type="Label" name="Label">
+                <Text val="Right Leg"/>
+            </Frame>
+
+            <StateGroup name="DamageState" template="DS_InventoryTemplates/DamageState">
+                <DefaultState val="Medium"/>
+
+                <State name="None">
+                    <When type="StateGroup" frame="$parent/CharacterPaperdoll/DamageRightLeg" Damage="None"/>
+                </State>
+
+                <State name="Low">
+                    <When type="StateGroup" frame="$parent/CharacterPaperdoll/DamageRightArm" Damage="Low"/>
+                </State>
+
+                <State name="Medium">
+                    <When type="StateGroup" frame="$parent/CharacterPaperdoll/DamageRightLeg" Damage="Medium"/>
+                </State>
+
+                <State name="High">
+                    <When type="StateGroup" frame="$parent/CharacterPaperdoll/DamageRightLeg" Damage="High"/>
+                </State>
+
+                <State name="Blacked">
+                    <When type="StateGroup" frame="$parent/CharacterPaperdoll/DamageRightLeg" Damage="Blacked"/>
+                </State>
+            </StateGroup>
+        </Frame>
+
+        <Frame type="Frame" name="LeftLegStatus" template="DS_InventoryTemplates/LimbStatusPanelTemplate">
+            <Anchor side="Top" relative="$parent/CharacterPaperdoll" pos="Min" offset="450"/>
+            <Anchor side="Left" relative="$parent/CharacterPaperdoll" pos="Mid" offset="84"/>
+
+            <Handle val="LeftLegHP"/>
+
+            <Frame type="Label" name="Label">
+                <Text val="Left Leg"/>
+            </Frame>
+
+            <StateGroup name="DamageState" template="DS_InventoryTemplates/DamageState">
+                <DefaultState val="Medium"/>
+
+                <State name="None">
+                    <When type="StateGroup" frame="$parent/CharacterPaperdoll/DamageLeftLeg" Damage="None"/>
+                </State>
+
+                <State name="Low">
+                    <When type="StateGroup" frame="$parent/CharacterPaperdoll/DamageLeftLeg" Damage="Low"/>
+                </State>
+
+                <State name="Medium">
+                    <When type="StateGroup" frame="$parent/CharacterPaperdoll/DamageLeftLeg" Damage="Medium"/>
+                </State>
+
+                <State name="High">
+                    <When type="StateGroup" frame="$parent/CharacterPaperdoll/DamageLeftLeg" Damage="High"/>
+                </State>
+
+                <State name="Blacked">
+                    <When type="StateGroup" frame="$parent/CharacterPaperdoll/DamageLeftLeg" Damage="Blacked"/>
+                </State>
+            </StateGroup>
+        </Frame>
+
+        <!-- Status Bars -->
+
+        <Frame type="Frame" name="VitalStatusBar1" template="Cleane_StandardTemplates/StatListboxItemTemplate">
+            <Anchor side="Bottom" relative="$parent/AnchorFrame" pos="Max" offset="-15"/>
+            <Anchor side="Left" relative="$parent/AnchorFrame" pos="Min" offset="17"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="-15"/>
+
+            <Frame type="Image" name="ProgressBackground">
+                <Anchor side="Left" relative="$parent/IconBorder" pos="Max" offset="-15"/>
+                <Anchor side="Bottom" relative="$parent" pos="Max" offset="-11"/>
+            </Frame>
+            
+            <Frame type="Label" name="StatName">
+                <Text val="Food"/>
+            </Frame>
+
+            <Frame type="Image" name="Icon">
+                <Texture val="Assets\Textures\ui_clean_useicon_food.dds"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Frame" name="VitalStatusBar2" template="Cleane_StandardTemplates/StatListboxItemTemplate">
+            <Anchor side="Bottom" relative="$parent/AnchorFrame" pos="Max" offset="-15"/>
+            <Anchor side="Right" relative="$parent/AnchorFrame" pos="Max" offset="-17"/>
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="15"/>
+
+            <Frame type="Image" name="ProgressBackground">
+                <Anchor side="Left" relative="$parent/IconBorder" pos="Max" offset="-15"/>
+                <Anchor side="Bottom" relative="$parent" pos="Max" offset="-11"/>
+            </Frame>
+
+            <Frame type="Label" name="StatName">
+                <Text val="Water"/>
+            </Frame>
+
+            <Frame type="Image" name="Icon">
+                <Texture val="Assets\Textures\ui_clean_useicon_water.dds"/>
+            </Frame>
+        </Frame>
+    </Frame>
+
+    <Frame type="Frame" name="KeyInventoryModuleTemplate" template="DS_StandardTemplates/StandardHeaderModuleTemplate">
+        <Anchor side="Bottom" relative="$this/KeySlot1" pos="Max" offset="10"/>
+
+        <Frame type="Label" name="HeaderTitle">
+            <Text val="Key Items"/>
+        </Frame>
+
+        <!-- Hide Unused Keys on Empty
+            Collapse Hidden Keys
+            Possibly add a secondary row
+        -->
+        <!-- Replace Template with custom item for keys -->
+        <Frame type="Button" name="KeySlot1" template="DS_InventoryTemplates/InventorySlotButtonTemplate">
+            <Anchor side="Right" relative="$sibling+1" pos="Min" offset="-5"/>
+            <Anchor side="Top" relative="$parent/HeaderDividerBottom" pos="Max" offset="10"/>
+
+            <Width val="80"/>
+            <Height val="80"/>
+            <!-- Add other overrides on new template -->
+        </Frame>
+
+        <Frame type="Button" name="KeySlot2" template="DS_InventoryTemplates/InventorySlotButtonTemplate">
+            <Anchor side="Right" relative="$sibling+1" pos="Min" offset="-5"/>
+            <Anchor side="Top" relative="$parent/KeySlot1" pos="Min" offset="0"/>
+
+            <Width val="80"/>
+            <Height val="80"/>
+        </Frame>
+
+        <Frame type="Button" name="KeySlot3" template="DS_InventoryTemplates/InventorySlotButtonTemplate">
+            <Anchor side="Right" relative="$sibling+1" pos="Min" offset="-5"/>
+            <Anchor side="Top" relative="$parent/KeySlot1" pos="Min" offset="0"/>
+
+            <Width val="80"/>
+            <Height val="80"/>
+        </Frame>
+
+        <Frame type="Button" name="KeySlot4" template="DS_InventoryTemplates/InventorySlotButtonTemplate">
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Top" relative="$parent/KeySlot1" pos="Min" offset="0"/>
+
+            <Width val="80"/>
+            <Height val="80"/>
+        </Frame>
+
+        <Frame type="Button" name="KeySlot5" template="DS_InventoryTemplates/InventorySlotButtonTemplate">
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="5"/>
+            <Anchor side="Top" relative="$parent/KeySlot1" pos="Min" offset="0"/>
+
+            <Width val="80"/>
+            <Height val="80"/>
+        </Frame>
+
+        <Frame type="Button" name="KeySlot6" template="DS_InventoryTemplates/InventorySlotButtonTemplate">
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="5"/>
+            <Anchor side="Top" relative="$parent/KeySlot1" pos="Min" offset="0"/>
+
+            <Width val="80"/>
+            <Height val="80"/>
+        </Frame>
+
+        <Frame type="Button" name="KeySlot7" template="DS_InventoryTemplates/InventorySlotButtonTemplate">
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="5"/>
+            <Anchor side="Top" relative="$parent/KeySlot1" pos="Min" offset="0"/>
+
+            <Width val="80"/>
+            <Height val="80"/>
+        </Frame>
+    </Frame>
+
+    <Frame type="Frame" name="InventoryModuleTemplate" template="DS_StandardTemplates/StandardHeaderModuleTemplate">
+        <Anchor side="Bottom" relative="$this/InventorySlot30" pos="Max" offset="27"/>
+    
+        <Frame type="Label" name="HeaderTitle">
+            <Text val="Inventory"/>
+        </Frame>
+
+        <Frame type="Button" name="InventorySlot1" template="DS_InventoryTemplates/InventorySlotButtonTemplate">
+            <Anchor side="Top" relative="$parent/HeaderDividerBottom" pos="Max" offset="10"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="17"/>
+        </Frame>
+
+        <Frame type="Button" name="InventorySlot2" template="DS_InventoryTemplates/InventorySlotButtonTemplate">
+            <Anchor side="Top" relative="$parent/InventorySlot1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="-5"/>
+        </Frame>
+
+        <Frame type="Button" name="InventorySlot3" template="DS_InventoryTemplates/InventorySlotButtonTemplate">
+            <Anchor side="Top" relative="$parent/InventorySlot1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="-5"/>
+        </Frame>
+
+        <Frame type="Button" name="InventorySlot4" template="DS_InventoryTemplates/InventorySlotButtonTemplate">
+            <Anchor side="Top" relative="$parent/InventorySlot1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="-5"/>
+        </Frame>
+
+        <Frame type="Button" name="InventorySlot5" template="DS_InventoryTemplates/InventorySlotButtonTemplate">
+            <Anchor side="Top" relative="$parent/InventorySlot1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="-5"/>
+        </Frame>
+
+        <Frame type="Button" name="InventorySlot6" template="DS_InventoryTemplates/InventorySlotButtonTemplate">
+            <Anchor side="Top" relative="$parent/InventorySlot1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="-5"/>
+        </Frame>
+        <!-- Row 2 -->
+
+        <Frame type="Button" name="InventorySlot7" template="DS_InventoryTemplates/InventorySlotButtonTemplate">
+            <Anchor side="Top" relative="$parent/InventorySlot1" pos="Max" offset="-5"/>
+            <Anchor side="Left" relative="$parent/InventorySlot1" pos="Min" offset="0"/>
+        </Frame>
+
+        <Frame type="Button" name="InventorySlot8" template="DS_InventoryTemplates/InventorySlotButtonTemplate">
+            <Anchor side="Top" relative="$parent/InventorySlot7" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="-5"/>
+        </Frame>
+
+        <Frame type="Button" name="InventorySlot9" template="DS_InventoryTemplates/InventorySlotButtonTemplate">
+            <Anchor side="Top" relative="$parent/InventorySlot7" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="-5"/>
+        </Frame>
+
+        <Frame type="Button" name="InventorySlot10" template="DS_InventoryTemplates/InventorySlotButtonTemplate">
+            <Anchor side="Top" relative="$parent/InventorySlot7" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="-5"/>
+        </Frame>
+
+        <Frame type="Button" name="InventorySlot11" template="DS_InventoryTemplates/InventorySlotButtonTemplate">
+            <Anchor side="Top" relative="$parent/InventorySlot7" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="-5"/>
+        </Frame>
+
+        <Frame type="Button" name="InventorySlot12" template="DS_InventoryTemplates/InventorySlotButtonTemplate">
+            <Anchor side="Top" relative="$parent/InventorySlot7" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="-5"/>
+        </Frame>
+
+        <!-- Row 4 -->
+
+        <Frame type="Button" name="InventorySlot13" template="DS_InventoryTemplates/InventorySlotButtonTemplate">
+            <Anchor side="Top" relative="$parent/InventorySlot7" pos="Max" offset="-5"/>
+            <Anchor side="Left" relative="$parent/InventorySlot1" pos="Min" offset="0"/>
+        </Frame>
+
+        <Frame type="Button" name="InventorySlot14" template="DS_InventoryTemplates/InventorySlotButtonTemplate">
+            <Anchor side="Top" relative="$parent/InventorySlot13" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="-5"/>
+        </Frame>
+
+        <Frame type="Button" name="InventorySlot15" template="DS_InventoryTemplates/InventorySlotButtonTemplate">
+            <Anchor side="Top" relative="$parent/InventorySlot13" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="-5"/>
+        </Frame>
+
+        <Frame type="Button" name="InventorySlot16" template="DS_InventoryTemplates/InventorySlotButtonTemplate">
+            <Anchor side="Top" relative="$parent/InventorySlot13" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="-5"/>
+        </Frame>
+
+        <Frame type="Button" name="InventorySlot17" template="DS_InventoryTemplates/InventorySlotButtonTemplate">
+            <Anchor side="Top" relative="$parent/InventorySlot13" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="-5"/>
+        </Frame>
+
+        <Frame type="Button" name="InventorySlot18" template="DS_InventoryTemplates/InventorySlotButtonTemplate">
+            <Anchor side="Top" relative="$parent/InventorySlot13" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="-5"/>
+        </Frame>
+
+        <!-- Row 5 -->
+
+        <Frame type="Button" name="InventorySlot19" template="DS_InventoryTemplates/InventorySlotButtonTemplate">
+            <Anchor side="Top" relative="$parent/InventorySlot13" pos="Max" offset="-5"/>
+            <Anchor side="Left" relative="$parent/InventorySlot1" pos="Min" offset="0"/>
+        </Frame>
+
+        <Frame type="Button" name="InventorySlot20" template="DS_InventoryTemplates/InventorySlotButtonTemplate">
+            <Anchor side="Top" relative="$parent/InventorySlot19" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="-5"/>
+        </Frame>
+
+        <Frame type="Button" name="InventorySlot21" template="DS_InventoryTemplates/InventorySlotButtonTemplate">
+            <Anchor side="Top" relative="$parent/InventorySlot19" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="-5"/>
+        </Frame>
+
+        <Frame type="Button" name="InventorySlot22" template="DS_InventoryTemplates/InventorySlotButtonTemplate">
+            <Anchor side="Top" relative="$parent/InventorySlot19" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="-5"/>
+        </Frame>
+
+        <Frame type="Button" name="InventorySlot23" template="DS_InventoryTemplates/InventorySlotButtonTemplate">
+            <Anchor side="Top" relative="$parent/InventorySlot19" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="-5"/>
+        </Frame>
+
+        <Frame type="Button" name="InventorySlot24" template="DS_InventoryTemplates/InventorySlotButtonTemplate">
+            <Anchor side="Top" relative="$parent/InventorySlot19" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="-5"/>
+        </Frame>
+
+        <!-- Row 3 -->
+
+        <Frame type="Button" name="InventorySlot25" template="DS_InventoryTemplates/InventorySlotButtonTemplate">
+            <Anchor side="Top" relative="$parent/InventorySlot19" pos="Max" offset="-5"/>
+            <Anchor side="Left" relative="$parent/InventorySlot1" pos="Min" offset="0"/>
+        </Frame>
+
+        <Frame type="Button" name="InventorySlot26" template="DS_InventoryTemplates/InventorySlotButtonTemplate">
+            <Anchor side="Top" relative="$parent/InventorySlot25" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="-5"/>
+        </Frame>
+
+        <Frame type="Button" name="InventorySlot27" template="DS_InventoryTemplates/InventorySlotButtonTemplate">
+            <Anchor side="Top" relative="$parent/InventorySlot25" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="-5"/>
+        </Frame>
+
+        <Frame type="Button" name="InventorySlot28" template="DS_InventoryTemplates/InventorySlotButtonTemplate">
+            <Anchor side="Top" relative="$parent/InventorySlot25" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="-5"/>
+        </Frame>
+
+        <Frame type="Button" name="InventorySlot29" template="DS_InventoryTemplates/InventorySlotButtonTemplate">
+            <Anchor side="Top" relative="$parent/InventorySlot25" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="-5"/>
+        </Frame>
+
+        <Frame type="Button" name="InventorySlot30" template="DS_InventoryTemplates/InventorySlotButtonTemplate">
+            <Anchor side="Top" relative="$parent/InventorySlot25" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="-5"/>
+        </Frame>
+    </Frame>
+
+    <Frame type="Frame" name="ECL_InventoryPanelTemplate">
+    
+        <Animation name="ShowHide">
+            <Event event="HideInventory" action="DirectionForward,Play" frame="$this"/>
+            <Event event="ShowInventory" action="DirectionReverse,Play" frame="$this"/>
+            <Controller type="Visibility" end="Pause" frame="$this">
+                <Key type="Bool" time="0.0" value="true"/>
+                <Key type="Bool" time="0.1" value="true"/>
+                <Key type="Bool" time="0.1" value="false"/>
+            </Controller>
+            <Controller type="Fade" end="Pause" frame="$this">
+                <Key type="Curve" time="0.0" value="255"/>
+                <Key type="Curve" time="0.1" value="0"/>
+            </Controller>
+        </Animation>
+    
+        <!--Frame type="AspectRatioFrame" name="AspectRatioListener_16x9_Draft">
+            <Anchor side="Top" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Max" offset="0"/>
+            <Width val="1"/>
+            <Height val="1"/>
+            <Handle val="AspectRatioListener_16x9_MT"/>
+            <MinVisibleAspectRatio val="1.77"/>
+        </Frame>
+        
+        <Frame type="AspectRatioFrame" name="AspectRatioListener_16x10_Draft">
+            <Anchor side="Top" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Max" offset="0"/>
+            <Width val="1"/>
+            <Height val="1"/>
+            <Handle val="AspectRatioListener_16x10_MT"/>
+            <MinVisibleAspectRatio val="1.6"/>
+        </Frame>
+        
+        <Frame type="AspectRatioFrame" name="AspectRatioListener_4x3_Draft">
+            <Anchor side="Top" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Max" offset="0"/>
+            <Width val="1"/>
+            <Height val="1"/>
+            <Handle val="AspectRatioListener_4x3_MT"/>
+            <MinVisibleAspectRatio val="1.33"/>
+        </Frame-->
+    
+        <!--StateGroup name="AspectRatioState">
+            <DefaultState val="4x3"/>
+            
+            <State name="16x9">
+                <When type="Property" frame="AspectRatioListener_16x9_Draft" Visible="true"/>
+            </State>
+            
+            <State name="16x10">
+            </State>
+            
+            <State name="4x3">
+            </State>
+        </StateGroup-->
+
+
+        <!-- ######################################################-->
+        <!-- ###########                               ############-->
+        <!-- ###########  M A I N   I N V E N T O R Y  ############-->
+        <!-- ###########                               ############-->
+        <!-- ######################################################-->
+
+        <Frame type="Image" name="MAIN_Background">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Width val="#Inventory_Width"/>
+            <Texture val="Assets/Textures/ECL_BORDER_INV.dds"/>
+            <TextureType val="NineSlice"/>
+        </Frame>
+    
+        <Frame type="Frame" name="AnchorFrame">
+            <Anchor side="Top" relative="$parent/MAIN_Background" pos="Min" offset="15"/>
+            <Anchor side="Bottom" relative="$parent/MAIN_Background" pos="Max" offset="-15"/>
+            <Anchor side="Left" relative="$parent/MAIN_Background" pos="Min" offset="15"/>
+            <Anchor side="Right" relative="$parent/MAIN_Background" pos="Max" offset="-15"/>
+        </Frame>
+
+        <!-- Character Module -->
+        
+        <Frame type="TabControl" name="CharTabControl">
+            <Anchor relative="$parent"/>
+
+            <TabListItem val="$parent/CharacterButton1"/>
+            <TabListItem val="$parent/CharacterButton2"/>
+            <SelectedIndex val="0"/>
+        </Frame>
+
+        <Frame type="Frame" name="CharacterHeader" template="DS_StandardTemplates/StandardHeaderModuleTemplate">
+            <Anchor side="Top" relative="$parent/AnchorFrame" pos="Min" offset="10"/>
+
+            <Frame type="Label" name="HeaderTitle">
+                <Visible val="False"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Button" name="CharacterButton1" template="DS_StandardTemplates/CharacterNavButtonTemplate">
+            <Anchor side="Top" relative="$parent/CharacterHeader" pos="Mid" offset="0"/>
+            <Anchor side="Bottom" relative="$parent/CharacterHeader" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent/MAIN_Background" pos="Mid" offset="-15"/>
+
+            <Toggleable val="True"/>
+            <Height val="45"/>
+
+            <Frame type="Label" name="TextLabel">
+                <Text val="Equipment"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Button" name="CharacterButton2" template="DS_StandardTemplates/CharacterNavButtonTemplate">
+            <Anchor side="Top" relative="$parent/CharacterHeader" pos="Mid" offset="0"/>
+            <Anchor side="Bottom" relative="$parent/CharacterHeader" pos="Mid" offset="0"/>
+            <Anchor side="Left" relative="$parent/MAIN_Background" pos="Mid" offset="15"/>
+
+            <Toggleable val="True"/>
+
+            <Frame type="Label" name="TextLabel">
+                <Text val="Health"/>
+            </Frame>
+        </Frame>
+
+        <!-- Character Paperdoll -->
+
+        <Frame type="Frame" name="Paperdoll" template="DS_InventoryTemplates/PaperdollTemplate">
+            <Anchor side="Left" relative="$parent/MAIN_Background" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent/MAIN_Background" pos="Mid" offset="0"/>
+            <Anchor side="Top" relative="$parent/CharacterHeader" pos="Max" offset="10"/>
+
+            <Width val="193"/>
+            <Height val="360"/>
+        </Frame>
+
+        <!-- Status Bars -->
+
+        <Frame type="Frame" name="HeadStatus" template="DS_InventoryTemplates/LimbStatusPanelTemplate">
+            <Anchor side="Top" relative="$parent/Paperdoll" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent/Paperdoll" pos="Mid" offset="60"/>
+        
+            <Handle val="HeadHP"/>
+        
+            <Frame type="Label" name="Label">
+                <Text val="Head"/>
+            </Frame>
+        
+            <StateGroup name="DamageState" template="DS_InventoryTemplates/DamageState">
+                <DefaultState val="Medium"/>
+        
+                <State name="None">
+                    <When type="StateGroup" frame="$parent/Paperdoll/DamageHead" Damage="None"/>
+                </State>
+        
+                <State name="Low">
+                    <When type="StateGroup" frame="$parent/Paperdoll/DamageHead" Damage="Low"/>
+                </State>
+        
+                <State name="Medium">
+                    <When type="StateGroup" frame="$parent/Paperdoll/DamageHead" Damage="Medium"/>
+                </State>
+        
+                <State name="High">
+                    <When type="StateGroup" frame="$parent/Paperdoll/DamageHead" Damage="High"/>
+                </State>
+        
+                <State name="Blacked">
+                    <When type="StateGroup" frame="$parent/Paperdoll/DamageHead" Damage="Blacked"/>
+                </State>
+            </StateGroup>
+        </Frame>
+
+        <Frame type="Frame" name="TorsoStatus" template="DS_InventoryTemplates/LimbStatusPanelTemplate">
+            <Anchor side="Top" relative="$parent/Paperdoll" pos="Min" offset="100"/>
+            <Anchor side="Right" relative="$parent/Paperdoll" pos="Mid" offset="-70"/>
+        
+            <Handle val="TorsoHP"/>
+        
+            <Frame type="Label" name="Label">
+                <Text val="Torso"/>
+            </Frame>
+        
+            <StateGroup name="DamageState" template="DS_InventoryTemplates/DamageState">
+                <DefaultState val="Medium"/>
+        
+                <State name="None">
+                    <When type="StateGroup" frame="$parent/Paperdoll/DamageTorso" Damage="None"/>
+                </State>
+        
+                <State name="Low">
+                    <When type="StateGroup" frame="$parent/Paperdoll/DamageTorso" Damage="Low"/>
+                </State>
+        
+                <State name="Medium">
+                    <When type="StateGroup" frame="$parent/Paperdoll/DamageTorso" Damage="Medium"/>
+                </State>
+        
+                <State name="High">
+                    <When type="StateGroup" frame="$parent/Paperdoll/DamageTorso" Damage="High"/>
+                </State>
+        
+                <State name="Blacked">
+                    <When type="StateGroup" frame="$parent/Paperdoll/DamageTorso" Damage="Blacked"/>
+                </State>
+            </StateGroup>
+        </Frame>
+    
+        <Frame type="Frame" name="LegsStatus" template="DS_InventoryTemplates/LimbStatusPanelTemplate">
+            <Anchor side="Top" relative="$parent/Paperdoll" pos="Min" offset="230"/>
+            <Anchor side="Left" relative="$parent/Paperdoll" pos="Mid" offset="70"/>
+
+        
+            <Handle val="StomachHP"/>
+        
+            <Frame type="Label" name="Label">
+                <Text val="Legs"/>
+            </Frame>
+        
+            <StateGroup name="DamageState" template="DS_InventoryTemplates/DamageState">
+                <DefaultState val="Medium"/>
+        
+                <State name="None">
+                    <When type="StateGroup" frame="$parent/Paperdoll/DamageLegs" Damage="None"/>
+                </State>
+        
+                <State name="Low">
+                    <When type="StateGroup" frame="$parent/Paperdoll/DamageLegs" Damage="Low"/>
+                </State>
+        
+                <State name="Medium">
+                    <When type="StateGroup" frame="$parent/Paperdoll/DamageLegs" Damage="Medium"/>
+                </State>
+        
+                <State name="High">
+                    <When type="StateGroup" frame="$parent/Paperdoll/DamageLegs" Damage="High"/>
+                </State>
+        
+                <State name="Blacked">
+                    <When type="StateGroup" frame="$parent/Paperdoll/DamageLegs" Damage="Blacked"/>
+                </State>
+            </StateGroup>
+        </Frame>
+        
+        <StateGroup name="InventoryMode">
+            <State name="Equipment">
+                <When type="Property" frame="$this/CharacterButton1" Toggled="True"/>
+
+                <Action type="SetProperty" frame="$this/Paperdoll/DamageHead" Visible="False"/>
+                <Action type="SetProperty" frame="$this/Paperdoll/DamageTorso" Visible="False"/>
+                <Action type="SetProperty" frame="$this/Paperdoll/DamageLegs" Visible="False"/>
+            </State>
+
+            <State name="Health">
+                <When type="Property" frame="$this/CharacterButton2" Toggled="True"/>
+
+                <Action type="SetAnchor" frame="$this/HeadEquipment" side="Left" relative="$parent/Paperdoll" pos="Mid" offset="600"/>
+                <Action type="SetAnchor" frame="$this/BodyEquipment" side="Left" relative="$parent/Paperdoll" pos="Mid" offset="600"/>
+                <Action type="SetAnchor" frame="$this/BootsEquipment" side="Left" relative="$parent/Paperdoll" pos="Mid" offset="600"/>
+                <Action type="SetAnchor" frame="$this/BackEquipment" side="Left" relative="$parent/Paperdoll" pos="Mid" offset="600"/>
+                <Action type="SetAnchor" frame="$this/AugmentEquipment" side="Left" relative="$parent/Paperdoll" pos="Mid" offset="600"/>
+                <Action type="SetAnchor" frame="$this/WeaponEquipment1" side="Right" relative="$parent/Paperdoll" pos="Mid" offset="600"/>
+                <Action type="SetAnchor" frame="$this/WeaponEquipment2" side="Right" relative="$parent/Paperdoll" pos="Mid" offset="600"/>
+                <Action type="SetAnchor" frame="$this/WeaponEquipment3" side="Right" relative="$parent/Paperdoll" pos="Mid" offset="600"/>
+                <Action type="SetAnchor" frame="$this/WeaponEquipment4" side="Right" relative="$parent/Paperdoll" pos="Mid" offset="600"/>
+
+                <Action type="SetProperty" frame="$this/HeadStatus" Visible="True"/>
+                <Action type="SetProperty" frame="$this/TorsoStatus" Visible="True"/>
+                <Action type="SetProperty" frame="$this/LegsStatus" Visible="True"/>
+            </State>
+        </StateGroup>
+
+        <!-- Equipment -->
+
+        <Frame type="Frame" name="BG_HEAD" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/HeadEquipment"/>
+
+            <Animation name="HighlightOnOff">
+                <Event event="HeadOn" action="DirectionForward,Play" frame="$parent"/>
+                <Event event="HeadOff" action="DirectionReverse,Play" frame="$parent"/>
+                <Controller type="Color" end="Pause" frame="$this/Border">
+                    <Key type="Curve" time="0.0" value="#StandardFrameDarkColor"/>
+                    <Key type="Curve" time="0.1" value="ff2eb966"/>
+                </Controller>
+                <Controller type="Color" end="Pause" frame="$this/BGBG">
+                    <Key type="Curve" time="0.0" value="12,16,20"/>
+                    <Key type="Curve" time="0.1" value="12,20,16"/>
+                </Controller>
+            </Animation>
+        </Frame>
+
+        <Frame type="Control" name="HeadEquipment" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$parent/Paperdoll" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent/Paperdoll" pos="Mid" offset="-40"/>
+            <Handle val="HeadEquipmentT"/>
+        </Frame>
+
+        <Frame type="Frame" name="BG_BODY" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/BodyEquipment"/>
+
+            <Animation name="HighlightOnOff">
+                <Event event="SuitOn" action="DirectionForward,Play" frame="$parent"/>
+                <Event event="SuitOff" action="DirectionReverse,Play" frame="$parent"/>
+                <Controller type="Color" end="Pause" frame="$this/Border" layer="0">
+                    <Key type="Curve" time="0.0" value="#StandardFrameDarkColor"/>
+                    <Key type="Curve" time="0.1" value="ff2eb966"/>
+                </Controller>
+                <Controller type="Color" end="Pause" frame="$this/BGBG">
+                    <Key type="Curve" time="0.0" value="12,16,20"/>
+                    <Key type="Curve" time="0.1" value="17,41,31"/>
+                </Controller>
+            </Animation>
+        </Frame>
+
+        <Frame type="Control" name="BodyEquipment" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$parent/Paperdoll" pos="Mid" offset="0"/>
+            <Anchor side="Bottom" relative="$parent/Paperdoll" pos="Mid" offset="0"/>
+            <Anchor side="Left" relative="$parent/Paperdoll" pos="Mid" offset="-40"/>
+            <Handle val="BodyEquipmentT"/>
+        </Frame>
+
+        <Frame type="Frame" name="BG_BOOTS" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/BootsEquipment"/>
+
+            <Animation name="HighlightOnOff">
+                <Event event="BootsOn" action="DirectionForward,Play" frame="$parent"/>
+                <Event event="BootsOff" action="DirectionReverse,Play" frame="$parent"/>
+                <Controller type="Color" end="Pause" frame="$this/Border" layer="0">
+                    <Key type="Curve" time="0.0" value="#StandardFrameDarkColor"/>
+                    <Key type="Curve" time="0.1" value="ff2eb966"/>
+                </Controller>
+                <Controller type="Color" end="Pause" frame="$this/BGBG">
+                    <Key type="Curve" time="0.0" value="12,16,20"/>
+                    <Key type="Curve" time="0.1" value="17,41,31"/>
+                </Controller>
+            </Animation>
+        </Frame>
+
+        <Frame type="Control" name="BootsEquipment" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Bottom" relative="$parent/Paperdoll" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent/Paperdoll" pos="Mid" offset="-40"/>
+            <Handle val="BootsEquipmentT"/>
+        </Frame>
+
+        <Frame type="Frame" name="BG_BACK" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/BackEquipment"/>
+
+            <Animation name="HighlightOnOff">
+                <Event event="PackOn" action="DirectionForward,Play" frame="$parent"/>
+                <Event event="PackOff" action="DirectionReverse,Play" frame="$parent"/>
+                <Controller type="Color" end="Pause" frame="$this/Border" layer="0">
+                    <Key type="Curve" time="0.0" value="#StandardFrameDarkColor"/>
+                    <Key type="Curve" time="0.1" value="ff2eb966"/>
+                </Controller>
+                <Controller type="Color" end="Pause" frame="$this/BGBG">
+                    <Key type="Curve" time="0.0" value="12,16,20"/>
+                    <Key type="Curve" time="0.1" value="17,41,31"/>
+                </Controller>
+            </Animation>
+        </Frame>
+
+        <Frame type="Control" name="BackEquipment" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$parent/Paperdoll" pos="Mid" offset="60"/>
+            <Anchor side="Bottom" relative="$parent/Paperdoll" pos="Mid" offset="60"/>
+            <Anchor side="Left" relative="$parent/Paperdoll" pos="Mid" offset="115"/>
+            <Handle val="BackEquipmentT"/>
+        </Frame>
+
+        <Frame type="Frame" name="BG_AUG" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/AugmentEquipment"/>
+
+            <Animation name="HighlightOnOff">
+                <Event event="AugmentOn" action="DirectionForward,Play" frame="$parent"/>
+                <Event event="AugmentOff" action="DirectionReverse,Play" frame="$parent"/>
+                <Controller type="Color" end="Pause" frame="$this/Border" layer="0">
+                    <Key type="Curve" time="0.0" value="#StandardFrameDarkColor"/>
+                    <Key type="Curve" time="0.1" value="ff2eb966"/>
+                </Controller>
+                <Controller type="Color" end="Pause" frame="$this/BGBG">
+                    <Key type="Curve" time="0.0" value="12,16,20"/>
+                    <Key type="Curve" time="0.1" value="17,41,31"/>
+                </Controller>
+            </Animation>
+        </Frame>
+
+        <Frame type="Control" name="AugmentEquipment" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$parent/Paperdoll" pos="Mid" offset="-60"/>
+            <Anchor side="Bottom" relative="$parent/Paperdoll" pos="Mid" offset="-60"/>
+            <Anchor side="Left" relative="$parent/Paperdoll" pos="Mid" offset="115"/>
+            <Handle val="AugmentEquipmentT"/>
+        </Frame>
+        
+        <Frame type="Frame" name="BG_WEAPON1" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/WeaponEquipment1"/>
+
+            <Frame type="Label" name="Index">
+                <Anchor side="Top" relative="$parent" pos="Min" offset="4"/>
+                <Anchor side="Left" relative="$parent" pos="Min" offset="4"/>
+                <Text val="1"/>
+                <Style val="Clean_ListboxTitleOver"/>
+            </Frame>
+
+            <Animation name="HighlightOnOff">
+                <Event event="WeaponOn" action="DirectionForward,Play" frame="$parent"/>
+                <Event event="WeaponOff" action="DirectionReverse,Play" frame="$parent"/>
+                <Controller type="Color" end="Pause" frame="$this/Border" layer="0">
+                    <Key type="Curve" time="0.0" value="#StandardFrameDarkColor"/>
+                    <Key type="Curve" time="0.1" value="ff2eb966"/>
+                </Controller>
+                <Controller type="Color" end="Pause" frame="$this/BGBG">
+                    <Key type="Curve" time="0.0" value="12,16,20"/>
+                    <Key type="Curve" time="0.1" value="17,41,31"/>
+                </Controller>
+            </Animation>
+        </Frame>
+
+        <Frame type="Control" name="WeaponEquipment1" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$parent/Paperdoll" pos="Mid" offset="-45"/>
+            <Anchor side="Bottom" relative="$parent/Paperdoll" pos="Mid" offset="-45"/>
+            <Anchor side="Right" relative="$parent/Paperdoll" pos="Mid" offset="-195"/>
+            <Handle val="WeaponEquipmentT1"/>
+        </Frame>
+        
+        <Frame type="Frame" name="BG_WEAPON2" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/WeaponEquipment2"/>
+
+            <Frame type="Label" name="Index">
+                <Anchor side="Top" relative="$parent" pos="Min" offset="4"/>
+                <Anchor side="Left" relative="$parent" pos="Min" offset="4"/>
+                <Text val="2"/>
+                <Style val="Clean_ListboxTitleOver"/>
+            </Frame>
+
+            <Animation name="HighlightOnOff">
+                <Event event="WeaponOn" action="DirectionForward,Play" frame="$parent"/>
+                <Event event="WeaponOff" action="DirectionReverse,Play" frame="$parent"/>
+                <Controller type="Color" end="Pause" frame="$this/Border" layer="0">
+                    <Key type="Curve" time="0.0" value="#StandardFrameDarkColor"/>
+                    <Key type="Curve" time="0.1" value="ff2eb966"/>
+                </Controller>
+                <Controller type="Color" end="Pause" frame="$this/BGBG">
+                    <Key type="Curve" time="0.0" value="12,16,20"/>
+                    <Key type="Curve" time="0.1" value="17,41,31"/>
+                </Controller>
+            </Animation>
+        </Frame>
+
+        <Frame type="Control" name="WeaponEquipment2" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$parent/Paperdoll" pos="Mid" offset="45"/>
+            <Anchor side="Bottom" relative="$parent/Paperdoll" pos="Mid" offset="45"/>
+            <Anchor side="Right" relative="$parent/Paperdoll" pos="Mid" offset="-195"/>
+            <Handle val="WeaponEquipmentT2"/>
+        </Frame>
+        
+        <Frame type="Frame" name="BG_WEAPON3" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/WeaponEquipment3"/>
+
+            <Frame type="Label" name="Index">
+                <Anchor side="Top" relative="$parent" pos="Min" offset="4"/>
+                <Anchor side="Left" relative="$parent" pos="Min" offset="4"/>
+                <Text val="3"/>
+                <Style val="Clean_ListboxTitleOver"/>
+            </Frame>
+
+            <Animation name="HighlightOnOff">
+                <Event event="WeaponOn" action="DirectionForward,Play" frame="$parent"/>
+                <Event event="WeaponOff" action="DirectionReverse,Play" frame="$parent"/>
+                <Controller type="Color" end="Pause" frame="$this/Border" layer="0">
+                    <Key type="Curve" time="0.0" value="#StandardFrameDarkColor"/>
+                    <Key type="Curve" time="0.1" value="ff2eb966"/>
+                </Controller>
+                <Controller type="Color" end="Pause" frame="$this/BGBG">
+                    <Key type="Curve" time="0.0" value="12,16,20"/>
+                    <Key type="Curve" time="0.1" value="17,41,31"/>
+                </Controller>
+            </Animation>
+        </Frame>
+
+        <Frame type="Control" name="WeaponEquipment3" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$parent/Paperdoll" pos="Mid" offset="-45"/>
+            <Anchor side="Bottom" relative="$parent/Paperdoll" pos="Mid" offset="-45"/>
+            <Anchor side="Right" relative="$parent/Paperdoll" pos="Mid" offset="-105"/>
+            <Handle val="WeaponEquipmentT3"/>
+        </Frame>
+        
+        <Frame type="Frame" name="BG_WEAPON4" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/WeaponEquipment4"/>
+
+            <Frame type="Label" name="Index">
+                <Anchor side="Top" relative="$parent" pos="Min" offset="4"/>
+                <Anchor side="Left" relative="$parent" pos="Min" offset="4"/>
+                <Text val="4"/>
+                <Style val="Clean_ListboxTitleOver"/>
+            </Frame>
+
+            <Animation name="HighlightOnOff">
+                <Event event="WeaponOn" action="DirectionForward,Play" frame="$parent"/>
+                <Event event="WeaponOff" action="DirectionReverse,Play" frame="$parent"/>
+                <Controller type="Color" end="Pause" frame="$this/Border" layer="0">
+                    <Key type="Curve" time="0.0" value="#StandardFrameDarkColor"/>
+                    <Key type="Curve" time="0.1" value="ff2eb966"/>
+                </Controller>
+                <Controller type="Color" end="Pause" frame="$this/BGBG">
+                    <Key type="Curve" time="0.0" value="12,16,20"/>
+                    <Key type="Curve" time="0.1" value="17,41,31"/>
+                </Controller>
+            </Animation>
+        </Frame>
+
+        <Frame type="Control" name="WeaponEquipment4" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$parent/Paperdoll" pos="Mid" offset="45"/>
+            <Anchor side="Bottom" relative="$parent/Paperdoll" pos="Mid" offset="45"/>
+            <Anchor side="Right" relative="$parent/Paperdoll" pos="Mid" offset="-105"/>
+            <Handle val="WeaponEquipmentT4"/>
+        </Frame>
+
+        <!-- BOTTOM INVENTORY-->
+        <!-- Inventory Module -->
+
+        <Frame type="Frame" name="InventoryHeader" template="DS_StandardTemplates/StandardHeaderModuleTemplate">
+            <Anchor side="Top" relative="$parent/Paperdoll" pos="Max" offset="15"/>
+
+            <Frame type="Label" name="HeaderTitle">
+                <Text val="Inventory"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Frame" name="LeftAnchor">
+            <Anchor side="Top" relative="$parent/InventoryHeader" pos="Max" offset="10"/>
+            <Anchor side="Left" relative="$parent/MAIN_Background" pos="Min" offset="0"/>
+            <Width val="{$this/Width_Gap/@ResultInt}"/>
+            <Frame type="MathFrame" name="Width_Gap">
+                <A val="{$parent/Gap_total/@ResultInt}"/>
+                <B val="2"/>
+                <Operator val="Divide"/>
+            </Frame>
+            <Frame type="MathFrame" name="Gap_total">
+                <A val="#Inventory_Width"/>
+                <B val="{$parent/Slots_Width_total/@ResultInt}"/>
+                <Operator val="Subtract"/>
+            </Frame>
+            <Frame type="MathFrame" name="Slots_Width_total">
+                <A val="#Slot_Width"/>
+                <!--Slots per row-->
+                <B val="7"/>
+                <Operator val="Multiply"/>
+            </Frame>
+        </Frame>
+
+        <!--Slot Backgrounds-->
+        <Frame type="Frame" name="BG_1" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot1"/>
+        </Frame>
+        <Frame type="Frame" name="BG_2" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot2"/>
+        </Frame>
+        <Frame type="Frame" name="BG_3" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot3"/>
+        </Frame>
+        <Frame type="Frame" name="BG_4" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot4"/>
+        </Frame>
+        <Frame type="Frame" name="BG_5" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot5"/>
+        </Frame>
+        <Frame type="Frame" name="BG_6" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot6"/>
+        </Frame>
+        <Frame type="Frame" name="BG_7" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot7"/>
+        </Frame>
+        <Frame type="Frame" name="BG_8" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot8"/>
+        </Frame>
+        <Frame type="Frame" name="BG_9" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot9"/>
+        </Frame>
+        <Frame type="Frame" name="BG_10" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot10"/>
+        </Frame>
+        
+        <Frame type="Frame" name="BG_11" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot11"/>
+        </Frame>
+        <Frame type="Frame" name="BG_12" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot12"/>
+        </Frame>
+        <Frame type="Frame" name="BG_13" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot13"/>
+        </Frame>
+        <Frame type="Frame" name="BG_14" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot14"/>
+        </Frame>
+        <Frame type="Frame" name="BG_15" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot15"/>
+        </Frame>
+        <Frame type="Frame" name="BG_16" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot16"/>
+        </Frame>
+        <Frame type="Frame" name="BG_17" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot17"/>
+        </Frame>
+        <Frame type="Frame" name="BG_18" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot18"/>
+        </Frame>
+        <Frame type="Frame" name="BG_19" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot19"/>
+        </Frame>
+        <Frame type="Frame" name="BG_20" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot20"/>
+        </Frame>
+        
+        <Frame type="Frame" name="BG_21" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot21"/>
+        </Frame>
+        <Frame type="Frame" name="BG_22" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot22"/>
+        </Frame>
+        <Frame type="Frame" name="BG_23" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot23"/>
+        </Frame>
+        <Frame type="Frame" name="BG_24" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot24"/>
+        </Frame>
+        <Frame type="Frame" name="BG_25" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot25"/>
+        </Frame>
+        <Frame type="Frame" name="BG_26" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot26"/>
+        </Frame>
+        <Frame type="Frame" name="BG_27" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot27"/>
+        </Frame>
+        <Frame type="Frame" name="BG_28" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot28"/>
+        </Frame>
+        <Frame type="Frame" name="BG_29" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot29"/>
+        </Frame>
+        <Frame type="Frame" name="BG_30" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot30"/>
+        </Frame>
+        
+        <Frame type="Frame" name="BG_31" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot31"/>
+        </Frame>
+        <Frame type="Frame" name="BG_32" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot32"/>
+        </Frame>
+        <Frame type="Frame" name="BG_33" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot33"/>
+        </Frame>
+        <Frame type="Frame" name="BG_34" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot34"/>
+        </Frame>
+        <Frame type="Frame" name="BG_35" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot35"/>
+        </Frame>
+        <Frame type="Frame" name="BG_36" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot36"/>
+        </Frame>
+        <Frame type="Frame" name="BG_37" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot37"/>
+        </Frame>
+        <Frame type="Frame" name="BG_38" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot38"/>
+        </Frame>
+        <Frame type="Frame" name="BG_39" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot39"/>
+        </Frame>
+        <Frame type="Frame" name="BG_40" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot40"/>
+        </Frame>
+        
+        <Frame type="Frame" name="BG_41" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot41"/>
+        </Frame>
+        <Frame type="Frame" name="BG_42" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot42"/>
+        </Frame>
+        <Frame type="Frame" name="BG_43" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot43"/>
+        </Frame>
+        <Frame type="Frame" name="BG_44" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot44"/>
+        </Frame>
+        <Frame type="Frame" name="BG_45" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot45"/>
+        </Frame>
+        <Frame type="Frame" name="BG_46" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot46"/>
+        </Frame>
+        <Frame type="Frame" name="BG_47" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot47"/>
+        </Frame>
+        <Frame type="Frame" name="BG_48" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot48"/>
+        </Frame>
+        <Frame type="Frame" name="BG_49" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot49"/>
+        </Frame>
+
+        <!--Row1-->
+        <Frame type="Control" name="Slot1" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$parent/LeftAnchor" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent/LeftAnchor" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot2" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot3" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot4" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot5" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot6" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot7" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+
+        <!--Row2-->
+        <Frame type="Control" name="Slot8" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$parent/Slot1" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent/LeftAnchor" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot9" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot10" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot11" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot12" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot13" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot14" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+
+        <!--Row3-->
+        <Frame type="Control" name="Slot15" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$parent/Slot8" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent/LeftAnchor" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot16" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot17" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot18" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot19" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot20" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot21" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+
+        <!--Row4-->
+        <Frame type="Control" name="Slot22" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$parent/Slot15" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent/LeftAnchor" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot23" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot24" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot25" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot26" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot27" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot28" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+
+        <!--Row5-->
+        <Frame type="Control" name="Slot29" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$parent/Slot22" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent/LeftAnchor" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot30" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot31" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot32" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot33" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot34" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot35" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+
+        <!--Row6-->
+        <Frame type="Control" name="Slot36" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$parent/Slot29" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent/LeftAnchor" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot37" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot38" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot39" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot40" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot41" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot42" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+
+        <!--Row7-->
+        <Frame type="Control" name="Slot43" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$parent/Slot36" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent/LeftAnchor" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot44" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot45" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot46" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot47" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot48" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot49" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+
+
+
+        <!--Frame type="Button" name="Item1" template="ECL_DRAGGABLE/Item_Template">
+            <Frame type="Image" name="CardAnchorImage">
+                <Anchor relative="$parent/$parent/Slot1" pos="Mid" offset="0"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Button" name="Item2" template="ECL_DRAGGABLE/Item_Template">
+            <Frame type="Image" name="CardAnchorImage">
+                <Anchor relative="$parent/$parent/Slot2" pos="Mid" offset="0"/>
+            </Frame>
+        </Frame-->
+
+
+        <!-- ######################################################-->
+        <!-- ###########                               ############-->
+        <!-- ###########       D R O P   Z O N E       ############-->
+        <!-- ###########                               ############-->
+        <!-- ######################################################-->
+
+        <Frame type="Control" name="Dropzone">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent/MAIN_Background" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent/LeftStash" pos="Max" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+
+            <Frame type="Image" name="BG">
+                <Anchor relative="$parent"/>
+                <Color val="255,125,0"/>
+                <Alpha val="0"/>
+            </Frame>
+
+            <RenderPriority val="99999"/>
+            <AcceptsMouse val="true"/>
+            <Animation name="ShowHide">
+                <Event event="ECL_ShowSlot" action="DirectionForward, Play" frame="$parent"/>
+                <Event event="ECL_HideSlot" action="DirectionReverse, Play" frame="$parent"/>
+                <Controller type="Property" end="Pause" frame="$this" property="AcceptsMouse">
+                    <Key type="Property" time="0.0" value="false"/>
+                    <Key type="Property" time="0.0" value="true"/>
+                </Controller>
+            </Animation>
+            <!--Animation name="Highlight">
+                <Event event="OnMouseEnter" action="Reset, DirectionForward,Play" frame="$this"/>
+                <Event event="OnMouseExit" action="Reset, DirectionReverse,Play" frame="$this"/>
+                <Controller type="Color" end="Pause" frame="$parent/BorderEffect">
+                    <Key type="Curve" time="0.0" value="#StandardFrameGlowColor"/>
+                    <Key type="Curve" time="0.125" value="#StandardFrameDROPZONEColor"/>
+                </Controller>
+                <Controller type="Color" end="Pause" frame="$parent/BorderEffect2">
+                    <Key type="Curve" time="0.0" value="#StandardFrameGlowColor"/>
+                    <Key type="Curve" time="0.125" value="#StandardFrameDROPZONEColor"/>
+                </Controller>
+                <Controller type="Color" end="Pause" frame="$parent/BorderEffectGlow">
+                    <Key type="Curve" time="0.0" value="#StandardFrameDarkColor"/>
+                    <Key type="Curve" time="0.125" value="#StandardFrameDROPZONEColor"/>
+                </Controller>
+                <Controller type="Color" end="Pause" frame="$this">
+                    <Key type="Curve" time="0.0" value="#StandardFrameGlowColor"/>
+                    <Key type="Curve" time="0.125" value="#StandardFrameDROPZONEColor"/>
+                </Controller>
+                <Controller type="Event" end="Pause" frame="$parent/BorderEffect2">
+                    <Key type="Event" time="0.0" event="Glow"/>
+                </Controller>
+            </Animation-->
+        </Frame>
+
+
+        <!-- ######################################################-->
+        <!-- ###########                               ############-->
+        <!-- ###########          LEFT STASH           ############-->
+        <!-- ###########                               ############-->
+        <!-- ######################################################-->
+
+        <Frame type="Frame" name="LeftStash">
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Width val="300"/>
+            <Frame type="Image" name="BG">
+                <Anchor relative="$parent"/>
+                <Color val="124,124,124"/>
+                <Alpha val="100"/>
+
+                <Frame type="Label" name="Debug">
+                    <Anchor side="Top" relative="$parent" pos="Min" offset="100"/>
+                    <Anchor side="Left" relative="$parent" pos="Min" offset="10"/>
+                    <Width val="280"/>
+                    <Height val="40"/>
+                    <Text val="STASH"/>
+                    <Style val="GlueTitle"/>
+                </Frame>
+            </Frame>
+        </Frame>
+    </Frame>
+
+    <!-- ECL End -->
+</Desc>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+    <!-- Constants -->
+    <Constant name="OjbectivePanelWidth" val="300"/>
+
+    <!-- Templates -->
+
+    <Frame type="Frame" name="ObjectiveHeaderTemplate">
+        <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+        <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+        <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+
+        <Height val="60"/>
+
+        <Frame type="Image" name="GlowBackground">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Bottom" relative="$parent/Divider" pos="Mid" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+
+            <Texture val="Assets\Textures\ui_clean_headerglow.dds"/>
+            <Alpha val="255"/>
+            <AdjustmentColor val="001d84"/>
+            <ColorAdjustMode val="Fill"/>
+        </Frame>
+        
+        <Frame type="Label" name="Title">
+            <Anchor side="Top" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+
+            <Style val="Clean_HeaderTitle"/>
+            <Text val="Title"/>
+        </Frame>
+
+        <Frame type="Image" name="Divider">
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+
+            <Texture val="Assets\Textures\ui_battlenet_glue_campaign_floatingraceicon_divider_highlight.dds"/>
+        </Frame>
+    </Frame>
+
+    <Frame type="Frame" name="ObjectiveFrameTemplate">
+        <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+        <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+
+        <Width val="#OjbectivePanelWidth"/>
+    </Frame>
+
+    <!-- Objective Panel -->
+
+    <Frame type="Frame" name="ObjectivePanelTemplate">
+        <Anchor side="Top" relative="$parent" pos="Min" offset="60"/>
+        <Anchor side="Right" relative="$parent" pos="Max" offset="-60"/>
+
+        <Width val="#OjbectivePanelWidth"/>
+        <Height val="600"/>
+
+        <Frame type="Frame" name="MainObjectiveHeader" template="DS_ObjectiveTemplates/ObjectiveHeaderTemplate">
+            <Frame type="Label" name="Title">
+                <Text val="Main Objectives"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Frame" name="ObjectiveFrame1" template="DS_ObjectiveTemplates/ObjectiveFrameTemplate">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+        </Frame>
+    </Frame>
+</Desc>

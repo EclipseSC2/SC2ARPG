@@ -1,0 +1,74 @@
+﻿Effect/Name/ECLDROPLOOT=ECL DROP LOOT
+Effect/Name/UnknownEffect=Unknown Effect
+Param/Expression/lib_DEAD_09E7FB92=[~A~]
+Param/Expression/lib_DEAD_23259541=[~A~]
+Param/Expression/lib_DEAD_4D0D1BC9=~A~
+Param/Expression/lib_DEAD_6F740B26=[~A~]
+Param/Expression/lib_DEAD_84F65ECB=~A~
+Param/Expression/lib_DEAD_8A1D4A5A=[~A~]
+Param/Expression/lib_DEAD_964EFE2C=Found ~A~
+Param/Expression/lib_DEAD_A67CDEEC=[~A~]
+Param/Expression/lib_DEAD_A9F6A2E0=<c val="FFFF00">DEBUG:</c> ~A~
+Param/Expression/lib_DEAD_AC304D94=You are about to <c val="FF0000">Destroy</c> <c val="00FF00">[~A~] ~B~</c>, items cannot be recovered after destruction.
+Param/Expression/lib_DEAD_B04D8FC7=Player ~A~ in range
+Param/Expression/lib_DEAD_C1A952DE=~A~
+Param/Expression/lib_DEAD_C664C836=[~A~]
+Param/Expression/lib_DEAD_CAAA28BE=[~A~]
+Param/Expression/lib_DEAD_DDD94F7C=[~A~]
+Param/Expression/lib_DEAD_FC6C0840=Player ~A~ out of range
+Param/Value/lib_DEAD_027D6E75=<c val="FF8C55"> NAME:</c>
+Param/Value/lib_DEAD_07088E2D=<c val="6AFF66"> EQUIPPED</c>
+Param/Value/lib_DEAD_261BC81B=[AUGMENT]: 
+Param/Value/lib_DEAD_29FE1B21=[BOOTS]: 
+Param/Value/lib_DEAD_343E3818=[HEAD]: 
+Param/Value/lib_DEAD_3577AECE=<c val="6AFF66"> EQUIPPED</c>
+Param/Value/lib_DEAD_3B47F115=aasd
+Param/Value/lib_DEAD_3D377B65=<c val="6AFF66"> EQUIPPED</c>
+Param/Value/lib_DEAD_3ECAEBBB=<c val="74FF60">NEW slot: </c>
+Param/Value/lib_DEAD_47FA5B5C=<c val="FF6666"> UNEQUIPPED</c>
+Param/Value/lib_DEAD_48548B70=<c val="6AFF66"> EQUIPPED</c>
+Param/Value/lib_DEAD_57D06E59=[WEAPON]: 
+Param/Value/lib_DEAD_59767A63=<c val="FF6666"> UNEQUIPPED</c>
+Param/Value/lib_DEAD_5A9446E6=Instance: 
+Param/Value/lib_DEAD_5C0FDA50=[HEAD]: 
+Param/Value/lib_DEAD_670D75DA=[AUGMENT]: 
+Param/Value/lib_DEAD_68F46B2D=[PACK]: 
+Param/Value/lib_DEAD_7763CBE0=Discard item?
+Param/Value/lib_DEAD_83CC1485=HELMET
+Param/Value/lib_DEAD_9769AD44=[PACK]: 
+Param/Value/lib_DEAD_A0A9E513=<c val="FF6666"> UNEQUIPPED</c>
+Param/Value/lib_DEAD_A31BEA9D=<c val="6AFF66"> EQUIPPED</c>
+Param/Value/lib_DEAD_AE1D15EF=[BOOTS]: 
+Param/Value/lib_DEAD_AEF75414=<c val="FF6666"> UNEQUIPPED</c>
+Param/Value/lib_DEAD_B62BB165=<c val="6AFF66"> EQUIPPED</c>
+Param/Value/lib_DEAD_B66B5DEF=<c val="FF6666"> UNEQUIPPED</c>
+Param/Value/lib_DEAD_BD665638=<c val="FF6666"> UNEQUIPPED</c>
+Param/Value/lib_DEAD_BF763021=[SUIT]: 
+Param/Value/lib_DEAD_D18A7A25=[WEAPON]: 
+Param/Value/lib_DEAD_DDC1AC03=Head
+Param/Value/lib_DEAD_E03768CE=<c val="FFD955">OLD slot:</c>
+Param/Value/lib_DEAD_EAC22EF6=[SUIT]: 
+Param/Value/lib_DEAD_F3CE13FB=Context Examine
+Param/Value/lib_DEAD_FDC4853E=
+Param/Value/lib_ECLP_1CE3D28F=Source: 
+Param/Value/lib_ECLP_5BA3E731=CP 
+Param/Value/lib_ECLP_5E966398=Catch
+Param/Value/lib_ECLP_780FB9B3=<c val="F3FF60">→</c>
+Param/Value/lib_ECLP_B639B276=<s val="ABChoiceRewardsTitle">▲</s>
+Param/Value/lib_ECLP_CF1C34B8=<s val="ABChoiceRewardsTitle">▼</s>
+Param/Value/lib_ECLP_DEB00B9E=Scan: 
+Param/Value/lib_ECLP_EE8AA0CE=Scan
+Unit/Name/UnknownUnit=Unknown Unit
+UserData/Items/Crappy Pack_Description=Uncomfortable and unwieldy but sturdy enough to hold more items.
+UserData/Items/Gunpowder_Description=Explosive material used in the creation of some ammunition.
+UserData/Items/Gunpowder_Lore=Gunpowder Lore
+UserData/Items/Security Suit_Description=The Cerberus suit was originally designed as a cheap riot control suit, it was then decommissioned due to engineering failures, Later refitted for Security personnel all over the sector.
+UserData/Items/Speed Augment_Description=Made out of hyper condensed bunnies hooked on meth.
+UserData/Items/Speed Augment_Lore=It tases kinda like chicken
+UserData/Items/Vision Helmet_Description=Yuo see ivan, when you look through glass, vision goes faster.
+UserData/Items/Zerg Bones_Description=Zerg boney bones
+UserData/Items/Zerg Bones_Lore=boney bones
+UserData/Items/Zerg Carapace_Description=Hard chitinous skin
+UserData/Items/Zerg Carapace_Lore=fleshky flesh
+UserData/Items/Zerg Claws_Description=Hard sharp claws
+UserData/Items/Zerg Claws_Lore=pointy!

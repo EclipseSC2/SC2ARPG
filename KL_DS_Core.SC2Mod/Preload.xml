@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Preload>
+<Asset path="assets\textures\items\ui_itemicons_pills.dds" Type="Image"/>
+<Actor id="SYSTEM_ActorConfig"/>
+<Behavior id="Flashlight"/>
+<Effect id="P38ScytheGuassPistol"/>
+<Effect id="ECLDROPLOOT"/>
+<Sound id="Reaper_AttackLaunch"/>
+<Sound id="WidowMine_ArmedBeep" Variations="0"/>
+<Sound id="Liberator_AG_Morph_Servo"/>
+<Unit id="SCV"/>
+<Unit id="InvisibleTargetDummy"/>
+<Unit id="InvisibleTargetDummyStructure"/>
+<Unit id="PLootPermanent"/>
+<User id="Items"/>
+</Preload>

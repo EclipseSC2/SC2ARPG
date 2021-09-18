@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+    <Frame type="Frame" name="GameUI/UIContainer/FullscreenUpperContainer" file="GameUI">
+
+        <Frame type="Frame" name="DSGameUI">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+
+            <Visible val="True"/>
+
+            <!--Frame type="Frame" name="CraftingMenu" template="DS_CraftingMenuTemplates/CraftingMenuTemplate">
+                <Anchor side="Top" relative="$parent" pos="Min" offset="155"/>
+                <Anchor side="Right" relative="$parent" pos="Max" offset="-250"/>
+
+                <Visible val="False"/>
+            </Frame-->
+
+            <Frame type="Frame" name="GameHUD" template="DS_HUDTemplates/GameHUDTemplate">
+                <Anchor relative="$parent"/>
+
+                <Visible val="True"/>
+            </Frame>
+
+            <Frame type="Frame" name="LootPanel" template="DS_InventoryTemplates/LootPanelTemplate">
+                <Visible val="False"/>
+
+                <Frame type="Label" name="Title">
+                    <Text val="Cabinet"/>
+                </Frame>
+            </Frame>
+
+            <!--Frame type="Frame" name="CharacterStatusPanel" template="DS_InventoryTemplates/CharacterStatusPanelTemplate">
+                <Anchor side="Top" relative="$parent" pos="Min" offset="155"/>
+                <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+                <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+
+                <Width val="635"/>
+                <Height val="840"/>
+                <Visible val="{$parent/CharacterInventoryPanel/@Visible}"/>
+            </Frame-->
+
+            <!--Frame type="Frame" name="CharacterInventoryPanel" template="DS_InventoryTemplates/InventoryPanelTemplate">
+            </Frame-->
+
+            <Frame type="Frame" name="InventoryPanel" template="DS_InventoryTemplates/ECL_InventoryPanelTemplate">
+                <Anchor relative="$parent"/>
+                <Visible val="True"/>
+            </Frame>
+
+            <Frame type="Frame" name="CraftingPanel" template="DS_CraftingPanelTemplates/CraftingPanelTemplate"></Frame>
+
+            <Frame type="Frame" name="ConfirmPanel" template="DS_StandardTemplates/ConfirmationWindowTemplate"></Frame>
+
+            <Frame type="Frame" name="InspectPanel" template="DS_InspectionPanelTemplates/InspectPanelTemplate">
+            </Frame>
+
+            <!-- Player Frames Render Above GameHUD -->
+
+            <!--Frame type="Frame" name="PlayerFrame" template="DS_InventoryTemplates/PlayerFrameTemplate">
+                <Visible val="False"/>
+                <Alpha val="0"/>
+            </Frame-->
+        </Frame>
+    </Frame>
+</Desc>
