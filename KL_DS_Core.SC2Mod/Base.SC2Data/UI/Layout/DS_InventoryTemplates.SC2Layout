@@ -1660,6 +1660,13 @@
             <Height val="360"/>
         </Frame>
 
+        <Frame type="UnitStatusFrame" name="UnitStatusFrame">
+            <Frame type="UnitFrame" name="UnitFrame">
+                <Anchor relative="$parent"/>
+                <UnitTag val="{$parent/@UnitTag}"/>
+            </Frame>
+        </Frame>
+
         <!-- Status Bars -->
 
         <Frame type="Frame" name="HeadStatus" template="DS_InventoryTemplates/LimbStatusPanelTemplate">
