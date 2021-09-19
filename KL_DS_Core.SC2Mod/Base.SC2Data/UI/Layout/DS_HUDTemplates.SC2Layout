@@ -270,9 +270,30 @@
 
         <Frame type="UnitStatusFrame" name="UnitStatusFrame">
             <Anchor relative="$parent"/>
+            <RenderPriority val="999"/>
+
+            <Frame type="UnitStatusHealthBar" name="UnitStatusHealthBar">
+                <Anchor relative="$parent/$parent/StatusPanel/HealthBar"/>
+                <Texture val="@UI/HotS_HeroUnit_Status_Bar"/>
+                <OwnerColor val="255,0,68" index="0"/>
+                <AllyColor val="255,0,68" index="0"/>
+                <EnemyColor val="255,0,68" index="0"/>
+                <ReductionColor val="255,210,202" index="0"/>
+                <ReductionShown val="true" index="0"/>
+                <IncreaseDuration val="500" index="0"/>
+                <DecreaseDuration val="500" index="0"/>
+            </Frame>
             <Frame type="UnitFrame" name="UnitFrame">
                 <Anchor relative="$parent"/>
                 <UnitTag val="{$parent/@UnitTag}"/>
+
+                <StateGroup name="Default">
+                    <DefaultState val="Default"/>
+                    <State name="Default">
+                        <Action type="SetProperty" frame="$parent/$parent/StatusPanel/HealthBar/ProgressBar" Value="{$parent/$parent/$parent/UnitStatusFrame/UnitFrame/@CurrentHealth}"/>
+                        <Action type="SetProperty" frame="$parent/$parent/StatusPanel/HealthBar/ProgressBar" MaxValue="{$parent/$parent/$parent/UnitStatusFrame/UnitFrame/@MaxHealth}"/>
+                    </State>
+                </StateGroup>
             </Frame>
         </Frame>
 
@@ -291,13 +312,10 @@
                 <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
 
                 <Frame type="ProgressBar" name="ProgressBar">
-
-                    <!--MaxValue val="{$parent/$parent/$parent/UnitStatusFrame/UnitFrame/@MaxHealth}"/>
-                    <Value val="{$parent/$parent/$parent/UnitStatusFrame/UnitFrame/@CurrentHealth}"/-->
                     <Frame type="Frame" name="FillImageContainer">
                         <Frame type="Image" name="FillImage">
                             <ColorAdjustMode val="Colorize"/>
-                            <AdjustmentColor val="af0000"/>
+                            <AdjustmentColor val="00af00"/>
                         </Frame>
                     </Frame>
                 </Frame>

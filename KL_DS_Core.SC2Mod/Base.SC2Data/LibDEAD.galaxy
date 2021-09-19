@@ -126,6 +126,7 @@ void libDEAD_InitVariables () {
     for (init_i = 0; init_i <= libDEAD_gv_dS_MaxPlayers; init_i += 1) {
         libDEAD_gv_dS_HUD[init_i].lv_panel = c_invalidDialogControlId;
         libDEAD_gv_dS_HUD[init_i].lv_hPBar = c_invalidDialogControlId;
+        libDEAD_gv_dS_HUD[init_i].lv_uTF = c_invalidDialogControlId;
         libDEAD_gv_dS_HUD[init_i].lv_weaponPanel = c_invalidDialogControlId;
         libDEAD_gv_dS_HUD[init_i].lv_mainWpnIcon = c_invalidDialogControlId;
         libDEAD_gv_dS_HUD[init_i].lv_mainWpnName = c_invalidDialogControlId;
@@ -1576,6 +1577,8 @@ void libDEAD_gf_DS_CreateHUD (int lp_player) {
     libDEAD_gv_dS_HUD[lp_player].lv_panel = DialogControlLastCreated();
     DialogControlHookup(libDEAD_gv_dS_HUD[lp_player].lv_panel, c_triggerControlTypeProgressBar, libNtve_gf_ConvertStringToUILayoutFrameName("StatusPanel/HealthBar/ProgressBar"));
     libDEAD_gv_dS_HUD[lp_player].lv_hPBar = DialogControlLastCreated();
+    DialogControlHookup(libDEAD_gv_dS_HUD[lp_player].lv_panel, c_triggerControlTypeUnitStatus, libNtve_gf_ConvertStringToUILayoutFrameName("UnitStatusFrame"));
+    libDEAD_gv_dS_HUD[lp_player].lv_uTF = DialogControlLastCreated();
     DialogControlHookup(libDEAD_gv_dS_HUD[lp_player].lv_panel, c_triggerControlTypePanel, libNtve_gf_ConvertStringToUILayoutFrameName("WeaponFrameN"));
     libDEAD_gv_dS_HUD[lp_player].lv_weaponPanel = DialogControlLastCreated();
     DialogControlHookup(libDEAD_gv_dS_HUD[lp_player].lv_weaponPanel, c_triggerControlTypeImage, libNtve_gf_ConvertStringToUILayoutFrameName("MainWeaponInfoFrame/Icon"));
@@ -5869,6 +5872,7 @@ bool libDEAD_gt_DS_Initialization_Func (bool testConds, bool runActions) {
         libDEAD_gf_DS_HookupInteractButton(libDEAD_gv_playerUnit[lv_index], lv_index);
         libDEAD_gf_DS_InitHPSystem(lv_index);
         libDEAD_gf_DS_InitializeInventory(lv_index);
+        libNtve_gf_SetDialogItemUnitGroup(libDEAD_gv_dS_HUD[lv_index].lv_uTF, libNtve_gf_ConvertUnitToUnitGroup(libDEAD_gv_playerUnit[lv_index]), PlayerGroupSingle(lv_index));
     }
     return true;
 }

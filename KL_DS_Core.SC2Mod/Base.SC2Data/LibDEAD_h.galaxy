@@ -150,6 +150,7 @@ struct libDEAD_gs_DS_GameUI {
 struct libDEAD_gs_DS_HUD {
     int lv_panel;
     int lv_hPBar;
+    int lv_uTF;
     int lv_weaponPanel;
     int lv_mainWpnIcon;
     int lv_mainWpnName;

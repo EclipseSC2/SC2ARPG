@@ -804,6 +804,7 @@ Variable/Name/lib_DEAD_2337D695=TargetUnit
 Variable/Name/lib_DEAD_235A2012=Drag
 Variable/Name/lib_DEAD_23D529F1=item_height
 Variable/Name/lib_DEAD_23E5D9AC=Index
+Variable/Name/lib_DEAD_23F22565=UTF
 Variable/Name/lib_DEAD_247F7250=UNIT_item
 Variable/Name/lib_DEAD_24CB767D=UnitType
 Variable/Name/lib_DEAD_24EED15E=LogAmount
