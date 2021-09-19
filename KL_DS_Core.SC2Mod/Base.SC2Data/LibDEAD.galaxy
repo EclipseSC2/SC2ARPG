@@ -5870,8 +5870,6 @@ bool libDEAD_gt_DS_Initialization_Func (bool testConds, bool runActions) {
         libDEAD_gf_DS_InitHPSystem(lv_index);
         libDEAD_gf_DS_InitializeInventory(lv_index);
     }
-    TriggerEnable(libDEAD_gt_DS_HUDUpdates, true);
-    UISetSelectionTypeEnabled(PlayerGroupAll(), c_localSelectionTypeUnknown, true);
     return true;
 }
 
@@ -6185,49 +6183,6 @@ bool libDEAD_gt_DS_PressFFlashlightP2_Func (bool testConds, bool runActions) {
 void libDEAD_gt_DS_PressFFlashlightP2_Init () {
     libDEAD_gt_DS_PressFFlashlightP2 = TriggerCreate("libDEAD_gt_DS_PressFFlashlightP2_Func");
     TriggerAddEventKeyPressed(libDEAD_gt_DS_PressFFlashlightP2, 2, c_keyF, true, c_keyModifierStateIgnore, c_keyModifierStateIgnore, c_keyModifierStateIgnore);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: DS_HUDUpdates
-//--------------------------------------------------------------------------------------------------
-bool libDEAD_gt_DS_HUDUpdates_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    int lv_index;
-
-    // Automatic Variable Declarations
-    playergroup auto21A9404B_g;
-
-    // Variable Initialization
-
-    // Conditions
-    if (testConds) {
-        if (!((TriggerIsEnabled(TriggerGetCurrent()) == true))) {
-            return false;
-        }
-    }
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    auto21A9404B_g = libDEAD_gv_dS_ActivePlayers;
-    lv_index = -1;
-    while (true) {
-        lv_index = PlayerGroupNextPlayer(auto21A9404B_g, lv_index);
-        if (lv_index < 0) { break; }
-        libDEAD_gf_DS_ReadMainWeaponData(lv_index, libDEAD_gv_dS_PlayerData[lv_index].lv_equippedMainWpn);
-        libDEAD_gf_DS_UpdateHUDVitals(lv_index);
-        libDEAD_gf_UpdateInventoryPanel(lv_index);
-    }
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void libDEAD_gt_DS_HUDUpdates_Init () {
-    libDEAD_gt_DS_HUDUpdates = TriggerCreate("libDEAD_gt_DS_HUDUpdates_Func");
-    TriggerEnable(libDEAD_gt_DS_HUDUpdates, false);
-    TriggerAddEventTimePeriodic(libDEAD_gt_DS_HUDUpdates, 0.5, c_timeGame);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7461,7 +7416,6 @@ void libDEAD_InitTriggers () {
     libDEAD_gt_DS_CloseCraftingP2_Init();
     libDEAD_gt_DS_PressFFlashlightP1_Init();
     libDEAD_gt_DS_PressFFlashlightP2_Init();
-    libDEAD_gt_DS_HUDUpdates_Init();
     libDEAD_gt_DS_UpdateTimers_Init();
     libDEAD_gt_DS_ContextExamineP1_Init();
     libDEAD_gt_DS_ContextDiscardP1_Init();

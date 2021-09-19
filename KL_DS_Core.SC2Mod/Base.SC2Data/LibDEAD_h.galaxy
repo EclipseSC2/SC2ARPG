@@ -525,7 +525,6 @@ trigger libDEAD_gt_DS_OpenCraftingP2;
 trigger libDEAD_gt_DS_CloseCraftingP2;
 trigger libDEAD_gt_DS_PressFFlashlightP1;
 trigger libDEAD_gt_DS_PressFFlashlightP2;
-trigger libDEAD_gt_DS_HUDUpdates;
 trigger libDEAD_gt_DS_UpdateTimers;
 trigger libDEAD_gt_DS_ContextExamineP1;
 trigger libDEAD_gt_DS_ContextDiscardP1;

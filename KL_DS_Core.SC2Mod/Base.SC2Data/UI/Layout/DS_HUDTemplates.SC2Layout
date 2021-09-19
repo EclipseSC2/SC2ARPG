@@ -268,6 +268,14 @@
             <Anchor side="Bottom" relative="$parent/StatusPanel" pos="Min" offset="0"/>
         </Frame>
 
+        <Frame type="UnitStatusFrame" name="UnitStatusFrame">
+            <Anchor relative="$parent"/>
+            <Frame type="UnitFrame" name="UnitFrame">
+                <Anchor relative="$parent"/>
+                <UnitTag val="{$parent/@UnitTag}"/>
+            </Frame>
+        </Frame>
+
         <Frame type="Frame" name="StatusPanel">
             <Anchor side="Top" relative="$this/SuitBar" pos="Min" offset="0"/>
             <Anchor side="Bottom" relative="$parent" pos="Max" offset="-40"/>
@@ -283,10 +291,13 @@
                 <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
 
                 <Frame type="ProgressBar" name="ProgressBar">
+
+                    <!--MaxValue val="{$parent/$parent/$parent/UnitStatusFrame/UnitFrame/@MaxHealth}"/>
+                    <Value val="{$parent/$parent/$parent/UnitStatusFrame/UnitFrame/@CurrentHealth}"/-->
                     <Frame type="Frame" name="FillImageContainer">
                         <Frame type="Image" name="FillImage">
                             <ColorAdjustMode val="Colorize"/>
-                            <AdjustmentColor val="00af00"/>
+                            <AdjustmentColor val="af0000"/>
                         </Frame>
                     </Frame>
                 </Frame>
