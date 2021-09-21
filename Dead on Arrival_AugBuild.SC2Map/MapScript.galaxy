@@ -358,6 +358,7 @@ bool gt__3Units_Func (bool testConds, bool runActions) {
         if (auto18F75CBC_var == null) { break; }
         UnitIssueOrder(auto18F75CBC_var, OrderTargetingPoint(AbilityCommand("move", 1), PointWithOffsetPolar(UnitGetPosition(auto18F75CBC_var), RandomFixed(1.0, 2.0), RandomFixed(0.0, 360.0))), c_orderQueueReplace);
         UnitSetCustomValue(auto18F75CBC_var, 0, RandomInt(0, 5));
+        UnitSetState(auto18F75CBC_var, c_unitStateSelectable, false);
     }
     UnitIssueOrder(UnitFromId(1294028385), Order(AbilityCommand("DSLabDoorClose", 0)), c_orderQueueReplace);
     libNtve_gf_CreateUnitsWithDefaultFacing(1, "InvisibleTutorialHelper", c_unitCreateConstruct | c_unitCreateIgnorePlacement, 0, PointWithOffsetPolar(UnitGetPosition(UnitFromId(1195023238)), 0.5, UnitGetFacing(UnitFromId(1195023238))));

@@ -7,6 +7,8 @@
     <Constant name="StandardFrameGlowColor" val="68aaac"/>
     <Constant name="StandardFrameDarkColor" val="075f59"/>
     <Constant name="StandardFrameDROPZONEColor" val="ef832a"/>
+    <Constant name="Slot_Width" val="90"/>
+    <Constant name="Slot_Height" val="90"/>
 
     <Frame type="Button" name="InventorySlotTemplate">
         <Width val="115"/>

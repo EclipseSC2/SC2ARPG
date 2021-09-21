@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <Desc>
+    <Constant name="CommandPanelGap" val="10"/>
     
     <Frame type="Button" name="FloatingUseKey">
         <Anchor relative="$parent"/>
@@ -50,7 +51,101 @@
         <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
 
         <Height val="150"/>
-        <Width val="600"/>
+        <Width val="1000"/>
+
+        <Frame type="Frame" name="LeftAnchor">
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Width val="{$this/Width_Gap/@ResultInt}"/>
+            <Frame type="MathFrame" name="Width_Gap">
+                <A val="{$parent/Gap_total/@ResultInt}"/>
+                <B val="2"/>
+                <Operator val="Divide"/>
+            </Frame>
+            <Frame type="MathFrame" name="Gap_total">
+                <A val="#Inventory_Width"/>
+                <B val="{$parent/Slots_Width_total/@ResultInt}"/>
+                <Operator val="Subtract"/>
+            </Frame>
+            <Frame type="MathFrame" name="Slots_Width_total">
+                <A val="#Slot_Width"/>
+                <!--Slots per row-->
+                <B val="7"/>
+                <Operator val="Multiply"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Frame" name="BG_1" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/CP_Slot1"/>
+        </Frame>
+        <Frame type="Frame" name="BG_2" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/CP_Slot2"/>
+        </Frame>
+        <Frame type="Frame" name="BG_3" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/CP_Slot3"/>
+        </Frame>
+        <Frame type="Frame" name="BG_4" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/CP_Slot4"/>
+        </Frame>
+        <Frame type="Frame" name="BG_5" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/CP_Slot5"/>
+        </Frame>
+        <Frame type="Frame" name="BG_6" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/CP_Slot6"/>
+        </Frame>
+        <Frame type="Frame" name="BG_7" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/CP_Slot7"/>
+        </Frame>
+        <Frame type="Frame" name="BG_8" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/CP_Slot8"/>
+        </Frame>
+        <Frame type="Frame" name="BG_9" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/CP_Slot9"/>
+        </Frame>
+        <Frame type="Frame" name="BG_10" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/CP_Slot10"/>
+        </Frame>
+        
+        <Frame type="Control" name="CP_Slot1" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Bottom" relative="$parent/LeftAnchor" pos="Min" offset="-10"/>
+            <Anchor side="Left" relative="$parent/LeftAnchor" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="CP_Slot2" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="CP_Slot3" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="CP_Slot4" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="CP_Slot5" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="CP_Slot6" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="CP_Slot7" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="CP_Slot8" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="CP_Slot9" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="CP_Slot10" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
 
         <Frame type="Button" name="CommandButton1" template="Cleane_StandardTemplates/CommandButtonTemplate">
             <Anchor side="Right" relative="$parent/CommandButton2" pos="Min" offset="0"/>
@@ -269,52 +364,18 @@
             <Anchor side="Bottom" relative="$parent/StatusPanel" pos="Min" offset="0"/>
         </Frame>
 
-        <Frame type="UnitStatusFrame" name="UnitStatusFrame">
-            <Anchor relative="$parent"/>
-            <RenderPriority val="999999"/>
-                    
-            <Frame type="UnitFrame" name="UnitFrame">
-                <UnitTag val="{$parent/@UnitTag}"/>
-            </Frame>
-
-            <Frame type="ProgressBar" name="HealthBar">
-                <Texture val="Assets/Textures/LumenProgressBar.dds"/>
-                <Anchor side="Top" relative="$parent" pos="Mid" offset="0"/>
-                <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
-                <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
-                <Anchor side="Bottom" relative="$parent" pos="Mid" offset="0"/>
-                <Width val="298"/>
-                <Height val="29"/>
-                <Color val="255,100,255,100"/>
-                <ColorStep val="255,100,255,100"/>
-                <MinValue val="0"/>
-
-                <MaxValue val="{$parent/UnitFrame/@MaxHealth}"/>
-                <Value val="{$parent/UnitFrame/@CurrentHealth}"/>
-
-                <Frame type="Label" name="Value">
-                    <Anchor relative="$parent"/>
-                    <Style val="Clean_ItemTooltipType_Material"/>
-                    <Text val="{$this/FormatFrame/@Text}"/>
-                    <Color val="203,236,255"/>
-                    <Frame type="TextFormatFrame" name="FormatFrame">
-                        <Anchor relative="$parent"/>
-                        <FormatText val="%0%/%1%"/>
-                        <Replacement index="0" val="{$parent/$parent/@Value}"/>
-                        <Replacement index="1" val="{$parent/$parent/@MaxValue}"/>
-                    </Frame>
-                </Frame>
-            </Frame>
-        </Frame>
-
-        <Frame type="Frame" name="StatusPanel">
+        <Frame type="UnitStatusFrame" name="StatusPanel">
             <Anchor side="Top" relative="$this/SuitBar" pos="Min" offset="0"/>
             <Anchor side="Bottom" relative="$parent" pos="Max" offset="-40"/>
             <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
             <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
 
-            <Width val="600"/>
+            <Width val="800"/>
             <PreserveAnchorOffset val="True"/>
+
+            <Frame type="UnitFrame" name="UnitFrame">
+                <UnitTag val="{$parent/@UnitTag}"/>
+            </Frame>
 
             <Frame type="Frame" name="HealthBar" template="Cleane_StandardTemplates/SmallProgressBarTemplate">
                 <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
@@ -322,6 +383,10 @@
                 <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
 
                 <Frame type="ProgressBar" name="ProgressBar">
+
+                    <MaxValue val="{$parent/$parent/UnitFrame/@MaxHealth}"/>
+                    <Value val="{$parent/$parent/UnitFrame/@CurrentHealth}"/>
+
                     <Frame type="Frame" name="FillImageContainer">
                         <Frame type="Image" name="FillImage">
                             <ColorAdjustMode val="Colorize"/>
@@ -343,6 +408,10 @@
                 <PreserveAnchorOffset val="True"/>
 
                 <Frame type="ProgressBar" name="ProgressBar">
+
+                    <MaxValue val="{$parent/$parent/UnitFrame/@MaxShields}"/>
+                    <Value val="{$parent/$parent/UnitFrame/@CurrentShields}"/>
+
                     <Frame type="Frame" name="FillImageContainer">
                         <Frame type="Image" name="FillImage">
                             <ColorAdjustMode val="Colorize"/>
@@ -350,42 +419,6 @@
                         </Frame>
                     </Frame>
                 </Frame>
-            </Frame>
-        </Frame>
-
-        <Frame type="Button" name="WeaponFrame" template="DS_StandardTemplates/SquareAbiltyButtonTemplate">
-            <Anchor side="Right" relative="$parent/StatusPanel" pos="Min" offset="60"/>
-            <Anchor side="Bottom" relative="$parent/StatusPanel" pos="Max" offset="0"/>
-
-            <Width val="200"/>
-            <Height val="200"/>
-
-            <Frame type="Label" name="CostFrame">
-                <Anchor side="Left" relative="$parent" pos="Min" offset="35"/>
-                <Anchor side="Top" relative="$parent" pos="Min" offset="35"/>
-            </Frame>
-    
-            <Frame type="Label" name="HotkeyFrame">
-                <Anchor side="Right" relative="$parent" pos="Max" offset="-35"/>
-                <Anchor side="Bottom" relative="$parent" pos="Max" offset="-35"/>
-            </Frame>
-        </Frame>
-
-        <Frame type="Button" name="AbilityFrame" template="DS_StandardTemplates/SquareAbiltyButtonTemplate">
-            <Anchor side="Left" relative="$parent/StatusPanel" pos="Max" offset="-60"/>
-            <Anchor side="Bottom" relative="$parent/StatusPanel" pos="Max" offset="0"/>
-
-            <Width val="200"/>
-            <Height val="200"/>
-
-            <Frame type="Label" name="CostFrame">
-                <Anchor side="Left" relative="$parent" pos="Min" offset="35"/>
-                <Anchor side="Top" relative="$parent" pos="Min" offset="35"/>
-            </Frame>
-    
-            <Frame type="Label" name="HotkeyFrame">
-                <Anchor side="Right" relative="$parent" pos="Max" offset="-35"/>
-                <Anchor side="Bottom" relative="$parent" pos="Max" offset="-35"/>
             </Frame>
         </Frame>
 

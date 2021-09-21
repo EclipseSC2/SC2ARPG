@@ -1004,6 +1004,7 @@ void libDEAD_gf_ECL__EQUIP (int lp_player, int lp_sLOT, int lp_eQUIPUNEQUIP) {
         }
         else if (auto7F1DCA8C_val == "Pack") {
             lv_bEHAVIOR_EQUIPMENT = "PACK";
+            lv_inventory += libDEAD_gf_ReturnEquipmentPropertyInventory(lv_item);
         }
         else if (auto7F1DCA8C_val == "Boots") {
             lv_bEHAVIOR_EQUIPMENT = "BOOTS";
@@ -1023,10 +1024,8 @@ void libDEAD_gf_ECL__EQUIP (int lp_player, int lp_sLOT, int lp_eQUIPUNEQUIP) {
         libNtve_gf_CatalogFieldValueSetAsReal(c_gameCatalogBehavior, lv_bEHAVIOR_EQUIPMENT, "Modification.VitalMaxArray[" + IntToString(0) + "]", lp_player, UserDataGetInt("ModifierStats", lv_itemStats, "Health", 1));
         libNtve_gf_CatalogFieldValueSetAsReal(c_gameCatalogBehavior, lv_bEHAVIOR_EQUIPMENT, "Modification.MoveSpeedBonus", lp_player, UserDataGetFixed("ModifierStats", lv_itemStats, "Move Speed", 1));
         libNtve_gf_CatalogFieldValueSetAsReal(c_gameCatalogBehavior, lv_bEHAVIOR_EQUIPMENT, "Modification.MoveSpeedMultiplier", lp_player, UserDataGetFixed("ModifierStats", lv_itemStats, "Move Speed", 1));
-        lv_inventory += libDEAD_gf_ReturnEquipmentPropertyInventory(lv_item);
     }
     else if ((lp_eQUIPUNEQUIP == libDEAD_ge_EQUIPUNEQUIP_UNEQUIP)) {
-        lv_inventory -= libDEAD_gf_ReturnEquipmentPropertyInventory(lv_item);
         auto30B42D06_val = libDEAD_gv_dS_InventorySlot_Category[lp_sLOT][lp_player];
         if (auto30B42D06_val == "Head") {
             UnitBehaviorRemove(libDEAD_gv_playerUnit[lp_player], "HEAD", 1);
@@ -1036,6 +1035,7 @@ void libDEAD_gf_ECL__EQUIP (int lp_player, int lp_sLOT, int lp_eQUIPUNEQUIP) {
         }
         else if (auto30B42D06_val == "Pack") {
             UnitBehaviorRemove(libDEAD_gv_playerUnit[lp_player], "PACK", 1);
+            lv_inventory -= libDEAD_gf_ReturnEquipmentPropertyInventory(lv_item);
         }
         else if (auto30B42D06_val == "Boots") {
             UnitBehaviorRemove(libDEAD_gv_playerUnit[lp_player], "BOOTS", 1);
@@ -1577,7 +1577,7 @@ void libDEAD_gf_DS_CreateHUD (int lp_player) {
     libDEAD_gv_dS_HUD[lp_player].lv_panel = DialogControlLastCreated();
     DialogControlHookup(libDEAD_gv_dS_HUD[lp_player].lv_panel, c_triggerControlTypeProgressBar, libNtve_gf_ConvertStringToUILayoutFrameName("StatusPanel/HealthBar/ProgressBar"));
     libDEAD_gv_dS_HUD[lp_player].lv_hPBar = DialogControlLastCreated();
-    DialogControlHookup(libDEAD_gv_dS_HUD[lp_player].lv_panel, c_triggerControlTypeUnitStatus, libNtve_gf_ConvertStringToUILayoutFrameName("UnitStatusFrame"));
+    DialogControlHookup(libDEAD_gv_dS_HUD[lp_player].lv_panel, c_triggerControlTypeUnitStatus, libNtve_gf_ConvertStringToUILayoutFrameName("StatusPanel"));
     libDEAD_gv_dS_HUD[lp_player].lv_uTF = DialogControlLastCreated();
     libNtve_gf_SetDialogItemUnit(DialogControlLastCreated(), libDEAD_gv_playerUnit[lp_player], PlayerGroupSingle(lp_player));
     DialogControlHookup(libDEAD_gv_dS_HUD[lp_player].lv_panel, c_triggerControlTypePanel, libNtve_gf_ConvertStringToUILayoutFrameName("WeaponFrameN"));
@@ -3317,7 +3317,6 @@ void libDEAD_gf_DS_InitHPSystem (int lp_player) {
     // Variable Initialization
 
     // Implementation
-    UnitSetPropertyFixed(libDEAD_gv_playerUnit[lp_player], c_unitPropLifeMax, 50000.0);
     UnitSetPropertyFixed(libDEAD_gv_playerUnit[lp_player], c_unitPropLifePercent, 100.0);
     autoBF7FA21B_val = lp_player;
     if (autoBF7FA21B_val == 1) {

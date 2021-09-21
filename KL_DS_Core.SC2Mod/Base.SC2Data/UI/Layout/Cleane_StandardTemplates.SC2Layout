@@ -734,6 +734,8 @@
         <NormalImage val="NormalImage"/>
         <HoverImage val="HoverImage"/>
 
+        <Visible val="false"/>
+
         <Frame type="Image" name="Background">
             <Anchor relative="$parent" offset="-15"/>
 
