@@ -3,7 +3,6 @@
     <Include path="UI/Layout/Cleane_StandardTemplates.SC2Layout"/>
     <Include path="UI/Layout/DS_StandardTemplates.SC2Layout"/>
     <Include path="UI/Layout/DS_TooltipTemplates.SC2Layout"/>
-    <Include path="UI/Layout/0_ECL_TEMPLATES.SC2Layout"/>
     <Include path="UI/Layout/ECL_DRAGGABLE.SC2Layout"/>
     <Include path="UI/Layout/DS_InventoryTemplates.SC2Layout"/>
     <Include path="UI/Layout/DS_InspectionPanelTemplates.SC2Layout"/>

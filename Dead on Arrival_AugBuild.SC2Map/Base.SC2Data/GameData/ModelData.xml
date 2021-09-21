@@ -50,6 +50,24 @@
         <ScaleMax value="11.000000,11.000000,11.000000"/>
         <ScaleMin value="11.000000,11.000000,11.000000"/>
     </CModel>
+    <CModel id="InvisibleTargetDummy" Race="Neutral">
+        <Model value="Assets\Units\Test\InvisibleUnit\InvisibleUnit.m3"/>
+        <EditorCategories value="Race:Neutral"/>
+        <Flags index="TeenSafe" value="1"/>
+        <Lighting value="Invisible"/>
+        <Radius value="-1.000000"/>
+        <SelectionRadius value="0.000000"/>
+        <ShadowRadius value="0.000000"/>
+    </CModel>
+    <CModel id="InvisibleTutorialHelper" Race="Neutral">
+        <Model value="Assets\Units\Test\InvisibleUnit\InvisibleUnit.m3"/>
+        <EditorCategories value="Race:Neutral"/>
+        <Flags index="TeenSafe" value="1"/>
+        <Lighting value="Invisible"/>
+        <Radius value="-1.000000"/>
+        <SelectionRadius value="0.000000"/>
+        <ShadowRadius value="0.000000"/>
+    </CModel>
     <CModel id="RTT_Display_1">
         <ScaleMax value="13.500000,1.000000,12.500000"/>
         <ScaleMin value="13.500000,1.000000,12.500000"/>
@@ -89,35 +107,28 @@
             <Anim value="Stand,Work,End,00"/>
             <Name value="Xelnaga_Door_StandWorkEnd_B"/>
             <Type value="Sound"/>
-            <Time value="0.250000"/>
+            <Time value="0.100000"/>
             <Payload value="Xelnaga_Door_StandWorkEnd_B"/>
-        </Events>
-        <Events>
-            <Anim value="Stand,Work,End,00"/>
-            <Name value="Xelnaga_Door_StandWorkEnd_C"/>
-            <Type value="Sound"/>
-            <Time value="0.500000"/>
-            <Payload value="Xelnaga_Door_StandWorkEnd_C"/>
         </Events>
         <Events>
             <Anim value="Stand,Work,End,00"/>
             <Name value="Xelnaga_Door_StandWorkEnd_D"/>
             <Type value="Sound"/>
-            <Time value="0.750000"/>
+            <Time value="0.700000"/>
             <Payload value="Xelnaga_Door_StandWorkEnd_D"/>
         </Events>
         <Events>
             <Anim value="Stand,Work,End,00"/>
             <Name value="Xelnaga_Door_StandWorkEnd_E"/>
             <Type value="Sound"/>
-            <Time value="1.000000"/>
+            <Time value="0.900000"/>
             <Payload value="Xelnaga_Door_StandWorkEnd_E"/>
         </Events>
         <Events>
             <Anim value="Stand,Work,End,00"/>
             <Name value="Xelnaga_Door_StandWorkEnd_F"/>
             <Type value="Sound"/>
-            <Time value="1.250000"/>
+            <Time value="0.900000"/>
             <Payload value="Xelnaga_Door_StandWorkEnd_F"/>
         </Events>
         <Events>
@@ -130,49 +141,40 @@
             <Anim value="Stand,Work,Start,00"/>
             <Name value="Xelnaga_Door_StandWorkStart_B"/>
             <Type value="Sound"/>
-            <Time value="0.250000"/>
             <Payload value="Xelnaga_Door_StandWorkStart_B"/>
-        </Events>
-        <Events>
-            <Anim value="Stand,Work,Start,00"/>
-            <Name value="Xelnaga_Door_StandWorkStart_C"/>
-            <Type value="Sound"/>
-            <Time value="0.500000"/>
-            <Payload value="Xelnaga_Door_StandWorkStart_C"/>
         </Events>
         <Events>
             <Anim value="Stand,Work,Start,00"/>
             <Name value="Xelnaga_Door_StandWorkStart_D"/>
             <Type value="Sound"/>
-            <Time value="0.750000"/>
             <Payload value="Xelnaga_Door_StandWorkStart_D"/>
         </Events>
         <Events>
             <Anim value="Stand,Work,Start,00"/>
             <Name value="Xelnaga_Door_StandWorkStart_E"/>
             <Type value="Sound"/>
-            <Time value="1.000000"/>
+            <Time value="0.100000"/>
             <Payload value="Xelnaga_Door_StandWorkStart_E"/>
         </Events>
         <Events>
             <Anim value="Stand,Work,Start,00"/>
             <Name value="Xelnaga_Door_StandWorkStart_F"/>
             <Type value="Sound"/>
-            <Time value="1.250000"/>
+            <Time value="0.200000"/>
             <Payload value="Xelnaga_Door_StandWorkStart_F"/>
         </Events>
         <Events>
             <Anim value="Stand,Work,Start,00"/>
             <Name value="Xelnaga_Door_StandWorkStart_G"/>
             <Type value="Sound"/>
-            <Time value="1.500000"/>
+            <Time value="0.300000"/>
             <Payload value="Xelnaga_Door_StandWorkStart_G"/>
         </Events>
         <Events>
             <Anim value="Stand,Work,Start,00"/>
             <Name value="Xelnaga_Door_StandWorkStart_H"/>
             <Type value="Sound"/>
-            <Time value="1.750000"/>
+            <Time value="0.400000"/>
             <Payload value="Xelnaga_Door_StandWorkStart_H"/>
         </Events>
         <Radius value="6.000000"/>

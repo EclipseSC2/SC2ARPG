@@ -11,10 +11,6 @@
         <BehaviorArray Link="PLoot"/>
         <BehaviorArray Link="PMobTierCasual"/>
     </CUnit>
-    <CUnit id="InvisibleTargetDummy">
-        <FlagArray index="PenaltyRevealed" value="1"/>
-        <FogVisibility value="Dimmed"/>
-    </CUnit>
     <CUnit id="Marauder">
         <StationaryTurningRate value="0"/>
         <TurningRate value="0"/>

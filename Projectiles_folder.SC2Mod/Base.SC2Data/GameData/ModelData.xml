@@ -205,10 +205,6 @@
         <Model value="Assets\Effects\Terran\ReaperWeaponImpact\ReaperWeaponImpact.m3"/>
         <EditorCategories value="Race:Terran"/>
     </CModel>
-    <CModel id="Sphere">
-        <ScaleMax value="0.250000,0.250000,0.250000"/>
-        <ScaleMin value="0.250000,0.250000,0.250000"/>
-    </CModel>
     <CModel id="PAttackBulletLaunch" parent="LaunchFX">
         <Model value="Assets\Effects\Terran\MarineWeaponLaunch\MarineWeaponLaunch.m3"/>
         <EditorCategories value="Race:Terran"/>

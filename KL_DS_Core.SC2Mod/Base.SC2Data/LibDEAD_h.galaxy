@@ -503,7 +503,6 @@ trigger libDEAD_gt_DS_ExamineCloseBackgroundP2;
 trigger libDEAD_gt_DS_ExamineCloseEscP2;
 trigger libDEAD_gt_KL_SwapWeaponTest;
 trigger libDEAD_gt_ECL__HOOKUPINVENTORYFRAMES;
-trigger libDEAD_gt_TestGitHub;
 trigger libDEAD_gt_ECL__DRAG_ON_OFF;
 trigger libDEAD_gt_ECL__SETNEWOLDSLOT;
 trigger libDEAD_gt_ECL__DROPZONE;

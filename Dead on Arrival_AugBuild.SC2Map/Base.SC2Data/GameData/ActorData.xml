@@ -64,9 +64,6 @@
     <CActorModel id="FlashlightModel">
         <Scale value="2.000000"/>
     </CActorModel>
-    <CActorUnit id="InvisibleTargetDummy">
-        <EditorModel value="Invisible"/>
-    </CActorUnit>
     <CActorUnit id="RTT_Display_1">
         <FogVisibility value="Visible"/>
         <HostSiteOps Ops="SOpMoveDownBy4 SOpMoveDownBy4 SOpMoveDownBy2 SOpMoveDownBy2"/>

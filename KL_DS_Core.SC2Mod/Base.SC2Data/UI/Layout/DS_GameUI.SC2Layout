@@ -19,7 +19,6 @@
 
             <Frame type="Frame" name="GameHUD" template="DS_HUDTemplates/GameHUDTemplate">
                 <Anchor relative="$parent"/>
-
                 <Visible val="True"/>
             </Frame>
 

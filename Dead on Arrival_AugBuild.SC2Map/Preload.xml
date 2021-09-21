@@ -68,6 +68,7 @@
 <Actor id="CastanarCabinet" Variations="6"/>
 <Actor id="CastanarLightboard" Variations="3"/>
 <Actor id="CharWorm" Variations="0"/>
+<Actor id="ColonistShipWrecked" Variations="0"/>
 <Actor id="Decal" Variations="24"/>
 <Actor id="RainEmitterLarge"/>
 <Actor id="SpacePlatformWallDebris" Variations="2"/>
@@ -112,6 +113,7 @@
 <Unit id="Artosilope"/>
 <Unit id="PathingBlocker1x1Diagonal"/>
 <Unit id="UmojanLabMonitorFloorDestructible1"/>
+<Unit id="InvisibleTutorialHelper"/>
 <Unit id="DOMLabDoorThinE"/>
 <Unit id="DOMLabDoorThinEOpened"/>
 <Unit id="DOMLabDoorThinNE"/>

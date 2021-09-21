@@ -1579,6 +1579,7 @@ void libDEAD_gf_DS_CreateHUD (int lp_player) {
     libDEAD_gv_dS_HUD[lp_player].lv_hPBar = DialogControlLastCreated();
     DialogControlHookup(libDEAD_gv_dS_HUD[lp_player].lv_panel, c_triggerControlTypeUnitStatus, libNtve_gf_ConvertStringToUILayoutFrameName("UnitStatusFrame"));
     libDEAD_gv_dS_HUD[lp_player].lv_uTF = DialogControlLastCreated();
+    libNtve_gf_SetDialogItemUnit(DialogControlLastCreated(), libDEAD_gv_playerUnit[lp_player], PlayerGroupSingle(lp_player));
     DialogControlHookup(libDEAD_gv_dS_HUD[lp_player].lv_panel, c_triggerControlTypePanel, libNtve_gf_ConvertStringToUILayoutFrameName("WeaponFrameN"));
     libDEAD_gv_dS_HUD[lp_player].lv_weaponPanel = DialogControlLastCreated();
     DialogControlHookup(libDEAD_gv_dS_HUD[lp_player].lv_weaponPanel, c_triggerControlTypeImage, libNtve_gf_ConvertStringToUILayoutFrameName("MainWeaponInfoFrame/Icon"));
@@ -5315,26 +5316,6 @@ void libDEAD_gt_ECL__HOOKUPINVENTORYFRAMES_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: TestGitHub
-//--------------------------------------------------------------------------------------------------
-bool libDEAD_gt_TestGitHub_Func (bool testConds, bool runActions) {
-    // Automatic Variable Declarations
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/lib_DEAD_5C9CE69C"));
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void libDEAD_gt_TestGitHub_Init () {
-    libDEAD_gt_TestGitHub = TriggerCreate("libDEAD_gt_TestGitHub_Func");
-    TriggerAddEventMapInit(libDEAD_gt_TestGitHub);
-}
-
-//--------------------------------------------------------------------------------------------------
 // Trigger: ECL__DRAG_ON_OFF
 //--------------------------------------------------------------------------------------------------
 bool libDEAD_gt_ECL__DRAG_ON_OFF_Func (bool testConds, bool runActions) {
@@ -5866,13 +5847,13 @@ bool libDEAD_gt_DS_Initialization_Func (bool testConds, bool runActions) {
         DialogControlHookupStandard(c_triggerControlTypePanel, "UIContainer/FullscreenUpperContainer/DSGameUI");
         libDEAD_gv_dS_GameUI[lv_index].lv_gameUI = DialogControlLastCreated();
         libDEAD_gf_DS_CreateHUD(lv_index);
+        libNtve_gf_SetDialogItemUnitGroup(libDEAD_gv_dS_HUD[lv_index].lv_uTF, libNtve_gf_ConvertUnitToUnitGroup(libDEAD_gv_playerUnit[lv_index]), PlayerGroupSingle(lv_index));
         libDEAD_gf_DS_CreateCraftingPanel(lv_index);
         libDEAD_gf_DS_CreateInspectWindow(lv_index);
         libDEAD_gf_DS_CreateConfirm(lv_index);
         libDEAD_gf_DS_HookupInteractButton(libDEAD_gv_playerUnit[lv_index], lv_index);
         libDEAD_gf_DS_InitHPSystem(lv_index);
         libDEAD_gf_DS_InitializeInventory(lv_index);
-        libNtve_gf_SetDialogItemUnitGroup(libDEAD_gv_dS_HUD[lv_index].lv_uTF, libNtve_gf_ConvertUnitToUnitGroup(libDEAD_gv_playerUnit[lv_index]), PlayerGroupSingle(lv_index));
     }
     return true;
 }
@@ -7397,7 +7378,6 @@ void libDEAD_InitTriggers () {
     libDEAD_gt_DS_ExamineCloseEscP2_Init();
     libDEAD_gt_KL_SwapWeaponTest_Init();
     libDEAD_gt_ECL__HOOKUPINVENTORYFRAMES_Init();
-    libDEAD_gt_TestGitHub_Init();
     libDEAD_gt_ECL__DRAG_ON_OFF_Init();
     libDEAD_gt_ECL__SETNEWOLDSLOT_Init();
     libDEAD_gt_ECL__DROPZONE_Init();

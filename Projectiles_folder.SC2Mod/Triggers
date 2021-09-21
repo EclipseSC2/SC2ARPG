@@ -1532,7 +1532,6 @@
             <Parameter Type="Param" Library="ECLP" Id="6F283F37"/>
             <Parameter Type="Param" Library="ECLP" Id="70CD95BC"/>
             <Parameter Type="Param" Library="ECLP" Id="EB601BC9"/>
-            <Parameter Type="Param" Library="ECLP" Id="47A0B9C9"/>
             <Parameter Type="Param" Library="ECLP" Id="91E943A1"/>
         </Element>
         <Element Type="Param" Id="D5AB778F">
@@ -4047,7 +4046,6 @@
             <Parameter Type="Param" Library="ECLP" Id="ECC2F7DE"/>
             <Parameter Type="Param" Library="ECLP" Id="94DE1358"/>
             <Parameter Type="Param" Library="ECLP" Id="73971749"/>
-            <Parameter Type="Param" Library="ECLP" Id="6D0AA394"/>
         </Element>
         <Element Type="Param" Id="25056158">
             <ParameterDef Type="ParamDef" Library="ECLP" Id="0C7017B3"/>

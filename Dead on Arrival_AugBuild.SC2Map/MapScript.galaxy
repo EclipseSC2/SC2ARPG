@@ -221,6 +221,8 @@ bool gt_DEBUG_TESTADDITEMS_Func (bool testConds, bool runActions) {
     libDEAD_gf_ECL_ITEM_add(EventPlayer(), "Crappy Pack", 1, true);
     libDEAD_gf_ECL_ITEM_add(EventPlayer(), "TEST Suit", 1, true);
     libDEAD_gf_ECL_ITEM_add(EventPlayer(), "Slugger", 1, true);
+    libNtve_gf_HideGameUI(true, PlayerGroupAll());
+    UISetFrameVisible(PlayerGroupAll(), c_syncFrameTypeInfoPanel, true);
     return true;
 }
 
@@ -358,8 +360,7 @@ bool gt__3Units_Func (bool testConds, bool runActions) {
         UnitSetCustomValue(auto18F75CBC_var, 0, RandomInt(0, 5));
     }
     UnitIssueOrder(UnitFromId(1294028385), Order(AbilityCommand("DSLabDoorClose", 0)), c_orderQueueReplace);
-    libNtve_gf_CreateUnitsWithDefaultFacing(1, "InvisibleTargetDummy", c_unitCreateConstruct | c_unitCreateIgnorePlacement, 0, PointWithOffsetPolar(UnitGetPosition(UnitFromId(1195023238)), 0.5, UnitGetFacing(UnitFromId(1195023238))));
-    libNtve_gf_ShowHideUnit(UnitLastCreated(), false);
+    libNtve_gf_CreateUnitsWithDefaultFacing(1, "InvisibleTutorialHelper", c_unitCreateConstruct | c_unitCreateIgnorePlacement, 0, PointWithOffsetPolar(UnitGetPosition(UnitFromId(1195023238)), 0.5, UnitGetFacing(UnitFromId(1195023238))));
     gv_terminal_Dialog_dummy_lab = UnitLastCreated();
     DialogCreate(120, 60, c_anchorCenter, 0, 0, true);
     gv_terminal_Dialog_lab = DialogLastCreated();
@@ -369,7 +370,6 @@ bool gt__3Units_Func (bool testConds, bool runActions) {
     DialogSetPositionRelativeToUnit(DialogLastCreated(), gv_terminal_Dialog_dummy_lab, "Ref_Origin", 0, -200);
     UnitIssueOrder(UnitFromId(1849471035), Order(AbilityCommand("DSLabDoorClose", 0)), c_orderQueueReplace);
     libNtve_gf_CreateUnitsWithDefaultFacing(1, "InvisibleTargetDummy", c_unitCreateConstruct | c_unitCreateIgnorePlacement, 0, PointWithOffsetPolar(UnitGetPosition(UnitFromId(448832027)), 0.5, UnitGetFacing(UnitFromId(448832027))));
-    libNtve_gf_ShowHideUnit(UnitLastCreated(), false);
     gv_terminal_Dialog_dummy_hangar = UnitLastCreated();
     DialogCreate(120, 60, c_anchorCenter, 0, 0, true);
     gv_terminal_Dialog_hangar = DialogLastCreated();
@@ -379,7 +379,6 @@ bool gt__3Units_Func (bool testConds, bool runActions) {
     DialogSetPositionRelativeToUnit(DialogLastCreated(), gv_terminal_Dialog_dummy_hangar, "Ref_Origin", 0, -200);
     UnitIssueOrder(UnitFromId(1511735643), Order(AbilityCommand("DSLabDoorClose", 0)), c_orderQueueReplace);
     libNtve_gf_CreateUnitsWithDefaultFacing(1, "InvisibleTargetDummy", c_unitCreateConstruct | c_unitCreateIgnorePlacement, 0, PointWithOffsetPolar(UnitGetPosition(UnitFromId(801048369)), 0.5, UnitGetFacing(UnitFromId(801048369))));
-    libNtve_gf_ShowHideUnit(UnitLastCreated(), false);
     gv_terminal_Dialog_dummy_Construction = UnitLastCreated();
     DialogCreate(120, 60, c_anchorCenter, 0, 0, true);
     gv_terminal_Dialog_Construction = DialogLastCreated();

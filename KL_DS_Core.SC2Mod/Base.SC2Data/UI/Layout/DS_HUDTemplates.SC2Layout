@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <Desc>
+    
     <Frame type="Button" name="FloatingUseKey">
         <Anchor relative="$parent"/>
 
@@ -270,30 +271,39 @@
 
         <Frame type="UnitStatusFrame" name="UnitStatusFrame">
             <Anchor relative="$parent"/>
-            <RenderPriority val="999"/>
-
-            <Frame type="UnitStatusHealthBar" name="UnitStatusHealthBar">
-                <Anchor relative="$parent/$parent/StatusPanel/HealthBar"/>
-                <Texture val="@UI/HotS_HeroUnit_Status_Bar"/>
-                <OwnerColor val="255,0,68" index="0"/>
-                <AllyColor val="255,0,68" index="0"/>
-                <EnemyColor val="255,0,68" index="0"/>
-                <ReductionColor val="255,210,202" index="0"/>
-                <ReductionShown val="true" index="0"/>
-                <IncreaseDuration val="500" index="0"/>
-                <DecreaseDuration val="500" index="0"/>
-            </Frame>
+            <RenderPriority val="999999"/>
+                    
             <Frame type="UnitFrame" name="UnitFrame">
-                <Anchor relative="$parent"/>
                 <UnitTag val="{$parent/@UnitTag}"/>
+            </Frame>
 
-                <StateGroup name="Default">
-                    <DefaultState val="Default"/>
-                    <State name="Default">
-                        <Action type="SetProperty" frame="$parent/$parent/StatusPanel/HealthBar/ProgressBar" Value="{$parent/$parent/$parent/UnitStatusFrame/UnitFrame/@CurrentHealth}"/>
-                        <Action type="SetProperty" frame="$parent/$parent/StatusPanel/HealthBar/ProgressBar" MaxValue="{$parent/$parent/$parent/UnitStatusFrame/UnitFrame/@MaxHealth}"/>
-                    </State>
-                </StateGroup>
+            <Frame type="ProgressBar" name="HealthBar">
+                <Texture val="Assets/Textures/LumenProgressBar.dds"/>
+                <Anchor side="Top" relative="$parent" pos="Mid" offset="0"/>
+                <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+                <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+                <Anchor side="Bottom" relative="$parent" pos="Mid" offset="0"/>
+                <Width val="298"/>
+                <Height val="29"/>
+                <Color val="255,100,255,100"/>
+                <ColorStep val="255,100,255,100"/>
+                <MinValue val="0"/>
+
+                <MaxValue val="{$parent/UnitFrame/@MaxHealth}"/>
+                <Value val="{$parent/UnitFrame/@CurrentHealth}"/>
+
+                <Frame type="Label" name="Value">
+                    <Anchor relative="$parent"/>
+                    <Style val="Clean_ItemTooltipType_Material"/>
+                    <Text val="{$this/FormatFrame/@Text}"/>
+                    <Color val="203,236,255"/>
+                    <Frame type="TextFormatFrame" name="FormatFrame">
+                        <Anchor relative="$parent"/>
+                        <FormatText val="%0%/%1%"/>
+                        <Replacement index="0" val="{$parent/$parent/@Value}"/>
+                        <Replacement index="1" val="{$parent/$parent/@MaxValue}"/>
+                    </Frame>
+                </Frame>
             </Frame>
         </Frame>
 

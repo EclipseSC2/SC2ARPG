@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <Desc>
-
-
     <Constant name="StandardFrameBackgroundColor" val="112e31"/>
     <Constant name="StandardFrameHighlightColor" val="2aefe2"/>
     <Constant name="StandardFrameGlowColor" val="68aaac"/>

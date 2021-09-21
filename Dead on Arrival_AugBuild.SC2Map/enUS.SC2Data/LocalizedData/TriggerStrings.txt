@@ -1,6 +1,6 @@
 ﻿Category/Name/2F76BE9F=Initialization
 Category/Name/80539DFA=Chapter 0
-Category/Name/8681058F=ECL Implementation
+Category/Name/8681058F=ECL_TESTING
 Category/Name/984C1A53=GATEWAY
 Category/Name/99F6167C=GLOBAL
 Category/Name/B9EE54F1=Tutorial
