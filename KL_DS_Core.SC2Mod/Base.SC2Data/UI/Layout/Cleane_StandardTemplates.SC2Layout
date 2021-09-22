@@ -841,6 +841,55 @@
         </Frame>
     </Frame>
 
+    <Frame type="Frame" name="ECL_ProgressBarTemplate">
+        <Height val="55"/>
+        <Width val="592"/>
+
+        <Frame type="Image" name="Background">
+            <Anchor relative="$parent"/>
+
+            <Texture val="Assets/Textures/HP_Bar_BG.dds"/>
+        </Frame>
+
+        <Frame type="ProgressBar" name="ProgressBar">
+            <Anchor relative="$parent"/>
+            
+            <AcceptsMouse val="False"/>
+            <UseFillContainer val="True"/>
+
+            <Frame type="TextFormatFrame" name="FormatFrame">
+                <FormatText val="%0% / %1%"/>
+
+                <Replacement val="{$parent/@Value}" index="0"/>
+                <Replacement val="{$parent/@MaxValue}" index="1"/>
+            </Frame>
+
+            <Frame type="Frame" name="FillImageContainer">
+                <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+                <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+                <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+
+                <Frame type="Image" name="FillImage">
+                    <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+                    <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+                    <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+                    <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+                    <Texture val="Assets\Textures\HP_bar_BAR_scaled.dds"/>
+                    <Tiled val="True"/>
+                </Frame>
+            </Frame>
+
+            <Frame type="Label" name="Label">
+                <Anchor side="Right" relative="$parent/FillImageContainer" pos="Max" offset="-10"/>
+                <Anchor side="Bottom" relative="$parent" pos="Mid" offset="0"/>
+                <Anchor side="Top" relative="$parent" pos="Mid" offset="0"/>
+                <Visible val="false"/>
+                <Style val="Clean_ItemTooltipType_Material"/>
+                <Text val="{$parent/FormatFrame/@Text}"/>
+            </Frame>
+        </Frame>
+    </Frame>
+
     <Frame type="Frame" name="StatListboxItemTemplate">
         <Height val="#LoadoutStatItemSize"/>
 

@@ -377,22 +377,14 @@
                 <UnitTag val="{$parent/@UnitTag}"/>
             </Frame>
 
-            <Frame type="Frame" name="HealthBar" template="Cleane_StandardTemplates/SmallProgressBarTemplate">
+            <Frame type="Frame" name="HealthBar" template="Cleane_StandardTemplates/ECL_ProgressBarTemplate">
                 <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
-                <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
-                <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+                <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+                <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
 
                 <Frame type="ProgressBar" name="ProgressBar">
-
                     <MaxValue val="{$parent/$parent/UnitFrame/@MaxHealth}"/>
                     <Value val="{$parent/$parent/UnitFrame/@CurrentHealth}"/>
-
-                    <Frame type="Frame" name="FillImageContainer">
-                        <Frame type="Image" name="FillImage">
-                            <ColorAdjustMode val="Colorize"/>
-                            <AdjustmentColor val="00af00"/>
-                        </Frame>
-                    </Frame>
                 </Frame>
             </Frame>
 
