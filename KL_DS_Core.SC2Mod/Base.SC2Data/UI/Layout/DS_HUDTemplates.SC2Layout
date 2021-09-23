@@ -415,7 +415,7 @@
     
                 <Animation name="DamageTaken">
                     <Event event="TargetInCombatShort" action="Reset, Play"/>
-                    <Controller type="Fade" end="Pause" frame="$parent/HealthBar/EndCap">
+                    <Controller type="Fade" end="Pause" frame="$parent/HealthBar/ProgressBar/FillImageContainer/EndCap">
                         <Key type="Curve" time="0.0" value="0" out="Slow"/>
                         <Key type="Curve" time="0.1" value="255"/>
                         <Key type="Curve" time="0.3" value="255"/>
@@ -435,10 +435,10 @@
                 </Frame>
 
                 <Frame type="Image" name="Center">
-                    <Anchor side="Top" relative="$parent/EndCap" pos="Mid" offset="0"/>
+                    <Anchor side="Top" relative="$parent/ProgressBar/FillImageContainer/EndCap" pos="Mid" offset="0"/>
                     <Anchor side="Left" relative="$parent" pos="Mid" offset="280"/>
                     <Anchor side="Right" relative="$parent" pos="Mid" offset="280"/>
-                    <Anchor side="Bottom" relative="$parent/EndCap" pos="Mid" offset="0"/>
+                    <Anchor side="Bottom" relative="$parent/ProgressBar/FillImageContainer/EndCap" pos="Mid" offset="0"/>
                     <Width val="4"/>
                     <Height val="4"/>
                     <Color val="25,0,255"/>
@@ -474,7 +474,7 @@
                 </Frame>
         
                 <Frame type="LookAtFrame" name="SetupConnector" template="DS_HUDTemplates/SetupConnectorTemplate">
-                    <SourceFrame val="$parent/EndCap"/>
+                    <SourceFrame val="$parent/ProgressBar/FillImageContainer/EndCap"/>
                     <DestFrame val="$parent/Center"/>
         
                     <StateGroup name="LazySetup">

@@ -852,7 +852,6 @@
             <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
             <Height val="55"/>
             <Width val="560"/>
-
             <Texture val="Assets/Textures/HP_Bar_BG.dds"/>
         </Frame>
 
@@ -874,6 +873,65 @@
                 <Replacement val="{$parent/@MaxValue}" index="1"/>
             </Frame>
 
+            <Frame type="TextFormatFrame" name="Color">
+                <FormatText val="%0%,%1%,165"/>
+
+                <Replacement val="{$this/RedSLOW/@ResultInt}" index="0"/>
+                <Replacement val="{$this/GreenSLOW/@ResultInt}" index="1"/>
+
+                <Frame type="MathFrame" name="Percent">
+                    <A val="{$parent/$parent/@Value}"/>
+                    <B val="{$parent/$parent/@MaxValue}"/>
+                    <Operator val="Divide"/>
+                </Frame>
+
+                <Frame type="MathFrame" name="PercentRed">
+                    <A val="1"/>
+                    <B val="{$parent/Percent/@Result}"/>
+                    <Operator val="Subtract"/>
+                </Frame>
+
+                <Frame type="MathFrame" name="Red">
+                    <A val="255"/>
+                    <B val="{$parent/PercentRed/@Result}"/>
+                    <Operator val="Multiply"/>
+                </Frame>
+
+                <Frame type="MathFrame" name="PercentRedFAST">
+                    <A val="0.75"/>
+                    <B val="{$parent/Percent/@Result}"/>
+                    <Operator val="Subtract"/>
+                </Frame>
+
+                <Frame type="MathFrame" name="RedFAST">
+                    <A val="{$parent/PercentRedFAST/@Result}"/>
+                    <B val="510"/>
+                    <Operator val="Multiply"/>
+                </Frame>
+
+                <Frame type="MathFrame" name="PercentGreenSLOW">
+                    <A val="1.83333"/>
+                    <B val="{$parent/Percent/@Result}"/>
+                    <Operator val="Add"/>
+                </Frame>
+                <Frame type="MathFrame" name="GreenSLOW">
+                    <A val="90"/>
+                    <B val="{$parent/PercentGreenSLOW/@Result}"/>
+                    <Operator val="Multiply"/>
+                </Frame>
+
+                <Frame type="MathFrame" name="PercentRedSLOW">
+                    <A val="90"/>
+                    <B val="{$parent/Percent/@Result}"/>
+                    <Operator val="Multiply"/>
+                </Frame>
+                <Frame type="MathFrame" name="RedSLOW">
+                    <A val="255"/>
+                    <B val="{$parent/PercentRedSLOW/@ResultInt}"/>
+                    <Operator val="Subtract"/>
+                </Frame>
+            </Frame>
+
             <Frame type="Frame" name="FillImageContainer">
                 <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
                 <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
@@ -888,17 +946,45 @@
                     <Tiled val="True"/>
                     <Alpha val="255"/>
                 </Frame>
-            </Frame>
-        </Frame>
 
-        <Frame type="Image" name="EndCap">
-            <Anchor side="Right" relative="$parent/ProgressBar/FillImageContainer" pos="Max" offset="4"/>
-            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
-            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
-            <Texture val="Assets\Textures\BAR_ENDCAP.dds"/>
-            <Width val="100"/>
-            <Alpha val="0"/>
-            <BlendMode val="Add"/>
+                <Frame type="Image" name="EndCap">
+                    <Anchor side="Right" relative="$parent" pos="Max" offset="4"/>
+                    <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+                    <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+                    <Texture val="Assets\Textures\BAR_ENDCAP.dds"/>
+                    <Width val="100"/>
+                    <Alpha val="0"/>
+                    <BlendMode val="Add"/>
+                </Frame>
+
+                <Frame type="Image" name="Red">
+                    <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+                    <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+                    <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+                    <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+                    <Texture val="Assets\Textures\HP_bar_BAR_scaled_pale.dds"/>
+                    <Color val="255,0,0"/>
+                    <Tiled val="True"/>
+                    <Alpha val="0"/>
+                    <BlendMode val="Lighten"/>
+                    <StateGroup name="Alpha">
+                        <DefaultState val="Slow"/>
+                        <State name="Slow">
+                            <When type="Property" frame="$parent/$parent/Color/RedFAST" operator="LessThanOrEqual" ResultInt="0"/>
+                            <Action type="SetProperty" frame="$this" Alpha="0"/>
+                        </State>
+                        <State name="Fast">
+                            <When type="Property" frame="$parent/$parent/Color/RedFAST" operator="GreaterThan" ResultInt="0"/>
+                            <When type="Property" frame="$parent/$parent/Color/RedFAST" operator="LessThanOrEqual" ResultInt="255"/>
+                            <Action type="SetProperty" frame="$this" Alpha="{$parent/$parent/Color/RedFAST/@ResultInt}"/>
+                        </State>
+                        <State name="Max">
+                            <When type="Property" frame="$parent/$parent/Color/RedFAST" operator="GreaterThan" ResultInt="255"/>
+                            <Action type="SetProperty" frame="$this" Alpha="255"/>
+                        </State>
+                    </StateGroup>
+                </Frame>
+            </Frame>
         </Frame>
 
         <Frame type="Label" name="LabelShadow">
@@ -910,8 +996,8 @@
             <Text val="{$parent/Label/@Text}"/>
             <Blur val="True"/>
             <BlurAmount val="0.3"/>
-            <Color val="4,37,0"/>
-            <Alpha val="150"/>
+            <Color val="0,0,0"/>
+            <Alpha val="200"/>
         </Frame>
         <Frame type="Label" name="Label">
             <Anchor side="Left" relative="$parent/Center" pos="Mid" offset="-30"/>
@@ -920,8 +1006,8 @@
             <Anchor side="Top" relative="$parent" pos="Mid" offset="0"/>
             <Style val="ECL_HPBAR"/>
             <Text val="{$parent/ProgressBar/FormatFrame/@Text}"/>
-            <Alpha val="225"/>
-            <Color val="203,255,203"/>
+            <Alpha val="255"/>
+            <Color val="{$parent/ProgressBar/Color/@Text}"/>
         </Frame>
     </Frame>
 
