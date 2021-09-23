@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <StyleFile>
+    <Style name="ECL_HPBAR" font="UI\Fonts\Eurostile-Bol.otf" height="24" vjustify="Middle" hjustify="Right" textcolor="255,255,255,255" highlightcolor="255,0,0,0" disabledcolor="255,0,0,0" hotkeycolor="255,0,0,0" hyperlinkcolor="255,0,0,0" glowcolor="255,0,0,0" shadowoffset="0" outlinewidth="0"/>
     <Style name="Loot_Item" font="UI\Fonts\Eurostile-Reg.otf" height="16" vjustify="Middle" hjustify="Center" textcolor="255,255,255,255" highlightcolor="255,0,0,0" disabledcolor="255,0,0,0" hotkeycolor="255,0,0,0" hyperlinkcolor="255,0,0,0" glowcolor="255,0,0,0" shadowoffset="0" outlinewidth="0"/>
 </StyleFile>

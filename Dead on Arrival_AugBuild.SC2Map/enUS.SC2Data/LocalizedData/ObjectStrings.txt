@@ -27,4 +27,3 @@ Model/Name/InvisibleTargetDummy=InvisibleTargetDummy
 Model/Name/InvisibleTutorialHelper=InvisibleTutorialHelper
 Model/Name/Separatist2=Separatist
 Sound/Name/ECL_ACCESS_DENIED=ECL_ACCESS_DENIED
-Validator/Name/UnknownValidator=Unknown Validator

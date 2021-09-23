@@ -842,18 +842,28 @@
     </Frame>
 
     <Frame type="Frame" name="ECL_ProgressBarTemplate">
-        <Height val="55"/>
-        <Width val="592"/>
+        <Height val="56"/>
+        <Width val="800"/>
 
         <Frame type="Image" name="Background">
-            <Anchor relative="$parent"/>
+            <Anchor side="Bottom" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Top" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+            <Height val="55"/>
+            <Width val="560"/>
 
             <Texture val="Assets/Textures/HP_Bar_BG.dds"/>
         </Frame>
 
         <Frame type="ProgressBar" name="ProgressBar">
-            <Anchor relative="$parent"/>
-            
+            <Anchor side="Bottom" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Top" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+            <Height val="56"/>
+            <Width val="560"/>
+
             <AcceptsMouse val="False"/>
             <UseFillContainer val="True"/>
 
@@ -876,17 +886,42 @@
                     <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
                     <Texture val="Assets\Textures\HP_bar_BAR_scaled.dds"/>
                     <Tiled val="True"/>
+                    <Alpha val="255"/>
                 </Frame>
             </Frame>
+        </Frame>
 
-            <Frame type="Label" name="Label">
-                <Anchor side="Right" relative="$parent/FillImageContainer" pos="Max" offset="-10"/>
-                <Anchor side="Bottom" relative="$parent" pos="Mid" offset="0"/>
-                <Anchor side="Top" relative="$parent" pos="Mid" offset="0"/>
-                <Visible val="false"/>
-                <Style val="Clean_ItemTooltipType_Material"/>
-                <Text val="{$parent/FormatFrame/@Text}"/>
-            </Frame>
+        <Frame type="Image" name="EndCap">
+            <Anchor side="Right" relative="$parent/ProgressBar/FillImageContainer" pos="Max" offset="4"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Texture val="Assets\Textures\BAR_ENDCAP.dds"/>
+            <Width val="100"/>
+            <Alpha val="0"/>
+            <BlendMode val="Add"/>
+        </Frame>
+
+        <Frame type="Label" name="LabelShadow">
+            <Anchor side="Left" relative="$parent/Label" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent/Label" pos="Max" offset="0"/>
+            <Anchor side="Bottom" relative="$parent/Label" pos="Mid" offset="2"/>
+            <Anchor side="Top" relative="$parent/Label" pos="Mid" offset="2"/>
+            <Style val="{$parent/Label/@Style}"/>
+            <Text val="{$parent/Label/@Text}"/>
+            <Blur val="True"/>
+            <BlurAmount val="0.3"/>
+            <Color val="4,37,0"/>
+            <Alpha val="150"/>
+        </Frame>
+        <Frame type="Label" name="Label">
+            <Anchor side="Left" relative="$parent/Center" pos="Mid" offset="-30"/>
+            <Anchor side="Right" relative="$parent/Center" pos="Mid" offset="-30"/>
+            <Anchor side="Bottom" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Top" relative="$parent" pos="Mid" offset="0"/>
+            <Style val="ECL_HPBAR"/>
+            <Text val="{$parent/ProgressBar/FormatFrame/@Text}"/>
+            <Alpha val="225"/>
+            <Color val="203,255,203"/>
         </Frame>
     </Frame>
 

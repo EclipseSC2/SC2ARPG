@@ -1,6 +1,38 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <Desc>
     <Constant name="CommandPanelGap" val="10"/>
+
+    <Frame type="Image" name="ConnectionLine" >
+        <Width val="200"/>
+        <Height val="6"/>
+        <RotationPosition val="MiddleLeft"/>
+        <Alpha val="255"/>
+        <Texture val="Assets/Textures/ConnectionLine.dds"/>
+        <Color val="0,255,0"/>
+        <Tiled val="true"/>
+    </Frame>
+
+    <Frame type="LookAtFrame" name="SetupConnectorTemplate">
+        <StateGroup name="LazySetup">
+            <State name="Init">
+                <!-- 
+                    this condition seems to do the needed magic: it won't setup the binding until Distance is calculated
+                    and if we attempt to property bind it before it has been calculated we're getting `invalid property binding`
+                    the only place where @Distance can be directly bound seems to be `Width` and `Height` properties
+                    not entirely sure why, but I believe it's because of some circular dependency which UI cannot handle in this case
+                    .. that or, LookAtFrame is partially bugged and @Distance isn't properly initialized?
+                    either way, lazyloading solves that
+                -->
+                <When type="Property" frame="$this" operator="GreaterThan" Distance="0"/>
+            </State>
+        </StateGroup>
+        
+        <Frame type="MathFrame" name="ReducedLength">
+            <B val="20"/>
+            <!-- ^ offset should be 20, added +3*2 intentionally to show there's actually a gap -->
+            <Operator val="Subtract"/>
+        </Frame>
+    </Frame>
     
     <Frame type="Button" name="FloatingUseKey">
         <Anchor relative="$parent"/>
@@ -377,6 +409,21 @@
                 <UnitTag val="{$parent/@UnitTag}"/>
             </Frame>
 
+            <Frame type="UnitStatusValidatorAnimElement" name="DamageHighlight">
+                <Anchor relative="$parent"/>
+                <Validator val="TargetInCombatShort"/>
+    
+                <Animation name="DamageTaken">
+                    <Event event="TargetInCombatShort" action="Reset, Play"/>
+                    <Controller type="Fade" end="Pause" frame="$parent/HealthBar/EndCap">
+                        <Key type="Curve" time="0.0" value="0" out="Slow"/>
+                        <Key type="Curve" time="0.1" value="255"/>
+                        <Key type="Curve" time="0.3" value="255"/>
+                        <Key type="Curve" time="0.4" value="0" in="Slow"/>
+                    </Controller>
+                </Animation>
+            </Frame>
+
             <Frame type="Frame" name="HealthBar" template="Cleane_StandardTemplates/ECL_ProgressBarTemplate">
                 <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
                 <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
@@ -385,6 +432,56 @@
                 <Frame type="ProgressBar" name="ProgressBar">
                     <MaxValue val="{$parent/$parent/UnitFrame/@MaxHealth}"/>
                     <Value val="{$parent/$parent/UnitFrame/@CurrentHealth}"/>
+                </Frame>
+
+                <Frame type="Image" name="Center">
+                    <Anchor side="Top" relative="$parent/EndCap" pos="Mid" offset="0"/>
+                    <Anchor side="Left" relative="$parent" pos="Mid" offset="280"/>
+                    <Anchor side="Right" relative="$parent" pos="Mid" offset="280"/>
+                    <Anchor side="Bottom" relative="$parent/EndCap" pos="Mid" offset="0"/>
+                    <Width val="4"/>
+                    <Height val="4"/>
+                    <Color val="25,0,255"/>
+                    <Alpha val="0"/>
+        
+                    <StateGroup name="Move_Horizontally">
+                        <State name="Move_Left">
+                            <When type="Property" frame="$parent/SetupConnector" operator="GreaterThan" Angle="-90"/>
+                            <When type="Property" frame="$parent/SetupConnector" operator="LessThan" Angle="90"/>
+                            <Action type="SendEvent" frame="$this" event="MoveLeft"/>
+                        </State>
+                        <State name="Move_Right01">
+                            <When type="Property" frame="$parent/SetupConnector" operator="GreaterThan" Angle="90"/>
+                            <Action type="SendEvent" frame="$this" event="MoveRight"/>
+                        </State>
+                        <State name="Move_Right02">
+                            <When type="Property" frame="$parent/SetupConnector" operator="LessThan" Angle="-90"/>
+                            <Action type="SendEvent" frame="$this" event="MoveRight"/>
+                        </State>
+                    </StateGroup>
+                    <Animation name="MoveLeftRight">
+                        <Event event="MoveLeft" action="DirectionForward, Play" frame="$this"/>
+                        <Event event="MoveRight" action="DirectionReverse, Play" frame="$this"/>
+                        <Controller type="Anchor" end="Pause" frame="$this" side="Left" relative="True" pos="Mid">
+                            <Key type="Curve" time="0.0" value="0" inout="Slow"/>
+                            <Key type="Curve" time="20" value="-460" inout="Slow"/>
+                        </Controller>
+                        <Controller type="Anchor" end="Pause" frame="$this" side="Right" relative="True" pos="Mid">
+                            <Key type="Curve" time="0.0" value="0" inout="Slow"/>
+                            <Key type="Curve" time="20" value="-460" inout="Slow"/>
+                        </Controller>
+                    </Animation>
+                </Frame>
+        
+                <Frame type="LookAtFrame" name="SetupConnector" template="DS_HUDTemplates/SetupConnectorTemplate">
+                    <SourceFrame val="$parent/EndCap"/>
+                    <DestFrame val="$parent/Center"/>
+        
+                    <StateGroup name="LazySetup">
+                        <State name="Init">
+                            <Action type="SetProperty" frame="ReducedLength" A="{$parent/@Distance}"/>
+                        </State>
+                    </StateGroup>
                 </Frame>
             </Frame>
 
