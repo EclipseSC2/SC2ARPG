@@ -30,5 +30,6 @@
     <CUnit id="Separatist">
         <LifeStart value="440"/>
         <LifeMax value="440"/>
+        <BehaviorArray Link="SUIT"/>
     </CUnit>
 </Catalog>

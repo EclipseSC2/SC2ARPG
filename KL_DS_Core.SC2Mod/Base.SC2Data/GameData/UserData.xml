@@ -688,6 +688,29 @@
                 <Field Id="Item Stats"/>
             </User>
         </Instances>
+        <Instances Id="Medi Suit">
+            <Image Image="Assets\Textures\Items\ui_itemicons_medisuit.dds">
+                <Field Id="Icon"/>
+            </Image>
+            <Int Int="1">
+                <Field Id="Max Quantity"/>
+            </Int>
+            <String String="Suit">
+                <Field Id="Category"/>
+            </String>
+            <String String="Wear">
+                <Field Id="Use Type"/>
+            </String>
+            <String String="Medi Suit">
+                <Field Id="Name"/>
+            </String>
+            <Text Text="UserData/Items/Medi Suit_Description">
+                <Field Id="Description"/>
+            </Text>
+            <User Type="ModifierStats" Instance="Medi Suit">
+                <Field Id="Item Stats"/>
+            </User>
+        </Instances>
         <Instances Id="Security Suit">
             <Image Image="Assets\Textures\Items\ui_itemicons_pills.dds">
                 <Field Id="Icon"/>
@@ -740,7 +763,7 @@
                 <Field Id="Item Stats"/>
             </User>
         </Instances>
-        <Instances Id="TEST Suit">
+        <Instances Id="TEST SUIT">
             <Image Image="Assets\Textures\Items\ui_itemicons_pills.dds">
                 <Field Id="Icon"/>
             </Image>
@@ -753,13 +776,13 @@
             <String String="Wear">
                 <Field Id="Use Type"/>
             </String>
-            <String String="TEST Suit">
+            <String String="TEST SUIT">
                 <Field Id="Name"/>
             </String>
-            <Text Text="UserData/Items/TEST Suit_Description">
+            <Text Text="UserData/Items/TEST SUIT_Description">
                 <Field Id="Description"/>
             </Text>
-            <User Type="ModifierStats" Instance="TEST Suit">
+            <User Type="ModifierStats" Instance="TEST SUIT">
                 <Field Id="Item Stats"/>
             </User>
         </Instances>
@@ -868,14 +891,17 @@
     <CUser id="ModifierStats">
         <Fields Id="Move Speed" Type="Fixed" EditorColumn="1"/>
         <Fields Id="Attack Speed" Type="Fixed" EditorColumn="2"/>
-        <Fields Id="Search Speed" Type="Fixed" EditorColumn="3"/>
-        <Fields Id="Vision Range" Type="Int" EditorColumn="4"/>
-        <Fields Id="Duration" Type="Fixed" EditorColumn="10"/>
-        <Fields Id="Armor" Type="Int" EditorColumn="5"/>
-        <Fields Id="Health" Type="Int" EditorColumn="6"/>
-        <Fields Id="InventorySize" Type="Int" EditorColumn="7"/>
-        <Fields Id="QuickSlots" Type="Int" EditorColumn="8"/>
-        <Fields Id="Oxygen Reserve" Type="Int" EditorColumn="9"/>
+        <Fields Id="Vision Range" Type="Int" EditorColumn="3"/>
+        <Fields Id="Armor" Type="Int" EditorColumn="4"/>
+        <Fields Id="Health" Type="Int" EditorColumn="5"/>
+        <Fields Id="Health Percent" Type="Fixed" EditorColumn="6"/>
+        <Fields Id="Shield" Type="Int" EditorColumn="7"/>
+        <Fields Id="Shield Percent" Type="Fixed" EditorColumn="8"/>
+        <Fields Id="Health Regeneration" Type="Fixed" EditorColumn="9"/>
+        <Fields Id="Shield Regeneration" Type="Fixed" EditorColumn="10"/>
+        <Fields Id="InventorySize" Type="Int" EditorColumn="11"/>
+        <Fields Id="QuickSlots" Type="Int" EditorColumn="12"/>
+        <Fields Id="Oxygen Reserve" Type="Int" EditorColumn="13"/>
         <Instances Id="[Default]"/>
         <Instances Id="Vision Helmet">
             <Int Int="2">
@@ -897,6 +923,20 @@
             <Int Int="4">
                 <Field Id="InventorySize"/>
             </Int>
+            <Int Int="20">
+                <Field Id="Health"/>
+            </Int>
+        </Instances>
+        <Instances Id="Medi Suit">
+            <Int Int="30">
+                <Field Id="Health"/>
+            </Int>
+            <Fixed Fixed="0.001">
+                <Field Id="Health Percent"/>
+            </Fixed>
+            <Fixed Fixed="2.0">
+                <Field Id="Health Regeneration"/>
+            </Fixed>
         </Instances>
         <Instances Id="Security Suit">
             <Int Int="2">

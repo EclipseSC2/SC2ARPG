@@ -471,6 +471,25 @@
                             <Key type="Curve" time="20" value="-460" inout="Slow"/>
                         </Controller>
                     </Animation>
+                    <StateGroup name="Move_Speed">
+                        <DefaultState val="Default"/>
+                        <State name="Default">
+                            <When type="Property" frame="$parent/SetupConnector" operator="LessThanOrEqual" Distance="15"/>
+                            <Action type="SendEvent" frame="$this" event="SlowDown"/>
+                        </State>
+                        <State name="Fast">
+                            <When type="Property" frame="$parent/SetupConnector" operator="GreaterThan" Distance="15"/>
+                            <Action type="SendEvent" frame="$this" event="SpeedUp"/>
+                        </State>
+                    </StateGroup>  
+                    <Animation name="SpeedUp">
+                        <Event event="SpeedUp" action="DirectionForward, Play" frame="$this"/>
+                        <Event event="SlowDown" action="DirectionReverse, Play" frame="$this"/>
+                        <Controller type="AnimationSpeed" end="Pause" frame="$this" relative="False" animation="MoveLeftRight">
+                            <Key type="Curve" time="0.0" value="1" inout="Fast"/>
+                            <Key type="Curve" time="1" value="2" inout="Slow"/>
+                        </Controller>
+                    </Animation>
                 </Frame>
         
                 <Frame type="LookAtFrame" name="SetupConnector" template="DS_HUDTemplates/SetupConnectorTemplate">

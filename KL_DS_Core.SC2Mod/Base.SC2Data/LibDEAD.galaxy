@@ -630,6 +630,21 @@ int libDEAD_gf_ReturnEquipmentPropertyInventory (string lp_item) {
     return UserDataGetInt("ModifierStats", lv_itemStats, "InventorySize", 1);
 }
 
+int libDEAD_gf_ReturnEquipmentPropertyHealth (string lp_item) {
+    // Variable Declarations
+    string lv_itemStats;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Implementation
+    lv_itemStats = UserDataGetUserInstance("Items", lp_item, "Item Stats", 1);
+    if ((lv_itemStats == null)) {
+        return 0;
+    }
+    return UserDataGetInt("ModifierStats", lv_itemStats, "Health", 1);
+}
+
 int libDEAD_gf_ReturnEquipmentPropertyVision (string lp_item) {
     // Variable Declarations
     string lv_itemStats;
@@ -951,6 +966,10 @@ void libDEAD_gf_ECL_ITEM_drop_to_ground (int lp_player, string lp_item, int lp_a
     DialogControlHookupUnitStatus(c_triggerControlTypeLabel, "ItemLabel", lv_uNIT_item);
     libNtve_gf_SetDialogItemText(DialogControlLastCreated(), StringToText(libDEAD_gf_ReturnItemPropertyName(lp_item)), PlayerGroupAll());
     UnitCreateEffectPoint(lv_uNIT_item, "ECLDROPLOOT", RegionRandomPoint(RegionCircle(lp_spawnPoint, 2.0)));
+    if ((libDEAD_gv_dS_ShowHideLoot[lp_player] == true)) {
+        UnitStatusBarOverride(lv_uNIT_item, c_unitStatusGroupOwner);
+    }
+
 }
 
 void libDEAD_gf_ECL_SLOT_lock_unlock (int lp_player, int lp_slot_ID, bool lp_lockUnlock) {
@@ -974,6 +993,11 @@ void libDEAD_gf_ECL__EQUIP (int lp_player, int lp_sLOT, int lp_eQUIPUNEQUIP) {
     fixed lv_moveSpeed;
     int lv_armor;
     int lv_hP;
+    int lv_hP_percent;
+    int lv_hP_reg;
+    int lv_shields;
+    int lv_shields_percent;
+    int lv_shields_reg;
     fixed lv_oxygen;
     int lv_inventory;
     int lv_vision;
@@ -1016,37 +1040,40 @@ void libDEAD_gf_ECL__EQUIP (int lp_player, int lp_sLOT, int lp_eQUIPUNEQUIP) {
         }
         else {
         }
+        libNtve_gf_CatalogFieldValueSetAsReal(c_gameCatalogBehavior, lv_bEHAVIOR_EQUIPMENT, "Modification.LifeArmorBonus", lp_player, UserDataGetFixed("ModifierStats", lv_itemStats, "Armor", 1));
+        libNtve_gf_CatalogFieldValueSetAsReal(c_gameCatalogBehavior, lv_bEHAVIOR_EQUIPMENT, "Modification.VitalMaxArray[" + IntToString(0) + "]", lp_player, UserDataGetInt("ModifierStats", lv_itemStats, "Health", 1));
+        libNtve_gf_CatalogFieldValueSetAsReal(c_gameCatalogBehavior, lv_bEHAVIOR_EQUIPMENT, "Modification.VitalMaxFractionArray[" + IntToString(0) + "]", lp_player, UserDataGetFixed("ModifierStats", lv_itemStats, "Health Percent", 1));
+        libNtve_gf_CatalogFieldValueSetAsReal(c_gameCatalogBehavior, lv_bEHAVIOR_EQUIPMENT, ("Modification.VitalRegenArray[0]"), lp_player, UserDataGetFixed("ModifierStats", lv_itemStats, "Health Regeneration", 1));
+        libNtve_gf_CatalogFieldValueSetAsReal(c_gameCatalogBehavior, lv_bEHAVIOR_EQUIPMENT, "Modification.MoveSpeedBonus", lp_player, UserDataGetFixed("ModifierStats", lv_itemStats, "Move Speed", 1));
+        libNtve_gf_CatalogFieldValueSetAsReal(c_gameCatalogBehavior, lv_bEHAVIOR_EQUIPMENT, "Modification.MoveSpeedMultiplier", lp_player, UserDataGetFixed("ModifierStats", lv_itemStats, "Move Speed", 1));
         if ((UnitHasBehavior2(libDEAD_gv_playerUnit[lp_player], lv_bEHAVIOR_EQUIPMENT) == false)) {
             UnitBehaviorAdd(libDEAD_gv_playerUnit[lp_player], lv_bEHAVIOR_EQUIPMENT, libDEAD_gv_playerUnit[lp_player], 1);
         }
 
-        libNtve_gf_CatalogFieldValueSetAsReal(c_gameCatalogBehavior, lv_bEHAVIOR_EQUIPMENT, "Modification.LifeArmorBonus", lp_player, UserDataGetFixed("ModifierStats", lv_itemStats, "Armor", 1));
-        libNtve_gf_CatalogFieldValueSetAsReal(c_gameCatalogBehavior, lv_bEHAVIOR_EQUIPMENT, "Modification.VitalMaxArray[" + IntToString(0) + "]", lp_player, UserDataGetInt("ModifierStats", lv_itemStats, "Health", 1));
-        libNtve_gf_CatalogFieldValueSetAsReal(c_gameCatalogBehavior, lv_bEHAVIOR_EQUIPMENT, "Modification.MoveSpeedBonus", lp_player, UserDataGetFixed("ModifierStats", lv_itemStats, "Move Speed", 1));
-        libNtve_gf_CatalogFieldValueSetAsReal(c_gameCatalogBehavior, lv_bEHAVIOR_EQUIPMENT, "Modification.MoveSpeedMultiplier", lp_player, UserDataGetFixed("ModifierStats", lv_itemStats, "Move Speed", 1));
     }
     else if ((lp_eQUIPUNEQUIP == libDEAD_ge_EQUIPUNEQUIP_UNEQUIP)) {
         auto30B42D06_val = libDEAD_gv_dS_InventorySlot_Category[lp_sLOT][lp_player];
         if (auto30B42D06_val == "Head") {
-            UnitBehaviorRemove(libDEAD_gv_playerUnit[lp_player], "HEAD", 1);
+            lv_bEHAVIOR_EQUIPMENT = "HEAD";
         }
         else if (auto30B42D06_val == "Suit") {
-            UnitBehaviorRemove(libDEAD_gv_playerUnit[lp_player], "SUIT", 1);
+            lv_bEHAVIOR_EQUIPMENT = "SUIT";
         }
         else if (auto30B42D06_val == "Pack") {
-            UnitBehaviorRemove(libDEAD_gv_playerUnit[lp_player], "PACK", 1);
+            lv_bEHAVIOR_EQUIPMENT = "PACK";
             lv_inventory -= libDEAD_gf_ReturnEquipmentPropertyInventory(lv_item);
         }
         else if (auto30B42D06_val == "Boots") {
-            UnitBehaviorRemove(libDEAD_gv_playerUnit[lp_player], "BOOTS", 1);
+            lv_bEHAVIOR_EQUIPMENT = "BOOTS";
         }
         else if (auto30B42D06_val == "Augment") {
-            UnitBehaviorRemove(libDEAD_gv_playerUnit[lp_player], "AUGMENT", 1);
+            lv_bEHAVIOR_EQUIPMENT = "AUGMENT";
         }
         else if (auto30B42D06_val == "Weapon") {
         }
         else {
         }
+        UnitBehaviorRemove(libDEAD_gv_playerUnit[lp_player], lv_bEHAVIOR_EQUIPMENT, 1);
     }
     libDEAD_gv_eCL__Inventory[lp_player].lv_iNV_slots += lv_inventory;
     lv_index = (libDEAD_gv_eCL__equipmentslots + 1);
@@ -5560,6 +5587,7 @@ bool libDEAD_gt_ECL__PICKUPLOOT_directly_Func (bool testConds, bool runActions) 
     }
 
     UnitIssueOrder(EventUnit(), Order(AbilityCommand("Sacrifice", 0)), c_orderQueueReplace);
+    libDEAD_gv_dS_disable_fire[EventPlayer()] = false;
     return true;
 }
 
@@ -5567,6 +5595,60 @@ bool libDEAD_gt_ECL__PICKUPLOOT_directly_Func (bool testConds, bool runActions) 
 void libDEAD_gt_ECL__PICKUPLOOT_directly_Init () {
     libDEAD_gt_ECL__PICKUPLOOT_directly = TriggerCreate("libDEAD_gt_ECL__PICKUPLOOT_directly_Func");
     TriggerAddEventUnitClick(libDEAD_gt_ECL__PICKUPLOOT_directly, null, c_playerAny);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: ECL__PICKUPLOOT_highlight
+//--------------------------------------------------------------------------------------------------
+bool libDEAD_gt_ECL__PICKUPLOOT_highlight_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnit()) == "PLootPermanent"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libDEAD_gv_dS_disable_fire[EventPlayer()] = true;
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libDEAD_gt_ECL__PICKUPLOOT_highlight_Init () {
+    libDEAD_gt_ECL__PICKUPLOOT_highlight = TriggerCreate("libDEAD_gt_ECL__PICKUPLOOT_highlight_Func");
+    TriggerAddEventUnitHighlight(libDEAD_gt_ECL__PICKUPLOOT_highlight, null, c_playerAny, true);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: ECL__PICKUPLOOT_unhighlight
+//--------------------------------------------------------------------------------------------------
+bool libDEAD_gt_ECL__PICKUPLOOT_unhighlight_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnit()) == "PLootPermanent"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libDEAD_gv_dS_disable_fire[EventPlayer()] = false;
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libDEAD_gt_ECL__PICKUPLOOT_unhighlight_Init () {
+    libDEAD_gt_ECL__PICKUPLOOT_unhighlight = TriggerCreate("libDEAD_gt_ECL__PICKUPLOOT_unhighlight_Func");
+    TriggerAddEventUnitHighlight(libDEAD_gt_ECL__PICKUPLOOT_unhighlight, null, c_playerAny, false);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5583,6 +5665,7 @@ bool libDEAD_gt_DS_ShowLootOnGround_Func (bool testConds, bool runActions) {
         return true;
     }
 
+    libDEAD_gv_dS_ShowHideLoot[EventPlayer()] = true;
     auto2BC001BC_g = libDEAD_gv_dS_Loot[EventPlayer()];
     auto2BC001BC_u = UnitGroupCount(auto2BC001BC_g, c_unitCountAll);
     for (;; auto2BC001BC_u -= 1) {
@@ -5613,6 +5696,7 @@ bool libDEAD_gt_DS_HideLootOnGround_Func (bool testConds, bool runActions) {
         return true;
     }
 
+    libDEAD_gv_dS_ShowHideLoot[EventPlayer()] = false;
     auto53A7B4A6_g = libDEAD_gv_dS_Loot[EventPlayer()];
     auto53A7B4A6_u = UnitGroupCount(auto53A7B4A6_g, c_unitCountAll);
     for (;; auto53A7B4A6_u -= 1) {
@@ -5669,6 +5753,10 @@ bool libDEAD_gt_ECL_catch_permanentloot_Func (bool testConds, bool runActions) {
     DialogControlHookupUnitStatus(c_triggerControlTypeLabel, "ItemLabel", EventUnitCreatedUnit());
     libNtve_gf_SetDialogItemText(DialogControlLastCreated(), StringToText(libDEAD_gf_ReturnItemPropertyName(lv_itemData)), PlayerGroupAll());
     UnitGroupAdd(libDEAD_gv_dS_Loot[UnitGetOwner(EventUnitCreatedUnit())], EventUnitCreatedUnit());
+    if ((libDEAD_gv_dS_ShowHideLoot[UnitGetOwner(EventUnitCreatedUnit())] == true)) {
+        UnitStatusBarOverride(EventUnitCreatedUnit(), c_unitStatusGroupOwner);
+    }
+
     return true;
 }
 
@@ -5695,6 +5783,10 @@ bool libDEAD_gt_ECL_FireNew_Func (bool testConds, bool runActions) {
         }
 
         if (!((UnitIsValid(libECLP_gv_eCL_Source[EventPlayer()]) == true))) {
+            return false;
+        }
+
+        if (!((libDEAD_gv_dS_disable_fire[EventPlayer()] == false))) {
             return false;
         }
     }
@@ -7382,6 +7474,8 @@ void libDEAD_InitTriggers () {
     libDEAD_gt_ECL__DROPZONE_Init();
     libDEAD_gt_ECL__PICKUPLOOT_Init();
     libDEAD_gt_ECL__PICKUPLOOT_directly_Init();
+    libDEAD_gt_ECL__PICKUPLOOT_highlight_Init();
+    libDEAD_gt_ECL__PICKUPLOOT_unhighlight_Init();
     libDEAD_gt_DS_ShowLootOnGround_Init();
     libDEAD_gt_DS_HideLootOnGround_Init();
     libDEAD_gt_ECL_catch_permanentloot_Init();

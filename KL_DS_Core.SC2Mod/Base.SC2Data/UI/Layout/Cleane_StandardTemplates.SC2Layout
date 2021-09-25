@@ -869,8 +869,18 @@
             <Frame type="TextFormatFrame" name="FormatFrame">
                 <FormatText val="%0% / %1%"/>
 
-                <Replacement val="{$parent/@Value}" index="0"/>
-                <Replacement val="{$parent/@MaxValue}" index="1"/>
+                <Replacement val="{$this/MaxValue_INT/@ResultInt}" index="1"/>
+                <Replacement val="{$this/Value_INT/@ResultInt}" index="0"/>
+                <Frame type="MathFrame" name="MaxValue_INT">
+                    <A val="{$parent/$parent/@MaxValue}"/>
+                    <B val="0.5"/>
+                    <Operator val="Add"/>
+                </Frame>
+                <Frame type="MathFrame" name="Value_INT">
+                    <A val="{$parent/$parent/@Value}"/>
+                    <B val="0.5"/>
+                    <Operator val="Add"/>
+                </Frame>
             </Frame>
 
             <Frame type="TextFormatFrame" name="Color">

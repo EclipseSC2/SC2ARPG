@@ -5,29 +5,57 @@
         <InfoFlags index="Hidden" value="1"/>
         <InfoIcon value="Assets\Textures\ui_nova_equipmentupgrades_novapaperdoll_helmet_rangefinder.dds"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
+        <Modification>
+            <VitalMaxDecreaseAffectsCurrentArray index="Life" value="1"/>
+            <VitalMaxDecreaseAffectsCurrentArray index="Shields" value="1"/>
+            <VitalMaxDecreaseAffectsCurrentArray index="Energy" value="1"/>
+        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="SUIT">
         <BehaviorFlags index="Permanent" value="1"/>
         <InfoFlags index="Hidden" value="1"/>
         <InfoIcon value="Assets\Textures\btn-upgrade-mengsk-engineeringbay-dominionarmorlevel2.dds"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
+        <Modification>
+            <VitalMaxDecreaseAffectsCurrentArray index="Life" value="1"/>
+            <VitalMaxDecreaseAffectsCurrentArray index="Shields" value="1"/>
+            <VitalMaxDecreaseAffectsCurrentArray index="Energy" value="1"/>
+            <VitalRegenArray index="Life" value="1"/>
+            <VitalRegenArray index="Shields" value="2"/>
+            <VitalRegenArray index="Energy" value="3"/>
+        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="BOOTS">
         <BehaviorFlags index="Permanent" value="1"/>
         <InfoFlags index="Hidden" value="1"/>
         <InfoIcon value="Assets\Textures\btn-upgrade-mengsk-engineeringbay-dominionarmorlevel2.dds"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
+        <Modification>
+            <VitalMaxDecreaseAffectsCurrentArray index="Life" value="1"/>
+            <VitalMaxDecreaseAffectsCurrentArray index="Shields" value="1"/>
+            <VitalMaxDecreaseAffectsCurrentArray index="Energy" value="1"/>
+        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="AUGMENT">
         <BehaviorFlags index="Permanent" value="1"/>
         <InfoFlags index="Hidden" value="1"/>
         <InfoIcon value="Assets\Textures\btn-upgrade-mengsk-engineeringbay-dominionarmorlevel2.dds"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
+        <Modification>
+            <VitalMaxDecreaseAffectsCurrentArray index="Life" value="1"/>
+            <VitalMaxDecreaseAffectsCurrentArray index="Shields" value="1"/>
+            <VitalMaxDecreaseAffectsCurrentArray index="Energy" value="1"/>
+        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="PACK">
         <BehaviorFlags index="Permanent" value="1"/>
         <InfoFlags index="Hidden" value="1"/>
         <InfoIcon value="Assets\Textures\btn-upgrade-mengsk-engineeringbay-dominionarmorlevel2.dds"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
+        <Modification>
+            <VitalMaxDecreaseAffectsCurrentArray index="Life" value="1"/>
+            <VitalMaxDecreaseAffectsCurrentArray index="Shields" value="1"/>
+            <VitalMaxDecreaseAffectsCurrentArray index="Energy" value="1"/>
+        </Modification>
     </CBehaviorBuff>
 </Catalog>
