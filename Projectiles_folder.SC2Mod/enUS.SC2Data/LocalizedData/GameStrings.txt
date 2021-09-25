@@ -103,8 +103,6 @@ Effect/Name/PLootSet=P Loot Set
 Effect/Name/PLootUserDataDummy=P Loot User Data Dummy
 Effect/Name/UnknownEffect=Unknown Effect
 Param/Value/lib_ECLP_32D5E0B1=Source: 
-Param/Value/lib_ECLP_5BA3E731=CP 
-Param/Value/lib_ECLP_B639B276=<s val="ABChoiceRewardsTitle">▲</s>
 Param/Value/lib_ECLP_CF1C34B8=<s val="ABChoiceRewardsTitle">▼</s>
 Unit/Name/GhostNova=GhostNova
 Unit/Name/PAttack=P Attack

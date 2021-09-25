@@ -33,8 +33,8 @@
         <Behavior value="PAttackParasiteInfested"/>
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareDamageTakenTime id="TargetInCombatShort">
-        <Compare value="LT"/>
-        <Value value="0.2"/>
+        <Compare value="LE"/>
+        <Value value="0.0625"/>
     </CValidatorUnitCompareDamageTakenTime>
     <CValidatorCombine id="TargetNoOrdersAndNoMove">
         <Type value="And"/>

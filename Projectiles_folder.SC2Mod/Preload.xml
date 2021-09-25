@@ -6,6 +6,7 @@
 <Behavior id="HealthPercentageIncrease"/>
 <Behavior id="PAttackCursor"/>
 <Effect id="PAttackBulletImpactNEW"/>
+<Sound id="UI_NovaUT_UnitClick" Variations="0"/>
 <Unit id="Hydralisk"/>
 <Unit id="Separatist"/>
 <Unit id="PAttackCursor3D"/>

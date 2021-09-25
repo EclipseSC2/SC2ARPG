@@ -1371,6 +1371,7 @@
             <Action Type="FunctionCall" Library="ECLP" Id="9755B6F9"/>
             <Action Type="FunctionCall" Library="ECLP" Id="2C85D94D"/>
             <Action Type="FunctionCall" Library="ECLP" Id="3EBE8837"/>
+            <Action Type="FunctionCall" Library="ECLP" Id="BDC1AACA"/>
         </Element>
         <Element Type="Variable" Id="A42C64B3">
             <VariableType>
@@ -1585,6 +1586,22 @@
             <ParameterDef Type="ParamDef" Library="ECLP" Id="05E458F3"/>
             <Value>0.0</Value>
             <ValueType Type="fixed"/>
+        </Element>
+        <Element Type="FunctionCall" Id="BDC1AACA">
+            <Disabled/>
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000136"/>
+            <Parameter Type="Param" Library="ECLP" Id="5624A58B"/>
+        </Element>
+        <Element Type="Param" Id="5624A58B">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000219"/>
+            <Variable Type="Variable" Library="ECLP" Id="E21D061B"/>
+            <Array Type="Param" Library="ECLP" Id="3F6CDE17"/>
+        </Element>
+        <Element Type="Param" Id="3F6CDE17">
+            <FunctionCall Type="FunctionCall" Library="ECLP" Id="6878B052"/>
+        </Element>
+        <Element Type="FunctionCall" Id="6878B052">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000053"/>
         </Element>
         <Element Type="Trigger" Id="6AC13879">
             <InitOff/>
@@ -2618,8 +2635,7 @@
             <Variable Type="Variable" Library="ECLP" Id="FFA84854"/>
             <Variable Type="Variable" Library="ECLP" Id="4294F36A"/>
             <Variable Type="Variable" Library="ECLP" Id="CCC99E14"/>
-            <FunctionCall Type="FunctionCall" Library="ECLP" Id="F8A53135"/>
-            <FunctionCall Type="FunctionCall" Library="ECLP" Id="BB2B745F"/>
+            <FunctionCall Type="FunctionCall" Library="ECLP" Id="AE9DF823"/>
         </Element>
         <Element Type="ParamDef" Id="891687AD">
             <ParameterType>
@@ -2794,8 +2810,85 @@
         <Element Type="Param" Id="39A77096">
             <Parameter Type="ParamDef" Library="ECLP" Id="3EFE8547"/>
         </Element>
+        <Element Type="FunctionCall" Id="AE9DF823">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000137"/>
+            <FunctionCall Type="FunctionCall" Library="ECLP" Id="88AAB4B0"/>
+            <FunctionCall Type="FunctionCall" Library="ECLP" Id="77764737"/>
+            <FunctionCall Type="FunctionCall" Library="ECLP" Id="F8A53135"/>
+            <FunctionCall Type="FunctionCall" Library="ECLP" Id="BB2B745F"/>
+        </Element>
+        <Element Type="FunctionCall" Id="88AAB4B0">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="C439C375"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000003"/>
+            <Parameter Type="Param" Library="ECLP" Id="DA69D89F"/>
+            <Parameter Type="Param" Library="ECLP" Id="09B75870"/>
+            <Parameter Type="Param" Library="ECLP" Id="7C9A0796"/>
+        </Element>
+        <Element Type="Param" Id="DA69D89F">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="ABB380C4"/>
+            <Variable Type="Variable" Library="ECLP" Id="E21D061B"/>
+            <StructMember Type="Param" Library="ECLP" Id="DF7E4E17"/>
+            <Array Type="Param" Library="ECLP" Id="3BB2F384"/>
+        </Element>
+        <Element Type="Param" Id="DF7E4E17">
+            <Variable Type="Variable" Library="ECLP" Id="F97651AE"/>
+        </Element>
+        <Element Type="Param" Id="3BB2F384">
+            <Parameter Type="ParamDef" Library="ECLP" Id="891687AD"/>
+        </Element>
+        <Element Type="Param" Id="09B75870">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="51567265"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="40567BEE"/>
+        </Element>
+        <Element Type="Param" Id="7C9A0796">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="4A15EC5F"/>
+            <Value>0</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="FunctionCall" Id="77764737">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="651D9322"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000005"/>
+            <Parameter Type="Param" Library="ECLP" Id="95DA19C9"/>
+            <Parameter Type="Param" Library="ECLP" Id="7896597B"/>
+            <Parameter Type="Param" Library="ECLP" Id="0ECF3383"/>
+            <Parameter Type="Param" Library="ECLP" Id="D29BDFC3"/>
+            <Parameter Type="Param" Library="ECLP" Id="5F795D23"/>
+        </Element>
+        <Element Type="Param" Id="95DA19C9">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="4FD0F5E6"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="8229CCB3"/>
+        </Element>
+        <Element Type="Param" Id="7896597B">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="420B8251"/>
+            <FunctionCall Type="FunctionCall" Library="ECLP" Id="C7E3ABE5"/>
+        </Element>
+        <Element Type="FunctionCall" Id="C7E3ABE5">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000057"/>
+            <Parameter Type="Param" Library="ECLP" Id="73CF3AF2"/>
+        </Element>
+        <Element Type="Param" Id="73CF3AF2">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000094"/>
+            <Parameter Type="ParamDef" Library="ECLP" Id="891687AD"/>
+        </Element>
+        <Element Type="Param" Id="0ECF3383">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="83444B10"/>
+            <Value>100.0</Value>
+            <ValueType Type="fixed"/>
+        </Element>
+        <Element Type="Param" Id="D29BDFC3">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="1D1E66BC"/>
+            <Value>0.0</Value>
+            <ValueType Type="fixed"/>
+        </Element>
+        <Element Type="Param" Id="5F795D23">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="B7793BD2"/>
+            <Value>UI_NovaUT_UnitClick</Value>
+            <ValueType Type="soundlink"/>
+            <ValueId Id="1"/>
+        </Element>
         <Element Type="FunctionCall" Id="F8A53135">
             <FunctionDef Type="FunctionDef" Library="Ntve" Id="91C49196"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
             <Parameter Type="Param" Library="ECLP" Id="580460C3"/>
             <FunctionCall Type="FunctionCall" Library="ECLP" Id="BBB54541"/>
             <FunctionCall Type="FunctionCall" Library="ECLP" Id="0954EE8E"/>
@@ -3215,6 +3308,7 @@
         </Element>
         <Element Type="FunctionCall" Id="BB2B745F">
             <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000137"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
             <FunctionCall Type="FunctionCall" Library="ECLP" Id="8435AFCC"/>
             <FunctionCall Type="FunctionCall" Library="ECLP" Id="80073A32"/>
             <FunctionCall Type="FunctionCall" Library="ECLP" Id="6B9E837B"/>
@@ -3732,9 +3826,12 @@
             <FunctionDef Type="FunctionDef" Library="Ntve" Id="8B429DFA"/>
             <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
             <FunctionCall Type="FunctionCall" Library="ECLP" Id="39AACF10"/>
+            <FunctionCall Type="FunctionCall" Library="ECLP" Id="1854FCD6"/>
             <FunctionCall Type="FunctionCall" Library="ECLP" Id="2CA53DB6"/>
             <FunctionCall Type="FunctionCall" Library="ECLP" Id="8DB4F171"/>
             <FunctionCall Type="FunctionCall" Library="ECLP" Id="92C91D19"/>
+            <FunctionCall Type="FunctionCall" Library="ECLP" Id="7C244020"/>
+            <FunctionCall Type="FunctionCall" Library="ECLP" Id="3E88B148"/>
             <FunctionCall Type="FunctionCall" Library="ECLP" Id="28ECB59E"/>
         </Element>
         <Element Type="FunctionCall" Id="39AACF10">
@@ -3768,6 +3865,34 @@
             <ParameterDef Type="ParamDef" Library="Ntve" Id="4A15EC5F"/>
             <Value>true</Value>
             <ValueType Type="bool"/>
+        </Element>
+        <Element Type="FunctionCall" Id="1854FCD6">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="C439C375"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="BFA105CE"/>
+            <Parameter Type="Param" Library="ECLP" Id="13042381"/>
+            <Parameter Type="Param" Library="ECLP" Id="49CF1717"/>
+            <Parameter Type="Param" Library="ECLP" Id="80F08DAA"/>
+        </Element>
+        <Element Type="Param" Id="13042381">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="ABB380C4"/>
+            <Variable Type="Variable" Library="ECLP" Id="E21D061B"/>
+            <StructMember Type="Param" Library="ECLP" Id="6B454A91"/>
+            <Array Type="Param" Library="ECLP" Id="ADCB4FC2"/>
+        </Element>
+        <Element Type="Param" Id="6B454A91">
+            <Variable Type="Variable" Library="ECLP" Id="F97651AE"/>
+        </Element>
+        <Element Type="Param" Id="ADCB4FC2">
+            <Parameter Type="ParamDef" Library="ECLP" Id="891687AD"/>
+        </Element>
+        <Element Type="Param" Id="49CF1717">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="51567265"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="40567BEE"/>
+        </Element>
+        <Element Type="Param" Id="80F08DAA">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="4A15EC5F"/>
+            <Value>0</Value>
+            <ValueType Type="int"/>
         </Element>
         <Element Type="FunctionCall" Id="2CA53DB6">
             <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000133"/>
@@ -4199,6 +4324,85 @@
             <Value>0</Value>
             <ValueType Type="int"/>
         </Element>
+        <Element Type="FunctionCall" Id="7C244020">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="A0F31305"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="8B1CC0B8"/>
+            <Parameter Type="Param" Library="ECLP" Id="9FA32B74"/>
+            <Parameter Type="Param" Library="ECLP" Id="31A4F953"/>
+            <Parameter Type="Param" Library="ECLP" Id="A6DDD41E"/>
+        </Element>
+        <Element Type="Param" Id="9FA32B74">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="5BFF7323"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="00000086"/>
+        </Element>
+        <Element Type="Param" Id="31A4F953">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="6725C0EB"/>
+            <Value>1</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="Param" Id="A6DDD41E">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="7B3B0884"/>
+            <Variable Type="Variable" Library="ECLP" Id="E21D061B"/>
+            <StructMember Type="Param" Library="ECLP" Id="AE7BA131"/>
+            <Array Type="Param" Library="ECLP" Id="687508D1"/>
+        </Element>
+        <Element Type="Param" Id="AE7BA131">
+            <Variable Type="Variable" Library="ECLP" Id="F97651AE"/>
+        </Element>
+        <Element Type="Param" Id="687508D1">
+            <Parameter Type="ParamDef" Library="ECLP" Id="891687AD"/>
+        </Element>
+        <Element Type="FunctionCall" Id="3E88B148">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="BA583993"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="8B1CC0B8"/>
+            <Parameter Type="Param" Library="ECLP" Id="2CCF0E4F"/>
+            <Parameter Type="Param" Library="ECLP" Id="33695ED9"/>
+            <Parameter Type="Param" Library="ECLP" Id="DA145F35"/>
+        </Element>
+        <Element Type="Param" Id="2CCF0E4F">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="9EA7E372"/>
+            <Variable Type="Variable" Library="ECLP" Id="E21D061B"/>
+            <StructMember Type="Param" Library="ECLP" Id="19BBA08B"/>
+            <Array Type="Param" Library="ECLP" Id="F6247CFF"/>
+        </Element>
+        <Element Type="Param" Id="19BBA08B">
+            <Variable Type="Variable" Library="ECLP" Id="B372E6BF"/>
+        </Element>
+        <Element Type="Param" Id="F6247CFF">
+            <Parameter Type="ParamDef" Library="ECLP" Id="891687AD"/>
+        </Element>
+        <Element Type="Param" Id="33695ED9">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="64290A01"/>
+            <FunctionCall Type="FunctionCall" Library="ECLP" Id="2DFAD7D0"/>
+        </Element>
+        <Element Type="FunctionCall" Id="2DFAD7D0">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000057"/>
+            <Parameter Type="Param" Library="ECLP" Id="630622A4"/>
+        </Element>
+        <Element Type="Param" Id="630622A4">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000094"/>
+            <Parameter Type="ParamDef" Library="ECLP" Id="891687AD"/>
+        </Element>
+        <Element Type="Param" Id="DA145F35">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="3B39C02D"/>
+            <FunctionCall Type="FunctionCall" Library="ECLP" Id="B2D03920"/>
+        </Element>
+        <Element Type="FunctionCall" Id="B2D03920">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="EAC465A1"/>
+            <Parameter Type="Param" Library="ECLP" Id="F81175E5"/>
+        </Element>
+        <Element Type="Param" Id="F81175E5">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="D125FE97"/>
+            <Variable Type="Variable" Library="ECLP" Id="E21D061B"/>
+            <StructMember Type="Param" Library="ECLP" Id="517FC28F"/>
+            <Array Type="Param" Library="ECLP" Id="68C0AF1D"/>
+        </Element>
+        <Element Type="Param" Id="517FC28F">
+            <Variable Type="Variable" Library="ECLP" Id="F97651AE"/>
+        </Element>
+        <Element Type="Param" Id="68C0AF1D">
+            <Parameter Type="ParamDef" Library="ECLP" Id="891687AD"/>
+        </Element>
         <Element Type="FunctionCall" Id="28ECB59E">
             <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000242"/>
             <SubFunctionType Type="SubFuncType" Library="Ntve" Id="8B1CC0B8"/>
@@ -4539,7 +4743,6 @@
             <Event Type="FunctionCall" Library="ECLP" Id="9B06FDB7"/>
             <Condition Type="FunctionCall" Library="ECLP" Id="8F6B39EA"/>
             <Action Type="FunctionCall" Library="ECLP" Id="167DA16D"/>
-            <Action Type="FunctionCall" Library="ECLP" Id="0157722E"/>
         </Element>
         <Element Type="FunctionCall" Id="9B06FDB7">
             <FunctionDef Type="FunctionDef" Library="Ntve" Id="9C6C63CD"/>
@@ -4603,27 +4806,6 @@
         <Element Type="Param" Id="3EBA9ECF">
             <ParameterDef Type="ParamDef" Library="Ntve" Id="00000220"/>
             <Preset Type="PresetValue" Library="Ntve" Id="57F0678C"/>
-        </Element>
-        <Element Type="FunctionCall" Id="0157722E">
-            <FunctionDef Type="FunctionDef" Library="Ntve" Id="0366EE04"/>
-            <Parameter Type="Param" Library="ECLP" Id="F1FDCE66"/>
-            <Parameter Type="Param" Library="ECLP" Id="6A927D5F"/>
-            <Parameter Type="Param" Library="ECLP" Id="B639B276"/>
-        </Element>
-        <Element Type="Param" Id="F1FDCE66">
-            <ParameterDef Type="ParamDef" Library="Ntve" Id="0D120C33"/>
-            <FunctionCall Type="FunctionCall" Library="ECLP" Id="FA55378D"/>
-        </Element>
-        <Element Type="FunctionCall" Id="FA55378D">
-            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000192"/>
-        </Element>
-        <Element Type="Param" Id="6A927D5F">
-            <ParameterDef Type="ParamDef" Library="Ntve" Id="A4C19F41"/>
-            <Preset Type="PresetValue" Library="Ntve" Id="18995805"/>
-        </Element>
-        <Element Type="Param" Id="B639B276">
-            <ParameterDef Type="ParamDef" Library="Ntve" Id="78A54B52"/>
-            <ValueType Type="text"/>
         </Element>
         <Element Type="Preset" Id="CE281E71">
             <PresetInteger/>
@@ -7458,7 +7640,6 @@
             <Event Type="FunctionCall" Library="ECLP" Id="09C05279"/>
             <Action Type="FunctionCall" Library="ECLP" Id="49F60E2D"/>
             <Action Type="FunctionCall" Library="ECLP" Id="58D3DA5B"/>
-            <Action Type="FunctionCall" Library="ECLP" Id="E8C12184"/>
         </Element>
         <Element Type="FunctionCall" Id="08A02F27">
             <FunctionDef Type="FunctionDef" Library="Ntve" Id="18377668"/>
@@ -7625,64 +7806,6 @@
         <Element Type="FunctionCall" Id="4D289336">
             <FunctionDef Type="FunctionDef" Library="Ntve" Id="11EB5EB1"/>
         </Element>
-        <Element Type="FunctionCall" Id="E8C12184">
-            <Disabled/>
-            <FunctionDef Type="FunctionDef" Library="Ntve" Id="0366EE04"/>
-            <Parameter Type="Param" Library="ECLP" Id="D3BC00B2"/>
-            <Parameter Type="Param" Library="ECLP" Id="55441998"/>
-            <Parameter Type="Param" Library="ECLP" Id="2C695C01"/>
-        </Element>
-        <Element Type="Param" Id="D3BC00B2">
-            <ParameterDef Type="ParamDef" Library="Ntve" Id="0D120C33"/>
-            <FunctionCall Type="FunctionCall" Library="ECLP" Id="653EE596"/>
-        </Element>
-        <Element Type="FunctionCall" Id="653EE596">
-            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000192"/>
-        </Element>
-        <Element Type="Param" Id="55441998">
-            <ParameterDef Type="ParamDef" Library="Ntve" Id="A4C19F41"/>
-            <Preset Type="PresetValue" Library="Ntve" Id="875889C8"/>
-        </Element>
-        <Element Type="Param" Id="2C695C01">
-            <ParameterDef Type="ParamDef" Library="Ntve" Id="78A54B52"/>
-            <FunctionCall Type="FunctionCall" Library="ECLP" Id="C02A9F6B"/>
-        </Element>
-        <Element Type="FunctionCall" Id="C02A9F6B">
-            <FunctionDef Type="FunctionDef" Library="Ntve" Id="86E40471"/>
-            <Parameter Type="Param" Library="ECLP" Id="5BA3E731"/>
-            <Parameter Type="Param" Library="ECLP" Id="1792C35C"/>
-        </Element>
-        <Element Type="Param" Id="5BA3E731">
-            <ParameterDef Type="ParamDef" Library="Ntve" Id="174E8B8C"/>
-            <ValueType Type="text"/>
-        </Element>
-        <Element Type="Param" Id="1792C35C">
-            <ParameterDef Type="ParamDef" Library="Ntve" Id="BD48D330"/>
-            <FunctionCall Type="FunctionCall" Library="ECLP" Id="699A72C4"/>
-        </Element>
-        <Element Type="FunctionCall" Id="699A72C4">
-            <FunctionDef Type="FunctionDef" Library="Ntve" Id="EAC465A1"/>
-            <Parameter Type="Param" Library="ECLP" Id="140FE458"/>
-        </Element>
-        <Element Type="Param" Id="140FE458">
-            <ParameterDef Type="ParamDef" Library="Ntve" Id="D125FE97"/>
-            <Variable Type="Variable" Library="ECLP" Id="C6F254D3"/>
-            <Array Type="Param" Library="ECLP" Id="F366A0A0"/>
-        </Element>
-        <Element Type="Param" Id="F366A0A0">
-            <FunctionCall Type="FunctionCall" Library="ECLP" Id="22C64B5C"/>
-        </Element>
-        <Element Type="FunctionCall" Id="22C64B5C">
-            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000081"/>
-            <Parameter Type="Param" Library="ECLP" Id="0C2A9762"/>
-        </Element>
-        <Element Type="Param" Id="0C2A9762">
-            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000140"/>
-            <FunctionCall Type="FunctionCall" Library="ECLP" Id="F19DC34E"/>
-        </Element>
-        <Element Type="FunctionCall" Id="F19DC34E">
-            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000092"/>
-        </Element>
         <Element Type="Variable" Id="B0A8FDCB">
             <VariableType>
                 <Type Value="unit"/>
@@ -7752,6 +7875,8 @@
         <Element Type="Structure" Id="28FEFCFB">
             <Variable Type="Variable" Library="ECLP" Id="7076F782"/>
             <Variable Type="Variable" Library="ECLP" Id="1A95D100"/>
+            <Variable Type="Variable" Library="ECLP" Id="F97651AE"/>
+            <Variable Type="Variable" Library="ECLP" Id="B372E6BF"/>
         </Element>
         <Element Type="Variable" Id="7076F782">
             <VariableType>
@@ -7773,7 +7898,27 @@
         <Element Type="Param" Id="A4AA8D3E">
             <Preset Type="PresetValue" Library="Ntve" Id="C9DCA6C0"/>
         </Element>
+        <Element Type="Variable" Id="F97651AE">
+            <VariableType>
+                <Type Value="int"/>
+            </VariableType>
+            <Value Type="Param" Library="ECLP" Id="1D8613A2"/>
+        </Element>
+        <Element Type="Param" Id="1D8613A2">
+            <Value>0</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="Variable" Id="B372E6BF">
+            <VariableType>
+                <Type Value="control"/>
+            </VariableType>
+            <Value Type="Param" Library="ECLP" Id="7D905CA1"/>
+        </Element>
+        <Element Type="Param" Id="7D905CA1">
+            <Preset Type="PresetValue" Library="Ntve" Id="FAC49C47"/>
+        </Element>
         <Element Type="Variable" Id="E21D061B">
+            <Identifier>eCL__HitScan</Identifier>
             <VariableType>
                 <Type Value="struct"/>
                 <TypeElement Type="Structure" Library="ECLP" Id="28FEFCFB"/>

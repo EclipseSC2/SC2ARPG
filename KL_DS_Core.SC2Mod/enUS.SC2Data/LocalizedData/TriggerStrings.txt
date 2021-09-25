@@ -815,6 +815,7 @@ Variable/Name/lib_DEAD_247F7250=UNIT_item
 Variable/Name/lib_DEAD_24CB767D=UnitType
 Variable/Name/lib_DEAD_24EED15E=LogAmount
 Variable/Name/lib_DEAD_2505364D=Index
+Variable/Name/lib_DEAD_25274806=Magazine_main
 Variable/Name/lib_DEAD_2556FA1D=LocalItem
 Variable/Name/lib_DEAD_2603390F=HeadPanel
 Variable/Name/lib_DEAD_26BB9B8C=PossibleTargets

@@ -127,6 +127,7 @@ void libDEAD_InitVariables () {
         libDEAD_gv_dS_HUD[init_i].lv_panel = c_invalidDialogControlId;
         libDEAD_gv_dS_HUD[init_i].lv_hPBar = c_invalidDialogControlId;
         libDEAD_gv_dS_HUD[init_i].lv_uTF = c_invalidDialogControlId;
+        libDEAD_gv_dS_HUD[init_i].lv_magazine_main = c_invalidDialogControlId;
         libDEAD_gv_dS_HUD[init_i].lv_weaponPanel = c_invalidDialogControlId;
         libDEAD_gv_dS_HUD[init_i].lv_mainWpnIcon = c_invalidDialogControlId;
         libDEAD_gv_dS_HUD[init_i].lv_mainWpnName = c_invalidDialogControlId;
@@ -583,6 +584,8 @@ void libDEAD_gf_KL_SwapToWeapon (int lp_player, int lp_weaponIndex) {
     // Variable Initialization
 
     // Implementation
+    libECLP_gv_eCL__HitScan[lp_player].lv_ammo = (lp_weaponIndex * 500);
+    libNtve_gf_SetDialogItemText(libECLP_gv_eCL__HitScan[lp_player].lv_magazine, IntToText(libECLP_gv_eCL__HitScan[lp_player].lv_ammo), PlayerGroupSingle(lp_player));
     lv_currentWeaponIndex = libDEAD_gv_activeWeaponIndex[lp_player];
     if ((lv_currentWeaponIndex == lp_weaponIndex)) {
         return ;
@@ -1607,6 +1610,10 @@ void libDEAD_gf_DS_CreateHUD (int lp_player) {
     DialogControlHookup(libDEAD_gv_dS_HUD[lp_player].lv_panel, c_triggerControlTypeUnitStatus, libNtve_gf_ConvertStringToUILayoutFrameName("StatusPanel"));
     libDEAD_gv_dS_HUD[lp_player].lv_uTF = DialogControlLastCreated();
     libNtve_gf_SetDialogItemUnit(DialogControlLastCreated(), libDEAD_gv_playerUnit[lp_player], PlayerGroupSingle(lp_player));
+    DialogControlHookup(libDEAD_gv_dS_HUD[lp_player].lv_panel, c_triggerControlTypePanel, libNtve_gf_ConvertStringToUILayoutFrameName("Ammo"));
+    libDEAD_gv_dS_HUD[lp_player].lv_magazine_main = DialogControlLastCreated();
+    DialogControlHookup(libDEAD_gv_dS_HUD[lp_player].lv_magazine_main, c_triggerControlTypeLabel, libNtve_gf_ConvertStringToUILayoutFrameName("AmmoCount/Label"));
+    libECLP_gv_eCL__HitScan[lp_player].lv_magazine = DialogControlLastCreated();
     DialogControlHookup(libDEAD_gv_dS_HUD[lp_player].lv_panel, c_triggerControlTypePanel, libNtve_gf_ConvertStringToUILayoutFrameName("WeaponFrameN"));
     libDEAD_gv_dS_HUD[lp_player].lv_weaponPanel = DialogControlLastCreated();
     DialogControlHookup(libDEAD_gv_dS_HUD[lp_player].lv_weaponPanel, c_triggerControlTypeImage, libNtve_gf_ConvertStringToUILayoutFrameName("MainWeaponInfoFrame/Icon"));

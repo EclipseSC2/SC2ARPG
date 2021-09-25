@@ -19,6 +19,8 @@ const int libECLP_gv_eCL_Projectiles_max = 20;
 struct libECLP_gs_ECL__HitScan {
     unit[libECLP_gv_eCL_Projectiles_max + 1] lv_projectile;
     string lv_weapon;
+    int lv_ammo;
+    int lv_magazine;
 };
 
 // Variable Declarations

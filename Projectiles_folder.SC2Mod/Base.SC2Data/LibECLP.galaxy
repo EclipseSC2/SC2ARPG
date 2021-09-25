@@ -14,6 +14,8 @@ void libECLP_InitLibraries () {
 bool libECLP_InitVariables_completed = false;
 
 void libECLP_InitVariables () {
+    int init_i;
+
     if (libECLP_InitVariables_completed) {
         return;
     }
@@ -22,6 +24,9 @@ void libECLP_InitVariables () {
 
     libECLP_gv_di1 = c_invalidDialogControlId;
     libECLP_gv_di2 = c_invalidDialogControlId;
+    for (init_i = 0; init_i <= libECLP_gv_eCL_MAX_P; init_i += 1) {
+        libECLP_gv_eCL__HitScan[init_i].lv_magazine = c_invalidDialogControlId;
+    }
 }
 
 // Presets
@@ -66,101 +71,108 @@ void libECLP_gf_ECL_Fire (int lp_player, int lp_lAUNCH_ART, int lp_n_projectiles
     lv_bursts_remaining = lp_bursts;
 
     // Implementation
-    autoF8A53135_val = lp_lAUNCH_ART;
-    if (autoF8A53135_val == libECLP_ge_ECL_WEAPON_LAUNCH_TYPE_BULLET) {
-        lv_l_A = "PAttackBullet";
-        lv_l_AC = AbilityCommand("PAttackBullet", 0);
-        lv_l_E = "PAttackBulletCP";
-        lv_uSES_PROJECTILE = true;
-    }
-    else if (autoF8A53135_val == libECLP_ge_ECL_WEAPON_LAUNCH_TYPE_PLASMA) {
-        lv_l_A = "PAttackPlasma";
-        lv_l_AC = AbilityCommand("PAttackPlasma", 0);
-        lv_l_E = "PAttackPlasmaCP";
-        lv_uSES_PROJECTILE = true;
-    }
-    else if (autoF8A53135_val == libECLP_ge_ECL_WEAPON_LAUNCH_TYPE_PARASITE) {
-        lv_l_A = "PAttackParasite";
-        lv_l_AC = AbilityCommand("PAttackParasite", 0);
-        lv_l_E = "PAttackParasiteCP";
-        lv_uSES_PROJECTILE = true;
-    }
-    else if (autoF8A53135_val == libECLP_ge_ECL_WEAPON_LAUNCH_TYPE_FLAMETHROWER) {
-        lv_l_A = "PAttackFlame";
-        lv_l_AC = AbilityCommand("PAttackFlame", 0);
-        lv_uSES_PROJECTILE = false;
-    }
-    else if (autoF8A53135_val == libECLP_ge_ECL_WEAPON_LAUNCH_TYPE_MOLOTOV_GRENADE) {
-        lv_l_A = "PAttackMolotov";
-        lv_l_AC = AbilityCommand("PAttackMolotov", 0);
-        lv_uSES_PROJECTILE = false;
-    }
-    else if (autoF8A53135_val == libECLP_ge_ECL_WEAPON_LAUNCH_TYPE_MOLOTOV_GRENADE2) {
-        lv_l_A = "PAttackCapsule";
-        lv_l_AC = AbilityCommand("PAttackCapsule", 0);
-        lv_uSES_PROJECTILE = false;
-    }
-    else {
-    }
-    if ((libECLP_gv_eCL_Firing[EventPlayer()] == false)) {
-        if ((libECLP_gv_eCL__HitScan[lp_player].lv_weapon != lv_l_A)) {
-            UnitAbilityRemove(libECLP_gv_eCL_Source[lp_player], libECLP_gv_eCL__HitScan[lp_player].lv_weapon);
-            UnitAbilityAdd(libECLP_gv_eCL_Source[lp_player], lv_l_A);
-            libECLP_gv_eCL__HitScan[lp_player].lv_weapon = lv_l_A;
+    if ((libECLP_gv_eCL__HitScan[lp_player].lv_ammo > 0)) {
+        autoF8A53135_val = lp_lAUNCH_ART;
+        if (autoF8A53135_val == libECLP_ge_ECL_WEAPON_LAUNCH_TYPE_BULLET) {
+            lv_l_A = "PAttackBullet";
+            lv_l_AC = AbilityCommand("PAttackBullet", 0);
+            lv_l_E = "PAttackBulletCP";
+            lv_uSES_PROJECTILE = true;
         }
-
-        libECLP_gv_eCL_Firing[lp_player] = true;
-        if ((libECLP_gv_eCL_ADS[lp_player] == false)) {
-            libECLP_gv_eCL_ADS[lp_player] = true;
+        else if (autoF8A53135_val == libECLP_ge_ECL_WEAPON_LAUNCH_TYPE_PLASMA) {
+            lv_l_A = "PAttackPlasma";
+            lv_l_AC = AbilityCommand("PAttackPlasma", 0);
+            lv_l_E = "PAttackPlasmaCP";
+            lv_uSES_PROJECTILE = true;
         }
-
-        libECLP_gv_eCL_SaveMouse_on_off[lp_player] = true;
-        lv_sTRING = "HostSiteOpsSet ::HostImpact {SOpCursor SOpMoveUpByDot2 SOpMoveUpByDot25 SOpMoveUpByDot1 SOpMoveUpByDot1 ";
-        autoC579B482_ae = FixedToInt(Round((10.0 / lp_cooldown)));
-        autoC579B482_var = 1;
-        for ( ; autoC579B482_var <= autoC579B482_ae; autoC579B482_var += 1 ) {
-            lv_sTRING = (lv_sTRING + " SOpLaserFlicker");
+        else if (autoF8A53135_val == libECLP_ge_ECL_WEAPON_LAUNCH_TYPE_PARASITE) {
+            lv_l_A = "PAttackParasite";
+            lv_l_AC = AbilityCommand("PAttackParasite", 0);
+            lv_l_E = "PAttackParasiteCP";
+            lv_uSES_PROJECTILE = true;
         }
-        lv_sTRING = (lv_sTRING + " SOpMoveDownByDot1");
-        auto9E85C12A_ae = FixedToInt(Round((10.0 / lp_cooldown)));
-        auto9E85C12A_var = 1;
-        for ( ; auto9E85C12A_var <= auto9E85C12A_ae; auto9E85C12A_var += 1 ) {
-            lv_sTRING = (lv_sTRING + " SOpLaserFlickeroverlay");
+        else if (autoF8A53135_val == libECLP_ge_ECL_WEAPON_LAUNCH_TYPE_FLAMETHROWER) {
+            lv_l_A = "PAttackFlame";
+            lv_l_AC = AbilityCommand("PAttackFlame", 0);
+            lv_uSES_PROJECTILE = false;
         }
-        lv_sTRING = (lv_sTRING + " SOpMoveDownByDot1}");
-        ActorSend(libECLP_gv_eCL_Beam[lp_player], (lv_sTRING));
-        ActorSend(libNtve_gf_MainActorofUnit(libECLP_gv_eCL_Source[lp_player]), "AnimPlay Attack Attack PlayForever,ForceLooping");
-        do {
-            if ((lv_uSES_PROJECTILE == true)) {
-                libECLP_gf_ECL_HitScan(libECLP_gv_eCL_Source[lp_player], UnitGetPosition(libECLP_gv_eCL_Source[lp_player]), libECLP_gv_eCL_p_angle[lp_player], lp_n_projectiles, lp_velocity, lp_angle, lp_range, lv_l_AC, lp_iMPACT_Effect, lv_l_E, false);
+        else if (autoF8A53135_val == libECLP_ge_ECL_WEAPON_LAUNCH_TYPE_MOLOTOV_GRENADE) {
+            lv_l_A = "PAttackMolotov";
+            lv_l_AC = AbilityCommand("PAttackMolotov", 0);
+            lv_uSES_PROJECTILE = false;
+        }
+        else if (autoF8A53135_val == libECLP_ge_ECL_WEAPON_LAUNCH_TYPE_MOLOTOV_GRENADE2) {
+            lv_l_A = "PAttackCapsule";
+            lv_l_AC = AbilityCommand("PAttackCapsule", 0);
+            lv_uSES_PROJECTILE = false;
+        }
+        else {
+        }
+        if ((libECLP_gv_eCL_Firing[EventPlayer()] == false)) {
+            if ((libECLP_gv_eCL__HitScan[lp_player].lv_weapon != lv_l_A)) {
+                UnitAbilityRemove(libECLP_gv_eCL_Source[lp_player], libECLP_gv_eCL__HitScan[lp_player].lv_weapon);
+                UnitAbilityAdd(libECLP_gv_eCL_Source[lp_player], lv_l_A);
+                libECLP_gv_eCL__HitScan[lp_player].lv_weapon = lv_l_A;
             }
-            else {
-                if ((libECLP_gv_eCL_p_r[lp_player] > lp_range)) {
-                    lv_target_Point = PointWithOffsetPolar(UnitGetPosition(libECLP_gv_eCL_Source[lp_player]), lp_range, libECLP_gv_eCL_p_angle[lp_player]);
+
+            libECLP_gv_eCL_Firing[lp_player] = true;
+            if ((libECLP_gv_eCL_ADS[lp_player] == false)) {
+                libECLP_gv_eCL_ADS[lp_player] = true;
+            }
+
+            libECLP_gv_eCL_SaveMouse_on_off[lp_player] = true;
+            lv_sTRING = "HostSiteOpsSet ::HostImpact {SOpCursor SOpMoveUpByDot2 SOpMoveUpByDot25 SOpMoveUpByDot1 SOpMoveUpByDot1 ";
+            autoC579B482_ae = FixedToInt(Round((10.0 / lp_cooldown)));
+            autoC579B482_var = 1;
+            for ( ; autoC579B482_var <= autoC579B482_ae; autoC579B482_var += 1 ) {
+                lv_sTRING = (lv_sTRING + " SOpLaserFlicker");
+            }
+            lv_sTRING = (lv_sTRING + " SOpMoveDownByDot1");
+            auto9E85C12A_ae = FixedToInt(Round((10.0 / lp_cooldown)));
+            auto9E85C12A_var = 1;
+            for ( ; auto9E85C12A_var <= auto9E85C12A_ae; auto9E85C12A_var += 1 ) {
+                lv_sTRING = (lv_sTRING + " SOpLaserFlickeroverlay");
+            }
+            lv_sTRING = (lv_sTRING + " SOpMoveDownByDot1}");
+            ActorSend(libECLP_gv_eCL_Beam[lp_player], (lv_sTRING));
+            ActorSend(libNtve_gf_MainActorofUnit(libECLP_gv_eCL_Source[lp_player]), "AnimPlay Attack Attack PlayForever,ForceLooping");
+            do {
+                if ((lv_uSES_PROJECTILE == true)) {
+                    libECLP_gf_ECL_HitScan(libECLP_gv_eCL_Source[lp_player], UnitGetPosition(libECLP_gv_eCL_Source[lp_player]), libECLP_gv_eCL_p_angle[lp_player], lp_n_projectiles, lp_velocity, lp_angle, lp_range, lv_l_AC, lp_iMPACT_Effect, lv_l_E, false);
                 }
                 else {
-                    lv_target_Point = PointWithOffsetPolar(UnitGetPosition(libECLP_gv_eCL_Source[lp_player]), libECLP_gv_eCL_p_r[lp_player], libECLP_gv_eCL_p_angle[lp_player]);
+                    if ((libECLP_gv_eCL_p_r[lp_player] > lp_range)) {
+                        lv_target_Point = PointWithOffsetPolar(UnitGetPosition(libECLP_gv_eCL_Source[lp_player]), lp_range, libECLP_gv_eCL_p_angle[lp_player]);
+                    }
+                    else {
+                        lv_target_Point = PointWithOffsetPolar(UnitGetPosition(libECLP_gv_eCL_Source[lp_player]), libECLP_gv_eCL_p_r[lp_player], libECLP_gv_eCL_p_angle[lp_player]);
+                    }
+                    UnitIssueOrder(libECLP_gv_eCL_Source[lp_player], OrderTargetingPoint(lv_l_AC, lv_target_Point), c_orderQueueReplace);
                 }
-                UnitIssueOrder(libECLP_gv_eCL_Source[lp_player], OrderTargetingPoint(lv_l_AC, lv_target_Point), c_orderQueueReplace);
-            }
-            if ((lp_bursts > 0) && (lv_bursts_remaining > 0)) {
-                lv_bursts_remaining -= 1;
+                if ((lp_bursts > 0) && (lv_bursts_remaining > 0)) {
+                    lv_bursts_remaining -= 1;
+                }
+
+                libECLP_gv_eCL__HitScan[lp_player].lv_ammo -= 1;
+                libNtve_gf_SetDialogItemText(libECLP_gv_eCL__HitScan[lp_player].lv_magazine, IntToText(libECLP_gv_eCL__HitScan[lp_player].lv_ammo), PlayerGroupSingle(lp_player));
+                Wait(lp_cooldown, c_timeGame);
+            }while ((UnitIsValid(libECLP_gv_eCL_Source[lp_player]) == true) && (libECLP_gv_eCL__HitScan[lp_player].lv_ammo > 0) && (((lp_bursts == 0) && (libECLP_gv_eCL_UpDown[lp_player] == true)) || (lv_bursts_remaining > 0)));
+            Wait(lp_cooldown_Burst, c_timeGame);
+            libECLP_gv_eCL_SaveMouse_on_off[lp_player] = false;
+            libECLP_gv_eCL_Firing[lp_player] = false;
+            libECLP_gv_eCL_ADS[lp_player] = false;
+            if ((((lp_bursts == 0) && (libECLP_gv_eCL_UpDown[lp_player] == false)) || ((lp_bursts > 0) && (lv_bursts_remaining == 0))) && (libECLP_gv_eCL_Firing[lp_player] == false)) {
+                ActorSend(libECLP_gv_eCL_Beam[lp_player], "HostSiteOpsSet ::HostImpact {SOpCursor SOpMoveUpByDot2 SOpMoveUpByDot25}");
+                ActorSend(libNtve_gf_MainActorofUnit(libECLP_gv_eCL_Source[EventPlayer()]), "AnimClear Attack");
+                ActorSend(libNtve_gf_MainActorofUnit(libECLP_gv_eCL_Source[lp_player]), "AnimPlay Attack Attack PlayForever,NonLooping");
             }
 
-            Wait(lp_cooldown, c_timeGame);
-        }while ((UnitIsValid(libECLP_gv_eCL_Source[lp_player]) == true) && (((lp_bursts == 0) && (libECLP_gv_eCL_UpDown[lp_player] == true)) || (lv_bursts_remaining > 0)));
-        Wait(lp_cooldown_Burst, c_timeGame);
-        libECLP_gv_eCL_SaveMouse_on_off[lp_player] = false;
-        libECLP_gv_eCL_Firing[lp_player] = false;
-        libECLP_gv_eCL_ADS[lp_player] = false;
-        if ((((lp_bursts == 0) && (libECLP_gv_eCL_UpDown[lp_player] == false)) || ((lp_bursts > 0) && (lv_bursts_remaining == 0))) && (libECLP_gv_eCL_Firing[lp_player] == false)) {
-            ActorSend(libECLP_gv_eCL_Beam[lp_player], "HostSiteOpsSet ::HostImpact {SOpCursor SOpMoveUpByDot2 SOpMoveUpByDot25}");
-            ActorSend(libNtve_gf_MainActorofUnit(libECLP_gv_eCL_Source[EventPlayer()]), "AnimClear Attack");
-            ActorSend(libNtve_gf_MainActorofUnit(libECLP_gv_eCL_Source[lp_player]), "AnimPlay Attack Attack PlayForever,NonLooping");
         }
 
     }
-
+    else {
+        SoundPlayForPlayer(SoundLink("UI_NovaUT_UnitClick", 0), c_maxPlayers, PlayerGroupSingle(lp_player), 100.0, 0.0);
+    }
 }
 
 trigger auto_libECLP_gf_ECL_HitScan_Trigger = null;
@@ -722,7 +734,6 @@ bool libECLP_gt_ECL_Release_Func (bool testConds, bool runActions) {
     }
 
     libECLP_gv_eCL_UpDown[EventPlayer()] = false;
-    UIDisplayMessage(PlayerGroupAll(), c_messageAreaDebug, StringExternal("Param/Value/lib_ECLP_B639B276"));
     return true;
 }
 

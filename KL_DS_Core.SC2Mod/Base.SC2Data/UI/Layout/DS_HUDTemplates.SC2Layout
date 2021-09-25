@@ -392,6 +392,41 @@
     <Frame type="Frame" name="GameHUDTemplate">
         <Anchor relative="$parent"/>
 
+        <Frame type="Frame" name="Ammo">
+            <Anchor side="Left" relative="$parent/StatusPanel/HealthBar" pos="Max" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="-6"/>
+            <Height val="200"/>
+            <Width val="130"/>
+
+            <Frame type="Image" name="Background">
+                <Anchor relative="$parent"/>
+                <Color val="128,128,128"/>
+            </Frame>
+
+            <Frame type="Frame" name="AmmoCount">
+                <Anchor side="Bottom" relative="$parent" pos="Max" offset="-2"/>
+                <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+                <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+                <Width val="120"/>
+                <Height val="51"/>
+
+                <Frame type="Image" name="Background">
+                    <Anchor relative="$parent"/>
+                    <Texture val="Assets/Textures/ECL_AmmoCount.dds"/>
+                </Frame>
+
+                <Frame type="Label" name="Label">
+                    <Anchor side="Top" relative="$parent" pos="Min" offset="3"/>
+                    <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+                    <Anchor side="Right" relative="$parent" pos="Max" offset="-17"/>
+                    <Style val="ECL_AmmoCount"/>
+                    <Alpha val="75"/>
+                    <BlendMode val="Add"/>
+                    <Text val="0"/>
+                </Frame>
+            </Frame>
+        </Frame>
+
         <Frame type="Frame" name="CommandPanel" template="DS_HUDTemplates/CommandPanelTemplate">
             <Anchor side="Bottom" relative="$parent/StatusPanel" pos="Min" offset="0"/>
         </Frame>
