@@ -965,6 +965,16 @@
                     <Width val="100"/>
                     <Alpha val="0"/>
                     <BlendMode val="Add"/>
+                    <StateGroup name="ShowHide">
+                        <State name="Show">
+                            <When type="Property" frame="$parent/$parent" operator="GreaterThan" Value="0"/>
+                            <Action type="SetProperty" frame="$this" Visible="True"/>
+                        </State>
+                        <State name="Hide">
+                            <When type="Property" frame="$parent/$parent" operator="LessThanOrEqual" Value="0"/>
+                            <Action type="SetProperty" frame="$this" Visible="False"/>
+                        </State>
+                    </StateGroup>
                 </Frame>
 
                 <Frame type="Image" name="Red">

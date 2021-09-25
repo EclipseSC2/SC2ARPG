@@ -1192,6 +1192,64 @@ bool auto_libDEAD_gf_ECL_GroundItemData_TriggerFunc (bool testConds, bool runAct
     return true;
 }
 
+void libDEAD_gf_ECL_Reload (int lp_player) {
+    // Variable Declarations
+    int lv_ammoSlot;
+    int lv_reserveAmmo;
+    int lv_loadingAmmo;
+    int lv_i;
+    int lv_j;
+    string lv_weaponData;
+    string lv_requiredAmmoItem;
+    string lv_equippedWeapon;
+
+    // Automatic Variable Declarations
+    string autoA44B236A_val;
+    int autoE08EC5A8_ae;
+    const int autoE08EC5A8_ai = 1;
+    const int auto7B410357_ae = 1;
+    const int auto7B410357_ai = -1;
+
+    // Variable Initialization
+
+    // Implementation
+    if ((libDEAD_gv_dS_PlayerData[lp_player].lv_weaponAmmoReserve <= 0)) {
+        return ;
+    }
+
+    SoundPlay(SoundLink("MissileTurret_Load_MP", -1), PlayerGroupSingle(lp_player), 100.0, 0.0);
+    lv_reserveAmmo = libDEAD_gv_dS_PlayerData[lp_player].lv_weaponAmmoReserve;
+    if ((libDEAD_gv_dS_PlayerData[lp_player].lv_weaponAmmoReserve <= libDEAD_gv_dS_PlayerData[lp_player].lv_weaponMagSize)) {
+        lv_loadingAmmo = libDEAD_gv_dS_PlayerData[lp_player].lv_weaponAmmoReserve;
+    }
+    else {
+        lv_loadingAmmo = libDEAD_gv_dS_PlayerData[lp_player].lv_weaponMagSize;
+    }
+    lv_equippedWeapon = libDEAD_gv_dS_PlayerData[lp_player].lv_equippedMainWpn;
+    lv_weaponData = UserDataGetUserInstance("Items", lv_equippedWeapon, "Weapon Data", 1);
+    autoA44B236A_val = UserDataGetString("WeaponTypes", lv_weaponData, "AmmoType", 1);
+    if (autoA44B236A_val == "Pistol") {
+        lv_requiredAmmoItem = "Pistol Ammo";
+    }
+    else {
+    }
+    libDEAD_gv_dS_PlayerData[lp_player].lv_weaponAmmo = lv_loadingAmmo;
+    autoE08EC5A8_ae = lv_loadingAmmo;
+    lv_i = 1;
+    for ( ; ( (autoE08EC5A8_ai >= 0 && lv_i <= autoE08EC5A8_ae) || (autoE08EC5A8_ai < 0 && lv_i >= autoE08EC5A8_ae) ) ; lv_i += autoE08EC5A8_ai ) {
+        lv_j = 18;
+        for ( ; ( (auto7B410357_ai >= 0 && lv_j <= auto7B410357_ae) || (auto7B410357_ai < 0 && lv_j >= auto7B410357_ae) ) ; lv_j += auto7B410357_ai ) {
+            if ((libDEAD_gv_dS_InventoryItem[lv_j][lp_player] == lv_requiredAmmoItem)) {
+                lv_ammoSlot = lv_j;
+                libDEAD_gf_RemoveItemFromInventorySlot(lp_player, lv_ammoSlot);
+                break;
+            }
+
+        }
+    }
+    libDEAD_gf_DS_ReadMainWeaponData(lp_player, lv_equippedWeapon);
+}
+
 void libDEAD_gf_DS_FireWeaponItem (int lp_player, string lp_weaponItem) {
     // Variable Declarations
     string lv_weaponData;
@@ -4176,7 +4234,7 @@ void libDEAD_gf_DS_ReloadWeapon (int lp_player) {
         return ;
     }
 
-    SoundPlay(SoundLink("Liberator_AG_Morph_Servo", -1), PlayerGroupSingle(lp_player), 100.0, 0.0);
+    SoundPlay(SoundLink("MissileTurret_Load_MP", -1), PlayerGroupSingle(lp_player), 100.0, 0.0);
     lv_reserveAmmo = libDEAD_gv_dS_PlayerData[lp_player].lv_weaponAmmoReserve;
     if ((libDEAD_gv_dS_PlayerData[lp_player].lv_weaponAmmoReserve <= libDEAD_gv_dS_PlayerData[lp_player].lv_weaponMagSize)) {
         lv_loadingAmmo = libDEAD_gv_dS_PlayerData[lp_player].lv_weaponAmmoReserve;
@@ -5771,6 +5829,34 @@ bool libDEAD_gt_ECL_catch_permanentloot_Func (bool testConds, bool runActions) {
 void libDEAD_gt_ECL_catch_permanentloot_Init () {
     libDEAD_gt_ECL_catch_permanentloot = TriggerCreate("libDEAD_gt_ECL_catch_permanentloot_Func");
     TriggerAddEventUnitCreated(libDEAD_gt_ECL_catch_permanentloot, null, null, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: ECL_Reload
+//--------------------------------------------------------------------------------------------------
+bool libDEAD_gt_ECL_Reload_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!(((UnitIsAlive(libDEAD_gv_playerUnit[EventPlayer()]) == true) && (libDEAD_gv_dS_PlayerData[EventPlayer()].lv_weaponAmmo < libDEAD_gv_dS_PlayerData[EventPlayer()].lv_weaponMagSize)))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libDEAD_gf_ECL_Reload(EventPlayer());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libDEAD_gt_ECL_Reload_Init () {
+    libDEAD_gt_ECL_Reload = TriggerCreate("libDEAD_gt_ECL_Reload_Func");
+    TriggerEnable(libDEAD_gt_ECL_Reload, false);
+    TriggerAddEventKeyPressed(libDEAD_gt_ECL_Reload, c_playerAny, c_keyR, true, c_keyModifierStateIgnore, c_keyModifierStateIgnore, c_keyModifierStateIgnore);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7486,6 +7572,7 @@ void libDEAD_InitTriggers () {
     libDEAD_gt_DS_ShowLootOnGround_Init();
     libDEAD_gt_DS_HideLootOnGround_Init();
     libDEAD_gt_ECL_catch_permanentloot_Init();
+    libDEAD_gt_ECL_Reload_Init();
     libDEAD_gt_ECL_FireNew_Init();
     libDEAD_gt_ECL__CONTEXTMENU_OnRightClick_Init();
     libDEAD_gt_DS_ListboxItemUsed_Init();

@@ -7,7 +7,7 @@
 <Effect id="ECLDROPLOOT"/>
 <Sound id="Reaper_AttackLaunch"/>
 <Sound id="WidowMine_ArmedBeep" Variations="0"/>
-<Sound id="Liberator_AG_Morph_Servo"/>
+<Sound id="MissileTurret_Load_MP"/>
 <Unit id="SCV"/>
 <Unit id="InvisibleTargetDummy"/>
 <Unit id="InvisibleTargetDummyStructure"/>

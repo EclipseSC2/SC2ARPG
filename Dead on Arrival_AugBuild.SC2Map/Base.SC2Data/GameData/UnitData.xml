@@ -19,6 +19,11 @@
         <FlagArray index="CreateVisible" value="1"/>
         <Sight value="10"/>
     </CUnit>
+    <CUnit id="Separatist">
+        <ShieldsStart value="100"/>
+        <ShieldsMax value="100"/>
+        <ShieldRegenRate value="1"/>
+    </CUnit>
     <CUnit id="TrooperCaev">
         <DeathRevealRadius value="3"/>
         <Race value="Terr"/>
