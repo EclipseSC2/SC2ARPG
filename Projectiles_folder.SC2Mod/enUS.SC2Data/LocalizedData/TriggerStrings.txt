@@ -33,6 +33,7 @@ ParamDef/Name/lib_ECLP_4B64F878=Player
 ParamDef/Name/lib_ECLP_4BC687EB=Attachment Unit
 ParamDef/Name/lib_ECLP_4BE3811C=X Offset
 ParamDef/Name/lib_ECLP_52FE1691=Launch
+ParamDef/Name/lib_ECLP_591E49A8=WeaponIndex
 ParamDef/Name/lib_ECLP_5C2AB3A8=n_projectiles
 ParamDef/Name/lib_ECLP_5FA0D796=Player
 ParamDef/Name/lib_ECLP_60173139=Velocity

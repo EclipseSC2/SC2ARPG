@@ -5,4 +5,12 @@
         <Pitch value="3.430000,3.430000"/>
         <Volume value="-24.600000,-24.600000"/>
     </CSound>
+    <CSound id="UI_Reload_bullet" parent="Death">
+        <EditorCategories value="Race:Terran"/>
+        <AssetArray File="Assets\Sounds\Banshee_Death_MetalShrap_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Banshee_Death_MetalShrap_05.wav" FacialGroup=""/>
+        <Pitch value="-1.260000,2.740000"/>
+        <Spread value="90.000000"/>
+        <Volume value="4.000000,6.000000"/>
+    </CSound>
 </Catalog>

@@ -27,6 +27,7 @@ Model/Name/UnknownModel=Unknown Model
 Mover/Name/UnknownMover=Unknown Mover
 RequirementNode/Name/2=2
 RequirementNode/Name/LTCountUnitProjectileQueuedOrBetterAtUnit2=CountUnit(Projectile,QueuedOrBetterAtUnit) < 2
+Sound/Name/UI_Reload_bullet=UI_Reload_bullet
 User/EditorPrefix/Ailments=DS -
 User/EditorPrefix/Blueprints=DS -
 User/EditorPrefix/Items=DS -

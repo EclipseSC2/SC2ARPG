@@ -584,8 +584,6 @@ void libDEAD_gf_KL_SwapToWeapon (int lp_player, int lp_weaponIndex) {
     // Variable Initialization
 
     // Implementation
-    libECLP_gv_eCL__HitScan[lp_player].lv_ammo = (lp_weaponIndex * 500);
-    libNtve_gf_SetDialogItemText(libECLP_gv_eCL__HitScan[lp_player].lv_magazine, IntToText(libECLP_gv_eCL__HitScan[lp_player].lv_ammo), PlayerGroupSingle(lp_player));
     lv_currentWeaponIndex = libDEAD_gv_activeWeaponIndex[lp_player];
     if ((lv_currentWeaponIndex == lp_weaponIndex)) {
         return ;
@@ -601,6 +599,7 @@ void libDEAD_gf_KL_SwapToWeapon (int lp_player, int lp_weaponIndex) {
     else {
         libDEAD_gv_activeWeaponIndex[lp_player] = lv_currentWeaponIndex;
     }
+    libNtve_gf_SetDialogItemText(libECLP_gv_eCL__HitScan[lp_player].lv_magazine, IntToText(libECLP_gv_eCL__HitScan[lp_player].lv_ammo[libDEAD_gv_activeWeaponIndex[lp_player]]), PlayerGroupSingle(lp_player));
 }
 
 fixed libDEAD_gf_ReturnEquipmentPropertyMoveSpeed (string lp_item) {
@@ -812,7 +811,7 @@ void libDEAD_gf_ECL_ITEM_add (int lp_player, string lp_item, int lp_amount, bool
                 DialogControlSetAnimationState(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[autoFA7D2691_var]], PlayerGroupAll(), "State", "SingleItem");
             }
             TextExpressionSetToken("Param/Expression/lib_DEAD_CAAA28BE", "A", IntToText(libDEAD_gf_ReturnInventoryItemAmount(lp_player, libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[autoFA7D2691_var])));
-            libNtve_gf_SetDialogItemText(libDEAD_gv_dS_Inventory[lp_player].lv_itemQuantity[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[autoFA7D2691_var]], TextExpressionAssemble("Param/Expression/lib_DEAD_CAAA28BE"), PlayerGroupAll());
+            libNtve_gf_SetDialogItemText(libDEAD_gv_dS_Inventory[lp_player].lv_itemQuantity[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[autoFA7D2691_var]], TextExpressionAssemble("Param/Expression/lib_DEAD_CAAA28BE"), PlayerGroupSingle(lp_player));
             DialogControlSetAnimationState(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[autoFA7D2691_var]], PlayerGroupAll(), "ItemType", UserDataGetString("Items", libDEAD_gv_dS_InventoryItem[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[autoFA7D2691_var]][lp_player], "Category", 1));
             lv_quantity -= lv_d_quantity;
             if ((lv_quantity > 0)) {
@@ -1008,13 +1007,13 @@ void libDEAD_gf_ECL__EQUIP (int lp_player, int lp_sLOT, int lp_eQUIPUNEQUIP) {
 
     // Automatic Variable Declarations
     string auto7F1DCA8C_val;
-    string auto30B42D06_val;
-    const int auto52B48827_ae = libDEAD_gv_eCL__maxslots;
-    const int auto52B48827_ai = 1;
     const int autoF9C6E11C_ae = 4;
     const int autoF9C6E11C_ai = 1;
     const int auto999CB00D_ae = 4;
     const int auto999CB00D_ai = 1;
+    string auto30B42D06_val;
+    const int auto52B48827_ae = libDEAD_gv_eCL__maxslots;
+    const int auto52B48827_ai = 1;
 
     // Variable Initialization
 
@@ -1040,6 +1039,23 @@ void libDEAD_gf_ECL__EQUIP (int lp_player, int lp_sLOT, int lp_eQUIPUNEQUIP) {
             lv_bEHAVIOR_EQUIPMENT = "AUGMENT";
         }
         else if (auto7F1DCA8C_val == "Weapon") {
+            lv_index = 1;
+            for ( ; ( (autoF9C6E11C_ai >= 0 && lv_index <= autoF9C6E11C_ae) || (autoF9C6E11C_ai < 0 && lv_index >= autoF9C6E11C_ae) ) ; lv_index += autoF9C6E11C_ai ) {
+                if ((libDEAD_gf_ECL_ReturnWeaponItem(lp_player, lv_index) != null)) {
+                    libDEAD_gv_activeWeaponInstance[lp_player][lv_index] = libDEAD_gf_ECL_ReturnWeaponItem(lp_player, lv_index);
+                }
+                else {
+                    libDEAD_gv_activeWeaponInstance[lp_player][lv_index] = null;
+                }
+            }
+            lv_index = 1;
+            for ( ; ( (auto999CB00D_ai >= 0 && lv_index <= auto999CB00D_ae) || (auto999CB00D_ai < 0 && lv_index >= auto999CB00D_ae) ) ; lv_index += auto999CB00D_ai ) {
+                if ((libDEAD_gf_ECL_ReturnWeaponItem(lp_player, lv_index) != null)) {
+                    libDEAD_gf_KL_SwapToWeapon(EventPlayer(), lv_index);
+                    break;
+                }
+
+            }
         }
         else {
         }
@@ -1092,23 +1108,6 @@ void libDEAD_gf_ECL__EQUIP (int lp_player, int lp_sLOT, int lp_eQUIPUNEQUIP) {
         else {
             libDEAD_gf_ECL_SLOT_lock_unlock(lp_player, lv_index, false);
         }
-    }
-    lv_index = 1;
-    for ( ; ( (autoF9C6E11C_ai >= 0 && lv_index <= autoF9C6E11C_ae) || (autoF9C6E11C_ai < 0 && lv_index >= autoF9C6E11C_ae) ) ; lv_index += autoF9C6E11C_ai ) {
-        if ((libDEAD_gf_ECL_ReturnWeaponItem(lp_player, lv_index) != null)) {
-            libDEAD_gv_activeWeaponInstance[lp_player][lv_index] = libDEAD_gf_ECL_ReturnWeaponItem(lp_player, lv_index);
-        }
-        else {
-            libDEAD_gv_activeWeaponInstance[lp_player][lv_index] = null;
-        }
-    }
-    lv_index = 1;
-    for ( ; ( (auto999CB00D_ai >= 0 && lv_index <= auto999CB00D_ae) || (auto999CB00D_ai < 0 && lv_index >= auto999CB00D_ae) ) ; lv_index += auto999CB00D_ai ) {
-        if ((libDEAD_gf_ECL_ReturnWeaponItem(lp_player, lv_index) != null)) {
-            libDEAD_gf_KL_SwapToWeapon(EventPlayer(), lv_index);
-            break;
-        }
-
     }
 }
 
@@ -1192,62 +1191,69 @@ bool auto_libDEAD_gf_ECL_GroundItemData_TriggerFunc (bool testConds, bool runAct
     return true;
 }
 
-void libDEAD_gf_ECL_Reload (int lp_player) {
+void libDEAD_gf_ECL_Reload (fixed lp_reload_time, int lp_player) {
     // Variable Declarations
-    int lv_ammoSlot;
-    int lv_reserveAmmo;
-    int lv_loadingAmmo;
-    int lv_i;
-    int lv_j;
-    string lv_weaponData;
-    string lv_requiredAmmoItem;
-    string lv_equippedWeapon;
+    string lv_aMMO_type_required;
+    int lv_aMMO_mag;
+    int lv_aMMO_item;
+    int lv_aMMO;
+    int lv_d_ammo;
 
     // Automatic Variable Declarations
-    string autoA44B236A_val;
-    int autoE08EC5A8_ae;
-    const int autoE08EC5A8_ai = 1;
-    const int auto7B410357_ae = 1;
-    const int auto7B410357_ai = -1;
+    string autoE6E73E8A_val;
+    int autoBBE465D1_ae;
+    int autoBBE465D1_var;
 
     // Variable Initialization
 
     // Implementation
-    if ((libDEAD_gv_dS_PlayerData[lp_player].lv_weaponAmmoReserve <= 0)) {
-        return ;
+    autoE6E73E8A_val = UserDataGetString("WeaponTypes", libDEAD_gv_activeWeaponInstance[lp_player][libDEAD_gv_activeWeaponIndex[lp_player]], "AmmoType", 1);
+    if (autoE6E73E8A_val == "Pistol") {
+        lv_aMMO_type_required = "Pistol Ammo";
     }
+    else {
+    }
+    lv_aMMO_mag = UserDataGetInt("WeaponTypes", libDEAD_gv_activeWeaponInstance[lp_player][libDEAD_gv_activeWeaponIndex[lp_player]], "BaseAmmoMax", 1);
+    lv_aMMO = libECLP_gv_eCL__HitScan[lp_player].lv_ammo[libDEAD_gv_activeWeaponIndex[lp_player]];
+    autoBBE465D1_ae = libDEAD_gv_eCL__Inventory[lp_player].lv_iNV_slots;
+    autoBBE465D1_var = (libDEAD_gv_eCL__equipmentslots + 1);
+    for ( ; autoBBE465D1_var <= autoBBE465D1_ae; autoBBE465D1_var += 1 ) {
+        if ((libDEAD_gv_dS_InventoryItem[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[autoBBE465D1_var]][lp_player] == lv_aMMO_type_required)) {
+            lv_aMMO_item = libDEAD_gv_dS_InventoryAmount[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[autoBBE465D1_var]][lp_player];
+            lv_d_ammo = libNtve_gf_ArithmeticIntClamp((lv_aMMO_mag - lv_aMMO), 0, lv_aMMO_item);
+            libDEAD_gv_dS_InventoryAmount[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[autoBBE465D1_var]][lp_player] -= lv_d_ammo;
+            lv_aMMO = (lv_aMMO + lv_d_ammo);
+            if ((libDEAD_gf_ReturnInventoryItemAmount(lp_player, libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[autoBBE465D1_var]) > 1) && (libDEAD_gv_dS_InventoryAmount[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[autoBBE465D1_var]][lp_player] > 1)) {
+                DialogControlSetAnimationState(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[autoBBE465D1_var]], PlayerGroupAll(), "State", "Stack");
+            }
+            else {
+                DialogControlSetAnimationState(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[autoBBE465D1_var]], PlayerGroupAll(), "State", "SingleItem");
+            }
+            TextExpressionSetToken("Param/Expression/lib_DEAD_252D01C2", "A", IntToText(libDEAD_gv_dS_InventoryAmount[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[autoBBE465D1_var]][lp_player]));
+            libNtve_gf_SetDialogItemText(libDEAD_gv_dS_Inventory[lp_player].lv_itemQuantity[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[autoBBE465D1_var]], TextExpressionAssemble("Param/Expression/lib_DEAD_252D01C2"), PlayerGroupSingle(lp_player));
+            DialogControlSetAnimationState(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[autoBBE465D1_var]], PlayerGroupAll(), "ItemType", UserDataGetString("Items", libDEAD_gv_dS_InventoryItem[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[autoBBE465D1_var]][lp_player], "Category", 1));
+            if ((libDEAD_gv_dS_InventoryAmount[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[autoBBE465D1_var]][lp_player] == 0)) {
+                libDEAD_gf_ECL_ITEM_remove(lp_player, libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[autoBBE465D1_var]);
+            }
 
-    SoundPlay(SoundLink("MissileTurret_Load_MP", -1), PlayerGroupSingle(lp_player), 100.0, 0.0);
-    lv_reserveAmmo = libDEAD_gv_dS_PlayerData[lp_player].lv_weaponAmmoReserve;
-    if ((libDEAD_gv_dS_PlayerData[lp_player].lv_weaponAmmoReserve <= libDEAD_gv_dS_PlayerData[lp_player].lv_weaponMagSize)) {
-        lv_loadingAmmo = libDEAD_gv_dS_PlayerData[lp_player].lv_weaponAmmoReserve;
-    }
-    else {
-        lv_loadingAmmo = libDEAD_gv_dS_PlayerData[lp_player].lv_weaponMagSize;
-    }
-    lv_equippedWeapon = libDEAD_gv_dS_PlayerData[lp_player].lv_equippedMainWpn;
-    lv_weaponData = UserDataGetUserInstance("Items", lv_equippedWeapon, "Weapon Data", 1);
-    autoA44B236A_val = UserDataGetString("WeaponTypes", lv_weaponData, "AmmoType", 1);
-    if (autoA44B236A_val == "Pistol") {
-        lv_requiredAmmoItem = "Pistol Ammo";
-    }
-    else {
-    }
-    libDEAD_gv_dS_PlayerData[lp_player].lv_weaponAmmo = lv_loadingAmmo;
-    autoE08EC5A8_ae = lv_loadingAmmo;
-    lv_i = 1;
-    for ( ; ( (autoE08EC5A8_ai >= 0 && lv_i <= autoE08EC5A8_ae) || (autoE08EC5A8_ai < 0 && lv_i >= autoE08EC5A8_ae) ) ; lv_i += autoE08EC5A8_ai ) {
-        lv_j = 18;
-        for ( ; ( (auto7B410357_ai >= 0 && lv_j <= auto7B410357_ae) || (auto7B410357_ai < 0 && lv_j >= auto7B410357_ae) ) ; lv_j += auto7B410357_ai ) {
-            if ((libDEAD_gv_dS_InventoryItem[lv_j][lp_player] == lv_requiredAmmoItem)) {
-                lv_ammoSlot = lv_j;
-                libDEAD_gf_RemoveItemFromInventorySlot(lp_player, lv_ammoSlot);
+            if ((lv_aMMO == lv_aMMO_mag)) {
                 break;
             }
 
         }
+
     }
-    libDEAD_gf_DS_ReadMainWeaponData(lp_player, lv_equippedWeapon);
+    if ((lv_aMMO > libECLP_gv_eCL__HitScan[lp_player].lv_ammo[libDEAD_gv_activeWeaponIndex[lp_player]])) {
+        SoundPlay(SoundLink("UI_Reload_bullet", -1), PlayerGroupSingle(lp_player), 100.0, 0.0);
+        SoundPlay(SoundLink("MissileTurret_Load_MP", -1), PlayerGroupSingle(lp_player), 100.0, 0.0);
+        Wait(lp_reload_time, c_timeGame);
+        libECLP_gv_eCL__HitScan[lp_player].lv_ammo[libDEAD_gv_activeWeaponIndex[lp_player]] = lv_aMMO;
+        libNtve_gf_SetDialogItemText(libECLP_gv_eCL__HitScan[lp_player].lv_magazine, IntToText(libECLP_gv_eCL__HitScan[lp_player].lv_ammo[libDEAD_gv_activeWeaponIndex[lp_player]]), PlayerGroupSingle(lp_player));
+        SoundPlay(SoundLink("UI_Pickup_SniperRifle", -1), PlayerGroupSingle(lp_player), 100.0, 0.0);
+    }
+    else {
+        SoundPlayForPlayer(SoundLink("UI_NovaUT_UnitClick", 0), c_maxPlayers, PlayerGroupSingle(lp_player), 100.0, 0.0);
+    }
 }
 
 void libDEAD_gf_DS_FireWeaponItem (int lp_player, string lp_weaponItem) {
@@ -1285,7 +1291,7 @@ void libDEAD_gf_DS_FireWeaponItem (int lp_player, string lp_weaponItem) {
     lv_damage_max = UserDataGetInt("WeaponTypes", lp_weaponItem, "DamageMax", 1);
     libNtve_gf_CatalogFieldValueSetAsReal(c_gameCatalogEffect, lv_impact, "Amount", lp_player, lv_damage_min);
     libNtve_gf_CatalogFieldValueSetAsReal(c_gameCatalogEffect, lv_impact, "Random", lp_player, (lv_damage_max - lv_damage_min));
-    libECLP_gf_ECL_Fire(lp_player, lv_launchArt, lv_projectileN, lv_bursts, lv_velocity, lv_cooldown, lv_cooldown_burst, lv_angle, lv_impact, lv_range);
+    libECLP_gf_ECL_Fire(lp_player, lv_launchArt, lv_projectileN, lv_bursts, lv_velocity, lv_cooldown, lv_cooldown_burst, lv_angle, lv_impact, lv_range, libDEAD_gv_activeWeaponIndex[lp_player]);
 }
 
 void libDEAD_gf_ECL__Hookup_Context (int lp_player, int lp_index) {
@@ -1559,6 +1565,7 @@ void libDEAD_gf_DS_CreatePlayerUnit (int lp_player, fixed lp_angle, point lp_spa
     UnitCreate(1, lv_unitType, 0, lp_player, lv_point, lp_angle);
     libDEAD_gv_playerUnit[lp_player] = UnitLastCreated();
     lv_localUnit = UnitLastCreated();
+    ActorSend(libNtve_gf_MainActorofUnit(libDEAD_gv_playerUnit[lp_player]), "AnimPlay Attack Attack PlayForever,NonLooping");
     UnitSetState(lv_localUnit, c_unitStateHighlightable, false);
     UnitSetState(lv_localUnit, c_unitStateCursorable, false);
     UnitSetState(lv_localUnit, c_unitStateSelectable, false);
@@ -5838,7 +5845,7 @@ bool libDEAD_gt_ECL_Reload_Func (bool testConds, bool runActions) {
     // Automatic Variable Declarations
     // Conditions
     if (testConds) {
-        if (!(((UnitIsAlive(libDEAD_gv_playerUnit[EventPlayer()]) == true) && (libDEAD_gv_dS_PlayerData[EventPlayer()].lv_weaponAmmo < libDEAD_gv_dS_PlayerData[EventPlayer()].lv_weaponMagSize)))) {
+        if (!((UnitIsAlive(libDEAD_gv_playerUnit[EventPlayer()]) == true))) {
             return false;
         }
     }
@@ -5848,14 +5855,13 @@ bool libDEAD_gt_ECL_Reload_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    libDEAD_gf_ECL_Reload(EventPlayer());
+    libDEAD_gf_ECL_Reload(0.125, EventPlayer());
     return true;
 }
 
 //--------------------------------------------------------------------------------------------------
 void libDEAD_gt_ECL_Reload_Init () {
     libDEAD_gt_ECL_Reload = TriggerCreate("libDEAD_gt_ECL_Reload_Func");
-    TriggerEnable(libDEAD_gt_ECL_Reload, false);
     TriggerAddEventKeyPressed(libDEAD_gt_ECL_Reload, c_playerAny, c_keyR, true, c_keyModifierStateIgnore, c_keyModifierStateIgnore, c_keyModifierStateIgnore);
 }
 

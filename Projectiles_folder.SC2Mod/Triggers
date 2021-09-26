@@ -1534,6 +1534,7 @@
             <Parameter Type="Param" Library="ECLP" Id="70CD95BC"/>
             <Parameter Type="Param" Library="ECLP" Id="EB601BC9"/>
             <Parameter Type="Param" Library="ECLP" Id="91E943A1"/>
+            <Parameter Type="Param" Library="ECLP" Id="197A362C"/>
         </Element>
         <Element Type="Param" Id="D5AB778F">
             <ParameterDef Type="ParamDef" Library="ECLP" Id="891687AD"/>
@@ -1586,6 +1587,11 @@
             <ParameterDef Type="ParamDef" Library="ECLP" Id="05E458F3"/>
             <Value>0.0</Value>
             <ValueType Type="fixed"/>
+        </Element>
+        <Element Type="Param" Id="197A362C">
+            <ParameterDef Type="ParamDef" Library="ECLP" Id="591E49A8"/>
+            <Value>0</Value>
+            <ValueType Type="int"/>
         </Element>
         <Element Type="FunctionCall" Id="BDC1AACA">
             <Disabled/>
@@ -2628,6 +2634,7 @@
             <Parameter Type="Comment" Library="ECLP" Id="B5716B3B"/>
             <Parameter Type="ParamDef" Library="ECLP" Id="FC651F3D"/>
             <Parameter Type="ParamDef" Library="ECLP" Id="0280284D"/>
+            <Parameter Type="ParamDef" Library="ECLP" Id="591E49A8"/>
             <Variable Type="Variable" Library="ECLP" Id="C50B4596"/>
             <Variable Type="Variable" Library="ECLP" Id="C836CBC4"/>
             <Variable Type="Variable" Library="ECLP" Id="C5A94B38"/>
@@ -2743,6 +2750,16 @@
             <Value>500.0</Value>
             <ValueType Type="fixed"/>
         </Element>
+        <Element Type="ParamDef" Id="591E49A8">
+            <ParameterType>
+                <Type Value="int"/>
+            </ParameterType>
+            <Default Type="Param" Library="ECLP" Id="E0932BDA"/>
+        </Element>
+        <Element Type="Param" Id="E0932BDA">
+            <Value>0</Value>
+            <ValueType Type="int"/>
+        </Element>
         <Element Type="Variable" Id="C50B4596">
             <VariableType>
                 <Type Value="string"/>
@@ -2832,6 +2849,10 @@
         </Element>
         <Element Type="Param" Id="DF7E4E17">
             <Variable Type="Variable" Library="ECLP" Id="F97651AE"/>
+            <Array Type="Param" Library="ECLP" Id="D2E65821"/>
+        </Element>
+        <Element Type="Param" Id="D2E65821">
+            <Parameter Type="ParamDef" Library="ECLP" Id="591E49A8"/>
         </Element>
         <Element Type="Param" Id="3BB2F384">
             <Parameter Type="ParamDef" Library="ECLP" Id="891687AD"/>
@@ -3881,6 +3902,10 @@
         </Element>
         <Element Type="Param" Id="6B454A91">
             <Variable Type="Variable" Library="ECLP" Id="F97651AE"/>
+            <Array Type="Param" Library="ECLP" Id="9CDF2387"/>
+        </Element>
+        <Element Type="Param" Id="9CDF2387">
+            <Parameter Type="ParamDef" Library="ECLP" Id="591E49A8"/>
         </Element>
         <Element Type="Param" Id="ADCB4FC2">
             <Parameter Type="ParamDef" Library="ECLP" Id="891687AD"/>
@@ -4348,6 +4373,10 @@
         </Element>
         <Element Type="Param" Id="AE7BA131">
             <Variable Type="Variable" Library="ECLP" Id="F97651AE"/>
+            <Array Type="Param" Library="ECLP" Id="27652A12"/>
+        </Element>
+        <Element Type="Param" Id="27652A12">
+            <Parameter Type="ParamDef" Library="ECLP" Id="591E49A8"/>
         </Element>
         <Element Type="Param" Id="687508D1">
             <Parameter Type="ParamDef" Library="ECLP" Id="891687AD"/>
@@ -4399,6 +4428,10 @@
         </Element>
         <Element Type="Param" Id="517FC28F">
             <Variable Type="Variable" Library="ECLP" Id="F97651AE"/>
+            <Array Type="Param" Library="ECLP" Id="653405A1"/>
+        </Element>
+        <Element Type="Param" Id="653405A1">
+            <Parameter Type="ParamDef" Library="ECLP" Id="591E49A8"/>
         </Element>
         <Element Type="Param" Id="68C0AF1D">
             <Parameter Type="ParamDef" Library="ECLP" Id="891687AD"/>
@@ -4576,10 +4609,50 @@
         <Element Type="FunctionCall" Id="CA03EBE9">
             <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000133"/>
             <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000003"/>
+            <FunctionCall Type="Comment" Library="ECLP" Id="8F4F881A"/>
+            <FunctionCall Type="FunctionCall" Library="ECLP" Id="5B2D2B17"/>
             <FunctionCall Type="Comment" Library="ECLP" Id="FB235976"/>
             <FunctionCall Type="FunctionCall" Library="ECLP" Id="4952080F"/>
             <FunctionCall Type="Comment" Library="ECLP" Id="EF5C4783"/>
             <FunctionCall Type="FunctionCall" Library="ECLP" Id="521BA96C"/>
+        </Element>
+        <Element Type="Comment" Id="8F4F881A">
+            <Comment>
+                No Ammo
+            </Comment>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000001"/>
+        </Element>
+        <Element Type="FunctionCall" Id="5B2D2B17">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="C439C375"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000001"/>
+            <Parameter Type="Param" Library="ECLP" Id="EE3A975B"/>
+            <Parameter Type="Param" Library="ECLP" Id="0030554A"/>
+            <Parameter Type="Param" Library="ECLP" Id="D8AF5E5F"/>
+        </Element>
+        <Element Type="Param" Id="EE3A975B">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="ABB380C4"/>
+            <Variable Type="Variable" Library="ECLP" Id="E21D061B"/>
+            <StructMember Type="Param" Library="ECLP" Id="687D9378"/>
+            <Array Type="Param" Library="ECLP" Id="2B8BD398"/>
+        </Element>
+        <Element Type="Param" Id="687D9378">
+            <Variable Type="Variable" Library="ECLP" Id="F97651AE"/>
+            <Array Type="Param" Library="ECLP" Id="D2C9407B"/>
+        </Element>
+        <Element Type="Param" Id="D2C9407B">
+            <Parameter Type="ParamDef" Library="ECLP" Id="591E49A8"/>
+        </Element>
+        <Element Type="Param" Id="2B8BD398">
+            <Parameter Type="ParamDef" Library="ECLP" Id="891687AD"/>
+        </Element>
+        <Element Type="Param" Id="0030554A">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="51567265"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="E123C832"/>
+        </Element>
+        <Element Type="Param" Id="D8AF5E5F">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="4A15EC5F"/>
+            <Value>0</Value>
+            <ValueType Type="int"/>
         </Element>
         <Element Type="Comment" Id="FB235976">
             <Comment>
@@ -7901,6 +7974,7 @@
         <Element Type="Variable" Id="F97651AE">
             <VariableType>
                 <Type Value="int"/>
+                <ArraySize Dim="0" Value="4"/>
             </VariableType>
             <Value Type="Param" Library="ECLP" Id="1D8613A2"/>
         </Element>

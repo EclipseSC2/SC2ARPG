@@ -7,7 +7,10 @@
 <Effect id="ECLDROPLOOT"/>
 <Sound id="Reaper_AttackLaunch"/>
 <Sound id="WidowMine_ArmedBeep" Variations="0"/>
+<Sound id="UI_NovaUT_UnitClick" Variations="0"/>
+<Sound id="UI_Pickup_SniperRifle"/>
 <Sound id="MissileTurret_Load_MP"/>
+<Sound id="UI_Reload_bullet"/>
 <Unit id="SCV"/>
 <Unit id="InvisibleTargetDummy"/>
 <Unit id="InvisibleTargetDummyStructure"/>

@@ -217,10 +217,10 @@ bool gt_DEBUG_TESTADDITEMS_Func (bool testConds, bool runActions) {
         return true;
     }
 
+    libDEAD_gf_ECL_ITEM_add(EventPlayer(), "Crappy Pack", 1, true);
     libDEAD_gf_ECL_ITEM_add(EventPlayer(), "CPG11", 1, true);
-    libDEAD_gf_ECL_ITEM_add(EventPlayer(), "Medi Suit", 1, true);
-    libDEAD_gf_ECL_ITEM_add(EventPlayer(), "Trooper Suit", 1, true);
     libDEAD_gf_ECL_ITEM_add(EventPlayer(), "Slugger", 1, true);
+    libDEAD_gf_ECL_ITEM_add(EventPlayer(), "Pistol Ammo", 100, true);
     return true;
 }
 

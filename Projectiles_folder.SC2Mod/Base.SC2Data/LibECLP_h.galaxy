@@ -19,7 +19,7 @@ const int libECLP_gv_eCL_Projectiles_max = 20;
 struct libECLP_gs_ECL__HitScan {
     unit[libECLP_gv_eCL_Projectiles_max + 1] lv_projectile;
     string lv_weapon;
-    int lv_ammo;
+    int[5] lv_ammo;
     int lv_magazine;
 };
 
@@ -51,7 +51,7 @@ bool[17] libECLP_gv_unitMovementEnabled;
 
 // Function Declarations
 void libECLP_gf_ECL_Laserpointer (int lp_player, unit lp_unit, bool lp_onOff);
-void libECLP_gf_ECL_Fire (int lp_player, int lp_lAUNCH_ART, int lp_n_projectiles, int lp_bursts, fixed lp_velocity, fixed lp_cooldown, fixed lp_cooldown_Burst, fixed lp_angle, string lp_iMPACT_Effect, fixed lp_range);
+void libECLP_gf_ECL_Fire (int lp_player, int lp_lAUNCH_ART, int lp_n_projectiles, int lp_bursts, fixed lp_velocity, fixed lp_cooldown, fixed lp_cooldown_Burst, fixed lp_angle, string lp_iMPACT_Effect, fixed lp_range, int lp_weaponIndex);
 void libECLP_gf_ECL_HitScan (unit lp_source, point lp_sourcePoint, fixed lp_angle_cursor, int lp_n_projectiles, fixed lp_velocity, fixed lp_spread_HalfAngle, fixed lp_range, abilcmd lp_abilityCommand, string lp_effect_Impact, string lp_effect_CP, bool lp_dEBUG);
 void libECLP_gf_TracerBeam (actor lp_launch, actor lp_impact, string lp_beammodel);
 void libECLP_gf_ShowHideActorforPlayer (int lp_player, actor lp_actor, bool lp_showHide);

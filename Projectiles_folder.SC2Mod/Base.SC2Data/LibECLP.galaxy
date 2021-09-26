@@ -49,7 +49,7 @@ void libECLP_gf_ECL_Laserpointer (int lp_player, unit lp_unit, bool lp_onOff) {
     }
 }
 
-void libECLP_gf_ECL_Fire (int lp_player, int lp_lAUNCH_ART, int lp_n_projectiles, int lp_bursts, fixed lp_velocity, fixed lp_cooldown, fixed lp_cooldown_Burst, fixed lp_angle, string lp_iMPACT_Effect, fixed lp_range) {
+void libECLP_gf_ECL_Fire (int lp_player, int lp_lAUNCH_ART, int lp_n_projectiles, int lp_bursts, fixed lp_velocity, fixed lp_cooldown, fixed lp_cooldown_Burst, fixed lp_angle, string lp_iMPACT_Effect, fixed lp_range, int lp_weaponIndex) {
     // Variable Declarations
     string lv_sTRING;
     string lv_l_A;
@@ -71,7 +71,7 @@ void libECLP_gf_ECL_Fire (int lp_player, int lp_lAUNCH_ART, int lp_n_projectiles
     lv_bursts_remaining = lp_bursts;
 
     // Implementation
-    if ((libECLP_gv_eCL__HitScan[lp_player].lv_ammo > 0)) {
+    if ((libECLP_gv_eCL__HitScan[lp_player].lv_ammo[lp_weaponIndex] > 0)) {
         autoF8A53135_val = lp_lAUNCH_ART;
         if (autoF8A53135_val == libECLP_ge_ECL_WEAPON_LAUNCH_TYPE_BULLET) {
             lv_l_A = "PAttackBullet";
@@ -153,15 +153,15 @@ void libECLP_gf_ECL_Fire (int lp_player, int lp_lAUNCH_ART, int lp_n_projectiles
                     lv_bursts_remaining -= 1;
                 }
 
-                libECLP_gv_eCL__HitScan[lp_player].lv_ammo -= 1;
-                libNtve_gf_SetDialogItemText(libECLP_gv_eCL__HitScan[lp_player].lv_magazine, IntToText(libECLP_gv_eCL__HitScan[lp_player].lv_ammo), PlayerGroupSingle(lp_player));
+                libECLP_gv_eCL__HitScan[lp_player].lv_ammo[lp_weaponIndex] -= 1;
+                libNtve_gf_SetDialogItemText(libECLP_gv_eCL__HitScan[lp_player].lv_magazine, IntToText(libECLP_gv_eCL__HitScan[lp_player].lv_ammo[lp_weaponIndex]), PlayerGroupSingle(lp_player));
                 Wait(lp_cooldown, c_timeGame);
-            }while ((UnitIsValid(libECLP_gv_eCL_Source[lp_player]) == true) && (libECLP_gv_eCL__HitScan[lp_player].lv_ammo > 0) && (((lp_bursts == 0) && (libECLP_gv_eCL_UpDown[lp_player] == true)) || (lv_bursts_remaining > 0)));
+            }while ((UnitIsValid(libECLP_gv_eCL_Source[lp_player]) == true) && (libECLP_gv_eCL__HitScan[lp_player].lv_ammo[lp_weaponIndex] > 0) && (((lp_bursts == 0) && (libECLP_gv_eCL_UpDown[lp_player] == true)) || (lv_bursts_remaining > 0)));
             Wait(lp_cooldown_Burst, c_timeGame);
             libECLP_gv_eCL_SaveMouse_on_off[lp_player] = false;
             libECLP_gv_eCL_Firing[lp_player] = false;
             libECLP_gv_eCL_ADS[lp_player] = false;
-            if ((((lp_bursts == 0) && (libECLP_gv_eCL_UpDown[lp_player] == false)) || ((lp_bursts > 0) && (lv_bursts_remaining == 0))) && (libECLP_gv_eCL_Firing[lp_player] == false)) {
+            if (((libECLP_gv_eCL__HitScan[lp_player].lv_ammo[lp_weaponIndex] <= 0) || ((lp_bursts == 0) && (libECLP_gv_eCL_UpDown[lp_player] == false)) || ((lp_bursts > 0) && (lv_bursts_remaining == 0))) && (libECLP_gv_eCL_Firing[lp_player] == false)) {
                 ActorSend(libECLP_gv_eCL_Beam[lp_player], "HostSiteOpsSet ::HostImpact {SOpCursor SOpMoveUpByDot2 SOpMoveUpByDot25}");
                 ActorSend(libNtve_gf_MainActorofUnit(libECLP_gv_eCL_Source[EventPlayer()]), "AnimClear Attack");
                 ActorSend(libNtve_gf_MainActorofUnit(libECLP_gv_eCL_Source[lp_player]), "AnimPlay Attack Attack PlayForever,NonLooping");
@@ -656,7 +656,7 @@ bool libECLP_gt_ECL_Fire_Func (bool testConds, bool runActions) {
     libECLP_gv_eCL_UpDown[EventPlayer()] = true;
     UIDisplayMessage(PlayerGroupAll(), c_messageAreaDebug, StringExternal("Param/Value/lib_ECLP_CF1C34B8"));
     libECLP_gv_eCL_SaveMouse_on_off[EventPlayer()] = true;
-    libECLP_gf_ECL_Fire(EventPlayer(), libECLP_ge_ECL_WEAPON_LAUNCH_TYPE_BULLET, 1, 1, 20.0, 0.1, 0.0, 5.0, "PAttackBulletImpactNEW", 20.0);
+    libECLP_gf_ECL_Fire(EventPlayer(), libECLP_ge_ECL_WEAPON_LAUNCH_TYPE_BULLET, 1, 1, 20.0, 0.1, 0.0, 5.0, "PAttackBulletImpactNEW", 20.0, 0);
     return true;
 }
 
