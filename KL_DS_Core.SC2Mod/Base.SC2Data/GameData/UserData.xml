@@ -339,11 +339,40 @@
                 <Field Id="Weapon Data"/>
             </User>
         </Instances>
+        <Instances Id="ER-19 Blaster">
+            <Image Image="Assets\Textures\Items\WPN_LASER.dds">
+                <Field Id="Icon"/>
+            </Image>
+            <Int Int="1">
+                <Field Id="Max Quantity"/>
+            </Int>
+            <Int Int="100">
+                <Field Id="Max Durability"/>
+            </Int>
+            <String String="ER-19 Blaster">
+                <Field Id="Name"/>
+            </String>
+            <String String="Weapon">
+                <Field Id="Category"/>
+            </String>
+            <String String="Equip">
+                <Field Id="Use Type"/>
+            </String>
+            <Text Text="UserData/Items/ER-19 Blaster_Lore">
+                <Field Id="Lore"/>
+            </Text>
+            <User Type="ModifierStats" Instance="Vision Helmet">
+                <Field Id="Item Stats"/>
+            </User>
+            <User Type="WeaponTypes" Instance="[Default]">
+                <Field Id="Weapon Data"/>
+            </User>
+        </Instances>
         <Instances Id="Pistol Ammo">
             <Image Image="Assets\Textures\Items\ui_itemicons_ammopistol.dds">
                 <Field Id="Icon"/>
             </Image>
-            <Int Int="40">
+            <Int Int="1000">
                 <Field Id="Max Quantity"/>
             </Int>
             <String String="Ammo">
@@ -890,7 +919,7 @@
     </CUser>
     <CUser id="ModifierStats">
         <Fields Id="Move Speed" Type="Fixed" EditorColumn="1"/>
-        <Fields Id="Attack Speed" Type="Fixed" EditorColumn="2"/>
+        <Fields Id="Move Speed Percent" Type="Fixed" EditorColumn="2"/>
         <Fields Id="Vision Range" Type="Int" EditorColumn="3"/>
         <Fields Id="Armor" Type="Int" EditorColumn="4"/>
         <Fields Id="Health" Type="Int" EditorColumn="5"/>
@@ -902,6 +931,7 @@
         <Fields Id="InventorySize" Type="Int" EditorColumn="11"/>
         <Fields Id="QuickSlots" Type="Int" EditorColumn="12"/>
         <Fields Id="Oxygen Reserve" Type="Int" EditorColumn="13"/>
+        <Fields Id="Attack Speed" Type="Fixed" EditorColumn="14"/>
         <Instances Id="[Default]"/>
         <Instances Id="Vision Helmet">
             <Int Int="2">
@@ -917,26 +947,29 @@
             <Fixed Fixed="-4">
                 <Field Id="Move Speed"/>
             </Fixed>
-            <Int Int="-1">
-                <Field Id="Vision Range"/>
-            </Int>
             <Int Int="4">
                 <Field Id="InventorySize"/>
             </Int>
-            <Int Int="20">
-                <Field Id="Health"/>
-            </Int>
         </Instances>
         <Instances Id="Medi Suit">
-            <Int Int="30">
-                <Field Id="Health"/>
-            </Int>
-            <Fixed Fixed="0.001">
+            <Fixed Fixed="0.1">
                 <Field Id="Health Percent"/>
             </Fixed>
-            <Fixed Fixed="2.0">
+            <Fixed>
                 <Field Id="Health Regeneration"/>
             </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="Shield Percent"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="Shield Regeneration"/>
+            </Fixed>
+            <Int Int="100">
+                <Field Id="Health"/>
+            </Int>
+            <Int Int="100">
+                <Field Id="Shield"/>
+            </Int>
         </Instances>
         <Instances Id="Security Suit">
             <Int Int="2">
@@ -966,7 +999,9 @@
         <Fields Id="StartingAmmo" Type="Int" EditorColumn="8"/>
         <Fields Id="ProjectileCount" Type="Int" EditorColumn="9"/>
         <Fields Id="Velocity" Type="Fixed" EditorColumn="10"/>
-        <Fields Id="Angle" Type="Fixed" EditorColumn="11"/>
+        <Fields Id="Angle_min" Type="Fixed" EditorColumn="11"/>
+        <Fields Id="Angle_max" Type="Fixed" EditorColumn="12"/>
+        <Fields Id="Sound" Type="Sound" EditorColumn="13"/>
         <Fields>
             <Id value="ImpactEffect"/>
             <Type value="GameLink"/>
@@ -986,8 +1021,11 @@
             <Fixed Fixed="26">
                 <Field Id="Velocity"/>
             </Fixed>
+            <Fixed Fixed="1">
+                <Field Id="Angle_min"/>
+            </Fixed>
             <Fixed Fixed="4">
-                <Field Id="Angle"/>
+                <Field Id="Angle_max"/>
             </Fixed>
             <GameLink GameLink="PAttackBulletImpactNEW">
                 <Field Id="ImpactEffect"/>
@@ -1010,6 +1048,9 @@
             <Int Int="6">
                 <Field Id="StartingAmmo"/>
             </Int>
+            <Sound Sound="UI_NovaEquipment_Shotgun">
+                <Field Id="Sound"/>
+            </Sound>
             <String String="Pistol">
                 <Field Id="AmmoType"/>
             </String>
@@ -1028,8 +1069,11 @@
             <Fixed Fixed="20">
                 <Field Id="Velocity"/>
             </Fixed>
-            <Fixed Fixed="10">
-                <Field Id="Angle"/>
+            <Fixed Fixed="5">
+                <Field Id="Angle_min"/>
+            </Fixed>
+            <Fixed Fixed="15">
+                <Field Id="Angle_max"/>
             </Fixed>
             <GameLink GameLink="PAttackBulletImpactNEW">
                 <Field Id="ImpactEffect"/>
@@ -1037,7 +1081,7 @@
             <Image Image="Assets\Textures\ui_clean_weapontestmain.dds">
                 <Field Id="Icon"/>
             </Image>
-            <Int Int="30">
+            <Int Int="50">
                 <Field Id="BaseAmmoMax"/>
             </Int>
             <Int Int="2">
@@ -1049,9 +1093,59 @@
             <Int Int="2">
                 <Field Id="ProjectileCount"/>
             </Int>
-            <Int Int="30">
+            <Int Int="50">
                 <Field Id="StartingAmmo"/>
             </Int>
+            <Sound Sound="UI_NovaEquipment_Shotgun">
+                <Field Id="Sound"/>
+            </Sound>
+            <String String="Pistol">
+                <Field Id="AmmoType"/>
+            </String>
+            <String String="String">
+                <Field Id="Launch"/>
+            </String>
+        </Instances>
+        <Instances Id="ER-19 Blaster">
+            <Fixed Fixed="0.25">
+                <Field Id="Cooldown"/>
+            </Fixed>
+            <Fixed Fixed="30">
+                <Field Id="Range"/>
+            </Fixed>
+            <Fixed Fixed="30">
+                <Field Id="Velocity"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="Angle_min"/>
+            </Fixed>
+            <Fixed Fixed="2">
+                <Field Id="Angle_max"/>
+            </Fixed>
+            <GameLink GameLink="PAttackLaserImpact">
+                <Field Id="ImpactEffect"/>
+            </GameLink>
+            <Image Image="Assets\Textures\ui_clean_weapontestmain.dds">
+                <Field Id="Icon"/>
+            </Image>
+            <Int Int="15">
+                <Field Id="BaseAmmoMax"/>
+            </Int>
+            <Int Int="10">
+                <Field Id="DamageMax"/>
+            </Int>
+            <Int Int="10">
+                <Field Id="DamageMin"/>
+            </Int>
+            <Int Int="1">
+                <Field Id="ProjectileCount"/>
+            </Int>
+            <Int Int="15">
+                <Field Id="StartingAmmo"/>
+            </Int>
+            <Sound Sound="UI_NovaEquipment_PlasmaRifle">
+                <Field Id="Sound"/>
+            </Sound>
             <String String="Pistol">
                 <Field Id="AmmoType"/>
             </String>

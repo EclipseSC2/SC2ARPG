@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CModel id="PAttackLaserImpact" parent="ImpactFX">
+        <Model value="Assets\Effects\Terran\BattlecruiserMissileImpact\BattlecruiserMissileImpact.m3"/>
+        <EditorCategories value="Race:Terran"/>
+    </CModel>
+    <CModel id="PAttackLaser" parent="MissileFX">
+        <Model value="Assets\Effects\Terran\WraithLaserMissile\WraithLaserMissile.m3"/>
+        <EditorCategories value="Race:Terran"/>
+        <ScaleMax value="0.666700,0.666700,0.666700"/>
+        <ScaleMin value="0.666700,0.666700,0.666700"/>
+    </CModel>
+    <CModel id="PAttackLaserLaunch" parent="LaunchFX">
+        <Model value="Assets\Effects\Terran\BattleCruiserPlasmaLaunch\BattleCruiserPlasmaLaunch.m3"/>
+        <EditorCategories value="Race:Terran"/>
+        <Lighting value="VikingAssaultAttackLaunch"/>
+    </CModel>
     <CModel id="PAttackCursor3D" parent="Doodad">
         <Model value="Assets\Doodads\Shapes\ShapeCylinder\ShapeCylinder.m3"/>
         <AnimSpeed value="0.001000"/>
@@ -211,5 +226,9 @@
         <Lighting value="VikingAssaultAttackLaunch"/>
         <ScaleMax value="0.500000,0.500000,0.500000"/>
         <ScaleMin value="0.500000,0.500000,0.500000"/>
+    </CModel>
+    <CModel id="ShapeCylinder">
+        <ScaleMax value="0.900000,0.900000,0.900000"/>
+        <ScaleMin value="0.900000,0.900000,0.900000"/>
     </CModel>
 </Catalog>

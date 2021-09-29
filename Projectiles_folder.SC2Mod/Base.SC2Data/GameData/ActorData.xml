@@ -1,5 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CActorUnit id="ECLWALL2x2" parent="GenericUnitStandardNoAutoSoundLinks" unitName="ECLWALL2x2">
+        <!--Model value="Invisible"/-->
+        <Model value="ShapeCube"/>
+        <Scale value="2.000000"/>
+        <EditorModel value="ShapeCube"/>
+        <WalkAnimMoveSpeed value="0"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <UnitFlags index="ShowBlobShadow" value="0"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.100000"/>
+        <HostSiteOps Ops="SOpMoveBackByDot75"/>
+    </CActorUnit>
+    <CActorUnit id="ECLWALL1x1" parent="GenericUnitStandardNoAutoSoundLinks" unitName="ECLWALL1x1">
+        <On Terms="ActorCreation" Send="SetOpacity 0.100000"/>
+        <HostSiteOps Ops="SOpMoveBackByDot75"/>
+        <Model value="ShapeCube"/>
+        <Scale value="1.000000,1.000000,2.000000"/>
+        <EditorModel value="ShapeCube"/>
+        <WalkAnimMoveSpeed value="0"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <UnitFlags index="ShowBlobShadow" value="0"/>
+    </CActorUnit>
+    <CActorUnit id="ECLWALL4x4" parent="GenericUnitStandardNoAutoSoundLinks" unitName="ECLWALL4x4">
+        <Model value="ShapeCube"/>
+        <Scale value="4.000000,4.000000,2.000000"/>
+        <EditorModel value="ShapeCube"/>
+        <WalkAnimMoveSpeed value="0"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <UnitFlags index="ShowBlobShadow" value="0"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.100000"/>
+    </CActorUnit>
+    <CActorUnit id="ECLWALL8x8" parent="GenericUnitStandardNoAutoSoundLinks" unitName="ECLWALL8x8">
+        <Model value="ShapeCube"/>
+        <Scale value="8.000000,8.000000,2.000000"/>
+        <EditorModel value="ShapeCube"/>
+        <WalkAnimMoveSpeed value="0"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <UnitFlags index="ShowBlobShadow" value="0"/>
+        <On Terms="ActorCreation" Send="SetOpacity"/>
+    </CActorUnit>
+    <CActorAction id="PAttackLaserImpact" parent="GenericAttack" effectAttack="PAttackLaserImpact">
+        <ImpactMap index="None" Model="PAttackLaserImpact" Sound="PAttackLaserImpact"/>
+        <ImpactMap index="Flesh" ModelReaction="BloodTargetImpact"/>
+        <ImpactPhysics Name="BulletImpact" MatchKeys="Basic" Physics="GhostSnipeAttackDeathForce"/>
+    </CActorAction>
+    <CActorAction id="PAttackLaserLaunch" parent="GenericAttack" effectImpact="EMPSearch" effectLaunch="PAttackLaserLM">
+        <Sharing value="PerEffectTree"/>
+        <On index="1" Terms="Effect.PAttackLaserImpact.Start; FromEffectTreeDescendant" Send="ActionImpact"/>
+        <On index="2" Terms="Effect.PAttackLaserImpact.Stop; FromEffectTreeDescendant" Send="ActionImpactPhysics"/>
+        <LaunchSiteOps Ops="SOpAttachHarness SOpRotVariancerUp35"/>
+        <LaunchAssets Model="PAttackLaserLaunch" Sound="PAttackLaserLaunch"/>
+        <Missile value="PAttackLaserMissile"/>
+        <ImpactPointSiteOps Ops="SOpTargetPointStationary SOpShadow GhostEMPOffset"/>
+        <Lifetime value="0.000000"/>
+    </CActorAction>
+    <CActorMissile id="PAttackLaserMissile" parent="GenericAttackMissile" unitName="PAttackLaser"/>
     <CActorModel id="PAttackCursorSiteBottom" parent="ModelAddition">
         <Inherits index="BaseModelScale" value="0"/>
         <Inherits index="CastShadows" value="0"/>
@@ -171,6 +246,12 @@
     <CActorSiteOpForward id="SOpForwardTrooper">
         <HostForward Subject="Separatist"/>
     </CActorSiteOpForward>
+    <CActorSiteOpLocalOffset id="SOpMoveDownByDot05">
+        <LocalOffset value="0.000000,0.000000,-0.050000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpMoveUpByDot05">
+        <LocalOffset value="0.000000,0.000000,0.050000"/>
+    </CActorSiteOpLocalOffset>
     <CActorSiteOpRotationExplicit id="SOpPointLeft">
         <Forward value="-1.000000,0.000000,0.000000"/>
         <IsLocal value="1"/>

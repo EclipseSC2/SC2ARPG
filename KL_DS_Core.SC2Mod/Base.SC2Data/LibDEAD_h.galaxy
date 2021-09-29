@@ -152,6 +152,9 @@ struct libDEAD_gs_DS_HUD {
     int lv_hPBar;
     int lv_uTF;
     int lv_magazine_main;
+    int lv_weapon_main;
+    int lv_weapon_icon;
+    int lv_weapon_label;
     int lv_weaponPanel;
     int lv_mainWpnIcon;
     int lv_mainWpnName;
@@ -380,6 +383,7 @@ string libDEAD_gf_ECL_ReturnEquippedItem (int lp_player, string lp_type);
 string libDEAD_gf_ECL_ReturnWeaponItem (int lp_player, int lp_weaponIndex);
 void libDEAD_gf_ECL_GroundItemData (int lp_quantity, string lp_itemData, unit lp_item);
 void libDEAD_gf_ECL_Reload (fixed lp_reload_time, int lp_player);
+string libDEAD_gf_ReturnAmmoRequired (string lp_instance);
 void libDEAD_gf_DS_FireWeaponItem (int lp_player, string lp_weaponItem);
 void libDEAD_gf_ECL__Hookup_Context (int lp_player, int lp_index);
 bool libDEAD_gf_IsBlueprintDiscovered (string lp_item);

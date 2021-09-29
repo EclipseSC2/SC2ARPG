@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CSound id="PAttackLaserLaunch" parent="Spell">
+        <EditorCategories value="Race:Terran"/>
+        <AssetArray File="Assets\Sounds\VoidShard_Energy_Launch_01.wav"/>
+        <AssetArray File="Assets\Sounds\VoidShard_Energy_Launch_02.wav"/>
+        <AssetArray File="Assets\Sounds\VoidShard_Energy_Launch_03.wav"/>
+        <DupeMaximumMethod value="Replace"/>
+        <Volume value="-2.010000,-2.010000"/>
+        <Pitch value="16.459999,16.459999"/>
+    </CSound>
+    <CSound id="PAttackLaserImpact" parent="Combat">
+        <EditorCategories value="Race:Terran"/>
+        <AssetArray File="Assets\Sounds\Protoss\Colossus\Colossus_AttackImpact0.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Colossus\Colossus_AttackImpact1.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Colossus\Colossus_AttackImpact2.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Colossus\Colossus_AttackImpact3.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Colossus\Colossus_AttackImpact4.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Colossus\Colossus_AttackImpact5.wav"/>
+        <Pitch value="12.090000,15.089999"/>
+        <Volume value="-6.000000,-6.000000"/>
+    </CSound>
     <CSound id="PAttackCapsule_Impact" parent="Combat">
         <AssetArray File="Assets\Sounds\Harness_Release_Steam_02.wav" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\Harness_Release_Steam_03.wav" FacialGroup=""/>

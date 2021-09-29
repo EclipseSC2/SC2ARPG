@@ -1,5 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CUnit id="ECLWALL2x2">
+        <FlagArray index="Uncommandable" value="1"/>
+        <FlagArray index="Unselectable" value="1"/>
+        <FlagArray index="NoDeathEvent" value="1"/>
+        <FlagArray index="NoPortraitTalk" value="1"/>
+        <PlaneArray index="Ground" value="1"/>
+        <LifeStart value="1000"/>
+        <LifeMax value="1000"/>
+        <LifeArmor value="10"/>
+        <LifeRegenRate value="10"/>
+        <BehaviorArray Link="ImmuneToDamage"/>
+        <Radius value="1"/>
+        <SeparationRadius value="1"/>
+        <MinimapRadius value="0"/>
+        <EditorCategories value="ObjectFamily:Campaign,ObjectType:Other"/>
+    </CUnit>
+    <CUnit id="ECLWALL1x1">
+        <FlagArray index="Uncommandable" value="1"/>
+        <FlagArray index="Unselectable" value="1"/>
+        <FlagArray index="NoDeathEvent" value="1"/>
+        <FlagArray index="NoPortraitTalk" value="1"/>
+        <PlaneArray index="Ground" value="1"/>
+        <LifeStart value="1000"/>
+        <LifeMax value="1000"/>
+        <LifeArmor value="10"/>
+        <LifeRegenRate value="10"/>
+        <BehaviorArray Link="ImmuneToDamage"/>
+        <MinimapRadius value="0"/>
+        <EditorCategories value="ObjectFamily:Campaign,ObjectType:Other"/>
+    </CUnit>
+    <CUnit id="ECLWALL4x4">
+        <FlagArray index="Uncommandable" value="1"/>
+        <FlagArray index="Unselectable" value="1"/>
+        <FlagArray index="NoDeathEvent" value="1"/>
+        <FlagArray index="NoPortraitTalk" value="1"/>
+        <PlaneArray index="Ground" value="1"/>
+        <LifeStart value="1000"/>
+        <LifeMax value="1000"/>
+        <LifeArmor value="10"/>
+        <LifeRegenRate value="10"/>
+        <BehaviorArray Link="ImmuneToDamage"/>
+        <Radius value="2"/>
+        <SeparationRadius value="2"/>
+        <MinimapRadius value="0"/>
+        <EditorCategories value="ObjectFamily:Campaign,ObjectType:Other"/>
+    </CUnit>
+    <CUnit id="ECLWALL8x8">
+        <FlagArray index="Uncommandable" value="1"/>
+        <FlagArray index="Unselectable" value="1"/>
+        <FlagArray index="NoDeathEvent" value="1"/>
+        <FlagArray index="NoPortraitTalk" value="1"/>
+        <PlaneArray index="Ground" value="1"/>
+        <LifeStart value="1000"/>
+        <LifeMax value="1000"/>
+        <LifeArmor value="10"/>
+        <LifeRegenRate value="10"/>
+        <BehaviorArray Link="ImmuneToDamage"/>
+        <Radius value="4"/>
+        <SeparationRadius value="4"/>
+        <MinimapRadius value="0"/>
+        <EditorCategories value="ObjectFamily:Campaign,ObjectType:Other"/>
+    </CUnit>
+    <CUnit id="PAttackLaser" parent="MISSILE_INVULNERABLE">
+        <Race value="Terr"/>
+        <Mover value="PAttackMover1"/>
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Melee"/>
+    </CUnit>
     <CUnit id="PAttackCursor3D" parent="DESTRUCTIBLE">
         <FlagArray index="Untargetable" value="1"/>
         <FlagArray index="Undetectable" value="1"/>

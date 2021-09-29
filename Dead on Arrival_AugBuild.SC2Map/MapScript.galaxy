@@ -217,10 +217,11 @@ bool gt_DEBUG_TESTADDITEMS_Func (bool testConds, bool runActions) {
         return true;
     }
 
+    libDEAD_gf_ECL_ITEM_add(EventPlayer(), "Pistol Ammo", 300, true);
     libDEAD_gf_ECL_ITEM_add(EventPlayer(), "Crappy Pack", 1, true);
+    libDEAD_gf_ECL_ITEM_add(EventPlayer(), "ER-19 Blaster", 1, true);
     libDEAD_gf_ECL_ITEM_add(EventPlayer(), "CPG11", 1, true);
-    libDEAD_gf_ECL_ITEM_add(EventPlayer(), "Slugger", 1, true);
-    libDEAD_gf_ECL_ITEM_add(EventPlayer(), "Pistol Ammo", 100, true);
+    libDEAD_gf_ECL_ITEM_add(EventPlayer(), "Medi Suit", 1, true);
     return true;
 }
 
@@ -520,9 +521,15 @@ bool gt_DoorLab_Func (bool testConds, bool runActions) {
 
     if ((UnitGroupCount(UnitGroup(null, c_playerAny, EventUnitRegion(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 1), c_unitCountAlive) > 0) && (UnitIsAlive(UnitFromId(1195023238)) == false)) {
         UnitIssueOrder(UnitFromId(1294028385), Order(AbilityCommand("DSLabDoorOpen", 0)), c_orderQueueReplace);
+        libNtve_gf_ShowHideUnit(UnitFromId(1066456391), false);
+        libNtve_gf_ShowHideUnit(UnitFromId(251122549), false);
+        libNtve_gf_ShowHideUnit(UnitFromId(730151710), false);
     }
     else if ((UnitGroupCount(UnitGroup(null, c_playerAny, EventUnitRegion(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 1), c_unitCountAlive) == 0) && (UnitIsAlive(UnitFromId(1195023238)) == false)) {
         UnitIssueOrder(UnitFromId(1294028385), Order(AbilityCommand("DSLabDoorClose", 0)), c_orderQueueReplace);
+        libNtve_gf_ShowHideUnit(UnitFromId(1066456391), true);
+        libNtve_gf_ShowHideUnit(UnitFromId(251122549), true);
+        libNtve_gf_ShowHideUnit(UnitFromId(730151710), true);
     }
     else if ((UnitGroupCount(UnitGroup(null, c_playerAny, EventUnitRegion(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 1), c_unitCountAlive) > 0) && (UnitIsAlive(UnitFromId(1195023238)) == true)) {
         SoundPlayAtPointForPlayer(SoundLink("Mission_Nova07_DefendersAdjutant_058", 0), c_maxPlayers, PlayerGroupSingle(UnitGetOwner(EventUnit())), UnitGetPosition(UnitFromId(1294028385)), 8.0, 100.0, 0.0);
@@ -583,9 +590,15 @@ bool gt_DoorHangarBay_Func (bool testConds, bool runActions) {
 
     if ((UnitGroupCount(UnitGroup(null, c_playerAny, EventUnitRegion(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 1), c_unitCountAlive) > 0) && (UnitIsAlive(UnitFromId(448832027)) == false)) {
         UnitIssueOrder(UnitFromId(1849471035), Order(AbilityCommand("DSLabDoorOpen", 0)), c_orderQueueReplace);
+        libNtve_gf_ShowHideUnit(UnitFromId(409669888), false);
+        libNtve_gf_ShowHideUnit(UnitFromId(2115087548), false);
+        libNtve_gf_ShowHideUnit(UnitFromId(1402889172), false);
     }
     else if ((UnitGroupCount(UnitGroup(null, c_playerAny, EventUnitRegion(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 1), c_unitCountAlive) == 0) && (UnitIsAlive(UnitFromId(448832027)) == false)) {
         UnitIssueOrder(UnitFromId(1849471035), Order(AbilityCommand("DSLabDoorClose", 0)), c_orderQueueReplace);
+        libNtve_gf_ShowHideUnit(UnitFromId(409669888), true);
+        libNtve_gf_ShowHideUnit(UnitFromId(2115087548), true);
+        libNtve_gf_ShowHideUnit(UnitFromId(1402889172), true);
     }
     else if ((UnitGroupCount(UnitGroup(null, c_playerAny, EventUnitRegion(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 1), c_unitCountAlive) > 0) && (UnitIsAlive(UnitFromId(448832027)) == true)) {
         SoundPlayAtPointForPlayer(SoundLink("Mission_Nova07_DefendersAdjutant_058", 0), c_maxPlayers, PlayerGroupSingle(UnitGetOwner(EventUnit())), UnitGetPosition(UnitFromId(1849471035)), 8.0, 100.0, 0.0);
@@ -649,9 +662,19 @@ bool gt_DoorConstruction_Func (bool testConds, bool runActions) {
 
     if ((UnitGroupCount(UnitGroup(null, c_playerAny, EventUnitRegion(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 1), c_unitCountAlive) > 0) && (UnitIsAlive(UnitFromId(801048369)) == false)) {
         UnitIssueOrder(UnitFromId(1511735643), Order(AbilityCommand("CompoundSewers_Door_Wide_NWLowered", 0)), c_orderQueueReplace);
+        libNtve_gf_ShowHideUnit(UnitFromId(1125975202), false);
+        libNtve_gf_ShowHideUnit(UnitFromId(825099636), false);
+        libNtve_gf_ShowHideUnit(UnitFromId(242071668), false);
+        libNtve_gf_ShowHideUnit(UnitFromId(1460682169), false);
+        libNtve_gf_ShowHideUnit(UnitFromId(929017002), false);
     }
     else if ((UnitGroupCount(UnitGroup(null, c_playerAny, EventUnitRegion(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 1), c_unitCountAlive) == 0) && (UnitIsAlive(UnitFromId(801048369)) == false)) {
         UnitIssueOrder(UnitFromId(1511735643), Order(AbilityCommand("CompoundSewers_Door_Wide_NW", 0)), c_orderQueueReplace);
+        libNtve_gf_ShowHideUnit(UnitFromId(1125975202), true);
+        libNtve_gf_ShowHideUnit(UnitFromId(825099636), true);
+        libNtve_gf_ShowHideUnit(UnitFromId(242071668), true);
+        libNtve_gf_ShowHideUnit(UnitFromId(1460682169), true);
+        libNtve_gf_ShowHideUnit(UnitFromId(929017002), true);
     }
     else if ((UnitGroupCount(UnitGroup(null, c_playerAny, EventUnitRegion(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 1), c_unitCountAlive) > 0) && (UnitIsAlive(UnitFromId(801048369)) == true)) {
         SoundPlayAtPointForPlayer(SoundLink("Mission_Nova07_DefendersAdjutant_058", 0), c_maxPlayers, PlayerGroupSingle(UnitGetOwner(EventUnit())), UnitGetPosition(UnitFromId(1511735643)), 8.0, 100.0, 0.0);

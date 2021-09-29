@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CMoverMissile id="PAttackMover1">
+        <MotionPhases index="0" FlightTime="0.99"/>
+    </CMoverMissile>
+</Catalog>

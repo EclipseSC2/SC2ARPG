@@ -49,8 +49,10 @@ void libECLP_gf_ECL_Laserpointer (int lp_player, unit lp_unit, bool lp_onOff) {
     }
 }
 
-void libECLP_gf_ECL_Fire (int lp_player, int lp_lAUNCH_ART, int lp_n_projectiles, int lp_bursts, fixed lp_velocity, fixed lp_cooldown, fixed lp_cooldown_Burst, fixed lp_angle, string lp_iMPACT_Effect, fixed lp_range, int lp_weaponIndex) {
+void libECLP_gf_ECL_Fire (int lp_player, int lp_lAUNCH_ART, int lp_n_projectiles, int lp_bursts, fixed lp_velocity, fixed lp_cooldown, fixed lp_cooldown_Burst, fixed lp_angle_min, fixed lp_angle_max, string lp_iMPACT_Effect, fixed lp_range, int lp_weaponIndex) {
     // Variable Declarations
+    fixed lv_angle;
+    int lv_shots;
     string lv_sTRING;
     string lv_l_A;
     abilcmd lv_l_AC;
@@ -67,6 +69,7 @@ void libECLP_gf_ECL_Fire (int lp_player, int lp_lAUNCH_ART, int lp_n_projectiles
     int auto9E85C12A_var;
 
     // Variable Initialization
+    lv_angle = lp_angle_min;
     lv_sTRING = "";
     lv_bursts_remaining = lp_bursts;
 
@@ -77,6 +80,12 @@ void libECLP_gf_ECL_Fire (int lp_player, int lp_lAUNCH_ART, int lp_n_projectiles
             lv_l_A = "PAttackBullet";
             lv_l_AC = AbilityCommand("PAttackBullet", 0);
             lv_l_E = "PAttackBulletCP";
+            lv_uSES_PROJECTILE = true;
+        }
+        else if (autoF8A53135_val == libECLP_ge_ECL_WEAPON_LAUNCH_TYPE_BULLET2) {
+            lv_l_A = "PAttackLaser";
+            lv_l_AC = AbilityCommand("PAttackLaser", 0);
+            lv_l_E = "PAttackLaserCP";
             lv_uSES_PROJECTILE = true;
         }
         else if (autoF8A53135_val == libECLP_ge_ECL_WEAPON_LAUNCH_TYPE_PLASMA) {
@@ -121,7 +130,7 @@ void libECLP_gf_ECL_Fire (int lp_player, int lp_lAUNCH_ART, int lp_n_projectiles
             }
 
             libECLP_gv_eCL_SaveMouse_on_off[lp_player] = true;
-            lv_sTRING = "HostSiteOpsSet ::HostImpact {SOpCursor SOpMoveUpByDot2 SOpMoveUpByDot25 SOpMoveUpByDot1 SOpMoveUpByDot1 ";
+            lv_sTRING = "HostSiteOpsSet ::HostImpact {SOpCursor SOpMoveUpByDot2 SOpMoveUpByDot25 SOpMoveUpByDot05 SOpMoveUpByDot1";
             autoC579B482_ae = FixedToInt(Round((10.0 / lp_cooldown)));
             autoC579B482_var = 1;
             for ( ; autoC579B482_var <= autoC579B482_ae; autoC579B482_var += 1 ) {
@@ -133,12 +142,14 @@ void libECLP_gf_ECL_Fire (int lp_player, int lp_lAUNCH_ART, int lp_n_projectiles
             for ( ; auto9E85C12A_var <= auto9E85C12A_ae; auto9E85C12A_var += 1 ) {
                 lv_sTRING = (lv_sTRING + " SOpLaserFlickeroverlay");
             }
-            lv_sTRING = (lv_sTRING + " SOpMoveDownByDot1}");
+            lv_sTRING = (lv_sTRING + " SOpMoveDownByDot05}");
             ActorSend(libECLP_gv_eCL_Beam[lp_player], (lv_sTRING));
             ActorSend(libNtve_gf_MainActorofUnit(libECLP_gv_eCL_Source[lp_player]), "AnimPlay Attack Attack PlayForever,ForceLooping");
             do {
                 if ((lv_uSES_PROJECTILE == true)) {
-                    libECLP_gf_ECL_HitScan(libECLP_gv_eCL_Source[lp_player], UnitGetPosition(libECLP_gv_eCL_Source[lp_player]), libECLP_gv_eCL_p_angle[lp_player], lp_n_projectiles, lp_velocity, lp_angle, lp_range, lv_l_AC, lp_iMPACT_Effect, lv_l_E, false);
+                    libECLP_gf_ECL_HitScan(libECLP_gv_eCL_Source[lp_player], UnitGetPosition(libECLP_gv_eCL_Source[lp_player]), libECLP_gv_eCL_p_angle[lp_player], lp_n_projectiles, lp_velocity, lv_angle, lp_range, lv_l_AC, lp_iMPACT_Effect, lv_l_E, false);
+                    lv_shots += 1;
+                    lv_angle = libNtve_gf_ArithmeticRealClamp((lv_angle + ((lp_angle_max - lp_angle_min) * (lv_shots / 100.0))), lp_angle_min, lp_angle_max);
                 }
                 else {
                     if ((libECLP_gv_eCL_p_r[lp_player] > lp_range)) {
@@ -261,6 +272,11 @@ bool auto_libECLP_gf_ECL_HitScan_TriggerFunc (bool testConds, bool runActions) {
     unit autoEF71E06D_var;
     int autoDF57E4C6_ae;
     const int autoDF57E4C6_ai = 1;
+    unitgroup auto8BFC7535_g;
+    int auto8BFC7535_u;
+    unit auto8BFC7535_var;
+    int auto8484198C_ae;
+    const int auto8484198C_ai = 1;
     int auto4ACA7CBF_ae;
     const int auto4ACA7CBF_ai = 1;
     int auto8CDD4210_ae;
@@ -276,7 +292,7 @@ bool auto_libECLP_gf_ECL_HitScan_TriggerFunc (bool testConds, bool runActions) {
     // Implementation
     lv_player = UnitGetOwner(lp_source);
     if ((lp_velocity > 0.0)) {
-        lv_segmentLength = (lp_velocity * (1.0 / 17.0));
+        lv_segmentLength = (lp_velocity * (1.0 / 16.0));
     }
     else {
         lv_segmentLength = lp_range;
@@ -318,7 +334,7 @@ bool auto_libECLP_gf_ECL_HitScan_TriggerFunc (bool testConds, bool runActions) {
     for ( ; auto777965C3_var <= auto777965C3_ae; auto777965C3_var += 1 ) {
         if ((UnitGroupCount(lv_projectile_Group, c_unitCountAlive) > 0)) {
             if ((auto777965C3_var > 1)) {
-                Wait((1.0 / 17.0), c_timeGame);
+                Wait((1.0 / 16.0), c_timeGame);
                 lv_scanRegion_n = RegionCircle(Point(lv_x_0, lv_y_0), MinF((auto777965C3_var * lv_segmentLength), lp_range));
                 RegionAddCircle(lv_scanRegion_n, false, Point(lv_x_0, lv_y_0), MinF(((auto777965C3_var - 1) * lv_segmentLength), lp_range));
             }
@@ -345,6 +361,29 @@ bool auto_libECLP_gf_ECL_HitScan_TriggerFunc (bool testConds, bool runActions) {
                     for ( ; ( (autoDF57E4C6_ai >= 0 && lv_i <= autoDF57E4C6_ae) || (autoDF57E4C6_ai < 0 && lv_i >= autoDF57E4C6_ae) ) ; lv_i += autoDF57E4C6_ai ) {
                         if (((lv_angle_shot[lv_i] >= (lv_angle_unit - lv_dAngle_radius)) && (lv_angle_shot[lv_i] <= (lv_angle_unit + lv_dAngle_radius)))) {
                             UnitGroupAdd(lv_target_Group[lv_i], autoEF71E06D_var);
+                        }
+
+                    }
+                }
+
+            }
+            auto8BFC7535_g = UnitGroup(null, c_playerAny, lv_scanRegion_n, UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 0);
+            auto8BFC7535_u = UnitGroupCount(auto8BFC7535_g, c_unitCountAll);
+            for (;; auto8BFC7535_u -= 1) {
+                auto8BFC7535_var = UnitGroupUnitFromEnd(auto8BFC7535_g, auto8BFC7535_u);
+                if (auto8BFC7535_var == null) { break; }
+                if ((auto8BFC7535_var != lp_source)) {
+                    lv_dX_unit = (PointGetX(UnitGetPosition(auto8BFC7535_var)) - lv_x_0);
+                    lv_dY_unit = (PointGetY(UnitGetPosition(auto8BFC7535_var)) - lv_y_0);
+                    lv_angle_unit = ATan2(lv_dY_unit, lv_dX_unit);
+                    lv_radius = UnitGetPropertyFixed(auto8BFC7535_var, c_unitPropRadius, c_unitPropCurrent);
+                    lv_distance = DistanceBetweenPoints(Point(lv_x_0, lv_y_0), UnitGetPosition(auto8BFC7535_var));
+                    lv_dAngle_radius = ATan2(lv_radius, lv_distance);
+                    auto8484198C_ae = MaxI(lp_n_projectiles, 1);
+                    lv_i = 1;
+                    for ( ; ( (auto8484198C_ai >= 0 && lv_i <= auto8484198C_ae) || (auto8484198C_ai < 0 && lv_i >= auto8484198C_ae) ) ; lv_i += auto8484198C_ai ) {
+                        if (((lv_angle_shot[lv_i] >= (lv_angle_unit - lv_dAngle_radius)) && (lv_angle_shot[lv_i] <= (lv_angle_unit + lv_dAngle_radius)))) {
+                            UnitGroupAdd(lv_target_Group[lv_i], auto8BFC7535_var);
                         }
 
                     }
@@ -565,9 +604,15 @@ void libECLP_gf_SetControlledUnit (int lp_player, unit lp_unit) {
 //--------------------------------------------------------------------------------------------------
 bool libECLP_gt_TEST_Func (bool testConds, bool runActions) {
     // Automatic Variable Declarations
-    unitgroup auto42F9EB70_g;
-    int auto42F9EB70_u;
-    unit auto42F9EB70_var;
+    unitgroup auto35696CFD_g;
+    int auto35696CFD_u;
+    unit auto35696CFD_var;
+    unitgroup auto2750D642_g;
+    int auto2750D642_u;
+    unit auto2750D642_var;
+    unitgroup auto2037A125_g;
+    int auto2037A125_u;
+    unit auto2037A125_var;
 
     // Conditions
     if (testConds) {
@@ -582,17 +627,33 @@ bool libECLP_gt_TEST_Func (bool testConds, bool runActions) {
     }
 
     CameraPan(1, RegionGetCenter(RegionEntireMap()), 1.0, -1, 10.0, false);
-    libNtve_gf_CreateUnitsWithDefaultFacing(2, "Hydralisk", 0, 15, PointWithOffsetPolar(RegionGetCenter(RegionEntireMap()), 6.0, 0.0));
-    auto42F9EB70_g = UnitLastCreatedGroup();
-    auto42F9EB70_u = UnitGroupCount(auto42F9EB70_g, c_unitCountAll);
-    for (;; auto42F9EB70_u -= 1) {
-        auto42F9EB70_var = UnitGroupUnitFromEnd(auto42F9EB70_g, auto42F9EB70_u);
-        if (auto42F9EB70_var == null) { break; }
-        UnitSetState(auto42F9EB70_var, c_unitStateHighlightable, false);
-        UnitSetCustomValue(auto42F9EB70_var, 0, 5.0);
+    UnitCreate(1, "Obelisk", c_unitCreateIgnorePlacement, 15, PointWithOffsetPolar(RegionGetCenter(RegionEntireMap()), 6.0, 0.0), 270.0);
+    UnitCreate(1, "ECLWALL2x2", c_unitCreateIgnorePlacement, 15, PointWithOffsetPolar(RegionGetCenter(RegionEntireMap()), 6.0, 0.0), 270.0);
+    auto35696CFD_g = UnitLastCreatedGroup();
+    auto35696CFD_u = UnitGroupCount(auto35696CFD_g, c_unitCountAll);
+    for (;; auto35696CFD_u -= 1) {
+        auto35696CFD_var = UnitGroupUnitFromEnd(auto35696CFD_g, auto35696CFD_u);
+        if (auto35696CFD_var == null) { break; }
+        UnitSetState(auto35696CFD_var, c_unitStateHighlightable, false);
+    }
+    UnitCreate(1, "ECLWALL2x2", c_unitCreateIgnorePlacement, 15, PointWithOffsetPolar(RegionGetCenter(RegionEntireMap()), 6.0, 0.0), 270.0);
+    auto2750D642_g = UnitLastCreatedGroup();
+    auto2750D642_u = UnitGroupCount(auto2750D642_g, c_unitCountAll);
+    for (;; auto2750D642_u -= 1) {
+        auto2750D642_var = UnitGroupUnitFromEnd(auto2750D642_g, auto2750D642_u);
+        if (auto2750D642_var == null) { break; }
+        UnitSetState(auto2750D642_var, c_unitStateHighlightable, false);
+    }
+    libNtve_gf_CreateUnitsWithDefaultFacing(5, "InfestedCivilian", 0, 15, PointWithOffsetPolar(RegionGetCenter(RegionEntireMap()), 8.0, 0.0));
+    auto2037A125_g = UnitLastCreatedGroup();
+    auto2037A125_u = UnitGroupCount(auto2037A125_g, c_unitCountAll);
+    for (;; auto2037A125_u -= 1) {
+        auto2037A125_var = UnitGroupUnitFromEnd(auto2037A125_g, auto2037A125_u);
+        if (auto2037A125_var == null) { break; }
+        UnitSetState(auto2037A125_var, c_unitStateHighlightable, false);
     }
     Wait(0.25, c_timeGame);
-    libNtve_gf_CreateUnitsWithDefaultFacing(1, "Separatist", 0, 1, PointWithOffsetPolar(RegionGetCenter(RegionEntireMap()), 0.0, 0.0));
+    libNtve_gf_CreateUnitsWithDefaultFacing(1, "Separatist", 0, 1, PointWithOffsetPolar(RegionGetCenter(RegionEntireMap()), -6.0, 0.0));
     libECLP_gv_eCL_Source[1] = UnitLastCreated();
     UnitSetState(libECLP_gv_eCL_Source[1], c_unitStateHighlightable, false);
     UnitSetState(libECLP_gv_eCL_Source[1], c_unitStateCursorable, false);
@@ -613,11 +674,12 @@ bool libECLP_gt_TEST_Func (bool testConds, bool runActions) {
     CameraLockInput(1, true);
     CameraPan(1, UnitGetPosition(libECLP_gv_eCL_Source[1]), 0.0, -1, 0, false);
     CameraFollowUnitGroup(1, libNtve_gf_ConvertUnitToUnitGroup(libECLP_gv_eCL_Source[1]), true, false);
-    CameraSetValue(1, c_cameraValueDistance, 24.0, 0.0, -1, 10.0);
+    CameraSetValue(1, c_cameraValueDistance, 35.0, 0.0, -1, 10.0);
     CameraSetValue(1, c_cameraValueRoll, 0.0, 0.0, -1, 10.0);
     CameraSetValue(1, c_cameraValueFieldOfView, 25.0, 0.0, -1, 10.0);
     CameraUseHeightDisplacement(1, true);
     CameraUseHeightSmoothing(1, true);
+    libECLP_gv_eCL__HitScan[1].lv_ammo[1] = 99999;
     return true;
 }
 
@@ -654,9 +716,8 @@ bool libECLP_gt_ECL_Fire_Func (bool testConds, bool runActions) {
     }
 
     libECLP_gv_eCL_UpDown[EventPlayer()] = true;
-    UIDisplayMessage(PlayerGroupAll(), c_messageAreaDebug, StringExternal("Param/Value/lib_ECLP_CF1C34B8"));
     libECLP_gv_eCL_SaveMouse_on_off[EventPlayer()] = true;
-    libECLP_gf_ECL_Fire(EventPlayer(), libECLP_ge_ECL_WEAPON_LAUNCH_TYPE_BULLET, 1, 1, 20.0, 0.1, 0.0, 5.0, "PAttackBulletImpactNEW", 20.0, 0);
+    libECLP_gf_ECL_Fire(EventPlayer(), libECLP_ge_ECL_WEAPON_LAUNCH_TYPE_BULLET2, 1, 0, 30.0, 0.25, 0.0, 0.0, 1.0, "PAttackLaserImpact", 20.0, 1);
     return true;
 }
 
@@ -762,6 +823,7 @@ bool libECLP_gt_ECL_CatchProjectiles_Func (bool testConds, bool runActions) {
 void libECLP_gt_ECL_CatchProjectiles_Init () {
     libECLP_gt_ECL_CatchProjectiles = TriggerCreate("libECLP_gt_ECL_CatchProjectiles_Func");
     TriggerAddEventUnitCreated(libECLP_gt_ECL_CatchProjectiles, UnitRefFromVariable("libECLP_gv_eCL_Source[EventPlayer()]"), "PAttackBullet", null);
+    TriggerAddEventUnitCreated(libECLP_gt_ECL_CatchProjectiles, UnitRefFromVariable("libECLP_gv_eCL_Source[EventPlayer()]"), "PAttackLaser", null);
     TriggerAddEventUnitCreated(libECLP_gt_ECL_CatchProjectiles, UnitRefFromVariable("libECLP_gv_eCL_Source[EventPlayer()]"), "PAttackPlasma", null);
     TriggerAddEventUnitCreated(libECLP_gt_ECL_CatchProjectiles, UnitRefFromVariable("libECLP_gv_eCL_Source[EventPlayer()]"), "PAttackParasite", null);
 }

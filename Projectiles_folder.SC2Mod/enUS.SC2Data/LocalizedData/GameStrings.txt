@@ -1,6 +1,7 @@
 ﻿Abil/Name/PAttackBullet=P Attack Bullet
 Abil/Name/PAttackCapsule=P Attack Capsule
 Abil/Name/PAttackFlame=P Attack Flame
+Abil/Name/PAttackLaser=P Attack Laser
 Abil/Name/PAttackMolotov=P Attack Molotov
 Abil/Name/PAttackParasite=P Attack Parasite
 Abil/Name/PAttackPlasma=P Attack Plasma
@@ -23,11 +24,13 @@ Behavior/Tooltip/PAttackParasiteSpawnInfested=Will Spawn Infested on Death
 Behavior/Tooltip/PLaserRocker=
 Behavior/Tooltip/PLoot=Will Spawn Infested on Death
 Button/Name/PAttackCapsule=P Attack Capsule
+Button/Name/PAttackLaser=P Attack Laser
 Button/Name/PAttackMolotov=P Attack Molotov
 Button/Name/PAttackParasite=P Attack Parasite
 Button/Name/PAttackPlasma=P Attack Plasma
 Button/Tooltip/GhostNova=Sniper. Can use Snipe, EMP Round, and be upgraded to use Cloak. Can call down Tactical Nukes built at the Ghost Academy.<n/><n/><c val="#ColorAttackInfo">Can attack ground and air units.</c>
 Button/Tooltip/PAttackCapsule=Stuns and disables the <c val="FFE303">Detection</c> of enemy ground and air units in the target area for <d ref="Behavior,FlashBangGrenade,Duration"/> seconds.</n></n><c val ="#ColorAttackInfo">Massive units and friendly units are immune.</c>
+Button/Tooltip/PAttackLaser=A careful shot, dealing <d ref="Effect,SnipeDamage,Amount"/> (<d ref="Effect,SnipeDamage,Amount + Effect,SnipeDamage,AttributeBonus[5]"/> vs. Psionic) damage. Ignores armor.<n/><n/><c val="#ColorAttackInfo">Can only target biological units.</c>
 Button/Tooltip/PAttackMolotov=Stuns and disables the <c val="FFE303">Detection</c> of enemy ground and air units in the target area for <d ref="Behavior,FlashBangGrenade,Duration"/> seconds.</n></n><c val ="#ColorAttackInfo">Massive units and friendly units are immune.</c>
 Button/Tooltip/PAttackParasite=A careful shot, dealing <d ref="Effect,SnipeDamage,Amount"/> (<d ref="Effect,SnipeDamage,Amount + Effect,SnipeDamage,AttributeBonus[5]"/> vs. Psionic) damage. Ignores armor.<n/><n/><c val="#ColorAttackInfo">Can only target biological units.</c>
 Button/Tooltip/PAttackPlasma=A careful shot, dealing <d ref="Effect,SnipeDamage,Amount"/> (<d ref="Effect,SnipeDamage,Amount + Effect,SnipeDamage,AttributeBonus[5]"/> vs. Psionic) damage. Ignores armor.<n/><n/><c val="#ColorAttackInfo">Can only target biological units.</c>
@@ -61,6 +64,9 @@ Effect/Name/PAttackFlameDamage=P Attack Flame Damage
 Effect/Name/PAttackFlameDamageSet=P Attack Flame Damage Set
 Effect/Name/PAttackFlameLM=P Attack Flame LM
 Effect/Name/PAttackFlameSA=P Attack Flame SA
+Effect/Name/PAttackLaserCP=P Attack Laser CP
+Effect/Name/PAttackLaserImpact=P Attack Laser Impact
+Effect/Name/PAttackLaserLM=P Attack Laser LM
 Effect/Name/PAttackMolotovApplyBehavior=P Attack Molotov ApplyBehavior
 Effect/Name/PAttackMolotovCP=P Attack Molotov CP
 Effect/Name/PAttackMolotovCPInit=P Attack Molotov CP Init
@@ -103,11 +109,15 @@ Effect/Name/PLootSet=P Loot Set
 Effect/Name/PLootUserDataDummy=P Loot User Data Dummy
 Effect/Name/UnknownEffect=Unknown Effect
 Param/Value/lib_ECLP_32D5E0B1=Source: 
-Param/Value/lib_ECLP_CF1C34B8=<s val="ABChoiceRewardsTitle">▼</s>
+Unit/Name/ECLWALL1x1=ECL WALL 1x1
+Unit/Name/ECLWALL2x2=ECL WALL 2x2
+Unit/Name/ECLWALL4x4=ECL WALL 4x4
+Unit/Name/ECLWALL8x8=ECL WALL 8x8
 Unit/Name/GhostNova=GhostNova
 Unit/Name/PAttack=P Attack
 Unit/Name/PAttackCapsule=P Attack Capsule
 Unit/Name/PAttackCursorGroundBeacon=P Attack Cursor 3D
+Unit/Name/PAttackLaser=P Attack Laser
 Unit/Name/PAttackMolotov=P Attack Molotov
 Unit/Name/PAttackParasiteMissile=P Attack Parasite Missile
 Unit/Name/PAttackPlasma=P Attack Plasma

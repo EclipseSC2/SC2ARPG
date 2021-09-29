@@ -60,6 +60,9 @@
         <On Terms="ActorCreation" Send="SetRotationYPR 135.000000 0.000000 90.000000"/>
         <Model value="ECLPORTAL_DEACTIVATE"/>
     </CActorModel>
+    <CActorUnit id="ECLWALL1x1">
+        <HostSiteOps Ops="SOpMoveBackByDot5"/>
+    </CActorUnit>
     <!-- Flashlight for regular Raynor                                                           -->
     <CActorModel id="FlashlightModel">
         <Scale value="2.000000"/>

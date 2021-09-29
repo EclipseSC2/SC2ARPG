@@ -5,11 +5,12 @@ include "TriggerLibs/natives"
 //--------------------------------------------------------------------------------------------------
 // Preset Declarations
 const int libECLP_ge_ECL_WEAPON_LAUNCH_TYPE_BULLET = 0;
-const int libECLP_ge_ECL_WEAPON_LAUNCH_TYPE_PLASMA = 1;
-const int libECLP_ge_ECL_WEAPON_LAUNCH_TYPE_PARASITE = 2;
-const int libECLP_ge_ECL_WEAPON_LAUNCH_TYPE_FLAMETHROWER = 3;
-const int libECLP_ge_ECL_WEAPON_LAUNCH_TYPE_MOLOTOV_GRENADE = 4;
-const int libECLP_ge_ECL_WEAPON_LAUNCH_TYPE_MOLOTOV_GRENADE2 = 5;
+const int libECLP_ge_ECL_WEAPON_LAUNCH_TYPE_BULLET2 = 1;
+const int libECLP_ge_ECL_WEAPON_LAUNCH_TYPE_PLASMA = 2;
+const int libECLP_ge_ECL_WEAPON_LAUNCH_TYPE_PARASITE = 3;
+const int libECLP_ge_ECL_WEAPON_LAUNCH_TYPE_FLAMETHROWER = 4;
+const int libECLP_ge_ECL_WEAPON_LAUNCH_TYPE_MOLOTOV_GRENADE = 5;
+const int libECLP_ge_ECL_WEAPON_LAUNCH_TYPE_MOLOTOV_GRENADE2 = 6;
 
 // Constants
 const int libECLP_gv_eCL_MAX_P = 15;
@@ -51,7 +52,7 @@ bool[17] libECLP_gv_unitMovementEnabled;
 
 // Function Declarations
 void libECLP_gf_ECL_Laserpointer (int lp_player, unit lp_unit, bool lp_onOff);
-void libECLP_gf_ECL_Fire (int lp_player, int lp_lAUNCH_ART, int lp_n_projectiles, int lp_bursts, fixed lp_velocity, fixed lp_cooldown, fixed lp_cooldown_Burst, fixed lp_angle, string lp_iMPACT_Effect, fixed lp_range, int lp_weaponIndex);
+void libECLP_gf_ECL_Fire (int lp_player, int lp_lAUNCH_ART, int lp_n_projectiles, int lp_bursts, fixed lp_velocity, fixed lp_cooldown, fixed lp_cooldown_Burst, fixed lp_angle_min, fixed lp_angle_max, string lp_iMPACT_Effect, fixed lp_range, int lp_weaponIndex);
 void libECLP_gf_ECL_HitScan (unit lp_source, point lp_sourcePoint, fixed lp_angle_cursor, int lp_n_projectiles, fixed lp_velocity, fixed lp_spread_HalfAngle, fixed lp_range, abilcmd lp_abilityCommand, string lp_effect_Impact, string lp_effect_CP, bool lp_dEBUG);
 void libECLP_gf_TracerBeam (actor lp_launch, actor lp_impact, string lp_beammodel);
 void libECLP_gf_ShowHideActorforPlayer (int lp_player, actor lp_actor, bool lp_showHide);

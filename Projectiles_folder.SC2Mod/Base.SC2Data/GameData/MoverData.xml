@@ -55,11 +55,12 @@
             <Driver value="Ballistic"/>
             <Acceleration value="-1"/>
             <Gravity value="0"/>
+            <IgnoresTerrain value="1"/>
             <RotationActorType value="Upright"/>
             <ThrowBandYaw value="-360,-360,-360,-360"/>
             <ThrowBandPitch value="-360,-360,-360,-360"/>
             <YawPitchRoll value="5759.6484"/>
-            <FlightTime value="1.0625"/>
+            <FlightTime value="1"/>
         </MotionPhases>
         <RotationIgnoredByUnit value="1"/>
     </CMoverMissile>
@@ -75,7 +76,7 @@
             <ThrowBandYaw value="-360,-360,-360,-360"/>
             <ThrowBandPitch value="-360,-360,-360,-360"/>
             <YawPitchRoll value="5759.6484"/>
-            <FlightTime value="0.9"/>
+            <FlightTime value="1"/>
         </MotionPhases>
         <RotationIgnoredByUnit value="1"/>
     </CMoverMissile>

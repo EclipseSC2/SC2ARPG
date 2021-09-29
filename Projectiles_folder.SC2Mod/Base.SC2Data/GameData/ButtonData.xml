@@ -26,4 +26,10 @@
         <HotkeyAlias value="Snipe"/>
         <HidesForSimpleText value="0"/>
     </CButton>
+    <CButton id="PAttackLaser">
+        <Icon value="Assets\Textures\btn-ability-terran-snipe-color.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-terran-snipe-color.dds"/>
+        <EditorCategories value="Race:Terran"/>
+        <HidesForSimpleText value="0"/>
+    </CButton>
 </Catalog>

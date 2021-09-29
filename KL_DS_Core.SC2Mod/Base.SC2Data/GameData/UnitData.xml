@@ -28,8 +28,8 @@
         <HotkeyAlias value="RTT_Display_1"/>
     </CUnit>
     <CUnit id="Separatist">
-        <LifeStart value="440"/>
-        <LifeMax value="440"/>
+        <LifeStart value="500"/>
+        <LifeMax value="500"/>
         <BehaviorArray Link="SUIT"/>
     </CUnit>
 </Catalog>

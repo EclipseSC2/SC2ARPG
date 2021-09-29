@@ -82,7 +82,7 @@
         <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
         <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
 
-        <Height val="150"/>
+        <Height val="94"/>
         <Width val="1000"/>
 
         <Frame type="Frame" name="LeftAnchor">
@@ -95,14 +95,14 @@
                 <Operator val="Divide"/>
             </Frame>
             <Frame type="MathFrame" name="Gap_total">
-                <A val="#Inventory_Width"/>
+                <A val="1000"/>
                 <B val="{$parent/Slots_Width_total/@ResultInt}"/>
                 <Operator val="Subtract"/>
             </Frame>
             <Frame type="MathFrame" name="Slots_Width_total">
-                <A val="#Slot_Width"/>
+                <A val="90"/>
                 <!--Slots per row-->
-                <B val="7"/>
+                <B val="6"/>
                 <Operator val="Multiply"/>
             </Frame>
         </Frame>
@@ -125,7 +125,7 @@
         <Frame type="Frame" name="BG_6" template="ECL_DRAGGABLE/BG_Template">
             <Anchor relative="$parent/CP_Slot6"/>
         </Frame>
-        <Frame type="Frame" name="BG_7" template="ECL_DRAGGABLE/BG_Template">
+        <!--Frame type="Frame" name="BG_7" template="ECL_DRAGGABLE/BG_Template">
             <Anchor relative="$parent/CP_Slot7"/>
         </Frame>
         <Frame type="Frame" name="BG_8" template="ECL_DRAGGABLE/BG_Template">
@@ -136,10 +136,10 @@
         </Frame>
         <Frame type="Frame" name="BG_10" template="ECL_DRAGGABLE/BG_Template">
             <Anchor relative="$parent/CP_Slot10"/>
-        </Frame>
+        </Frame-->
         
         <Frame type="Control" name="CP_Slot1" template="ECL_DRAGGABLE/Slot_Template">
-            <Anchor side="Bottom" relative="$parent/LeftAnchor" pos="Min" offset="-10"/>
+            <Anchor side="Bottom" relative="$parent/LeftAnchor" pos="Min" offset="-4"/>
             <Anchor side="Left" relative="$parent/LeftAnchor" pos="Max" offset="0"/>
         </Frame>
         <Frame type="Control" name="CP_Slot2" template="ECL_DRAGGABLE/Slot_Template">
@@ -162,7 +162,7 @@
             <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
             <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
         </Frame>
-        <Frame type="Control" name="CP_Slot7" template="ECL_DRAGGABLE/Slot_Template">
+        <!--Frame type="Control" name="CP_Slot7" template="ECL_DRAGGABLE/Slot_Template">
             <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
             <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
         </Frame>
@@ -177,9 +177,9 @@
         <Frame type="Control" name="CP_Slot10" template="ECL_DRAGGABLE/Slot_Template">
             <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
             <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
-        </Frame>
+        </Frame-->
 
-        <Frame type="Button" name="CommandButton1" template="Cleane_StandardTemplates/CommandButtonTemplate">
+        <!--Frame type="Button" name="CommandButton1" template="Cleane_StandardTemplates/CommandButtonTemplate">
             <Anchor side="Right" relative="$parent/CommandButton2" pos="Min" offset="0"/>
             <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
 
@@ -209,7 +209,7 @@
 
             <Width val="120"/>
             <Height val="120"/>
-        </Frame>
+        </Frame-->
     </Frame>
 
     <!-- Event Log Panels -->
@@ -392,16 +392,50 @@
     <Frame type="Frame" name="GameHUDTemplate">
         <Anchor relative="$parent"/>
 
-        <Frame type="Frame" name="Ammo">
-            <Anchor side="Left" relative="$parent/StatusPanel/HealthBar" pos="Max" offset="0"/>
-            <Anchor side="Bottom" relative="$parent" pos="Max" offset="-6"/>
-            <Height val="200"/>
-            <Width val="130"/>
+        <Frame type="Frame" name="Weapon">
+            <Anchor side="Left" relative="$parent/StatusPanel/HealthBar/ProgressBar" pos="Max" offset="0"/>
+            <Anchor side="Bottom" relative="$parent/Ammo" pos="Min" offset="-1"/>
+            <Width val="120"/>
+            <Height val="120"/>
 
-            <Frame type="Image" name="Background">
+            <Frame type="Image" name="Icon">
                 <Anchor relative="$parent"/>
-                <Color val="128,128,128"/>
+                <Visible val="False"/>
+                <StateGroup name="ShowWhenName">
+                    <DefaultState val="Default"/>
+                    <State name="Default"></State>
+                    <State name="Show">
+                        <When type="Property" frame="$parent/Name" operator="NotEqual" Text=""/>
+                        <Action type="SetProperty" frame="$this" Visible="True"/>
+                    </State>
+                </StateGroup>
             </Frame>
+            <Frame type="Label" name="Shadow">
+                <Anchor side="Bottom" relative="$parent" pos="Max" offset="-1"/>
+                <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+                <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+                <Style val="{$parent/Name/@Style}"/>
+                <Text val="{$parent/Name/@Text}"/>
+                <Color val="0,0,0"/>
+                <Blur val="True"/>
+                <BlurAmount val="0.3"/>
+                <Alpha val="180"/>
+            </Frame>
+            <Frame type="Label" name="Name">
+                <Anchor side="Bottom" relative="$parent" pos="Max" offset="-3"/>
+                <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+                <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+                <Style val="ECL_WEAPON"/>
+                <Text val=""/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Frame" name="Ammo">
+            <Anchor side="Left" relative="$parent/StatusPanel/HealthBar/ProgressBar" pos="Max" offset="0"/>
+            <!--Anchor side="Bottom" relative="$parent/CommandPanel" pos="Min" offset="-1"/-->
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="-1"/>
+            <Height val="51"/>
+            <Width val="120"/>
 
             <Frame type="Frame" name="AmmoCount">
                 <Anchor side="Bottom" relative="$parent" pos="Max" offset="-2"/>
@@ -428,12 +462,12 @@
         </Frame>
 
         <Frame type="Frame" name="CommandPanel" template="DS_HUDTemplates/CommandPanelTemplate">
-            <Anchor side="Bottom" relative="$parent/StatusPanel" pos="Min" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
         </Frame>
 
         <Frame type="UnitStatusFrame" name="StatusPanel">
-            <Anchor side="Top" relative="$this/SuitBar" pos="Min" offset="0"/>
-            <Anchor side="Bottom" relative="$parent" pos="Max" offset="-6"/>
+            <Anchor side="Top" relative="$this/HealthBar" pos="Min" offset="0"/>
+            <Anchor side="Bottom" relative="$parent/CommandPanel" pos="Min" offset="-6"/>
             <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
             <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
 
@@ -447,8 +481,30 @@
             <Frame type="UnitStatusValidatorAnimElement" name="DamageHighlight">
                 <Anchor relative="$parent"/>
                 <Validator val="TargetInCombatShort"/>
+
+                <StateGroup name="ShowHideHP">
+                    <State name="Show">
+                        <When type="Property" frame="$parent/ShieldBar/ProgressBar" operator="LessThanOrEqual" Value="0"/>
+                        <Action type="SetAnimationProperty" frame="$this" animation="DamageTakenHP" enabled="True"/>
+                    </State>
+                    <State name="Hide">
+                        <When type="Property" frame="$parent/ShieldBar/ProgressBar" operator="GreaterThan" Value="0"/>
+                        <Action type="SetAnimationProperty" frame="$this" animation="DamageTakenHP" enabled="False"/>
+                    </State>
+                </StateGroup>
+
+                <StateGroup name="ShowHideShield">
+                    <State name="Show">
+                        <When type="Property" frame="$parent/HealthBar/ProgressBar" operator="GreaterThan" Value="0"/>
+                        <Action type="SetAnimationProperty" frame="$this" animation="DamageTakenShield" enabled="True"/>
+                    </State>
+                    <State name="Hide">
+                        <When type="Property" frame="$parent/HealthBar/ProgressBar" operator="LessThanOrEqual" Value="0"/>
+                        <Action type="SetAnimationProperty" frame="$this" animation="DamageTakenShield" enabled="False"/>
+                    </State>
+                </StateGroup>
     
-                <Animation name="DamageTaken">
+                <Animation name="DamageTakenHP">
                     <Event event="TargetInCombatShort" action="Reset, Play"/>
                     <Controller type="Fade" end="Pause" frame="$parent/HealthBar/ProgressBar/FillImageContainer/EndCap">
                         <Key type="Curve" time="0.0" value="0" out="Slow"/>
@@ -456,6 +512,9 @@
                         <Key type="Curve" time="0.3" value="255"/>
                         <Key type="Curve" time="0.4" value="0" in="Slow"/>
                     </Controller>
+                </Animation>
+                <Animation name="DamageTakenShield">
+                    <Event event="TargetInCombatShort" action="Reset, Play"/>
                     <Controller type="Fade" end="Pause" frame="$parent/ShieldBar/ProgressBar/FillImageContainer/EndCap">
                         <Key type="Curve" time="0.0" value="0" out="Slow"/>
                         <Key type="Curve" time="0.1" value="255"/>
@@ -515,20 +574,20 @@
                     <StateGroup name="Move_Speed">
                         <DefaultState val="Default"/>
                         <State name="Default">
-                            <When type="Property" frame="$parent/SetupConnector" operator="LessThanOrEqual" Distance="15"/>
+                            <When type="Property" frame="$parent/SetupConnector" operator="LessThanOrEqual" Distance="3"/>
                             <Action type="SendEvent" frame="$this" event="SlowDown"/>
                         </State>
                         <State name="Fast">
-                            <When type="Property" frame="$parent/SetupConnector" operator="GreaterThan" Distance="15"/>
+                            <When type="Property" frame="$parent/SetupConnector" operator="GreaterThan" Distance="3"/>
                             <Action type="SendEvent" frame="$this" event="SpeedUp"/>
                         </State>
                     </StateGroup>  
-                    <Animation name="SpeedUp">
+                    <Animation name="AnimationSpeed">
                         <Event event="SpeedUp" action="DirectionForward, Play" frame="$this"/>
                         <Event event="SlowDown" action="DirectionReverse, Play" frame="$this"/>
                         <Controller type="AnimationSpeed" end="Pause" frame="$this" relative="False" animation="MoveLeftRight">
-                            <Key type="Curve" time="0.0" value="1" inout="Fast"/>
-                            <Key type="Curve" time="1" value="2" inout="Slow"/>
+                            <Key type="Curve" time="0" value="0.0" out="Fast" in="Slow"/>
+                            <Key type="Curve" time="2" value="2" in="Slow" out="Fast"/>
                         </Controller>
                     </Animation>
                 </Frame>
@@ -612,20 +671,20 @@
                     <StateGroup name="Move_Speed">
                         <DefaultState val="Default"/>
                         <State name="Default">
-                            <When type="Property" frame="$parent/SetupConnector" operator="LessThanOrEqual" Distance="15"/>
+                            <When type="Property" frame="$parent/SetupConnector" operator="LessThanOrEqual" Distance="3"/>
                             <Action type="SendEvent" frame="$this" event="SlowDown"/>
                         </State>
                         <State name="Fast">
-                            <When type="Property" frame="$parent/SetupConnector" operator="GreaterThan" Distance="15"/>
+                            <When type="Property" frame="$parent/SetupConnector" operator="GreaterThan" Distance="3"/>
                             <Action type="SendEvent" frame="$this" event="SpeedUp"/>
                         </State>
                     </StateGroup>  
-                    <Animation name="SpeedUp">
+                    <Animation name="AnimationSpeed">
                         <Event event="SpeedUp" action="DirectionForward, Play" frame="$this"/>
                         <Event event="SlowDown" action="DirectionReverse, Play" frame="$this"/>
                         <Controller type="AnimationSpeed" end="Pause" frame="$this" relative="False" animation="MoveLeftRight">
-                            <Key type="Curve" time="0.0" value="1" inout="Fast"/>
-                            <Key type="Curve" time="1" value="2" inout="Slow"/>
+                            <Key type="Curve" time="0" value="0.0" out="Fast" in="Slow"/>
+                            <Key type="Curve" time="2" value="2" in="Slow" out="Fast"/>
                         </Controller>
                     </Animation>
                 </Frame>
@@ -639,31 +698,6 @@
                             <Action type="SetProperty" frame="ReducedLength" A="{$parent/@Distance}"/>
                         </State>
                     </StateGroup>
-                </Frame>
-            </Frame>
-
-            <Frame type="Frame" name="SuitBar" template="Cleane_StandardTemplates/SmallProgressBarTemplate">
-                <Anchor side="Bottom" relative="$parent/HealthBar" pos="Min" offset="0"/>
-                <Anchor side="Left" relative="$parent" pos="Min" offset="24"/>
-                <Anchor side="Right" relative="$parent" pos="Max" offset="-24"/>
-
-                <!-- Internally Handled as Shields -->
-
-                <CollapseLayout val="True"/>
-                <Visible val="False"/>
-                <PreserveAnchorOffset val="True"/>
-
-                <Frame type="ProgressBar" name="ProgressBar">
-
-                    <MaxValue val="{$parent/$parent/UnitFrame/@MaxShields}"/>
-                    <Value val="{$parent/$parent/UnitFrame/@CurrentShields}"/>
-
-                    <Frame type="Frame" name="FillImageContainer">
-                        <Frame type="Image" name="FillImage">
-                            <ColorAdjustMode val="Colorize"/>
-                            <AdjustmentColor val="0095af"/>
-                        </Frame>
-                    </Frame>
                 </Frame>
             </Frame>
         </Frame>

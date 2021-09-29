@@ -5,6 +5,27 @@
             <Flags index="Continuous" value="1"/>
         </CmdButtonArray>
     </CAbilEffectTarget>
+    <CAbilEffectTarget id="PAttackLaser">
+        <Alignment value="Negative"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Effect index="0" value="PAttackLaserCP"/>
+        <Flags index="AbortOnAllianceChange" value="0"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="BestUnit" value="0"/>
+        <Flags index="NoDeceleration" value="1"/>
+        <Flags index="RangeUseCasterRadius" value="0"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Flags index="Transient" value="1"/>
+        <Flags index="TransientPreferred" value="1"/>
+        <Cost/>
+        <Range value="500"/>
+        <Arc value="360"/>
+        <PrepTime value="0"/>
+        <CastIntroTime value="0"/>
+        <FinishTime value="0"/>
+        <AINotifyEffect value="PAttackBulletLM"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="PAttackLaser"/>
+    </CAbilEffectTarget>
     <CAbilEffectTarget id="PAttackMolotov">
         <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
         <Effect index="0" value="PAttackMolotovLaunchMissile"/>

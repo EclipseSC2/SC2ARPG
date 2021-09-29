@@ -128,6 +128,9 @@ void libDEAD_InitVariables () {
         libDEAD_gv_dS_HUD[init_i].lv_hPBar = c_invalidDialogControlId;
         libDEAD_gv_dS_HUD[init_i].lv_uTF = c_invalidDialogControlId;
         libDEAD_gv_dS_HUD[init_i].lv_magazine_main = c_invalidDialogControlId;
+        libDEAD_gv_dS_HUD[init_i].lv_weapon_main = c_invalidDialogControlId;
+        libDEAD_gv_dS_HUD[init_i].lv_weapon_icon = c_invalidDialogControlId;
+        libDEAD_gv_dS_HUD[init_i].lv_weapon_label = c_invalidDialogControlId;
         libDEAD_gv_dS_HUD[init_i].lv_weaponPanel = c_invalidDialogControlId;
         libDEAD_gv_dS_HUD[init_i].lv_mainWpnIcon = c_invalidDialogControlId;
         libDEAD_gv_dS_HUD[init_i].lv_mainWpnName = c_invalidDialogControlId;
@@ -590,6 +593,11 @@ void libDEAD_gf_KL_SwapToWeapon (int lp_player, int lp_weaponIndex) {
     }
     if ((libDEAD_gv_activeWeaponIndex[lp_player] == 0) && (libDEAD_gv_activeWeaponInstance[lp_player][lp_weaponIndex] != null)) {
         libDEAD_gv_activeWeaponIndex[lp_player] = lp_weaponIndex;
+        libDEAD_gv_activeWeaponInstance[lp_player][libDEAD_gv_activeWeaponIndex[lp_player]] = libDEAD_gf_ECL_ReturnWeaponItem(lp_player, libDEAD_gv_activeWeaponIndex[lp_player]);
+        libNtve_gf_SetDialogItemText(libECLP_gv_eCL__HitScan[lp_player].lv_magazine, IntToText(libECLP_gv_eCL__HitScan[lp_player].lv_ammo[libDEAD_gv_activeWeaponIndex[lp_player]]), PlayerGroupSingle(lp_player));
+        libNtve_gf_SetDialogItemText(libDEAD_gv_dS_HUD[lp_player].lv_weapon_label, StringToText(UserDataGetString("Items", libDEAD_gv_activeWeaponInstance[lp_player][libDEAD_gv_activeWeaponIndex[lp_player]], "Name", 1)), PlayerGroupSingle(lp_player));
+        libNtve_gf_SetDialogItemImage(libDEAD_gv_dS_HUD[lp_player].lv_weapon_icon, UserDataGetImagePath("Items", libDEAD_gv_activeWeaponInstance[lp_player][libDEAD_gv_activeWeaponIndex[lp_player]], "Icon", 1), PlayerGroupSingle(lp_player));
+        SoundPlayForPlayer(SoundLink(UserDataGetSound("WeaponTypes", libDEAD_gv_activeWeaponInstance[lp_player][libDEAD_gv_activeWeaponIndex[lp_player]], "Sound", 1), c_soundIndexAny), c_maxPlayers, PlayerGroupSingle(lp_player), 100.0, 0.0);
         return ;
     }
 
@@ -599,7 +607,11 @@ void libDEAD_gf_KL_SwapToWeapon (int lp_player, int lp_weaponIndex) {
     else {
         libDEAD_gv_activeWeaponIndex[lp_player] = lv_currentWeaponIndex;
     }
+    libDEAD_gv_activeWeaponInstance[lp_player][libDEAD_gv_activeWeaponIndex[lp_player]] = libDEAD_gf_ECL_ReturnWeaponItem(lp_player, libDEAD_gv_activeWeaponIndex[lp_player]);
     libNtve_gf_SetDialogItemText(libECLP_gv_eCL__HitScan[lp_player].lv_magazine, IntToText(libECLP_gv_eCL__HitScan[lp_player].lv_ammo[libDEAD_gv_activeWeaponIndex[lp_player]]), PlayerGroupSingle(lp_player));
+    libNtve_gf_SetDialogItemText(libDEAD_gv_dS_HUD[lp_player].lv_weapon_label, StringToText(UserDataGetString("Items", libDEAD_gv_activeWeaponInstance[lp_player][libDEAD_gv_activeWeaponIndex[lp_player]], "Name", 1)), PlayerGroupSingle(lp_player));
+    libNtve_gf_SetDialogItemImage(libDEAD_gv_dS_HUD[lp_player].lv_weapon_icon, UserDataGetImagePath("Items", libDEAD_gv_activeWeaponInstance[lp_player][libDEAD_gv_activeWeaponIndex[lp_player]], "Icon", 1), PlayerGroupSingle(lp_player));
+    SoundPlayForPlayer(SoundLink(UserDataGetSound("WeaponTypes", libDEAD_gv_activeWeaponInstance[lp_player][libDEAD_gv_activeWeaponIndex[lp_player]], "Sound", 1), c_soundIndexAny), c_maxPlayers, PlayerGroupSingle(lp_player), 100.0, 0.0);
 }
 
 fixed libDEAD_gf_ReturnEquipmentPropertyMoveSpeed (string lp_item) {
@@ -941,7 +953,7 @@ void libDEAD_gf_ECL_ITEM_remove (int lp_player, int lp_index) {
     lv_slot_Index = libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM_slot[lp_index];
     libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM_slot[lp_index] = 0;
     libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[lv_slot_Index] = 0;
-    libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[lv_slot_Index] = 0;
+    libDEAD_gv_dS_InventoryItem[lp_index][lp_player] = null;
 }
 
 void libDEAD_gf_ECL_ITEM_drop_to_ground (int lp_player, string lp_item, int lp_amount, point lp_spawnPoint) {
@@ -1012,6 +1024,8 @@ void libDEAD_gf_ECL__EQUIP (int lp_player, int lp_sLOT, int lp_eQUIPUNEQUIP) {
     const int auto999CB00D_ae = 4;
     const int auto999CB00D_ai = 1;
     string auto30B42D06_val;
+    const int auto6A97C088_ae = 4;
+    const int auto6A97C088_ai = 1;
     const int auto52B48827_ae = libDEAD_gv_eCL__maxslots;
     const int auto52B48827_ai = 1;
 
@@ -1051,7 +1065,7 @@ void libDEAD_gf_ECL__EQUIP (int lp_player, int lp_sLOT, int lp_eQUIPUNEQUIP) {
             lv_index = 1;
             for ( ; ( (auto999CB00D_ai >= 0 && lv_index <= auto999CB00D_ae) || (auto999CB00D_ai < 0 && lv_index >= auto999CB00D_ae) ) ; lv_index += auto999CB00D_ai ) {
                 if ((libDEAD_gf_ECL_ReturnWeaponItem(lp_player, lv_index) != null)) {
-                    libDEAD_gf_KL_SwapToWeapon(EventPlayer(), lv_index);
+                    libDEAD_gf_KL_SwapToWeapon(lp_player, lv_index);
                     break;
                 }
 
@@ -1061,10 +1075,13 @@ void libDEAD_gf_ECL__EQUIP (int lp_player, int lp_sLOT, int lp_eQUIPUNEQUIP) {
         }
         libNtve_gf_CatalogFieldValueSetAsReal(c_gameCatalogBehavior, lv_bEHAVIOR_EQUIPMENT, "Modification.LifeArmorBonus", lp_player, UserDataGetFixed("ModifierStats", lv_itemStats, "Armor", 1));
         libNtve_gf_CatalogFieldValueSetAsReal(c_gameCatalogBehavior, lv_bEHAVIOR_EQUIPMENT, "Modification.VitalMaxArray[" + IntToString(0) + "]", lp_player, UserDataGetInt("ModifierStats", lv_itemStats, "Health", 1));
-        libNtve_gf_CatalogFieldValueSetAsReal(c_gameCatalogBehavior, lv_bEHAVIOR_EQUIPMENT, "Modification.VitalMaxFractionArray[" + IntToString(0) + "]", lp_player, UserDataGetFixed("ModifierStats", lv_itemStats, "Health Percent", 1));
+        libNtve_gf_CatalogFieldValueSetAsReal(c_gameCatalogBehavior, lv_bEHAVIOR_EQUIPMENT, "Modification.VitalMaxAdditiveMultiplierArray[" + IntToString(0) + "]", lp_player, UserDataGetFixed("ModifierStats", lv_itemStats, "Health Percent", 1));
         libNtve_gf_CatalogFieldValueSetAsReal(c_gameCatalogBehavior, lv_bEHAVIOR_EQUIPMENT, ("Modification.VitalRegenArray[0]"), lp_player, UserDataGetFixed("ModifierStats", lv_itemStats, "Health Regeneration", 1));
+        libNtve_gf_CatalogFieldValueSetAsReal(c_gameCatalogBehavior, lv_bEHAVIOR_EQUIPMENT, "Modification.VitalMaxArray[" + IntToString(1) + "]", lp_player, UserDataGetInt("ModifierStats", lv_itemStats, "Shield", 1));
+        libNtve_gf_CatalogFieldValueSetAsReal(c_gameCatalogBehavior, lv_bEHAVIOR_EQUIPMENT, "Modification.VitalMaxAdditiveMultiplierArray[" + IntToString(1) + "]", lp_player, UserDataGetFixed("ModifierStats", lv_itemStats, "Shield Percent", 1));
+        libNtve_gf_CatalogFieldValueSetAsReal(c_gameCatalogBehavior, lv_bEHAVIOR_EQUIPMENT, ("Modification.VitalRegenArray[1]"), lp_player, UserDataGetFixed("ModifierStats", lv_itemStats, "Shield Regeneration", 1));
         libNtve_gf_CatalogFieldValueSetAsReal(c_gameCatalogBehavior, lv_bEHAVIOR_EQUIPMENT, "Modification.MoveSpeedBonus", lp_player, UserDataGetFixed("ModifierStats", lv_itemStats, "Move Speed", 1));
-        libNtve_gf_CatalogFieldValueSetAsReal(c_gameCatalogBehavior, lv_bEHAVIOR_EQUIPMENT, "Modification.MoveSpeedMultiplier", lp_player, UserDataGetFixed("ModifierStats", lv_itemStats, "Move Speed", 1));
+        libNtve_gf_CatalogFieldValueSetAsReal(c_gameCatalogBehavior, lv_bEHAVIOR_EQUIPMENT, "Modification.MoveSpeedMultiplier", lp_player, UserDataGetFixed("ModifierStats", lv_itemStats, "Move Speed Percent", 1));
         if ((UnitHasBehavior2(libDEAD_gv_playerUnit[lp_player], lv_bEHAVIOR_EQUIPMENT) == false)) {
             UnitBehaviorAdd(libDEAD_gv_playerUnit[lp_player], lv_bEHAVIOR_EQUIPMENT, libDEAD_gv_playerUnit[lp_player], 1);
         }
@@ -1089,10 +1106,34 @@ void libDEAD_gf_ECL__EQUIP (int lp_player, int lp_sLOT, int lp_eQUIPUNEQUIP) {
             lv_bEHAVIOR_EQUIPMENT = "AUGMENT";
         }
         else if (auto30B42D06_val == "Weapon") {
+            libDEAD_gv_activeWeaponInstance[lp_player][lp_sLOT] = null;
+            if ((libECLP_gv_eCL__HitScan[lp_player].lv_ammo[lp_sLOT] > 0)) {
+                libDEAD_gf_ECL_ITEM_add(lp_player, libDEAD_gf_ReturnAmmoRequired(lv_itemStats), libECLP_gv_eCL__HitScan[lp_player].lv_ammo[lp_sLOT], true);
+                libECLP_gv_eCL__HitScan[lp_player].lv_ammo[lp_sLOT] = 0;
+            }
+
+            if ((libDEAD_gv_activeWeaponIndex[lp_player] == lp_sLOT)) {
+                libDEAD_gv_activeWeaponIndex[lp_player] = 0;
+                libNtve_gf_SetDialogItemText(libECLP_gv_eCL__HitScan[lp_player].lv_magazine, StringExternal("Param/Value/lib_DEAD_7E47FEB5"), PlayerGroupSingle(lp_player));
+                libNtve_gf_SetDialogItemText(libDEAD_gv_dS_HUD[lp_player].lv_weapon_label, StringToText(""), PlayerGroupSingle(lp_player));
+                lv_index = 1;
+                for ( ; ( (auto6A97C088_ai >= 0 && lv_index <= auto6A97C088_ae) || (auto6A97C088_ai < 0 && lv_index >= auto6A97C088_ae) ) ; lv_index += auto6A97C088_ai ) {
+                    if ((libDEAD_gv_activeWeaponInstance[lp_player][lv_index] != null)) {
+                        libDEAD_gf_KL_SwapToWeapon(lp_player, lv_index);
+                        break;
+                    }
+
+                }
+            }
+
         }
         else {
+            lv_bEHAVIOR_EQUIPMENT = null;
         }
-        UnitBehaviorRemove(libDEAD_gv_playerUnit[lp_player], lv_bEHAVIOR_EQUIPMENT, 1);
+        if ((lv_bEHAVIOR_EQUIPMENT != null)) {
+            UnitBehaviorRemove(libDEAD_gv_playerUnit[lp_player], lv_bEHAVIOR_EQUIPMENT, 1);
+        }
+
     }
     libDEAD_gv_eCL__Inventory[lp_player].lv_iNV_slots += lv_inventory;
     lv_index = (libDEAD_gv_eCL__equipmentslots + 1);
@@ -1117,20 +1158,20 @@ string libDEAD_gf_ECL_ReturnEquippedItem (int lp_player, string lp_type) {
 
     // Implementation
     auto67D415F6_val = lp_type;
-    if (auto67D415F6_val == "Head") {
-        return libDEAD_gv_dS_InventoryItem[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[1]][lp_player];
+    if (auto67D415F6_val == "Augment") {
+        return libDEAD_gv_dS_InventoryItem[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[5]][lp_player];
+    }
+    else if (auto67D415F6_val == "Head") {
+        return libDEAD_gv_dS_InventoryItem[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[6]][lp_player];
     }
     else if (auto67D415F6_val == "Suit") {
-        return libDEAD_gv_dS_InventoryItem[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[2]][lp_player];
+        return libDEAD_gv_dS_InventoryItem[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[7]][lp_player];
     }
     else if (auto67D415F6_val == "Boots") {
-        return libDEAD_gv_dS_InventoryItem[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[3]][lp_player];
+        return libDEAD_gv_dS_InventoryItem[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[8]][lp_player];
     }
     else if (auto67D415F6_val == "Pack") {
-        return libDEAD_gv_dS_InventoryItem[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[4]][lp_player];
-    }
-    else if (auto67D415F6_val == "Augment") {
-        return libDEAD_gv_dS_InventoryItem[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[5]][lp_player];
+        return libDEAD_gv_dS_InventoryItem[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[9]][lp_player];
     }
     else {
         return null;
@@ -1144,16 +1185,16 @@ string libDEAD_gf_ECL_ReturnWeaponItem (int lp_player, int lp_weaponIndex) {
     // Implementation
     auto378DC8E0_val = lp_weaponIndex;
     if (auto378DC8E0_val == 1) {
-        return libDEAD_gv_dS_InventoryItem[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[6]][lp_player];
+        return libDEAD_gv_dS_InventoryItem[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[1]][lp_player];
     }
     else if (auto378DC8E0_val == 2) {
-        return libDEAD_gv_dS_InventoryItem[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[7]][lp_player];
+        return libDEAD_gv_dS_InventoryItem[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[2]][lp_player];
     }
     else if (auto378DC8E0_val == 3) {
-        return libDEAD_gv_dS_InventoryItem[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[8]][lp_player];
+        return libDEAD_gv_dS_InventoryItem[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[3]][lp_player];
     }
     else if (auto378DC8E0_val == 4) {
-        return libDEAD_gv_dS_InventoryItem[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[9]][lp_player];
+        return libDEAD_gv_dS_InventoryItem[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[4]][lp_player];
     }
     else {
         return null;
@@ -1256,6 +1297,25 @@ void libDEAD_gf_ECL_Reload (fixed lp_reload_time, int lp_player) {
     }
 }
 
+string libDEAD_gf_ReturnAmmoRequired (string lp_instance) {
+    // Variable Declarations
+    string lv_aMMO_type_required;
+
+    // Automatic Variable Declarations
+    string autoF565F464_val;
+
+    // Variable Initialization
+
+    // Implementation
+    autoF565F464_val = UserDataGetString("WeaponTypes", lp_instance, "AmmoType", 1);
+    if (autoF565F464_val == "Pistol") {
+        lv_aMMO_type_required = "Pistol Ammo";
+    }
+    else {
+    }
+    return lv_aMMO_type_required;
+}
+
 void libDEAD_gf_DS_FireWeaponItem (int lp_player, string lp_weaponItem) {
     // Variable Declarations
     string lv_weaponData;
@@ -1265,7 +1325,8 @@ void libDEAD_gf_DS_FireWeaponItem (int lp_player, string lp_weaponItem) {
     fixed lv_velocity;
     fixed lv_cooldown;
     fixed lv_cooldown_burst;
-    fixed lv_angle;
+    fixed lv_angle_min;
+    fixed lv_angle_max;
     fixed lv_range;
     string lv_impact;
     int lv_damage_min;
@@ -1280,18 +1341,22 @@ void libDEAD_gf_DS_FireWeaponItem (int lp_player, string lp_weaponItem) {
     if (((lp_weaponItem == "Slugger") || (lp_weaponItem == "CPG11"))) {
         lv_launchArt = libECLP_ge_ECL_WEAPON_LAUNCH_TYPE_BULLET;
     }
+    else if (((lp_weaponItem == "ER-19 Blaster"))) {
+        lv_launchArt = libECLP_ge_ECL_WEAPON_LAUNCH_TYPE_BULLET2;
+    }
     lv_weaponData = UserDataGetUserInstance("Items", lp_weaponItem, "Weapon Data", 1);
     lv_projectileN = UserDataGetInt("WeaponTypes", lp_weaponItem, "ProjectileCount", 1);
     lv_velocity = UserDataGetFixed("WeaponTypes", lp_weaponItem, "Velocity", 1);
     lv_cooldown = UserDataGetFixed("WeaponTypes", lp_weaponItem, "Cooldown", 1);
-    lv_angle = UserDataGetFixed("WeaponTypes", lp_weaponItem, "Angle", 1);
+    lv_angle_min = UserDataGetFixed("WeaponTypes", lp_weaponItem, "Angle_min", 1);
+    lv_angle_max = UserDataGetFixed("WeaponTypes", lp_weaponItem, "Angle_max", 1);
     lv_range = UserDataGetFixed("WeaponTypes", lp_weaponItem, "Range", 1);
     lv_impact = UserDataGetGameLink("WeaponTypes", lp_weaponItem, "ImpactEffect", 1);
     lv_damage_min = UserDataGetInt("WeaponTypes", lp_weaponItem, "DamageMin", 1);
     lv_damage_max = UserDataGetInt("WeaponTypes", lp_weaponItem, "DamageMax", 1);
     libNtve_gf_CatalogFieldValueSetAsReal(c_gameCatalogEffect, lv_impact, "Amount", lp_player, lv_damage_min);
     libNtve_gf_CatalogFieldValueSetAsReal(c_gameCatalogEffect, lv_impact, "Random", lp_player, (lv_damage_max - lv_damage_min));
-    libECLP_gf_ECL_Fire(lp_player, lv_launchArt, lv_projectileN, lv_bursts, lv_velocity, lv_cooldown, lv_cooldown_burst, lv_angle, lv_impact, lv_range, libDEAD_gv_activeWeaponIndex[lp_player]);
+    libECLP_gf_ECL_Fire(lp_player, lv_launchArt, lv_projectileN, lv_bursts, lv_velocity, lv_cooldown, lv_cooldown_burst, lv_angle_min, lv_angle_max, lv_impact, lv_range, libDEAD_gv_activeWeaponIndex[lp_player]);
 }
 
 void libDEAD_gf_ECL__Hookup_Context (int lp_player, int lp_index) {
@@ -1679,6 +1744,12 @@ void libDEAD_gf_DS_CreateHUD (int lp_player) {
     libDEAD_gv_dS_HUD[lp_player].lv_magazine_main = DialogControlLastCreated();
     DialogControlHookup(libDEAD_gv_dS_HUD[lp_player].lv_magazine_main, c_triggerControlTypeLabel, libNtve_gf_ConvertStringToUILayoutFrameName("AmmoCount/Label"));
     libECLP_gv_eCL__HitScan[lp_player].lv_magazine = DialogControlLastCreated();
+    DialogControlHookup(libDEAD_gv_dS_HUD[lp_player].lv_panel, c_triggerControlTypePanel, libNtve_gf_ConvertStringToUILayoutFrameName("Weapon"));
+    libDEAD_gv_dS_HUD[lp_player].lv_weapon_main = DialogControlLastCreated();
+    DialogControlHookup(libDEAD_gv_dS_HUD[lp_player].lv_weapon_main, c_triggerControlTypeImage, libNtve_gf_ConvertStringToUILayoutFrameName("Icon"));
+    libDEAD_gv_dS_HUD[lp_player].lv_weapon_icon = DialogControlLastCreated();
+    DialogControlHookup(libDEAD_gv_dS_HUD[lp_player].lv_weapon_main, c_triggerControlTypeLabel, libNtve_gf_ConvertStringToUILayoutFrameName("Name"));
+    libDEAD_gv_dS_HUD[lp_player].lv_weapon_label = DialogControlLastCreated();
     DialogControlHookup(libDEAD_gv_dS_HUD[lp_player].lv_panel, c_triggerControlTypePanel, libNtve_gf_ConvertStringToUILayoutFrameName("WeaponFrameN"));
     libDEAD_gv_dS_HUD[lp_player].lv_weaponPanel = DialogControlLastCreated();
     DialogControlHookup(libDEAD_gv_dS_HUD[lp_player].lv_weaponPanel, c_triggerControlTypeImage, libNtve_gf_ConvertStringToUILayoutFrameName("MainWeaponInfoFrame/Icon"));
@@ -5313,40 +5384,40 @@ bool libDEAD_gt_ECL__HOOKUPINVENTORYFRAMES_Func (bool testConds, bool runActions
             else {
                 auto61EF6D0C_val = autoBB74557B_var;
                 if (auto61EF6D0C_val == 1) {
-                    DialogControlHookup(libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv__INV, c_triggerControlTypePanel, libNtve_gf_ConvertStringToUILayoutFrameName("HeadEquipment"));
-                    libDEAD_gv_dS_InventorySlot_Category[autoBB74557B_var][auto922C8A78_var] = "Head";
+                    DialogControlHookup(libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv__INV, c_triggerControlTypePanel, libNtve_gf_ConvertStringToUILayoutFrameName("WeaponEquipment1"));
+                    libDEAD_gv_dS_InventorySlot_Category[autoBB74557B_var][auto922C8A78_var] = "Weapon";
                 }
                 else if (auto61EF6D0C_val == 2) {
-                    DialogControlHookup(libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv__INV, c_triggerControlTypePanel, libNtve_gf_ConvertStringToUILayoutFrameName("BodyEquipment"));
-                    libDEAD_gv_dS_InventorySlot_Category[autoBB74557B_var][auto922C8A78_var] = "Suit";
+                    DialogControlHookup(libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv__INV, c_triggerControlTypePanel, libNtve_gf_ConvertStringToUILayoutFrameName("WeaponEquipment2"));
+                    libDEAD_gv_dS_InventorySlot_Category[autoBB74557B_var][auto922C8A78_var] = "Weapon";
                 }
                 else if (auto61EF6D0C_val == 3) {
-                    DialogControlHookup(libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv__INV, c_triggerControlTypePanel, libNtve_gf_ConvertStringToUILayoutFrameName("BootsEquipment"));
-                    libDEAD_gv_dS_InventorySlot_Category[autoBB74557B_var][auto922C8A78_var] = "Boots";
+                    DialogControlHookup(libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv__INV, c_triggerControlTypePanel, libNtve_gf_ConvertStringToUILayoutFrameName("WeaponEquipment3"));
+                    libDEAD_gv_dS_InventorySlot_Category[autoBB74557B_var][auto922C8A78_var] = "Weapon";
                 }
                 else if (auto61EF6D0C_val == 4) {
-                    DialogControlHookup(libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv__INV, c_triggerControlTypePanel, libNtve_gf_ConvertStringToUILayoutFrameName("BackEquipment"));
-                    libDEAD_gv_dS_InventorySlot_Category[autoBB74557B_var][auto922C8A78_var] = "Pack";
+                    DialogControlHookup(libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv__INV, c_triggerControlTypePanel, libNtve_gf_ConvertStringToUILayoutFrameName("WeaponEquipment4"));
+                    libDEAD_gv_dS_InventorySlot_Category[autoBB74557B_var][auto922C8A78_var] = "Weapon";
                 }
                 else if (auto61EF6D0C_val == 5) {
                     DialogControlHookup(libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv__INV, c_triggerControlTypePanel, libNtve_gf_ConvertStringToUILayoutFrameName("AugmentEquipment"));
                     libDEAD_gv_dS_InventorySlot_Category[autoBB74557B_var][auto922C8A78_var] = "Augment";
                 }
                 else if (auto61EF6D0C_val == 6) {
-                    DialogControlHookup(libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv__INV, c_triggerControlTypePanel, libNtve_gf_ConvertStringToUILayoutFrameName("WeaponEquipment1"));
-                    libDEAD_gv_dS_InventorySlot_Category[autoBB74557B_var][auto922C8A78_var] = "Weapon";
+                    DialogControlHookup(libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv__INV, c_triggerControlTypePanel, libNtve_gf_ConvertStringToUILayoutFrameName("HeadEquipment"));
+                    libDEAD_gv_dS_InventorySlot_Category[autoBB74557B_var][auto922C8A78_var] = "Head";
                 }
                 else if (auto61EF6D0C_val == 7) {
-                    DialogControlHookup(libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv__INV, c_triggerControlTypePanel, libNtve_gf_ConvertStringToUILayoutFrameName("WeaponEquipment2"));
-                    libDEAD_gv_dS_InventorySlot_Category[autoBB74557B_var][auto922C8A78_var] = "Weapon";
+                    DialogControlHookup(libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv__INV, c_triggerControlTypePanel, libNtve_gf_ConvertStringToUILayoutFrameName("BodyEquipment"));
+                    libDEAD_gv_dS_InventorySlot_Category[autoBB74557B_var][auto922C8A78_var] = "Suit";
                 }
                 else if (auto61EF6D0C_val == 8) {
-                    DialogControlHookup(libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv__INV, c_triggerControlTypePanel, libNtve_gf_ConvertStringToUILayoutFrameName("WeaponEquipment3"));
-                    libDEAD_gv_dS_InventorySlot_Category[autoBB74557B_var][auto922C8A78_var] = "Weapon";
+                    DialogControlHookup(libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv__INV, c_triggerControlTypePanel, libNtve_gf_ConvertStringToUILayoutFrameName("BootsEquipment"));
+                    libDEAD_gv_dS_InventorySlot_Category[autoBB74557B_var][auto922C8A78_var] = "Boots";
                 }
                 else if (auto61EF6D0C_val == 9) {
-                    DialogControlHookup(libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv__INV, c_triggerControlTypePanel, libNtve_gf_ConvertStringToUILayoutFrameName("WeaponEquipment4"));
-                    libDEAD_gv_dS_InventorySlot_Category[autoBB74557B_var][auto922C8A78_var] = "Weapon";
+                    DialogControlHookup(libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv__INV, c_triggerControlTypePanel, libNtve_gf_ConvertStringToUILayoutFrameName("BackEquipment"));
+                    libDEAD_gv_dS_InventorySlot_Category[autoBB74557B_var][auto922C8A78_var] = "Pack";
                 }
                 else {
                 }
@@ -5362,19 +5433,19 @@ bool libDEAD_gt_ECL__HOOKUPINVENTORYFRAMES_Func (bool testConds, bool runActions
             }
             else {
                 auto2CB24F12_val = autoBB74557B_var;
-                if (auto2CB24F12_val == 1) {
+                if (auto2CB24F12_val == 6) {
                     DialogControlHookup(libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv__INV, c_triggerControlTypePanel, libNtve_gf_ConvertStringToUILayoutFrameName("BG_HEAD"));
                     libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv_sLOT_bg[autoBB74557B_var] = DialogControlLastCreated();
                 }
-                else if (auto2CB24F12_val == 2) {
+                else if (auto2CB24F12_val == 7) {
                     DialogControlHookup(libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv__INV, c_triggerControlTypePanel, libNtve_gf_ConvertStringToUILayoutFrameName("BG_BODY"));
                     libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv_sLOT_bg[autoBB74557B_var] = DialogControlLastCreated();
                 }
-                else if (auto2CB24F12_val == 3) {
+                else if (auto2CB24F12_val == 8) {
                     DialogControlHookup(libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv__INV, c_triggerControlTypePanel, libNtve_gf_ConvertStringToUILayoutFrameName("BG_BOOTS"));
                     libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv_sLOT_bg[autoBB74557B_var] = DialogControlLastCreated();
                 }
-                else if (auto2CB24F12_val == 4) {
+                else if (auto2CB24F12_val == 9) {
                     DialogControlHookup(libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv__INV, c_triggerControlTypePanel, libNtve_gf_ConvertStringToUILayoutFrameName("BG_BACK"));
                     libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv_sLOT_bg[autoBB74557B_var] = DialogControlLastCreated();
                 }
@@ -5382,20 +5453,20 @@ bool libDEAD_gt_ECL__HOOKUPINVENTORYFRAMES_Func (bool testConds, bool runActions
                     DialogControlHookup(libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv__INV, c_triggerControlTypePanel, libNtve_gf_ConvertStringToUILayoutFrameName("BG_AUG"));
                     libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv_sLOT_bg[autoBB74557B_var] = DialogControlLastCreated();
                 }
-                else if (auto2CB24F12_val == 6) {
+                else if (auto2CB24F12_val == 1) {
                     DialogControlHookup(libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv__INV, c_triggerControlTypePanel, libNtve_gf_ConvertStringToUILayoutFrameName("BG_WEAPON1"));
                     libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv_sLOT_bg[autoBB74557B_var] = DialogControlLastCreated();
                 }
-                else if (auto2CB24F12_val == 7) {
+                else if (auto2CB24F12_val == 2) {
                     DialogControlHookup(libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv__INV, c_triggerControlTypePanel, libNtve_gf_ConvertStringToUILayoutFrameName("BG_WEAPON2"));
                     libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv_sLOT_bg[autoBB74557B_var] = DialogControlLastCreated();
                 }
-                else if (auto2CB24F12_val == 8) {
+                else if (auto2CB24F12_val == 3) {
                     DialogControlHookup(libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv__INV, c_triggerControlTypePanel, libNtve_gf_ConvertStringToUILayoutFrameName("BG_WEAPON3"));
                     libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv_sLOT_bg[autoBB74557B_var] = DialogControlLastCreated();
                     libDEAD_gf_ECL_SLOT_lock_unlock(auto922C8A78_var, autoBB74557B_var, true);
                 }
-                else if (auto2CB24F12_val == 9) {
+                else if (auto2CB24F12_val == 4) {
                     DialogControlHookup(libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv__INV, c_triggerControlTypePanel, libNtve_gf_ConvertStringToUILayoutFrameName("BG_WEAPON4"));
                     libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv_sLOT_bg[autoBB74557B_var] = DialogControlLastCreated();
                     libDEAD_gf_ECL_SLOT_lock_unlock(auto922C8A78_var, autoBB74557B_var, true);
@@ -5522,8 +5593,8 @@ bool libDEAD_gt_ECL__DRAG_ON_OFF_Func (bool testConds, bool runActions) {
                     }
                 }
                 else {
-                    libDEAD_gf_ECL__EQUIP(EventPlayer(), libDEAD_gv_eCL__Inventory[EventPlayer()].lv_iTEM_slot[autoD1C13C2A_var], libDEAD_ge_EQUIPUNEQUIP_UNEQUIP);
                     libDEAD_gf_ECL_ITEM_drop_to_ground(EventPlayer(), libDEAD_gv_dS_InventoryItem[autoD1C13C2A_var][EventPlayer()], libDEAD_gv_dS_InventoryAmount[autoD1C13C2A_var][EventPlayer()], UnitGetPosition(libDEAD_gv_playerUnit[EventPlayer()]));
+                    libDEAD_gf_ECL__EQUIP(EventPlayer(), libDEAD_gv_eCL__Inventory[EventPlayer()].lv_iTEM_slot[autoD1C13C2A_var], libDEAD_ge_EQUIPUNEQUIP_UNEQUIP);
                     libDEAD_gf_ECL_ITEM_remove(EventPlayer(), autoD1C13C2A_var);
                 }
             }
