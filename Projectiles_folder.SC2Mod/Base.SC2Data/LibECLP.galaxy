@@ -604,16 +604,6 @@ void libECLP_gf_SetControlledUnit (int lp_player, unit lp_unit) {
 //--------------------------------------------------------------------------------------------------
 bool libECLP_gt_TEST_Func (bool testConds, bool runActions) {
     // Automatic Variable Declarations
-    unitgroup auto35696CFD_g;
-    int auto35696CFD_u;
-    unit auto35696CFD_var;
-    unitgroup auto2750D642_g;
-    int auto2750D642_u;
-    unit auto2750D642_var;
-    unitgroup auto2037A125_g;
-    int auto2037A125_u;
-    unit auto2037A125_var;
-
     // Conditions
     if (testConds) {
         if (!((libECLP_gv_dEBUG == true))) {
@@ -627,31 +617,8 @@ bool libECLP_gt_TEST_Func (bool testConds, bool runActions) {
     }
 
     CameraPan(1, RegionGetCenter(RegionEntireMap()), 1.0, -1, 10.0, false);
-    UnitCreate(1, "Obelisk", c_unitCreateIgnorePlacement, 15, PointWithOffsetPolar(RegionGetCenter(RegionEntireMap()), 6.0, 0.0), 270.0);
-    UnitCreate(1, "ECLWALL2x2", c_unitCreateIgnorePlacement, 15, PointWithOffsetPolar(RegionGetCenter(RegionEntireMap()), 6.0, 0.0), 270.0);
-    auto35696CFD_g = UnitLastCreatedGroup();
-    auto35696CFD_u = UnitGroupCount(auto35696CFD_g, c_unitCountAll);
-    for (;; auto35696CFD_u -= 1) {
-        auto35696CFD_var = UnitGroupUnitFromEnd(auto35696CFD_g, auto35696CFD_u);
-        if (auto35696CFD_var == null) { break; }
-        UnitSetState(auto35696CFD_var, c_unitStateHighlightable, false);
-    }
-    UnitCreate(1, "ECLWALL2x2", c_unitCreateIgnorePlacement, 15, PointWithOffsetPolar(RegionGetCenter(RegionEntireMap()), 6.0, 0.0), 270.0);
-    auto2750D642_g = UnitLastCreatedGroup();
-    auto2750D642_u = UnitGroupCount(auto2750D642_g, c_unitCountAll);
-    for (;; auto2750D642_u -= 1) {
-        auto2750D642_var = UnitGroupUnitFromEnd(auto2750D642_g, auto2750D642_u);
-        if (auto2750D642_var == null) { break; }
-        UnitSetState(auto2750D642_var, c_unitStateHighlightable, false);
-    }
-    libNtve_gf_CreateUnitsWithDefaultFacing(5, "InfestedCivilian", 0, 15, PointWithOffsetPolar(RegionGetCenter(RegionEntireMap()), 8.0, 0.0));
-    auto2037A125_g = UnitLastCreatedGroup();
-    auto2037A125_u = UnitGroupCount(auto2037A125_g, c_unitCountAll);
-    for (;; auto2037A125_u -= 1) {
-        auto2037A125_var = UnitGroupUnitFromEnd(auto2037A125_g, auto2037A125_u);
-        if (auto2037A125_var == null) { break; }
-        UnitSetState(auto2037A125_var, c_unitStateHighlightable, false);
-    }
+    UnitCreate(1, "ECLSTASHopen", c_unitCreateIgnorePlacement, 1, PointWithOffsetPolar(RegionGetCenter(RegionEntireMap()), 2.0, 0.0), 270.0);
+    UnitCreate(1, "ECLSTASHclosed", c_unitCreateIgnorePlacement, 1, PointWithOffsetPolar(RegionGetCenter(RegionEntireMap()), 4.0, 0.0), 270.0);
     Wait(0.25, c_timeGame);
     libNtve_gf_CreateUnitsWithDefaultFacing(1, "Separatist", 0, 1, PointWithOffsetPolar(RegionGetCenter(RegionEntireMap()), -6.0, 0.0));
     libECLP_gv_eCL_Source[1] = UnitLastCreated();
@@ -666,11 +633,8 @@ bool libECLP_gt_TEST_Func (bool testConds, bool runActions) {
     UnitSetPropertyFixed(libECLP_gv_eCL_Source[1], c_unitPropLife, 1000.0);
     TriggerEnable(libECLP_gt_ECL_SaveMouseXY, true);
     TriggerEnable(libECLP_gt_ECL_Fire, true);
-    UISetCursorVisible(PlayerGroupAll(), false);
-    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, FixedToText(UnitGetPropertyFixed(libECLP_gv_eCL_Source[1], c_unitPropLife, c_unitPropCurrent), c_fixedPrecisionAny));
     UnitBehaviorAdd(libECLP_gv_eCL_Source[1], "HealthPercentageIncrease", libECLP_gv_eCL_Source[1], 1);
     libNtve_gf_CatalogFieldValueSetAsReal(c_gameCatalogBehavior, "HealthPercentageIncrease", "Modification.VitalMaxFractionArray[" + IntToString(0) + "]", 1, 0.003);
-    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, FixedToText(UnitGetPropertyFixed(libECLP_gv_eCL_Source[1], c_unitPropLife, c_unitPropCurrent), c_fixedPrecisionAny));
     CameraLockInput(1, true);
     CameraPan(1, UnitGetPosition(libECLP_gv_eCL_Source[1]), 0.0, -1, 0, false);
     CameraFollowUnitGroup(1, libNtve_gf_ConvertUnitToUnitGroup(libECLP_gv_eCL_Source[1]), true, false);

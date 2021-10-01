@@ -65,7 +65,7 @@ void libDEAD_InitVariables () {
     for (init_i = 0; init_i <= libDEAD_gv_dS_MaxPlayers; init_i += 1) {
         libDEAD_gv_dS_Loot[init_i] = UnitGroupEmpty();
     }
-    libDEAD_gv_eCL__equipmentslots = (libDEAD_gv_eCL__maxslots - libDEAD_gv_eCL__inventoryslots);
+    libDEAD_gv_eCL__equipmentslots = (libDEAD_gv_eCL__maxslots - (libDEAD_gv_eCL__stashslots + libDEAD_gv_eCL__inventoryslots));
     for (init_i = 0; init_i <= libDEAD_gv_dS_MaxPlayers; init_i += 1) {
         libDEAD_gv_eCL__Inventory[init_i].lv__DROPZONE = c_invalidDialogControlId;
         libDEAD_gv_eCL__Inventory[init_i].lv__INV = c_invalidDialogControlId;
@@ -681,108 +681,6 @@ void libDEAD_gf_CheckBaseStatModifiers () {
     libDEAD_gv_baseVisionRange = CatalogFieldValueGetAsInt(c_gameCatalogUnit, "Separatist", "Sight", c_playerAny);
 }
 
-trigger auto_libDEAD_gf_UpdateStatModifiers_Trigger = null;
-int auto_libDEAD_gf_UpdateStatModifiers_lp_player;
-
-void libDEAD_gf_UpdateStatModifiers (int lp_player) {
-    auto_libDEAD_gf_UpdateStatModifiers_lp_player = lp_player;
-
-    if (auto_libDEAD_gf_UpdateStatModifiers_Trigger == null) {
-        auto_libDEAD_gf_UpdateStatModifiers_Trigger = TriggerCreate("auto_libDEAD_gf_UpdateStatModifiers_TriggerFunc");
-    }
-
-    TriggerExecute(auto_libDEAD_gf_UpdateStatModifiers_Trigger, false, false);
-}
-
-bool auto_libDEAD_gf_UpdateStatModifiers_TriggerFunc (bool testConds, bool runActions) {
-    int lp_player = auto_libDEAD_gf_UpdateStatModifiers_lp_player;
-
-    // Variable Declarations
-    string lv_item;
-    int lv_index;
-    fixed lv_moveSpeed;
-    int lv_armor;
-    int lv_hP;
-    fixed lv_oxygen;
-    int lv_inventory;
-    int lv_vision;
-
-    // Automatic Variable Declarations
-    const int auto1CE59428_ae = 5;
-    const int auto1CE59428_ai = 1;
-    int autoA8336584_val;
-    const int autoEDFCF186_ae = libDEAD_gv_eCL__maxslots;
-    const int autoEDFCF186_ai = 1;
-    const int auto58356EBA_ae = 4;
-    const int auto58356EBA_ai = 1;
-    const int auto0345824F_ae = 4;
-    const int auto0345824F_ai = 1;
-
-    // Variable Initialization
-
-    // Implementation
-    Wait(0.1, c_timeGame);
-    lv_index = 1;
-    for ( ; ( (auto1CE59428_ai >= 0 && lv_index <= auto1CE59428_ae) || (auto1CE59428_ai < 0 && lv_index >= auto1CE59428_ae) ) ; lv_index += auto1CE59428_ai ) {
-        autoA8336584_val = lv_index;
-        if (autoA8336584_val == 1) {
-            lv_item = libDEAD_gf_ECL_ReturnEquippedItem(lp_player, "Head");
-        }
-        else if (autoA8336584_val == 2) {
-            lv_item = libDEAD_gf_ECL_ReturnEquippedItem(lp_player, "Suit");
-        }
-        else if (autoA8336584_val == 3) {
-            lv_item = libDEAD_gf_ECL_ReturnEquippedItem(lp_player, "Boots");
-        }
-        else if (autoA8336584_val == 4) {
-            lv_item = libDEAD_gf_ECL_ReturnEquippedItem(lp_player, "Pack");
-        }
-        else if (autoA8336584_val == 5) {
-            lv_item = libDEAD_gf_ECL_ReturnEquippedItem(lp_player, "Augment");
-        }
-        else {
-        }
-        if ((lv_item != null)) {
-            lv_vision += libDEAD_gf_ReturnEquipmentPropertyVision(lv_item);
-            lv_moveSpeed += libDEAD_gf_ReturnEquipmentPropertyMoveSpeed(lv_item);
-            lv_inventory += libDEAD_gf_ReturnEquipmentPropertyInventory(lv_item);
-        }
-    }
-    lv_vision += libDEAD_gv_baseVisionRange;
-    lv_moveSpeed += libDEAD_gv_baseMoveSpeed;
-    lv_inventory += libDEAD_gv_baseInventory;
-    UnitSetPropertyFixed(libDEAD_gv_playerUnit[lp_player], c_unitPropBaseMovementSpeed, lv_moveSpeed);
-    UnitSetPropertyFixed(libDEAD_gv_playerUnit[lp_player], c_unitPropMovementSpeed, lv_moveSpeed);
-    libNtve_gf_CatalogFieldValueSetAsReal(c_gameCatalogUnit, UnitGetType(libDEAD_gv_playerUnit[lp_player]), "Sight", lp_player, IntToFixed(lv_vision));
-    lv_index = 10;
-    for ( ; ( (autoEDFCF186_ai >= 0 && lv_index <= autoEDFCF186_ae) || (autoEDFCF186_ai < 0 && lv_index >= autoEDFCF186_ae) ) ; lv_index += autoEDFCF186_ai ) {
-        if (((libDEAD_gv_eCL__equipmentslots + lv_inventory) < lv_index)) {
-            libDEAD_gf_ECL_SLOT_lock_unlock(lp_player, lv_index, true);
-        }
-        else {
-            libDEAD_gf_ECL_SLOT_lock_unlock(lp_player, lv_index, false);
-        }
-    }
-    lv_index = 1;
-    for ( ; ( (auto58356EBA_ai >= 0 && lv_index <= auto58356EBA_ae) || (auto58356EBA_ai < 0 && lv_index >= auto58356EBA_ae) ) ; lv_index += auto58356EBA_ai ) {
-        if ((libDEAD_gf_ECL_ReturnWeaponItem(lp_player, lv_index) != null)) {
-            libDEAD_gv_activeWeaponInstance[lp_player][lv_index] = libDEAD_gf_ECL_ReturnWeaponItem(lp_player, lv_index);
-        }
-        else {
-            libDEAD_gv_activeWeaponInstance[lp_player][lv_index] = null;
-        }
-    }
-    lv_index = 1;
-    for ( ; ( (auto0345824F_ai >= 0 && lv_index <= auto0345824F_ae) || (auto0345824F_ai < 0 && lv_index >= auto0345824F_ae) ) ; lv_index += auto0345824F_ai ) {
-        if ((libDEAD_gf_ECL_ReturnWeaponItem(lp_player, lv_index) != null)) {
-            libDEAD_gf_KL_SwapToWeapon(EventPlayer(), lv_index);
-            break;
-        }
-
-    }
-    return true;
-}
-
 void libDEAD_gf_ECL_ITEM_add (int lp_player, string lp_item, int lp_amount, bool lp_displayMessage) {
     // Variable Declarations
     bool lv_fREE;
@@ -956,6 +854,19 @@ void libDEAD_gf_ECL_ITEM_remove (int lp_player, int lp_index) {
     libDEAD_gv_dS_InventoryItem[lp_index][lp_player] = null;
 }
 
+void libDEAD_gf_ECL_SLOT_lock_unlock (int lp_player, int lp_slot_ID, bool lp_lockUnlock) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((lp_lockUnlock == true)) {
+        libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_locked[lp_slot_ID] = true;
+        DialogControlSetAnimationState(libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_bg[lp_slot_ID], PlayerGroupSingle(lp_player), "SlotState", "LOCKED");
+    }
+    else {
+        libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_locked[lp_slot_ID] = false;
+        DialogControlSetAnimationState(libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_bg[lp_slot_ID], PlayerGroupSingle(lp_player), "SlotState", "UNLOCKED");
+    }
+}
+
 void libDEAD_gf_ECL_ITEM_drop_to_ground (int lp_player, string lp_item, int lp_amount, point lp_spawnPoint) {
     // Variable Declarations
     bool lv_fREE;
@@ -986,19 +897,6 @@ void libDEAD_gf_ECL_ITEM_drop_to_ground (int lp_player, string lp_item, int lp_a
 
 }
 
-void libDEAD_gf_ECL_SLOT_lock_unlock (int lp_player, int lp_slot_ID, bool lp_lockUnlock) {
-    // Automatic Variable Declarations
-    // Implementation
-    if ((lp_lockUnlock == true)) {
-        libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_locked[lp_slot_ID] = true;
-        DialogControlSetAnimationState(libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_bg[lp_slot_ID], PlayerGroupSingle(lp_player), "SlotState", "LOCKED");
-    }
-    else {
-        libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_locked[lp_slot_ID] = false;
-        DialogControlSetAnimationState(libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_bg[lp_slot_ID], PlayerGroupSingle(lp_player), "SlotState", "UNLOCKED");
-    }
-}
-
 void libDEAD_gf_ECL__EQUIP (int lp_player, int lp_sLOT, int lp_eQUIPUNEQUIP) {
     // Variable Declarations
     string lv_item;
@@ -1026,7 +924,7 @@ void libDEAD_gf_ECL__EQUIP (int lp_player, int lp_sLOT, int lp_eQUIPUNEQUIP) {
     string auto30B42D06_val;
     const int auto6A97C088_ae = 4;
     const int auto6A97C088_ai = 1;
-    const int auto52B48827_ae = libDEAD_gv_eCL__maxslots;
+    int auto52B48827_ae;
     const int auto52B48827_ai = 1;
 
     // Variable Initialization
@@ -1136,12 +1034,13 @@ void libDEAD_gf_ECL__EQUIP (int lp_player, int lp_sLOT, int lp_eQUIPUNEQUIP) {
 
     }
     libDEAD_gv_eCL__Inventory[lp_player].lv_iNV_slots += lv_inventory;
+    auto52B48827_ae = (libDEAD_gv_eCL__equipmentslots + libDEAD_gv_eCL__inventoryslots);
     lv_index = (libDEAD_gv_eCL__equipmentslots + 1);
     for ( ; ( (auto52B48827_ai >= 0 && lv_index <= auto52B48827_ae) || (auto52B48827_ai < 0 && lv_index >= auto52B48827_ae) ) ; lv_index += auto52B48827_ai ) {
         if ((libDEAD_gv_eCL__Inventory[lp_player].lv_iNV_slots < lv_index)) {
             libDEAD_gf_ECL_SLOT_lock_unlock(lp_player, lv_index, true);
             if ((libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[lv_index] > 0)) {
-                libDEAD_gf_ECL_ITEM_drop_to_ground(EventPlayer(), libDEAD_gv_dS_InventoryItem[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[lv_index]][lp_player], libDEAD_gv_dS_InventoryAmount[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[lv_index]][lp_player], UnitGetPosition(libDEAD_gv_playerUnit[lp_player]));
+                libDEAD_gf_ECL_ITEM_drop_to_ground(lp_player, libDEAD_gv_dS_InventoryItem[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[lv_index]][lp_player], libDEAD_gv_dS_InventoryAmount[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[lv_index]][lp_player], UnitGetPosition(libDEAD_gv_playerUnit[lp_player]));
                 libDEAD_gf_ECL_ITEM_remove(lp_player, libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[lv_index]);
             }
 
@@ -2636,6 +2535,7 @@ void libDEAD_gf_ShowHideInventoryPanelOld (int lp_player, bool lp_showHide) {
         libDEAD_gv_dS_InventoryOpened[lp_player] = true;
     }
     else if (auto94F1AC0F_val == false) {
+        UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/lib_DEAD_25A251E7"));
         if ((libDEAD_gv_dS_ContextActive[lp_player] == true)) {
             DialogControlSendAnimationEvent(libDEAD_gv_dS_Inventory[lp_player].lv_itemSlots[libDEAD_gv_dS_ContextItemIndex[lp_player]], PlayerGroupAll(), "ContextClose");
         }
@@ -2665,6 +2565,11 @@ void libDEAD_gf_ShowHideInventoryPanel (int lp_player, bool lp_showHide) {
     }
     else if (auto86EAFC1A_val == false) {
         if ((libDEAD_gv_dS_ContextActive[lp_player] == true)) {
+        }
+        if ((libDEAD_gv_eCL_STASH_open[lp_player] == true)) {
+            UnitIssueOrder(libDEAD_gv_eCL_STASH[lp_player], Order(AbilityCommand("ECLSTASHopentoclose", 0)), c_orderQueueReplace);
+            DialogControlSendAnimationEvent(libDEAD_gv_eCL__Inventory[EventPlayer()].lv__INV, PlayerGroupSingle(lp_player), "HideStash");
+            Wait(0.0625, c_timeReal);
         }
         DialogControlSetVisible(libDEAD_gv_eCL__Inventory[lp_player].lv__INV, PlayerGroupSingle(lp_player), false);
         if ((libDEAD_gv_looting[lp_player] == false)) {
@@ -5426,34 +5331,14 @@ bool libDEAD_gt_ECL__HOOKUPINVENTORYFRAMES_Func (bool testConds, bool runActions
             if ((autoBB74557B_var > libDEAD_gv_eCL__equipmentslots)) {
                 DialogControlHookup(libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv__INV, c_triggerControlTypePanel, libNtve_gf_ConvertStringToUILayoutFrameName(("BG_" + IntToString((autoBB74557B_var - libDEAD_gv_eCL__equipmentslots)))));
                 libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv_sLOT_bg[autoBB74557B_var] = DialogControlLastCreated();
-                if (((libDEAD_gv_eCL__equipmentslots + libDEAD_gv_baseInventory) < autoBB74557B_var)) {
+                if (((autoBB74557B_var >= ((libDEAD_gv_eCL__equipmentslots + libDEAD_gv_baseInventory) + 1)) && (autoBB74557B_var <= (libDEAD_gv_eCL__equipmentslots + libDEAD_gv_eCL__inventoryslots)))) {
                     libDEAD_gf_ECL_SLOT_lock_unlock(auto922C8A78_var, autoBB74557B_var, true);
                 }
 
             }
             else {
                 auto2CB24F12_val = autoBB74557B_var;
-                if (auto2CB24F12_val == 6) {
-                    DialogControlHookup(libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv__INV, c_triggerControlTypePanel, libNtve_gf_ConvertStringToUILayoutFrameName("BG_HEAD"));
-                    libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv_sLOT_bg[autoBB74557B_var] = DialogControlLastCreated();
-                }
-                else if (auto2CB24F12_val == 7) {
-                    DialogControlHookup(libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv__INV, c_triggerControlTypePanel, libNtve_gf_ConvertStringToUILayoutFrameName("BG_BODY"));
-                    libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv_sLOT_bg[autoBB74557B_var] = DialogControlLastCreated();
-                }
-                else if (auto2CB24F12_val == 8) {
-                    DialogControlHookup(libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv__INV, c_triggerControlTypePanel, libNtve_gf_ConvertStringToUILayoutFrameName("BG_BOOTS"));
-                    libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv_sLOT_bg[autoBB74557B_var] = DialogControlLastCreated();
-                }
-                else if (auto2CB24F12_val == 9) {
-                    DialogControlHookup(libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv__INV, c_triggerControlTypePanel, libNtve_gf_ConvertStringToUILayoutFrameName("BG_BACK"));
-                    libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv_sLOT_bg[autoBB74557B_var] = DialogControlLastCreated();
-                }
-                else if (auto2CB24F12_val == 5) {
-                    DialogControlHookup(libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv__INV, c_triggerControlTypePanel, libNtve_gf_ConvertStringToUILayoutFrameName("BG_AUG"));
-                    libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv_sLOT_bg[autoBB74557B_var] = DialogControlLastCreated();
-                }
-                else if (auto2CB24F12_val == 1) {
+                if (auto2CB24F12_val == 1) {
                     DialogControlHookup(libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv__INV, c_triggerControlTypePanel, libNtve_gf_ConvertStringToUILayoutFrameName("BG_WEAPON1"));
                     libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv_sLOT_bg[autoBB74557B_var] = DialogControlLastCreated();
                 }
@@ -5471,6 +5356,26 @@ bool libDEAD_gt_ECL__HOOKUPINVENTORYFRAMES_Func (bool testConds, bool runActions
                     libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv_sLOT_bg[autoBB74557B_var] = DialogControlLastCreated();
                     libDEAD_gf_ECL_SLOT_lock_unlock(auto922C8A78_var, autoBB74557B_var, true);
                 }
+                else if (auto2CB24F12_val == 5) {
+                    DialogControlHookup(libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv__INV, c_triggerControlTypePanel, libNtve_gf_ConvertStringToUILayoutFrameName("BG_AUG"));
+                    libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv_sLOT_bg[autoBB74557B_var] = DialogControlLastCreated();
+                }
+                else if (auto2CB24F12_val == 6) {
+                    DialogControlHookup(libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv__INV, c_triggerControlTypePanel, libNtve_gf_ConvertStringToUILayoutFrameName("BG_HEAD"));
+                    libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv_sLOT_bg[autoBB74557B_var] = DialogControlLastCreated();
+                }
+                else if (auto2CB24F12_val == 7) {
+                    DialogControlHookup(libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv__INV, c_triggerControlTypePanel, libNtve_gf_ConvertStringToUILayoutFrameName("BG_BODY"));
+                    libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv_sLOT_bg[autoBB74557B_var] = DialogControlLastCreated();
+                }
+                else if (auto2CB24F12_val == 8) {
+                    DialogControlHookup(libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv__INV, c_triggerControlTypePanel, libNtve_gf_ConvertStringToUILayoutFrameName("BG_BOOTS"));
+                    libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv_sLOT_bg[autoBB74557B_var] = DialogControlLastCreated();
+                }
+                else if (auto2CB24F12_val == 9) {
+                    DialogControlHookup(libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv__INV, c_triggerControlTypePanel, libNtve_gf_ConvertStringToUILayoutFrameName("BG_BACK"));
+                    libDEAD_gv_eCL__Inventory[auto922C8A78_var].lv_sLOT_bg[autoBB74557B_var] = DialogControlLastCreated();
+                }
                 else {
                 }
             }
@@ -5482,6 +5387,65 @@ bool libDEAD_gt_ECL__HOOKUPINVENTORYFRAMES_Func (bool testConds, bool runActions
 //--------------------------------------------------------------------------------------------------
 void libDEAD_gt_ECL__HOOKUPINVENTORYFRAMES_Init () {
     libDEAD_gt_ECL__HOOKUPINVENTORYFRAMES = TriggerCreate("libDEAD_gt_ECL__HOOKUPINVENTORYFRAMES_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: DS_OpenCloseStash_unitclick
+//--------------------------------------------------------------------------------------------------
+bool libDEAD_gt_DS_OpenCloseStash_unitclick_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((libDEAD_gv_eCL_STASH_morphin[EventPlayer()] == false))) {
+            return false;
+        }
+
+        if (!((UnitGetOwner(EventUnit()) == EventPlayer()))) {
+            return false;
+        }
+
+        if (!(((UnitGetType(EventUnit()) == "ECLSTASHclosed") || (UnitGetType(EventUnit()) == "ECLSTASHopen")))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libDEAD_gv_eCL_STASH_morphin[EventPlayer()] = true;
+    if ((libDEAD_gv_eCL_STASH[EventPlayer()] == EventUnit())) {
+        UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/lib_DEAD_6DA7B40B"));
+    }
+    else {
+        UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/lib_DEAD_8C2EA14A"));
+        UnitIssueOrder(libDEAD_gv_eCL_STASH[EventPlayer()], Order(AbilityCommand("ECLSTASHopentoclose", 0)), c_orderQueueReplace);
+        libDEAD_gv_eCL_STASH[EventPlayer()] = EventUnit();
+    }
+    if ((UnitGetType(EventUnit()) == "ECLSTASHclosed")) {
+        UnitIssueOrder(EventUnit(), Order(AbilityCommand("ECLSTASHclosetoopen", 0)), c_orderQueueReplace);
+        libDEAD_gf_ShowHideInventoryPanel(EventPlayer(), true);
+        Wait(0.0625, c_timeReal);
+        DialogControlSendAnimationEvent(libDEAD_gv_eCL__Inventory[EventPlayer()].lv__INV, PlayerGroupSingle(EventPlayer()), "ShowStash");
+        libDEAD_gv_eCL_STASH_open[EventPlayer()] = true;
+    }
+    else {
+        UnitIssueOrder(EventUnit(), Order(AbilityCommand("ECLSTASHopentoclose", 0)), c_orderQueueReplace);
+        DialogControlSendAnimationEvent(libDEAD_gv_eCL__Inventory[EventPlayer()].lv__INV, PlayerGroupSingle(EventPlayer()), "HideStash");
+        Wait(0.0625, c_timeReal);
+        libDEAD_gf_ShowHideInventoryPanel(EventPlayer(), false);
+        libDEAD_gv_eCL_STASH_open[EventPlayer()] = false;
+    }
+    Wait(0.5, c_timeReal);
+    libDEAD_gv_eCL_STASH_morphin[EventPlayer()] = false;
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libDEAD_gt_DS_OpenCloseStash_unitclick_Init () {
+    libDEAD_gt_DS_OpenCloseStash_unitclick = TriggerCreate("libDEAD_gt_DS_OpenCloseStash_unitclick_Func");
+    TriggerAddEventUnitClick(libDEAD_gt_DS_OpenCloseStash_unitclick, null, c_playerAny);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5614,9 +5578,16 @@ void libDEAD_gt_ECL__DRAG_ON_OFF_Init () {
 // Trigger: ECL__SET NEW/OLD SLOT
 //--------------------------------------------------------------------------------------------------
 bool libDEAD_gt_ECL__SETNEWOLDSLOT_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    bool lv_iNV;
+
     // Automatic Variable Declarations
     int auto90A4862D_ae;
     int auto90A4862D_var;
+    const int autoF1117C49_ae = libDEAD_gv_eCL__maxslots;
+    int autoF1117C49_var;
+
+    // Variable Initialization
 
     // Actions
     if (!runActions) {
@@ -5629,16 +5600,31 @@ bool libDEAD_gt_ECL__SETNEWOLDSLOT_Func (bool testConds, bool runActions) {
         if ((EventDialogControl() == libDEAD_gv_eCL__Inventory[EventPlayer()].lv_sLOT[auto90A4862D_var])) {
             if ((EventDialogControlEventType() == c_triggerControlEventTypeMouseEnter) && (libDEAD_gv_eCL__Inventory[EventPlayer()].lv_sLOT_locked[auto90A4862D_var] == false) && ((libDEAD_gf_ReturnItemPropertyCategory(libDEAD_gv_dS_InventoryItem[libDEAD_gv_eCL__Inventory[EventPlayer()].lv_curr_item][EventPlayer()]) == libDEAD_gv_dS_InventorySlot_Category[auto90A4862D_var][EventPlayer()]) || ((libDEAD_gv_dS_InventorySlot_Category[auto90A4862D_var][EventPlayer()] == "All") && ((libDEAD_gf_ReturnItemPropertyCategory(libDEAD_gv_dS_InventoryItem[libDEAD_gv_eCL__Inventory[EventPlayer()].lv_curr_item][EventPlayer()]) == libDEAD_gf_ReturnItemPropertyCategory(libDEAD_gv_dS_InventoryItem[libDEAD_gv_eCL__Inventory[EventPlayer()].lv_sLOT_item[auto90A4862D_var]][EventPlayer()])) || (libDEAD_gv_dS_InventorySlot_Category[libDEAD_gv_eCL__Inventory[EventPlayer()].lv_iTEM_slot[libDEAD_gv_eCL__Inventory[EventPlayer()].lv_curr_item]][EventPlayer()] == "All") || (libDEAD_gv_eCL__Inventory[EventPlayer()].lv_sLOT_item[auto90A4862D_var] == 0))))) {
                 libDEAD_gv_eCL__Inventory[EventPlayer()].lv_curr_slot = auto90A4862D_var;
-                UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (StringExternal("Param/Value/lib_DEAD_3ECAEBBB") + IntToText(libDEAD_gv_eCL__Inventory[EventPlayer()].lv_curr_slot)));
             }
             else {
                 libDEAD_gv_eCL__Inventory[EventPlayer()].lv_curr_slot = libDEAD_gv_eCL__Inventory[EventPlayer()].lv_iTEM_slot[libDEAD_gv_eCL__Inventory[EventPlayer()].lv_curr_item];
-                UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (StringExternal("Param/Value/lib_DEAD_E03768CE") + IntToText(libDEAD_gv_eCL__Inventory[EventPlayer()].lv_curr_slot)));
             }
+            lv_iNV = true;
             break;
         }
 
     }
+    if ((libDEAD_gv_eCL_STASH_open[EventPlayer()] == true) && (lv_iNV == false)) {
+        autoF1117C49_var = (libDEAD_gv_eCL__Inventory[EventPlayer()].lv_iNV_slots + 1);
+        for ( ; autoF1117C49_var <= autoF1117C49_ae; autoF1117C49_var += 1 ) {
+            if ((EventDialogControl() == libDEAD_gv_eCL__Inventory[EventPlayer()].lv_sLOT[autoF1117C49_var])) {
+                if ((EventDialogControlEventType() == c_triggerControlEventTypeMouseEnter) && (libDEAD_gv_eCL__Inventory[EventPlayer()].lv_sLOT_locked[autoF1117C49_var] == false) && ((libDEAD_gf_ReturnItemPropertyCategory(libDEAD_gv_dS_InventoryItem[libDEAD_gv_eCL__Inventory[EventPlayer()].lv_curr_item][EventPlayer()]) == libDEAD_gv_dS_InventorySlot_Category[autoF1117C49_var][EventPlayer()]) || ((libDEAD_gv_dS_InventorySlot_Category[autoF1117C49_var][EventPlayer()] == "All") && ((libDEAD_gf_ReturnItemPropertyCategory(libDEAD_gv_dS_InventoryItem[libDEAD_gv_eCL__Inventory[EventPlayer()].lv_curr_item][EventPlayer()]) == libDEAD_gf_ReturnItemPropertyCategory(libDEAD_gv_dS_InventoryItem[libDEAD_gv_eCL__Inventory[EventPlayer()].lv_sLOT_item[autoF1117C49_var]][EventPlayer()])) || (libDEAD_gv_dS_InventorySlot_Category[libDEAD_gv_eCL__Inventory[EventPlayer()].lv_iTEM_slot[libDEAD_gv_eCL__Inventory[EventPlayer()].lv_curr_item]][EventPlayer()] == "All") || (libDEAD_gv_eCL__Inventory[EventPlayer()].lv_sLOT_item[autoF1117C49_var] == 0))))) {
+                    libDEAD_gv_eCL__Inventory[EventPlayer()].lv_curr_slot = autoF1117C49_var;
+                }
+                else {
+                    libDEAD_gv_eCL__Inventory[EventPlayer()].lv_curr_slot = libDEAD_gv_eCL__Inventory[EventPlayer()].lv_iTEM_slot[libDEAD_gv_eCL__Inventory[EventPlayer()].lv_curr_item];
+                }
+                break;
+            }
+
+        }
+    }
+
     return true;
 }
 
@@ -5747,7 +5733,7 @@ bool libDEAD_gt_ECL__PICKUPLOOT_highlight_Func (bool testConds, bool runActions)
     // Automatic Variable Declarations
     // Conditions
     if (testConds) {
-        if (!((UnitGetType(EventUnit()) == "PLootPermanent"))) {
+        if (!(((UnitGetType(EventUnit()) == "PLootPermanent") || (UnitGetType(EventUnit()) == "ECLSTASHclosed") || (UnitGetType(EventUnit()) == "ECLSTASHopen")))) {
             return false;
         }
     }
@@ -5774,7 +5760,7 @@ bool libDEAD_gt_ECL__PICKUPLOOT_unhighlight_Func (bool testConds, bool runAction
     // Automatic Variable Declarations
     // Conditions
     if (testConds) {
-        if (!((UnitGetType(EventUnit()) == "PLootPermanent"))) {
+        if (!(((UnitGetType(EventUnit()) == "PLootPermanent") || (UnitGetType(EventUnit()) == "ECLSTASHclosed") || (UnitGetType(EventUnit()) == "ECLSTASHopen")))) {
             return false;
         }
     }
@@ -7639,6 +7625,7 @@ void libDEAD_InitTriggers () {
     libDEAD_gt_DS_ExamineCloseEscP2_Init();
     libDEAD_gt_KL_SwapWeaponTest_Init();
     libDEAD_gt_ECL__HOOKUPINVENTORYFRAMES_Init();
+    libDEAD_gt_DS_OpenCloseStash_unitclick_Init();
     libDEAD_gt_ECL__DRAG_ON_OFF_Init();
     libDEAD_gt_ECL__SETNEWOLDSLOT_Init();
     libDEAD_gt_ECL__DROPZONE_Init();

@@ -1,4 +1,4 @@
-include "TriggerLibs/natives"
+include "LibECLP"
 
 //--------------------------------------------------------------------------------------------------
 // Library: Core (Dead)
@@ -56,8 +56,9 @@ const fixed libDEAD_gv_dS_WaterLossRate = 7.95;
 const fixed libDEAD_gv_dS_FoodLossRate = 10.5;
 const int libDEAD_gv_eCL_Item_width = 80;
 const int libDEAD_gv_eCL_Item_height = 80;
-const int libDEAD_gv_eCL__maxslots = 58;
+const int libDEAD_gv_eCL__maxslots = 135;
 const int libDEAD_gv_eCL__inventoryslots = 49;
+const int libDEAD_gv_eCL__stashslots = 77;
 const int libDEAD_gv_dS_CraftingListboxSize = 6;
 const fixed libDEAD_gv_dS_CameraDistanceNormal = 24.0;
 const fixed libDEAD_gv_dS_CameraDistanceInventory = 16.0;
@@ -296,6 +297,9 @@ int[3] libDEAD_gv_dS_ConfirmType;
 libDEAD_gs_DS_Inspect[3] libDEAD_gv_dS_Inspect;
 int[libDEAD_gv_dS_MaxPlayers + 1] libDEAD_gv_activeWeaponIndex;
 string[libDEAD_gv_dS_MaxPlayers + 1][5] libDEAD_gv_activeWeaponInstance;
+unit[libECLP_gv_eCL_MAX_P + 1] libDEAD_gv_eCL_STASH;
+bool[libECLP_gv_eCL_MAX_P + 1] libDEAD_gv_eCL_STASH_morphin;
+bool[libECLP_gv_eCL_MAX_P + 1] libDEAD_gv_eCL_STASH_open;
 unitgroup[libDEAD_gv_dS_MaxPlayers + 1] libDEAD_gv_dS_Loot;
 bool[libDEAD_gv_dS_MaxPlayers + 1] libDEAD_gv_dS_ShowHideLoot;
 bool[libDEAD_gv_dS_MaxPlayers + 1] libDEAD_gv_dS_reloading;
@@ -373,11 +377,10 @@ int libDEAD_gf_ReturnEquipmentPropertyInventory (string lp_item);
 int libDEAD_gf_ReturnEquipmentPropertyHealth (string lp_item);
 int libDEAD_gf_ReturnEquipmentPropertyVision (string lp_item);
 void libDEAD_gf_CheckBaseStatModifiers ();
-void libDEAD_gf_UpdateStatModifiers (int lp_player);
 void libDEAD_gf_ECL_ITEM_add (int lp_player, string lp_item, int lp_amount, bool lp_displayMessage);
 void libDEAD_gf_ECL_ITEM_remove (int lp_player, int lp_index);
-void libDEAD_gf_ECL_ITEM_drop_to_ground (int lp_player, string lp_item, int lp_amount, point lp_spawnPoint);
 void libDEAD_gf_ECL_SLOT_lock_unlock (int lp_player, int lp_slot_ID, bool lp_lockUnlock);
+void libDEAD_gf_ECL_ITEM_drop_to_ground (int lp_player, string lp_item, int lp_amount, point lp_spawnPoint);
 void libDEAD_gf_ECL__EQUIP (int lp_player, int lp_sLOT, int lp_eQUIPUNEQUIP);
 string libDEAD_gf_ECL_ReturnEquippedItem (int lp_player, string lp_type);
 string libDEAD_gf_ECL_ReturnWeaponItem (int lp_player, int lp_weaponIndex);
@@ -512,6 +515,7 @@ trigger libDEAD_gt_DS_ExamineCloseBackgroundP2;
 trigger libDEAD_gt_DS_ExamineCloseEscP2;
 trigger libDEAD_gt_KL_SwapWeaponTest;
 trigger libDEAD_gt_ECL__HOOKUPINVENTORYFRAMES;
+trigger libDEAD_gt_DS_OpenCloseStash_unitclick;
 trigger libDEAD_gt_ECL__DRAG_ON_OFF;
 trigger libDEAD_gt_ECL__SETNEWOLDSLOT;
 trigger libDEAD_gt_ECL__DROPZONE;

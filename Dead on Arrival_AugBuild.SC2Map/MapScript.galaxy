@@ -217,8 +217,8 @@ bool gt_DEBUG_TESTADDITEMS_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    libDEAD_gf_ECL_ITEM_add(EventPlayer(), "Pistol Ammo", 300, true);
     libDEAD_gf_ECL_ITEM_add(EventPlayer(), "Crappy Pack", 1, true);
+    libDEAD_gf_ECL_ITEM_add(EventPlayer(), "Pistol Ammo", 300, true);
     libDEAD_gf_ECL_ITEM_add(EventPlayer(), "ER-19 Blaster", 1, true);
     libDEAD_gf_ECL_ITEM_add(EventPlayer(), "CPG11", 1, true);
     libDEAD_gf_ECL_ITEM_add(EventPlayer(), "Medi Suit", 1, true);
@@ -390,6 +390,8 @@ bool gt__3Units_Func (bool testConds, bool runActions) {
     libNtve_gf_ShowHideDoodadsInRegion(false, RegionCircle(PointFromId(2031045836), 5.0), "ECLPORTALACTIVATE_NOVA");
     libNtve_gf_ShowHideDoodadsInRegion(false, RegionCircle(PointFromId(2031045836), 33.0), "ECLPORTALACTIVATE_VORTEX");
     libNtve_gf_ShowHideDoodadsInRegion(false, RegionCircle(PointFromId(2031045836), 5.0), "ECLPORTALBORDER");
+    libDEAD_gv_eCL_STASH[1] = UnitFromId(2126386897);
+    libDEAD_gv_eCL_STASH[2] = UnitFromId(1345347921);
     return true;
 }
 

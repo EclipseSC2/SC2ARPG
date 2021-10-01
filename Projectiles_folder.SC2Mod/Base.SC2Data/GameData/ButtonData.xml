@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CButton id="CLOSESTASH">
+        <Icon value="Assets\Textures\btn-command-move.dds"/>
+        <AlertIcon value="Assets\Textures\btn-command-move.dds"/>
+        <EditorCategories value="Race:Neutral"/>
+        <TintRacially value="1"/>
+    </CButton>
     <CButton id="PAttackMolotov">
         <Icon value="Assets\Textures\btn-upgrade-nova-btn-upgrade-nova-flashgrenade.dds"/>
         <Hotkey value="Button/Hotkey/NovaGadgetPulseGrenades"/>

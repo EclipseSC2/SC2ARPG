@@ -535,6 +535,7 @@
             <Action type="SetProperty" frame="$this/DragState_Box" Text="On"/>
             <Action type="SetProperty" frame="$this" RenderPriority="999"/>
             <Action type="SetProperty" frame="$this" Unclipped="True"/>
+            <Action type="SetProperty" frame="$parent/DropZone" Visible="True"/>
         </State>
         <State name="Static">
             <When type="Property" frame="$this" operator="Equal" Dragging="False"/>
@@ -547,6 +548,7 @@
             <Action type="SetProperty" frame="$this/DragState_Box" Text="Off"/>
             <Action type="SetProperty" frame="$this" RenderPriority="{$this/@RenderPriority}"/>
             <Action type="SetProperty" frame="$this" Unclipped="false"/>
+            <Action type="SetProperty" frame="$parent/DropZone" Visible="False"/>
         </State>
     </StateGroup>
     

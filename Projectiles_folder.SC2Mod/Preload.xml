@@ -7,9 +7,8 @@
 <Behavior id="PAttackCursor"/>
 <Effect id="PAttackLaserImpact"/>
 <Sound id="UI_NovaUT_UnitClick" Variations="0"/>
-<Unit id="InfestedCivilian"/>
-<Unit id="Obelisk"/>
 <Unit id="Separatist"/>
-<Unit id="ECLWALL2x2"/>
+<Unit id="ECLSTASHclosed"/>
+<Unit id="ECLSTASHopen"/>
 <Unit id="PAttackCursor3D"/>
 </Preload>

@@ -171,4 +171,31 @@
         <AINotifyEffect value="PLootPickUp"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="PickupHealth25"/>
     </CAbilEffectTarget>
+    <CAbilMorph id="ECLSTASHopentoclose" parent="TempleDoorDefaultRaise">
+        <InfoArray index="0" Unit="ECLSTASHclosed">
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="0"/>
+            </SectionArray>
+            <SectionArray index="Collide">
+                <DurationArray index="Delay" value="0"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Delay" value="0"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
+    <CAbilMorph id="ECLSTASHclosetoopen" parent="TempleDoorDefaultLower">
+        <DataCollection value="ECLSTASHopentoclose"/>
+        <InfoArray index="0" Unit="ECLSTASHopen">
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="0"/>
+            </SectionArray>
+            <SectionArray index="Collide">
+                <DurationArray index="Delay" value="0"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Delay" value="0"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
 </Catalog>

@@ -462,6 +462,19 @@
         <UnitFlags index="SuppressDefaultStatusBar" value="1"/>
         <StatusBarOn index="Custom" value="1"/>
     </CActorUnit>
+    <CActorUnit id="ECLSTASH" parent="XelNagaTempleDoorLarge" unitName="ECLSTASHclosed">
+        <On index="69" Terms="UnitBirth.ECLSTASHopen" Send="Create"/>
+        <On index="70" Terms="UnitBirth.ECLSTASHopen" Send="AnimGroupApply Work Stand,Work,Start Stand,Work,End Instant"/>
+        <On index="71" Terms="AbilMorph.*.Start; MorphTo ECLSTASHopen" Send="AnimGroupApply Work Stand,Work,Start Stand,Work,End"/>
+        <On index="72" Terms="AbilMorph.*.Finish; MorphTo ECLSTASHopen" Send="AnimGroupApply Work Stand,Work,Start Stand,Work,End Instant"/>
+        <On Terms="UnitHighlightLocal.*.Start" Send="HaloStart"/>
+        <On Terms="UnitHighlightLocal.*.Stop" Send="HaloStop"/>
+        <On Terms="ActorCreation" Send="HaloSetColor 100,200,255"/>
+        <Model value="ECLSTASH"/>
+        <HighlightTooltip value="Unit/Name/ECLSTASH"/>
+        <CustomUnitStatusFrame value="0_ECL_TEMPLATES/Stash"/>
+        <UnitFlags index="SuppressDefaultStatusBar" value="1"/>
+    </CActorUnit>
     <CActorUnit id="Zergling">
         <CustomUnitStatusFrame value="0_ECL_TEMPLATES/HeroUnitEnergyStatusFrameTemplate"/>
         <UnitFlags index="SuppressDefaultStatusBar" value="1"/>

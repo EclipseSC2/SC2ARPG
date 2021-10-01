@@ -128,6 +128,7 @@
 <Unit id="DOMLabDoorThinNW"/>
 <Unit id="CompoundSewers_Door_Wide_NW"/>
 <Unit id="CompoundSewers_Vent_Destructible"/>
+<Unit id="ECLSTASHclosed"/>
 <Unit id="ECLWALL2x2"/>
 <Unit id="ECLWALL1x1"/>
 <Unit id="HeroSelectionCamera"/>

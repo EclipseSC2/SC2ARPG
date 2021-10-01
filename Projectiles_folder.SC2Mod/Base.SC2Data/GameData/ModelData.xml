@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CModel id="ECLSTASH" parent="Building" Race="Terran">
+        <Model value="Assets\Doodads\Nova_WeaponCrate\Nova_WeaponCrate.m3"/>
+        <Events>
+            <Anim value="Stand,Work,Start,00"/>
+            <Name value="NovaResupplyCrate_Open"/>
+            <Type value="Sound"/>
+            <Time value="0.015000"/>
+            <Payload value="NovaResupplyCrate_Open"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,Work,End,00"/>
+            <Name value="NovaResupplyCrate_Close"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="NovaResupplyCrate_Close"/>
+        </Events>
+        <AnimSpeed value="2.000000"/>
+    </CModel>
     <CModel id="PAttackLaserImpact" parent="ImpactFX">
         <Model value="Assets\Effects\Terran\BattlecruiserMissileImpact\BattlecruiserMissileImpact.m3"/>
         <EditorCategories value="Race:Terran"/>
@@ -230,5 +248,110 @@
     <CModel id="ShapeCylinder">
         <ScaleMax value="0.900000,0.900000,0.900000"/>
         <ScaleMin value="0.900000,0.900000,0.900000"/>
+    </CModel>
+    <CModel id="XelNaga_Door2" parent="Doodad">
+        <Model value="Assets\Doodads\XelNaga_Door\XelNaga_Door.m3"/>
+        <AnimSpeed value="0.242000"/>
+        <Events>
+            <Anim value="Stand,Work,End,00"/>
+            <Name value="Xelnaga_Door_StandWorkEnd_A"/>
+            <Type value="Sound"/>
+            <Time value="1.123000"/>
+            <Payload value="Xelnaga_Door_StandWorkEnd_A"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,Work,End,00"/>
+            <Name value="Xelnaga_Door_StandWorkEnd_B"/>
+            <Type value="Sound"/>
+            <Time value="3.298000"/>
+            <Payload value="Xelnaga_Door_StandWorkEnd_B"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,Work,End,00"/>
+            <Name value="Xelnaga_Door_StandWorkEnd_C"/>
+            <Type value="Sound"/>
+            <Time value="3.960000"/>
+            <Payload value="Xelnaga_Door_StandWorkEnd_C"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,Work,End,00"/>
+            <Name value="Xelnaga_Door_StandWorkEnd_D"/>
+            <Type value="Sound"/>
+            <Time value="4.576000"/>
+            <Payload value="Xelnaga_Door_StandWorkEnd_D"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,Work,End,00"/>
+            <Name value="Xelnaga_Door_StandWorkEnd_E"/>
+            <Type value="Sound"/>
+            <Time value="5.839000"/>
+            <Payload value="Xelnaga_Door_StandWorkEnd_E"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,Work,End,00"/>
+            <Name value="Xelnaga_Door_StandWorkEnd_F"/>
+            <Type value="Sound"/>
+            <Time value="7.630000"/>
+            <Payload value="Xelnaga_Door_StandWorkEnd_F"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,Work,Start,00"/>
+            <Name value="Xelnaga_Door_StandWorkStart_A"/>
+            <Type value="Sound"/>
+            <Time value="0.674000"/>
+            <Payload value="Xelnaga_Door_StandWorkStart_A"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,Work,Start,00"/>
+            <Name value="Xelnaga_Door_StandWorkStart_B"/>
+            <Type value="Sound"/>
+            <Time value="1.345000"/>
+            <Payload value="Xelnaga_Door_StandWorkStart_B"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,Work,Start,00"/>
+            <Name value="Xelnaga_Door_StandWorkStart_C"/>
+            <Type value="Sound"/>
+            <Time value="3.274000"/>
+            <Payload value="Xelnaga_Door_StandWorkStart_C"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,Work,Start,00"/>
+            <Name value="Xelnaga_Door_StandWorkStart_D"/>
+            <Type value="Sound"/>
+            <Time value="4.442000"/>
+            <Payload value="Xelnaga_Door_StandWorkStart_D"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,Work,Start,00"/>
+            <Name value="Xelnaga_Door_StandWorkStart_E"/>
+            <Type value="Sound"/>
+            <Time value="5.117000"/>
+            <Payload value="Xelnaga_Door_StandWorkStart_E"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,Work,Start,00"/>
+            <Name value="Xelnaga_Door_StandWorkStart_F"/>
+            <Type value="Sound"/>
+            <Time value="6.581000"/>
+            <Payload value="Xelnaga_Door_StandWorkStart_F"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,Work,Start,00"/>
+            <Name value="Xelnaga_Door_StandWorkStart_G"/>
+            <Type value="Sound"/>
+            <Time value="7.272000"/>
+            <Payload value="Xelnaga_Door_StandWorkStart_G"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,Work,Start,00"/>
+            <Name value="Xelnaga_Door_StandWorkStart_H"/>
+            <Type value="Sound"/>
+            <Time value="9.166000"/>
+            <Payload value="Xelnaga_Door_StandWorkStart_H"/>
+        </Events>
+        <Radius value="6.000000"/>
+        <SelectionRadius value="6.000000"/>
+        <ShadowRadius value="6.000000"/>
     </CModel>
 </Catalog>

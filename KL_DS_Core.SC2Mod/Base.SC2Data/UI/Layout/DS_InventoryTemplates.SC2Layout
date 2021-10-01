@@ -2,6 +2,7 @@
 <Desc>
     <!-- Constants -->
     <Constant name="Inventory_Width" val="740"/>
+    <Constant name="Stash_Width" val="740"/>
     <Constant name="StandardFrameBackgroundColor" val="112e31"/>
     <Constant name="StandardFrameHighlightColor" val="2aefe2"/>
     <Constant name="StandardFrameGlowColor" val="68aaac"/>
@@ -2462,7 +2463,7 @@
         <Frame type="Control" name="Dropzone">
             <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
             <Anchor side="Right" relative="$parent/MAIN_Background" pos="Min" offset="0"/>
-            <Anchor side="Left" relative="$parent/LeftStash" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent/MAIN_Background_stash" pos="Max" offset="0"/>
             <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
 
             <Frame type="Image" name="BG">
@@ -2471,7 +2472,7 @@
                 <Alpha val="0"/>
             </Frame>
 
-            <RenderPriority val="99999"/>
+            <RenderPriority val="9999"/>
             <AcceptsMouse val="true"/>
             <Animation name="ShowHide">
                 <Event event="ECL_ShowSlot" action="DirectionForward, Play" frame="$parent"/>
@@ -2481,57 +2482,664 @@
                     <Key type="Property" time="0.0" value="true"/>
                 </Controller>
             </Animation>
-            <!--Animation name="Highlight">
-                <Event event="OnMouseEnter" action="Reset, DirectionForward,Play" frame="$this"/>
-                <Event event="OnMouseExit" action="Reset, DirectionReverse,Play" frame="$this"/>
-                <Controller type="Color" end="Pause" frame="$parent/BorderEffect">
-                    <Key type="Curve" time="0.0" value="#StandardFrameGlowColor"/>
-                    <Key type="Curve" time="0.125" value="#StandardFrameDROPZONEColor"/>
-                </Controller>
-                <Controller type="Color" end="Pause" frame="$parent/BorderEffect2">
-                    <Key type="Curve" time="0.0" value="#StandardFrameGlowColor"/>
-                    <Key type="Curve" time="0.125" value="#StandardFrameDROPZONEColor"/>
-                </Controller>
-                <Controller type="Color" end="Pause" frame="$parent/BorderEffectGlow">
-                    <Key type="Curve" time="0.0" value="#StandardFrameDarkColor"/>
-                    <Key type="Curve" time="0.125" value="#StandardFrameDROPZONEColor"/>
-                </Controller>
-                <Controller type="Color" end="Pause" frame="$this">
-                    <Key type="Curve" time="0.0" value="#StandardFrameGlowColor"/>
-                    <Key type="Curve" time="0.125" value="#StandardFrameDROPZONEColor"/>
-                </Controller>
-                <Controller type="Event" end="Pause" frame="$parent/BorderEffect2">
-                    <Key type="Event" time="0.0" event="Glow"/>
-                </Controller>
-            </Animation-->
+        </Frame>
+
+        <!-- ######################################################-->
+        <!-- ###########                               ############-->
+        <!-- ###########              STASH            ############-->
+        <!-- ###########                               ############-->
+        <!-- ######################################################-->
+
+        <Animation name="ShowHideStash">
+            <Event event="ShowStash" action="DirectionForward,Play" frame="$this"/>
+            <Event event="HideStash" action="DirectionReverse,Play" frame="$this"/>
+            <Controller type="Anchor" end="Pause" frame="$this/MAIN_Background_stash" side="Left" relative="True">
+                <Key type="Curve" time="0.0" value="0"/>
+                <Key type="Curve" time="0.0625" value="740" inout="Slow"/>
+            </Controller>
+        </Animation>
+
+        <Frame type="Image" name="MAIN_Background_stash">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="-740"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Width val="#Inventory_Width"/>
+            <Texture val="Assets/Textures/ECL_BORDER_INV.dds"/>
+            <TextureType val="NineSlice"/>
+        </Frame>
+    
+        <Frame type="Frame" name="AnchorFrame_stash">
+            <Anchor side="Top" relative="$parent/MAIN_Background_stash" pos="Min" offset="15"/>
+            <Anchor side="Bottom" relative="$parent/MAIN_Background_stash" pos="Max" offset="-15"/>
+            <Anchor side="Left" relative="$parent/MAIN_Background_stash" pos="Min" offset="15"/>
+            <Anchor side="Right" relative="$parent/MAIN_Background_stash" pos="Max" offset="-15"/>
+        </Frame>
+
+        <Frame type="Frame" name="StashHeader" template="DS_StandardTemplates/StandardHeaderModuleTemplate">
+            <Anchor side="Top" relative="$parent/MAIN_Background_stash" pos="Min" offset="10"/>
+            <Anchor side="Left" relative="$parent/AnchorFrame_stash" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent/AnchorFrame_stash" pos="Max" offset="0"/>
+            <Frame type="Label" name="HeaderTitle">
+                <Text val="Stash"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Button" name="Tab1" template="DS_StandardTemplates/CharacterNavButtonTemplate">
+            <Anchor side="Top" relative="$parent/StashHeader" pos="Max" offset="80"/>
+            <Anchor side="Bottom" relative="$parent/StashHeader" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent/MAIN_Background_stash" pos="Mid" offset="-15"/>
+
+            <Toggleable val="True"/>
+            <Height val="45"/>
+
+            <Frame type="Label" name="TextLabel">
+                <Text val="-1-"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Button" name="Tab2" template="DS_StandardTemplates/CharacterNavButtonTemplate">
+            <Anchor side="Top" relative="$parent/StashHeader" pos="Max" offset="80"/>
+            <Anchor side="Bottom" relative="$parent/StashHeader" pos="Mid" offset="0"/>
+            <Anchor side="Left" relative="$parent/MAIN_Background_stash" pos="Mid" offset="15"/>
+
+            <Toggleable val="True"/>
+
+            <Frame type="Label" name="TextLabel">
+                <Text val="-2-"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Frame" name="LeftAnchor_stash">
+            <Anchor side="Top" relative="$parent/Tab1" pos="Max" offset="10"/>
+            <Anchor side="Left" relative="$parent/MAIN_Background_stash" pos="Min" offset="0"/>
+            <Width val="{$this/Width_Gap/@ResultInt}"/>
+            <Frame type="MathFrame" name="Width_Gap">
+                <A val="{$parent/Gap_total/@ResultInt}"/>
+                <B val="2"/>
+                <Operator val="Divide"/>
+            </Frame>
+            <Frame type="MathFrame" name="Gap_total">
+                <A val="#Stash_Width"/>
+                <B val="{$parent/Slots_Width_total/@ResultInt}"/>
+                <Operator val="Subtract"/>
+            </Frame>
+            <Frame type="MathFrame" name="Slots_Width_total">
+                <A val="#Slot_Width"/>
+                <!--Slots per row-->
+                <B val="7"/>
+                <Operator val="Multiply"/>
+            </Frame>
+        </Frame>
+
+        <!--Slot Backgrounds STASH-->
+        <Frame type="Frame" name="BG_50" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot50"/>
+        </Frame>
+        <Frame type="Frame" name="BG_51" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot51"/>
+        </Frame>
+        <Frame type="Frame" name="BG_52" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot52"/>
+        </Frame>
+        <Frame type="Frame" name="BG_53" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot53"/>
+        </Frame>
+        <Frame type="Frame" name="BG_54" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot54"/>
+        </Frame>
+        <Frame type="Frame" name="BG_55" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot55"/>
+        </Frame>
+        <Frame type="Frame" name="BG_56" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot56"/>
+        </Frame>
+        <Frame type="Frame" name="BG_57" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot57"/>
+        </Frame>
+        <Frame type="Frame" name="BG_58" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot58"/>
+        </Frame>
+        <Frame type="Frame" name="BG_59" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot59"/>
+        </Frame>
+        <Frame type="Frame" name="BG_60" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot60"/>
+        </Frame>
+
+        <Frame type="Frame" name="BG_61" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot61"/>
+        </Frame>
+        <Frame type="Frame" name="BG_62" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot62"/>
+        </Frame>
+        <Frame type="Frame" name="BG_63" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot63"/>
+        </Frame>
+        <Frame type="Frame" name="BG_64" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot64"/>
+        </Frame>
+        <Frame type="Frame" name="BG_65" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot65"/>
+        </Frame>
+        <Frame type="Frame" name="BG_66" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot66"/>
+        </Frame>
+        <Frame type="Frame" name="BG_67" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot67"/>
+        </Frame>
+        <Frame type="Frame" name="BG_68" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot68"/>
+        </Frame>
+        <Frame type="Frame" name="BG_69" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot69"/>
+        </Frame>
+        <Frame type="Frame" name="BG_70" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot70"/>
+        </Frame>
+
+        <Frame type="Frame" name="BG_71" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot71"/>
+        </Frame>
+        <Frame type="Frame" name="BG_72" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot72"/>
+        </Frame>
+        <Frame type="Frame" name="BG_73" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot73"/>
+        </Frame>
+        <Frame type="Frame" name="BG_74" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot74"/>
+        </Frame>
+        <Frame type="Frame" name="BG_75" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot75"/>
+        </Frame>
+        <Frame type="Frame" name="BG_76" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot76"/>
+        </Frame>
+        <Frame type="Frame" name="BG_77" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot77"/>
+        </Frame>
+        <Frame type="Frame" name="BG_78" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot78"/>
+        </Frame>
+        <Frame type="Frame" name="BG_79" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot79"/>
+        </Frame>
+        <Frame type="Frame" name="BG_80" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot80"/>
+        </Frame>
+
+        <Frame type="Frame" name="BG_81" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot81"/>
+        </Frame>
+        <Frame type="Frame" name="BG_82" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot82"/>
+        </Frame>
+        <Frame type="Frame" name="BG_83" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot83"/>
+        </Frame>
+        <Frame type="Frame" name="BG_84" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot84"/>
+        </Frame>
+        <Frame type="Frame" name="BG_85" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot85"/>
+        </Frame>
+        <Frame type="Frame" name="BG_86" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot86"/>
+        </Frame>
+        <Frame type="Frame" name="BG_87" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot87"/>
+        </Frame>
+        <Frame type="Frame" name="BG_88" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot88"/>
+        </Frame>
+        <Frame type="Frame" name="BG_89" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot89"/>
+        </Frame>
+        <Frame type="Frame" name="BG_90" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot90"/>
+        </Frame>
+
+        <Frame type="Frame" name="BG_91" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot91"/>
+        </Frame>
+        <Frame type="Frame" name="BG_92" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot92"/>
+        </Frame>
+        <Frame type="Frame" name="BG_93" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot93"/>
+        </Frame>
+        <Frame type="Frame" name="BG_94" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot94"/>
+        </Frame>
+        <Frame type="Frame" name="BG_95" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot95"/>
+        </Frame>
+        <Frame type="Frame" name="BG_96" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot96"/>
+        </Frame>
+        <Frame type="Frame" name="BG_97" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot97"/>
+        </Frame>
+        <Frame type="Frame" name="BG_98" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot98"/>
+        </Frame>
+        <Frame type="Frame" name="BG_99" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot99"/>
+        </Frame>
+        <Frame type="Frame" name="BG_100" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot100"/>
+        </Frame>
+
+        <Frame type="Frame" name="BG_101" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot101"/>
+        </Frame>
+        <Frame type="Frame" name="BG_102" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot102"/>
+        </Frame>
+        <Frame type="Frame" name="BG_103" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot103"/>
+        </Frame>
+        <Frame type="Frame" name="BG_104" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot104"/>
+        </Frame>
+        <Frame type="Frame" name="BG_105" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot105"/>
+        </Frame>
+        <Frame type="Frame" name="BG_106" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot106"/>
+        </Frame>
+        <Frame type="Frame" name="BG_107" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot107"/>
+        </Frame>
+        <Frame type="Frame" name="BG_108" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot108"/>
+        </Frame>
+        <Frame type="Frame" name="BG_109" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot109"/>
+        </Frame>
+        <Frame type="Frame" name="BG_110" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot110"/>
+        </Frame>
+
+        <Frame type="Frame" name="BG_111" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot111"/>
+        </Frame>
+        <Frame type="Frame" name="BG_112" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot112"/>
+        </Frame>
+        <Frame type="Frame" name="BG_113" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot113"/>
+        </Frame>
+        <Frame type="Frame" name="BG_114" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot114"/>
+        </Frame>
+        <Frame type="Frame" name="BG_115" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot115"/>
+        </Frame>
+        <Frame type="Frame" name="BG_116" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot116"/>
+        </Frame>
+        <Frame type="Frame" name="BG_117" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot117"/>
+        </Frame>
+        <Frame type="Frame" name="BG_118" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot118"/>
+        </Frame>
+        <Frame type="Frame" name="BG_119" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot119"/>
+        </Frame>
+        <Frame type="Frame" name="BG_120" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot120"/>
+        </Frame>
+
+        <Frame type="Frame" name="BG_121" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot121"/>
+        </Frame>
+        <Frame type="Frame" name="BG_122" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot122"/>
+        </Frame>
+        <Frame type="Frame" name="BG_123" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot123"/>
+        </Frame>
+        <Frame type="Frame" name="BG_124" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot124"/>
+        </Frame>
+        <Frame type="Frame" name="BG_125" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot125"/>
+        </Frame>
+        <Frame type="Frame" name="BG_126" template="ECL_DRAGGABLE/BG_Template">
+            <Anchor relative="$parent/Slot126"/>
         </Frame>
 
 
-        <!-- ######################################################-->
-        <!-- ###########                               ############-->
-        <!-- ###########          LEFT STASH           ############-->
-        <!-- ###########                               ############-->
-        <!-- ######################################################-->
+        <!--Row8-->
+        <Frame type="Control" name="Slot50" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$parent/LeftAnchor_stash" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent/LeftAnchor_stash" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot51" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot52" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot53" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot54" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot55" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot56" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
 
-        <Frame type="Frame" name="LeftStash">
-            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
-            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
-            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
-            <Width val="300"/>
-            <Frame type="Image" name="BG">
-                <Anchor relative="$parent"/>
-                <Color val="124,124,124"/>
-                <Alpha val="100"/>
+        <!--Row9-->
+        <Frame type="Control" name="Slot57" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$parent/Slot50" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent/LeftAnchor_stash" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot58" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot59" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot60" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot61" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot62" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot63" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
 
-                <Frame type="Label" name="Debug">
-                    <Anchor side="Top" relative="$parent" pos="Min" offset="100"/>
-                    <Anchor side="Left" relative="$parent" pos="Min" offset="10"/>
-                    <Width val="280"/>
-                    <Height val="40"/>
-                    <Text val="STASH"/>
-                    <Style val="GlueTitle"/>
-                </Frame>
-            </Frame>
+        <!--Row10-->
+        <Frame type="Control" name="Slot64" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$parent/Slot57" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent/LeftAnchor_stash" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot65" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot66" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot67" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot68" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot69" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot70" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+
+        <!--Row11-->
+        <Frame type="Control" name="Slot71" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$parent/Slot64" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent/LeftAnchor_stash" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot72" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot73" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot74" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot75" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot76" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot77" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+
+        <!--Row12-->
+        <Frame type="Control" name="Slot78" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$parent/Slot71" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent/LeftAnchor_stash" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot79" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot80" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot81" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot82" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot83" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot84" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+
+        <!--Row11-->
+        <Frame type="Control" name="Slot85" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$parent/Slot78" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent/LeftAnchor_stash" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot86" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot87" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot88" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot89" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot90" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot91" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+
+        <!--Row11-->
+        <Frame type="Control" name="Slot92" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$parent/Slot85" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent/LeftAnchor_stash" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot93" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot94" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot95" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot96" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot97" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot98" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+
+        <!--Row11-->
+        <Frame type="Control" name="Slot99" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$parent/Slot92" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent/LeftAnchor_stash" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot100" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot101" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot102" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot103" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot104" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot105" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+
+        <!--Row11-->
+        <Frame type="Control" name="Slot106" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$parent/Slot99" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent/LeftAnchor_stash" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot107" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot108" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot109" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot110" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot111" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot112" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+
+        <!--Row11-->
+        <Frame type="Control" name="Slot113" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$parent/Slot106" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent/LeftAnchor_stash" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot114" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot115" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot116" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot117" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot118" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot119" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+
+        <!--Row11-->
+        <Frame type="Control" name="Slot120" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$parent/Slot113" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent/LeftAnchor_stash" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot121" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot122" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot123" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot124" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot125" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
+        </Frame>
+        <Frame type="Control" name="Slot126" template="ECL_DRAGGABLE/Slot_Template">
+            <Anchor side="Top" relative="$sibling-1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$sibling-1" pos="Max" offset="0"/>
         </Frame>
     </Frame>
 

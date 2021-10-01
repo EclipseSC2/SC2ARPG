@@ -156,6 +156,28 @@
         <MinimapRadius value="0.375"/>
         <EditorCategories value="ObjectType:Item,ObjectFamily:Campaign"/>
     </CUnit>
+    <CUnit id="ECLSTASHclosed" parent="XelNagaTempleDoorLarge">
+        <FlagArray index="Unclickable" value="0"/>
+        <FlagArray index="Unhighlightable" value="0"/>
+        <FlagArray index="Untargetable" value="0"/>
+        <EditorFlags index="NoPlacement" value="0"/>
+        <AbilArray Link="ECLSTASHclosetoopen"/>
+        <CardLayouts>
+            <LayoutButtons Face="GateOpen" Type="AbilCmd" AbilCmd="XelNagaTempleDoorLargeSLowered,Execute" Row="2" Column="2"/>
+        </CardLayouts>
+        <Footprint value="ECLSTASH"/>
+    </CUnit>
+    <CUnit id="ECLSTASHopen" parent="XelNagaTempleDoorLarge">
+        <FlagArray index="Unclickable" value="0"/>
+        <FlagArray index="Unhighlightable" value="0"/>
+        <FlagArray index="Untargetable" value="0"/>
+        <EditorFlags index="NoPlacement" value="0"/>
+        <AbilArray Link="ECLSTASHopentoclose"/>
+        <CardLayouts>
+            <LayoutButtons Face="CLOSESTASH" Type="AbilCmd" AbilCmd="ECLSTASHopentoclose,Execute" Row="2" Column="3"/>
+        </CardLayouts>
+        <Footprint value="ECLSTASH"/>
+    </CUnit>
     <CUnit id="Zergling">
         <BehaviorArray Link="PLoot"/>
         <BehaviorArray Link="PMobTierCasual"/>

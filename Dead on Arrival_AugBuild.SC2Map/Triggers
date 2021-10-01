@@ -491,8 +491,8 @@
     </Element>
     <Element Type="Trigger" Id="8854647A">
         <Event Type="FunctionCall" Id="DEDAD1D9"/>
-        <Action Type="FunctionCall" Id="B6484FA1"/>
         <Action Type="FunctionCall" Id="7A50583A"/>
+        <Action Type="FunctionCall" Id="B6484FA1"/>
         <Action Type="FunctionCall" Id="28B032D8"/>
         <Action Type="FunctionCall" Id="CBA824E6"/>
         <Action Type="FunctionCall" Id="1F2BFA02"/>
@@ -530,36 +530,6 @@
         <ParameterDef Type="ParamDef" Library="Ntve" Id="FE608B8E"/>
         <Preset Type="PresetValue" Library="Ntve" Id="CDE1DEBE"/>
     </Element>
-    <Element Type="FunctionCall" Id="B6484FA1">
-        <FunctionDef Type="FunctionDef" Library="DEAD" Id="844A266C"/>
-        <Parameter Type="Param" Id="32E15BD5"/>
-        <Parameter Type="Param" Id="0662936A"/>
-        <Parameter Type="Param" Id="13E80548"/>
-        <Parameter Type="Param" Id="A6308EA7"/>
-    </Element>
-    <Element Type="Param" Id="32E15BD5">
-        <ParameterDef Type="ParamDef" Library="DEAD" Id="EE07D729"/>
-        <FunctionCall Type="FunctionCall" Id="CBDC769A"/>
-    </Element>
-    <Element Type="FunctionCall" Id="CBDC769A">
-        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000053"/>
-    </Element>
-    <Element Type="Param" Id="0662936A">
-        <ParameterDef Type="ParamDef" Library="DEAD" Id="94913769"/>
-        <Value>300</Value>
-        <ValueType Type="int"/>
-    </Element>
-    <Element Type="Param" Id="13E80548">
-        <ParameterDef Type="ParamDef" Library="DEAD" Id="F5257A73"/>
-        <Value>true</Value>
-        <ValueType Type="bool"/>
-    </Element>
-    <Element Type="Param" Id="A6308EA7">
-        <ParameterDef Type="ParamDef" Library="DEAD" Id="C10CD676"/>
-        <Value>Pistol Ammo</Value>
-        <ValueType Type="userinstance"/>
-        <ValueContext Value="Items"/>
-    </Element>
     <Element Type="FunctionCall" Id="7A50583A">
         <FunctionDef Type="FunctionDef" Library="DEAD" Id="844A266C"/>
         <Parameter Type="Param" Id="FBC22CC1"/>
@@ -587,6 +557,36 @@
     <Element Type="Param" Id="45D49FF8">
         <ParameterDef Type="ParamDef" Library="DEAD" Id="C10CD676"/>
         <Value>Crappy Pack</Value>
+        <ValueType Type="userinstance"/>
+        <ValueContext Value="Items"/>
+    </Element>
+    <Element Type="FunctionCall" Id="B6484FA1">
+        <FunctionDef Type="FunctionDef" Library="DEAD" Id="844A266C"/>
+        <Parameter Type="Param" Id="32E15BD5"/>
+        <Parameter Type="Param" Id="0662936A"/>
+        <Parameter Type="Param" Id="13E80548"/>
+        <Parameter Type="Param" Id="A6308EA7"/>
+    </Element>
+    <Element Type="Param" Id="32E15BD5">
+        <ParameterDef Type="ParamDef" Library="DEAD" Id="EE07D729"/>
+        <FunctionCall Type="FunctionCall" Id="CBDC769A"/>
+    </Element>
+    <Element Type="FunctionCall" Id="CBDC769A">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000053"/>
+    </Element>
+    <Element Type="Param" Id="0662936A">
+        <ParameterDef Type="ParamDef" Library="DEAD" Id="94913769"/>
+        <Value>300</Value>
+        <ValueType Type="int"/>
+    </Element>
+    <Element Type="Param" Id="13E80548">
+        <ParameterDef Type="ParamDef" Library="DEAD" Id="F5257A73"/>
+        <Value>true</Value>
+        <ValueType Type="bool"/>
+    </Element>
+    <Element Type="Param" Id="A6308EA7">
+        <ParameterDef Type="ParamDef" Library="DEAD" Id="C10CD676"/>
+        <Value>Pistol Ammo</Value>
         <ValueType Type="userinstance"/>
         <ValueContext Value="Items"/>
     </Element>
@@ -4515,6 +4515,9 @@
         <Action Type="FunctionCall" Id="186761DE"/>
         <Action Type="FunctionCall" Id="45D3B56D"/>
         <Action Type="FunctionCall" Id="967C7C27"/>
+        <Action Type="Comment" Id="F9DAF531"/>
+        <Action Type="FunctionCall" Id="555735BF"/>
+        <Action Type="FunctionCall" Id="47DCBA87"/>
     </Element>
     <Element Type="Comment" Id="DE5CA2A3">
         <Comment>
@@ -5868,6 +5871,49 @@
         <ParameterDef Type="ParamDef" Library="Ntve" Id="00000049"/>
         <ValueType Type="point"/>
         <ValueId Id="2031045836"/>
+    </Element>
+    <Element Type="Comment" Id="F9DAF531">
+        <Comment>
+            STASH
+        </Comment>
+    </Element>
+    <Element Type="FunctionCall" Id="555735BF">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000136"/>
+        <Parameter Type="Param" Id="CD32E600"/>
+        <Parameter Type="Param" Id="7953C56E"/>
+    </Element>
+    <Element Type="Param" Id="CD32E600">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000219"/>
+        <Variable Type="Variable" Library="DEAD" Id="A0C188F4"/>
+        <Array Type="Param" Id="0C7022CA"/>
+    </Element>
+    <Element Type="Param" Id="0C7022CA">
+        <Value>1</Value>
+        <ValueType Type="int"/>
+    </Element>
+    <Element Type="Param" Id="7953C56E">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000220"/>
+        <ValueType Type="unit"/>
+        <ValueId Id="2126386897"/>
+    </Element>
+    <Element Type="FunctionCall" Id="47DCBA87">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000136"/>
+        <Parameter Type="Param" Id="F5C756B3"/>
+        <Parameter Type="Param" Id="7429E5A2"/>
+    </Element>
+    <Element Type="Param" Id="F5C756B3">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000219"/>
+        <Variable Type="Variable" Library="DEAD" Id="A0C188F4"/>
+        <Array Type="Param" Id="E7E5960F"/>
+    </Element>
+    <Element Type="Param" Id="E7E5960F">
+        <Value>2</Value>
+        <ValueType Type="int"/>
+    </Element>
+    <Element Type="Param" Id="7429E5A2">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000220"/>
+        <ValueType Type="unit"/>
+        <ValueId Id="1345347921"/>
     </Element>
     <Element Type="Trigger" Id="CFC5D390">
         <Action Type="Comment" Id="A271C2C5"/>

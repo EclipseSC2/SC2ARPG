@@ -30,33 +30,33 @@
 
     <!-- PICK UP FRAME-->
     <Frame type="UnitStatusFrame" name="Item_UnitStatusFrame">
-        <Height val="30"/>
-        <Width val="200"/>
-        <RenderPriority val="999999"/>
+        <Height val="24"/>
+        <Width val="180"/>
         <OwnerRenderPriority val="812"/>
         <AllyRenderPriority val="712"/>
         <EnemyRenderPriority val="612"/>
 
         <Frame type="Frame" name="AttachPointFrame">
             <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
-            <Anchor side="Left" relative="$parent" pos="Min" offset="100"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="90"/>
             <Height val="0"/>
             <Width val="0"/>
         </Frame>
 
         <Frame type="Image" name="Background">
-            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
-            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
-            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
-            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
-            <Color val="#StandardFrameBackgroundColor"/>
+            <Anchor side="Top" relative="$parent" pos="Min" offset="1"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="1"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="-1"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="-1"/>
+            <Color val="ff07181a"/>
+            <Alpha val="200"/>
             <RenderType val="HDR"/>
             <Animation name="Hover">
                 <Event event="OnMouseEnter" action="DirectionForward,Play" frame="$parent/CommandPanel/CommandButton00"/>
                 <Event event="OnMouseExit" action="DirectionReverse,Play" frame="$parent/CommandPanel/CommandButton00"/>
                 <Controller type="Color" end="Pause" frame="$this">
-                    <Key type="Curve" time="0.0" value="#StandardFrameBackgroundColor"/>
-                    <Key type="Curve" time="0.1" value="#StandardFrameDarkColor"/>
+                    <Key type="Curve" time="0.0" value="ff07181a"/>
+                    <Key type="Curve" time="0.1" value="ff152c36"/>
                 </Controller>
             </Animation>
         </Frame>
@@ -65,14 +65,18 @@
             <Anchor relative="$parent"/>
             <Texture val="Assets\Textures\sc2_ui_glues_alliedcommanders_upgradeborder.dds"/>
             <TextureType val="NineSlice"/>
-            <Color val="#StandardFrameGlowColor"/>
+            <Color val="ff000000"/>
             <RenderType val="HDR"/>
+            <Alpha val="225"/>
         </Frame>
 
         <Frame type="Label" name="ItemLabel">
-            <Anchor relative="$parent"/>
-            <Color val="#StandardFrameHighlightColor"/>
-            <Style val="Void_BossUnitFrameUnitName"/>
+            <Anchor side="Top" relative="$parent" pos="Mid" offset="1"/>
+            <Anchor side="Bottom" relative="$parent" pos="Mid" offset="1"/>
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+            <Color val="bee2e0"/>
+            <Style val="Loot_Item"/>
             <RenderType val="HDR"/>
         </Frame>
 
@@ -93,6 +97,7 @@
                 <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
                 <HotkeyUse val="CommanderAbility0"/>
                 <UseTooltip val="false"/>
+                <TooltipFrame val=""/>
             </Frame>   
         </Frame>
         <!--Frame type="UnitStatusUnitName" name="UnitNameLabel" template="0_ECL_TEMPLATES/UnitStatusUnitNameTemplate">
@@ -105,6 +110,30 @@
                 <Color val="#StandardFrameHighlightColor"/>
             </Frame>
         </Frame-->
+    </Frame>
+
+    <Frame type="UnitStatusFrame" name="Stash" template="0_ECL_TEMPLATES/Item_UnitStatusFrame">
+        <Height val="20"/>
+        <Width val="120"/>
+        <OwnerRenderPriority val="500"/>
+        <AllyRenderPriority val="500"/>
+        <EnemyRenderPriority val="500"/>
+
+        <Frame type="Frame" name="AttachPointFrame">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="60"/>
+            <Height val="0"/>
+            <Width val="0"/>
+        </Frame>
+
+        <Frame type="Label" name="ItemLabel">
+            <Anchor side="Top" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+            <Color val="100,200,255"/>
+            <Text val="STASH"/>
+        </Frame>
     </Frame>
 
     <!-- Default Bar Template -->
