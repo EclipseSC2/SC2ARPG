@@ -681,7 +681,7 @@ void libDEAD_gf_CheckBaseStatModifiers () {
     libDEAD_gv_baseVisionRange = CatalogFieldValueGetAsInt(c_gameCatalogUnit, "Separatist", "Sight", c_playerAny);
 }
 
-void libDEAD_gf_ECL_ITEM_add (int lp_player, string lp_item, int lp_amount, bool lp_displayMessage) {
+void libDEAD_gf_ECL_ITEM_add (int lp_player, string lp_item, int lp_amount, bool lp_displayMessage, int lp_exclude_Slot, int lp_sLOT_min, int lp_sLOT_max) {
     // Variable Declarations
     bool lv_fREE;
     int lv_item_width;
@@ -708,8 +708,8 @@ void libDEAD_gf_ECL_ITEM_add (int lp_player, string lp_item, int lp_amount, bool
     lv_noOtherStackFound = true;
 
     // Implementation
-    autoFA7D2691_ae = libDEAD_gv_eCL__Inventory[lp_player].lv_iNV_slots;
-    autoFA7D2691_var = 1;
+    autoFA7D2691_ae = lp_sLOT_max;
+    autoFA7D2691_var = lp_sLOT_min;
     for ( ; autoFA7D2691_var <= autoFA7D2691_ae; autoFA7D2691_var += 1 ) {
         if ((libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[autoFA7D2691_var] > 0) && (lv_quantity > 0) && (libDEAD_gv_dS_InventoryItem[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[autoFA7D2691_var]][lp_player] == lp_item) && (libDEAD_gf_ReturnItemPropertyMaxAmount(libDEAD_gv_dS_InventoryItem[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[autoFA7D2691_var]][lp_player]) > 1)) {
             lv_d_quantity = libNtve_gf_ArithmeticIntClamp((libDEAD_gf_ReturnItemPropertyMaxAmount(libDEAD_gv_dS_InventoryItem[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[autoFA7D2691_var]][lp_player]) - libDEAD_gf_ReturnInventoryItemAmount(lp_player, libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[autoFA7D2691_var])), 0, lv_quantity);
@@ -733,10 +733,10 @@ void libDEAD_gf_ECL_ITEM_add (int lp_player, string lp_item, int lp_amount, bool
 
     }
     if ((lv_quantity > 0)) {
-        auto55CCDCEF_ae = libDEAD_gv_eCL__Inventory[lp_player].lv_iNV_slots;
-        auto55CCDCEF_var = 1;
+        auto55CCDCEF_ae = lp_sLOT_max;
+        auto55CCDCEF_var = lp_sLOT_min;
         for ( ; auto55CCDCEF_var <= auto55CCDCEF_ae; auto55CCDCEF_var += 1 ) {
-            if ((libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[auto55CCDCEF_var] == 0) && (libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_locked[auto55CCDCEF_var] == false) && ((libDEAD_gf_ReturnItemPropertyCategory(lp_item) == libDEAD_gv_dS_InventorySlot_Category[auto55CCDCEF_var][lp_player]) || (libDEAD_gv_dS_InventorySlot_Category[auto55CCDCEF_var][lp_player] == "All"))) {
+            if ((auto55CCDCEF_var != lp_exclude_Slot) && (libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[auto55CCDCEF_var] == 0) && (libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_locked[auto55CCDCEF_var] == false) && ((libDEAD_gf_ReturnItemPropertyCategory(lp_item) == libDEAD_gv_dS_InventorySlot_Category[auto55CCDCEF_var][lp_player]) || (libDEAD_gv_dS_InventorySlot_Category[auto55CCDCEF_var][lp_player] == "All"))) {
                 auto8CAFA1D0_ae = libDEAD_gv_eCL__Inventory[lp_player].lv_n_items;
                 lv_item_Index = 1;
                 for ( ; ( (auto8CAFA1D0_ai >= 0 && lv_item_Index <= auto8CAFA1D0_ae) || (auto8CAFA1D0_ai < 0 && lv_item_Index >= auto8CAFA1D0_ae) ) ; lv_item_Index += auto8CAFA1D0_ai ) {
@@ -914,6 +914,7 @@ void libDEAD_gf_ECL__EQUIP (int lp_player, int lp_sLOT, int lp_eQUIPUNEQUIP) {
     int lv_inventory;
     int lv_vision;
     string lv_bEHAVIOR_EQUIPMENT;
+    int lv_ammoBack;
 
     // Automatic Variable Declarations
     string auto7F1DCA8C_val;
@@ -1006,7 +1007,7 @@ void libDEAD_gf_ECL__EQUIP (int lp_player, int lp_sLOT, int lp_eQUIPUNEQUIP) {
         else if (auto30B42D06_val == "Weapon") {
             libDEAD_gv_activeWeaponInstance[lp_player][lp_sLOT] = null;
             if ((libECLP_gv_eCL__HitScan[lp_player].lv_ammo[lp_sLOT] > 0)) {
-                libDEAD_gf_ECL_ITEM_add(lp_player, libDEAD_gf_ReturnAmmoRequired(lv_itemStats), libECLP_gv_eCL__HitScan[lp_player].lv_ammo[lp_sLOT], true);
+                libDEAD_gf_ECL_ITEM_add(lp_player, libDEAD_gf_ReturnAmmoRequired(lv_itemStats), libECLP_gv_eCL__HitScan[lp_player].lv_ammo[lp_sLOT], true, libDEAD_gv_eCL__Inventory[lp_player].lv_curr_slot, 1, libDEAD_gv_eCL__Inventory[lp_player].lv_iNV_slots);
                 libECLP_gv_eCL__HitScan[lp_player].lv_ammo[lp_sLOT] = 0;
             }
 
@@ -4817,30 +4818,6 @@ void libDEAD_gt_DS_DiscoverRecipe_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: DS_CheckItems
-//--------------------------------------------------------------------------------------------------
-bool libDEAD_gt_DS_CheckItems_Func (bool testConds, bool runActions) {
-    // Automatic Variable Declarations
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    libDEAD_gf_ECL_ITEM_add(EventPlayer(), "Speed Augment", 1, true);
-    libDEAD_gf_ECL_ITEM_add(EventPlayer(), "Vision Helmet", 1, true);
-    libDEAD_gf_ECL_ITEM_add(EventPlayer(), "Crappy Pack", 1, true);
-    libDEAD_gf_ECL_ITEM_add(EventPlayer(), "Slugger", 1, true);
-    libDEAD_gf_ECL_ITEM_add(EventPlayer(), "CPG11", 1, true);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void libDEAD_gt_DS_CheckItems_Init () {
-    libDEAD_gt_DS_CheckItems = TriggerCreate("libDEAD_gt_DS_CheckItems_Func");
-    TriggerAddEventChatMessage(libDEAD_gt_DS_CheckItems, c_playerAny, "chk", true);
-}
-
-//--------------------------------------------------------------------------------------------------
 // Trigger: DS_Unlock
 //--------------------------------------------------------------------------------------------------
 bool libDEAD_gt_DS_Unlock_Func (bool testConds, bool runActions) {
@@ -5669,6 +5646,112 @@ void libDEAD_gt_ECL__DROPZONE_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: ECL__CTRL CLICK INVENTORY
+//--------------------------------------------------------------------------------------------------
+bool libDEAD_gt_ECL__CTRLCLICKINVENTORY_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_index;
+    int lv_sLOT_min;
+    int lv_sLOT_max;
+    string lv_item;
+    int lv_aMOUNT;
+
+    // Automatic Variable Declarations
+    int autoE2D870A4_ae;
+    int autoE2D870A4_var;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((EventDialogControlMouseButton() == c_mouseButtonLeft))) {
+            return false;
+        }
+
+        if (!((libDEAD_gv_eCL_CTRL[EventPlayer()] == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    autoE2D870A4_ae = libDEAD_gv_eCL__Inventory[EventPlayer()].lv_n_items;
+    autoE2D870A4_var = 1;
+    for ( ; autoE2D870A4_var <= autoE2D870A4_ae; autoE2D870A4_var += 1 ) {
+        if ((EventDialogControl() == libDEAD_gv_eCL__Inventory[EventPlayer()].lv_iTEM[autoE2D870A4_var])) {
+            lv_index = autoE2D870A4_var;
+            break;
+        }
+
+    }
+    if ((lv_index != 0) && (libDEAD_gv_eCL_STASH_open[EventPlayer()] == true)) {
+        if (((libDEAD_gv_eCL__Inventory[EventPlayer()].lv_iTEM_slot[lv_index] >= ((libDEAD_gv_eCL__inventoryslots + libDEAD_gv_eCL__equipmentslots) + 1)) && (libDEAD_gv_eCL__Inventory[EventPlayer()].lv_iTEM_slot[lv_index] <= libDEAD_gv_eCL__maxslots))) {
+            lv_sLOT_min = 1;
+            lv_sLOT_max = (libDEAD_gv_eCL__inventoryslots + libDEAD_gv_eCL__equipmentslots);
+        }
+        else if (((libDEAD_gv_eCL__Inventory[EventPlayer()].lv_iTEM_slot[lv_index] >= 1) && (libDEAD_gv_eCL__Inventory[EventPlayer()].lv_iTEM_slot[lv_index] <= (libDEAD_gv_eCL__inventoryslots + libDEAD_gv_eCL__equipmentslots)))) {
+            lv_sLOT_min = ((libDEAD_gv_eCL__inventoryslots + libDEAD_gv_eCL__equipmentslots) + 1);
+            lv_sLOT_max = libDEAD_gv_eCL__maxslots;
+        }
+        lv_item = libDEAD_gv_dS_InventoryItem[lv_index][EventPlayer()];
+        lv_aMOUNT = libDEAD_gv_dS_InventoryAmount[lv_index][EventPlayer()];
+        libDEAD_gf_ECL__EQUIP(EventPlayer(), libDEAD_gv_eCL__Inventory[EventPlayer()].lv_iTEM_slot[lv_index], libDEAD_ge_EQUIPUNEQUIP_UNEQUIP);
+        libDEAD_gf_ECL_ITEM_remove(EventPlayer(), lv_index);
+        libDEAD_gf_ECL_ITEM_add(EventPlayer(), lv_item, lv_aMOUNT, false, 0, lv_sLOT_min, lv_sLOT_max);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libDEAD_gt_ECL__CTRLCLICKINVENTORY_Init () {
+    libDEAD_gt_ECL__CTRLCLICKINVENTORY = TriggerCreate("libDEAD_gt_ECL__CTRLCLICKINVENTORY_Func");
+    TriggerAddEventDialogControl(libDEAD_gt_ECL__CTRLCLICKINVENTORY, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: ECL__CTRL ON
+//--------------------------------------------------------------------------------------------------
+bool libDEAD_gt_ECL__CTRLON_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libDEAD_gv_eCL_CTRL[EventPlayer()] = true;
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libDEAD_gt_ECL__CTRLON_Init () {
+    libDEAD_gt_ECL__CTRLON = TriggerCreate("libDEAD_gt_ECL__CTRLON_Func");
+    TriggerAddEventKeyPressed(libDEAD_gt_ECL__CTRLON, c_playerAny, c_keyControl, true, c_keyModifierStateIgnore, c_keyModifierStateIgnore, c_keyModifierStateIgnore);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: ECL__CTRL OFF
+//--------------------------------------------------------------------------------------------------
+bool libDEAD_gt_ECL__CTRLOFF_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libDEAD_gv_eCL_CTRL[EventPlayer()] = false;
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libDEAD_gt_ECL__CTRLOFF_Init () {
+    libDEAD_gt_ECL__CTRLOFF = TriggerCreate("libDEAD_gt_ECL__CTRLOFF_Func");
+    TriggerAddEventKeyPressed(libDEAD_gt_ECL__CTRLOFF, c_playerAny, c_keyControl, false, c_keyModifierStateIgnore, c_keyModifierStateIgnore, c_keyModifierStateIgnore);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: ECL__PICKUPLOOT
 //--------------------------------------------------------------------------------------------------
 bool libDEAD_gt_ECL__PICKUPLOOT_Func (bool testConds, bool runActions) {
@@ -5688,7 +5771,7 @@ bool libDEAD_gt_ECL__PICKUPLOOT_Func (bool testConds, bool runActions) {
     lv_itemIndex = FixedToInt(UnitGetCustomValue(EventUnit(), 6));
     lv_itemAmount = FixedToInt(UnitGetCustomValue(EventUnit(), 7));
     lv_itemDurability = FixedToInt(UnitGetCustomValue(EventUnit(), 8));
-    libDEAD_gf_ECL_ITEM_add(EventPlayer(), UserDataInstance("Items", lv_itemIndex), lv_itemAmount, true);
+    libDEAD_gf_ECL_ITEM_add(EventPlayer(), UserDataInstance("Items", lv_itemIndex), lv_itemAmount, true, 0, 1, libDEAD_gv_eCL__Inventory[UnitGetOwner(EventUnit())].lv_iNV_slots);
     return true;
 }
 
@@ -7612,7 +7695,6 @@ void libDEAD_gt_DS_Crate_GenericEnterP2_Init () {
 
 void libDEAD_InitTriggers () {
     libDEAD_gt_DS_DiscoverRecipe_Init();
-    libDEAD_gt_DS_CheckItems_Init();
     libDEAD_gt_DS_Unlock_Init();
     libDEAD_gt_DS_HealthIncrease_Init();
     libDEAD_gt_DS_ConfirmYesP1_Init();
@@ -7629,6 +7711,9 @@ void libDEAD_InitTriggers () {
     libDEAD_gt_ECL__DRAG_ON_OFF_Init();
     libDEAD_gt_ECL__SETNEWOLDSLOT_Init();
     libDEAD_gt_ECL__DROPZONE_Init();
+    libDEAD_gt_ECL__CTRLCLICKINVENTORY_Init();
+    libDEAD_gt_ECL__CTRLON_Init();
+    libDEAD_gt_ECL__CTRLOFF_Init();
     libDEAD_gt_ECL__PICKUPLOOT_Init();
     libDEAD_gt_ECL__PICKUPLOOT_directly_Init();
     libDEAD_gt_ECL__PICKUPLOOT_highlight_Init();
