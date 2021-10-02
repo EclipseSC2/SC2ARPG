@@ -61,6 +61,7 @@ void gf_ECL_PORTAL (int lp_player, point lp_camera_Point, point lp_camera_Point_
 //--------------------------------------------------------------------------------------------------
 trigger gt_Init;
 trigger gt_DEBUG_TESTADDITEMS;
+trigger gt_DEBUG_BANKSAVE;
 trigger gt_DEBUG_PORTALON;
 trigger gt_DEBUG_PORTALOFF;
 trigger gt_ProtoInit;
@@ -217,11 +218,11 @@ bool gt_DEBUG_TESTADDITEMS_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    libDEAD_gf_ECL_ITEM_add(EventPlayer(), "Crappy Pack", 1, true, 0, 1, libDEAD_gv_eCL__Inventory[EventPlayer()].lv_iNV_slots);
-    libDEAD_gf_ECL_ITEM_add(EventPlayer(), "Pistol Ammo", 300, true, 0, 1, libDEAD_gv_eCL__Inventory[EventPlayer()].lv_iNV_slots);
-    libDEAD_gf_ECL_ITEM_add(EventPlayer(), "ER-19 Blaster", 1, true, 0, 1, libDEAD_gv_eCL__Inventory[EventPlayer()].lv_iNV_slots);
-    libDEAD_gf_ECL_ITEM_add(EventPlayer(), "CPG11", 1, true, 0, 1, libDEAD_gv_eCL__Inventory[EventPlayer()].lv_iNV_slots);
-    libDEAD_gf_ECL_ITEM_add(EventPlayer(), "Medi Suit", 1, true, 0, 1, libDEAD_gv_eCL__Inventory[EventPlayer()].lv_iNV_slots);
+    libDEAD_gf_ECL_ITEM_add(EventPlayer(), "Crappy Pack", 1, true, 0, 0, 1, libDEAD_gv_eCL__Inventory[EventPlayer()].lv_iNV_slots);
+    libDEAD_gf_ECL_ITEM_add(EventPlayer(), "Pistol Ammo", 300, true, 0, 0, 1, libDEAD_gv_eCL__Inventory[EventPlayer()].lv_iNV_slots);
+    libDEAD_gf_ECL_ITEM_add(EventPlayer(), "ER-19 Blaster", 1, true, 0, 0, 1, libDEAD_gv_eCL__Inventory[EventPlayer()].lv_iNV_slots);
+    libDEAD_gf_ECL_ITEM_add(EventPlayer(), "CPG11", 1, true, 0, 0, 1, libDEAD_gv_eCL__Inventory[EventPlayer()].lv_iNV_slots);
+    libDEAD_gf_ECL_ITEM_add(EventPlayer(), "Medi Suit", 1, true, 0, 0, 1, libDEAD_gv_eCL__Inventory[EventPlayer()].lv_iNV_slots);
     return true;
 }
 
@@ -229,6 +230,26 @@ bool gt_DEBUG_TESTADDITEMS_Func (bool testConds, bool runActions) {
 void gt_DEBUG_TESTADDITEMS_Init () {
     gt_DEBUG_TESTADDITEMS = TriggerCreate("gt_DEBUG_TESTADDITEMS_Func");
     TriggerAddEventKeyPressed(gt_DEBUG_TESTADDITEMS, c_playerAny, c_keyK, true, c_keyModifierStateIgnore, c_keyModifierStateIgnore, c_keyModifierStateIgnore);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: DEBUG_BANK SAVE
+//--------------------------------------------------------------------------------------------------
+bool gt_DEBUG_BANKSAVE_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libDEAD_gf_BANK_save(EventPlayer());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_DEBUG_BANKSAVE_Init () {
+    gt_DEBUG_BANKSAVE = TriggerCreate("gt_DEBUG_BANKSAVE_Func");
+    TriggerAddEventKeyPressed(gt_DEBUG_BANKSAVE, c_playerAny, c_keyL, true, c_keyModifierStateIgnore, c_keyModifierStateIgnore, c_keyModifierStateIgnore);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -722,6 +743,7 @@ void gt_TerminalDiesConstruction_Init () {
 void InitTriggers () {
     gt_Init_Init();
     gt_DEBUG_TESTADDITEMS_Init();
+    gt_DEBUG_BANKSAVE_Init();
     gt_DEBUG_PORTALON_Init();
     gt_DEBUG_PORTALOFF_Init();
     gt_ProtoInit_Init();

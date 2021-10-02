@@ -28,6 +28,7 @@ Trigger/Name/53AE7ADC=ProtoInit
 Trigger/Name/6AADFF15=Terminal Dies Lab
 Trigger/Name/6AE79E7A=DEBUG_PORTAL OFF
 Trigger/Name/7C47ED69=Init
+Trigger/Name/852CA892=DEBUG_BANK SAVE
 Trigger/Name/8854647A=DEBUG_TEST ADD ITEMS
 Trigger/Name/94C0D6D9=DEBUG_PORTAL ON
 Trigger/Name/97CCF8BB=1-Environment

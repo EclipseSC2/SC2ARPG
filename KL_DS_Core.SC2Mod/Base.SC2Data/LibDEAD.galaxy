@@ -62,6 +62,9 @@ void libDEAD_InitVariables () {
         libDEAD_gv_dS_Inspect[init_i].lv_lore = c_invalidDialogControlId;
         libDEAD_gv_dS_Inspect[init_i].lv_inspectWindow = c_invalidDialogControlId;
     }
+    for (init_i = 0; init_i <= 1; init_i += 1) {
+        libDEAD_gv_qUEST_objectives[init_i] = c_invalidObjectiveId;
+    }
     for (init_i = 0; init_i <= libDEAD_gv_dS_MaxPlayers; init_i += 1) {
         libDEAD_gv_dS_Loot[init_i] = UnitGroupEmpty();
     }
@@ -579,6 +582,26 @@ void libDEAD_gf_UpdateInspectWindow (int lp_player) {
     }
 }
 
+void libDEAD_gf_QUEST_start (string lp_quest) {
+    // Variable Declarations
+    int lv_oBJECTIVE;
+
+    // Automatic Variable Declarations
+    const int auto0B53BDBA_ae = libDEAD_gv_maxquests;
+    int auto0B53BDBA_var;
+
+    // Variable Initialization
+    lv_oBJECTIVE = c_invalidObjectiveId;
+
+    // Implementation
+    auto0B53BDBA_var = 1;
+    for ( ; auto0B53BDBA_var <= auto0B53BDBA_ae; auto0B53BDBA_var += 1 ) {
+        if ((libDEAD_gv_qUEST_objectives[auto0B53BDBA_var] == c_invalidObjectiveId)) {
+        }
+
+    }
+}
+
 void libDEAD_gf_KL_SwapToWeapon (int lp_player, int lp_weaponIndex) {
     // Variable Declarations
     int lv_currentWeaponIndex;
@@ -681,7 +704,7 @@ void libDEAD_gf_CheckBaseStatModifiers () {
     libDEAD_gv_baseVisionRange = CatalogFieldValueGetAsInt(c_gameCatalogUnit, "Separatist", "Sight", c_playerAny);
 }
 
-void libDEAD_gf_ECL_ITEM_add (int lp_player, string lp_item, int lp_amount, bool lp_displayMessage, int lp_exclude_Slot, int lp_sLOT_min, int lp_sLOT_max) {
+void libDEAD_gf_ECL_ITEM_add (int lp_player, string lp_item, int lp_amount, bool lp_displayMessage, int lp_exclude_Slot, int lp_force_Slot, int lp_sLOT_min, int lp_sLOT_max) {
     // Variable Declarations
     bool lv_fREE;
     int lv_item_width;
@@ -693,6 +716,7 @@ void libDEAD_gf_ECL_ITEM_add (int lp_player, string lp_item, int lp_amount, bool
     int lv_firstFreeSlot;
 
     // Automatic Variable Declarations
+    string autoDB772610_val;
     int autoFA7D2691_ae;
     int autoFA7D2691_var;
     int auto55CCDCEF_ae;
@@ -708,130 +732,205 @@ void libDEAD_gf_ECL_ITEM_add (int lp_player, string lp_item, int lp_amount, bool
     lv_noOtherStackFound = true;
 
     // Implementation
-    autoFA7D2691_ae = lp_sLOT_max;
-    autoFA7D2691_var = lp_sLOT_min;
-    for ( ; autoFA7D2691_var <= autoFA7D2691_ae; autoFA7D2691_var += 1 ) {
-        if ((libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[autoFA7D2691_var] > 0) && (lv_quantity > 0) && (libDEAD_gv_dS_InventoryItem[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[autoFA7D2691_var]][lp_player] == lp_item) && (libDEAD_gf_ReturnItemPropertyMaxAmount(libDEAD_gv_dS_InventoryItem[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[autoFA7D2691_var]][lp_player]) > 1)) {
-            lv_d_quantity = libNtve_gf_ArithmeticIntClamp((libDEAD_gf_ReturnItemPropertyMaxAmount(libDEAD_gv_dS_InventoryItem[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[autoFA7D2691_var]][lp_player]) - libDEAD_gf_ReturnInventoryItemAmount(lp_player, libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[autoFA7D2691_var])), 0, lv_quantity);
-            libDEAD_gv_dS_InventoryAmount[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[autoFA7D2691_var]][lp_player] += lv_d_quantity;
-            if ((libDEAD_gf_ReturnInventoryItemAmount(lp_player, libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[autoFA7D2691_var]) > 1)) {
-                DialogControlSetAnimationState(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[autoFA7D2691_var]], PlayerGroupAll(), "State", "Stack");
-            }
-            else {
-                DialogControlSetAnimationState(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[autoFA7D2691_var]], PlayerGroupAll(), "State", "SingleItem");
-            }
-            TextExpressionSetToken("Param/Expression/lib_DEAD_CAAA28BE", "A", IntToText(libDEAD_gf_ReturnInventoryItemAmount(lp_player, libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[autoFA7D2691_var])));
-            libNtve_gf_SetDialogItemText(libDEAD_gv_dS_Inventory[lp_player].lv_itemQuantity[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[autoFA7D2691_var]], TextExpressionAssemble("Param/Expression/lib_DEAD_CAAA28BE"), PlayerGroupSingle(lp_player));
-            DialogControlSetAnimationState(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[autoFA7D2691_var]], PlayerGroupAll(), "ItemType", UserDataGetString("Items", libDEAD_gv_dS_InventoryItem[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[autoFA7D2691_var]][lp_player], "Category", 1));
-            lv_quantity -= lv_d_quantity;
-            if ((lv_quantity > 0)) {
-            }
-            else {
-                break;
-            }
-        }
-
-    }
-    if ((lv_quantity > 0)) {
-        auto55CCDCEF_ae = lp_sLOT_max;
-        auto55CCDCEF_var = lp_sLOT_min;
-        for ( ; auto55CCDCEF_var <= auto55CCDCEF_ae; auto55CCDCEF_var += 1 ) {
-            if ((auto55CCDCEF_var != lp_exclude_Slot) && (libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[auto55CCDCEF_var] == 0) && (libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_locked[auto55CCDCEF_var] == false) && ((libDEAD_gf_ReturnItemPropertyCategory(lp_item) == libDEAD_gv_dS_InventorySlot_Category[auto55CCDCEF_var][lp_player]) || (libDEAD_gv_dS_InventorySlot_Category[auto55CCDCEF_var][lp_player] == "All"))) {
-                auto8CAFA1D0_ae = libDEAD_gv_eCL__Inventory[lp_player].lv_n_items;
-                lv_item_Index = 1;
-                for ( ; ( (auto8CAFA1D0_ai >= 0 && lv_item_Index <= auto8CAFA1D0_ae) || (auto8CAFA1D0_ai < 0 && lv_item_Index >= auto8CAFA1D0_ae) ) ; lv_item_Index += auto8CAFA1D0_ai ) {
-                    if ((libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM_slot[lv_item_Index] == 0)) {
-                        lv_item_Index = lv_item_Index;
-                        lv_fREE = true;
-                        break;
-                    }
-
-                }
-                if ((lv_fREE == false)) {
-                    libDEAD_gv_eCL__Inventory[lp_player].lv_n_items += 1;
-                    lv_item_Index = libDEAD_gv_eCL__Inventory[lp_player].lv_n_items;
-                }
-
-                DialogControlCreateInPanelFromTemplate(libDEAD_gv_eCL__Inventory[lp_player].lv__INV, c_triggerControlTypeButton, "ECL_DRAGGABLE/Item_Template");
-                DialogControlSetSize(DialogControlLastCreated(), PlayerGroupSingle(lp_player), lv_item_width, lv_item_height);
-                libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index] = DialogControlLastCreated();
-                DialogControlHookup(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index], c_triggerControlTypeEditBox, libNtve_gf_ConvertStringToUILayoutFrameName("DragState_Box"));
-                libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM_state_box[lv_item_Index] = DialogControlLastCreated();
-                TriggerAddEventDialogControl(libDEAD_gt_ECL__DRAG_ON_OFF, lp_player, libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM_state_box[lv_item_Index], c_triggerControlEventTypeTextChanged);
-                DialogControlHookup(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index], c_triggerControlTypeLabel, libNtve_gf_ConvertStringToUILayoutFrameName("DummyInfoFrame/Quantity"));
-                libDEAD_gv_dS_Inventory[lp_player].lv_itemQuantity[lv_item_Index] = DialogControlLastCreated();
-                DialogControlHookup(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index], c_triggerControlTypeImage, libNtve_gf_ConvertStringToUILayoutFrameName("DummyInfoFrame/Icon"));
-                libDEAD_gv_dS_Inventory[lp_player].lv_itemIcon[lv_item_Index] = DialogControlLastCreated();
-                DialogControlHookup(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index], c_triggerControlTypeLabel, libNtve_gf_ConvertStringToUILayoutFrameName("DummyInfoFrame/Name"));
-                libDEAD_gv_dS_Inventory[lp_player].lv_itemName[lv_item_Index] = DialogControlLastCreated();
-                DialogControlHookup(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index], c_triggerControlTypeLabel, libNtve_gf_ConvertStringToUILayoutFrameName("DummyInfoFrame/Quality"));
-                libDEAD_gv_dS_Inventory[lp_player].lv_itemType[lv_item_Index] = DialogControlLastCreated();
-                DialogControlHookup(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index], c_triggerControlTypeLabel, libNtve_gf_ConvertStringToUILayoutFrameName("DummyInfoFrame/UseType"));
-                libDEAD_gv_dS_Inventory[lp_player].lv_itemUse[lv_item_Index] = DialogControlLastCreated();
-                DialogControlHookup(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index], c_triggerControlTypeLabel, libNtve_gf_ConvertStringToUILayoutFrameName("DummyInfoFrame/UseDesc"));
-                libDEAD_gv_dS_Inventory[lp_player].lv_itemDesc[lv_item_Index] = DialogControlLastCreated();
-                DialogControlHookup(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index], c_triggerControlTypeLabel, libNtve_gf_ConvertStringToUILayoutFrameName("DummyInfoFrame/Lore"));
-                libDEAD_gv_dS_Inventory[lp_player].lv_itemLore[lv_item_Index] = DialogControlLastCreated();
-                DialogControlHookup(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index], c_triggerControlTypeLabel, libNtve_gf_ConvertStringToUILayoutFrameName("DummyInfoFrame/Durability"));
-                libDEAD_gv_dS_Inventory[lp_player].lv_itemDurability[lv_item_Index] = DialogControlLastCreated();
-                libDEAD_gv_dS_InventoryItem[lv_item_Index][lp_player] = lp_item;
-                libDEAD_gv_dS_InventoryAmount[lv_item_Index][lp_player] = lv_quantity;
-                libDEAD_gv_dS_InventoryDurability[lv_item_Index][lp_player] = libDEAD_gf_ReturnItemPropertyMaxDurability(lp_item);
-                if ((lp_displayMessage == true)) {
-                    libDEAD_gf_DS_DisplayLootEvent(lp_player, lv_quantity, lp_item);
-                }
-                libNtve_gf_SetDialogItemImage(libDEAD_gv_dS_Inventory[lp_player].lv_itemIcon[lv_item_Index], UserDataGetImagePath("Items", libDEAD_gv_dS_InventoryItem[lv_item_Index][lp_player], "Icon", 1), PlayerGroupAll());
-                libNtve_gf_SetDialogItemText(libDEAD_gv_dS_Inventory[lp_player].lv_itemName[lv_item_Index], StringToText(UserDataGetString("Items", libDEAD_gv_dS_InventoryItem[lv_item_Index][lp_player], "Name", 1)), PlayerGroupAll());
-                libNtve_gf_SetDialogItemText(libDEAD_gv_dS_Inventory[lp_player].lv_itemType[lv_item_Index], StringToText(UserDataGetString("Items", libDEAD_gv_dS_InventoryItem[lv_item_Index][lp_player], "Category", 1)), PlayerGroupAll());
-                libNtve_gf_SetDialogItemText(libDEAD_gv_dS_Inventory[lp_player].lv_itemDesc[lv_item_Index], UserDataGetText("Items", libDEAD_gv_dS_InventoryItem[lv_item_Index][lp_player], "Description", 1), PlayerGroupAll());
-                libNtve_gf_SetDialogItemText(libDEAD_gv_dS_Inventory[lp_player].lv_itemLore[lv_item_Index], UserDataGetText("Items", libDEAD_gv_dS_InventoryItem[lv_item_Index][lp_player], "Lore", 1), PlayerGroupAll());
-                libNtve_gf_SetDialogItemText(libDEAD_gv_dS_Inventory[lp_player].lv_itemUse[lv_item_Index], StringToText(libDEAD_gf_ReturnItemPropertyUse(libDEAD_gv_dS_InventoryItem[lv_item_Index][lp_player])), PlayerGroupAll());
-                TextExpressionSetToken("Param/Expression/lib_DEAD_84F65ECB", "A", IntToText(libDEAD_gf_ReturnInventoryItemDurability(lp_player, lv_item_Index)));
-                libNtve_gf_SetDialogItemText(libDEAD_gv_dS_Inventory[lp_player].lv_itemDurability[lv_item_Index], TextExpressionAssemble("Param/Expression/lib_DEAD_84F65ECB"), PlayerGroupAll());
-                auto04793D7E_val = libDEAD_gf_ReturnItemPropertyUse(libDEAD_gv_dS_InventoryItem[lv_item_Index][lp_player]);
-                if (auto04793D7E_val == "Drink") {
-                    DialogControlSetAnimationState(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index], PlayerGroupAll(), "ItemUse", "Water");
-                }
-                else if (auto04793D7E_val == "Heal") {
-                    DialogControlSetAnimationState(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index], PlayerGroupAll(), "ItemUse", "Medicine");
-                }
-                else if (auto04793D7E_val == "Eat") {
-                    DialogControlSetAnimationState(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index], PlayerGroupAll(), "ItemUse", "Food");
+    if ((lp_force_Slot == 0)) {
+        autoFA7D2691_ae = lp_sLOT_max;
+        autoFA7D2691_var = lp_sLOT_min;
+        for ( ; autoFA7D2691_var <= autoFA7D2691_ae; autoFA7D2691_var += 1 ) {
+            if ((libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[autoFA7D2691_var] > 0) && (lv_quantity > 0) && (libDEAD_gv_dS_InventoryItem[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[autoFA7D2691_var]][lp_player] == lp_item) && (libDEAD_gf_ReturnItemPropertyMaxAmount(libDEAD_gv_dS_InventoryItem[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[autoFA7D2691_var]][lp_player]) > 1)) {
+                lv_d_quantity = libNtve_gf_ArithmeticIntClamp((libDEAD_gf_ReturnItemPropertyMaxAmount(libDEAD_gv_dS_InventoryItem[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[autoFA7D2691_var]][lp_player]) - libDEAD_gf_ReturnInventoryItemAmount(lp_player, libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[autoFA7D2691_var])), 0, lv_quantity);
+                libDEAD_gv_dS_InventoryAmount[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[autoFA7D2691_var]][lp_player] += lv_d_quantity;
+                if ((libDEAD_gf_ReturnInventoryItemAmount(lp_player, libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[autoFA7D2691_var]) > 1)) {
+                    DialogControlSetAnimationState(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[autoFA7D2691_var]], PlayerGroupAll(), "State", "Stack");
                 }
                 else {
-                    DialogControlSetAnimationState(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index], PlayerGroupAll(), "ItemUse", "Any");
+                    DialogControlSetAnimationState(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[autoFA7D2691_var]], PlayerGroupAll(), "State", "SingleItem");
                 }
-                if ((libDEAD_gf_ReturnInventoryItemAmount(lp_player, lv_item_Index) != 0)) {
-                    if ((libDEAD_gf_ReturnInventoryItemAmount(lp_player, lv_item_Index) > 1)) {
-                        DialogControlSetAnimationState(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index], PlayerGroupAll(), "State", "Stack");
-                    }
-                    else {
-                        DialogControlSetAnimationState(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index], PlayerGroupAll(), "State", "SingleItem");
-                    }
-                    TextExpressionSetToken("Param/Expression/lib_DEAD_DDD94F7C", "A", IntToText(libDEAD_gf_ReturnInventoryItemAmount(lp_player, lv_item_Index)));
-                    libNtve_gf_SetDialogItemText(libDEAD_gv_dS_Inventory[lp_player].lv_itemQuantity[lv_item_Index], TextExpressionAssemble("Param/Expression/lib_DEAD_DDD94F7C"), PlayerGroupAll());
-                    DialogControlSetAnimationState(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index], PlayerGroupAll(), "ItemType", UserDataGetString("Items", libDEAD_gv_dS_InventoryItem[lv_item_Index][lp_player], "Category", 1));
+                TextExpressionSetToken("Param/Expression/lib_DEAD_CAAA28BE", "A", IntToText(libDEAD_gf_ReturnInventoryItemAmount(lp_player, libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[autoFA7D2691_var])));
+                libNtve_gf_SetDialogItemText(libDEAD_gv_dS_Inventory[lp_player].lv_itemQuantity[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[autoFA7D2691_var]], TextExpressionAssemble("Param/Expression/lib_DEAD_CAAA28BE"), PlayerGroupSingle(lp_player));
+                DialogControlSetAnimationState(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[autoFA7D2691_var]], PlayerGroupAll(), "ItemType", UserDataGetString("Items", libDEAD_gv_dS_InventoryItem[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[autoFA7D2691_var]][lp_player], "Category", 1));
+                lv_quantity -= lv_d_quantity;
+                if ((lv_quantity > 0)) {
                 }
-
-                DialogControlHookup(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index], c_triggerControlTypeImage, "CardAnchorImage");
-                libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM_anchor[lv_item_Index] = DialogControlLastCreated();
-                DialogControlSetPositionRelative(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM_anchor[lv_item_Index], PlayerGroupSingle(lp_player), c_anchorCenter, libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT[auto55CCDCEF_var], c_anchorCenter, 0, 0);
-                DialogControlSetPositionRelative(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index], PlayerGroupSingle(lp_player), c_anchorCenter, libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM_anchor[lv_item_Index], c_anchorCenter, 0, 0);
-                DialogControlSetSize(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index], PlayerGroupSingle(lp_player), lv_item_width, lv_item_height);
-                libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM_slot[lv_item_Index] = auto55CCDCEF_var;
-                libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[auto55CCDCEF_var] = lv_item_Index;
-                libDEAD_gf_ECL__EQUIP(lp_player, auto55CCDCEF_var, libDEAD_ge_EQUIPUNEQUIP_EQUIP);
-                lv_quantity = 0;
-                break;
+                else {
+                    break;
+                }
             }
 
         }
-    }
+        if ((lv_quantity > 0)) {
+            auto55CCDCEF_ae = lp_sLOT_max;
+            auto55CCDCEF_var = lp_sLOT_min;
+            for ( ; auto55CCDCEF_var <= auto55CCDCEF_ae; auto55CCDCEF_var += 1 ) {
+                if ((auto55CCDCEF_var != lp_exclude_Slot) && (libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[auto55CCDCEF_var] == 0) && (libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_locked[auto55CCDCEF_var] == false) && ((libDEAD_gf_ReturnItemPropertyCategory(lp_item) == libDEAD_gv_dS_InventorySlot_Category[auto55CCDCEF_var][lp_player]) || (libDEAD_gv_dS_InventorySlot_Category[auto55CCDCEF_var][lp_player] == "All"))) {
+                    auto8CAFA1D0_ae = libDEAD_gv_eCL__Inventory[lp_player].lv_n_items;
+                    lv_item_Index = 1;
+                    for ( ; ( (auto8CAFA1D0_ai >= 0 && lv_item_Index <= auto8CAFA1D0_ae) || (auto8CAFA1D0_ai < 0 && lv_item_Index >= auto8CAFA1D0_ae) ) ; lv_item_Index += auto8CAFA1D0_ai ) {
+                        if ((libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM_slot[lv_item_Index] == 0)) {
+                            lv_item_Index = lv_item_Index;
+                            lv_fREE = true;
+                            break;
+                        }
 
-    if ((lv_quantity > 0)) {
-        libDEAD_gf_ECL_ITEM_drop_to_ground(lp_player, lp_item, lv_quantity, UnitGetPosition(libDEAD_gv_playerUnit[lp_player]));
-    }
+                    }
+                    if ((lv_fREE == false)) {
+                        libDEAD_gv_eCL__Inventory[lp_player].lv_n_items += 1;
+                        lv_item_Index = libDEAD_gv_eCL__Inventory[lp_player].lv_n_items;
+                    }
 
+                    DialogControlCreateInPanelFromTemplate(libDEAD_gv_eCL__Inventory[lp_player].lv__INV, c_triggerControlTypeButton, "ECL_DRAGGABLE/Item_Template");
+                    DialogControlSetSize(DialogControlLastCreated(), PlayerGroupSingle(lp_player), lv_item_width, lv_item_height);
+                    libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index] = DialogControlLastCreated();
+                    DialogControlHookup(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index], c_triggerControlTypeEditBox, libNtve_gf_ConvertStringToUILayoutFrameName("DragState_Box"));
+                    libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM_state_box[lv_item_Index] = DialogControlLastCreated();
+                    TriggerAddEventDialogControl(libDEAD_gt_ECL__DRAG_ON_OFF, lp_player, libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM_state_box[lv_item_Index], c_triggerControlEventTypeTextChanged);
+                    DialogControlHookup(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index], c_triggerControlTypeLabel, libNtve_gf_ConvertStringToUILayoutFrameName("DummyInfoFrame/Quantity"));
+                    libDEAD_gv_dS_Inventory[lp_player].lv_itemQuantity[lv_item_Index] = DialogControlLastCreated();
+                    DialogControlHookup(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index], c_triggerControlTypeImage, libNtve_gf_ConvertStringToUILayoutFrameName("DummyInfoFrame/Icon"));
+                    libDEAD_gv_dS_Inventory[lp_player].lv_itemIcon[lv_item_Index] = DialogControlLastCreated();
+                    DialogControlHookup(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index], c_triggerControlTypeLabel, libNtve_gf_ConvertStringToUILayoutFrameName("DummyInfoFrame/Name"));
+                    libDEAD_gv_dS_Inventory[lp_player].lv_itemName[lv_item_Index] = DialogControlLastCreated();
+                    DialogControlHookup(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index], c_triggerControlTypeLabel, libNtve_gf_ConvertStringToUILayoutFrameName("DummyInfoFrame/Quality"));
+                    libDEAD_gv_dS_Inventory[lp_player].lv_itemType[lv_item_Index] = DialogControlLastCreated();
+                    DialogControlHookup(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index], c_triggerControlTypeLabel, libNtve_gf_ConvertStringToUILayoutFrameName("DummyInfoFrame/UseType"));
+                    libDEAD_gv_dS_Inventory[lp_player].lv_itemUse[lv_item_Index] = DialogControlLastCreated();
+                    DialogControlHookup(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index], c_triggerControlTypeLabel, libNtve_gf_ConvertStringToUILayoutFrameName("DummyInfoFrame/UseDesc"));
+                    libDEAD_gv_dS_Inventory[lp_player].lv_itemDesc[lv_item_Index] = DialogControlLastCreated();
+                    DialogControlHookup(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index], c_triggerControlTypeLabel, libNtve_gf_ConvertStringToUILayoutFrameName("DummyInfoFrame/Lore"));
+                    libDEAD_gv_dS_Inventory[lp_player].lv_itemLore[lv_item_Index] = DialogControlLastCreated();
+                    DialogControlHookup(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index], c_triggerControlTypeLabel, libNtve_gf_ConvertStringToUILayoutFrameName("DummyInfoFrame/Durability"));
+                    libDEAD_gv_dS_Inventory[lp_player].lv_itemDurability[lv_item_Index] = DialogControlLastCreated();
+                    libDEAD_gv_dS_InventoryItem[lv_item_Index][lp_player] = lp_item;
+                    libDEAD_gv_dS_InventoryAmount[lv_item_Index][lp_player] = lv_quantity;
+                    libDEAD_gv_dS_InventoryDurability[lv_item_Index][lp_player] = libDEAD_gf_ReturnItemPropertyMaxDurability(lp_item);
+                    if ((lp_displayMessage == true)) {
+                        libDEAD_gf_DS_DisplayLootEvent(lp_player, lv_quantity, lp_item);
+                    }
+                    libNtve_gf_SetDialogItemImage(libDEAD_gv_dS_Inventory[lp_player].lv_itemIcon[lv_item_Index], UserDataGetImagePath("Items", libDEAD_gv_dS_InventoryItem[lv_item_Index][lp_player], "Icon", 1), PlayerGroupAll());
+                    libNtve_gf_SetDialogItemText(libDEAD_gv_dS_Inventory[lp_player].lv_itemName[lv_item_Index], StringToText(UserDataGetString("Items", libDEAD_gv_dS_InventoryItem[lv_item_Index][lp_player], "Name", 1)), PlayerGroupAll());
+                    libNtve_gf_SetDialogItemText(libDEAD_gv_dS_Inventory[lp_player].lv_itemType[lv_item_Index], StringToText(UserDataGetString("Items", libDEAD_gv_dS_InventoryItem[lv_item_Index][lp_player], "Category", 1)), PlayerGroupAll());
+                    libNtve_gf_SetDialogItemText(libDEAD_gv_dS_Inventory[lp_player].lv_itemDesc[lv_item_Index], UserDataGetText("Items", libDEAD_gv_dS_InventoryItem[lv_item_Index][lp_player], "Description", 1), PlayerGroupAll());
+                    libNtve_gf_SetDialogItemText(libDEAD_gv_dS_Inventory[lp_player].lv_itemLore[lv_item_Index], UserDataGetText("Items", libDEAD_gv_dS_InventoryItem[lv_item_Index][lp_player], "Lore", 1), PlayerGroupAll());
+                    libNtve_gf_SetDialogItemText(libDEAD_gv_dS_Inventory[lp_player].lv_itemUse[lv_item_Index], StringToText(libDEAD_gf_ReturnItemPropertyUse(libDEAD_gv_dS_InventoryItem[lv_item_Index][lp_player])), PlayerGroupAll());
+                    TextExpressionSetToken("Param/Expression/lib_DEAD_84F65ECB", "A", IntToText(libDEAD_gf_ReturnInventoryItemDurability(lp_player, lv_item_Index)));
+                    libNtve_gf_SetDialogItemText(libDEAD_gv_dS_Inventory[lp_player].lv_itemDurability[lv_item_Index], TextExpressionAssemble("Param/Expression/lib_DEAD_84F65ECB"), PlayerGroupAll());
+                    auto04793D7E_val = libDEAD_gf_ReturnItemPropertyUse(libDEAD_gv_dS_InventoryItem[lv_item_Index][lp_player]);
+                    if (auto04793D7E_val == "Drink") {
+                        DialogControlSetAnimationState(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index], PlayerGroupAll(), "ItemUse", "Water");
+                    }
+                    else if (auto04793D7E_val == "Heal") {
+                        DialogControlSetAnimationState(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index], PlayerGroupAll(), "ItemUse", "Medicine");
+                    }
+                    else if (auto04793D7E_val == "Eat") {
+                        DialogControlSetAnimationState(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index], PlayerGroupAll(), "ItemUse", "Food");
+                    }
+                    else {
+                        DialogControlSetAnimationState(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index], PlayerGroupAll(), "ItemUse", "Any");
+                    }
+                    if ((libDEAD_gf_ReturnInventoryItemAmount(lp_player, lv_item_Index) != 0)) {
+                        if ((libDEAD_gf_ReturnInventoryItemAmount(lp_player, lv_item_Index) > 1)) {
+                            DialogControlSetAnimationState(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index], PlayerGroupAll(), "State", "Stack");
+                        }
+                        else {
+                            DialogControlSetAnimationState(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index], PlayerGroupAll(), "State", "SingleItem");
+                        }
+                        TextExpressionSetToken("Param/Expression/lib_DEAD_DDD94F7C", "A", IntToText(libDEAD_gf_ReturnInventoryItemAmount(lp_player, lv_item_Index)));
+                        libNtve_gf_SetDialogItemText(libDEAD_gv_dS_Inventory[lp_player].lv_itemQuantity[lv_item_Index], TextExpressionAssemble("Param/Expression/lib_DEAD_DDD94F7C"), PlayerGroupAll());
+                        DialogControlSetAnimationState(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index], PlayerGroupAll(), "ItemType", UserDataGetString("Items", libDEAD_gv_dS_InventoryItem[lv_item_Index][lp_player], "Category", 1));
+                    }
+
+                    DialogControlHookup(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index], c_triggerControlTypeImage, "CardAnchorImage");
+                    libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM_anchor[lv_item_Index] = DialogControlLastCreated();
+                    DialogControlSetPositionRelative(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM_anchor[lv_item_Index], PlayerGroupSingle(lp_player), c_anchorCenter, libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT[auto55CCDCEF_var], c_anchorCenter, 0, 0);
+                    DialogControlSetPositionRelative(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index], PlayerGroupSingle(lp_player), c_anchorCenter, libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM_anchor[lv_item_Index], c_anchorCenter, 0, 0);
+                    DialogControlSetSize(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index], PlayerGroupSingle(lp_player), lv_item_width, lv_item_height);
+                    libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM_slot[lv_item_Index] = auto55CCDCEF_var;
+                    libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[auto55CCDCEF_var] = lv_item_Index;
+                    libDEAD_gf_ECL__EQUIP(lp_player, auto55CCDCEF_var, libDEAD_ge_EQUIPUNEQUIP_EQUIP);
+                    lv_quantity = 0;
+                    break;
+                }
+
+            }
+        }
+
+        if ((lv_quantity > 0)) {
+            libDEAD_gf_ECL_ITEM_drop_to_ground(lp_player, lp_item, lv_quantity, UnitGetPosition(libDEAD_gv_playerUnit[lp_player]));
+        }
+
+    }
+    else {
+        libDEAD_gv_eCL__Inventory[lp_player].lv_n_items += 1;
+        lv_item_Index = libDEAD_gv_eCL__Inventory[lp_player].lv_n_items;
+        DialogControlCreateInPanelFromTemplate(libDEAD_gv_eCL__Inventory[lp_player].lv__INV, c_triggerControlTypeButton, "ECL_DRAGGABLE/Item_Template");
+        DialogControlSetSize(DialogControlLastCreated(), PlayerGroupSingle(lp_player), lv_item_width, lv_item_height);
+        libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index] = DialogControlLastCreated();
+        DialogControlHookup(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index], c_triggerControlTypeEditBox, libNtve_gf_ConvertStringToUILayoutFrameName("DragState_Box"));
+        libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM_state_box[lv_item_Index] = DialogControlLastCreated();
+        TriggerAddEventDialogControl(libDEAD_gt_ECL__DRAG_ON_OFF, lp_player, libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM_state_box[lv_item_Index], c_triggerControlEventTypeTextChanged);
+        DialogControlHookup(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index], c_triggerControlTypeLabel, libNtve_gf_ConvertStringToUILayoutFrameName("DummyInfoFrame/Quantity"));
+        libDEAD_gv_dS_Inventory[lp_player].lv_itemQuantity[lv_item_Index] = DialogControlLastCreated();
+        DialogControlHookup(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index], c_triggerControlTypeImage, libNtve_gf_ConvertStringToUILayoutFrameName("DummyInfoFrame/Icon"));
+        libDEAD_gv_dS_Inventory[lp_player].lv_itemIcon[lv_item_Index] = DialogControlLastCreated();
+        DialogControlHookup(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index], c_triggerControlTypeLabel, libNtve_gf_ConvertStringToUILayoutFrameName("DummyInfoFrame/Name"));
+        libDEAD_gv_dS_Inventory[lp_player].lv_itemName[lv_item_Index] = DialogControlLastCreated();
+        DialogControlHookup(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index], c_triggerControlTypeLabel, libNtve_gf_ConvertStringToUILayoutFrameName("DummyInfoFrame/Quality"));
+        libDEAD_gv_dS_Inventory[lp_player].lv_itemType[lv_item_Index] = DialogControlLastCreated();
+        DialogControlHookup(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index], c_triggerControlTypeLabel, libNtve_gf_ConvertStringToUILayoutFrameName("DummyInfoFrame/UseType"));
+        libDEAD_gv_dS_Inventory[lp_player].lv_itemUse[lv_item_Index] = DialogControlLastCreated();
+        DialogControlHookup(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index], c_triggerControlTypeLabel, libNtve_gf_ConvertStringToUILayoutFrameName("DummyInfoFrame/UseDesc"));
+        libDEAD_gv_dS_Inventory[lp_player].lv_itemDesc[lv_item_Index] = DialogControlLastCreated();
+        DialogControlHookup(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index], c_triggerControlTypeLabel, libNtve_gf_ConvertStringToUILayoutFrameName("DummyInfoFrame/Lore"));
+        libDEAD_gv_dS_Inventory[lp_player].lv_itemLore[lv_item_Index] = DialogControlLastCreated();
+        DialogControlHookup(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index], c_triggerControlTypeLabel, libNtve_gf_ConvertStringToUILayoutFrameName("DummyInfoFrame/Durability"));
+        libDEAD_gv_dS_Inventory[lp_player].lv_itemDurability[lv_item_Index] = DialogControlLastCreated();
+        libDEAD_gv_dS_InventoryItem[lv_item_Index][lp_player] = lp_item;
+        libDEAD_gv_dS_InventoryAmount[lv_item_Index][lp_player] = lv_quantity;
+        libDEAD_gv_dS_InventoryDurability[lv_item_Index][lp_player] = libDEAD_gf_ReturnItemPropertyMaxDurability(lp_item);
+        if ((lp_displayMessage == true)) {
+            libDEAD_gf_DS_DisplayLootEvent(lp_player, lv_quantity, lp_item);
+        }
+        libNtve_gf_SetDialogItemImage(libDEAD_gv_dS_Inventory[lp_player].lv_itemIcon[lv_item_Index], UserDataGetImagePath("Items", libDEAD_gv_dS_InventoryItem[lv_item_Index][lp_player], "Icon", 1), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(libDEAD_gv_dS_Inventory[lp_player].lv_itemName[lv_item_Index], StringToText(UserDataGetString("Items", libDEAD_gv_dS_InventoryItem[lv_item_Index][lp_player], "Name", 1)), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(libDEAD_gv_dS_Inventory[lp_player].lv_itemType[lv_item_Index], StringToText(UserDataGetString("Items", libDEAD_gv_dS_InventoryItem[lv_item_Index][lp_player], "Category", 1)), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(libDEAD_gv_dS_Inventory[lp_player].lv_itemDesc[lv_item_Index], UserDataGetText("Items", libDEAD_gv_dS_InventoryItem[lv_item_Index][lp_player], "Description", 1), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(libDEAD_gv_dS_Inventory[lp_player].lv_itemLore[lv_item_Index], UserDataGetText("Items", libDEAD_gv_dS_InventoryItem[lv_item_Index][lp_player], "Lore", 1), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(libDEAD_gv_dS_Inventory[lp_player].lv_itemUse[lv_item_Index], StringToText(libDEAD_gf_ReturnItemPropertyUse(libDEAD_gv_dS_InventoryItem[lv_item_Index][lp_player])), PlayerGroupAll());
+        TextExpressionSetToken("Param/Expression/lib_DEAD_D0DB9456", "A", IntToText(libDEAD_gf_ReturnInventoryItemDurability(lp_player, lv_item_Index)));
+        libNtve_gf_SetDialogItemText(libDEAD_gv_dS_Inventory[lp_player].lv_itemDurability[lv_item_Index], TextExpressionAssemble("Param/Expression/lib_DEAD_D0DB9456"), PlayerGroupAll());
+        autoDB772610_val = libDEAD_gf_ReturnItemPropertyUse(libDEAD_gv_dS_InventoryItem[lv_item_Index][lp_player]);
+        if (autoDB772610_val == "Drink") {
+            DialogControlSetAnimationState(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index], PlayerGroupAll(), "ItemUse", "Water");
+        }
+        else if (autoDB772610_val == "Heal") {
+            DialogControlSetAnimationState(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index], PlayerGroupAll(), "ItemUse", "Medicine");
+        }
+        else if (autoDB772610_val == "Eat") {
+            DialogControlSetAnimationState(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index], PlayerGroupAll(), "ItemUse", "Food");
+        }
+        else {
+            DialogControlSetAnimationState(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index], PlayerGroupAll(), "ItemUse", "Any");
+        }
+        if ((libDEAD_gf_ReturnInventoryItemAmount(lp_player, lv_item_Index) != 0)) {
+            if ((libDEAD_gf_ReturnInventoryItemAmount(lp_player, lv_item_Index) > 1)) {
+                DialogControlSetAnimationState(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index], PlayerGroupAll(), "State", "Stack");
+            }
+            else {
+                DialogControlSetAnimationState(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index], PlayerGroupAll(), "State", "SingleItem");
+            }
+            TextExpressionSetToken("Param/Expression/lib_DEAD_10AAD967", "A", IntToText(libDEAD_gf_ReturnInventoryItemAmount(lp_player, lv_item_Index)));
+            libNtve_gf_SetDialogItemText(libDEAD_gv_dS_Inventory[lp_player].lv_itemQuantity[lv_item_Index], TextExpressionAssemble("Param/Expression/lib_DEAD_10AAD967"), PlayerGroupAll());
+            DialogControlSetAnimationState(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index], PlayerGroupAll(), "ItemType", UserDataGetString("Items", libDEAD_gv_dS_InventoryItem[lv_item_Index][lp_player], "Category", 1));
+        }
+
+        DialogControlHookup(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index], c_triggerControlTypeImage, "CardAnchorImage");
+        libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM_anchor[lv_item_Index] = DialogControlLastCreated();
+        DialogControlSetPositionRelative(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM_anchor[lv_item_Index], PlayerGroupSingle(lp_player), c_anchorCenter, libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT[lp_force_Slot], c_anchorCenter, 0, 0);
+        DialogControlSetPositionRelative(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index], PlayerGroupSingle(lp_player), c_anchorCenter, libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM_anchor[lv_item_Index], c_anchorCenter, 0, 0);
+        DialogControlSetSize(libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM[lv_item_Index], PlayerGroupSingle(lp_player), lv_item_width, lv_item_height);
+        libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM_slot[lv_item_Index] = lp_force_Slot;
+        libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[lp_force_Slot] = lv_item_Index;
+        libDEAD_gf_ECL__EQUIP(lp_player, lp_force_Slot, libDEAD_ge_EQUIPUNEQUIP_EQUIP);
+    }
 }
 
 void libDEAD_gf_ECL_ITEM_remove (int lp_player, int lp_index) {
@@ -1007,7 +1106,7 @@ void libDEAD_gf_ECL__EQUIP (int lp_player, int lp_sLOT, int lp_eQUIPUNEQUIP) {
         else if (auto30B42D06_val == "Weapon") {
             libDEAD_gv_activeWeaponInstance[lp_player][lp_sLOT] = null;
             if ((libECLP_gv_eCL__HitScan[lp_player].lv_ammo[lp_sLOT] > 0)) {
-                libDEAD_gf_ECL_ITEM_add(lp_player, libDEAD_gf_ReturnAmmoRequired(lv_itemStats), libECLP_gv_eCL__HitScan[lp_player].lv_ammo[lp_sLOT], true, libDEAD_gv_eCL__Inventory[lp_player].lv_curr_slot, 1, libDEAD_gv_eCL__Inventory[lp_player].lv_iNV_slots);
+                libDEAD_gf_ECL_ITEM_add(lp_player, libDEAD_gf_ReturnAmmoRequired(lv_itemStats), libECLP_gv_eCL__HitScan[lp_player].lv_ammo[lp_sLOT], true, libDEAD_gv_eCL__Inventory[lp_player].lv_curr_slot, 0, 1, libDEAD_gv_eCL__Inventory[lp_player].lv_iNV_slots);
                 libECLP_gv_eCL__HitScan[lp_player].lv_ammo[lp_sLOT] = 0;
             }
 
@@ -1141,25 +1240,18 @@ void libDEAD_gf_ECL_Reload (fixed lp_reload_time, int lp_player) {
     int lv_d_ammo;
 
     // Automatic Variable Declarations
-    string autoE6E73E8A_val;
     int autoBBE465D1_ae;
     int autoBBE465D1_var;
 
     // Variable Initialization
 
     // Implementation
-    autoE6E73E8A_val = UserDataGetString("WeaponTypes", libDEAD_gv_activeWeaponInstance[lp_player][libDEAD_gv_activeWeaponIndex[lp_player]], "AmmoType", 1);
-    if (autoE6E73E8A_val == "Pistol") {
-        lv_aMMO_type_required = "Pistol Ammo";
-    }
-    else {
-    }
     lv_aMMO_mag = UserDataGetInt("WeaponTypes", libDEAD_gv_activeWeaponInstance[lp_player][libDEAD_gv_activeWeaponIndex[lp_player]], "BaseAmmoMax", 1);
     lv_aMMO = libECLP_gv_eCL__HitScan[lp_player].lv_ammo[libDEAD_gv_activeWeaponIndex[lp_player]];
     autoBBE465D1_ae = libDEAD_gv_eCL__Inventory[lp_player].lv_iNV_slots;
     autoBBE465D1_var = (libDEAD_gv_eCL__equipmentslots + 1);
     for ( ; autoBBE465D1_var <= autoBBE465D1_ae; autoBBE465D1_var += 1 ) {
-        if ((libDEAD_gv_dS_InventoryItem[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[autoBBE465D1_var]][lp_player] == lv_aMMO_type_required)) {
+        if ((libDEAD_gv_dS_InventoryItem[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[autoBBE465D1_var]][lp_player] == libDEAD_gf_ReturnAmmoRequired(libDEAD_gv_activeWeaponInstance[lp_player][libDEAD_gv_activeWeaponIndex[lp_player]]))) {
             lv_aMMO_item = libDEAD_gv_dS_InventoryAmount[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[autoBBE465D1_var]][lp_player];
             lv_d_ammo = libNtve_gf_ArithmeticIntClamp((lv_aMMO_mag - lv_aMMO), 0, lv_aMMO_item);
             libDEAD_gv_dS_InventoryAmount[libDEAD_gv_eCL__Inventory[lp_player].lv_sLOT_item[autoBBE465D1_var]][lp_player] -= lv_d_ammo;
@@ -4095,47 +4187,63 @@ void libDEAD_gf_HealAilmentfromLimb (int lp_player, string lp_ailment, int lp_ta
     }
 }
 
-void libDEAD_gf_DS_InitializeInventory (int lp_player) {
-    // Automatic Variable Declarations
-    // Implementation
-    BankLoad("DS_PD", lp_player);
-    libDEAD_gv_dS_PlayerBank[lp_player] = BankLastCreated();
-    if ((BankValueGetAsFlag(libDEAD_gv_dS_PlayerBank[lp_player], "GD", "Initialized") != true)) {
-        libDEAD_gf_DS_BankPopulation(lp_player);
-    }
-
-}
-
-void libDEAD_gf_DS_BankPopulation (int lp_player) {
+void libDEAD_gf_BANK_save (int lp_player) {
     // Variable Declarations
-    int lv_index;
-    int lv_index2;
-    const int lv_inventoryX = 4;
-    const int lv_intentoryY = 5;
+    string lv_item;
+    string lv_itemStats;
+    string lv_aMMO_type_required;
 
     // Automatic Variable Declarations
-    const int auto64A7ECBD_ae = lv_inventoryX;
-    const int auto64A7ECBD_ai = 1;
-    int autoF48B6C2C_ae;
-    const int autoF48B6C2C_ai = 1;
+    int autoBAA586E6_ae;
+    int autoBAA586E6_var;
+    const int auto3606A9E3_ae = 4;
+    int auto3606A9E3_var;
 
     // Variable Initialization
 
     // Implementation
-    BankValueSetFromInt(libDEAD_gv_dS_PlayerBank[lp_player], "PI", "X", 4);
-    BankValueSetFromInt(libDEAD_gv_dS_PlayerBank[lp_player], "PI", "Y", 5);
-    lv_index = 1;
-    for ( ; ( (auto64A7ECBD_ai >= 0 && lv_index <= auto64A7ECBD_ae) || (auto64A7ECBD_ai < 0 && lv_index >= auto64A7ECBD_ae) ) ; lv_index += auto64A7ECBD_ai ) {
-        autoF48B6C2C_ae = lv_index2;
-        lv_index2 = 1;
-        for ( ; ( (autoF48B6C2C_ai >= 0 && lv_index2 <= autoF48B6C2C_ae) || (autoF48B6C2C_ai < 0 && lv_index2 >= autoF48B6C2C_ae) ) ; lv_index2 += autoF48B6C2C_ai ) {
-            BankValueSetFromInt(BankLastCreated(), ("Slot" + IntToString(lv_index) + "," + IntToString(lv_index2)), "ItemID", 0);
-            BankValueSetFromInt(BankLastCreated(), ("Slot" + IntToString(lv_index) + "," + IntToString(lv_index2)), "ItemQuantity", 0);
-            BankValueSetFromInt(BankLastCreated(), ("Slot" + IntToString(lv_index) + "," + IntToString(lv_index2)), "ItemDurability", 0);
-        }
+    autoBAA586E6_ae = libDEAD_gv_eCL__Inventory[lp_player].lv_n_items;
+    autoBAA586E6_var = 1;
+    for ( ; autoBAA586E6_var <= autoBAA586E6_ae; autoBAA586E6_var += 1 ) {
+        lv_item = libDEAD_gv_dS_InventoryItem[autoBAA586E6_var][lp_player];
+        BankValueSetFromInt(libDEAD_gv_dS_PlayerBank[lp_player], ("item_" + IntToString(autoBAA586E6_var)), "INSTANCE", libNtve_gf_UserDataInstanceGetIndex("Items", lv_item));
+        BankValueSetFromInt(libDEAD_gv_dS_PlayerBank[lp_player], ("item_" + IntToString(autoBAA586E6_var)), "AMOUNT", libDEAD_gv_dS_InventoryAmount[autoBAA586E6_var][lp_player]);
+        BankValueSetFromInt(libDEAD_gv_dS_PlayerBank[lp_player], ("item_" + IntToString(autoBAA586E6_var)), "SLOT", libDEAD_gv_eCL__Inventory[lp_player].lv_iTEM_slot[autoBAA586E6_var]);
     }
-    BankValueSetFromFlag(BankLastCreated(), "GD", "Initialized", true);
+    auto3606A9E3_var = 1;
+    for ( ; auto3606A9E3_var <= auto3606A9E3_ae; auto3606A9E3_var += 1 ) {
+        if ((libECLP_gv_eCL__HitScan[lp_player].lv_ammo[auto3606A9E3_var] > 0)) {
+            lv_item = libDEAD_gf_ReturnAmmoRequired(libDEAD_gv_activeWeaponInstance[lp_player][auto3606A9E3_var]);
+            BankValueSetFromInt(libDEAD_gv_dS_PlayerBank[lp_player], ("item_" + IntToString((libDEAD_gv_eCL__Inventory[lp_player].lv_n_items + 1))), "INSTANCE", libNtve_gf_UserDataInstanceGetIndex("Items", lv_item));
+            BankValueSetFromInt(libDEAD_gv_dS_PlayerBank[lp_player], ("item_" + IntToString((libDEAD_gv_eCL__Inventory[lp_player].lv_n_items + 1))), "AMOUNT", libECLP_gv_eCL__HitScan[lp_player].lv_ammo[auto3606A9E3_var]);
+            BankValueSetFromInt(libDEAD_gv_dS_PlayerBank[lp_player], ("item_" + IntToString((libDEAD_gv_eCL__Inventory[lp_player].lv_n_items + 1))), "SLOT", 0);
+        }
+
+    }
     BankSave(libDEAD_gv_dS_PlayerBank[lp_player]);
+}
+
+void libDEAD_gf_BANK_load (int lp_player) {
+    // Variable Declarations
+    int lv_i;
+    string lv_item;
+    int lv_amount;
+    int lv_slot;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_i = 1;
+
+    // Implementation
+    BankLoad("dsbankkatecl", lp_player);
+    libDEAD_gv_dS_PlayerBank[lp_player] = BankLastCreated();
+    while ((BankSectionExists(libDEAD_gv_dS_PlayerBank[lp_player], ("item_" + IntToString(lv_i))) == true)) {
+        lv_item = UserDataInstance("Items", BankValueGetAsInt(libDEAD_gv_dS_PlayerBank[lp_player], ("item_" + IntToString(lv_i)), "INSTANCE"));
+        lv_amount = BankValueGetAsInt(libDEAD_gv_dS_PlayerBank[lp_player], ("item_" + IntToString(lv_i)), "AMOUNT");
+        lv_slot = BankValueGetAsInt(libDEAD_gv_dS_PlayerBank[lp_player], ("item_" + IntToString(lv_i)), "SLOT");
+        libDEAD_gf_ECL_ITEM_add(lp_player, lv_item, lv_amount, false, 0, lv_slot, 1, libDEAD_gv_eCL__maxslots);
+        lv_i += 1;
+    }
 }
 
 void libDEAD_gf_DS_Fire (int lp_player) {
@@ -5152,6 +5260,20 @@ void libDEAD_gt_DS_ExamineCloseEscP2_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: QUEST_kill
+//--------------------------------------------------------------------------------------------------
+bool libDEAD_gt_QUEST_kill_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libDEAD_gt_QUEST_kill_Init () {
+    libDEAD_gt_QUEST_kill = TriggerCreate("libDEAD_gt_QUEST_kill_Func");
+    TriggerAddEventUnitDied(libDEAD_gt_QUEST_kill, null);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: KL_SwapWeaponTest
 //--------------------------------------------------------------------------------------------------
 bool libDEAD_gt_KL_SwapWeaponTest_Func (bool testConds, bool runActions) {
@@ -5700,7 +5822,7 @@ bool libDEAD_gt_ECL__CTRLCLICKINVENTORY_Func (bool testConds, bool runActions) {
         lv_aMOUNT = libDEAD_gv_dS_InventoryAmount[lv_index][EventPlayer()];
         libDEAD_gf_ECL__EQUIP(EventPlayer(), libDEAD_gv_eCL__Inventory[EventPlayer()].lv_iTEM_slot[lv_index], libDEAD_ge_EQUIPUNEQUIP_UNEQUIP);
         libDEAD_gf_ECL_ITEM_remove(EventPlayer(), lv_index);
-        libDEAD_gf_ECL_ITEM_add(EventPlayer(), lv_item, lv_aMOUNT, false, 0, lv_sLOT_min, lv_sLOT_max);
+        libDEAD_gf_ECL_ITEM_add(EventPlayer(), lv_item, lv_aMOUNT, false, 0, 0, lv_sLOT_min, lv_sLOT_max);
     }
     return true;
 }
@@ -5771,7 +5893,7 @@ bool libDEAD_gt_ECL__PICKUPLOOT_Func (bool testConds, bool runActions) {
     lv_itemIndex = FixedToInt(UnitGetCustomValue(EventUnit(), 6));
     lv_itemAmount = FixedToInt(UnitGetCustomValue(EventUnit(), 7));
     lv_itemDurability = FixedToInt(UnitGetCustomValue(EventUnit(), 8));
-    libDEAD_gf_ECL_ITEM_add(EventPlayer(), UserDataInstance("Items", lv_itemIndex), lv_itemAmount, true, 0, 1, libDEAD_gv_eCL__Inventory[UnitGetOwner(EventUnit())].lv_iNV_slots);
+    libDEAD_gf_ECL_ITEM_add(EventPlayer(), UserDataInstance("Items", lv_itemIndex), lv_itemAmount, true, 0, 0, 1, libDEAD_gv_eCL__Inventory[UnitGetOwner(EventUnit())].lv_iNV_slots);
     return true;
 }
 
@@ -6183,7 +6305,7 @@ bool libDEAD_gt_DS_Initialization_Func (bool testConds, bool runActions) {
         libDEAD_gf_DS_CreateConfirm(lv_index);
         libDEAD_gf_DS_HookupInteractButton(libDEAD_gv_playerUnit[lv_index], lv_index);
         libDEAD_gf_DS_InitHPSystem(lv_index);
-        libDEAD_gf_DS_InitializeInventory(lv_index);
+        libDEAD_gf_BANK_load(lv_index);
     }
     return true;
 }
@@ -7705,6 +7827,7 @@ void libDEAD_InitTriggers () {
     libDEAD_gt_DS_ExamineCloseEscP1_Init();
     libDEAD_gt_DS_ExamineCloseBackgroundP2_Init();
     libDEAD_gt_DS_ExamineCloseEscP2_Init();
+    libDEAD_gt_QUEST_kill_Init();
     libDEAD_gt_KL_SwapWeaponTest_Init();
     libDEAD_gt_ECL__HOOKUPINVENTORYFRAMES_Init();
     libDEAD_gt_DS_OpenCloseStash_unitclick_Init();

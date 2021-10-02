@@ -8,4 +8,7 @@
         <Value>file:Mods\SC2ARPG\Utility_Library.SC2Mod</Value>
         <Value>file:Mods\SC2ARPG\Projectiles_folder.SC2Mod</Value>
     </Dependencies>
+    <Preload>
+        <Value>Bank;dsbankkatecl</Value>
+    </Preload>
 </DocInfo>

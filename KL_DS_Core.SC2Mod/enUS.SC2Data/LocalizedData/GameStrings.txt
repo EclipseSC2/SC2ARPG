@@ -1,6 +1,7 @@
 ﻿Effect/Name/ECLDROPLOOT=ECL DROP LOOT
 Effect/Name/UnknownEffect=Unknown Effect
 Param/Expression/lib_DEAD_09E7FB92=[~A~]
+Param/Expression/lib_DEAD_10AAD967=[~A~]
 Param/Expression/lib_DEAD_23259541=[~A~]
 Param/Expression/lib_DEAD_252D01C2=[~A~]
 Param/Expression/lib_DEAD_4D0D1BC9=~A~
@@ -15,6 +16,7 @@ Param/Expression/lib_DEAD_B04D8FC7=Player ~A~ in range
 Param/Expression/lib_DEAD_C1A952DE=~A~
 Param/Expression/lib_DEAD_C664C836=[~A~]
 Param/Expression/lib_DEAD_CAAA28BE=[~A~]
+Param/Expression/lib_DEAD_D0DB9456=~A~
 Param/Expression/lib_DEAD_DDD94F7C=[~A~]
 Param/Expression/lib_DEAD_FC6C0840=Player ~A~ out of range
 Param/Value/lib_DEAD_027D6E75=<c val="FF8C55"> NAME:</c>

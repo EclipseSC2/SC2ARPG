@@ -39,4 +39,5 @@ User/Name/Blueprints=Blueprints
 User/Name/Items=Items
 User/Name/LootTables=LootTables
 User/Name/ModifierStats=ModifierStats
+User/Name/QUESTS=QUESTS
 User/Name/WeaponTypes=WeaponData

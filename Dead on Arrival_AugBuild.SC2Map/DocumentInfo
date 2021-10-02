@@ -10,5 +10,6 @@
     <Preload>
         <Value>Bank;DS_PD</Value>
         <Value>Bank;DS_MA</Value>
+        <Value>Bank;dsbankkatecl</Value>
     </Preload>
 </DocInfo>

@@ -988,6 +988,9 @@
             </Int>
         </Instances>
     </CUser>
+    <CUser id="QUESTS">
+        <Fields Id="Name" Type="String" EditorColumn="1"/>
+    </CUser>
     <CUser id="WeaponTypes">
         <Fields Id="Icon" Type="Image" EditorColumn="1"/>
         <Fields Id="AmmoType" Type="String" EditorColumn="2"/>
